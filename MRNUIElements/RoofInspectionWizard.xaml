@@ -1,0 +1,552 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements"
+	 xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" 
+      xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Name="page" x:Class="MRNUIElements.RoofInspectionWizard"
+      mc:Ignorable="d" 
+	Background="Transparent"
+      MinWidth= "900" MinHeight="600"
+	  
+      Title="Roof Inspection Wizard">
+	<Page.Resources>
+		<SolidColorBrush x:Key="ToolBarHorizontalBackground" Color="#FFEEF5FD"/>
+		<SolidColorBrush x:Key="ToolBarToggleButtonVerticalBackground" Color="#FFEEF5FD"/>
+		<SolidColorBrush x:Key="ToolBarButtonHover" Color="#210080FF"/>
+		<SolidColorBrush x:Key="ToolBarGripper" Color="#FF6D6D6D"/>
+		<Style x:Key="ToolBarVerticalOverflowButtonStyle" TargetType="{x:Type ToggleButton}">
+			<Setter Property="Background" Value="{StaticResource ToolBarToggleButtonVerticalBackground}"/>
+			<Setter Property="MinHeight" Value="0"/>
+			<Setter Property="MinWidth" Value="0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ToggleButton}">
+						<Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="0,0,3,3" SnapsToDevicePixels="true">
+							<Canvas HorizontalAlignment="Right" Height="6" Margin="2,7,2,2" SnapsToDevicePixels="true" VerticalAlignment="Bottom" Width="7">
+								<Path Data="M 1.5 1 L 1.5 6" Stroke="White"/>
+								<Path Data="M 0.5 0 L 0.5 5" Stroke="{TemplateBinding Foreground}"/>
+								<Path Data="M 3.5 0.5 L 7 3.5 L 4 6.5 Z" Fill="White"/>
+								<Path Data="M 3 -0.5 L 6 2.5 L 3 5.5 Z" Fill="{TemplateBinding Foreground}"/>
+							</Canvas>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter Property="Background" TargetName="Bd" Value="{StaticResource ToolBarButtonHover}"/>
+							</Trigger>
+							<Trigger Property="IsKeyboardFocused" Value="true">
+								<Setter Property="Background" TargetName="Bd" Value="{StaticResource ToolBarButtonHover}"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{StaticResource ToolBarGripper}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="true">
+					<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<SolidColorBrush x:Key="ToolBarVerticalBackground" Color="#FFEEF5FD"/>
+		<SolidColorBrush x:Key="ToolBarToggleButtonHorizontalBackground" Color="#FFEEF5FD"/>
+		<Style x:Key="ToolBarHorizontalOverflowButtonStyle" TargetType="{x:Type ToggleButton}">
+			<Setter Property="Background" Value="{StaticResource ToolBarToggleButtonHorizontalBackground}"/>
+			<Setter Property="MinHeight" Value="0"/>
+			<Setter Property="MinWidth" Value="0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ToggleButton}">
+						<Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="0,3,3,0" SnapsToDevicePixels="true">
+							<Canvas HorizontalAlignment="Right" Height="7" Margin="7,2,2,2" SnapsToDevicePixels="true" VerticalAlignment="Bottom" Width="6">
+								<Path Data="M 1 1.5 L 6 1.5" Stroke="White"/>
+								<Path Data="M 0 0.5 L 5 0.5" Stroke="{TemplateBinding Foreground}"/>
+								<Path Data="M 0.5 4 L 6.5 4 L 3.5 7 Z" Fill="White"/>
+								<Path Data="M -0.5 3 L 5.5 3 L 2.5 6 Z" Fill="{TemplateBinding Foreground}"/>
+							</Canvas>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter Property="Background" TargetName="Bd" Value="{StaticResource ToolBarButtonHover}"/>
+							</Trigger>
+							<Trigger Property="IsKeyboardFocused" Value="true">
+								<Setter Property="Background" TargetName="Bd" Value="{StaticResource ToolBarButtonHover}"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{StaticResource ToolBarGripper}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="true">
+					<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<SolidColorBrush x:Key="ToolBarMenuBorder" Color="#FFB6BDC5"/>
+		<SolidColorBrush x:Key="ToolBarSubMenuBackground" Color="#FFEEF5FD"/>
+		<Style x:Key="ToolBarThumbStyle" TargetType="{x:Type Thumb}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Thumb}">
+						<Border Background="Transparent" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+							<Rectangle>
+								<Rectangle.Fill>
+									<DrawingBrush TileMode="Tile" Viewbox="0,0,4,4" Viewport="0,0,4,4" ViewportUnits="Absolute" ViewboxUnits="Absolute">
+										<DrawingBrush.Drawing>
+											<DrawingGroup>
+												<GeometryDrawing Brush="White" Geometry="M 1 1 L 1 3 L 3 3 L 3 1 z"/>
+												<GeometryDrawing Brush="{StaticResource ToolBarGripper}" Geometry="M 0 0 L 0 2 L 2 2 L 2 0 z"/>
+											</DrawingGroup>
+										</DrawingBrush.Drawing>
+									</DrawingBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter Property="Cursor" Value="SizeAll"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ToolBarMainPanelBorderStyle" TargetType="{x:Type Border}">
+			<Setter Property="Margin" Value="0,0,11,0"/>
+			<Setter Property="CornerRadius" Value="3,3,3,3"/>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="true">
+					<Setter Property="CornerRadius" Value="0,0,0,0"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="ToolBarStyle1" TargetType="{x:Type ToolBar}">
+			<Setter Property="Background" Value="{StaticResource ToolBarHorizontalBackground}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ToolBar}">
+						<Grid x:Name="Grid" Margin="3,1,1,1" SnapsToDevicePixels="true">
+							<Grid x:Name="OverflowGrid" HorizontalAlignment="Right">
+								<ToggleButton x:Name="OverflowButton" ClickMode="Press" FocusVisualStyle="{x:Null}" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{TemplateBinding HasOverflowItems}" Style="{StaticResource ToolBarHorizontalOverflowButtonStyle}"/>
+								<Popup x:Name="OverflowPopup" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom" StaysOpen="false">
+									<Themes:SystemDropShadowChrome x:Name="Shdw" Color="Transparent">
+										<Border x:Name="ToolBarSubMenuBorder_Copy" BorderBrush="{StaticResource ToolBarMenuBorder}" BorderThickness="1" Background="{StaticResource ToolBarSubMenuBackground}" RenderOptions.ClearTypeHint="Enabled" RenderTransformOrigin="3.833,5.667">
+											<ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel1" KeyboardNavigation.DirectionalNavigation="Cycle" FocusVisualStyle="{x:Null}" Focusable="true" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle" WrapWidth="200"/>
+										</Border>
+									</Themes:SystemDropShadowChrome>
+								</Popup>
+							</Grid>
+							<Border x:Name="MainPanelBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Style="{StaticResource ToolBarMainPanelBorderStyle}">
+								<DockPanel KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
+									<Thumb x:Name="ToolBarThumb" Margin="-3,-1,0,0" Padding="6,5,1,6" Style="{StaticResource ToolBarThumbStyle}" Width="10"/>
+									<ContentPresenter x:Name="ToolBarHeader" ContentSource="Header" HorizontalAlignment="Center" Margin="4,0,4,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+									<ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" Margin="0,1,2,2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+								</DockPanel>
+							</Border>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsOverflowOpen" Value="true">
+								<Setter Property="IsEnabled" TargetName="ToolBarThumb" Value="false"/>
+							</Trigger>
+							<Trigger Property="Header" Value="{x:Null}">
+								<Setter Property="Visibility" TargetName="ToolBarHeader" Value="Collapsed"/>
+							</Trigger>
+							<Trigger Property="ToolBarTray.IsLocked" Value="true">
+								<Setter Property="Visibility" TargetName="ToolBarThumb" Value="Collapsed"/>
+							</Trigger>
+							<Trigger Property="HasDropShadow" SourceName="OverflowPopup" Value="true">
+								<Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
+								<Setter Property="SnapsToDevicePixels" TargetName="Shdw" Value="true"/>
+								<Setter Property="Color" TargetName="Shdw" Value="#71000000"/>
+							</Trigger>
+							<Trigger Property="Orientation" Value="Vertical">
+								<Setter Property="Margin" TargetName="Grid" Value="1,3,1,1"/>
+								<Setter Property="Style" TargetName="OverflowButton" Value="{StaticResource ToolBarVerticalOverflowButtonStyle}"/>
+								<Setter Property="Height" TargetName="ToolBarThumb" Value="10"/>
+								<Setter Property="Width" TargetName="ToolBarThumb" Value="Auto"/>
+								<Setter Property="Margin" TargetName="ToolBarThumb" Value="-1,-3,0,0"/>
+								<Setter Property="Padding" TargetName="ToolBarThumb" Value="5,6,6,1"/>
+								<Setter Property="Margin" TargetName="ToolBarHeader" Value="0,0,0,4"/>
+								<Setter Property="Margin" TargetName="PART_ToolBarPanel" Value="1,0,2,2"/>
+								<Setter Property="DockPanel.Dock" TargetName="ToolBarThumb" Value="Top"/>
+								<Setter Property="DockPanel.Dock" TargetName="ToolBarHeader" Value="Top"/>
+								<Setter Property="HorizontalAlignment" TargetName="OverflowGrid" Value="Stretch"/>
+								<Setter Property="VerticalAlignment" TargetName="OverflowGrid" Value="Bottom"/>
+								<Setter Property="Placement" TargetName="OverflowPopup" Value="Right"/>
+								<Setter Property="Margin" TargetName="MainPanelBorder" Value="0,0,0,11"/>
+								<Setter Property="Background" Value="{StaticResource ToolBarVerticalBackground}"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="true">
+					<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+	</Page.Resources>
+	<Grid x:Name="jojo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="600" Width="900">
+		<DockPanel x:Name="dockpanel" Margin="0,1,0,-1">
+			<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+				<StackPanel>
+					<TextBlock x:Name="Roof_Inspection_Wizard" Height="50" FontSize="25" Foreground="White" FontWeight="Bold" TextAlignment="Center" Padding="10" Width="900" Text="Roof Inspection Wizard"/>
+
+
+					<Label x:Name="label1" Background="Transparent" Content="Roof Plane Shape Selection" Height="75" Width="529" FontSize="36" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFFBFBFB" Padding="5" FontWeight="Bold" FontStyle="Italic"/>
+					<Grid>
+						<Button Style="{StaticResource normal}" Content="Damage&#xA;Type" Margin="0" Width="100" HorizontalAlignment="Right" Panel.ZIndex="1" VerticalAlignment="Center" d:LayoutOverrides="LeftMargin, RightMargin"/>
+						<Button Style="{StaticResource normal}" Margin="0" Width="85" HorizontalAlignment="Left" Panel.ZIndex="1" VerticalAlignment="Center" d:LayoutOverrides="LeftMargin, RightMargin" Height="68" Content="Plane &#xD;&#xA;Specs"/>
+					</Grid>
+				</StackPanel>
+			</StackPanel>
+			<StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Width="50" Panel.ZIndex="20" >
+
+			</StackPanel>
+
+			<ToolBarPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Width="50" Panel.ZIndex="20">
+				<ToolBarTray Height="100"/>
+			</ToolBarPanel>
+
+
+
+			<StackPanel x:Name="leftstack" DockPanel.Dock="Left" Width="100" HorizontalAlignment="Left" Panel.ZIndex="20">
+
+				<Button x:Name="CancelButton" Style="{DynamicResource normal}" HorizontalAlignment="Stretch" Margin="0" Click="CancelButton_Click" Height="48" d:LayoutOverrides="LeftPosition, RightPosition" Width="100">
+					<TextBlock x:Name="textBlock2" TextWrapping="Wrap" FontSize="22" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline"><Run Text="Cancel"/></TextBlock>
+				</Button>
+
+
+				<TextBlock x:Name="RidgeLengthBlock" TextWrapping="Wrap" Foreground="White"><Run Text="Ridge Length"></Run></TextBlock>
+				<TextBox x:Name="RidgeLengthTextBox" Height="23" TextWrapping="Wrap"  Margin="10" GotFocus="RidgeLengthTextBox_GotFocus" TextChanged="RidgeLengthTextBox_TextChanged" LostFocus="RidgeLengthTextBox_LostFocus" Text="0" Width="80"/>
+
+				<TextBlock x:Name="RakeLengthBlock" TextWrapping="Wrap" Text="RakeLength" Foreground="White"></TextBlock>
+				<TextBox x:Name="RakeLengthTextBox" Height="23" TextWrapping="Wrap" Margin="10" GotFocus="RakeLengthTextBox_GotFocus" TextChanged="RakeLengthTextBox_TextChanged" LostFocus="RakeLengthTextBox_LostFocus" Text="0"/>
+				<TextBlock x:Name="EaveLengthBlock" TextWrapping="Wrap" Foreground="White"><Run Text="Eave Length"/></TextBlock>
+				<TextBox x:Name="EaveLengthTextBox" Height="23" TextWrapping="Wrap"  Margin="10" GotFocus="EaveLengthTextBox_GotFocus" TextChanged="EaveLengthTextBox_TextChanged" LostFocus="EaveLengthTextBox_LostFocus" Text="0" Width="80"/>
+				<TextBlock x:Name="TotalSqFtBlock" TextWrapping="Wrap" Foreground="White"><Run Text="Total Sq Ft"/></TextBlock>
+				<TextBox x:Name="SqFtTotal" Height="23" TextWrapping="Wrap" Text="0" Margin="10" GotFocus="EaveLengthTextBox_GotFocus" TextChanged="EaveLengthTextBox_TextChanged" IsReadOnly="True" IsReadOnlyCaretVisible="True" Width="80"/>
+
+			</StackPanel>
+			<Grid x:Name="gridpanel" DockPanel.Dock="Bottom" Panel.ZIndex="0" Visibility="Visible">
+				<Canvas x:Name="DrawingCanvas" Panel.ZIndex="1" Width="{Binding ActualWidth, ElementName=page, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=page, Mode=OneWay}" IsHitTestVisible="True" AllowDrop="True" Focusable="True" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Visibility="Hidden" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				<Canvas x:Name="MainCanvas" Background="Transparent" Visibility="Visible" Panel.ZIndex="1" Width="{Binding ActualWidth, ElementName=gridpanel, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=gridpanel, Mode=OneWay}" Focusable="True">
+					<Grid Panel.ZIndex="0" Margin="0" VerticalAlignment="Center" Canvas.Left="52">
+						<Grid.ColumnDefinitions>
+
+							<ColumnDefinition Width="150"/>
+							<ColumnDefinition Width="150"/>
+							<ColumnDefinition Width="150"/>
+							<ColumnDefinition Width="150"/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="100"/>
+							<RowDefinition Height="100"/>
+							<RowDefinition Height="100"/>
+							<RowDefinition Height="100"/>
+						</Grid.RowDefinitions>
+						<Button x:Name="Shape8btn"  Grid.Column="1" Grid.Row="2"  Background="{x:Null}" Click="Shape8btn_Click">
+							<Canvas x:Name="Shape8can" Height="100" Width="150" Margin="0">
+								<Line
+									X1="72" Y1="70"
+									X2="10" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="72" Y1="70"
+									X2="135" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="135" Y1="20"
+									X2="10" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"/>
+
+
+							</Canvas>
+						</Button>
+						<Button x:Name="Shape4btn" Grid.Column="0" Grid.Row="1"  Background="{x:Null}" Click="Shape4btn_Click">
+							<Canvas x:Name="Shape4can" Height="100" Width="150" Margin="0">
+
+								<Line
+									X1="1" Y1="70"
+									X2="35" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="100" Y1="20"
+									X2="35" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="1" Y1="70"
+									X2="135" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"/>
+								<Line
+									X1="135" Y1="70"
+									X2="100" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"/>
+							</Canvas>
+						</Button>
+						<Button x:Name="Shape5btn" Grid.Row="1" Grid.Column="1"  Background="{x:Null}" HorizontalAlignment="Left" Width="150" Click="Shape5btn_Click" Margin="5,5,-5,-5" >
+							<Canvas x:Name="Shape5can" Height="100" Width="150" Margin="0">
+								<Line
+									X1="35" Y1="70"
+									X2="1" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"/>
+								<Line
+									X1="1" Y1="20"
+									X2="135" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"/>
+								<Line
+									X1="98" Y1="70"
+									X2="35" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"/>
+								<Line
+									X1="98" Y1="70"
+									X2="135" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"/>
+							</Canvas>
+						</Button>
+						<Button x:Name="Shape1btn" Grid.Row="0" Grid.Column="1" Background="{x:Null}" Click="Shape1btn_Click" >
+							<Canvas x:Name="Shape1can" Height="100" Width="150" Margin="0" >
+								<Line
+									X1="45" Y1="90"
+									X2="45" Y2="10"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="45" Y1="10"
+									X2="90" Y2="10"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="90" Y1="10"
+									X2="90" Y2="90"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="45" Y1="90"
+									X2="90" Y2="90"
+									Stroke="White"
+									StrokeThickness="4" />
+
+							</Canvas>
+						</Button>
+						<Button x:Name="Shape2btn" Grid.Row="0" Grid.Column="2" Background="{x:Null}" Click="Shape2btn_Click" >
+							<Canvas x:Name="Shape2can" Height="100" Width="150" Margin="0" >
+
+								<Line
+									X1="10" Y1="10"
+									X2="35" Y2="90"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="115" Y1="10"
+									X2="140" Y2="90"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="10" Y1="10"
+									X2="115" Y2="10"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="35" Y1="90"
+									X2="140" Y2="90"
+									Stroke="White"
+									StrokeThickness="4"/>
+							</Canvas>
+						</Button>
+
+						<Button x:Name="Shape3btn" Grid.Row="0" Grid.Column="3"  Background="{x:Null}" Height="100" VerticalAlignment="Top" Click="Shape3btn_Click" >
+							<Canvas x:Name="Shape3can" Height="100" Width="150" Margin="0" >
+								<!-- Draws a diagonal line from (10,10) to (50,50). -->
+								<Line
+									X1="45" Y1="10"
+									X2="10" Y2="90"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="140" Y1="10"
+									X2="105" Y2="90"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="105" Y1="90"
+									X2="10" Y2="90"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="45" Y1="10"
+									X2="140" Y2="10"
+									Stroke="White"
+									StrokeThickness="4"/>
+
+							</Canvas>
+						</Button>
+						<Button x:Name="Shape0btn" Grid.Column="0" Grid.Row="0" Background="{x:Null}" Click="Shape0btn_Click" >
+							<Canvas x:Name="Shape0can" Height="100" Width="150" Margin="0" >
+								<Line
+									X1="10" Y1="70"
+									X2="10" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="10" Y1="20"
+									X2="135" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="10" Y1="70"
+									X2="135" Y2="70"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="135" Y1="20"
+									X2="135" Y2="70"
+									Stroke="White"
+									StrokeThickness="4" />
+							</Canvas>
+						</Button>
+						<Button x:Name="Shape6btn" Grid.Row="1" Grid.Column="2" Background="{x:Null}" Click="Shape6btn_Click" >
+							<Canvas x:Name="Shape6can" Height="100" Width="150" Margin="0">
+
+								<Line
+									X1="105" Y1="70"
+									X2="105" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="30" Y1="70"
+									X2="105" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"/>
+								<Line
+									X1="105" Y1="20"
+									X2="30" Y2="70"
+									Stroke="White"
+									StrokeThickness="4" />
+								
+
+							</Canvas>
+						</Button>
+						<Button x:Name="Shape9btn" Grid.Row="2" Grid.Column="0" Background="{x:Null}" Click="Shape9btn_Click" >
+							<Canvas x:Name="Shape9can" Height="100" Width="150" Margin="0">
+								<Line
+									X1="5" Y1="70"
+									X2="135" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="135" Y1="70"
+									X2="72" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+								<Line
+									X1="5" Y1="70"
+									X2="72" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+
+							</Canvas>
+						</Button>
+
+
+						<Button x:Name="Shape7btn"   Grid.Row="1" Grid.Column="3"  Background="{x:Null}" Click="Shape7btn_Click"  >
+
+							<Canvas x:Name="Shape7Can" Height="100" Width="150" Margin="0" >
+								<Line
+									X1="40" Y1="70"
+									X2="40" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="105" Y1="70"
+									X2="40" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"/>
+								<Line
+									X1="105" Y1="70"
+									X2="40" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+							</Canvas>
+						</Button>
+
+						<Button x:Name="Shape10btn" Grid.Row="2" Grid.Column="2" Background="{x:Null}" Click="Shape10btn_Click">
+							<Canvas x:Name="Shape10can" Height="100" Width="150" Margin="0" >
+								<Line
+									X1="10" Y1="20"
+									X2="125" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="10" Y1="20"
+									X2="35" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="35" Y1="70"
+									X2="125" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="125" Y1="70"
+									X2="125" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+							</Canvas>
+						</Button>
+						<Button x:Name="Shape11btn" Grid.Row="2" Grid.Column="3" Background="{x:Null}" Click="Shape11btn_Click" >
+							<Canvas x:Name="Shape11can" Height="100" Width="150" Margin="0" >
+								<Line
+									X1="10" Y1="20"
+									X2="135" Y2="20"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="10" Y1="20"
+									X2="10" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="10" Y1="70"
+									X2="105" Y2="70"
+									Stroke="White"
+									StrokeThickness="4"  />
+								<Line
+									X1="105" Y1="70"
+									X2="135" Y2="20"
+									Stroke="White"
+									StrokeThickness="4" />
+							</Canvas>
+						</Button>
+					</Grid>
+				</Canvas>
+			</Grid>
+		</DockPanel>
+
+
+
+
+
+	</Grid>
+</Page>

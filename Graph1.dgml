@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Database" Category="Database" Bounds="0,0,2211.10264652505,585.836287588246" Group="Expanded" Label="Data Source=198.71.227.2;Initial Catalog=NexusTest;Integrated Security=False;Persist Security Info=True;User ID=InfoTech;Password=Scrappy!;TrustServerCertificate=True;Packet Size=4096" />
+    <Node Id="InfoTech" Category="Schema" Bounds="20,40,2171.10264652505,525.836287588246" Group="Expanded" Label="InfoTech" />
+    <Node Id="InfoTech.AdditionalSupplies" Category="Table" Bounds="1595.95618783903,190.836287588246,186.136666666667,25" Group="Collapsed" Label="InfoTech.AdditionalSupplies" />
+    <Node Id="InfoTech.AdditionalSupplies_AdditionalSuppliesID" Category="Field Primary" Description="int" Label="AdditionalSuppliesID" />
+    <Node Id="InfoTech.AdditionalSupplies_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.AdditionalSupplies_Cost" Category="Field" Description="float" Label="Cost" />
+    <Node Id="InfoTech.AdditionalSupplies_DropOffDate" Category="Field" Description="datetime" Label="DropOffDate" />
+    <Node Id="InfoTech.AdditionalSupplies_Items" Category="Field" Description="nvarchar(255)" Label="Items" />
+    <Node Id="InfoTech.AdditionalSupplies_PickUpDate" Category="Field" Description="datetime" Label="PickUpDate" />
+    <Node Id="InfoTech.AdditionalSupplies_ReceiptImagePath" Category="Field" Description="nvarchar(255)" Label="ReceiptImagePath" />
+    <Node Id="InfoTech.Addresses" Category="Table" Bounds="852.553443544188,355.836287588246,140.976666666667,25" Group="Collapsed" Label="InfoTech.Addresses" />
+    <Node Id="InfoTech.Addresses_Address" Category="Field Optional" Description="nvarchar(100)" Label="Address" />
+    <Node Id="InfoTech.Addresses_AddressID" Category="Field Primary" Description="int" Label="AddressID" />
+    <Node Id="InfoTech.Addresses_CustomerID" Category="Field Foreign" Description="int" Label="CustomerID" />
+    <Node Id="InfoTech.Addresses_Zip" Category="Field Optional" Description="nvarchar(10)" Label="Zip" />
+    <Node Id="InfoTech.Adjusters" Category="Table" Bounds="1023.53021021085,355.836287588246,136.303333333334,25" Group="Collapsed" Label="InfoTech.Adjusters" />
+    <Node Id="InfoTech.Adjusters_AdjusterID" Category="Field Primary" Description="int" Label="AdjusterID" />
+    <Node Id="InfoTech.Adjusters_Comments" Category="Field Optional" Description="nvarchar(255)" Label="Comments" />
+    <Node Id="InfoTech.Adjusters_Email" Category="Field" Description="nvarchar(100)" Label="Email" />
+    <Node Id="InfoTech.Adjusters_FirstName" Category="Field Optional" Description="nvarchar(50)" Label="FirstName" />
+    <Node Id="InfoTech.Adjusters_InsuranceCompanyID" Category="Field Foreign" Description="int" Label="InsuranceCompanyID" />
+    <Node Id="InfoTech.Adjusters_LastName" Category="Field" Description="nvarchar(50)" Label="LastName" />
+    <Node Id="InfoTech.Adjusters_PhoneExt" Category="Field Optional" Description="nvarchar(10)" Label="PhoneExt" />
+    <Node Id="InfoTech.Adjusters_PhoneNumber" Category="Field Optional" Description="nvarchar(12)" Label="PhoneNumber" />
+    <Node Id="InfoTech.Adjusters_Suffix" Category="Field Optional" Description="nvarchar(10)" Label="Suffix" />
+    <Node Id="InfoTech.Adjustments" Category="Table" Bounds="204.123333333333,520.836287588246,153.323333333333,25" Group="Collapsed" Label="InfoTech.Adjustments" />
+    <Node Id="InfoTech.Adjustments_AdjusterID" Category="Field" Description="int" Label="AdjusterID" />
+    <Node Id="InfoTech.Adjustments_AdjustmentComment" Category="Field Optional" Description="nvarchar(255)" Label="AdjustmentComment" />
+    <Node Id="InfoTech.Adjustments_AdjustmentDate" Category="Field" Description="datetime" Label="AdjustmentDate" />
+    <Node Id="InfoTech.Adjustments_AdjustmentID" Category="Field Primary" Description="int" Label="AdjustmentID" />
+    <Node Id="InfoTech.Adjustments_AdjustmentResultID" Category="Field" Description="int" Label="AdjustmentResultID" />
+    <Node Id="InfoTech.Adjustments_ClaimID" Category="Field" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.Adjustments_Exterior" Category="Field" Description="bit" Label="Exterior" />
+    <Node Id="InfoTech.Adjustments_Gutters" Category="Field" Description="bit" Label="Gutters" />
+    <Node Id="InfoTech.Adjustments_Interior" Category="Field" Description="bit" Label="Interior" />
+    <Node Id="InfoTech.CalendarData" Category="Table" Bounds="1144.03214652505,245.836287588246,158.646666666667,25" Group="Collapsed" Label="InfoTech.CalendarData" />
+    <Node Id="InfoTech.CalendarData_AppointmentTypeID" Category="Field Foreign" Description="int" Label="AppointmentTypeID" />
+    <Node Id="InfoTech.CalendarData_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.CalendarData_EmployeeID" Category="Field Foreign" Description="int" Label="EmployeeID" />
+    <Node Id="InfoTech.CalendarData_EndTime" Category="Field" Description="datetime" Label="EndTime" />
+    <Node Id="InfoTech.CalendarData_EntryID" Category="Field Primary" Description="int" Label="EntryID" />
+    <Node Id="InfoTech.CalendarData_LeadID" Category="Field Foreign" Description="int" Label="LeadID" />
+    <Node Id="InfoTech.CalendarData_Note" Category="Field Optional" Description="nvarchar(255)" Label="Note" />
+    <Node Id="InfoTech.CalendarData_StartTime" Category="Field" Description="datetime" Label="StartTime" />
+    <Node Id="InfoTech.CallLogs" Category="Table" Bounds="982.74537985838,245.836287588246,131.286666666667,25" Group="Collapsed" Label="InfoTech.CallLogs" />
+    <Node Id="InfoTech.CallLogs_CallLogID" Category="Field Primary" Description="int" Label="CallLogID" />
+    <Node Id="InfoTech.CallLogs_CallResults" Category="Field" Description="nvarchar(255)" Label="CallResults" />
+    <Node Id="InfoTech.CallLogs_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.CallLogs_EmployeeID" Category="Field Foreign" Description="int" Label="EmployeeID" />
+    <Node Id="InfoTech.CallLogs_ReasonForCall" Category="Field" Description="nvarchar(255)" Label="ReasonForCall" />
+    <Node Id="InfoTech.CallLogs_WhoAnswered" Category="Field" Description="nvarchar(50)" Label="WhoAnswered" />
+    <Node Id="InfoTech.CallLogs_WhoWasCalled" Category="Field" Description="nvarchar(50)" Label="WhoWasCalled" />
+    <Node Id="InfoTech.ClaimContacts" Category="Table" Bounds="789.83527985838,245.836287588246,162.91,25" Group="Collapsed" Label="InfoTech.ClaimContacts" />
+    <Node Id="InfoTech.ClaimContacts_AdjusterID" Category="Field Foreign" Description="int" Label="AdjusterID" />
+    <Node Id="InfoTech.ClaimContacts_BillingID" Category="Field Foreign" Description="int" Label="BillingID" />
+    <Node Id="InfoTech.ClaimContacts_ClaimContactID" Category="Field Primary" Description="int" Label="ClaimContactID" />
+    <Node Id="InfoTech.ClaimContacts_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.ClaimContacts_CustomerID" Category="Field Foreign" Description="int" Label="CustomerID" />
+    <Node Id="InfoTech.ClaimContacts_InstallerID" Category="Field Foreign" Description="int" Label="InstallerID" />
+    <Node Id="InfoTech.ClaimContacts_LeadID" Category="Field Foreign" Description="int" Label="LeadID" />
+    <Node Id="InfoTech.ClaimContacts_PropertyID" Category="Field Foreign" Description="int" Label="PropertyID" />
+    <Node Id="InfoTech.ClaimContacts_SalesPersonID" Category="Field Foreign" Description="int" Label="SalesPersonID" />
+    <Node Id="InfoTech.ClaimContacts_SupervisorID" Category="Field Foreign" Description="int" Label="SupervisorID" />
+    <Node Id="InfoTech.ClaimDocumentPaths" Category="Table" Bounds="1602.55030465002,300.836287588246,200.396666666667,25" Group="Collapsed" Label="InfoTech.ClaimDocumentPaths" />
+    <Node Id="InfoTech.ClaimDocumentPaths_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.ClaimDocumentPaths_DocFileName" Category="Field" Description="nvarchar(50)" Label="DocFileName" />
+    <Node Id="InfoTech.ClaimDocumentPaths_DocTypeID" Category="Field Foreign" Description="int" Label="DocTypeID" />
+    <Node Id="InfoTech.ClaimDocumentPaths_DocumentDate" Category="Field" Description="datetime" Label="DocumentDate" />
+    <Node Id="InfoTech.ClaimDocumentPaths_DocumentID" Category="Field Primary" Description="int" Label="DocumentID" />
+    <Node Id="InfoTech.ClaimDocumentPaths_DocumentPath" Category="Field" Description="nvarchar(255)" Label="DocumentPath" />
+    <Node Id="InfoTech.ClaimDocumentPaths_InitialImagePath" Category="Field Optional" Description="nvarchar(255)" Label="InitialImagePath" />
+    <Node Id="InfoTech.ClaimDocumentPaths_NumInitials" Category="Field Optional" Description="int" Label="NumInitials" />
+    <Node Id="InfoTech.ClaimDocumentPaths_NumSignatures" Category="Field Optional" Description="int" Label="NumSignatures" />
+    <Node Id="InfoTech.ClaimDocumentPaths_SignatureImagePath" Category="Field Optional" Description="nvarchar(255)" Label="SignatureImagePath" />
+    <Node Id="InfoTech.ClaimStatuses" Category="Table" Bounds="1649.39244652505,245.836287588246,160.263333333333,25" Group="Collapsed" Label="InfoTech.ClaimStatuses" />
+    <Node Id="InfoTech.ClaimStatuses_AdjustmentDate" Category="Field Optional" Description="datetime" Label="AdjustmentDate" />
+    <Node Id="InfoTech.ClaimStatuses_CappedOut" Category="Field Optional" Description="datetime" Label="CappedOut" />
+    <Node Id="InfoTech.ClaimStatuses_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.ClaimStatuses_ClaimStatusID" Category="Field Primary" Description="int" Label="ClaimStatusID" />
+    <Node Id="InfoTech.ClaimStatuses_CoCSent" Category="Field Optional" Description="datetime" Label="CoCSent" />
+    <Node Id="InfoTech.ClaimStatuses_ContractSigned" Category="Field" Description="datetime" Label="ContractSigned" />
+    <Node Id="InfoTech.ClaimStatuses_DeductCheckCollected" Category="Field Optional" Description="datetime" Label="DeductCheckCollected" />
+    <Node Id="InfoTech.ClaimStatuses_DepCheckCollected" Category="Field Optional" Description="datetime" Label="DepCheckCollected" />
+    <Node Id="InfoTech.ClaimStatuses_DepCheckReceived" Category="Field Optional" Description="datetime" Label="DepCheckReceived" />
+    <Node Id="InfoTech.ClaimStatuses_ExteriorScheduled" Category="Field Optional" Description="datetime" Label="ExteriorScheduled" />
+    <Node Id="InfoTech.ClaimStatuses_FirstCheckReceived" Category="Field Optional" Description="datetime" Label="FirstCheckReceived" />
+    <Node Id="InfoTech.ClaimStatuses_GuttersScheduled" Category="Field Optional" Description="datetime" Label="GuttersScheduled" />
+    <Node Id="InfoTech.ClaimStatuses_InspectionDate" Category="Field" Description="datetime" Label="InspectionDate" />
+    <Node Id="InfoTech.ClaimStatuses_InteriorScheduled" Category="Field Optional" Description="datetime" Label="InteriorScheduled" />
+    <Node Id="InfoTech.ClaimStatuses_OriginalScopeReceived" Category="Field Optional" Description="datetime" Label="OriginalScopeReceived" />
+    <Node Id="InfoTech.ClaimStatuses_RoofComplete" Category="Field Optional" Description="datetime" Label="RoofComplete" />
+    <Node Id="InfoTech.ClaimStatuses_RoofMeasurementsReceived" Category="Field Optional" Description="datetime" Label="RoofMeasurementsReceived" />
+    <Node Id="InfoTech.ClaimStatuses_RoofOrdered" Category="Field Optional" Description="datetime" Label="RoofOrdered" />
+    <Node Id="InfoTech.ClaimStatuses_RoofScheduled" Category="Field Optional" Description="datetime" Label="RoofScheduled" />
+    <Node Id="InfoTech.ClaimStatuses_SuppCheckCollected" Category="Field Optional" Description="datetime" Label="SuppCheckCollected" />
+    <Node Id="InfoTech.ClaimStatuses_SuppCheckReceived" Category="Field Optional" Description="datetime" Label="SuppCheckReceived" />
+    <Node Id="InfoTech.ClaimStatuses_SupplementSent" Category="Field Optional" Description="datetime" Label="SupplementSent" />
+    <Node Id="InfoTech.ClaimStatuses_SupplementSettled" Category="Field Optional" Description="datetime" Label="SupplementSettled" />
+    <Node Id="InfoTech.ClaimStatuses_WarrantySent" Category="Field Optional" Description="datetime" Label="WarrantySent" />
+    <Node Id="InfoTech.ClaimSuppliers" Category="Table" Bounds="1400.54608783903,190.836287588246,165.41,25" Group="Collapsed" Label="InfoTech.ClaimSuppliers" />
+    <Node Id="InfoTech.ClaimSuppliers_ClaimID" Category="Field Primary" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.ClaimSuppliers_SupplierID" Category="Field Primary" Description="int" Label="SupplierID" />
+    <Node Id="InfoTech.Claims" Category="Table" Bounds="1323.79730096172,355.836287588246,121.876666666667,25" Group="Collapsed" Label="InfoTech.Claims" />
+    <Node Id="InfoTech.Claims_ClaimID" Category="Field Primary" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.Claims_CustomerID" Category="Field Foreign" Description="int" Label="CustomerID" />
+    <Node Id="InfoTech.Claims_DamageType" Category="Field" Description="nvarchar(50)" Label="DamageType" />
+    <Node Id="InfoTech.Claims_InsuranceClaimNumber" Category="Field Optional" Description="nvarchar(255)" Label="InsuranceClaimNumber" />
+    <Node Id="InfoTech.Claims_InsuranceCompanyID" Category="Field Foreign" Description="int" Label="InsuranceCompanyID" />
+    <Node Id="InfoTech.Claims_LossDate" Category="Field" Description="datetime" Label="LossDate" />
+    <Node Id="InfoTech.Claims_MRNNumber" Category="Field" Description="nvarchar(50)" Label="MRNNumber" />
+    <Node Id="InfoTech.Claims_MortgageAccount" Category="Field Optional" Description="nvarchar(50)" Label="MortgageAccount" />
+    <Node Id="InfoTech.Claims_MortgageCompany" Category="Field Optional" Description="nvarchar(50)" Label="MortgageCompany" />
+    <Node Id="InfoTech.Customers" Category="Table" Bounds="999.803128397143,410.836287588246,143.386666666667,25" Group="Collapsed" Label="InfoTech.Customers" />
+    <Node Id="InfoTech.Customers_CustomerID" Category="Field Primary" Description="int" Label="CustomerID" />
+    <Node Id="InfoTech.Customers_Email" Category="Field Optional" Description="nvarchar(100)" Label="Email" />
+    <Node Id="InfoTech.Customers_FirstName" Category="Field" Description="nvarchar(50)" Label="FirstName" />
+    <Node Id="InfoTech.Customers_LastName" Category="Field" Description="nvarchar(50)" Label="LastName" />
+    <Node Id="InfoTech.Customers_MailPromos" Category="Field" Description="bit" Label="MailPromos" />
+    <Node Id="InfoTech.Customers_MiddleName" Category="Field Optional" Description="nvarchar(50)" Label="MiddleName" />
+    <Node Id="InfoTech.Customers_PrimaryNumber" Category="Field" Description="nvarchar(12)" Label="PrimaryNumber" />
+    <Node Id="InfoTech.Customers_SecondaryNumber" Category="Field Optional" Description="nvarchar(12)" Label="SecondaryNumber" />
+    <Node Id="InfoTech.Customers_Suffix" Category="Field Optional" Description="nvarchar(10)" Label="Suffix" />
+    <Node Id="InfoTech.EmployeeDetails" Category="Table" Bounds="172.13497985838,245.836287588246,174.623333333333,25" Group="Collapsed" Label="InfoTech.EmployeeDetails" />
+    <Node Id="InfoTech.EmployeeDetails_CompanyPhotoPath" Category="Field Optional" Description="nvarchar(255)" Label="CompanyPhotoPath" />
+    <Node Id="InfoTech.EmployeeDetails_DLPhotoPath" Category="Field Optional" Description="nvarchar(255)" Label="DLPhotoPath" />
+    <Node Id="InfoTech.EmployeeDetails_DateHired" Category="Field" Description="datetime" Label="DateHired" />
+    <Node Id="InfoTech.EmployeeDetails_DateReleased" Category="Field Optional" Description="datetime" Label="DateReleased" />
+    <Node Id="InfoTech.EmployeeDetails_EmployeeDetailsID" Category="Field Primary" Description="int" Label="EmployeeDetailsID" />
+    <Node Id="InfoTech.EmployeeDetails_EmployeeID" Category="Field Foreign" Description="int" Label="EmployeeID" />
+    <Node Id="InfoTech.EmployeeDetails_MailingAddress" Category="Field" Description="nvarchar(100)" Label="MailingAddress" />
+    <Node Id="InfoTech.EmployeeDetails_PayFrequencyID" Category="Field Foreign" Description="int" Label="PayFrequencyID" />
+    <Node Id="InfoTech.EmployeeDetails_PayRate" Category="Field Optional" Description="float" Label="PayRate" />
+    <Node Id="InfoTech.EmployeeDetails_PayTypeID" Category="Field Foreign" Description="int" Label="PayTypeID" />
+    <Node Id="InfoTech.EmployeeDetails_PreviousEmployee" Category="Field" Description="bit" Label="PreviousEmployee" />
+    <Node Id="InfoTech.EmployeeDetails_ShirtSize" Category="Field Optional" Description="nvarchar(12)" Label="ShirtSize" />
+    <Node Id="InfoTech.EmployeeDetails_SignaturePath" Category="Field Optional" Description="nvarchar(255)" Label="SignaturePath" />
+    <Node Id="InfoTech.EmployeeDetails_Zip" Category="Field" Description="nvarchar(10)" Label="Zip" />
+    <Node Id="InfoTech.Employees" Category="Table" Bounds="689.140300000001,300.836287588246,143.946666666667,25" Group="Collapsed" Label="InfoTech.Employees" />
+    <Node Id="InfoTech.Employees_Active" Category="Field" Description="bit" Label="Active" />
+    <Node Id="InfoTech.Employees_CellPhone" Category="Field" Description="nvarchar(12)" Label="CellPhone" />
+    <Node Id="InfoTech.Employees_Email" Category="Field" Description="nvarchar(50)" Label="Email" />
+    <Node Id="InfoTech.Employees_EmployeeID" Category="Field Primary" Description="int" Label="EmployeeID" />
+    <Node Id="InfoTech.Employees_EmployeeTypeID" Category="Field Foreign" Description="int" Label="EmployeeTypeID" />
+    <Node Id="InfoTech.Employees_FirstName" Category="Field" Description="nvarchar(50)" Label="FirstName" />
+    <Node Id="InfoTech.Employees_LastName" Category="Field" Description="nvarchar(50)" Label="LastName" />
+    <Node Id="InfoTech.Employees_Suffix" Category="Field Optional" Description="nvarchar(10)" Label="Suffix" />
+    <Node Id="InfoTech.InspectionPlanes" Category="Table" Bounds="994.082554505696,190.836287588246,175.733333333334,25" Group="Collapsed" Label="InfoTech.InspectionPlanes" />
+    <Node Id="InfoTech.InspectionPlanes_InspectionID" Category="Field Primary" Description="int" Label="InspectionID" />
+    <Node Id="InfoTech.InspectionPlanes_PlaneID" Category="Field Primary" Description="int" Label="PlaneID" />
+    <Node Id="InfoTech.Inspections" Category="Table" Bounds="1246.07726666667,300.836287588246,146.933333333333,25" Group="Collapsed" Label="InfoTech.Inspections" />
+    <Node Id="InfoTech.Inspections_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.Inspections_Comments" Category="Field Optional" Description="nvarchar(255)" Label="Comments" />
+    <Node Id="InfoTech.Inspections_CoverPool" Category="Field" Description="bit" Label="CoverPool" />
+    <Node Id="InfoTech.Inspections_CustomerID" Category="Field Foreign" Description="int" Label="CustomerID" />
+    <Node Id="InfoTech.Inspections_DrivewayDamage" Category="Field" Description="bit" Label="DrivewayDamage" />
+    <Node Id="InfoTech.Inspections_EmergencyRepair" Category="Field" Description="bit" Label="EmergencyRepair" />
+    <Node Id="InfoTech.Inspections_EmergencyRepairAmount" Category="Field Optional" Description="float" Label="EmergencyRepairAmount" />
+    <Node Id="InfoTech.Inspections_ExteriorDamage" Category="Field" Description="bit" Label="ExteriorDamage" />
+    <Node Id="InfoTech.Inspections_FurnishPermit" Category="Field" Description="bit" Label="FurnishPermit" />
+    <Node Id="InfoTech.Inspections_GutterDamage" Category="Field" Description="bit" Label="GutterDamage" />
+    <Node Id="InfoTech.Inspections_IceWaterShield" Category="Field" Description="bit" Label="IceWaterShield" />
+    <Node Id="InfoTech.Inspections_InspectionDate" Category="Field" Description="datetime" Label="InspectionDate" />
+    <Node Id="InfoTech.Inspections_InspectionID" Category="Field Primary" Description="int" Label="InspectionID" />
+    <Node Id="InfoTech.Inspections_InteriorDamage" Category="Field" Description="bit" Label="InteriorDamage" />
+    <Node Id="InfoTech.Inspections_Leaks" Category="Field" Description="bit" Label="Leaks" />
+    <Node Id="InfoTech.Inspections_MagneticRollers" Category="Field" Description="bit" Label="MagneticRollers" />
+    <Node Id="InfoTech.Inspections_ProtectLandscaping" Category="Field" Description="bit" Label="ProtectLandscaping" />
+    <Node Id="InfoTech.Inspections_QualityControl" Category="Field" Description="bit" Label="QualityControl" />
+    <Node Id="InfoTech.Inspections_RemoveTrash" Category="Field" Description="bit" Label="RemoveTrash" />
+    <Node Id="InfoTech.Inspections_RidgeMaterialTypeID" Category="Field Foreign" Description="int" Label="RidgeMaterialTypeID" />
+    <Node Id="InfoTech.Inspections_RoofAge" Category="Field" Description="int" Label="RoofAge" />
+    <Node Id="InfoTech.Inspections_Satellite" Category="Field" Description="bit" Label="Satellite" />
+    <Node Id="InfoTech.Inspections_ShingleTypeID" Category="Field Foreign" Description="int" Label="ShingleTypeID" />
+    <Node Id="InfoTech.Inspections_SkyLights" Category="Field" Description="bit" Label="SkyLights" />
+    <Node Id="InfoTech.Inspections_SolarPanels" Category="Field" Description="bit" Label="SolarPanels" />
+    <Node Id="InfoTech.Inspections_TearOff" Category="Field" Description="bit" Label="TearOff" />
+    <Node Id="InfoTech.Inspections_Valley" Category="Field" Description="bit" Label="Valley" />
+    <Node Id="InfoTech.Installers" Category="Table" Bounds="688.850010210855,355.836287588246,133.703333333333,25" Group="Collapsed" Label="InfoTech.Installers" />
+    <Node Id="InfoTech.Installers_CompanyName" Category="Field Optional" Description="nvarchar(50)" Label="CompanyName" />
+    <Node Id="InfoTech.Installers_CompanyPhone" Category="Field" Description="nvarchar(12)" Label="CompanyPhone" />
+    <Node Id="InfoTech.Installers_ContactFirstName" Category="Field" Description="nvarchar(50)" Label="ContactFirstName" />
+    <Node Id="InfoTech.Installers_ContactLastName" Category="Field" Description="nvarchar(50)" Label="ContactLastName" />
+    <Node Id="InfoTech.Installers_EIN" Category="Field" Description="nvarchar(10)" Label="EIN" />
+    <Node Id="InfoTech.Installers_Email" Category="Field" Description="nvarchar(50)" Label="Email" />
+    <Node Id="InfoTech.Installers_Fax" Category="Field" Description="nvarchar(12)" Label="Fax" />
+    <Node Id="InfoTech.Installers_GLExpiration" Category="Field" Description="datetime" Label="GLExpiration" />
+    <Node Id="InfoTech.Installers_GeneralLiabilityPath" Category="Field" Description="nvarchar(255)" Label="GeneralLiabilityPath" />
+    <Node Id="InfoTech.Installers_HasSubContractAgreement" Category="Field" Description="bit" Label="HasSubContractAgreement" />
+    <Node Id="InfoTech.Installers_InstallerAddress" Category="Field" Description="nvarchar(100)" Label="InstallerAddress" />
+    <Node Id="InfoTech.Installers_InstallerID" Category="Field Primary" Description="int" Label="InstallerID" />
+    <Node Id="InfoTech.Installers_Phone" Category="Field" Description="nvarchar(12)" Label="Phone" />
+    <Node Id="InfoTech.Installers_SubContractorAgreementPath" Category="Field" Description="nvarchar(255)" Label="SubContractorAgreementPath" />
+    <Node Id="InfoTech.Installers_Suffix" Category="Field Optional" Description="nvarchar(10)" Label="Suffix" />
+    <Node Id="InfoTech.Installers_Website" Category="Field Optional" Description="nvarchar(50)" Label="Website" />
+    <Node Id="InfoTech.Installers_Zip" Category="Field" Description="nvarchar(10)" Label="Zip" />
+    <Node Id="InfoTech.InsuranceCompanies" Category="Table" Bounds="1084.7368638233,465.836287588246,196.876666666667,25" Group="Collapsed" Label="InfoTech.InsuranceCompanies" />
+    <Node Id="InfoTech.InsuranceCompanies_Address" Category="Field Optional" Description="nvarchar(100)" Label="Address" />
+    <Node Id="InfoTech.InsuranceCompanies_ClaimPhoneExt" Category="Field Optional" Description="nvarchar(10)" Label="ClaimPhoneExt" />
+    <Node Id="InfoTech.InsuranceCompanies_ClaimPhoneNumber" Category="Field" Description="nvarchar(12)" Label="ClaimPhoneNumber" />
+    <Node Id="InfoTech.InsuranceCompanies_CompanyName" Category="Field" Description="nvarchar(255)" Label="CompanyName" />
+    <Node Id="InfoTech.InsuranceCompanies_Email" Category="Field Optional" Description="nvarchar(100)" Label="Email" />
+    <Node Id="InfoTech.InsuranceCompanies_FaxExt" Category="Field Optional" Description="nvarchar(10)" Label="FaxExt" />
+    <Node Id="InfoTech.InsuranceCompanies_FaxNumber" Category="Field Optional" Description="nvarchar(12)" Label="FaxNumber" />
+    <Node Id="InfoTech.InsuranceCompanies_Independent" Category="Field" Description="bit" Label="Independent" />
+    <Node Id="InfoTech.InsuranceCompanies_InsuranceCompanyID" Category="Field Primary" Description="int" Label="InsuranceCompanyID" />
+    <Node Id="InfoTech.InsuranceCompanies_Zip" Category="Field Optional" Description="nvarchar(10)" Label="Zip" />
+    <Node Id="InfoTech.Invoices" Category="Table" Bounds="1442.87353798335,300.836287588246,129.676666666667,25" Group="Collapsed" Label="InfoTech.Invoices" />
+    <Node Id="InfoTech.Invoices_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.Invoices_InvoiceAmount" Category="Field" Description="float" Label="InvoiceAmount" />
+    <Node Id="InfoTech.Invoices_InvoiceDate" Category="Field" Description="datetime" Label="InvoiceDate" />
+    <Node Id="InfoTech.Invoices_InvoiceID" Category="Field Primary" Description="int" Label="InvoiceID" />
+    <Node Id="InfoTech.Invoices_InvoiceTypeID" Category="Field Foreign" Description="int" Label="InvoiceTypeID" />
+    <Node Id="InfoTech.Invoices_Paid" Category="Field" Description="bit" Label="Paid" />
+    <Node Id="InfoTech.KnockerResponses" Category="Table" Bounds="574.468513191713,245.836287588246,185.366666666667,25" Group="Collapsed" Label="InfoTech.KnockerResponses" />
+    <Node Id="InfoTech.KnockerResponses_Address" Category="Field Optional" Description="nvarchar(100)" Label="Address" />
+    <Node Id="InfoTech.KnockerResponses_KnockResponseTypeID" Category="Field Foreign" Description="int" Label="KnockResponseTypeID" />
+    <Node Id="InfoTech.KnockerResponses_KnockerID" Category="Field Foreign" Description="int" Label="KnockerID" />
+    <Node Id="InfoTech.KnockerResponses_KnockerResponseID" Category="Field Primary" Description="int" Label="KnockerResponseID" />
+    <Node Id="InfoTech.KnockerResponses_Lat" Category="Field Optional" Description="float" Label="Lat" />
+    <Node Id="InfoTech.KnockerResponses_LeadID" Category="Field Foreign" Description="int" Label="LeadID" />
+    <Node Id="InfoTech.KnockerResponses_Long" Category="Field Optional" Description="float" Label="Long" />
+    <Node Id="InfoTech.KnockerResponses_Zip" Category="Field Optional" Description="nvarchar(10)" Label="Zip" />
+    <Node Id="InfoTech.LU_AdjustmentResults" Category="Table" Bounds="387.446666666667,520.836287588246,203.92,25" Group="Collapsed" Label="InfoTech.LU_AdjustmentResults" />
+    <Node Id="InfoTech.LU_AdjustmentResults_AdjustmentResult" Category="Field Optional" Description="nvarchar(50)" Label="AdjustmentResult" />
+    <Node Id="InfoTech.LU_AdjustmentResults_AdjustmentResultID" Category="Field Primary" Description="int" Label="AdjustmentResultID" />
+    <Node Id="InfoTech.LU_AppointmentTypes" Category="Table" Bounds="1010.37716666667,300.836287588246,205.7,25" Group="Collapsed" Label="InfoTech.LU_AppointmentTypes" />
+    <Node Id="InfoTech.LU_AppointmentTypes_AppointmentType" Category="Field Optional" Description="nvarchar(50)" Label="AppointmentType" />
+    <Node Id="InfoTech.LU_AppointmentTypes_AppointmentTypeID" Category="Field Primary" Description="int" Label="AppointmentTypeID" />
+    <Node Id="InfoTech.LU_ClaimDocumentTypes" Category="Table" Bounds="1883.45093429505,355.836287588246,220.523333333334,25" Group="Collapsed" Label="InfoTech.LU_ClaimDocumentTypes" />
+    <Node Id="InfoTech.LU_ClaimDocumentTypes_ClaimDocumentType" Category="Field" Description="nvarchar(50)" Label="ClaimDocumentType" />
+    <Node Id="InfoTech.LU_ClaimDocumentTypes_ClaimDocumentTypeID" Category="Field Primary" Description="int" Label="ClaimDocumentTypeID" />
+    <Node Id="InfoTech.LU_EmployeeTypes" Category="Table" Bounds="591.766261730476,410.836287588246,187.346666666667,25" Group="Collapsed" Label="InfoTech.LU_EmployeeTypes" />
+    <Node Id="InfoTech.LU_EmployeeTypes_EmployeeType" Category="Field" Description="nvarchar(50)" Label="EmployeeType" />
+    <Node Id="InfoTech.LU_EmployeeTypes_EmployeeTypeID" Category="Field Primary" Description="int" Label="EmployeeTypeID" />
+    <Node Id="InfoTech.LU_InvoiceTypes" Category="Table" Bounds="1680.37416762839,355.836287588246,173.076666666667,25" Group="Collapsed" Label="InfoTech.LU_InvoiceTypes" />
+    <Node Id="InfoTech.LU_InvoiceTypes_InvoiceType" Category="Field" Description="nvarchar(255)" Label="InvoiceType" />
+    <Node Id="InfoTech.LU_InvoiceTypes_InvoiceTypeID" Category="Field Primary" Description="int" Label="InvoiceTypeID" />
+    <Node Id="InfoTech.LU_KnockResponseTypes" Category="Table" Bounds="440.823533333334,300.836287588246,218.316666666667,25" Group="Collapsed" Label="InfoTech.LU_KnockResponseTypes" />
+    <Node Id="InfoTech.LU_KnockResponseTypes_KnockResponseType" Category="Field" Description="nvarchar(50)" Label="KnockResponseType" />
+    <Node Id="InfoTech.LU_KnockResponseTypes_KnockResponseTypeID" Category="Field Primary" Description="int" Label="KnockResponseTypeID" />
+    <Node Id="InfoTech.LU_LeadTypes" Category="Table" Bounds="809.113028397142,410.836287588246,160.69,25" Group="Collapsed" Label="InfoTech.LU_LeadTypes" />
+    <Node Id="InfoTech.LU_LeadTypes_LeadType" Category="Field" Description="nvarchar(50)" Label="LeadType" />
+    <Node Id="InfoTech.LU_LeadTypes_LeadTypeID" Category="Field Primary" Description="int" Label="LeadTypeID" />
+    <Node Id="InfoTech.LU_PayFrequencies" Category="Table" Bounds="40.0000000000002,300.836287588246,187.01,25" Group="Collapsed" Label="InfoTech.LU_PayFrequencies" />
+    <Node Id="InfoTech.LU_PayFrequencies_PayFrequency" Category="Field" Description="nvarchar(50)" Label="PayFrequency" />
+    <Node Id="InfoTech.LU_PayFrequencies_PayFrequencyID" Category="Field Primary" Description="int" Label="PayFrequencyID" />
+    <Node Id="InfoTech.LU_PayTypes" Category="Table" Bounds="257.0101,321.676770485348,153.813333333333,25" Group="Collapsed" Label="InfoTech.LU_PayTypes" />
+    <Node Id="InfoTech.LU_PayTypes_PayType" Category="Field" Description="nvarchar(50)" Label="PayType" />
+    <Node Id="InfoTech.LU_PayTypes_PayTypeID" Category="Field Primary" Description="int" Label="PayTypeID" />
+    <Node Id="InfoTech.LU_PaymentDescriptions" Category="Table" Bounds="1677.45614943061,410.836287588246,216.773333333334,25" Group="Collapsed" Label="InfoTech.LU_PaymentDescriptions" />
+    <Node Id="InfoTech.LU_PaymentDescriptions_PaymentDescription" Category="Field" Description="nvarchar(50)" Label="PaymentDescription" />
+    <Node Id="InfoTech.LU_PaymentDescriptions_PaymentDescriptionID" Category="Field Primary" Description="int" Label="PaymentDescriptionID" />
+    <Node Id="InfoTech.LU_PaymentTypes" Category="Table" Bounds="1924.22958276395,410.836287588247,181.283333333333,25" Group="Collapsed" Label="InfoTech.LU_PaymentTypes" />
+    <Node Id="InfoTech.LU_PaymentTypes_PaymentType" Category="Field" Description="nvarchar(50)" Label="PaymentType" />
+    <Node Id="InfoTech.LU_PaymentTypes_PaymentTypeID" Category="Field Primary" Description="int" Label="PaymentTypeID" />
+    <Node Id="InfoTech.LU_Permissions" Category="Table" Bounds="376.758413191713,245.836287588246,167.71,25" Group="Collapsed" Label="InfoTech.LU_Permissions" />
+    <Node Id="InfoTech.LU_Permissions_PermissionID" Category="Field Primary" Description="int" Label="PermissionID" />
+    <Node Id="InfoTech.LU_Permissions_PermissionLevel" Category="Field Optional" Description="nvarchar(255)" Label="PermissionLevel" />
+    <Node Id="InfoTech.LU_ProductTypes" Category="Table" Bounds="1994.12264652505,245.836287588246,176.98,25" Group="Collapsed" Label="InfoTech.LU_ProductTypes" />
+    <Node Id="InfoTech.LU_ProductTypes_ProductType" Category="Field" Description="nvarchar(50)" Label="ProductType" />
+    <Node Id="InfoTech.LU_ProductTypes_ProductTypeID" Category="Field Primary" Description="int" Label="ProductTypeID" />
+    <Node Id="InfoTech.LU_Products" Category="Table" Bounds="1812.0929545057,190.836287588246,152.216666666667,25" Group="Collapsed" Label="InfoTech.LU_Products" />
+    <Node Id="InfoTech.LU_Products_Color" Category="Field Optional" Description="nvarchar(50)" Label="Color" />
+    <Node Id="InfoTech.LU_Products_Info" Category="Field Optional" Description="nvarchar(255)" Label="Info" />
+    <Node Id="InfoTech.LU_Products_Name" Category="Field" Description="nvarchar(50)" Label="Name" />
+    <Node Id="InfoTech.LU_Products_Price" Category="Field" Description="float" Label="Price" />
+    <Node Id="InfoTech.LU_Products_ProductID" Category="Field Primary" Description="int" Label="ProductID" />
+    <Node Id="InfoTech.LU_Products_ProductTypeID" Category="Field Foreign" Description="int" Label="ProductTypeID" />
+    <Node Id="InfoTech.LU_Products_SupplierID" Category="Field Foreign" Description="int" Label="SupplierID" />
+    <Node Id="InfoTech.LU_Products_Warranty" Category="Field Optional" Description="nvarchar(255)" Label="Warranty" />
+    <Node Id="InfoTech.LU_RidgeMaterialTypes" Category="Table" Bounds="1231.29988960129,410.836287588246,209.403333333334,25" Group="Collapsed" Label="InfoTech.LU_RidgeMaterialTypes" />
+    <Node Id="InfoTech.LU_RidgeMaterialTypes_RidgeMaterialType" Category="Field Optional" Description="nvarchar(50)" Label="RidgeMaterialType" />
+    <Node Id="InfoTech.LU_RidgeMaterialTypes_RidgeMaterialTypeID" Category="Field Primary" Description="int" Label="RidgeMaterialTypeID" />
+    <Node Id="InfoTech.LU_ScopeTypes" Category="Table" Bounds="2000.83050465002,300.836287588246,167.866666666668,25" Group="Collapsed" Label="InfoTech.LU_ScopeTypes" />
+    <Node Id="InfoTech.LU_ScopeTypes_ScopeType" Category="Field" Description="nvarchar(50)" Label="ScopeType" />
+    <Node Id="InfoTech.LU_ScopeTypes_ScopeTypeID" Category="Field Primary" Description="int" Label="ScopeTypeID" />
+    <Node Id="InfoTech.LU_ShingleTypes" Category="Table" Bounds="1475.67406762839,355.836287588246,174.7,25" Group="Collapsed" Label="InfoTech.LU_ShingleTypes" />
+    <Node Id="InfoTech.LU_ShingleTypes_ShingleType" Category="Field Optional" Description="nvarchar(50)" Label="ShingleType" />
+    <Node Id="InfoTech.LU_ShingleTypes_ShingleTypeID" Category="Field Primary" Description="int" Label="ShingleTypeID" />
+    <Node Id="InfoTech.LU_UnitOfMeasures" Category="Table" Bounds="1824.53681551723,135,191.13,25" Group="Collapsed" Label="InfoTech.LU_UnitOfMeasures" />
+    <Node Id="InfoTech.LU_UnitOfMeasures_UnitOfMeasure" Category="Field" Description="nvarchar(50)" Label="UnitOfMeasure" />
+    <Node Id="InfoTech.LU_UnitOfMeasures_UnitOfMeasureID" Category="Field Primary" Description="int" Label="UnitOfMeasureID" />
+    <Node Id="InfoTech.Leads" Category="Table" Bounds="863.087066666667,300.836287588246,117.29,25" Group="Collapsed" Label="InfoTech.Leads" />
+    <Node Id="InfoTech.Leads_AddressID" Category="Field Foreign" Description="int" Label="AddressID" />
+    <Node Id="InfoTech.Leads_CreditToID" Category="Field Optional" Description="int" Label="CreditToID" />
+    <Node Id="InfoTech.Leads_CustomerID" Category="Field Foreign" Description="int" Label="CustomerID" />
+    <Node Id="InfoTech.Leads_LeadDate" Category="Field" Description="datetime" Label="LeadDate" />
+    <Node Id="InfoTech.Leads_LeadID" Category="Field Primary" Description="int" Label="LeadID" />
+    <Node Id="InfoTech.Leads_LeadTypeID" Category="Field Foreign" Description="int" Label="LeadTypeID" />
+    <Node Id="InfoTech.Leads_Success" Category="Field" Description="bit" Label="Success" />
+    <Node Id="InfoTech.NewRoofs" Category="Table" Bounds="1500.84994885056,135.836287588246,140.76,25" Group="Collapsed" Label="InfoTech.NewRoofs" />
+    <Node Id="InfoTech.NewRoofs_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.NewRoofs_Comments" Category="Field Optional" Description="nvarchar(255)" Label="Comments" />
+    <Node Id="InfoTech.NewRoofs_NewRoofID" Category="Field Primary" Description="int" Label="NewRoofID" />
+    <Node Id="InfoTech.NewRoofs_ProductID" Category="Field Foreign" Description="int" Label="ProductID" />
+    <Node Id="InfoTech.NewRoofs_UpgradeCost" Category="Field" Description="float" Label="UpgradeCost" />
+    <Node Id="InfoTech.OrderItems" Category="Table" Bounds="1754.64945988896,80.0000000000001,146.8,25" Group="Collapsed" Label="InfoTech.OrderItems" />
+    <Node Id="InfoTech.OrderItems_OrderID" Category="Field Foreign" Description="int" Label="OrderID" />
+    <Node Id="InfoTech.OrderItems_OrderItemID" Category="Field Primary" Description="int" Label="OrderItemID" />
+    <Node Id="InfoTech.OrderItems_ProductID" Category="Field Foreign" Description="int" Label="ProductID" />
+    <Node Id="InfoTech.OrderItems_Quantity" Category="Field" Description="int" Label="Quantity" />
+    <Node Id="InfoTech.OrderItems_UnitOfMeasureID" Category="Field Foreign" Description="int" Label="UnitOfMeasureID" />
+    <Node Id="InfoTech.Orders" Category="Table" Bounds="1671.61004885056,135.836287588246,122.926666666667,25" Group="Collapsed" Label="InfoTech.Orders" />
+    <Node Id="InfoTech.Orders_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.Orders_DateDropped" Category="Field" Description="datetime" Label="DateDropped" />
+    <Node Id="InfoTech.Orders_DateOrdered" Category="Field" Description="datetime" Label="DateOrdered" />
+    <Node Id="InfoTech.Orders_OrderID" Category="Field Primary" Description="int" Label="OrderID" />
+    <Node Id="InfoTech.Orders_ScheduledInstallation" Category="Field" Description="datetime" Label="ScheduledInstallation" />
+    <Node Id="InfoTech.Orders_SupplierID" Category="Field Foreign" Description="int" Label="SupplierID" />
+    <Node Id="InfoTech.Payments" Category="Table" Bounds="1832.94707131669,300.836287588246,137.883333333333,25" Group="Collapsed" Label="InfoTech.Payments" />
+    <Node Id="InfoTech.Payments_Amount" Category="Field" Description="float" Label="Amount" />
+    <Node Id="InfoTech.Payments_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.Payments_PaymentDate" Category="Field" Description="datetime" Label="PaymentDate" />
+    <Node Id="InfoTech.Payments_PaymentDescriptionID" Category="Field Foreign" Description="int" Label="PaymentDescriptionID" />
+    <Node Id="InfoTech.Payments_PaymentID" Category="Field Primary" Description="int" Label="PaymentID" />
+    <Node Id="InfoTech.Payments_PaymentTypeID" Category="Field Foreign" Description="int" Label="PaymentTypeID" />
+    <Node Id="InfoTech.Planes" Category="Table" Bounds="1332.67891319171,245.836287588246,120.99,25" Group="Collapsed" Label="InfoTech.Planes" />
+    <Node Id="InfoTech.Planes_DamageCount" Category="Field" Description="int" Label="DamageCount" />
+    <Node Id="InfoTech.Planes_EaveHeight" Category="Field Optional" Description="int" Label="EaveHeight" />
+    <Node Id="InfoTech.Planes_EaveLength" Category="Field Optional" Description="int" Label="EaveLength" />
+    <Node Id="InfoTech.Planes_FourAndUp" Category="Field Optional" Description="int" Label="FourAndUp" />
+    <Node Id="InfoTech.Planes_GroupNumber" Category="Field" Description="int" Label="GroupNumber" />
+    <Node Id="InfoTech.Planes_HipValley" Category="Field Optional" Description="int" Label="HipValley" />
+    <Node Id="InfoTech.Planes_NumOfLayers" Category="Field Optional" Description="int" Label="NumOfLayers" />
+    <Node Id="InfoTech.Planes_NumberDecking" Category="Field Optional" Description="int" Label="NumberDecking" />
+    <Node Id="InfoTech.Planes_Pitch" Category="Field Optional" Description="int" Label="Pitch" />
+    <Node Id="InfoTech.Planes_PlaneID" Category="Field Primary" Description="int" Label="PlaneID" />
+    <Node Id="InfoTech.Planes_RakeLength" Category="Field Optional" Description="int" Label="RakeLength" />
+    <Node Id="InfoTech.Planes_RidgeLength" Category="Field Optional" Description="int" Label="RidgeLength" />
+    <Node Id="InfoTech.Planes_StepFlashing" Category="Field Optional" Description="int" Label="StepFlashing" />
+    <Node Id="InfoTech.Planes_ThreeAndOne" Category="Field Optional" Description="int" Label="ThreeAndOne" />
+    <Node Id="InfoTech.Referrers" Category="Table" Bounds="40,520.836287588246,134.123333333333,25" Group="Collapsed" Label="InfoTech.Referrers" />
+    <Node Id="InfoTech.Referrers_CellPhone" Category="Field Optional" Description="nvarchar(12)" Label="CellPhone" />
+    <Node Id="InfoTech.Referrers_Email" Category="Field Optional" Description="nvarchar(50)" Label="Email" />
+    <Node Id="InfoTech.Referrers_FirstName" Category="Field" Description="nvarchar(50)" Label="FirstName" />
+    <Node Id="InfoTech.Referrers_LastName" Category="Field" Description="nvarchar(50)" Label="LastName" />
+    <Node Id="InfoTech.Referrers_MailingAddress" Category="Field" Description="nvarchar(100)" Label="MailingAddress" />
+    <Node Id="InfoTech.Referrers_ReferrerID" Category="Field Primary" Description="int" Label="ReferrerID" />
+    <Node Id="InfoTech.Referrers_Suffix" Category="Field Optional" Description="nvarchar(10)" Label="Suffix" />
+    <Node Id="InfoTech.Referrers_Zip" Category="Field" Description="nvarchar(10)" Label="Zip" />
+    <Node Id="InfoTech.Scopes" Category="Table" Bounds="1839.65587985838,245.836287588246,124.466666666667,25" Group="Collapsed" Label="InfoTech.Scopes" />
+    <Node Id="InfoTech.Scopes_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.Scopes_Deductible" Category="Field" Description="float" Label="Deductible" />
+    <Node Id="InfoTech.Scopes_Exterior" Category="Field" Description="float" Label="Exterior" />
+    <Node Id="InfoTech.Scopes_Gutter" Category="Field" Description="float" Label="Gutter" />
+    <Node Id="InfoTech.Scopes_Interior" Category="Field" Description="float" Label="Interior" />
+    <Node Id="InfoTech.Scopes_OandP" Category="Field" Description="float" Label="OandP" />
+    <Node Id="InfoTech.Scopes_ScopeID" Category="Field Primary" Description="int" Label="ScopeID" />
+    <Node Id="InfoTech.Scopes_ScopeTypeID" Category="Field Foreign" Description="int" Label="ScopeTypeID" />
+    <Node Id="InfoTech.Scopes_Tax" Category="Field" Description="float" Label="Tax" />
+    <Node Id="InfoTech.Scopes_Total" Category="Field" Description="float" Label="Total" />
+    <Node Id="InfoTech.Suppliers" Category="Table" Bounds="1483.66901319171,245.836287588246,135.723333333333,25" Group="Collapsed" Label="InfoTech.Suppliers" />
+    <Node Id="InfoTech.Suppliers_CompanyName" Category="Field" Description="nvarchar(50)" Label="CompanyName" />
+    <Node Id="InfoTech.Suppliers_CompanyPhone" Category="Field Optional" Description="nvarchar(12)" Label="CompanyPhone" />
+    <Node Id="InfoTech.Suppliers_ContactFirstName" Category="Field Optional" Description="nvarchar(50)" Label="ContactFirstName" />
+    <Node Id="InfoTech.Suppliers_ContactLastName" Category="Field" Description="nvarchar(50)" Label="ContactLastName" />
+    <Node Id="InfoTech.Suppliers_EIN" Category="Field Optional" Description="nvarchar(10)" Label="EIN" />
+    <Node Id="InfoTech.Suppliers_Email" Category="Field" Description="nvarchar(50)" Label="Email" />
+    <Node Id="InfoTech.Suppliers_Fax" Category="Field Optional" Description="nvarchar(12)" Label="Fax" />
+    <Node Id="InfoTech.Suppliers_Phone" Category="Field" Description="nvarchar(12)" Label="Phone" />
+    <Node Id="InfoTech.Suppliers_Suffix" Category="Field Optional" Description="nvarchar(10)" Label="Suffix" />
+    <Node Id="InfoTech.Suppliers_SupplierAddress" Category="Field Optional" Description="nvarchar(100)" Label="SupplierAddress" />
+    <Node Id="InfoTech.Suppliers_SupplierID" Category="Field Primary" Description="int" Label="SupplierID" />
+    <Node Id="InfoTech.Suppliers_Website" Category="Field Optional" Description="nvarchar(50)" Label="Website" />
+    <Node Id="InfoTech.Suppliers_Zip" Category="Field Optional" Description="nvarchar(10)" Label="Zip" />
+    <Node Id="InfoTech.SurplusSupplies" Category="Table" Bounds="1199.81598783903,190.836287588246,170.73,25" Group="Collapsed" Label="InfoTech.SurplusSupplies" />
+    <Node Id="InfoTech.SurplusSupplies_ClaimID" Category="Field Foreign" Description="int" Label="ClaimID" />
+    <Node Id="InfoTech.SurplusSupplies_DropOffDate" Category="Field" Description="datetime" Label="DropOffDate" />
+    <Node Id="InfoTech.SurplusSupplies_Items" Category="Field" Description="nvarchar(255)" Label="Items" />
+    <Node Id="InfoTech.SurplusSupplies_PickUpDate" Category="Field" Description="datetime" Label="PickUpDate" />
+    <Node Id="InfoTech.SurplusSupplies_SurplusSuppliesID" Category="Field Primary" Description="int" Label="SurplusSuppliesID" />
+    <Node Id="InfoTech.Users" Category="Table" Bounds="534.402148965026,190.836287588246,115.976666666667,25" Group="Collapsed" Label="InfoTech.Users" />
+    <Node Id="InfoTech.Users_Active" Category="Field" Description="bit" Label="Active" />
+    <Node Id="InfoTech.Users_EmployeeID" Category="Field Foreign" Description="int" Label="EmployeeID" />
+    <Node Id="InfoTech.Users_Pass" Category="Field" Description="nvarchar(255)" Label="Pass" />
+    <Node Id="InfoTech.Users_PermissionID" Category="Field Foreign" Description="int" Label="PermissionID" />
+    <Node Id="InfoTech.Users_UserID" Category="Field Primary" Description="int" Label="UserID" />
+    <Node Id="InfoTech.Users_Username" Category="Field" Description="nvarchar(50)" Label="Username" />
+  </Nodes>
+  <Links>
+    <Link Source="Database" Target="InfoTech" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.AdditionalSupplies" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Addresses" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Adjusters" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Adjustments" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.CalendarData" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.CallLogs" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.ClaimContacts" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.ClaimDocumentPaths" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.ClaimStatuses" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.ClaimSuppliers" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Claims" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Customers" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.EmployeeDetails" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Employees" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.InspectionPlanes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Inspections" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Installers" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.InsuranceCompanies" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Invoices" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.KnockerResponses" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_AdjustmentResults" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_AppointmentTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_ClaimDocumentTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_EmployeeTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_InvoiceTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_KnockResponseTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_LeadTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_PayFrequencies" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_PayTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_PaymentDescriptions" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_PaymentTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_Permissions" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_ProductTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_Products" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_RidgeMaterialTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_ScopeTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_ShingleTypes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.LU_UnitOfMeasures" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Leads" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.NewRoofs" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.OrderItems" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Orders" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Payments" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Planes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Referrers" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Scopes" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Suppliers" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.SurplusSupplies" Category="Contains" />
+    <Link Source="InfoTech" Target="InfoTech.Users" Category="Contains" />
+    <Link Source="InfoTech.AdditionalSupplies" Target="InfoTech.AdditionalSupplies_AdditionalSuppliesID" Category="Contains" />
+    <Link Source="InfoTech.AdditionalSupplies" Target="InfoTech.AdditionalSupplies_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.AdditionalSupplies" Target="InfoTech.AdditionalSupplies_Cost" Category="Contains" />
+    <Link Source="InfoTech.AdditionalSupplies" Target="InfoTech.AdditionalSupplies_DropOffDate" Category="Contains" />
+    <Link Source="InfoTech.AdditionalSupplies" Target="InfoTech.AdditionalSupplies_Items" Category="Contains" />
+    <Link Source="InfoTech.AdditionalSupplies" Target="InfoTech.AdditionalSupplies_PickUpDate" Category="Contains" />
+    <Link Source="InfoTech.AdditionalSupplies" Target="InfoTech.AdditionalSupplies_ReceiptImagePath" Category="Contains" />
+    <Link Source="InfoTech.AdditionalSupplies_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_AdditionalSupplies_ClaimID" />
+    <Link Source="InfoTech.Addresses" Target="InfoTech.Addresses_Address" Category="Contains" />
+    <Link Source="InfoTech.Addresses" Target="InfoTech.Addresses_AddressID" Category="Contains" />
+    <Link Source="InfoTech.Addresses" Target="InfoTech.Addresses_CustomerID" Category="Contains" />
+    <Link Source="InfoTech.Addresses" Target="InfoTech.Addresses_Zip" Category="Contains" />
+    <Link Source="InfoTech.Addresses_CustomerID" Target="InfoTech.Customers_CustomerID" Category="Foreign Key" Label="FK_Addresses_CustomerID" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_AdjusterID" Category="Contains" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_Comments" Category="Contains" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_Email" Category="Contains" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_FirstName" Category="Contains" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_InsuranceCompanyID" Category="Contains" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_LastName" Category="Contains" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_PhoneExt" Category="Contains" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_PhoneNumber" Category="Contains" />
+    <Link Source="InfoTech.Adjusters" Target="InfoTech.Adjusters_Suffix" Category="Contains" />
+    <Link Source="InfoTech.Adjusters_InsuranceCompanyID" Target="InfoTech.InsuranceCompanies_InsuranceCompanyID" Category="Foreign Key" Label="FK_Adjusters_InsuranceCompanyID" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_AdjusterID" Category="Contains" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_AdjustmentComment" Category="Contains" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_AdjustmentDate" Category="Contains" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_AdjustmentID" Category="Contains" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_AdjustmentResultID" Category="Contains" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_Exterior" Category="Contains" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_Gutters" Category="Contains" />
+    <Link Source="InfoTech.Adjustments" Target="InfoTech.Adjustments_Interior" Category="Contains" />
+    <Link Source="InfoTech.CalendarData" Target="InfoTech.CalendarData_AppointmentTypeID" Category="Contains" />
+    <Link Source="InfoTech.CalendarData" Target="InfoTech.CalendarData_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.CalendarData" Target="InfoTech.CalendarData_EmployeeID" Category="Contains" />
+    <Link Source="InfoTech.CalendarData" Target="InfoTech.CalendarData_EndTime" Category="Contains" />
+    <Link Source="InfoTech.CalendarData" Target="InfoTech.CalendarData_EntryID" Category="Contains" />
+    <Link Source="InfoTech.CalendarData" Target="InfoTech.CalendarData_LeadID" Category="Contains" />
+    <Link Source="InfoTech.CalendarData" Target="InfoTech.CalendarData_Note" Category="Contains" />
+    <Link Source="InfoTech.CalendarData" Target="InfoTech.CalendarData_StartTime" Category="Contains" />
+    <Link Source="InfoTech.CalendarData_AppointmentTypeID" Target="InfoTech.LU_AppointmentTypes_AppointmentTypeID" Category="Foreign Key" Label="FK_CalendarData_AppointmentType" />
+    <Link Source="InfoTech.CalendarData_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_CalendarData_ClaimID" />
+    <Link Source="InfoTech.CalendarData_EmployeeID" Target="InfoTech.Employees_EmployeeID" Category="Foreign Key" Label="FK_CalendarData_EmployeeID" />
+    <Link Source="InfoTech.CalendarData_LeadID" Target="InfoTech.Leads_LeadID" Category="Foreign Key" Label="FK_CalendarData_LeadID" />
+    <Link Source="InfoTech.CallLogs" Target="InfoTech.CallLogs_CallLogID" Category="Contains" />
+    <Link Source="InfoTech.CallLogs" Target="InfoTech.CallLogs_CallResults" Category="Contains" />
+    <Link Source="InfoTech.CallLogs" Target="InfoTech.CallLogs_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.CallLogs" Target="InfoTech.CallLogs_EmployeeID" Category="Contains" />
+    <Link Source="InfoTech.CallLogs" Target="InfoTech.CallLogs_ReasonForCall" Category="Contains" />
+    <Link Source="InfoTech.CallLogs" Target="InfoTech.CallLogs_WhoAnswered" Category="Contains" />
+    <Link Source="InfoTech.CallLogs" Target="InfoTech.CallLogs_WhoWasCalled" Category="Contains" />
+    <Link Source="InfoTech.CallLogs_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_CallLogs_ClaimID" />
+    <Link Source="InfoTech.CallLogs_EmployeeID" Target="InfoTech.Employees_EmployeeID" Category="Foreign Key" Label="FK_CallLog_EmployeeID" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_AdjusterID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_BillingID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_ClaimContactID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_CustomerID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_InstallerID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_LeadID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_PropertyID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_SalesPersonID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts" Target="InfoTech.ClaimContacts_SupervisorID" Category="Contains" />
+    <Link Source="InfoTech.ClaimContacts_AdjusterID" Target="InfoTech.Adjusters_AdjusterID" Category="Foreign Key" Label="FK_ClaimContacts_AdjusterID" />
+    <Link Source="InfoTech.ClaimContacts_BillingID" Target="InfoTech.Addresses_AddressID" Category="Foreign Key" Label="FK_ClaimContacts_BillingID" />
+    <Link Source="InfoTech.ClaimContacts_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_ClaimContacts_ClaimID" />
+    <Link Source="InfoTech.ClaimContacts_CustomerID" Target="InfoTech.Customers_CustomerID" Category="Foreign Key" Label="FK_ClaimContacts_CustomerID" />
+    <Link Source="InfoTech.ClaimContacts_InstallerID" Target="InfoTech.Installers_InstallerID" Category="Foreign Key" Label="FK_ClaimContacts_InstallerID" />
+    <Link Source="InfoTech.ClaimContacts_LeadID" Target="InfoTech.Leads_LeadID" Category="Foreign Key" Label="FK_ClaimContacts_LeadID" />
+    <Link Source="InfoTech.ClaimContacts_PropertyID" Target="InfoTech.Addresses_AddressID" Category="Foreign Key" Label="FK_ClaimContacts_PropertyID" />
+    <Link Source="InfoTech.ClaimContacts_SalesPersonID" Target="InfoTech.Employees_EmployeeID" Category="Foreign Key" Label="FK_ClaimContacts_SalesPersonID" />
+    <Link Source="InfoTech.ClaimContacts_SupervisorID" Target="InfoTech.Employees_EmployeeID" Category="Foreign Key" Label="FK_ClaimContacts_SupervisornID" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_DocFileName" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_DocTypeID" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_DocumentDate" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_DocumentID" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_DocumentPath" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_InitialImagePath" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_NumInitials" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_NumSignatures" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths" Target="InfoTech.ClaimDocumentPaths_SignatureImagePath" Category="Contains" />
+    <Link Source="InfoTech.ClaimDocumentPaths_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_ClaimDocumentPaths_ClaimID" />
+    <Link Source="InfoTech.ClaimDocumentPaths_DocTypeID" Target="InfoTech.LU_ClaimDocumentTypes_ClaimDocumentTypeID" Category="Foreign Key" Label="FK_ClaimDocumentPaths_DocTypeID" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_AdjustmentDate" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_CappedOut" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_ClaimStatusID" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_CoCSent" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_ContractSigned" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_DeductCheckCollected" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_DepCheckCollected" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_DepCheckReceived" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_ExteriorScheduled" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_FirstCheckReceived" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_GuttersScheduled" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_InspectionDate" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_InteriorScheduled" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_OriginalScopeReceived" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_RoofComplete" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_RoofMeasurementsReceived" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_RoofOrdered" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_RoofScheduled" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_SuppCheckCollected" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_SuppCheckReceived" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_SupplementSent" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_SupplementSettled" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses" Target="InfoTech.ClaimStatuses_WarrantySent" Category="Contains" />
+    <Link Source="InfoTech.ClaimStatuses_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_ClaimStatuses_ClaimID" />
+    <Link Source="InfoTech.ClaimSuppliers" Target="InfoTech.ClaimSuppliers_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.ClaimSuppliers" Target="InfoTech.ClaimSuppliers_SupplierID" Category="Contains" />
+    <Link Source="InfoTech.ClaimSuppliers_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_ClaimSuppliers_ClaimID" />
+    <Link Source="InfoTech.ClaimSuppliers_SupplierID" Target="InfoTech.Suppliers_SupplierID" Category="Foreign Key" Label="FK_ClaimSuppliers_SupplierID" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_CustomerID" Category="Contains" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_DamageType" Category="Contains" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_InsuranceClaimNumber" Category="Contains" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_InsuranceCompanyID" Category="Contains" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_LossDate" Category="Contains" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_MRNNumber" Category="Contains" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_MortgageAccount" Category="Contains" />
+    <Link Source="InfoTech.Claims" Target="InfoTech.Claims_MortgageCompany" Category="Contains" />
+    <Link Source="InfoTech.Claims_CustomerID" Target="InfoTech.Customers_CustomerID" Category="Foreign Key" Label="FK_Claims_CustomerID" />
+    <Link Source="InfoTech.Claims_InsuranceCompanyID" Target="InfoTech.InsuranceCompanies_InsuranceCompanyID" Category="Foreign Key" Label="FK_Claims_InsuranceCompanyID" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_CustomerID" Category="Contains" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_Email" Category="Contains" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_FirstName" Category="Contains" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_LastName" Category="Contains" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_MailPromos" Category="Contains" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_MiddleName" Category="Contains" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_PrimaryNumber" Category="Contains" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_SecondaryNumber" Category="Contains" />
+    <Link Source="InfoTech.Customers" Target="InfoTech.Customers_Suffix" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_CompanyPhotoPath" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_DLPhotoPath" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_DateHired" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_DateReleased" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_EmployeeDetailsID" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_EmployeeID" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_MailingAddress" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_PayFrequencyID" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_PayRate" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_PayTypeID" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_PreviousEmployee" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_ShirtSize" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_SignaturePath" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails" Target="InfoTech.EmployeeDetails_Zip" Category="Contains" />
+    <Link Source="InfoTech.EmployeeDetails_EmployeeID" Target="InfoTech.Employees_EmployeeID" Category="Foreign Key" Label="FK_EmployeeDetails_EmployeeID" />
+    <Link Source="InfoTech.EmployeeDetails_PayFrequencyID" Target="InfoTech.LU_PayFrequencies_PayFrequencyID" Category="Foreign Key" Label="FK_EmployeeDetails_PayFrequencyID" />
+    <Link Source="InfoTech.EmployeeDetails_PayTypeID" Target="InfoTech.LU_PayTypes_PayTypeID" Category="Foreign Key" Label="FK_EmployeeDetails_PayTypeID" />
+    <Link Source="InfoTech.Employees" Target="InfoTech.Employees_Active" Category="Contains" />
+    <Link Source="InfoTech.Employees" Target="InfoTech.Employees_CellPhone" Category="Contains" />
+    <Link Source="InfoTech.Employees" Target="InfoTech.Employees_Email" Category="Contains" />
+    <Link Source="InfoTech.Employees" Target="InfoTech.Employees_EmployeeID" Category="Contains" />
+    <Link Source="InfoTech.Employees" Target="InfoTech.Employees_EmployeeTypeID" Category="Contains" />
+    <Link Source="InfoTech.Employees" Target="InfoTech.Employees_FirstName" Category="Contains" />
+    <Link Source="InfoTech.Employees" Target="InfoTech.Employees_LastName" Category="Contains" />
+    <Link Source="InfoTech.Employees" Target="InfoTech.Employees_Suffix" Category="Contains" />
+    <Link Source="InfoTech.Employees_EmployeeTypeID" Target="InfoTech.LU_EmployeeTypes_EmployeeTypeID" Category="Foreign Key" Label="FK_Employees_EmployeeTypeID" />
+    <Link Source="InfoTech.InspectionPlanes" Target="InfoTech.InspectionPlanes_InspectionID" Category="Contains" />
+    <Link Source="InfoTech.InspectionPlanes" Target="InfoTech.InspectionPlanes_PlaneID" Category="Contains" />
+    <Link Source="InfoTech.InspectionPlanes_InspectionID" Target="InfoTech.Inspections_InspectionID" Category="Foreign Key" Label="FK_InspectionPlanes_InspectionID" />
+    <Link Source="InfoTech.InspectionPlanes_PlaneID" Target="InfoTech.Planes_PlaneID" Category="Foreign Key" Label="FK_InspectionPlanes_PlaneID" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_Comments" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_CoverPool" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_CustomerID" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_DrivewayDamage" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_EmergencyRepair" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_EmergencyRepairAmount" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_ExteriorDamage" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_FurnishPermit" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_GutterDamage" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_IceWaterShield" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_InspectionDate" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_InspectionID" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_InteriorDamage" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_Leaks" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_MagneticRollers" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_ProtectLandscaping" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_QualityControl" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_RemoveTrash" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_RidgeMaterialTypeID" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_RoofAge" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_Satellite" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_ShingleTypeID" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_SkyLights" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_SolarPanels" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_TearOff" Category="Contains" />
+    <Link Source="InfoTech.Inspections" Target="InfoTech.Inspections_Valley" Category="Contains" />
+    <Link Source="InfoTech.Inspections_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_Inspections_ClaimID" />
+    <Link Source="InfoTech.Inspections_CustomerID" Target="InfoTech.Customers_CustomerID" Category="Foreign Key" Label="FK_Inspections_CustomerID" />
+    <Link Source="InfoTech.Inspections_RidgeMaterialTypeID" Target="InfoTech.LU_RidgeMaterialTypes_RidgeMaterialTypeID" Category="Foreign Key" Label="FK_Inspections_RidgeMaterialTypeID" />
+    <Link Source="InfoTech.Inspections_ShingleTypeID" Target="InfoTech.LU_ShingleTypes_ShingleTypeID" Category="Foreign Key" Label="FK_Inspections_ShingleTypeID" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_CompanyName" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_CompanyPhone" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_ContactFirstName" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_ContactLastName" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_EIN" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_Email" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_Fax" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_GLExpiration" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_GeneralLiabilityPath" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_HasSubContractAgreement" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_InstallerAddress" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_InstallerID" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_Phone" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_SubContractorAgreementPath" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_Suffix" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_Website" Category="Contains" />
+    <Link Source="InfoTech.Installers" Target="InfoTech.Installers_Zip" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_Address" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_ClaimPhoneExt" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_ClaimPhoneNumber" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_CompanyName" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_Email" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_FaxExt" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_FaxNumber" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_Independent" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_InsuranceCompanyID" Category="Contains" />
+    <Link Source="InfoTech.InsuranceCompanies" Target="InfoTech.InsuranceCompanies_Zip" Category="Contains" />
+    <Link Source="InfoTech.Invoices" Target="InfoTech.Invoices_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.Invoices" Target="InfoTech.Invoices_InvoiceAmount" Category="Contains" />
+    <Link Source="InfoTech.Invoices" Target="InfoTech.Invoices_InvoiceDate" Category="Contains" />
+    <Link Source="InfoTech.Invoices" Target="InfoTech.Invoices_InvoiceID" Category="Contains" />
+    <Link Source="InfoTech.Invoices" Target="InfoTech.Invoices_InvoiceTypeID" Category="Contains" />
+    <Link Source="InfoTech.Invoices" Target="InfoTech.Invoices_Paid" Category="Contains" />
+    <Link Source="InfoTech.Invoices_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_Invoices_ClaimID" />
+    <Link Source="InfoTech.Invoices_InvoiceTypeID" Target="InfoTech.LU_InvoiceTypes_InvoiceTypeID" Category="Foreign Key" Label="FK_Invoices_InvoiceTypeID" />
+    <Link Source="InfoTech.KnockerResponses" Target="InfoTech.KnockerResponses_Address" Category="Contains" />
+    <Link Source="InfoTech.KnockerResponses" Target="InfoTech.KnockerResponses_KnockResponseTypeID" Category="Contains" />
+    <Link Source="InfoTech.KnockerResponses" Target="InfoTech.KnockerResponses_KnockerID" Category="Contains" />
+    <Link Source="InfoTech.KnockerResponses" Target="InfoTech.KnockerResponses_KnockerResponseID" Category="Contains" />
+    <Link Source="InfoTech.KnockerResponses" Target="InfoTech.KnockerResponses_Lat" Category="Contains" />
+    <Link Source="InfoTech.KnockerResponses" Target="InfoTech.KnockerResponses_LeadID" Category="Contains" />
+    <Link Source="InfoTech.KnockerResponses" Target="InfoTech.KnockerResponses_Long" Category="Contains" />
+    <Link Source="InfoTech.KnockerResponses" Target="InfoTech.KnockerResponses_Zip" Category="Contains" />
+    <Link Source="InfoTech.KnockerResponses_KnockResponseTypeID" Target="InfoTech.LU_KnockResponseTypes_KnockResponseTypeID" Category="Foreign Key" Label="FK_KnockerResponse_ResponseTypeID" />
+    <Link Source="InfoTech.KnockerResponses_KnockerID" Target="InfoTech.Employees_EmployeeID" Category="Foreign Key" Label="FK_KnockerResponses_KnockerID" />
+    <Link Source="InfoTech.KnockerResponses_LeadID" Target="InfoTech.Leads_LeadID" Category="Foreign Key" Label="FK_KnockerResponses_LeadID" />
+    <Link Source="InfoTech.LU_AdjustmentResults" Target="InfoTech.LU_AdjustmentResults_AdjustmentResult" Category="Contains" />
+    <Link Source="InfoTech.LU_AdjustmentResults" Target="InfoTech.LU_AdjustmentResults_AdjustmentResultID" Category="Contains" />
+    <Link Source="InfoTech.LU_AppointmentTypes" Target="InfoTech.LU_AppointmentTypes_AppointmentType" Category="Contains" />
+    <Link Source="InfoTech.LU_AppointmentTypes" Target="InfoTech.LU_AppointmentTypes_AppointmentTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_ClaimDocumentTypes" Target="InfoTech.LU_ClaimDocumentTypes_ClaimDocumentType" Category="Contains" />
+    <Link Source="InfoTech.LU_ClaimDocumentTypes" Target="InfoTech.LU_ClaimDocumentTypes_ClaimDocumentTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_EmployeeTypes" Target="InfoTech.LU_EmployeeTypes_EmployeeType" Category="Contains" />
+    <Link Source="InfoTech.LU_EmployeeTypes" Target="InfoTech.LU_EmployeeTypes_EmployeeTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_InvoiceTypes" Target="InfoTech.LU_InvoiceTypes_InvoiceType" Category="Contains" />
+    <Link Source="InfoTech.LU_InvoiceTypes" Target="InfoTech.LU_InvoiceTypes_InvoiceTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_KnockResponseTypes" Target="InfoTech.LU_KnockResponseTypes_KnockResponseType" Category="Contains" />
+    <Link Source="InfoTech.LU_KnockResponseTypes" Target="InfoTech.LU_KnockResponseTypes_KnockResponseTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_LeadTypes" Target="InfoTech.LU_LeadTypes_LeadType" Category="Contains" />
+    <Link Source="InfoTech.LU_LeadTypes" Target="InfoTech.LU_LeadTypes_LeadTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_PayFrequencies" Target="InfoTech.LU_PayFrequencies_PayFrequency" Category="Contains" />
+    <Link Source="InfoTech.LU_PayFrequencies" Target="InfoTech.LU_PayFrequencies_PayFrequencyID" Category="Contains" />
+    <Link Source="InfoTech.LU_PayTypes" Target="InfoTech.LU_PayTypes_PayType" Category="Contains" />
+    <Link Source="InfoTech.LU_PayTypes" Target="InfoTech.LU_PayTypes_PayTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_PaymentDescriptions" Target="InfoTech.LU_PaymentDescriptions_PaymentDescription" Category="Contains" />
+    <Link Source="InfoTech.LU_PaymentDescriptions" Target="InfoTech.LU_PaymentDescriptions_PaymentDescriptionID" Category="Contains" />
+    <Link Source="InfoTech.LU_PaymentTypes" Target="InfoTech.LU_PaymentTypes_PaymentType" Category="Contains" />
+    <Link Source="InfoTech.LU_PaymentTypes" Target="InfoTech.LU_PaymentTypes_PaymentTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_Permissions" Target="InfoTech.LU_Permissions_PermissionID" Category="Contains" />
+    <Link Source="InfoTech.LU_Permissions" Target="InfoTech.LU_Permissions_PermissionLevel" Category="Contains" />
+    <Link Source="InfoTech.LU_ProductTypes" Target="InfoTech.LU_ProductTypes_ProductType" Category="Contains" />
+    <Link Source="InfoTech.LU_ProductTypes" Target="InfoTech.LU_ProductTypes_ProductTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_Products" Target="InfoTech.LU_Products_Color" Category="Contains" />
+    <Link Source="InfoTech.LU_Products" Target="InfoTech.LU_Products_Info" Category="Contains" />
+    <Link Source="InfoTech.LU_Products" Target="InfoTech.LU_Products_Name" Category="Contains" />
+    <Link Source="InfoTech.LU_Products" Target="InfoTech.LU_Products_Price" Category="Contains" />
+    <Link Source="InfoTech.LU_Products" Target="InfoTech.LU_Products_ProductID" Category="Contains" />
+    <Link Source="InfoTech.LU_Products" Target="InfoTech.LU_Products_ProductTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_Products" Target="InfoTech.LU_Products_SupplierID" Category="Contains" />
+    <Link Source="InfoTech.LU_Products" Target="InfoTech.LU_Products_Warranty" Category="Contains" />
+    <Link Source="InfoTech.LU_Products_ProductTypeID" Target="InfoTech.LU_ProductTypes_ProductTypeID" Category="Foreign Key" Label="FK_Products_ProductTypeID" />
+    <Link Source="InfoTech.LU_Products_SupplierID" Target="InfoTech.Suppliers_SupplierID" Category="Foreign Key" Label="FK_Products_SupplierID" />
+    <Link Source="InfoTech.LU_RidgeMaterialTypes" Target="InfoTech.LU_RidgeMaterialTypes_RidgeMaterialType" Category="Contains" />
+    <Link Source="InfoTech.LU_RidgeMaterialTypes" Target="InfoTech.LU_RidgeMaterialTypes_RidgeMaterialTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_ScopeTypes" Target="InfoTech.LU_ScopeTypes_ScopeType" Category="Contains" />
+    <Link Source="InfoTech.LU_ScopeTypes" Target="InfoTech.LU_ScopeTypes_ScopeTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_ShingleTypes" Target="InfoTech.LU_ShingleTypes_ShingleType" Category="Contains" />
+    <Link Source="InfoTech.LU_ShingleTypes" Target="InfoTech.LU_ShingleTypes_ShingleTypeID" Category="Contains" />
+    <Link Source="InfoTech.LU_UnitOfMeasures" Target="InfoTech.LU_UnitOfMeasures_UnitOfMeasure" Category="Contains" />
+    <Link Source="InfoTech.LU_UnitOfMeasures" Target="InfoTech.LU_UnitOfMeasures_UnitOfMeasureID" Category="Contains" />
+    <Link Source="InfoTech.Leads" Target="InfoTech.Leads_AddressID" Category="Contains" />
+    <Link Source="InfoTech.Leads" Target="InfoTech.Leads_CreditToID" Category="Contains" />
+    <Link Source="InfoTech.Leads" Target="InfoTech.Leads_CustomerID" Category="Contains" />
+    <Link Source="InfoTech.Leads" Target="InfoTech.Leads_LeadDate" Category="Contains" />
+    <Link Source="InfoTech.Leads" Target="InfoTech.Leads_LeadID" Category="Contains" />
+    <Link Source="InfoTech.Leads" Target="InfoTech.Leads_LeadTypeID" Category="Contains" />
+    <Link Source="InfoTech.Leads" Target="InfoTech.Leads_Success" Category="Contains" />
+    <Link Source="InfoTech.Leads_AddressID" Target="InfoTech.Addresses_AddressID" Category="Foreign Key" Label="FK_Leads_AddressID" />
+    <Link Source="InfoTech.Leads_CustomerID" Target="InfoTech.Customers_CustomerID" Category="Foreign Key" Label="FK_Leads_CustomerID" />
+    <Link Source="InfoTech.Leads_LeadTypeID" Target="InfoTech.LU_LeadTypes_LeadTypeID" Category="Foreign Key" Label="FK_Leads_LeadTypeID" />
+    <Link Source="InfoTech.NewRoofs" Target="InfoTech.NewRoofs_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.NewRoofs" Target="InfoTech.NewRoofs_Comments" Category="Contains" />
+    <Link Source="InfoTech.NewRoofs" Target="InfoTech.NewRoofs_NewRoofID" Category="Contains" />
+    <Link Source="InfoTech.NewRoofs" Target="InfoTech.NewRoofs_ProductID" Category="Contains" />
+    <Link Source="InfoTech.NewRoofs" Target="InfoTech.NewRoofs_UpgradeCost" Category="Contains" />
+    <Link Source="InfoTech.NewRoofs_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_NewRoofs_ClaimID" />
+    <Link Source="InfoTech.NewRoofs_ProductID" Target="InfoTech.LU_Products_ProductID" Category="Foreign Key" Label="FK_NewRoofs_ProductID" />
+    <Link Source="InfoTech.OrderItems" Target="InfoTech.OrderItems_OrderID" Category="Contains" />
+    <Link Source="InfoTech.OrderItems" Target="InfoTech.OrderItems_OrderItemID" Category="Contains" />
+    <Link Source="InfoTech.OrderItems" Target="InfoTech.OrderItems_ProductID" Category="Contains" />
+    <Link Source="InfoTech.OrderItems" Target="InfoTech.OrderItems_Quantity" Category="Contains" />
+    <Link Source="InfoTech.OrderItems" Target="InfoTech.OrderItems_UnitOfMeasureID" Category="Contains" />
+    <Link Source="InfoTech.OrderItems_OrderID" Target="InfoTech.Orders_OrderID" Category="Foreign Key" Label="FL_OrderItems_OrderID" />
+    <Link Source="InfoTech.OrderItems_ProductID" Target="InfoTech.LU_Products_ProductID" Category="Foreign Key" Label="FK_OrderItems_ProductID" />
+    <Link Source="InfoTech.OrderItems_UnitOfMeasureID" Target="InfoTech.LU_UnitOfMeasures_UnitOfMeasureID" Category="Foreign Key" Label="FK_OrderItems_UnitOfMeasureID" />
+    <Link Source="InfoTech.Orders" Target="InfoTech.Orders_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.Orders" Target="InfoTech.Orders_DateDropped" Category="Contains" />
+    <Link Source="InfoTech.Orders" Target="InfoTech.Orders_DateOrdered" Category="Contains" />
+    <Link Source="InfoTech.Orders" Target="InfoTech.Orders_OrderID" Category="Contains" />
+    <Link Source="InfoTech.Orders" Target="InfoTech.Orders_ScheduledInstallation" Category="Contains" />
+    <Link Source="InfoTech.Orders" Target="InfoTech.Orders_SupplierID" Category="Contains" />
+    <Link Source="InfoTech.Orders_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_Orders_ClaimID" />
+    <Link Source="InfoTech.Orders_SupplierID" Target="InfoTech.Suppliers_SupplierID" Category="Foreign Key" Label="FK_Orders_SupplierID" />
+    <Link Source="InfoTech.Payments" Target="InfoTech.Payments_Amount" Category="Contains" />
+    <Link Source="InfoTech.Payments" Target="InfoTech.Payments_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.Payments" Target="InfoTech.Payments_PaymentDate" Category="Contains" />
+    <Link Source="InfoTech.Payments" Target="InfoTech.Payments_PaymentDescriptionID" Category="Contains" />
+    <Link Source="InfoTech.Payments" Target="InfoTech.Payments_PaymentID" Category="Contains" />
+    <Link Source="InfoTech.Payments" Target="InfoTech.Payments_PaymentTypeID" Category="Contains" />
+    <Link Source="InfoTech.Payments_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_Payments_ClaimID" />
+    <Link Source="InfoTech.Payments_PaymentDescriptionID" Target="InfoTech.LU_PaymentDescriptions_PaymentDescriptionID" Category="Foreign Key" Label="FK_Payments_PaymentDescriptionID" />
+    <Link Source="InfoTech.Payments_PaymentTypeID" Target="InfoTech.LU_PaymentTypes_PaymentTypeID" Category="Foreign Key" Label="FK_Payments_PaymentTypeID" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_DamageCount" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_EaveHeight" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_EaveLength" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_FourAndUp" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_GroupNumber" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_HipValley" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_NumOfLayers" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_NumberDecking" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_Pitch" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_PlaneID" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_RakeLength" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_RidgeLength" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_StepFlashing" Category="Contains" />
+    <Link Source="InfoTech.Planes" Target="InfoTech.Planes_ThreeAndOne" Category="Contains" />
+    <Link Source="InfoTech.Referrers" Target="InfoTech.Referrers_CellPhone" Category="Contains" />
+    <Link Source="InfoTech.Referrers" Target="InfoTech.Referrers_Email" Category="Contains" />
+    <Link Source="InfoTech.Referrers" Target="InfoTech.Referrers_FirstName" Category="Contains" />
+    <Link Source="InfoTech.Referrers" Target="InfoTech.Referrers_LastName" Category="Contains" />
+    <Link Source="InfoTech.Referrers" Target="InfoTech.Referrers_MailingAddress" Category="Contains" />
+    <Link Source="InfoTech.Referrers" Target="InfoTech.Referrers_ReferrerID" Category="Contains" />
+    <Link Source="InfoTech.Referrers" Target="InfoTech.Referrers_Suffix" Category="Contains" />
+    <Link Source="InfoTech.Referrers" Target="InfoTech.Referrers_Zip" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_Deductible" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_Exterior" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_Gutter" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_Interior" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_OandP" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_ScopeID" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_ScopeTypeID" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_Tax" Category="Contains" />
+    <Link Source="InfoTech.Scopes" Target="InfoTech.Scopes_Total" Category="Contains" />
+    <Link Source="InfoTech.Scopes_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_Scopes_ClaimID" />
+    <Link Source="InfoTech.Scopes_ScopeTypeID" Target="InfoTech.LU_ScopeTypes_ScopeTypeID" Category="Foreign Key" Label="FK_Scopes_ScopeTypeID" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_CompanyName" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_CompanyPhone" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_ContactFirstName" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_ContactLastName" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_EIN" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_Email" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_Fax" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_Phone" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_Suffix" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_SupplierAddress" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_SupplierID" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_Website" Category="Contains" />
+    <Link Source="InfoTech.Suppliers" Target="InfoTech.Suppliers_Zip" Category="Contains" />
+    <Link Source="InfoTech.SurplusSupplies" Target="InfoTech.SurplusSupplies_ClaimID" Category="Contains" />
+    <Link Source="InfoTech.SurplusSupplies" Target="InfoTech.SurplusSupplies_DropOffDate" Category="Contains" />
+    <Link Source="InfoTech.SurplusSupplies" Target="InfoTech.SurplusSupplies_Items" Category="Contains" />
+    <Link Source="InfoTech.SurplusSupplies" Target="InfoTech.SurplusSupplies_PickUpDate" Category="Contains" />
+    <Link Source="InfoTech.SurplusSupplies" Target="InfoTech.SurplusSupplies_SurplusSuppliesID" Category="Contains" />
+    <Link Source="InfoTech.SurplusSupplies_ClaimID" Target="InfoTech.Claims_ClaimID" Category="Foreign Key" Label="FK_SurplusSupplies_ClaimID" />
+    <Link Source="InfoTech.Users" Target="InfoTech.Users_Active" Category="Contains" />
+    <Link Source="InfoTech.Users" Target="InfoTech.Users_EmployeeID" Category="Contains" />
+    <Link Source="InfoTech.Users" Target="InfoTech.Users_Pass" Category="Contains" />
+    <Link Source="InfoTech.Users" Target="InfoTech.Users_PermissionID" Category="Contains" />
+    <Link Source="InfoTech.Users" Target="InfoTech.Users_UserID" Category="Contains" />
+    <Link Source="InfoTech.Users" Target="InfoTech.Users_Username" Category="Contains" />
+    <Link Source="InfoTech.Users_EmployeeID" Target="InfoTech.Employees_EmployeeID" Category="Foreign Key" Label="FK_Users_EmployeeID" />
+    <Link Source="InfoTech.Users_PermissionID" Target="InfoTech.LU_Permissions_PermissionID" Category="Foreign Key" Label="FK_Users_PermissionID" />
+  </Links>
+  <Categories>
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="Database" />
+    <Category Id="Field" />
+    <Category Id="Field Foreign" />
+    <Category Id="Field Optional" />
+    <Category Id="Field Primary" />
+    <Category Id="Foreign Key" />
+    <Category Id="Schema" />
+    <Category Id="Table" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Description" Label="Description" Description="Description" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Table" ValueLabel="True">
+      <Condition Expression="HasCategory('Table')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Schema" ValueLabel="True">
+      <Condition Expression="HasCategory('Schema')" />
+      <Setter Property="Background" Value="#FF7F9169" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Primary" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Primary')" />
+      <Setter Property="Background" Value="#FF008000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Optional" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Optional')" />
+      <Setter Property="Background" Value="#FF808040" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Foreign" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Foreign')" />
+      <Setter Property="Background" Value="#FF8080FF" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field" ValueLabel="True">
+      <Condition Expression="HasCategory('Field')" />
+      <Setter Property="Background" Value="#FFC0A000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Database" ValueLabel="True">
+      <Condition Expression="HasCategory('Database')" />
+      <Setter Property="Background" Value="#FFFFFFFF" />
+    </Style>
+  </Styles>
+</DirectedGraph>

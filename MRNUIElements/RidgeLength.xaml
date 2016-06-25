@@ -1,0 +1,43 @@
+﻿<Window x:Class="MRNUIElements.RidgeLength"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MRNUIElements"
+        mc:Ignorable="d"
+        Title="Ridge Length" Height="184.294" Width="348.647" Background="{x:Null}" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner">
+	<Grid Margin="0,0,-17,28">
+		<Button x:Name="button" Content="_OK" HorizontalAlignment="Right" Margin="0,70,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" d:LayoutOverrides="VerticalAlignment"/>
+		<Button x:Name="button1" Content="_Cancel" HorizontalAlignment="Right" Margin="0,98,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" d:LayoutOverrides="VerticalAlignment"/>
+		<TextBox x:Name="EaveFeetLengthText" Margin="176,98,138,0" TextWrapping="Wrap" Background="{x:Null}" Foreground="White" Height="23" VerticalAlignment="Top"/>
+		<TextBlock x:Name="textBlock" Margin="10,19,0,0" TextWrapping="Wrap" Text="Please specify the distance in length of the ridge of this plane." VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+		<TextBox x:Name="EaveLengthInchesText" Margin="0,98,74,0" TextWrapping="Wrap" Background="{x:Null}" Foreground="White" HorizontalAlignment="Right" Width="50" Height="23" VerticalAlignment="Top"/>
+		<Label x:Name="label" Content="Feet" Margin="176,67,138,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White"/>
+		<Label x:Name="label_Copy" Content="Inches" Margin="0,67,80,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" HorizontalAlignment="Right"/>
+
+		<Canvas Height="75" VerticalAlignment="Bottom" Width="144" Canvas.Left="-11" Canvas.Top="26" HorizontalAlignment="Left" Margin="13,0,0,0">
+			<Line
+					X1="1" Y1="70"
+					X2="35" Y2="20"
+					Stroke="Gray"
+					StrokeThickness="4" />
+			<Line
+					X1="100" Y1="20"
+					X2="35" Y2="20"
+					Stroke="Red"
+					StrokeThickness="4" />
+			<Line
+					X1="1" Y1="70"
+					X2="135" Y2="70"
+					Stroke="Gray"
+					StrokeThickness="4"/>
+			<Line
+					X1="135" Y1="70"
+					X2="100" Y2="20"
+					Stroke="Gray"
+					StrokeThickness="4"/>
+
+		</Canvas>
+
+	</Grid>
+</Window>

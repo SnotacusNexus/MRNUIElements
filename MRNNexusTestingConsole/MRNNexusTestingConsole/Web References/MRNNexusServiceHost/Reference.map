@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://services.mrncontracting.com/web/MRNNexus_Service.svc?xsd=xsd2" filename="MRNNexus_Service.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://services.mrncontracting.com/web/MRNNexus_Service.svc?xsd=xsd1" filename="MRNNexus_Service0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://services.mrncontracting.com/web/MRNNexus_Service.svc?wsdl" filename="MRNNexus_Service.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://services.mrncontracting.com/web/MRNNexus_Service.svc?xsd=xsd3" filename="MRNNexus_Service1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://services.mrncontracting.com/web/MRNNexus_Service.svc?xsd=xsd0" filename="MRNNexus_Service2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://services.mrncontracting.com/web/MRNNexus_Service.svc?disco" filename="MRNNexus_Service.disco" />
+  </Results>
+</DiscoveryClientResultsFile>

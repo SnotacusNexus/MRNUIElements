@@ -1,0 +1,22 @@
+private static bool FtpDirectoryExists(string directory, string username, string password)
+{
+
+try
+{
+var request = (FtpWebRequest)WebRequest.Create(directory);
+request.Credentials = new NetworkCredential(username, password);
+request.Method = WebRequestMethods.Ftp.ListDirectory;
+
+FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+}
+catch (WebException ex)
+{
+FtpWebResponse response = (FtpWebResponse)ex.Response;
+if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+return false;
+else
+return true;
+}
+return true;
+
+}

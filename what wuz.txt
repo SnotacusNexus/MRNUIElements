@@ -1,0 +1,245 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using MRNNexus_Model;
+
+namespace MRNUIElements
+{								
+    /// <summary>			 
+    /// Interaction logic for ScopePage.xaml
+    /// </summary>
+    public partial class ScopeEntryPage : Page
+    {
+		   public ServiceLayer s1 = ServiceLayer.getInstance();
+		
+		public int scopetype;
+		public DTO_Scope scope = new DTO_Scope();
+		public double acv;
+		public double depreciation;
+		public double roof;
+		public int ScopeID;
+		
+
+		
+		public ScopeEntryPage()
+        {
+			InitializeComponent();
+			totalTextBox.Text = "0";
+			ScopeID = 0;
+			this.claimIDComboBox.DataContext = s1.ClaimsList;
+		}
+       
+
+		private void radioButton_Checked(object sender, RoutedEventArgs e)
+		{
+			radioButton.IsChecked = true;
+			radioButton_Copy.IsChecked = false;
+			radioButton_Copy1.IsChecked = false;
+			OnInit();
+
+		}
+
+		private void radioButton_Copy_Checked(object sender, RoutedEventArgs e)
+		{
+			radioButton.IsChecked = false;
+			radioButton_Copy.IsChecked = true;
+			radioButton_Copy1.IsChecked = false;
+			OnInit();
+		}
+
+		private void radioButton_Copy1_Checked(object sender, RoutedEventArgs e)
+		{
+			radioButton.IsChecked =false;
+			radioButton_Copy.IsChecked = false;
+			radioButton_Copy1.IsChecked = true;
+			OnInit();
+		}
+
+
+
+		async void AddScope(int scopetype)
+		{
+			int newID = 0;
+			scope.ClaimID = int.Parse(claimIDComboBox.Text);
+			scope.Deductible = double.Parse(deductibleTextBox.ToString());
+			scope.OandP = double.Parse(oandPTextBox.ToString());
+			scope.Interior = double.Parse(interiorTextBox.ToString());
+			scope.Gutter = double.Parse(gutterTextBox.ToString());
+			scope.Total = double.Parse(totalTextBox.ToString());
+			scope.Exterior = double.Parse(exteriorTextBox.ToString());
+			scope.ScopeTypeID = scopetype;
+			scope.ScopeID = newID;
+			
+
+			await s1.AddScope(scope);
+		}
+		private void DoMath()
+		{
+
+		
+
+			if (scope.Total > 1)
+			{
+				acv = double.Parse(totalTextBox.ToString()) - double.Parse(deductibleTextBox.ToString()) - double.Parse(deductibleTextBox.ToString()) - double.Parse(interiorTextBox.ToString()) - double.Parse(gutterTextBox.ToString()) - double.Parse(oandPTextBox.ToString());
+				 depreciation = double.Parse(totalTextBox.ToString()) - acv;
+				roof = double.Parse(totalTextBox.ToString()) - double.Parse(deductibleTextBox.ToString()) - double.Parse(deductibleTextBox.ToString()) - double.Parse(interiorTextBox.ToString()) - double.Parse(gutterTextBox.ToString());
+			}
+
+			
+			else { acv = scope.Total - scope.Exterior - scope.Interior - scope.Gutter - scope.OandP - scope.Deductible - scope.Tax;
+				depreciation = scope.Total - acv;
+				roof = scope.Total - scope.Exterior - scope.Interior - scope.Gutter - scope.Deductible - scope.Tax;
+			}
+			  if (acv >-1 && depreciation > -1 && roof > -1 && scopetype>0 && claimIDComboBox.Text != string.Empty) { SubmitScopeEntry.IsEnabled = true; }
+			//SubmitScopeEntry.IsEnabled = true;
+			totalTextBox.Text = scope.Total.ToString();
+			interiorTextBox.Text = scope.Interior.ToString();
+			exteriorTextBox.Text = scope.Exterior.ToString();
+			gutterTextBox.Text = scope.Gutter.ToString();
+			oandPTextBox.Text = scope.OandP.ToString();
+			taxTextBox.Text = scope.Tax.ToString();
+			ACV.Text = acv.ToString();
+			Depreciation.Text = depreciation.ToString();
+			Roof.Text = roof.ToString();
+			
+		}
+	   
+
+		private void SubmitScopeEntry_Click(object sender, RoutedEventArgs e)
+		{	
+			AddScope(scopetype);
+		}
+
+
+
+		async private void GetScopesList(DTO_Claim claim)
+		{
+			await s1.GetScopesByClaimID(claim);
+			if (s1.ScopesList != null)
+			{
+
+				foreach (DTO_Scope sc in s1.ScopesList)
+				{
+					if (sc.ScopeID > 0 && sc.ScopeID < 4) { 
+					if (sc.ScopeTypeID == 1) { radioButton.IsEnabled = true; }
+					if (sc.ScopeTypeID == 2) { radioButton_Copy.IsEnabled = true; }
+					if (sc.ScopeTypeID == 3) { radioButton_Copy1.IsEnabled = true; }
+
+
+				}
+				}
+
+			
+
+			}
+		}
+
+		private void CancelScopeEntry_Click(object sender, RoutedEventArgs e)
+		{
+			NexusHome Page = new NexusHome();
+			this.NavigationService.Navigate(Page);
+		}
+
+		private void claimIDComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			
+			DTO_Claim claim = new DTO_Claim();
+			claim.ClaimID = claimIDComboBox.SelectedIndex;
+			GetScopesList(claim);
+
+			
+		}
+
+		private void totalTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			DoMath();
+		}
+
+		private void exteriorTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			DoMath();
+		}
+
+		private void gutterTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			DoMath();
+		}
+
+		private void interiorTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			DoMath();
+		}
+
+		private void oandPTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			DoMath();
+		}
+
+		private void taxTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			DoMath();
+		}
+
+		private void deductibleTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			DoMath();
+		}
+
+		private void OnInit()
+		{
+			if (radioButton.IsChecked == true)
+			{
+				scopetype = 1;
+			}
+			else if (radioButton_Copy.IsChecked == true)
+			{
+				scopetype = 2;
+
+			}
+			else if (radioButton_Copy1.IsChecked == true)
+			{
+				scopetype = 3;
+			}
+			DTO_Scope scope = new DTO_Scope();
+			scope = s1.Scope;
+			
+
+			if (scope.ScopeTypeID > 0 && scope.ScopeTypeID < 4)
+			{
+				claimIDComboBox.Text = scope.ClaimID.ToString();
+				deductibleTextBox.Text = scope.Deductible.ToString();
+				oandPTextBox.Text = scope.OandP.ToString();
+				interiorTextBox.Text = scope.Interior.ToString();
+				gutterTextBox.Text = scope.Gutter.ToString();
+				totalTextBox.Text = scope.Total.ToString();
+				exteriorTextBox.Text = scope.Exterior.ToString();
+				taxTextBox.Text = scope.Tax.ToString();
+				ScopeID = scope.ScopeID;
+			}
+			else
+			{
+				claimIDComboBox.Text = "0";
+				deductibleTextBox.Text = "0";
+				oandPTextBox.Text = "0";
+				interiorTextBox.Text = "0";
+				gutterTextBox.Text = "0";
+				totalTextBox.Text = "0";
+				exteriorTextBox.Text = "0";
+				taxTextBox.Text = "0";
+			
+			}
+
+		}
+	}
+}

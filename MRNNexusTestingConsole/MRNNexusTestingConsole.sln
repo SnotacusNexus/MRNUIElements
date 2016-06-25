@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRNNexusTestingConsole", "MRNNexusTestingConsole\MRNNexusTestingConsole.csproj", "{747506BF-28DA-4068-BCFA-7F3D46677DF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRNNexus_Model", "MRNNexus_Model\MRNNexus_Model.csproj", "{5BFC4D4B-8FBC-4FDA-A4EB-88B69987B3B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRNTestingWPF", "MRNTestingWPF\MRNTestingWPF.csproj", "{60CC08D2-677D-4900-9652-9D7A7D63C4A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{747506BF-28DA-4068-BCFA-7F3D46677DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747506BF-28DA-4068-BCFA-7F3D46677DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747506BF-28DA-4068-BCFA-7F3D46677DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747506BF-28DA-4068-BCFA-7F3D46677DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BFC4D4B-8FBC-4FDA-A4EB-88B69987B3B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BFC4D4B-8FBC-4FDA-A4EB-88B69987B3B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BFC4D4B-8FBC-4FDA-A4EB-88B69987B3B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BFC4D4B-8FBC-4FDA-A4EB-88B69987B3B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60CC08D2-677D-4900-9652-9D7A7D63C4A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60CC08D2-677D-4900-9652-9D7A7D63C4A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60CC08D2-677D-4900-9652-9D7A7D63C4A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60CC08D2-677D-4900-9652-9D7A7D63C4A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,62 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNNexus.WPFClient"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="MRNNexus.WPFClient.Schedule"
+      mc:Ignorable="d" 
+
+      Title="Schedule">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        
+        <syncfusion:SfSchedule  Grid.Column="0" Grid.Row="0"  Grid.RowSpan="2" x:Name="calendar" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+								FocusedMonth="GhostWhite" NonFocusedMonth="LightGray" ScheduleType="Month" WorkEndHour="19" WorkStartHour="7"
+								AppointmentCollectionChanged="calendar_AppointmentCollectionChanged" AppointmentEditorClosed="calendar_AppointmentEditorClosed">
+        <syncfusion:SfSchedule.AppointmentMapping>
+            <syncfusion:ScheduleAppointmentMapping
+				SubjectMapping="MappedSubject"
+				StartTimeMapping="MappedStartTime"
+				EndTimeMapping="MappedEndTime"
+				NotesMapping="MappedNote"
+				LocationMapping="MappedLocation"/>
+            </syncfusion:SfSchedule.AppointmentMapping>
+        </syncfusion:SfSchedule>
+
+
+
+            <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"   VerticalAlignment="Center">
+            <Label Content="Today's Appointments"
+				HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24"/>
+            <syncfusion:SfDataGrid x:Name="appointments" ColumnSizer="Auto" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Row" 
+                                   MouseDoubleClick="appointments_MouseDoubleClick" SelectionChanged="appointments_SelectionChanged"
+                                   ItemsSource="{Binding TodaysAppointments}" AutoGenerateColumns="False" BorderBrush="#FFE81313" BorderThickness="1">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn MappingName="AppointmentType" HeaderText="Type"/>
+                    <syncfusion:GridTextColumn MappingName="StartTime" HeaderText="From" />
+                    <syncfusion:GridTextColumn MappingName="EndTime" HeaderText="Until"/>
+                    <syncfusion:GridTextColumn MappingName="Address" HeaderText="Address"/>
+                    <syncfusion:GridTextColumn MappingName="Note" HeaderText="Notes" TextWrapping="WrapWithOverflow" MaximumWidth="200"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center"   VerticalAlignment="Center">
+            <TextBlock Text="Messages and Alerts"
+				HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0, 10" FontSize="24"/>
+        </StackPanel>
+    </Grid>
+</Page>
