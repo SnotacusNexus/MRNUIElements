@@ -223,7 +223,9 @@
 
 							<RadioButton x:Name="radioSuccess" Content="Yes" Height="28" Width="54" HorizontalAlignment="Right" Margin="0,0,65,28" VerticalAlignment="Bottom" Background="White" Foreground="White"/>
 							<RadioButton x:Name="radioNoSuccess" Content="No" Width="54" HorizontalAlignment="Right" Margin="0,0,22,28" Height="28" VerticalAlignment="Bottom" Foreground="White"/>
-							<GroupBox x:Name="groupBox" Header="Is this a new Inspection?" Margin="0,0,3,19" HorizontalAlignment="Right" Width="150" Height="88" VerticalAlignment="Bottom" Foreground="White" d:LayoutOverrides="HorizontalAlignment"/>
+							<GroupBox x:Name="groupBox" Header="Is this a new Inspection?" Margin="0,0,3,19" HorizontalAlignment="Right" Width="150" Height="88" VerticalAlignment="Bottom" Foreground="White" d:LayoutOverrides="HorizontalAlignment">
+								<Button x:Name="button" Content="CA" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+							</GroupBox>
 							<GroupBox x:Name="groupBox_Copy" Margin="0,10,155,112" Foreground="White" Content="Details" Header="Lead"/>
 							<TextBox x:Name="leadNameText" Height="25" Margin="122,32,173,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" IsReadOnly="True" IsUndoEnabled="False" FontWeight="Bold" d:LayoutOverrides="HorizontalAlignment"/>
 							<TextBox x:Name="leadAddressText" Height="25" Margin="122,57,173,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" IsReadOnly="True" IsUndoEnabled="False" FontWeight="Bold" d:LayoutOverrides="HorizontalAlignment"/>

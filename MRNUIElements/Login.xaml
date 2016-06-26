@@ -22,7 +22,7 @@
                 <TextBlock FontSize="15"  FontWeight ="Bold" Foreground="White" HorizontalAlignment ="Right" MinWidth="115" Margin="5,0,5,0" >Password</TextBlock>
                 <PasswordBox x:Name="PasswordBox" MinWidth="200" Margin="5,0,0,0" HorizontalAlignment="Stretch"></PasswordBox>
 
-                <Button/>
+              
 
             </StackPanel>
 			<Button x:Name="LoginBtn" Style="{StaticResource normal}" Click="LoginClick" IsDefault="True" Content="Click To Login"/>

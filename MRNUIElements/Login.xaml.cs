@@ -67,8 +67,8 @@ namespace MRNUIElements
 
 		async private void AuthorizeLogin(DTO_User user)
 		{
-			DrawMe dm = new DrawMe();
-			dm.Show();
+			//DrawMe dm = new DrawMe();
+			//dm.Show();
 			
 			
 			bool b = false;

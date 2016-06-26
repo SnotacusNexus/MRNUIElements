@@ -21,7 +21,8 @@ namespace MRNUIElements
     /// </summary>
     public partial class CustomerAgreement : Page
     { int i = 1;
-        public CustomerAgreement()
+		Point currentPoint = new Point();
+		public CustomerAgreement()
         {
             InitializeComponent();
 			
@@ -138,6 +139,53 @@ namespace MRNUIElements
 				}
 			}
 
+		private void Canvas_MouseDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (e.ButtonState == MouseButtonState.Pressed)
+				currentPoint = e.GetPosition(this);
+		}
+
+		private void Canvas_MouseMove_1(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			if (e.LeftButton == MouseButtonState.Pressed)
+			{
+				Line line = new Line();
+
+				line.Stroke = line.Stroke = Brushes.Black; 
+				line.X1 = currentPoint.X;
+				line.Y1 = currentPoint.Y;
+				line.X2 = e.GetPosition(this).X;
+				line.Y2 = e.GetPosition(this).Y;
+				currentPoint = e.GetPosition(this);
+				paintSurface.Children.Add(line);
+			}
+		}
+		private void Canvas_MouseDown_2(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (e.ButtonState == MouseButtonState.Pressed)
+				currentPoint = e.GetPosition(this);
+		}
+
+		private void Canvas_MouseMove_2(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			if (e.LeftButton == MouseButtonState.Pressed)
+			{
+				Line line = new Line();
+				line.Stroke = Brushes.Black;
+
+				line.X1 = currentPoint.X;
+				line.Y1 = currentPoint.Y;
+
+				line.X2 = e.GetPosition(this).X;
+				line.Y2 = e.GetPosition(this).Y;
+
+				currentPoint = e.GetPosition(this);
+
+				paintSurface.Children.Add(line);
+
+			}
+		}
+
 		private void Roof_Inspection_Click(object sender, RoutedEventArgs e)
 		{
 
@@ -161,6 +209,13 @@ namespace MRNUIElements
 
 		private void Interior_Inspection_Click(object sender, RoutedEventArgs e)
 		{
+
+		}
+
+
+		private void DisplaySignatureBox()
+		{
+			
 
 		}
 	}

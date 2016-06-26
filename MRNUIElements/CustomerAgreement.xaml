@@ -430,9 +430,24 @@
 				</TabItem>
 				<TabItem x:Name="Finalize_Agreement"  Header="Finalize Agreement" >
 					<TabPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-						<Grid >
-							<TextBlock FontSize="25" FontWeight="Bold" TextAlignment="Center" Padding="10" ><Run Text="Section 9"/><LineBreak/><Run Text="Finalizing Our Agreement"/><LineBreak/><Run Text="What To Expect Next"/></TextBlock>
+						<Grid Height="373" Width="896" >
+							<TextBlock FontSize="25" FontWeight="Bold" TextAlignment="Center" Padding="10" Margin="0,0,0,245" ><Run Text="Section 9"/><LineBreak/><Run Text="Finalizing Our Agreement"/><LineBreak/><Run Text="What To Expect Next"/></TextBlock>
+
+
+
+
+							<Canvas Name="paintSurface" MouseDown="Canvas_MouseDown_1" MouseMove="Canvas_MouseMove_1" Margin="234,288,197,35" >
+								<Canvas.Background>
+									<SolidColorBrush Color="White" Opacity="100"/>
+								</Canvas.Background>
+							</Canvas>
+							<Canvas Name="paintSurface1" MouseDown="Canvas_MouseDown_2" MouseMove="Canvas_MouseMove_2" Margin="234,213,197,110" >
+								<Canvas.Background>
+									<SolidColorBrush Color="White" Opacity="100"/>
+								</Canvas.Background>
+							</Canvas>
 						</Grid>
+
 					</TabPanel>
 
 				</TabItem>

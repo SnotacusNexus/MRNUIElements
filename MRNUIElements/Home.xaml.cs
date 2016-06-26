@@ -355,6 +355,12 @@ namespace MRNUIElements
 			AppointmentWebView.Height = this.Height;
 			AppointmentWebView.Width = this.Width;
 		}
+
+		private void button_Click(object sender, RoutedEventArgs e)
+		{
+			Page page = new CustomerAgreement();
+			NavigationService.Navigate(page);
+		}
 	}
 }
 
