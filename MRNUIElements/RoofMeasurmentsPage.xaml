@@ -1,14 +1,959 @@
 ﻿<Page x:Class="MRNUIElements.RoofMeasurmentsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Custom="http://schemas.awesomium.com/winfx"
+      xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MRNUIElements"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="RoofMeasurmentsPage">
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      Title="RoofMeasurmentsPage"
+      Width="1005"
+      Height="770"
+      Background="{StaticResource BackgroundGradient}"
+      Foreground="White"
+      mc:Ignorable="d">
 
-    <Grid>
+    <Page.Resources>
+        <CollectionViewSource x:Key="dTO_PlaneViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Plane}, CreateList=True}" />
+    </Page.Resources>
+   
+        <Grid x:Name="Maingrid"
+          Width="1000">
+            <DockPanel x:Name="Dock" >
+                <StackPanel Height="100" DockPanel.Dock="Top">
+
+                    <TextBlock Height=" 100 "
+                           FontSize="60"
+                           Foreground="White"
+                           Text="Roof Measurements/ Order"
+                           TextAlignment="Center" />
+                </StackPanel>
+                <Grid x:Name="grid1"
+                  Margin="0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  DataContext="{StaticResource dTO_PlaneViewSource}"
+                  DockPanel.Dock="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Eave Height:"
+                       Foreground="White" />
+                    <TextBox x:Name="eaveHeightTextBox"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding EaveHeight,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Eave Length:"
+                       Foreground="White" />
+                    <TextBox x:Name="eaveLengthTextBox"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding EaveLength,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="2"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Exception:"
+                       Foreground="White"
+                       Visibility="Collapsed" />
+                    <TextBox x:Name="exceptionTextBox"
+                         Grid.Row="2"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding Exception,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}"
+                         Visibility="Collapsed" />
+                    <Label Grid.Row="3"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Four And Up:"
+                       Foreground="White" />
+                    <TextBox x:Name="fourAndUpTextBox"
+                         Grid.Row="3"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding FourAndUp,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="4"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Group Number:"
+                       Foreground="White" />
+                    <TextBox x:Name="groupNumberTextBox"
+                         Grid.Row="4"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding GroupNumber,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="5"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Hip Valley:"
+                       Foreground="White" />
+                    <TextBox x:Name="hipValleyTextBox"
+                         Grid.Row="5"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding HipValley,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="6"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Inner Exception:"
+                       Foreground="White"
+                       Visibility="Collapsed" />
+                    <TextBox x:Name="innerExceptionTextBox"
+                         Grid.Row="6"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding InnerException,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}"
+                         Visibility="Collapsed" />
+                    <Label Grid.Row="7"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Inspection ID:"
+                       Foreground="White" />
+                    <TextBox x:Name="inspectionIDTextBox"
+                         Grid.Row="7"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding InspectionID,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="8"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Item Spec:"
+                       Foreground="White" />
+                    <TextBox x:Name="itemSpecTextBox"
+                         Grid.Row="8"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding ItemSpec,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="9"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Message:"
+                       Foreground="White" />
+                    <TextBox x:Name="messageTextBox"
+                         Grid.Row="9"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding Message,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="10"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Number Decking:"
+                       Foreground="White" />
+                    <TextBox x:Name="numberDeckingTextBox"
+                         Grid.Row="10"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding NumberDecking,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="11"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Num Of Layers:"
+                       Foreground="White" />
+                    <TextBox x:Name="numOfLayersTextBox"
+                         Grid.Row="11"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding NumOfLayers,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="12"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Pitch:"
+                       Foreground="White" />
+                    <TextBox x:Name="pitchTextBox"
+                         Grid.Row="12"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding Pitch,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="13"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Plane ID:"
+                       Foreground="White" />
+                    <TextBox x:Name="planeIDTextBox"
+                         Grid.Row="13"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding PlaneID,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="14"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Plane Type ID:"
+                       Foreground="White" />
+                    <TextBox x:Name="planeTypeIDTextBox"
+                         Grid.Row="14"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding PlaneTypeID,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="15"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Rake Length:"
+                       Foreground="White" />
+                    <TextBox x:Name="rakeLengthTextBox"
+                         Grid.Row="15"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding RakeLength,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="16"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Ridge Length:"
+                       Foreground="White" />
+                    <TextBox x:Name="ridgeLengthTextBox"
+                         Grid.Row="16"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding RidgeLength,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="17"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Square Footage:"
+                       Foreground="White" />
+                    <TextBox x:Name="squareFootageTextBox"
+                         Grid.Row="17"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding SquareFootage,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="18"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Step Flashing:"
+                       Foreground="White" />
+                    <TextBox x:Name="stepFlashingTextBox"
+                         Grid.Row="18"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding StepFlashing,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                    <Label Grid.Row="19"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Success Flag:"
+                       Foreground="White"
+                       Visibility="Collapsed" />
+                    <CheckBox x:Name="successFlagCheckBox"
+                          Grid.Row="19"
+                          Grid.Column="1"
+                          Margin="3"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Content=""
+                          IsChecked="{Binding SuccessFlag,
+                                              Mode=TwoWay,
+                                              NotifyOnValidationError=true,
+                                              ValidatesOnExceptions=true}"
+                          Visibility="Collapsed" />
+                    <Label Grid.Row="20"
+                       Grid.Column="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Content="Three And One:"
+                       Foreground="White" />
+                    <TextBox x:Name="threeAndOneTextBox"
+                         Grid.Row="20"
+                         Grid.Column="1"
+                         Width="120"
+                         Height="23"
+                         Margin="3"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Text="{Binding ThreeAndOne,
+                                        Mode=TwoWay,
+                                        NotifyOnValidationError=true,
+                                        ValidatesOnExceptions=true}" />
+                </Grid>
+
+                <StackPanel x:Name="stkpnl"
+                        Width="250"
+                        DockPanel.Dock="Right">
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Predominant Pitch"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="PrePitch"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Ridges"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="Ridges"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Hips"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="Hips"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Valleys"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="Valleys"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Rakes"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="Rakes"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Eaves"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="Eaves"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Total Area (OFF)"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="TotalAreaOFF"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="250"
+                               HorizontalAlignment="Stretch"
+                               Text="Shingle Brand"
+                               TextAlignment="Center" />
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="OrderBrand"
+                              Width="250"
+                              Height="23"
+                              HorizontalAlignment="Stretch"
+                              Background="Transparent"
+                              Foreground="White"
+                              Style="{DynamicResource ComboBoxStyle5}"
+                              Text="Select One">
+                            <ComboBoxItem>
+                                Owens Corning
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Certainteed
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="250"
+                               Text="New Shingle Color/Type"
+                               TextAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="NewShingleCombo"
+                              Width="250"
+                              Height="23"
+                              HorizontalAlignment="Stretch"
+                              Background="Transparent"
+                              Foreground="White"
+                              Style="{StaticResource ComboBoxStyle5}"
+                              Text="Select One">
+                            <ComboBoxItem>
+                                Duration-ShingleColor1
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Duration-ShingleColor2
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Duration-ShingleColor3
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Duration-ShingleColor4
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Duration-ShingleColor5
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Duration-ShingleColor6
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Duration-ShingleColor7
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Duration-ShingleColor8
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Duration-ShingleColor9
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge Tru Def-ShingleColor1
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge Tru Def-ShingleColor2
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge Tru Def-ShingleColor3
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge Tru Def-ShingleColor4
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge Tru Def-ShingleColor5
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge Tru Def-ShingleColor6
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge Tru Def-ShingleColor7
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge Tru Def-ShingleColor8
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge - ShingleColor1
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge - ShingleColor2
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge - ShingleColor3
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge - ShingleColor4
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge - ShingleColor5
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge - ShingleColor6
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge - ShingleColor7
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Oakridge - ShingleColor8
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Supreme - ShingleColor1
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Supreme - ShingleColor2
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Supreme - ShingleColor3
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Supreme - ShingleColor4
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Supreme - ShingleColor5
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Supreme - ShingleColor6
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Supreme - ShingleColor7
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Supreme - ShingleColor8
+                            </ComboBoxItem>
+
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="#Squares to Order"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderSqShingle"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="100"
+                               Text="% Waste"
+                               TextAlignment="Center" />
+                        <syncfusion:PercentTextBox x:Name="SliderWaste"
+                                               Width="50"
+                                               Height="23"
+                                               AllowMultipleSymbol="True"
+                                               ApplyNegativeForeground="True"
+                                               ApplyZeroColor="True"
+                                               Background="{x:Null}"
+                                               BorderBrush="{DynamicResource BackgroundGradient}"
+                                               CaretBrush="{DynamicResource ReverseBackgroundGradient}"
+                                               EnableFocusColors="True"
+                                               Foreground="White"
+                                               IsReadOnlyCaretVisible="True"
+                                               MaxValue="30"
+                                               MaxValueOnExceedMaxDigit="True"
+                                               MinValue="0"
+                                               MinValueOnExceedMinDigit="True"
+                                               NullValue="-1"
+                                               PercentDecimalDigits="0"
+                                               PercentValue="{Binding Value,
+                                                                      BindsDirectlyToSource=True,
+                                                                      ElementName=Slider,
+                                                                      Mode=TwoWay,
+                                                                      UpdateSourceTrigger=PropertyChanged}"
+                                               PositiveForeground="#FF17FF00"
+                                               ReadOnlyBackground="#FFD9FB00"
+                                               SelectionForeground="#FF7695FF"
+                                               TextAlignment="Center"
+                                               WatermarkTemplate="{DynamicResource DataTemplate1}"
+                                               WatermarkTextForeground="#FFA0A0A0"
+                                               ZeroColor="White">
+                            <syncfusion:PercentTextBox.FocusedBorderBrush>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Offset="0.05" Color="#FF5C97C1" />
+                                    <GradientStop Offset="1" Color="#FFC7E2F1" />
+                                    <GradientStop Offset="0.07" Color="#FFD1FF00" />
+                                </LinearGradientBrush>
+                            </syncfusion:PercentTextBox.FocusedBorderBrush>
+                        </syncfusion:PercentTextBox>
+                        <Slider x:Name="Slider"
+                            Width="100"
+                            AutoToolTipPlacement="BottomRight"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            BorderThickness="0"
+                            Foreground="White"
+                            LargeChange="5"
+                            Maximum="30"
+                            SmallChange="1"
+                            TickFrequency="5"
+                            TickPlacement="Both"
+                            Value="15" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Underlayment Type"
+                               TextAlignment="Center" />
+                        <ComboBox x:Name="UnderlaymentCombo"
+                              Width="100"
+                              Height="23"
+                              Background="Transparent"
+                              Foreground="White"
+                              Style="{DynamicResource ComboBoxStyle5}"
+                              Text="Select One">
+                            <ComboBoxItem>
+                                DeckDefense
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Pro Armor
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Gorilla Guard
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Hip/Ridge"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderHipandRidge"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="StarterStrip"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderStarter"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Rolls of Underlayment"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderUnderlayment"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap">
+                            <TextBox.SelectionBrush>
+                                <SolidColorBrush Color="#FF3399FF" />
+                            </TextBox.SelectionBrush>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Box/RoofNails"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderRoofNails"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Buckets/Button Caps"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderButtonCaps"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Drip Edge"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderDripEdge"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="RidgeVent"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderRidgeVent"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Turtle Vents"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderTurtleVent"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="3/1 Pipe Boot"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="Order3PipeBoot"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="4'' Pipe Boot"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="Order4PipeBoot"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Caulk to Match(tube)"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderCaulk"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="150"
+                               Text="Paint To Match(can)"
+                               TextAlignment="Center" />
+                        <TextBox x:Name="OrderPaint"
+                             Width="100"
+                             Height="23"
+                             HorizontalAlignment="Right"
+                             Style="{DynamicResource ComboBoxEditableTextBox}"
+                             TextWrapping="Wrap" />
+                    </StackPanel>
+
+
+                    <Button x:Name="button"
+                        Height="36"
+                        Margin="60,5"
+                        Click="button_Click"
+                        Content="Switch View"
+                        Style="{StaticResource ResourceKey=normal}" />
+
+
+                </StackPanel>
+
+
+                <Grid DockPanel.Dock="Top">
+                    <Grid x:Name="View"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch" >
+                        <Canvas x:Name="canvas" Margin="0" >
+                            <Custom:WebControl x:Name="AppointmentWebView" Visibility="Collapsed"/>
+
+                            <TextBox x:Name="textbox"
+                         Height="{Binding ActualHeight,
+                                          ElementName=grid1,
+                                          Mode=OneWay}"
+                         VerticalAlignment="Top"
+                         Visibility="Collapsed" />
+                            <Image x:Name="image" Width="{Binding ElementName=canvas, Path=ActualWidth}" Height="{Binding ElementName=canvas, Path=ActualHeight}" ></Image>
+                        
+                        </Canvas>
+                    </Grid>
+                </Grid>
+
+            </DockPanel>
+        </Grid>
+
         
-    </Grid>
 </Page>

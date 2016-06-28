@@ -94,16 +94,30 @@
     </Reference>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="ReachFramework" />
+    <Reference Include="Syncfusion.Chart.Wpf, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Compression.Base, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Data.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Gauge.Wpf, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Grid.Base, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.Grouping.Base, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.GridCommon.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.GridConverter.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Maps.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Pdf.Base, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.PdfViewer.Wpf, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfBusyIndicator.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfChart.Wpf, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfGauge.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfGrid.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfHubTile.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfInput.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfMaps.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfRadialMenu.Wpf, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfSchedule.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfShared.WPF, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Wpf, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Wpf, Version=14.1451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -208,6 +222,9 @@
     <Compile Include="CapOutPage.xaml.cs">
       <DependentUpon>CapOutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CapOutSheet.xaml.cs">
+      <DependentUpon>CapOutSheet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Inspection.cs" />
     <Compile Include="MRNCalendar.cs" />
     <Compile Include="PaymentEntryPage.xaml.cs">
@@ -298,6 +315,7 @@
     <Compile Include="LeadSelectionPage.xaml.cs">
       <DependentUpon>LeadSelectionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PDFTextExtractor.cs" />
     <Compile Include="PrivateMessagingPage.xaml.cs">
       <DependentUpon>PrivateMessagingPage.xaml</DependentUpon>
     </Compile>
@@ -406,6 +424,10 @@
     <Page Include="CapOutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CapOutSheet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="PaymentEntryPage.xaml">
       <SubType>Designer</SubType>
@@ -743,6 +765,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extended WPF Toolkit Binaries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\Cannon Order Form OC-Editable.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

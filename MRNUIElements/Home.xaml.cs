@@ -313,7 +313,7 @@ namespace MRNUIElements
 
 		private void ViewCapOutButton(object sender, RoutedEventArgs e)
 		{
-			CapOutPage Page = new CapOutPage();
+			CapOutSheet Page = new CapOutSheet();
 			this.NavigationService.Navigate(Page);
 		}
 
@@ -326,7 +326,7 @@ namespace MRNUIElements
 			}
 			else {
 				ShowOnMap(null, MakeAddress(leadAddressText.Text, "", "", leadCitySTZipText.Text));
-				b = true; ;
+				b = true; 
 			}
 		}
 
@@ -358,7 +358,7 @@ namespace MRNUIElements
 
 		private void button_Click(object sender, RoutedEventArgs e)
 		{
-			Page page = new CustomerAgreement();
+			Page page = new RoofMeasurmentsPage();
 			NavigationService.Navigate(page);
 		}
 	}
