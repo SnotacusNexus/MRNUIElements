@@ -75,6 +75,8 @@ namespace MRNUIElements
 			this.NavigationService.Navigate(Page);
 
 		}
+
+
 		private void Navigate(int nNavSeq)
 		{
 		
@@ -84,58 +86,58 @@ namespace MRNUIElements
 
 					case 0:
 						{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name = "Lead_Generation");
-						break;
+                        Lead_Generation.Focus();
+                        break;
 						}
 					case 1:
 						{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name = "Customer_Info");
-						break;
+                        Customer_Info.Focus();
+
+                        break;
 						}
 					case 2:
 						{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name= "Insurance");
+                        Insurance.Focus();
 						break;
 						}
 					case 3:
 						{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name = "Site_Survey");
+						Site_Survey.Focus();
 						break;
 					}
 					case 4:
 						{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name = "Damage_Assessment");
+						Damage_Assessment.Focus();
 						break;
 					}
 					case 5:
 						{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name = "Claim_Process");
+					    Claim_Process.Focus();
 						break;
 					}
 					case 6:
 					{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name = "Project_At_Hand");
+						Project_At_Hand.Focus();
 						break;
 					}
 					case 7:
 					{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name = "Upgrades");
+						Upgrades.Focus();
 						break;
 					}
 					case 8:
 					{
-						TabItem Page = new TabItem();
-						this.NavigationService.Navigate(Page.Name = "Finalize_Agreement");
+						Finalize_Agreement.Focus();
 						break;
 					}
+
+                case 9:
+                    {
+                        //Function to file claim 
+                        //on signature success then send welcome email
+                        break;
+
+                    }
 				}
 			}
 
@@ -147,11 +149,13 @@ namespace MRNUIElements
 
 		private void Canvas_MouseMove_1(object sender, System.Windows.Input.MouseEventArgs e)
 		{
+            
 			if (e.LeftButton == MouseButtonState.Pressed)
 			{
 				Line line = new Line();
+                line.StrokeThickness = 2;
 
-				line.Stroke = line.Stroke = Brushes.Black; 
+                line.Stroke = line.Stroke = Brushes.Black; 
 				line.X1 = currentPoint.X;
 				line.Y1 = currentPoint.Y;
 				line.X2 = e.GetPosition(this).X;
@@ -171,6 +175,7 @@ namespace MRNUIElements
 			if (e.LeftButton == MouseButtonState.Pressed)
 			{
 				Line line = new Line();
+                line.StrokeThickness = 2;
 				line.Stroke = Brushes.Black;
 
 				line.X1 = currentPoint.X;
@@ -181,12 +186,38 @@ namespace MRNUIElements
 
 				currentPoint = e.GetPosition(this);
 
-				paintSurface.Children.Add(line);
+				paintSurface1.Children.Add(line);
 
 			}
 		}
+        private void Canvas_MouseDown_3(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+                currentPoint = e.GetPosition(this);
+        }
 
-		private void Roof_Inspection_Click(object sender, RoutedEventArgs e)
+        private void Canvas_MouseMove_3(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Line line = new Line();
+                line.StrokeThickness = 2;
+                line.Stroke = Brushes.Black;
+
+                line.X1 = currentPoint.X;
+                line.Y1 = currentPoint.Y;
+
+                line.X2 = e.GetPosition(this).X;
+                line.Y2 = e.GetPosition(this).Y;
+
+                currentPoint = e.GetPosition(this);
+
+                paintSurface2.Children.Add(line);
+
+            }
+        }
+
+        private void Roof_Inspection_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
@@ -215,7 +246,7 @@ namespace MRNUIElements
 
 		private void DisplaySignatureBox()
 		{
-			
+			//
 
 		}
 	}

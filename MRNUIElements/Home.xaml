@@ -190,7 +190,7 @@
                   RowBackground="#FFB7F9F9"
                   RowDetailsVisibilityMode="VisibleWhenSelected"
                   SelectionChanged="dTO_CalendarDataDataGrid_SelectionChanged"
-                  d:LayoutOverrides="TopMargin, BottomMargin">
+                  d:LayoutOverrides="TopMargin, BottomMargin" BorderBrush="{DynamicResource BackgroundGradient}" Foreground="Black">
             <DataGrid.Columns>
                 <DataGridTemplateColumn x:Name="appointmentTypeIDColumn"
                                         Width="SizeToHeader"
@@ -389,7 +389,7 @@
                              Foreground="White"
                              Header="Lead Information:"
                              IsSelected="True"
-                             Style="{DynamicResource TabItemStyle2}">
+                             Style="{DynamicResource TabItemStyle1}">
                         <Grid Width="580"
                               Height="322"
                               Margin="0,-14,-4,-13"
@@ -487,7 +487,7 @@
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top"
                                         Click="button_Click"
-                                        Content="CA" />
+                                        Content="CA" Style="{DynamicResource normal}" />
                             </GroupBox>
                             <GroupBox x:Name="groupBox_Copy"
                                       Margin="0,10,155,112"
@@ -582,14 +582,14 @@
                                       VerticalAlignment="Bottom"
                                       Foreground="White"
                                       Header="Comments:"
-                                      d:LayoutOverrides="HorizontalAlignment" />
+                                      d:LayoutOverrides="HorizontalAlignment" BorderBrush="{DynamicResource ReverseBackgroundGradient}" />
                             <TextBox x:Name="LeadCommentsText"
                                      Height="60"
                                      Margin="10,0,167,29"
                                      VerticalAlignment="Bottom"
                                      Text="TextBox"
                                      TextWrapping="Wrap"
-                                     d:LayoutOverrides="HorizontalAlignment" />
+                                     d:LayoutOverrides="HorizontalAlignment" Background="{x:Null}" Foreground="White" />
                             <Button x:Name="DocumentUpload"
                                     Width="147"
                                     Height="40"
@@ -653,7 +653,7 @@
                              GotFocus="TabItem_GotFocus"
                              Header="Directions"
                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                             Style="{DynamicResource TabItemStyle1}">
+                             Style="{DynamicResource TabItemStyle1}" BorderBrush="{DynamicResource ReverseBackgroundGradient}">
                         <Grid x:Name="grid" Background="Transparent">
                             <Canvas x:Name="canvas"
                                     Width="584"

@@ -80,6 +80,7 @@ namespace MRNUIElements
 						p.PaymentDate = paymentDateDatePicker.SelectedDate.Value;
 						p.PaymentDescriptionID = ((DTO_LU_PaymentDescription)paymentTypeComboBox.SelectedValue).PaymentDescriptionID;
 						p.ClaimID = ((DTO_Claim)claimIDComboBox.SelectedValue).ClaimID;
+                        p.PaymentTypeID = 1;
 						await s1.AddPayment(p);
 					
 

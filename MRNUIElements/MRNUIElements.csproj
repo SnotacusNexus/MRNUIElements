@@ -39,7 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <DocumentationFile>
     </DocumentationFile>
   </PropertyGroup>
@@ -665,8 +665,56 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ActiveDealsPage.datasource" />
+    <None Include="AddClaimDocumentation.datasource" />
+    <None Include="AddContextToPhotoPage.datasource" />
+    <None Include="AddressZipcodeValidation.datasource" />
+    <None Include="AddUserPage.datasource" />
+    <None Include="AdjustmentResultsPage.datasource" />
+    <None Include="AnalogFileUploadPage.datasource" />
+    <None Include="AnalogFileUploadPage.WhenClicked.datasource" />
+    <None Include="App.datasource" />
+    <None Include="App.RedLetterDayConverter.datasource" />
+    <None Include="Appointments.datasource" />
+    <None Include="Appointments.TodaysAppointment.datasource" />
+    <None Include="BossPage.datasource" />
+    <None Include="BranchManagerPage.datasource" />
+    <None Include="CalendarPage.datasource" />
+    <None Include="CallLogPage.datasource" />
+    <None Include="CapOut.datasource" />
+    <None Include="CapOutPage.datasource" />
+    <None Include="CapOutSheet.datasource" />
+    <None Include="ClaimDamagePage.datasource" />
+    <None Include="ClaimDetailsPage.datasource" />
+    <None Include="ClaimInspectionWizard.datasource" />
+    <None Include="ClaimItPage.datasource" />
+    <None Include="ClaimStatusPage.datasource" />
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="ContactsPage.datasource" />
+    <None Include="ContestPage.datasource" />
+    <None Include="CustomerAgreement.datasource" />
+    <None Include="DamageIdentifyPage.datasource" />
+    <None Include="DisplayDocumentsPage.datasource" />
+    <None Include="DrawMe.datasource" />
+    <None Include="DrawPlanePage.datasource" />
+    <None Include="EmployeeInfoPage.datasource" />
+    <None Include="ExteriorInspectionWizard.datasource" />
+    <None Include="GetClaimInfo.datasource" />
+    <None Include="GetClaimsPage.datasource" />
+    <None Include="GetEaveLength.datasource" />
+    <None Include="GutterInspectionWizard.datasource" />
+    <None Include="Inspection.datasource" />
+    <None Include="InsuranceMortgageCompanyInfoPage.datasource" />
+    <None Include="InteriorInspectionWizard.datasource" />
+    <None Include="InvoicePage.datasource" />
+    <None Include="LeadSelectionPage.datasource" />
+    <None Include="ListViewWithDetailResultsPage.datasource" />
+    <None Include="Login.datasource" />
+    <None Include="MainWindow.datasource" />
+    <None Include="ModifyClaimActivity.datasource" />
+    <None Include="MRNCalendar.datasource" />
     <None Include="MRNNexus_Model.DTO_AdditionalSupply.datasource" />
     <None Include="MRNNexus_Model.DTO_Address.datasource" />
     <None Include="MRNNexus_Model.DTO_Adjuster.datasource" />
@@ -721,13 +769,44 @@
     <None Include="MRNNexus_Model.DTO_Scope.datasource" />
     <None Include="MRNNexus_Model.DTO_SurplusSupplies.datasource" />
     <None Include="MRNNexus_Model.DTO_User.datasource" />
-    <None Include="MRNNexus_Model.DTO_Vendor.datasource" />
+    <None Include="MRNNexus_Model.DTO_Vendor1.datasource" />
+    <None Include="MRNUIElements.Properties.Resources.datasource" />
+    <None Include="MRNUIElements.Properties.Settings.datasource" />
+    <None Include="MRN_Catalog.datasource" />
+    <None Include="mScrollingText.datasource" />
+    <None Include="MyDialog.datasource" />
+    <None Include="MyMRNHUDPage.datasource" />
+    <None Include="NexusHome.datasource" />
     <None Include="packages.config" />
+    <None Include="PaymentEntryPage.datasource" />
+    <None Include="PDFTextExtractor.datasource" />
+    <None Include="PrivateMessagingPage.datasource" />
+    <None Include="ProductionDirectorPage.datasource" />
+    <None Include="ProductionPage.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Rake_Length.datasource" />
+    <None Include="ReportProblemPage.datasource" />
+    <None Include="ResetPasswordPage.datasource" />
+    <None Include="RidgeLength.datasource" />
+    <None Include="RoofDamagePage.datasource" />
+    <None Include="RoofInspectionToolbar.datasource" />
+    <None Include="RoofInspectionWizard.datasource" />
+    <None Include="RoofMeasurmentsPage.datasource" />
+    <None Include="RoofOrderPage.datasource" />
+    <None Include="SalesLiteraturePage.datasource" />
+    <None Include="Schedule.datasource" />
+    <None Include="ScopeViewer.datasource" />
+    <None Include="ServiceLayer.datasource" />
+    <None Include="ShapeCanvas.datasource" />
+    <None Include="SignaturePage.datasource" />
+    <None Include="SupplementPage.datasource" />
+    <None Include="TextInputToVisibilityConverter.datasource" />
+    <None Include="UpgradeSelectionPage.datasource" />
+    <None Include="WelcomeWindow.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -764,6 +843,7 @@
     <Resource Include="ResourceFiles\XMark.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\" />
     <Folder Include="Extended WPF Toolkit Binaries\" />
   </ItemGroup>
   <ItemGroup>

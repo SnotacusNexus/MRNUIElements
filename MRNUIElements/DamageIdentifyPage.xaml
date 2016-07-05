@@ -52,7 +52,7 @@
 					<TextBlock Grid.Row="4" Text="{Binding SelectedAnimal}" Grid.Column="2" Margin="10,5,5,0" VerticalAlignment="Center"/>
 
 					<TextBlock Grid.Row="5" Text="Example 6" VerticalAlignment="Center"/>
-					<ComboBox Grid.Row="5" Grid.Column="1" x:Name="cbEx6" ItemsSource="{Binding Source={StaticResource WorkmenData}}" DisplayMemberPath="@Name" SelectedValuePath="@Name" Margin="5"/>
+					
 					<TextBlock Grid.Row="5" Grid.Column="2" Margin="10,5,5,0" VerticalAlignment="Center" Text="{Binding SelectedValue, ElementName=cbEx6}"/>
 
 					<TextBlock Grid.Row="6" Text="Example 8" VerticalAlignment="Center"/>
