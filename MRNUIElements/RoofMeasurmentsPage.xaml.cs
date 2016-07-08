@@ -420,12 +420,70 @@ namespace MRNUIElements
             OrderHipandRidge.Text = FigureHipRidge().ToString();
             OrderDripEdge.Text = FigureDripedge().ToString();
             OrderStarter.Text = FigureStarter().ToString();
-            if (UnderlaymentCombo.SelectedIndex > 0)
+            if (UnderlaymentCombo.SelectedIndex<2)
                 OrderUnderlayment.Text = FigureUnderlayment(10).ToString();
             else
                 OrderUnderlayment.Text = FigureUnderlayment(4).ToString();
             OrderPaint.Text = "3";
             OrderCaulk.Text = "3";
+
+            InstallerPrice.Text = (FigureWaste(Slider.Value, TotalSQFTOFF) * (double)60).ToString();
+            
+            VendorPrice.Text = FigureRoofCost(OrderBrandType.SelectedIndex, FigureWaste(Slider.Value, TotalSQFTOFF), FigureHipRidge(), FigureStarter(), UnderlaymentCombo.SelectedIndex, FigureRidgevent(), 0, FigureUnderlayment(), FigureIceAndWater(), 3, 1, 3, 2, 3, FigureRoofNails(), FigurePlasticCaps(), FigureDripedge()).ToString() ;
+        }
+
+      public double FigureRoofCost(int shingletype=0, double shingleON=0,  int bdlHR=0, int bdlstart=0, int ULType=0, int rv=0, int tb=0, int ULRolls=0, int IandW=0, int i3n1=0, int i4in=0, int canpt=0, int OSB=0,int caulk=0, int rnail=0, int pcbuck=0, int DE=0)
+        {
+
+            double EstimatedOCCost = 0;
+            double prvent = 6.50;
+
+
+            double pButtonCap = 21.00;
+            double pRNails = 22.00;
+            double pSprayPaint = 5.29;
+            double pCaulk = 4.71;
+            double p31pjb = 4.12;
+            double p4ipjb = 4.12;
+            double pOCHRShingle = 37.50;
+            double pOCStarterShin = 30;
+            double pOCWeatherlockG = 56.71;
+            double pTBSlant = 14.08;
+            double[] OCShingle = { 71.00, 66.00, 65.00, 54.00 };//0=Duration,1=TruDef,2=Oakridge,3=Supreme
+            double[] Underlayment = { 120, 65.00, 32.67 };//0=DeckDefense,1=ProArmor,2=GorillaGuard
+            double pOSB = 11;
+            double taxrate = 1.06;
+            double pDE = 6.5;
+            try
+            {
+                if (shingletype > -1 && shingletype < OCShingle.Count())
+                EstimatedOCCost += (OCShingle[shingletype] * shingleON);
+                else EstimatedOCCost += (OCShingle[1] * shingleON);
+                EstimatedOCCost += bdlHR * pOCHRShingle;
+                EstimatedOCCost += bdlstart * pOCStarterShin;
+                if (ULType > -1 && ULType < Underlayment.Count())
+                    EstimatedOCCost += Underlayment[ULType] * ULRolls;
+                else EstimatedOCCost += Underlayment[1] * ULRolls;
+                EstimatedOCCost += tb * pTBSlant;
+                EstimatedOCCost += IandW * pOCWeatherlockG;
+                EstimatedOCCost += rv * prvent;
+                EstimatedOCCost += i3n1 * p31pjb;
+                EstimatedOCCost += i4in * p4ipjb;
+                EstimatedOCCost += canpt * pSprayPaint;
+                EstimatedOCCost += caulk * pCaulk;
+                EstimatedOCCost += rnail * pRNails;
+                EstimatedOCCost += pcbuck * pButtonCap;
+                EstimatedOCCost += pOSB * OSB;
+                EstimatedOCCost += pDE * DE;
+
+                return EstimatedOCCost * taxrate;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                throw;
+            }
+           
         }
 
 
@@ -607,9 +665,9 @@ namespace MRNUIElements
 
         private void OrderBrand_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            OrderBrandType.ItemsSource = PopulateLists(OrderBrand.SelectedIndex*5);
-          //  DoMath();
+            if (OrderBrand.SelectedIndex > -1)
+                 OrderBrandType.ItemsSource = PopulateLists(OrderBrand.SelectedIndex+(1*5)-1);
+            ShingleType.Text = OrderBrand.SelectionBoxItem.ToString() + " - " + OrderBrandType.SelectionBoxItem.ToString() ; DoMath();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -629,7 +687,7 @@ namespace MRNUIElements
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            GoFetch(2, null, new RoofMeasurmentsPage(), null);
+            NavigationService.Navigate(new RoofMeasurmentsPage());
         }
 
         private void toggleButton_Checked(object sender, RoutedEventArgs e)
@@ -663,7 +721,6 @@ namespace MRNUIElements
                 double dtemp = 0;
                 dtemp = a - (a * (Slider.Value * .01));
                 TotalAreaOFF.Text = dtemp.ToString();
-
                 DoMath();
             }
             else OrderSqShingle.Text = FigureWaste(Slider.Value, TotalSQFTOFF).ToString();
@@ -685,13 +742,112 @@ namespace MRNUIElements
 
         private void OrderBrandType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (OrderBrand.SelectedIndex > -1 && OrderBrandType.SelectedIndex > -1)
-                if (NewShingleCombo.HasItems)
-                    NewShingleCombo.Items.Clear();
-            else
-                    NewShingleCombo.ItemsSource = PopulateLists((OrderBrand.SelectedIndex * 5) + OrderBrandType.SelectedIndex + 1);
-            NewShingleCombo.ItemsSource = PopulateLists((OrderBrand.SelectedIndex * 5) + OrderBrandType.SelectedIndex + 1);
+           if (OrderBrandType.SelectedIndex > -1)
+               NewShingleCombo.ItemsSource = PopulateLists((OrderBrand.SelectedIndex * 5) + OrderBrandType.SelectedIndex);
+         
             DoMath();
+        }
+
+       
+        private void maskedTextBox_CustomerNameChanged(object sender, TextChangedEventArgs e)
+        {
+            //  CustomerName.Text = maskedTextBoxCustomerName.Text;
+            DoMath();
+
+        }
+
+        private void maskedTextBox_StreetAddressChanged(object sender, TextChangedEventArgs e)
+        {
+            //  CustomerAddress.Text = maskedTextBoxCustomerAddress.Text;
+            DoMath();
+        }
+
+        private void maskedTextBox_CSZChanged(object sender, TextChangedEventArgs e)
+        {
+            string str = string.Empty;
+            str = maskedTextBoxCustomerCSZ.Text;
+            AddressZipcodeValidation azv = new AddressZipcodeValidation();
+
+            if (str.All((char.IsNumber)) && str.Count() == 5)
+            {
+                string citystate = azv.CityStateLookupRequest(str);
+
+                string city = citystate.Substring(citystate.IndexOf("<City>") + 6, citystate.IndexOf("</City>") - citystate.IndexOf("<City>") - 6);
+
+                string state = AddressZipcodeValidation.ConvertStateToAbbreviation(citystate.Substring(citystate.IndexOf("<State>") + 7, citystate.IndexOf("</State>") - citystate.IndexOf("<State>") - 7));
+                CustomerAddressCSZ.Text = CustomerAddress.ToString();
+                string[] w = city.Split(' ');
+                city = "";
+                int i = 0;
+
+                foreach (string t in w)
+                {
+                    city += t.Substring(0, 1).ToUpper();
+                    city += t.Substring(1, t.Length - 1).ToLower();
+                    if (i > 0)
+                        city += " ";
+
+                }
+                CustomerAddressCSZ.Text = city + ", " + state + "  " + str;
+            }
+
+            DoMath();
+
+            
+        }
+
+        private void maskedTextBox_CommentsChanged(object sender, TextChangedEventArgs e)
+        {
+             
+            DoMath();
+        }
+
+        private void SalespersonCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            DoMath();
+        }
+
+        private void OrderPaint_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            DoMath();
+        }
+
+        private void OrderCaulk_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            DoMath();
+        }
+
+        private void Order4PipeBoot_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           DoMath();
+        }
+
+        private void Order3PipeBoot_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           DoMath();
+        }
+
+        private void OrderTurtleVent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           DoMath();
+        }
+
+        private void DripedgeColorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           DoMath();
+        }
+
+        private void UnderlaymentCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            double[] dblrolls = { 10, 10, 4 };
+            if (UnderlaymentCombo.SelectedIndex > -1)
+            {
+                Underlayment_Type.Text = " Synthetic Underlayment ("+dblrolls[UnderlaymentCombo.SelectedIndex].ToString()+"sq): " + FigureUnderlayment((int)dblrolls[UnderlaymentCombo.SelectedIndex]).ToString() + " (Rolls)->Type: " + UnderlaymentCombo.SelectedValue.ToString() + "";
+                DoMath();
+
+            }     
+              
         }
     }
 }
