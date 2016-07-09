@@ -1,0 +1,63 @@
+﻿<Page x:Class="MRNUIElements.DisplayDocumentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements"
+      mc:Ignorable="d" 
+    
+      Title="Claim Documents">
+
+	<Grid Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<StackPanel><TextBlock FontSize="25" Foreground="White" FontWeight="Bold" TextAlignment="Center" Padding="10" Text="Claim Documents"/>
+		<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Button Style="{StaticResource normal}"
+							Content="Task1"
+				
+						/>
+					<Button Style="{StaticResource normal}"
+							Content="Task2"
+					
+						/>
+					<Button Style="{StaticResource normal}" 
+							Content="Task3"
+					
+						/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Button Style="{StaticResource normal}" 
+							Content="Task4"
+				
+						/>
+					<Button Style="{StaticResource normal}" 
+							Content="Task5"
+					
+						/>
+					<Button Style="{StaticResource normal}" 
+							Content="Task6"					
+						/>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Button Style="{StaticResource normal}" 
+							Content="Task7"					
+						/>
+					<Button Style="{StaticResource normal}"
+							Content="Task8"						
+						/>
+
+					<Button Style="{StaticResource normal}"
+							Content="Task9"				
+						/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+
+
+				<Button Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" Click="LogOut" Style="{StaticResource normal}">
+					<TextBlock FontSize="16" Foreground="White" Text="Log Out" TextWrapping="WrapWithOverflow" Width="150" TextAlignment="Center"/>
+				</Button>
+			</StackPanel>
+		</StackPanel>
+		</StackPanel>
+	</Grid>
+</Page>

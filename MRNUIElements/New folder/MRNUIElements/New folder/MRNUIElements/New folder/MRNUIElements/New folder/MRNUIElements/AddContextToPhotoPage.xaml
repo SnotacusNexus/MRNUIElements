@@ -1,0 +1,17 @@
+﻿<Page x:Class="MRNUIElements.AddContextToPhotoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Add Context To Document Page">
+
+
+    <Grid Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical">
+            <TextBlock FontSize="25" Foreground="White" FontWeight="Bold" TextAlignment="Center" Padding="10" Text="Add Text to this document"/>
+		</StackPanel>
+    </Grid>
+</Page>

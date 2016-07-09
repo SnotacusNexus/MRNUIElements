@@ -150,35 +150,41 @@ namespace MRNUIElements
 		{
 			double exp = 0;
 			{
-				if (ReceiptAmount1Text.Value != null)
+				//if (ReceiptAmount1Text.Value != null)
 					exp += (double)ReceiptAmount1Text.Value;
-				if (ReceiptAmount2Text.Value != null)
+			//	if (ReceiptAmount2Text.Value != null)
 					exp += (double)ReceiptAmount2Text.Value;
-				if (ReceiptAmount3Text.Value != null)
+				//if (ReceiptAmount3Text.Value != null)
 					exp += (double)ReceiptAmount3Text.Value;
-				if (ReceiptAmount4Text.Value != null)
+				//if (ReceiptAmount4Text.Value != null)
 					exp += (double)ReceiptAmount4Text.Value;
-				if (ReceiptAmount5Text.Value != null)
+				//if (ReceiptAmount5Text.Value != null)
 					exp += (double)ReceiptAmount5Text.Value;
 			}
 			return exp;
 		}
 
 
-		private double FigureJobMaterialCost()
+        private double FigureJobMaterialCost(double MaterialBillAmount = 0, double BringBackAmount = 0)
 		{
-			if ((MaterialBillAmountText.Value != null) && (BringBackAmountText.Value != null))
-				return (double)MaterialBillAmountText.Value + (double)BringBackAmountText.Value;
-			return 0;
+            if (MaterialBillAmountText.Value != null)
+                MaterialBillAmount = (double)MaterialBillAmountText.Value;
+
+            if (BringBackAmountText.Value != null)
+                BringBackAmount = (double)BringBackAmountText.Value;
+
+
+            return (double)MaterialBillAmount + (double)BringBackAmount;
+			//return 0;
 		}
 
 		private double FigureScopeDiff()
 		{
 			if (OriginalScopeAmountText.Value == null) OriginalScopeAmountText.Value = 0;
 			if (FinalScopeAmount.Value == null) FinalScopeAmount.Value = 0;
-			if (((double)OriginalScopeAmountText.Value > 0 || OriginalScopeAmountText.Value != null) && ((double)FinalScopeAmount.Value > 0 || (FinalScopeAmount.Value != null)))
+			//if (((double)OriginalScopeAmountText.Value > 0 || OriginalScopeAmountText.Value != null) && ((double)FinalScopeAmount.Value > 0 || (FinalScopeAmount.Value != null)))
 				return  (double)FinalScopeAmount.Value - (double)OriginalScopeAmountText.Value;
-			return 0;
+		//	return 0;
 
 		}
 
@@ -186,32 +192,32 @@ namespace MRNUIElements
 		{
 			double TotalExpense = 0;
 
-			if (RoofLaborBillAmountText.Value != null)
-				TotalExpense += (double)RoofLaborBillAmountText.Value;
-			if (InteriorBillAmountText.Value != null)
-				TotalExpense += (double)InteriorBillAmountText.Value;
-			if (ExteriorBillAmountText.Value != null)
-				TotalExpense += (double)ExteriorBillAmountText.Value;
-			if (GutterBillAmountText.Value != null)
-				TotalExpense += (double)GutterBillAmountText.Value;
-			if (MiscBillAmount.Value != null)
-				TotalExpense += (double)MiscBillAmount.Value;
-			if (KnockerReferralAmountText.Value != null)
-				TotalExpense += (double)KnockerReferralAmountText.Value;
-			if (RoofMaterialExpenseSubtotalText.Value != null)
-				TotalExpense += (double)RoofMaterialExpenseSubtotalText.Value;
-			if (OverheadAmountText.Value != null)
-				TotalExpense += (double)OverheadAmountText.Value;
+            if (RoofLaborBillAmountText.Value == null) RoofLaborBillAmountText.Value = 0;
+                 TotalExpense += (double)RoofLaborBillAmountText.Value;
+            if (InteriorBillAmountText.Value == null) InteriorBillAmountText.Value = 0;
+                 TotalExpense += (double)InteriorBillAmountText.Value;
+            if (ExteriorBillAmountText.Value == null) ExteriorBillAmountText.Value = 0;
+                 TotalExpense += (double)ExteriorBillAmountText.Value;
+            if (GutterBillAmountText.Value == null) GutterBillAmountText.Value = 0;
+                 TotalExpense += (double)GutterBillAmountText.Value;
+            if (MiscBillAmount.Value == null) MiscBillAmount.Value = 0;
+                 TotalExpense += (double)MiscBillAmount.Value;
+            if (KnockerReferralAmountText.Value == null) KnockerReferralAmountText.Value = 0;
+                 TotalExpense += (double)KnockerReferralAmountText.Value;
+            if (RoofMaterialExpenseSubtotalText.Value == null) RoofMaterialExpenseSubtotalText.Value = 0;
+                 TotalExpense += (double)RoofMaterialExpenseSubtotalText.Value;
+            if (OverheadAmountText.Value == null) OverheadAmountText.Value = 0;
+                 TotalExpense += (double)OverheadAmountText.Value;
 
 			return TotalExpense;
 		}
 
 		private double TotalProfit()
 		{
-			if (ChecksTotal() > 0 || TotalExpense() > 0)
+		//	if (ChecksTotal() > 0 || TotalExpense() > 0)
 				return ChecksTotal() - TotalExpense();
 
-			return 0;
+		//	return 0;
 		}
 
 		private double FigureRoofersBill(double NOS, bool isNC=false)
@@ -241,7 +247,7 @@ namespace MRNUIElements
         private void Initialize()
         {
            
-            NumberOfSquaresAmountText.Value = 0;
+            NumberOfSquaresAmountText.Value = 1;
             MaterialBillAmountText.Value = 0;
             BringBackAmountText.Value = 0;
           
@@ -301,8 +307,9 @@ namespace MRNUIElements
         }
 
 
-		private void CapOutJob(double TotChk = 0, double TotExp = 0, double NoSq = 1, double splitvar = 50, double ohvar = 10, double smp = .25)
+		private void CapOutJob(double TotChk = 0, double TotExp = 0, double NoSq = .01, double splitvar = 50, double ohvar = 10, double smp = 25)
 		{
+            if (NumberOfSquaresAmountText.Value != 0)
             NoSq = (double)NumberOfSquaresAmountText.Value;
             InitialDrawAmountText.Value = 500;
             if (NoSq != 0)
@@ -369,10 +376,10 @@ namespace MRNUIElements
 		{
 			{
 				SettlementDifferenceAmount.Value = (decimal)FigureScopeDiff();
-				
 
-				if (NumberOfSquaresAmountText.Value > 0)
-					CapOutJob((double)ChecksTotal(), (double)TotalExpense(), (double)NumberOfSquaresAmountText.Value, (double)SalespersonSplitText.PercentValue, (double)OverheadMultiplierAmountText.PercentValue, (double)2.5);
+
+                if (NumberOfSquaresAmountText.Value != 0)
+					CapOutJob((double)ChecksTotal(), (double)TotalExpense(), (double)NumberOfSquaresAmountText.Value, (double)SalespersonSplitText.PercentValue, (double)OverheadMultiplierAmountText.PercentValue, (double)25);
 			}
 		}
 		#endregion
@@ -517,6 +524,54 @@ namespace MRNUIElements
 		}
 
 
-		#endregion
-	}
+        #endregion
+
+        private void ZipcodeText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string str = string.Empty;
+            str = ZipcodeText.Text;
+            AddressZipcodeValidation azv = new AddressZipcodeValidation();
+
+            if (str.All((char.IsNumber)) && str.Count() == 5)
+            {
+                if (azv.CityStateLookupRequest(str) == null)
+                {
+                    System.Windows.Forms.MessageBox.Show("No such zipcode!");
+                    ZipcodeText.Text = str = string.Empty;
+                    return;
+                }
+                string citystate = azv.CityStateLookupRequest(str);
+
+                string city = citystate.Substring(citystate.IndexOf("<City>") + 6, citystate.IndexOf("</City>") - citystate.IndexOf("<City>") - 6);
+
+                string state = AddressZipcodeValidation.ConvertStateToAbbreviation(citystate.Substring(citystate.IndexOf("<State>") + 7, citystate.IndexOf("</State>") - citystate.IndexOf("<State>") - 7));
+                ZipcodeText.Text = CustomerAddressText.ToString();
+                string[] w = city.Split(' ');
+                city = "";
+                int i = 0;
+
+                foreach (string t in w)
+                {
+                    city += t.Substring(0, 1).ToUpper();
+                    city += t.Substring(1, t.Length - 1).ToLower();
+                    if (i > 0)
+                        city += " ";
+
+                }
+
+
+
+                //	city.ToLower();
+                //	TextInfo textinfo = new CultureInfo("en-US", false).TextInfo;
+                //	textinfo.ToTitleCase(city);
+                //city = Regex.Replace(city, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
+                ZipcodeText.Text = city + ", " + state + "  " + str;
+            }
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NexusHome());
+        }
+    }
 }

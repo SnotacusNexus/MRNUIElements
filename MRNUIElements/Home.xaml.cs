@@ -17,6 +17,7 @@ using MRNNexus_Model;
 using Awesomium.Windows.Controls;
 using Awesomium.Core.Data;
 using Awesomium.Core;
+using Syncfusion.Windows.Controls.Schedule;
 using Syncfusion.UI.Xaml.Grid;
 using System.Collections.Specialized;
 using System.Text.RegularExpressions;
@@ -313,7 +314,7 @@ namespace MRNUIElements
 
 		private void ViewCapOutButton(object sender, RoutedEventArgs e)
 		{
-			CapOutPage Page = new CapOutPage();
+			CapOutSheet Page = new CapOutSheet();
 			this.NavigationService.Navigate(Page);
 		}
 
@@ -326,7 +327,7 @@ namespace MRNUIElements
 			}
 			else {
 				ShowOnMap(null, MakeAddress(leadAddressText.Text, "", "", leadCitySTZipText.Text));
-				b = true; ;
+				b = true; 
 			}
 		}
 
@@ -354,6 +355,12 @@ namespace MRNUIElements
 		{
 			AppointmentWebView.Height = this.Height;
 			AppointmentWebView.Width = this.Width;
+		}
+
+		private void button_Click(object sender, RoutedEventArgs e)
+		{
+			Page page = new RoofMeasurmentsPage();
+			NavigationService.Navigate(page);
 		}
 	}
 }
