@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
 using MRNNexus_Model;
-
+using System.Collections.ObjectModel;
 
 namespace MRNUIElements
 {
@@ -25,15 +25,15 @@ namespace MRNUIElements
 	/// </summary>
 	public partial class MRNCalendar : System.Web.UI.WebControls.Calendar
 	{
-		public static System.Web.UI.WebControls.Calendar cal = new System.Web.UI.WebControls.Calendar();
+		public static Syncfusion.UI.Xaml.Schedule.SfSchedule cal = new Syncfusion.UI.Xaml.Schedule.SfSchedule();
 		//System.Windows.Controls.Calendar cal2 = new System.Windows.Controls.Calendar();
-		public List<DTO_CalendarData> cd = new List<DTO_CalendarData>();
-		public MRNCalendar(List<DTO_CalendarData> c)
+		public ObservableCollection<DTO_CalendarData> cd = new ObservableCollection<DTO_CalendarData>();
+		public MRNCalendar(ObservableCollection<DTO_CalendarData> c)
 		{
 			cd = c;
 
 
-			cal.VisibleDate = DateTime.Today;
+			//cal.VisibleDate = DateTime.Today;
 			FillAppointmentDaysDataset();
 		}
 		protected List<DateTime> AppointmentDays;
@@ -47,8 +47,8 @@ namespace MRNUIElements
 
 		protected void FillAppointmentDaysDataset()
 		{
-			DateTime firstDate = new DateTime(cal.VisibleDate.Year,
-				cal.VisibleDate.Month, 1);
+			DateTime firstDate = new DateTime(SelectedDate.Year,
+				SelectedDate.Month, 1);
 			DateTime lastDate = GetFirstDayOfNextMonth();
 			AppointmentDays = GetCurrentMonthData(firstDate, lastDate);
 		}
@@ -56,15 +56,15 @@ namespace MRNUIElements
 		protected DateTime GetFirstDayOfNextMonth()
 		{
 			int monthNumber, yearNumber;
-			if (cal.VisibleDate.Month == 12)
+			if (SelectedDate.Month == 12)
 			{
 				monthNumber = 1;
-				yearNumber = cal.VisibleDate.Year + 1;
+				yearNumber = SelectedDate.Year + 1;
 			}
 			else
 			{
-				monthNumber = cal.VisibleDate.Month + 1;
-				yearNumber = cal.VisibleDate.Year;
+				monthNumber = SelectedDate.Month + 1;
+				yearNumber = SelectedDate.Year;
 			}
 			DateTime lastDate = new DateTime(yearNumber, monthNumber, 1);
 			return lastDate;

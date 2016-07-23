@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace MRNUIElements
 {
-    internal class Appointments
-    {
-        internal class MappedAppointment
-        {
-            public string MappedSubject { get; set; }
-            public DateTime MappedStartTime { get; set; }
-            public DateTime MappedEndTime { get; set; }
-            public string MappedNote { get; set; }
-            public string MappedLocation { get; set; }
-
+   internal class Appointments
+	{
+		internal class MappedAppointment 
+		{
+			public string MappedSubject { get; set; }
+			public DateTime MappedStartTime { get; set; }
+			public DateTime MappedEndTime { get; set; }
+			public string MappedNote { get; set; }
+			public string MappedLocation { get; set; }
 			public int CalendarDataID { get; set; }
 			public int LeadID { get; set; }
 			public int AddressID { get; set; }
-
 			public override bool Equals(object obj)
 			{
 				MappedAppointment mp = obj as MappedAppointment;
@@ -32,19 +30,22 @@ namespace MRNUIElements
 				else
 					return false;
 			}
-        }
+			public override int GetHashCode()
+			{
+				return base.GetHashCode();
+			}
+		}
 
-        public class TodaysAppointment
-        {
-            public string AppointmentType { get; set; }
-            public string StartTime { get; set; }
-            public string EndTime { get; set; }
-            public string Note { get; set; }
-            public string Address { get; set; }
-
-            public int CalendarDataID { get; set; }
-            public int LeadID { get; set; }
-            public int AddressID { get; set; }
-        }
-    }
+		public class TodaysAppointment
+		{
+			public string AppointmentType { get; set; }
+			public string StartTime { get; set; }
+			public string EndTime { get; set; }
+			public string Note { get; set; }
+			public string Address { get; set; }
+			public int CalendarDataID { get; set; }
+			public int LeadID { get; set; }
+			public int AddressID { get; set; }
+		}
+	}
 }

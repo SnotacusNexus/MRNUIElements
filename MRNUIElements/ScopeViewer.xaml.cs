@@ -189,7 +189,7 @@ namespace MRNUIElements
 			if (cl.Count == 0)
 			{
 				if (MessageBoxResult.Yes == MessageBox.Show("The scope type you requested has not been saved for this claim, in fact no scopes are recorded for this claim.  Would you like to enter the estimate details now?", "No previous data found", MessageBoxButton.YesNo, MessageBoxImage.Question))
-				 	return new DTO_Scope();	
+					return new DTO_Scope();	
 				
 			}
 			foreach (DTO_Scope c in cl)
@@ -417,8 +417,8 @@ namespace MRNUIElements
 		{
 			int scopeType = s.ScopeTypeID;
 			if (scopeType == 1) {  radioButton.IsChecked = true; }
-		  	if (scopeType == 2) {  radioButton_Copy.IsChecked = true;  }
-		   	if (scopeType == 3) {  radioButton_Copy1.IsChecked = true; }
+			if (scopeType == 2) {  radioButton_Copy.IsChecked = true;  }
+			if (scopeType == 3) {  radioButton_Copy1.IsChecked = true; }
 			return scopeType;
 		}
 		private int GetScopeTypeByButtonSelected()
@@ -454,7 +454,7 @@ namespace MRNUIElements
 		}
 		virtual public string Calculate(string interior="0", string exterior="0", string gutters = "0", string roof = "0", string total = "0", string oandp = "0", string tax = "0", string deductible="0", bool acv= true)
 		{
-			string w;
+			
 			double a, b, c, d, e, f, g,h;
 			if (interior == "") interior = "0";
 			a = double.Parse(interior);
@@ -485,6 +485,12 @@ namespace MRNUIElements
 			return (e - a - b - c - d - g).ToString();
 
 		}
+
+		private void scopeTypeIDComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
 		private DTO_Scope DisplayScopeInfo(List<DTO_Scope> scopelist, int typescope, DTO_Claim c)
 		{
 			DTO_Scope t = new DTO_Scope();
