@@ -5,13 +5,19 @@
         xmlns:local="clr-namespace:MRNUIElements"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MRN Claim Nexus"
+        AllowsTransparency="True"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        mc:Ignorable="d">
+        WindowStyle="None"
+        mc:Ignorable="d" Grid.IsSharedSizeScope="True" Width="1600" Height="1400">
 
 
     <Frame x:Name="MRNClaimNexusMainFrame"
+           Margin="0"
+           HorizontalContentAlignment="Center"
+           VerticalContentAlignment="Center"
            Background="{StaticResource BackgroundGradient}"
-           NavigationUIVisibility="Hidden" />
+           NavigationUIVisibility="Hidden"
+           ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.IsSharedSizeScope="True" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1600" Height="1400"   />
 </Window>

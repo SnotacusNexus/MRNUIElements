@@ -22,16 +22,18 @@
           DataContext="{Binding /,
                                 Source={StaticResource dTO_InvoiceViewSource}}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="87*"/>
-            <RowDefinition Height="44*"/>
+            <RowDefinition Height="87*" />
+            <RowDefinition Height="44*" />
         </Grid.RowDefinitions>
         <TextBox x:Name="textBox_Copy4"
+                 Grid.RowSpan="2"
                  Width="120"
                  Height="23"
                  Margin="143,151,0,0"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Top"
                  Background="#00000000"
+                 CaretBrush="White"
                  Foreground="White"
                  Text="{Binding InvoiceAmount,
                                 Mode=TwoWay,
@@ -39,7 +41,7 @@
                                 Source={StaticResource dTO_InvoiceViewSource},
                                 ValidatesOnExceptions=true}"
                  TextChanged="textBox_Copy4_TextChanged"
-                 TextWrapping="Wrap" Grid.RowSpan="2" CaretBrush="White" />
+                 TextWrapping="Wrap" />
         <StackPanel VerticalAlignment="Top">
             <TextBlock x:Name="textBlock"
                        Margin="0"
@@ -48,22 +50,6 @@
                        Text="Invoice Entry"
                        TextWrapping="Wrap" />
         </StackPanel>
-        <Button x:Name="SubmitScopeEntry"
-                Width="75"
-                Margin="54,68.213,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Click="SubmitScopeEntry_Click"
-                Content="_Submit"
-                IsDefault="True"
-                IsEnabled="False" Grid.Row="1" />
-        <Button x:Name="CancelScopeEntry"
-                Width="75"
-                Margin="176,68.213,0,0"
-                HorizontalAlignment="Left"
-                Click="CancelScopeEntry_Click"
-                Content="_Cancel"
-                IsCancel="True" Grid.Row="1" />
         <ComboBox x:Name="comboBox"
                   Width="120"
                   Margin="143,72,0,0"
@@ -92,17 +78,38 @@
                                            NotifyOnValidationError=true,
                                            Source={StaticResource dTO_InvoiceViewSource},
                                            ValidatesOnExceptions=true}" />
+        <Canvas x:Name="InvoiceView"
+                Grid.RowSpan="2"
+                Width=" 103"
+                Height=" 150"
+                Margin="17,72,0,40"
+                HorizontalAlignment="Left"
+                Background="White" />
+        <Button x:Name="SubmitScopeEntry"
+                Grid.Row="1"
+                Width="75"
+                Margin="54,68.213,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="SubmitScopeEntry_Click"
+                Content="_Submit"
+                IsDefault="True"
+                IsEnabled="False" />
+        <Button x:Name="CancelScopeEntry"
+                Grid.Row="1"
+                Width="75"
+                Margin="176,68.213,0,0"
+                HorizontalAlignment="Left"
+                Click="CancelScopeEntry_Click"
+                Content="_Cancel"
+                IsCancel="True" />
         <Button x:Name="UploadImage"
+                Grid.Row="1"
                 Width="75"
                 Margin="0,18.213,12,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Click="UploadImage_Click"
-                Content="_Upload" Grid.Row="1" />
-        <Canvas x:Name="InvoiceView"
-                Width=" 103"
-                Height=" 150"
-                Margin="17,72,0,40"
-                HorizontalAlignment="Left" Background="White" Grid.RowSpan="2" />
+                Content="_Upload" />
     </Grid>
 </Page>

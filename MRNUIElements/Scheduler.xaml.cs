@@ -19,85 +19,96 @@ using Syncfusion.UI.Xaml.Grid;
 
 namespace MRNUIElements
 {
-    /// <summary>
-    /// Interaction logic for Scheduler.xaml
-    /// </summary>
-    public partial class Scheduler : Page
-    {
-        MRNNexusDTOs.DTO_CalendarData calData;
+	/// <summary>
+	/// Interaction logic for Scheduler.xaml
+	/// </summary>
+	public partial class Scheduler : Page
+	{
+		MRNNexus_Model.DTO_CalendarData calData;
 
-        GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
+		GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
 
-        double autoHeight;
+		double autoHeight;
 
-        public Scheduler()
-        {
-            InitializeComponent();
+		public Scheduler()
+		{
+			InitializeComponent();
 
-            setUp();
+			setUp();
 
-            
-            this.appointments.QueryRowHeight += appointments_QueryRowHeight;
-;
+			
+			this.appointments.QueryRowHeight += appointments_QueryRowHeight;
 
 
-        }
 
-        void appointments_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
-        {
-            if(this.appointments.GridColumnSizer.GetAutoRowHeight(e.RowIndex, gridRowSizingOptions, out autoHeight))
-            {
-                if(autoHeight > 24)
-                {
-                    e.Height = autoHeight;
-                    e.Handled = true;
-                }
-            }
-        }
+		}
 
-        async private void setUp()
-        {
-            Controllers.Scheduler schedule = new Controllers.Scheduler();
-            await schedule.GetEmployeeAppointments();
-            this.calendar.ItemsSource = schedule.MappedAppointments;
-            this.appointments.ItemsSource = schedule.TodaysAppointments;
-        }
+		void appointments_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
+		{
+			if(this.appointments.GridColumnSizer.GetAutoRowHeight(e.RowIndex, gridRowSizingOptions, out autoHeight))
+			{
+				if(autoHeight > 24)
+				{
+					e.Height = autoHeight;
+					e.Handled = true;
+				}
+			}
+		}
 
-        private void appointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
-        {
-            var record = this.appointments.SelectedItem;
-            var calDataInt = ((Appointments.TodaysAppointment)record).CalendarDataID;
+		async private void setUp()
+		{
+			Schedule scheduler = new Schedule();
+			await scheduler.GetEmployeeAppointments();
+			
 
-            foreach(var cd in ServiceLayer.getInstance().CalendarDataList)
-            {
-                if(cd.EntryID == calDataInt)
-                {
-                    calData = cd;
-                    break;
-                }
-            }
-        }
 
-        private void appointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (calData != null)
-            {
-                MessageBox.Show(calData.EntryID.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                calData = null;
-            }
-        }
+				//await schedule.GetEmployeeAppointments();
+				this.calendar.ItemsSource = scheduler.MappedAppointments;
+				this.appointments.ItemsSource = scheduler.TodaysAppointments;
+		   
+		   
+			
+		  
+		}
+
+		private void appointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+		{
+			var record = this.appointments.SelectedItem;
+            int calDataInt = ((Appointments.TodaysAppointment)record).CalendarDataID;
+
+         
+
+			foreach(var cd in ServiceLayer.getInstance().CalendarDataList)
+			{
+				if(cd.EntryID == calDataInt)
+				{
+					calData = cd;
+					break;
+				}
+			}
+		}
+
+		private void appointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			if (calData != null)
+			{
+				MessageBox.Show(calData.EntryID.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+				calData = null;
+			}
+		}
 
 		private void calendar_AppointmentCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 		{
 			//e holds the new record
-			Controllers.Scheduler schedule = new Controllers.Scheduler();
+			Schedule scheduler = new Schedule();
+            setUp();
 
-		}
+        }
 
-		private async void calendar_AppointmentEditorClosed(object sender, Syncfusion.UI.Xaml.Scheduler.AppointmentEditorClosedEventArgs e)
+		private async void calendar_AppointmentEditorClosed(object sender, Syncfusion.UI.Xaml.Schedule.AppointmentEditorClosedEventArgs e)
 		{
 
-			if (e.EditedAppointment != null && e.Action == Syncfusion.UI.Xaml.Scheduler.EditorClosedAction.Save)
+			if (e.EditedAppointment != null && e.Action == Syncfusion.UI.Xaml.Schedule.EditorClosedAction.Save)
 				
 			{
 				if (e.IsNew )
@@ -109,8 +120,8 @@ namespace MRNUIElements
 
 					
 
-					Controllers.Scheduler schedule = new Controllers.Scheduler();
-					await schedule.UpdateCalendarData(e);
+					Schedule scheduler = new Schedule();
+					await scheduler.UpdateCalendarData(e);
 				}
 			}
 		}

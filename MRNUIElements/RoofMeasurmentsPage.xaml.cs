@@ -56,105 +56,97 @@ namespace MRNUIElements
             List<string> ItemList = new List<string>();
             ItemList.Clear();
 
-            if (index < 5)
+            switch (index)
             {
-                switch (index)
-                {
-                    case 1:
-                        {//Duration
-                            ItemList.Add("Teak");
-                            ItemList.Add("Estate Gray");
-                            ItemList.Add("Teak");
-                            ItemList.Add("Teak");
-                            return ItemList;
-                        }
-                    case 2:
-                        {//TruDef
-                            ItemList.Add("Estate Gray");
-                            ItemList.Add("Willamsburg Gray");
-                            ItemList.Add("Teak");
-                            ItemList.Add("Teak");
-                            return ItemList;
-                        }
-                    case 3:
-                        {//Oakridge
-                            ItemList.Add("Willamsburg Gray");
-                            ItemList.Add("Teak");
-                            ItemList.Add("Rotten Red");
-                            ItemList.Add("Teak");
-                            ItemList.Add("Teak");
-                            return ItemList;
-                        }
-                    case 4:
-                        {//Supreme
-                            ItemList.Add("Onyx Black");
-                            ItemList.Add("Estate Gray");
-                            ItemList.Add("Willamsburg Gray");
-                            ItemList.Add("BooHoo Blue");
-                            return ItemList;
-                        }
+                case 1:
+                    {//Duration
+                        ItemList.Add("Teak");
+                        ItemList.Add("Estate Gray");
+                        ItemList.Add("Teak");
+                        ItemList.Add("Teak");
+                        return ItemList;
+                    }
+                case 2:
+                    {//TruDef
+                        ItemList.Add("Estate Gray");
+                        ItemList.Add("Willamsburg Gray");
+                        ItemList.Add("Teak");
+                        ItemList.Add("Teak");
+                        return ItemList;
+                    }
+                case 3:
+                    {//Oakridge
+                        ItemList.Add("Willamsburg Gray");
+                        ItemList.Add("Teak");
+                        ItemList.Add("Rotten Red");
+                        ItemList.Add("Teak");
+                        ItemList.Add("Teak");
+                        return ItemList;
+                    }
+                case 4:
+                    {//Supreme
+                        ItemList.Add("Onyx Black");
+                        ItemList.Add("Estate Gray");
+                        ItemList.Add("Willamsburg Gray");
+                        ItemList.Add("BooHoo Blue");
+                        return ItemList;
+                    }
 
-                    default:
+                case 0:
+                    {
                         ItemList.Add("Duration");
                         ItemList.Add("Oakridge TruDef");
                         ItemList.Add("Oakridge");
                         ItemList.Add("Supreme");
                         return ItemList;
-                }
-                {
-
-                }
-            }
-            else
+                    }
 
 
 
-            {
-                switch (index)
-                {
-                    case 6:
-                        {//Duration
-                            ItemList.Add("Candy Apple");
-                            ItemList.Add("Dirty Sanchez");
-                            ItemList.Add("Greedy Green");
-                            ItemList.Add("Tupid Turple");
-                            return ItemList;
-                        }
-                    case 7:
-                        {//TruDef
-                            ItemList.Add("Brown Eyed Guray");
-                            ItemList.Add("Malibu Blue");
-                            ItemList.Add("Teak");
-                            ItemList.Add("Teak");
-                            return ItemList;
-                        }
-                    //case 3:
-                    //    {//Oakridge
-                    //        ItemList.Add("Willamsburg Gray");
-                    //        ItemList.Add("Teak");
-                    //        ItemList.Add("Rotten Red");
-                    //        ItemList.Add("Teak");
-                    //        ItemList.Add("Teak");
-                    //        return ItemList;
-                    //    }
-                    //case 4:
-                    //    {//Supreme
-                    //        ItemList.Add("Onyx Black");
-                    //        ItemList.Add("Estate Gray");
-                    //        ItemList.Add("Willamsburg Gray");
-                    //        ItemList.Add("BooHoo Blue");
-                    //        return ItemList;
-                    //    }
+                case 6:
+                    {//Duration
+                        ItemList.Add("Candy Apple");
+                        ItemList.Add("Dirty Sanchez");
+                        ItemList.Add("Greedy Green");
+                        ItemList.Add("Tupid Turple");
+                        return ItemList;
+                    }
+                case 7:
+                    {//TruDef
+                        ItemList.Add("Brown Eyed Guray");
+                        ItemList.Add("Malibu Blue");
+                        ItemList.Add("Teak");
+                        ItemList.Add("Teak");
+                        return ItemList;
+                    }
+                //case 3:
+                //    {//Oakridge
+                //        ItemList.Add("Willamsburg Gray");
+                //        ItemList.Add("Teak");
+                //        ItemList.Add("Rotten Red");
+                //        ItemList.Add("Teak");
+                //        ItemList.Add("Teak");
+                //        return ItemList;
+                //    }
+                //case 4:
+                //    {//Supreme
+                //        ItemList.Add("Onyx Black");
+                //        ItemList.Add("Estate Gray");
+                //        ItemList.Add("Willamsburg Gray");
+                //        ItemList.Add("BooHoo Blue");
+                //        return ItemList;
+                //    }
 
-                    default:
+                case 5:
+                    {
                         ItemList.Add("Landmark");
                         ItemList.Add("POS 4shizzy");
                         //OC.Add("Oakridge");
                         //OC.Add("Supreme");
                         return ItemList;
-                }
+                    }
             }
-           
+            return ItemList;
          }
 
 
@@ -360,7 +352,7 @@ namespace MRNUIElements
                     {
                         OrderCanvas.Visibility = Visibility.Collapsed;
                         textbox.Visibility = Visibility.Collapsed;
-                        AppointmentWebView.Visibility = Visibility.Visible;
+                        //AppointmentWebView.Visibility = Visibility.Visible;
                         address = "https://www.google.com/maps/@" + jlbArg[0] + "," + jlbArg[1] + ",+" + jlbArg[2] + "m/data=!3m1!1e3?hl=en";//if satdata true 
                         break;
                     }
@@ -578,7 +570,7 @@ namespace MRNUIElements
 
         private void FetchWebsite(string webaddress)
         {
-            AppointmentWebView.Source = new Uri(webaddress.ToString());
+          //  AppointmentWebView.Source = new Uri(webaddress.ToString());
         }
 
         private void GetJobInfo(string Latatitude, string longitudestring, string address, string zipcode = "30052", bool b = true)
@@ -698,7 +690,7 @@ namespace MRNUIElements
         {
             OrderCanvas.Visibility = Visibility.Collapsed;
             textbox.Visibility = Visibility.Collapsed;
-            AppointmentWebView.Visibility = Visibility.Visible;
+          //  AppointmentWebView.Visibility = Visibility.Visible;
           
            
         }
@@ -714,7 +706,7 @@ namespace MRNUIElements
         {
             OrderCanvas.Visibility = Visibility.Visible;
             textbox.Visibility = Visibility.Collapsed;
-            AppointmentWebView.Visibility = Visibility.Collapsed;
+           // AppointmentWebView.Visibility = Visibility.Collapsed;
         }
 
         private void OrderSqShingle_TextChanged(object sender, TextChangedEventArgs e)
@@ -735,14 +727,14 @@ namespace MRNUIElements
         {
             OrderCanvas.Visibility = Visibility.Visible;
             textbox.Visibility = Visibility.Collapsed;
-            AppointmentWebView.Visibility = Visibility.Collapsed;
+          //  AppointmentWebView.Visibility = Visibility.Collapsed;
         }
 
         private void SatViewGoogle(object sender, RoutedEventArgs e)
         {
             OrderCanvas.Visibility = Visibility.Collapsed;
             textbox.Visibility = Visibility.Collapsed;
-            AppointmentWebView.Visibility = Visibility.Visible;
+           // AppointmentWebView.Visibility = Visibility.Visible;
         }
 
         private void OrderBrandType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -800,30 +792,24 @@ namespace MRNUIElements
                         city += " ";
 
                 }
-
-
-
-                //	city.ToLower();
-                //	TextInfo textinfo = new CultureInfo("en-US", false).TextInfo;
-                //	textinfo.ToTitleCase(city);
-                //city = Regex.Replace(city, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
+                
                 CustomerAddressCSZ.Text = city + ", " + state + "  " + str;
             }
 
             DoMath();
 
-            //  CustomerAddressCSZ.Text = maskedTextBoxCustomerCSZ.Text;
+           
         }
 
         private void maskedTextBox_CommentsChanged(object sender, TextChangedEventArgs e)
         {
-            //  CommentsOrder.Text = Comments.Text; 
+             // CommentsOrder.Text = Comments.Text; 
             DoMath();
         }
 
         private void SalespersonCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // SalespersonText.Text = SalespersonCombo.SelectionBoxItem.ToString();
+           //  SalespersonText.Text = SalespersonCombo.SelectionBoxItem.ToString();
             DoMath();
         }
 
@@ -853,13 +839,62 @@ namespace MRNUIElements
 
         private void OrderTurtleVent_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //   TurtleBackQuan.Text = OrderTurtleVent.Text;
+            //  TurtleBackQuan.Text = OrderTurtleVent.Text;
             DoMath();
         }
 
         private void DripedgeColorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //    DripEdgeColor.Text = DripedgeColorCombo.SelectionBoxItem.ToString();
+            DoMath();
+        }
+
+        private void Hips_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            double dbl = 0;
+            double.TryParse(Hips.Text, out dbl);
+            HipMeasurement = dbl;
+            DoMath();
+        }
+
+        private void Ridges_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double dbl = 0;
+            double.TryParse(Ridges.Text, out dbl);
+            RidgeMeasurement = dbl;
+            DoMath();
+        }
+
+        private void OrderIceWaterValleys_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double dbl = 0;
+            double.TryParse(OrderIceWaterValleys.Text, out dbl);
+            ValleyMeasurement = dbl;
+            DoMath();
+        }
+
+        private void Rakes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double dbl = 0;
+            double.TryParse(Rakes.Text, out dbl);
+            RakeMeasurement = dbl;
+            DoMath();
+        }
+
+        private void Eaves_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double dbl = 0;
+            double.TryParse(Eaves.Text, out dbl);
+            EaveMeasurement = dbl;
+            DoMath();
+        }
+
+        private void TotalAreaOFF_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double dbl = 0;
+            double.TryParse(TotalAreaOFF.Text, out dbl);
+            TotalSQFTOFF = dbl;
             DoMath();
         }
     }

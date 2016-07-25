@@ -24,7 +24,8 @@ using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-
+using MRNUIElements.Models;
+using MRNUIElements.Controllers;
 using static MRNUIElements.ScheduleAppointmentModel;
 using static MRNUIElements.Appointments;
 
@@ -40,28 +41,39 @@ namespace MRNUIElements
 
 
 
+        MRNNexus_Model.DTO_CalendarData calData;
 
-		ObservableCollection<MappedAppointment> MappedAppointment = new ObservableCollection<MappedAppointment>();
-		//ObservableCollection<DTO_CalendarData> MappedAppointment = new ObservableCollection<DTO_CalendarData>();
-		private string FinishedName;
+        GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
+
+        double autoHeight;
+        //ObservableCollection<MappedAppointment> MappedAppointment = new ObservableCollection<MappedAppointment>();
+        //ObservableCollection<DTO_CalendarData> MappedAppointment = new ObservableCollection<DTO_CalendarData>();
+        private string FinishedName;
 		ServiceLayer s1 = ServiceLayer.getInstance();
-		DTO_CalendarData caldata;
+		//DTO_CalendarData caldata;
 		bool b = false;
 		public NexusHome()
 		{
+
 			InitializeComponent();
-			SfSchedule schedule = new SfSchedule();
-			schedule.ScheduleType = Syncfusion.UI.Xaml.Schedule.ScheduleType.Week;
-			//schedule.ItemsSource = caldata;//sion.UI.Xaml.Schedule.ScheduleAppointment() { StartTime = new DateTime(2016, 7, 20, 2, 30, 0), EndTime = new DateTime(2016, 7, 20, 3, 30, 0), Subject = "Get Fucked Up", Location = "Yo Mama House", AllDay = false });
-			this.DataContext = new ScheduleAppointmentCollection();
+            setUp();
+
+
+            this.appointments.QueryRowHeight += appointments_QueryRowHeight;
+   //         Scheduler schedule = new Scheduler();
+			//	Frame frm = new Frame();
+			//frm.Content = (schedule as Page);
+			//schedule.ScheduleType = Syncfusion.UI.Xaml.Schedule.ScheduleType.Week;
+			////schedule.ItemsSource = caldata;//sion.UI.Xaml.Schedule.ScheduleAppointment() { StartTime = new DateTime(2016, 7, 20, 2, 30, 0), EndTime = new DateTime(2016, 7, 20, 3, 30, 0), Subject = "Get Fucked Up", Location = "Yo Mama House", AllDay = false });
+			//this.DataContext = new ScheduleAppointmentCollection();
 		  
 
-			this.griddle.Children.Add(schedule);
-			int i = 0;
-			foreach (MappedAppointment m in MappedAppointment)
-			{
-				System.Windows.Forms.MessageBox.Show(MappedAppointment[i].MappedStartTime.ToLongDateString()+"-til-" + MappedAppointment[i].MappedEndTime.ToLongDateString() +" Subject "+ MappedAppointment[i].MappedSubject.ToString());
-			}
+			//this.griddle.Children.Add(frm);
+			//int i = 0;
+			//foreach (MappedAppointment m in MappedAppointment)
+			//{
+			//	System.Windows.Forms.MessageBox.Show(MappedAppointment[i].MappedStartTime.ToLongDateString()+"-til-" + MappedAppointment[i].MappedEndTime.ToLongDateString() +" Subject "+ MappedAppointment[i].MappedSubject.ToString());
+			//}
 			
 			//    this.DataContext = this;
 		   // this.DataContext = new ScheduleViewModel(); 
@@ -69,11 +81,93 @@ namespace MRNUIElements
 		//	GetLeadsByEmployeeAsSalepersonID(s1.LoggedInEmployee.EmployeeID);
 		}
 
+        void appointments_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
+        {
+            if (this.appointments.GridColumnSizer.GetAutoRowHeight(e.RowIndex, gridRowSizingOptions, out autoHeight))
+            {
+                if (autoHeight > 24)
+                {
+                    e.Height = autoHeight;
+                    e.Handled = true;
+                }
+            }
+        }
+
+        async private void setUp()
+        {
+            Schedule scheduler = new Schedule();
+            await scheduler.GetEmployeeAppointments();
+
+
+
+            //await schedule.GetEmployeeAppointments();
+            this.calendar.ItemsSource = scheduler.MappedAppointments;
+            this.appointments.ItemsSource = scheduler.TodaysAppointments;
 
 
 
 
-		private void LogOut(object sender, RoutedEventArgs e)
+        }
+
+        private void appointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            MRNUIElements.Models.Appointments.TodaysAppointment record = new Models.Appointments.TodaysAppointment();
+            record= (Models.Appointments.TodaysAppointment)this.appointments.SelectedItem;
+            int calDataInt = record.CalendarDataID;
+
+
+
+            foreach (var cd in ServiceLayer.getInstance().CalendarDataList)
+            {
+                if (cd.EntryID == calDataInt)
+                {
+                    calData = cd;
+                    break;
+                }
+            }
+        }
+
+        private void appointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (calData != null)
+            {
+                MessageBox.Show(calData.EntryID.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                calData = null;
+            }
+        }
+
+        private void calendar_AppointmentCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            //e holds the new record
+            Schedule scheduler = new Schedule();
+            setUp();
+
+        }
+
+        private async void calendar_AppointmentEditorClosed(object sender, Syncfusion.UI.Xaml.Schedule.AppointmentEditorClosedEventArgs e)
+        {
+
+            if (e.EditedAppointment != null && e.Action == Syncfusion.UI.Xaml.Schedule.EditorClosedAction.Save)
+
+            {
+                if (e.IsNew)
+                {
+                    //create new record
+                }
+                else if (!e.OriginalAppointment.Equals(e.EditedAppointment))
+                {
+
+
+
+                    Schedule scheduler = new Schedule();
+                    await scheduler.UpdateCalendarData(e);
+                }
+            }
+        }
+
+
+
+        private void LogOut(object sender, RoutedEventArgs e)
 		{
 			Login Page = new Login();
 			this.NavigationService.Navigate(Page);
@@ -268,7 +362,7 @@ namespace MRNUIElements
 		private void ShowWeatherforZipcode(string webaddress)
 		{
 
-			AppointmentWebView.Source = new Uri(webaddress.ToString());
+			//AppointmentWebView.Source = new Uri(webaddress.ToString());
 
 		}
 
@@ -346,30 +440,11 @@ namespace MRNUIElements
 			}
 		}
 
-		private void appointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+      
+        private void AppointmentWebView_MouseEnter(object sender, MouseEventArgs e)
 		{
-			throw new NotImplementedException();
-		}
-
-		private void appointments_SelectionChanged(object sender, GridSelectionChangedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		private void calendar_AppointmentEditorClosed(object sender, Syncfusion.UI.Xaml.Schedule.AppointmentEditorClosedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		private void calendar_AppointmentCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		private void AppointmentWebView_MouseEnter(object sender, MouseEventArgs e)
-		{
-			AppointmentWebView.Height = this.Height;
-			AppointmentWebView.Width = this.Width;
+		//	AppointmentWebView.Height = this.Height;
+		//	AppointmentWebView.Width = this.Width;
 		}
 
 		private void button_Click(object sender, RoutedEventArgs e)
@@ -377,8 +452,13 @@ namespace MRNUIElements
 			Page page = new RoofMeasurmentsPage();
 			NavigationService.Navigate(page);
 		}
-	}
-	public class ScheduleAppointmentModel : INotifyPropertyChanged
+
+        private void CustomerAgreementClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CustomerAgreement());
+        }
+    }
+    public class ScheduleAppointmentModel : INotifyPropertyChanged
 	{
 		#region Properties
 

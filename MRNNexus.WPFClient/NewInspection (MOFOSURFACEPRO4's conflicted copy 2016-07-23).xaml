@@ -1,0 +1,249 @@
+﻿<Page xmlns:syncfusion="http://schemas.syncfusion.com/wpf"  x:Class="MRNNexus.WPFClient.NewInspection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNNexus.WPFClient"
+      mc:Ignorable="d" 
+      Title="NewInspection">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid ShowGridLines="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="New Inspection" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24"/>
+
+            <WrapPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1"
+                        Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ColumnDefinitions[0].Width}">
+                <GroupBox x:Name="inspectionGrpBx"  Header="Inspection Information" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid x:Name="inspectionGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto" x:Name="fourthCol"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--<Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="SelectedAddress" Content="Address: No addres/customer" HorizontalAlignment="Left" VerticalAlignment="Center" />-->
+
+                        <Label Grid.Row="0" Grid.Column="0" x:Name="dateLbl" Content="Inspection Date:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <DatePicker Grid.Row="0" Grid.Column="1" x:Name="datepicker" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                        <Label Grid.Row="0" Grid.Column="2" x:Name="roofAgeLbl" Content="Roof Age:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:IntegerTextBox BorderBrush="DarkOliveGreen" BorderThickness="1" Grid.Row="0" Grid.Column="3" x:Name="integerTextBox" 
+                                                   HorizontalAlignment="Left" VerticalAlignment="Center" NumberGroupSeparator="," TextWrapping="Wrap" Text="100"
+                                                   Width="100"
+                                                   />
+
+                        <Label Grid.Row="1" Grid.Column="0" x:Name="ridgeMaterialLbl" Content="Ridge Type:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ridgeMaterialCbo" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="100" MaxWidth="100">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RidgeMaterialType}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Label Grid.Row="1" Grid.Column="2" x:Name="shingleTypeLbl" Content="Shingle Type:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <ComboBox Grid.Row="1" Grid.Column="3" x:Name="shingleTypeCbo" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="100" MaxWidth="100">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ShingleType}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+
+                        <!--<CheckBox Grid.Row="3" Grid.Column="0" x:Name="skylightsChk" 
+                                  HorizontalAlignment="Stretch" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                            <TextBlock Text="Skylights" HorizontalAlignment="Left"/>
+                        </CheckBox>-->
+                        <syncfusion:CheckListBox x:Name="checkListBox" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Top" CheckBoxAlignment="Right">
+                            <syncfusion:CheckListBoxItem Content="Driveway Damage"/>
+                            <syncfusion:CheckListBoxItem Content="Skylights"/>
+                            <syncfusion:CheckListBoxItem Content="Lightening Protection"/>
+                            <syncfusion:CheckListBoxItem Content="Satellite"/>
+                            <syncfusion:CheckListBoxItem Content="Solar Panels"/>
+                            <syncfusion:CheckListBoxItem Content="Gutter Damage"/>
+                            <syncfusion:CheckListBoxItem Content="Cover Pool"/>
+                            <syncfusion:CheckListBoxItem Content="Exterior Damage"/>
+                            <syncfusion:CheckListBoxItem Content="Interior Damage"/>
+                            <syncfusion:CheckListBoxItem Content="Leaks"/>
+                        </syncfusion:CheckListBox>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                            <syncfusion:CheckListBox x:Name="checkListBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CheckBoxAlignment="Right" BorderThickness="0">
+                                <syncfusion:CheckListBox.ItemContainerStyle>
+                                    <Style TargetType="syncfusion:CheckListBoxItem">
+                                        <Setter Property="IsSelected" Value="{Binding IsChecked, Mode=TwoWay}"/>
+                                    </Style>
+                                </syncfusion:CheckListBox.ItemContainerStyle>
+                                <syncfusion:CheckListBoxItem Content="Furnish Permit" IsSelected="True"/>
+                                <syncfusion:CheckListBoxItem Content="Protect Landscaping" IsSelected="True"/>
+                                <syncfusion:CheckListBoxItem Content="Tear Off" IsSelected="True"/>
+                                <syncfusion:CheckListBoxItem Content="Ice Water Shield" IsSelected="True"/>
+                                <syncfusion:CheckListBoxItem Content="Quality Control" IsSelected="True"/>
+                                <syncfusion:CheckListBoxItem Content="Magnetic Rollers" IsSelected="True"/>
+                                <syncfusion:CheckListBoxItem Content="Remove Trash" IsSelected="True"/>
+                                <syncfusion:CheckListBoxItem Content="Emergency Repairs Needed"/>
+                            </syncfusion:CheckListBox>
+                            <StackPanel Orientation="Horizontal">
+                                <Label x:Name="emergencyAmountLbl" Content="Repair Amount:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <syncfusion:CurrencyTextBox x:Name="emergencyAmountTxtBx" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Width="85"
+                                                             CurrencyGroupSeparator="," CurrencyDecimalSeparator="." CurrencySymbol="$" UseNullOption="True" NullValue="{x:Null}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        
+
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Claim Information">
+                    <Grid x:Name="claimGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" x:Name="lossDateLbl" Content="Inspection Date:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <DatePicker Grid.Row="0" Grid.Column="1" x:Name="lossDatePicker" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        
+                        <Label Grid.Row="1" Grid.Column="0" x:Name="insuranceCompanyLbl" Content="Insurance Company:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="insuranceCompanyCbo" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="100" MaxWidth="100">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CompanyName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Label Grid.Row="2" Grid.Column="0" x:Name="insuranceClaimNumLbl" Content="Insurance Claim Number:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="2" Grid.Column="1" x:Name="insuranceClaimNumberTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="RegEx" Mask="[\w-]+" ValidationMode="LostFocus" Width="100"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" x:Name="mortgageCompanyLbl" Content="Mortgage Company:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="3" Grid.Column="1" x:Name="mortgageCompanyTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="RegEx" Mask="[\w-.]+" ValidationMode="LostFocus" Width="100"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" x:Name="mortgageAccountLbl" Content="Mortgage Account:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="4" Grid.Column="1" x:Name="mortgageAcountTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="RegEx" Mask="[\w-.]+" ValidationMode="LostFocus" Width="100"/>
+
+                    </Grid>
+
+                </GroupBox>
+                <GroupBox Header="Customer Information">
+                    <Grid x:Name="customerGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                    <Label Grid.Row="0" Grid.Column="0" x:Name="customerFirstNameLbl" Content="First Name:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <syncfusion:SfMaskedEdit Grid.Row="0" Grid.Column="1" x:Name="customerFirstNameTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="RegEx" Mask="[A-Za-z-.]+" ValidationMode="LostFocus" Width="100"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" x:Name="customerMiddleNameLbl" Content="Middle Name:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="1" Grid.Column="1" x:Name="customerMiddleNameTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="RegEx" Mask="[A-Za-z-.]+" ValidationMode="LostFocus" Width="100"/>
+                        
+                        <Label Grid.Row="2" Grid.Column="0" x:Name="customerLastNameLbl" Content="Last Name:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="2" Grid.Column="1" x:Name="customerLastNameTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="RegEx" Mask="[A-Za-z-.]+" ValidationMode="LostFocus" Width="100"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" x:Name="customerSuffixLbl" Content="Suffix:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="3" Grid.Column="1" x:Name="customerSuffixTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="RegEx" Mask="[A-Za-z-.]+" ValidationMode="LostFocus" Width="100"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" x:Name="customerPrimaryNumberLbl" Content="Primary Number:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="4" Grid.Column="1" x:Name="customerPrimaryNumberTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="Simple" Mask="000-000-0000" ValidationMode="LostFocus" Width="100"/>
+
+                        <Label Grid.Row="5" Grid.Column="0" x:Name="customerSecondaryNumberLbl" Content="Secondary Number:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="5" Grid.Column="1" x:Name="customerSecondaryNumberTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="Simple" Mask="000-000-0000" ValidationMode="LostFocus" Width="100"/>
+
+                        <Label Grid.Row="6" Grid.Column="0" x:Name="customerEmailLbl" Content="Email Address:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <syncfusion:SfMaskedEdit Grid.Row="6" Grid.Column="1" x:Name="customerEmailTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  TextWrapping="Wrap" MaskType="RegEx" Mask="[\w._%+-]+@[\w-]{1,}.[A-Za-z]{2,}" ValidationMode="LostFocus" ValueMaskFormat="ExcludePromptAndLiterals" Width="100"/>
+
+                        <syncfusion:CheckListBox Grid.Row="7" Grid.ColumnSpan="2" x:Name="checkListBox4" HorizontalAlignment="Stretch" VerticalAlignment="Center" CheckBoxAlignment="Right" BorderThickness="0">
+                            <syncfusion:CheckListBox.ItemContainerStyle>
+                                <Style TargetType="syncfusion:CheckListBoxItem">
+                                    <Setter Property="IsSelected" Value="{Binding IsChecked, Mode=TwoWay}"/>
+                                </Style>
+                            </syncfusion:CheckListBox.ItemContainerStyle>
+                            <syncfusion:CheckListBoxItem Content="Mail Promotional Materials" IsSelected="True"/>
+                        </syncfusion:CheckListBox>
+
+                    </Grid>
+                </GroupBox>
+				<StackPanel Orientation="Vertical">
+					<GroupBox Header="Property Address">
+						<Grid x:Name="propertyAddressGrid">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/><RowDefinition Height="*"/><RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+
+							<Label Grid.Row="0" Grid.Column="0" x:Name="propertyStreetAddressLbl" Content=" Street Address:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+							<syncfusion:SfMaskedEdit Grid.Row="0" Grid.Column="1" x:Name="propertyStreetAddressTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+													TextWrapping="Wrap" MaskType="RegEx" Mask="[0-9A-Za-z-.]+" ValidationMode="LostFocus" Width="100"/>
+							<Label Grid.Row="1" Grid.Column="0" x:Name="propertyZipLbl" Content=" Zip:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+							<syncfusion:SfMaskedEdit Grid.Row="1" Grid.Column="1" x:Name="propertyZipTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+												TextWrapping="Wrap" MaskType="RegEx" Mask="[0-9-.]+" ValidationMode="LostFocus" Width="100"/>
+							</Grid>
+					</GroupBox>
+					<GroupBox Header="Billing Address">
+						<Grid x:Name="billingAddressGrid">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+
+							<syncfusion:CheckListBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="billingSameAsPropertyChkBox" HorizontalAlignment="Stretch" VerticalAlignment="Center" CheckBoxAlignment="Left" BorderThickness="0">
+								<syncfusion:CheckListBox.ItemContainerStyle>
+									<Style TargetType="syncfusion:CheckListBoxItem">
+										<Setter Property="IsSelected" Value="{Binding IsChecked, Mode=TwoWay}"/>
+									</Style>
+								</syncfusion:CheckListBox.ItemContainerStyle>
+								<syncfusion:CheckListBoxItem Content="Same As Property Address" IsSelected="True"/>
+							</syncfusion:CheckListBox>
+							<Label Grid.Row="1" Grid.Column="0" x:Name="billingStreetAddressLbl" Content=" Billing Address:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+							<syncfusion:SfMaskedEdit Grid.Row="1" Grid.Column="1" x:Name="billingStreetAddressTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                TextWrapping="Wrap" MaskType="RegEx" Mask="[0-9A-Za-z-.]+" ValidationMode="LostFocus" IsEnabled="False" Width="100"/>
+							<Label Grid.Row="2" Grid.Column="0" x:Name="billingZipLbl" Content=" Zip:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+							<syncfusion:SfMaskedEdit Grid.Row="2" Grid.Column="1" x:Name="billingZipTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            TextWrapping="Wrap" MaskType="RegEx" Mask="[0-9-.]+" ValidationMode="LostFocus" IsEnabled="False" Width="100"/>
+						</Grid>
+					</GroupBox>
+				</StackPanel>
+
+			</WrapPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -23,6 +23,9 @@ namespace MRNUIElements
         public SVGTestCanvas()
         {
             InitializeComponent();
+            TurtleBack.Children.Add(pa);
+            TurtleBack.Children.Add(elp);
+            
         }
     }
 }

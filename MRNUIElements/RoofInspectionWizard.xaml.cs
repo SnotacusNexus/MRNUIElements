@@ -56,7 +56,8 @@ namespace MRNUIElements
 			if (!isTriangle)
 			{
 				if ((dRidge > dRake) || (dEave > dRake))
-				{ //isHorizontal?
+				{
+                    isHorizontal=true;
 				}
 				else isHorizontal = false;
 			}

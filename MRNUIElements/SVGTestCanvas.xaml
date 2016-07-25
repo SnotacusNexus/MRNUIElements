@@ -44,6 +44,13 @@
                     <MenuItem Header="SelectAnotherShape" />
                 </syncfusion:CustomContextMenu>
             </Canvas.ContextMenu>
+
+            <Ellipse Margin="30,15,-84,-20"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Panel.ZIndex="20"
+                     Fill="Blue"
+                     Visibility="visible" />
             <!--  Rect  -->
             <Ellipse Canvas.Left="-895"
                      Canvas.Top="720"
@@ -53,6 +60,49 @@
                      Panel.ZIndex="2"
                      Fill="Yellow"
                      Visibility="visible" />
+            <!--  Rect  -->
+            <Grid Canvas.Left="-60" Canvas.Top="5">
+
+                <Canvas>
+                    <Ellipse x:Name="elp"
+                             Margin="30,15,-84,-20"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             Panel.ZIndex="20"
+                             Fill="Blue"
+                             Visibility="visible" />
+
+                    <Path x:Name="pa"
+                          Data="M4,0v-1.5a20,20,0,0,0,-20,-20h-40a20,20,0,0,0,-20,20v30a20,20,0,0,0,20,20h40a20,20,0,0,0,20,-20Z"
+                          Fill="Red"
+                          Stroke="Black"
+                          StrokeThickness="3" />
+                    <Canvas x:Name="TurtleBack">
+                        <Grid Width="50" Height="50" />
+                    </Canvas>
+
+
+                </Canvas>
+
+                <Path Canvas.Left="434"
+                      Margin="304,45,-304,-45"
+                      Panel.ZIndex="-10"
+                      Data="M4,0v-1.5a20,20,0,0,0,-20,-20h-40a20,20,0,0,0,-20,20v30a20,20,0,0,0,20,20h40a20,20,0,0,0,20,-20Z"
+                      Fill="Red"
+                      Stroke="Black"
+                      StrokeThickness="3"
+                      Visibility="visible" />
+            </Grid>
+            <Path Canvas.Left="0"
+                  Canvas.Top="182"
+                  Margin="20,5,-95,-30"
+                  Panel.ZIndex="0                           "
+                  Data="M4,0v-1.5a20,20,0,0,0,-20,-20h-40a20,20,0,0,0,-20,20v30a20,20,0,0,0,20,20h40a20,20,0,0,0,20,-20Z"
+                  Fill="Red"
+                  Stretch="Fill"
+                  Stroke="Black"
+                  StrokeThickness="3"
+                  Visibility="visible" />
             <!--  Rect  -->
             <!--  Rect  -->
             <!--  Rect  -->
@@ -110,44 +160,21 @@
             <!--  Rect  -->
             <!--  Rect  -->
             <!--  Rect  -->
-            <Ellipse Canvas.Left="345"
-                     Canvas.Top="525"
-                     Canvas.Right="600"
-                     Width="200"
-                     Height="60"
-                     Panel.ZIndex="0"
-                     Fill="Blue"
-                     Visibility="visible" />
             <!--  Rect  -->
             <!--  Rect  -->
             <!--  Rect  -->
             <!--  Rect  -->
-            <Path Canvas.Left="510"
-                  Canvas.Top="370"
+            <Path Canvas.Left="257"
+                  Canvas.Top="257"
                   Panel.ZIndex="0"
                   Data="M-4,-20l80,-20v80l-80,-20Z"
                   Fill="Red"
                   Stroke="Black"
                   StrokeThickness="3"
                   Visibility="visible" />
-            <!--  Rect  -->
-            <Path Canvas.Left="545"
-                  Canvas.Top="182"
-                  Panel.ZIndex="0"
-                  Data="M4,0v-1.5a20,20,0,0,0,-20,-20h-40a20,20,0,0,0,-20,20v30a20,20,0,0,0,20,20h40a20,20,0,0,0,20,-20Z"
-                  Fill="Red"
-                  Stroke="Black"
-                  StrokeThickness="3"
-                  Visibility="visible" />
-            <!--  Rect  -->
-            <Path Canvas.Left="545"
-                  Canvas.Top="182"
-                  Panel.ZIndex="0"
-                  Data="M4,0v-1.5a20,20,0,0,0,-20,-20h-40a20,20,0,0,0,-20,20v30a20,20,0,0,0,20,20h40a20,20,0,0,0,20,-20Z"
-                  Fill="Red"
-                  Stroke="Black"
-                  StrokeThickness="3"
-                  Visibility="visible" />
+
+
+
             <!--  Rect  -->
             <Ellipse Canvas.Left="545"
                      Canvas.Top="559"
@@ -258,7 +285,8 @@
                   Stroke="Black"
                   StrokeThickness="3"
                   Visibility="visible" />
-            <ToolBar x:Name="RoofShape" Canvas.Left="1255"
+            <ToolBar x:Name="RoofShape"
+                     Canvas.Left="1255"
                      Canvas.Top="60"
                      Width="1310"
                      Height="125"
@@ -314,36 +342,40 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
                     <Viewbox>
-                        <Path
+                        <Path Width="100"
+                              Height="109"
+                              Margin="0"
                               Panel.ZIndex="0"
                               Data="M-4,-4v100h100Z"
                               Fill="Red"
                               Stroke="Black"
                               StrokeThickness="3"
-                              Visibility="visible" Width="100" Height="109" Margin="0" />
+                              Visibility="visible" />
                     </Viewbox>
                 </Button>
                 <Button x:Name="button"
                         Width="120"
-                        Height="120"
-                       
-                    >
-                    <Path HorizontalAlignment="Center"
+                        Height="120">
+                    <Path Width="100"
+                          Height="100"
+                          HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           Panel.ZIndex="0"
                           Data="M-2,-4l-20,80h-60l-20,-80Z"
                           Fill="Red"
                           RenderTransformOrigin="0,1"
+                          Stretch="Fill"
                           Stroke="Black"
                           StrokeThickness="3"
-                          Visibility="visible" Width="100" Height="100" Stretch="Fill"/>
+                          Visibility="visible" />
                 </Button>
                 <Button x:Name="button1_Copy"
                         Height="120"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
                     <Viewbox>
-                        <Path
+                        <Path Width="100"
+                              Height="100"
                               Margin="0"
                               Panel.ZIndex="0"
                               Data="M-2,-4l-20,20v40l20,20h40l20,-20v-40l-20,-20Z"
@@ -351,7 +383,7 @@
                               Stretch="Fill"
                               Stroke="Black"
                               StrokeThickness="3"
-                              Visibility="visible" Width="100" Height="100" />
+                              Visibility="visible" />
                     </Viewbox>
                 </Button>
                 <Button x:Name="button1_Copy4"
@@ -379,6 +411,145 @@
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center">
                         <Path x:Name="Diamond"
+                              Width="100"
+                              Height="100"
+                              Margin="0"
+                              Panel.ZIndex="0"
+                              Data="M0,-40l-40,40l40,40l40,-40Z"
+                              Fill="Red"
+                              Stretch="Fill"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+            </ToolBar>
+            <ToolBar x:Name="RoofShape_Copy"
+                     Canvas.Left="1255"
+                     Canvas.Top="370"
+                     Width="1310"
+                     Height="125"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+                <Button x:Name="button2"
+                        Width="116"
+                        Height="120"
+                        Margin="0,0,0,0">
+                    <Path Width="102"
+                          Height="90"
+                          Panel.ZIndex="0"
+                          Data="M-2,-4l-20,-80h-60l20,80Z"
+                          Fill="Red"
+                          Stretch="Fill"
+                          Stroke="Black"
+                          StrokeThickness="3"
+                          Visibility="visible" />
+                </Button>
+                <Button x:Name="button1_Copy1"
+                        Width="120"
+                        Height="120">
+                    <Viewbox Width="100">
+                        <Rectangle Width="120"
+                                   Height="120"
+                                   Panel.ZIndex="2"
+                                   d:IsLocked="True"
+                                   Fill="Red"
+                                   Stroke="Black"
+                                   StrokeThickness="5"
+                                   Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="EqTrianglebtn1"
+                        Width="120"
+                        Height="120">
+                    <Viewbox Width="106" Height="97">
+                        <Path Width="100"
+                              Height="100"
+                              Margin="0,0,0,6"
+                              Panel.ZIndex="0"
+                              Data="M-9.85567010309277,-4.639257731958756l-40,60.9280h80Z"
+                              Fill="Red"
+                              Stretch="Fill"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="Trianglebtn1"
+                        Width="120"
+                        Height="120"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                    <Viewbox>
+                        <Path Width="100"
+                              Height="109"
+                              Margin="0"
+                              Panel.ZIndex="0"
+                              Data="M-4,-4v100h100Z"
+                              Fill="Red"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="button3"
+                        Width="120"
+                        Height="120">
+                    <Path Width="100"
+                          Height="100"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Panel.ZIndex="0"
+                          Data="M-2,-4l-20,80h-60l-20,-80Z"
+                          Fill="Red"
+                          RenderTransformOrigin="0,1"
+                          Stretch="Fill"
+                          Stroke="Black"
+                          StrokeThickness="3"
+                          Visibility="visible" />
+                </Button>
+                <Button x:Name="button1_Copy3"
+                        Height="120"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                    <Viewbox>
+                        <Path Width="100"
+                              Height="100"
+                              Margin="0"
+                              Panel.ZIndex="0"
+                              Data="M-2,-4l-20,20v40l20,20h40l20,-20v-40l-20,-20Z"
+                              Fill="Red"
+                              Stretch="Fill"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="button1_Copy5"
+                        Width="120"
+                        Height="120"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                    <Viewbox>
+                        <Path Margin="3,0,0,0"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Panel.ZIndex="0"
+                              Data="M-4,-4 H 100v80 h-37l-15,-15l-15,15h-37z"
+                              Fill="Red"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="Diamondbtnn1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                    <Viewbox Width="120"
+                             Height="120"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center">
+                        <Path x:Name="Diamond1"
                               Width="100"
                               Height="100"
                               Margin="0"

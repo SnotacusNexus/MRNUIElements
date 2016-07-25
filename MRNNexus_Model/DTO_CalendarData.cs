@@ -8,49 +8,49 @@ using Newtonsoft.Json;
 
 namespace MRNNexus_Model
 {
-    [KnownType(typeof(DTO_Base))]
-    [DataContract]
-    public class DTO_CalendarData : DTO_Base
-    {
-        [DataMember]
-        public int EntryID { get; set; }
-        [DataMember]
-        public int EmployeeID { get; set; }
-        [DataMember]
-        public int AppointmentTypeID { get; set; }
-        [DataMember]
-        public Nullable<int> LeadID { get; set; }
+	[KnownType(typeof(DTO_Base))]
+	[DataContract]
+	public class DTO_CalendarData : DTO_Base
+	{
+		[DataMember]
+		public int EntryID { get; set; }
+		[DataMember]
+		public int EmployeeID { get; set; }
+		[DataMember]
+		public int AppointmentTypeID { get; set; }
+		[DataMember]
+		public Nullable<int> LeadID { get; set; }
 
-        public DateTime StartTime { get; set; }
+		public DateTime StartTime { get; set; }
 		[DataMember(Name = "StartTime")]
 		private string StartTimeForSerialization { get; set; }
 		[OnSerializing]
 		void onSerializing(StreamingContext context)
 		{
-            if(StartTime != null)
-			    this.StartTimeForSerialization = JsonConvert.SerializeObject(this.StartTime).Replace('"', ' ').Trim();
+			if(StartTime != null)
+				this.StartTimeForSerialization = JsonConvert.SerializeObject(this.StartTime).Replace('"', ' ').Trim();
 
-            if(EndTime != null)
-                this.EndTimeForSerialization = JsonConvert.SerializeObject(this.EndTime).Replace('"', ' ').Trim();
-        }
+			if(EndTime != null)
+				this.EndTimeForSerialization = JsonConvert.SerializeObject(this.EndTime).Replace('"', ' ').Trim();
+		}
 		[OnDeserialized]
 		void OnDeserialized(StreamingContext context)
 		{
-            if(StartTimeForSerialization != null)
-			    this.StartTime = DateTime.Parse(this.StartTimeForSerialization);
+			if(StartTimeForSerialization != null)
+				this.StartTime = DateTime.Parse(this.StartTimeForSerialization);
 
-            if(EndTimeForSerialization != null)
-                this.EndTime = DateTime.Parse(this.EndTimeForSerialization);
-        }
+			if(EndTimeForSerialization != null)
+				this.EndTime = DateTime.Parse(this.EndTimeForSerialization);
+		}
 
-        public DateTime EndTime { get; set; }
+		public DateTime EndTime { get; set; }
 		[DataMember(Name = "EndTime")]
 		private string EndTimeForSerialization { get; set; }
 
 		[DataMember]
-        public Nullable<int> ClaimID { get; set; }
-        [DataMember]
-        public string Note { get; set; }
-		public string AppointmentText { get; set; }
-	}
+		public Nullable<int> ClaimID { get; set; }
+		[DataMember]
+		public string Note { get; set; }
+        public string AppointmentText { get; set; }
+    }
 }
