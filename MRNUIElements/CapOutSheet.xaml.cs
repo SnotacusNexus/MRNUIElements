@@ -345,7 +345,7 @@ namespace MRNUIElements
                                 sb.Append(tempstring.Substring(0, tempstring.IndexOf(" ")));
 
                             else sb.Append(RecruiterText.Text);
-                            sb.Append(" -- $");
+                            sb.Append(" -3D- ");
                             sb.Append(SalesMP);
                             tempstring = sb.ToString();
 

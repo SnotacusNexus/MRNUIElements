@@ -47,7 +47,7 @@
                            Foreground="White">
                     Password
                 </TextBlock>
-                <PasswordBox x:Name="PasswordBox"
+                <TextBox x:Name="PasswordBox"
                              MinWidth="200"
                              Margin="5,0,0,0"
                              HorizontalAlignment="Stretch" />

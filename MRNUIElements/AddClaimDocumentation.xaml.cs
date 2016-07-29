@@ -24,7 +24,7 @@ using System.Windows.Forms;
 using System.IO;
 using MRNNexus_Model;
 using System.Globalization;
-
+using MRNUIElements.Controllers;
 namespace MRNUIElements
 {
 	/// <summary>
@@ -33,7 +33,7 @@ namespace MRNUIElements
 
 	public partial class AddClaimDocumentation : Page
 	{
-		ServiceLayer s1 = ServiceLayer.getInstance();
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public BitmapImage bitmap = new BitmapImage();
 		public static ImageSource imgsrc = (ImageSource)new ImageSourceConverter().ConvertFromString("C:\\Users\\Snotacus\\Dropbox\\MRNUIElements\\MRNUIElements\\ResourceFiles\\RoofInspectionWizardBkgnd.png");
 		Geometry _textGeometry = null;

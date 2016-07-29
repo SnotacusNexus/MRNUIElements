@@ -20,10 +20,11 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-
+using MRNUIElements.Controllers;
 using System.IO;
 using MRNNexus_Model;
 using System.Globalization;
+using static MRNUIElements.Controllers.ServiceLayer;
 
 namespace MRNUIElements
 {
@@ -41,7 +42,7 @@ namespace MRNUIElements
 	public partial class AnalogFileUploadPage : Page
 	{
 
-		ServiceLayer s1 = ServiceLayer.getInstance();
+		ServiceLayer s1 = MRNUIElements.Controllers.ServiceLayer.getInstance();
 		public WhenClicked whenclicked = new WhenClicked();
 		public BitmapImage bitmap = new BitmapImage();
 		static Uri src = new Uri(@"/MRNUIElements;/ResourceFiles/RoofInspectionWizardBkgnd.png", UriKind.Relative);
@@ -57,12 +58,24 @@ namespace MRNUIElements
 		string FullFilePath = "";
 		public System.Windows.Forms.OpenFileDialog fileDialog = new System.Windows.Forms.OpenFileDialog();
 
+        internal ServiceLayer S1
+        {
+            get
+            {
+                return s1;
+            }
 
-		public AnalogFileUploadPage()
+            set
+            {
+                s1 = value;
+            }
+        }
+
+        public AnalogFileUploadPage()
 		{
 			InitializeComponent();
-			this.ClaimList.ItemsSource = s1.ClaimsList;
-			this.AvailableDocuments.ItemsSource = s1.ClaimDocTypes;
+			this.ClaimList.ItemsSource = S1.ClaimsList;
+			this.AvailableDocuments.ItemsSource = S1.ClaimDocTypes;
 
 			img.UriSource = src;
 		}
@@ -412,7 +425,7 @@ namespace MRNUIElements
 		{
 
 			//intended to use after display and local save of changes to upload finalized document to server for keeping
-			await s1.AddClaimDocument(documentUploadRequest);
+			await S1.AddClaimDocument(documentUploadRequest);
 
 
 
@@ -428,7 +441,7 @@ namespace MRNUIElements
 		{
 			//will be used to retrieve already stored document to see if user really wants to replace it after ui finds that a document for that claim already exist and only 1 or a limited number of the documents are already saved
 			//technically over write verification advanced feature
-			await s1.GetClaimDocumentsByClaimID(new DTO_Claim
+			await S1.GetClaimDocumentsByClaimID(new DTO_Claim
 			{
 				ClaimID = 30
 			});
@@ -499,7 +512,7 @@ namespace MRNUIElements
 			DTO_Claim claim = new DTO_Claim();
 			claim.MRNNumber = ClaimList.SelectedItem.ToString();
 			DTO_ClaimDocument claimdoc = new DTO_ClaimDocument();
-			await s1.GetClaimDocumentsByClaimID(claim);
+			await S1.GetClaimDocumentsByClaimID(claim);
 			List<DTO_ClaimDocument> doclist = new List<DTO_ClaimDocument>();
 			foreach (DTO_ClaimDocument d in doclist)
 			{

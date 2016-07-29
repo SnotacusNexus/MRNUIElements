@@ -53,8 +53,8 @@ namespace MRNNexus.WPFClient.Controllers
 			}
 			catch (Exception ex)
 			{
-
-			}
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
 		}
 
 		async public Task buildLUs()

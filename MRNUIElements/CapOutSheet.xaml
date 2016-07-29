@@ -1554,9 +1554,9 @@
                Padding="0"
                ScrollViewer.VerticalScrollBarVisibility="Disabled" />
         <syncfusion:SfTextBoxExt x:Name="ZipcodeText"
-                                 Canvas.Left="487"
+                                 Canvas.Left="393"
                                  Canvas.Top="155"
-                                 Width="131"
+                                 Width="225"
                                  Height="23"
                                  TabIndex="6"
                                  TextAlignment="Center"
@@ -1593,6 +1593,8 @@
         	FontSize="20"
         	RenderTransformOrigin="0.489,1.939"
         	TabIndex="31" />
+        <TextBlock x:Name="textBlock1" Height="23" Canvas.Left="241" TextWrapping="Wrap" Text="Serial #" Canvas.Top="673" Width="75" HorizontalAlignment="Right" TextAlignment="Right"/>
+        <TextBlock x:Name="textBlock1_Copy" Height="23" Canvas.Left="321" TextWrapping="Wrap" Canvas.Top="673" Width="75" Text="{Binding Text,ElementName=RecruiterText }"/>
     </Canvas>
 
 </Page>

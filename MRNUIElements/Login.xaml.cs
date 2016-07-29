@@ -12,27 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MRNUIElements.Controllers;
 using MRNNexus_Model;
 
 namespace MRNUIElements
 {
 	
-    /// <summary>
-    /// Interaction logic for Login.xaml
-    /// </summary>
-    public partial class Login : Page
+	/// <summary>
+	/// Interaction logic for Login.xaml
+	/// </summary>
+	public partial class Login : Page
 	{
 		
 				 
 
-		public static ServiceLayer s1 = ServiceLayer.getInstance();
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public DTO_User user = new DTO_User();
 						  
 		public int i = 0;
 
 
 	public Login()
-        {
+		{
 			
 			InitializeComponent();
 			LoginBtn.IsEnabled = false;
@@ -46,10 +47,26 @@ namespace MRNUIElements
 		}
 
 		
-		private void LoginClick(object sender, RoutedEventArgs e)
+		async private void LoginClick(object sender, RoutedEventArgs e)
 		{
-		
-			LoginBtn.IsEnabled = false;
+            LoginBtn.IsEnabled = false;
+            Controllers.Login login = new Controllers.Login();
+
+            await login.UserLogin(UserName, PasswordBox);
+
+            if (login.IsEmployeeLoggedIn)
+            {
+                var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
+                Schedule homePage = new Schedule();
+                this.NavigationService.Navigate(homePage);
+            }
+            else
+            {
+
+                LoginBtn.IsEnabled = true;
+                MessageBox.Show(ServiceLayer.getInstance().LoggedInEmployee.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            /*LoginBtn.IsEnabled = false;
 
 			
 			// 	 user.Username = UserName.Text;
@@ -57,8 +74,8 @@ namespace MRNUIElements
 			user.Username = "aharvey@gmail.com";
 			user.Pass = "Harvey1214";
 
-			AuthorizeLogin(user);
-		}
+			AuthorizeLogin(user);*/
+        }
 
 		public static DTO_Employee  getCurrentLogInUser()
 		{
@@ -105,11 +122,31 @@ namespace MRNUIElements
 			
 			else MessageBox.Show(s.ToString(), "Login Failure", MessageBoxButton.OK, MessageBoxImage.Error);
 
-			 	LoginBtn.IsEnabled = true;
+				LoginBtn.IsEnabled = true;
 
 			
 		}
-		async public Task<bool> BuildLookupLists()
+        async private void loginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoginBtn.IsEnabled = false;
+            Controllers.Login login = new Controllers.Login();
+
+            await login.UserLogin(UserName, PasswordBox);
+
+            if (login.IsEmployeeLoggedIn)
+            {
+                var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
+                Schedule homePage = new Schedule();
+                this.NavigationService.Navigate(homePage);
+            }
+            else
+            {
+
+                LoginBtn.IsEnabled = true;
+                MessageBox.Show(ServiceLayer.getInstance().LoggedInEmployee.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+        async public Task<bool> BuildLookupLists()
 		{
 			await s1.GetClaimDocumentTypes();
 			await s1.GetEmployeeTypes();
@@ -134,5 +171,5 @@ namespace MRNUIElements
 			await s1.GetClaimStatusTypes();
 			return true;
 		}
-    }
+	}
 }

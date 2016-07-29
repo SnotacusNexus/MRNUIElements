@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using MRNNexus_Model;
 using System.Collections.ObjectModel;
-
+using MRNUIElements.Controllers;
 namespace MRNUIElements
 {
     internal class Inspection

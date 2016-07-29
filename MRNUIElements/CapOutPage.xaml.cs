@@ -14,29 +14,29 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNNexus_Model;
 using System.Printing;
-
+using MRNUIElements.Controllers;
 namespace MRNUIElements
 {
-    /// <summary>
-    /// Interaction logic for CapOutPage.xaml
-    /// </summary>
-    public partial class CapOutPage : Page
-    {
-		ServiceLayer s1 = ServiceLayer.getInstance();
+	/// <summary>
+	/// Interaction logic for CapOutPage.xaml
+	/// </summary>
+	public partial class CapOutPage : Page
+	{
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 		
 
 		public CapOutPage()
-        {
-            InitializeComponent();
+		{
+			InitializeComponent();
 			
 
 
 		}
-        private void LogOut(object sender, RoutedEventArgs e)
-        {
-            Login Page = new Login();
-            this.NavigationService.Navigate(Page);
-        }
+		private void LogOut(object sender, RoutedEventArgs e)
+		{
+			Login Page = new Login();
+			this.NavigationService.Navigate(Page);
+		}
 
 		private void Print_Click(object sender, RoutedEventArgs e)
 		{

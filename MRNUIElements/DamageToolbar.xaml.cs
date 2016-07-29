@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace MRNUIElements
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for DamageToolbar.xaml
     /// </summary>
-    public partial class SVGTestCanvas : Page
+    public partial class DamageToolbar : UserControl
     {
-        public SVGTestCanvas()
+        public DamageToolbar()
         {
             InitializeComponent();
-            var urisource = new Uri(@"../../ResourceFiles/HailHit.png", UriKind.Relative);
-            ImageBrush brush = new ImageBrush();
-            brush.ImageSource= new BitmapImage(urisource);
-            IC.Background = brush;
-            
         }
     }
 }

@@ -109,8 +109,8 @@
     <Reference Include="MRNNexus_Model">
       <HintPath>..\MRNNexus_Model\obj\Debug\MRNNexus_Model.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationFramework.Aero2" />
@@ -194,28 +194,28 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
     <Reference Include="XamlBuildTask" />
-    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xceed.Wpf.DataGrid, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xceed.Wpf.Toolkit, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -243,7 +243,6 @@
     <Compile Include="AnalogFileUploadPage.xaml.cs">
       <DependentUpon>AnalogFileUploadPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Appointments.cs" />
     <Compile Include="BossPage.xaml.cs">
       <DependentUpon>BossPage.xaml</DependentUpon>
     </Compile>
@@ -267,12 +266,27 @@
     <Compile Include="Controllers\Schedule.cs" />
     <Compile Include="Controllers\ServiceLayer.cs" />
     <Compile Include="Controllers\ServiceLayerMembers.cs" />
+    <Compile Include="DamageToolbar.xaml.cs">
+      <DependentUpon>DamageToolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageResizer.cs" />
     <Compile Include="Inspection.cs" />
+    <Compile Include="InspectionSchedule.xaml.cs">
+      <DependentUpon>InspectionSchedule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Appointments.cs" />
     <Compile Include="MRNCalendar.cs" />
-    <Compile Include="Scheduler.xaml.cs">
-      <DependentUpon>Scheduler.xaml</DependentUpon>
+    <Compile Include="RoofShapeSelector.xaml.cs">
+      <DependentUpon>RoofShapeSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.xaml.cs">
+      <DependentUpon>Schedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SignatureBox.xaml.cs">
+      <DependentUpon>SignatureBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="SVGTestCanvas.xaml.cs">
       <DependentUpon>SVGTestCanvas.xaml</DependentUpon>
@@ -307,9 +321,6 @@
     </Compile>
     <Compile Include="EaveLength.xaml.cs">
       <DependentUpon>EaveLength.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="DamageIdentifyPage.xaml.cs">
       <DependentUpon>DamageIdentifyPage.xaml</DependentUpon>
@@ -408,12 +419,9 @@
     <Compile Include="SalesLiteraturePage.xaml.cs">
       <DependentUpon>SalesLiteraturePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Schedule.cs" />
     <Compile Include="ScopeViewer.xaml.cs">
       <DependentUpon>ScopeViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ServiceLayer.cs" />
-    <Compile Include="ServiceLayerMembers.cs" />
     <Compile Include="ShapeCanvas.cs" />
     <Compile Include="SignaturePage.xaml.cs">
       <DependentUpon>SignaturePage.xaml</DependentUpon>
@@ -479,7 +487,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Scheduler.xaml">
+    <Page Include="DamageToolbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InspectionSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoofShapeSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Schedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <DependentUpon>ScopeViewer.xaml</DependentUpon>
+    </Page>
+    <Page Include="SignatureBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -524,10 +553,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EaveLength.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -823,12 +848,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extended WPF Toolkit Binaries\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceFiles\OC Roof Order Form.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceFiles\MRN LetterheadChad.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\Cannon Order Form OC-Editable.png" />
+    <Resource Include="ResourceFiles\Creased Shingle.png" />
+    <Resource Include="ResourceFiles\Hail Hit.png" />
+    <Resource Include="ResourceFiles\Hail Storm.png" />
+    <Resource Include="ResourceFiles\HAILHIT.png" />
+    <Resource Include="ResourceFiles\LightningProtection.png" />
+    <Resource Include="ResourceFiles\PJB31.png" />
+    <Resource Include="ResourceFiles\TurtleBacl.png" />
+    <Resource Include="ResourceFiles\Wind Damage.png" />
+    <Resource Include="ResourceFiles\WINDDAMAGE.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

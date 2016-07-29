@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNNexus_Model;
-
+using MRNUIElements.Controllers;
 namespace MRNUIElements
 {
 	/// <summary>
@@ -21,7 +21,7 @@ namespace MRNUIElements
 	/// </summary>
 	public partial class PaymentEntryPage : Page
 	{
-		ServiceLayer s1 = ServiceLayer.getInstance();
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 
 		public PaymentEntryPage()
 		{
@@ -80,7 +80,7 @@ namespace MRNUIElements
 						p.PaymentDate = paymentDateDatePicker.SelectedDate.Value;
 						p.PaymentDescriptionID = ((DTO_LU_PaymentDescription)paymentTypeComboBox.SelectedValue).PaymentDescriptionID;
 						p.ClaimID = ((DTO_Claim)claimIDComboBox.SelectedValue).ClaimID;
-                        p.PaymentTypeID = 1;
+						p.PaymentTypeID = 1;
 						await s1.AddPayment(p);
 					
 

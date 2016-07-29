@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Formatting;
+using MRNUIElements.Controllers;
 
 namespace MRNUIElements.Models
 {
-	internal class Appointments
+	public partial class Appointments
 	{
-		internal class MappedAppointment
+		public partial class MappedAppointment
 		{
 			public string MappedSubject { get; set; }
 			public DateTime MappedStartTime { get; set; }

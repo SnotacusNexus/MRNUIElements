@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNNexus_Model;
-
+using MRNUIElements.Controllers;
 
 namespace MRNUIElements
 {
@@ -23,7 +23,7 @@ namespace MRNUIElements
 	public partial class ScopeViewer : Page
 	{
 		
-		public ServiceLayer s1 = ServiceLayer.getInstance();
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public List<DTO_Scope> claimscopelist = new List<DTO_Scope>();
 		public int scopetype;
 		public DTO_Scope scope = new DTO_Scope();

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNNexus_Model;
-
+using MRNUIElements.Controllers;
 namespace MRNUIElements
 {
 
@@ -23,7 +23,7 @@ namespace MRNUIElements
 	/// </summary>
 	public partial class InvoicePage : Page
 	{
-		ServiceLayer s1 = ServiceLayer.getInstance();
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 
 		public InvoicePage()
 		{

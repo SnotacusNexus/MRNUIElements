@@ -22,7 +22,7 @@ namespace MRNUIElements
 	/// <summary>
 	/// Interaction logic for Scheduler.xaml
 	/// </summary>
-	public partial class Scheduler : Page
+	public class Schedule: Page
 	{
 		MRNNexus_Model.DTO_CalendarData calData;
 
@@ -30,7 +30,7 @@ namespace MRNUIElements
 
 		double autoHeight;
 
-		public Scheduler()
+		public Schedule()
 		{
 			InitializeComponent();
 
@@ -74,9 +74,9 @@ namespace MRNUIElements
 		private void appointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
 		{
 			var record = this.appointments.SelectedItem;
-            int calDataInt = ((Appointments.TodaysAppointment)record).CalendarDataID;
+			int calDataInt = ((Appointments.TodaysAppointment)record).CalendarDataID;
 
-         
+		 
 
 			foreach(var cd in ServiceLayer.getInstance().CalendarDataList)
 			{
@@ -101,9 +101,9 @@ namespace MRNUIElements
 		{
 			//e holds the new record
 			Schedule scheduler = new Schedule();
-            setUp();
+			setUp();
 
-        }
+		}
 
 		private async void calendar_AppointmentEditorClosed(object sender, Syncfusion.UI.Xaml.Schedule.AppointmentEditorClosedEventArgs e)
 		{

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using MRNNexus_Model;
-
+using static MRNUIElements.Controllers.ServiceLayer;
 using static MRNUIElements.Models.Appointments;
 using System.Collections.ObjectModel;
 using System.Windows;

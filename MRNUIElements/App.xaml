@@ -126,19 +126,19 @@
 
 
         <Style x:Key="normal">
-            <Setter Property="Control.FontSize" Value="24" />
-            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center" />
-            <Setter Property="FrameworkElement.Margin" Value="1,5" />
-            <Setter Property="Control.Foreground" Value="White" />
-            <Setter Property="FrameworkElement.MinWidth" Value="100" />
-            <Setter Property="FrameworkElement.MinHeight" Value="30" />
             <Setter Property="Control.Background" Value="Transparent" />
             <Setter Property="Control.BorderThickness" Value="1" />
+            <Setter Property="Control.FontSize" Value="24" />
+            <Setter Property="Control.Foreground" Value="White" />
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center" />
             <Setter Property="FrameworkElement.Margin" Value="1,5" />
+            <Setter Property="FrameworkElement.Margin" Value="1,5" />
+            <Setter Property="FrameworkElement.MinHeight" Value="30" />
+            <Setter Property="FrameworkElement.MinWidth" Value="100" />
             <Style.Triggers>
                 <Trigger Property="ButtonBase.IsPressed" Value="True">
-                    <Setter Property="Control.Background" Value="Blue" />
                     <Setter Property="Border.Background" Value="Orange" />
+                    <Setter Property="Control.Background" Value="Blue" />
                 </Trigger>
 
                 <MultiTrigger>
@@ -183,10 +183,10 @@
             <GradientStop Offset="1.0" Color="#FFDCECFC" />
         </LinearGradientBrush>
         <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
-            <Setter Property="OverridesDefaultStyle" Value="true" />
-            <Setter Property="IsTabStop" Value="false" />
-            <Setter Property="Focusable" Value="false" />
             <Setter Property="ClickMode" Value="Press" />
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -220,10 +220,10 @@
                                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="false" />
                                     <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="true" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Static.Editable.Background}" />
-                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Static.Editable.Border}" />
                                 <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.Static.Editable.Button.Background}" />
                                 <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.Static.Editable.Button.Border}" />
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Static.Editable.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Static.Editable.Border}" />
                             </MultiDataTrigger>
                             <Trigger Property="IsMouseOver" Value="true">
                                 <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.MouseOver.Glyph}" />
@@ -241,10 +241,10 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.MouseOver.Editable.Background}" />
-                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Editable.Border}" />
                                 <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.MouseOver.Editable.Button.Background}" />
                                 <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Editable.Button.Border}" />
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.MouseOver.Editable.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Editable.Border}" />
                             </MultiDataTrigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.Pressed.Glyph}" />
@@ -262,10 +262,10 @@
                                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Pressed.Editable.Background}" />
-                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Editable.Border}" />
                                 <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.Pressed.Editable.Button.Background}" />
                                 <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Editable.Button.Border}" />
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Pressed.Editable.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Editable.Border}" />
                             </MultiDataTrigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.Disabled.Glyph}" />
@@ -283,10 +283,10 @@
                                     <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
                                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Disabled.Editable.Background}" />
-                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Disabled.Editable.Border}" />
                                 <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.Disabled.Editable.Button.Background}" />
                                 <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.Disabled.Editable.Button.Border}" />
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Disabled.Editable.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Disabled.Editable.Border}" />
                             </MultiDataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -371,8 +371,8 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
-                    <Setter TargetName="shadow" Property="Margin" Value="0,0,5,5" />
                     <Setter TargetName="shadow" Property="Color" Value="#71000000" />
+                    <Setter TargetName="shadow" Property="Margin" Value="0,0,5,5" />
                 </Trigger>
                 <Trigger Property="HasItems" Value="false">
                     <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
@@ -385,17 +385,17 @@
                     <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
                 </MultiTrigger>
                 <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
-                    <Setter TargetName="opaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
                     <Setter TargetName="opaqueRect" Property="Canvas.Left" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
+                    <Setter TargetName="opaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
-            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="AllowDrop" Value="true" />
-            <Setter Property="MinWidth" Value="0" />
-            <Setter Property="MinHeight" Value="0" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="MinWidth" Value="0" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
             <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
             <Setter Property="Template">
@@ -484,8 +484,8 @@
                     <Setter Property="Foreground" Value="Black" />
                 </Trigger>
                 <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
-                    <Setter TargetName="shadow" Property="Margin" Value="0,0,5,5" />
                     <Setter TargetName="shadow" Property="Color" Value="#71000000" />
+                    <Setter TargetName="shadow" Property="Margin" Value="0,0,5,5" />
                 </Trigger>
                 <Trigger Property="HasItems" Value="false">
                     <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
@@ -498,22 +498,22 @@
                     <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
                 </MultiTrigger>
                 <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
-                    <Setter TargetName="opaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
                     <Setter TargetName="opaqueRect" Property="Canvas.Left" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
+                    <Setter TargetName="opaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <Style TargetType="{x:Type ComboBox}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
             <Setter Property="Padding" Value="6,3,5,3" />
             <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
             <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
             <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
             <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
             <Style.Triggers>
@@ -583,10 +583,10 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
-            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Focusable" Value="false" />
             <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
@@ -698,8 +698,8 @@
             </Border>
             <ControlTemplate.Triggers>
                 <Trigger Property="TickPlacement" Value="TopLeft">
-                    <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
                     <Setter TargetName="Thumb" Property="Template" Value="{StaticResource SliderThumbHorizontalTop}" />
+                    <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
                     <Setter TargetName="TrackBackground" Property="Margin" Value="5,2,5,0" />
                 </Trigger>
                 <Trigger Property="TickPlacement" Value="BottomRight">
@@ -708,8 +708,8 @@
                     <Setter TargetName="TrackBackground" Property="Margin" Value="5,0,5,2" />
                 </Trigger>
                 <Trigger Property="TickPlacement" Value="Both">
-                    <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
                     <Setter TargetName="BottomTick" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
                 </Trigger>
                 <Trigger Property="IsSelectionRangeEnabled" Value="true">
                     <Setter TargetName="PART_SelectionRange" Property="Visibility" Value="Visible" />
@@ -856,8 +856,8 @@
             </Border>
             <ControlTemplate.Triggers>
                 <Trigger Property="TickPlacement" Value="TopLeft">
-                    <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
                     <Setter TargetName="Thumb" Property="Template" Value="{StaticResource SliderThumbVerticalLeft}" />
+                    <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
                     <Setter TargetName="TrackBackground" Property="Margin" Value="2,5,0,5" />
                 </Trigger>
                 <Trigger Property="TickPlacement" Value="BottomRight">
@@ -866,8 +866,8 @@
                     <Setter TargetName="TrackBackground" Property="Margin" Value="0,5,2,5" />
                 </Trigger>
                 <Trigger Property="TickPlacement" Value="Both">
-                    <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
                     <Setter TargetName="BottomTick" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
                 </Trigger>
                 <Trigger Property="IsSelectionRangeEnabled" Value="true">
                     <Setter TargetName="PART_SelectionRange" Property="Visibility" Value="Visible" />
@@ -878,10 +878,10 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <Style TargetType="{x:Type Slider}">
-            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="Foreground" Value="{StaticResource SliderThumb.Static.Foreground}" />
+            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
             <Setter Property="Template" Value="{StaticResource SliderHorizontal}" />
             <Style.Triggers>
                 <Trigger Property="Orientation" Value="Vertical">
@@ -890,14 +890,13 @@
             </Style.Triggers>
         </Style>
         <Style x:Key="TabItemStyle1" TargetType="{x:Type TabItem}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
-            <Setter Property="Foreground" Value="Black" />
             <Setter Property="Background" Value="{StaticResource TabItem.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource TabItem.Static.Border}" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="Margin" Value="0" />
             <Setter Property="Padding" Value="6,2,6,2" />
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="VerticalContentAlignment" Value="Stretch" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TabItem}">
@@ -930,9 +929,9 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
                                 </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -940,9 +939,9 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
                                 </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -950,9 +949,9 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
                                 </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -960,9 +959,9 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
                                 </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -971,9 +970,9 @@
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -982,9 +981,9 @@
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -993,9 +992,9 @@
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -1004,9 +1003,9 @@
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -1022,10 +1021,10 @@
                                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter Property="Margin" Value="-2,-2,0,-2" />
-                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -1041,10 +1040,10 @@
                                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter Property="Margin" Value="-2,0,-2,-2" />
-                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -1060,10 +1059,10 @@
                                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter Property="Margin" Value="0,-2,-2,-2" />
-                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -1079,29 +1078,30 @@
                                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter Property="Margin" Value="-2,-2,-2,0" />
-                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
                             </MultiDataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
         </Style>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3" />
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA" />
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5" />
         <Style TargetType="{x:Type TextBox}">
+            <Setter Property="AllowDrop" Value="true" />
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
             <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
-            <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="AllowDrop" Value="true" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
             <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
             <Setter Property="Template">
@@ -1196,13 +1196,12 @@
             </Grid>
         </ControlTemplate>
         <Style x:Key="ScrollBarButton" TargetType="{x:Type RepeatButton}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Padding" Value="1" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Focusable" Value="false" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="Padding" Value="1" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
@@ -1228,18 +1227,19 @@
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ScrollBar.Pressed.Border}" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource ScrollBar.Disabled.Background}" />
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ScrollBar.Disabled.Border}" />
+                                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
         <Style x:Key="ScrollBarThumbVertical" TargetType="{x:Type Thumb}">
-            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Thumb}">
@@ -1261,8 +1261,8 @@
             </Setter>
         </Style>
         <Style x:Key="ScrollBarThumbHorizontal" TargetType="{x:Type Thumb}">
-            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Thumb}">
@@ -1284,14 +1284,13 @@
             </Setter>
         </Style>
         <Style TargetType="{x:Type ScrollBar}">
-            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
-            <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
             <Setter Property="Background" Value="{StaticResource ScrollBar.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource ScrollBar.Static.Border}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
             <Setter Property="BorderThickness" Value="1,0" />
-            <Setter Property="Width" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
             <Setter Property="MinWidth" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
+            <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -1371,20 +1370,20 @@
                                 <Setter TargetName="ArrowTop" Property="Fill" Value="{StaticResource ScrollBar.MouseOver.Glyph}" />
                             </MultiDataTrigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="ArrowTop" Property="Fill" Value="{StaticResource ScrollBar.Disabled.Glyph}" />
                                 <Setter TargetName="ArrowBottom" Property="Fill" Value="{StaticResource ScrollBar.Disabled.Glyph}" />
+                                <Setter TargetName="ArrowTop" Property="Fill" Value="{StaticResource ScrollBar.Disabled.Glyph}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Width" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
             <Style.Triggers>
                 <Trigger Property="Orientation" Value="Horizontal">
-                    <Setter Property="Width" Value="Auto" />
-                    <Setter Property="MinWidth" Value="0" />
+                    <Setter Property="BorderThickness" Value="0,1" />
                     <Setter Property="Height" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}" />
                     <Setter Property="MinHeight" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}" />
-                    <Setter Property="BorderThickness" Value="0,1" />
+                    <Setter Property="MinWidth" Value="0" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -1470,89 +1469,13 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="Width" Value="Auto" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
             <Grid Background="{x:Null}">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualStateGroup.Transitions>
-                            <VisualTransition GeneratedDuration="0" />
-                            <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver" />
-                            <VisualTransition GeneratedDuration="0:0:0.1" To="Pressed" />
-                        </VisualStateGroup.Transitions>
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="MouseOver">
-                            <Storyboard>
-                                <ColorAnimation Duration="0"
-                                                Storyboard.TargetName="Background"
-                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                To="#FF448DCA" />
-                                <ColorAnimationUsingKeyFrames BeginTime="0"
-                                                              Duration="00:00:00.001"
-                                                              Storyboard.TargetName="BackgroundGradient"
-                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
-                                    <SplineColorKeyFrame KeyTime="0" Value="#7FFFFFFF" />
-                                </ColorAnimationUsingKeyFrames>
-                                <ColorAnimationUsingKeyFrames BeginTime="0"
-                                                              Duration="00:00:00.001"
-                                                              Storyboard.TargetName="BackgroundGradient"
-                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
-                                    <SplineColorKeyFrame KeyTime="0" Value="#CCFFFFFF" />
-                                </ColorAnimationUsingKeyFrames>
-                                <ColorAnimationUsingKeyFrames BeginTime="0"
-                                                              Duration="00:00:00.001"
-                                                              Storyboard.TargetName="BackgroundGradient"
-                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                    <SplineColorKeyFrame KeyTime="0" Value="#F2FFFFFF" />
-                                </ColorAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Pressed">
-                            <Storyboard>
-                                <ColorAnimationUsingKeyFrames BeginTime="0"
-                                                              Duration="00:00:00.001"
-                                                              Storyboard.TargetName="Background"
-                                                              Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
-                                    <SplineColorKeyFrame KeyTime="0" Value="#FF448DCA" />
-                                </ColorAnimationUsingKeyFrames>
-                                <DoubleAnimationUsingKeyFrames BeginTime="0"
-                                                               Duration="00:00:00.001"
-                                                               Storyboard.TargetName="Highlight"
-                                                               Storyboard.TargetProperty="(UIElement.Opacity)">
-                                    <SplineDoubleKeyFrame KeyTime="0" Value="1" />
-                                </DoubleAnimationUsingKeyFrames>
-                                <ColorAnimationUsingKeyFrames BeginTime="0"
-                                                              Duration="00:00:00.001"
-                                                              Storyboard.TargetName="BackgroundGradient"
-                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                    <SplineColorKeyFrame KeyTime="0" Value="#EAFFFFFF" />
-                                </ColorAnimationUsingKeyFrames>
-                                <ColorAnimationUsingKeyFrames BeginTime="0"
-                                                              Duration="00:00:00.001"
-                                                              Storyboard.TargetName="BackgroundGradient"
-                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
-                                    <SplineColorKeyFrame KeyTime="0" Value="#C6FFFFFF" />
-                                </ColorAnimationUsingKeyFrames>
-                                <ColorAnimationUsingKeyFrames BeginTime="0"
-                                                              Duration="00:00:00.001"
-                                                              Storyboard.TargetName="BackgroundGradient"
-                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
-                                    <SplineColorKeyFrame KeyTime="0" Value="#6BFFFFFF" />
-                                </ColorAnimationUsingKeyFrames>
-                                <ColorAnimationUsingKeyFrames BeginTime="0"
-                                                              Duration="00:00:00.001"
-                                                              Storyboard.TargetName="BackgroundGradient"
-                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                    <SplineColorKeyFrame KeyTime="0" Value="#F4FFFFFF" />
-                                </ColorAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Disabled" />
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
                 <Grid Width="19"
                       Height="18"
                       Margin="0"
@@ -1649,10 +1572,86 @@
                           RenderTransformOrigin="0.5,0.5"
                           Stretch="Fill" />
                 </Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualStateGroup.Transitions>
+                            <VisualTransition GeneratedDuration="0" />
+                            <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver" />
+                            <VisualTransition GeneratedDuration="0:0:0.1" To="Pressed" />
+                        </VisualStateGroup.Transitions>
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimation Duration="0"
+                                                Storyboard.TargetName="Background"
+                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                To="#FF448DCA" />
+                                <ColorAnimationUsingKeyFrames BeginTime="0"
+                                                              Duration="00:00:00.001"
+                                                              Storyboard.TargetName="BackgroundGradient"
+                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="0" Value="#7FFFFFFF" />
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="0"
+                                                              Duration="00:00:00.001"
+                                                              Storyboard.TargetName="BackgroundGradient"
+                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="0" Value="#CCFFFFFF" />
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="0"
+                                                              Duration="00:00:00.001"
+                                                              Storyboard.TargetName="BackgroundGradient"
+                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="0" Value="#F2FFFFFF" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames BeginTime="0"
+                                                              Duration="00:00:00.001"
+                                                              Storyboard.TargetName="Background"
+                                                              Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                    <SplineColorKeyFrame KeyTime="0" Value="#FF448DCA" />
+                                </ColorAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames BeginTime="0"
+                                                               Duration="00:00:00.001"
+                                                               Storyboard.TargetName="Highlight"
+                                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="0" Value="1" />
+                                </DoubleAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="0"
+                                                              Duration="00:00:00.001"
+                                                              Storyboard.TargetName="BackgroundGradient"
+                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="0" Value="#EAFFFFFF" />
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="0"
+                                                              Duration="00:00:00.001"
+                                                              Storyboard.TargetName="BackgroundGradient"
+                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="0" Value="#C6FFFFFF" />
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="0"
+                                                              Duration="00:00:00.001"
+                                                              Storyboard.TargetName="BackgroundGradient"
+                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="0" Value="#6BFFFFFF" />
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="0"
+                                                              Duration="00:00:00.001"
+                                                              Storyboard.TargetName="BackgroundGradient"
+                                                              Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="0" Value="#F4FFFFFF" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
             </Grid>
         </ControlTemplate>
         <Style x:Key="CalendarStyle1" TargetType="{x:Type Calendar}">
-            <Setter Property="Foreground" Value="#FF333333" />
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -1674,6 +1673,7 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="#FF333333" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Calendar}">
@@ -1706,19 +1706,6 @@
                 <Grid.Resources>
                     <SolidColorBrush x:Key="Þ" Color="#A5FFFFFF" />
                 </Grid.Resources>
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Disabled">
-                            <Storyboard>
-                                <DoubleAnimation Duration="0"
-                                                 Storyboard.TargetName="PART_DisabledVisual"
-                                                 Storyboard.TargetProperty="Opacity"
-                                                 To="1" />
-                            </Storyboard>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
                 <Border Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
@@ -1730,27 +1717,6 @@
                             <Grid.Resources>
                                 <ControlTemplate x:Key="ß" TargetType="{x:Type Button}">
                                     <Grid Cursor="Hand">
-                                        <VisualStateManager.VisualStateGroups>
-                                            <VisualStateGroup x:Name="CommonStates">
-                                                <VisualState x:Name="Normal" />
-                                                <VisualState x:Name="MouseOver">
-                                                    <Storyboard>
-                                                        <ColorAnimation Duration="0"
-                                                                        Storyboard.TargetName="path"
-                                                                        Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
-                                                                        To="#FF73A9D8" />
-                                                    </Storyboard>
-                                                </VisualState>
-                                                <VisualState x:Name="Disabled">
-                                                    <Storyboard>
-                                                        <DoubleAnimation Duration="0"
-                                                                         Storyboard.TargetName="path"
-                                                                         Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)"
-                                                                         To="0.5" />
-                                                    </Storyboard>
-                                                </VisualState>
-                                            </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
                                         <Rectangle Fill="#11E5EBF1"
                                                    Opacity="1"
                                                    Stretch="Fill" />
@@ -1765,10 +1731,6 @@
                                                   Fill="#FF333333"
                                                   Stretch="Fill" />
                                         </Grid>
-                                    </Grid>
-                                </ControlTemplate>
-                                <ControlTemplate x:Key="à" TargetType="{x:Type Button}">
-                                    <Grid Cursor="Hand">
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup x:Name="CommonStates">
                                                 <VisualState x:Name="Normal" />
@@ -1790,6 +1752,10 @@
                                                 </VisualState>
                                             </VisualStateGroup>
                                         </VisualStateManager.VisualStateGroups>
+                                    </Grid>
+                                </ControlTemplate>
+                                <ControlTemplate x:Key="à" TargetType="{x:Type Button}">
+                                    <Grid Cursor="Hand">
                                         <Rectangle Fill="#11E5EBF1"
                                                    Opacity="1"
                                                    Stretch="Fill" />
@@ -1804,10 +1770,38 @@
                                                   Fill="#FF333333"
                                                   Stretch="Fill" />
                                         </Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <ColorAnimation Duration="0"
+                                                                        Storyboard.TargetName="path"
+                                                                        Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                                        To="#FF73A9D8" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Disabled">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Duration="0"
+                                                                         Storyboard.TargetName="path"
+                                                                         Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)"
+                                                                         To="0.5" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
                                     </Grid>
                                 </ControlTemplate>
                                 <ControlTemplate x:Key="á" TargetType="{x:Type Button}">
                                     <Grid Cursor="Hand">
+                                        <ContentPresenter x:Name="buttonContent"
+                                                          Margin="1,4,1,9"
+                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                          Content="{TemplateBinding Content}"
+                                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                          TextElement.Foreground="#FF333333" />
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup x:Name="CommonStates">
                                                 <VisualState x:Name="Normal" />
@@ -1829,13 +1823,6 @@
                                                 </VisualState>
                                             </VisualStateGroup>
                                         </VisualStateManager.VisualStateGroups>
-                                        <ContentPresenter x:Name="buttonContent"
-                                                          Margin="1,4,1,9"
-                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                          Content="{TemplateBinding Content}"
-                                                          ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                          TextElement.Foreground="#FF333333" />
                                     </Grid>
                                 </ControlTemplate>
                             </Grid.Resources>
@@ -1861,6 +1848,24 @@
                                 <Button.Template>
                                     <ControlTemplate TargetType="{x:Type Button}">
                                         <Grid Cursor="Hand">
+                                            <Rectangle Fill="{DynamicResource BackgroundGradient}"
+                                                       Opacity="1"
+                                                       Stretch="Fill"
+                                                       Stroke="{DynamicResource ReverseBackgroundGradient}"
+                                                       StrokeThickness="2" />
+                                            <Grid>
+                                                <Path x:Name="path"
+                                                      Width="6"
+                                                      Height="10"
+                                                      Margin="14,-6,0,0"
+                                                      HorizontalAlignment="Left"
+                                                      VerticalAlignment="Center"
+                                                      Data="M288.75,232.25L288.75,240.625 283,236.625z"
+                                                      Fill="#FF00A2FF"
+                                                      Stretch="Fill"
+                                                      Stroke="#FFE8FF00"
+                                                      StrokeThickness="2" />
+                                            </Grid>
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup x:Name="CommonStates">
                                                     <VisualState x:Name="Normal" />
@@ -1882,24 +1887,6 @@
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
-                                            <Rectangle Fill="{DynamicResource BackgroundGradient}"
-                                                       Opacity="1"
-                                                       Stretch="Fill"
-                                                       Stroke="{DynamicResource ReverseBackgroundGradient}"
-                                                       StrokeThickness="2" />
-                                            <Grid>
-                                                <Path x:Name="path"
-                                                      Width="6"
-                                                      Height="10"
-                                                      Margin="14,-6,0,0"
-                                                      HorizontalAlignment="Left"
-                                                      VerticalAlignment="Center"
-                                                      Data="M288.75,232.25L288.75,240.625 283,236.625z"
-                                                      Fill="#FF00A2FF"
-                                                      Stretch="Fill"
-                                                      Stroke="#FFE8FF00"
-                                                      StrokeThickness="2" />
-                                            </Grid>
                                         </Grid>
                                     </ControlTemplate>
                                 </Button.Template>
@@ -1929,6 +1916,24 @@
                                 <Button.Template>
                                     <ControlTemplate TargetType="{x:Type Button}">
                                         <Grid Cursor="Hand">
+                                            <Rectangle Fill="{DynamicResource ReverseBackgroundGradient}"
+                                                       Opacity="1"
+                                                       Stretch="Fill"
+                                                       Stroke="{DynamicResource BackgroundGradient}"
+                                                       StrokeThickness="2" />
+                                            <Grid>
+                                                <Path x:Name="path"
+                                                      Width="6"
+                                                      Height="10"
+                                                      Margin="0,-6,14,0"
+                                                      HorizontalAlignment="Right"
+                                                      VerticalAlignment="Center"
+                                                      Data="M282.875,231.875L282.875,240.375 288.625,236z"
+                                                      Fill="#FF00A2FF"
+                                                      Stretch="Fill"
+                                                      Stroke="#FFE8FF00"
+                                                      StrokeThickness="2" />
+                                            </Grid>
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup x:Name="CommonStates">
                                                     <VisualState x:Name="Normal" />
@@ -1950,24 +1955,6 @@
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
-                                            <Rectangle Fill="{DynamicResource ReverseBackgroundGradient}"
-                                                       Opacity="1"
-                                                       Stretch="Fill"
-                                                       Stroke="{DynamicResource BackgroundGradient}"
-                                                       StrokeThickness="2" />
-                                            <Grid>
-                                                <Path x:Name="path"
-                                                      Width="6"
-                                                      Height="10"
-                                                      Margin="0,-6,14,0"
-                                                      HorizontalAlignment="Right"
-                                                      VerticalAlignment="Center"
-                                                      Data="M282.875,231.875L282.875,240.375 288.625,236z"
-                                                      Fill="#FF00A2FF"
-                                                      Stretch="Fill"
-                                                      Stroke="#FFE8FF00"
-                                                      StrokeThickness="2" />
-                                            </Grid>
                                         </Grid>
                                     </ControlTemplate>
                                 </Button.Template>
@@ -2035,6 +2022,19 @@
                            Stroke="#A5FFFFFF"
                            StrokeThickness="1"
                            Visibility="Collapsed" />
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Disabled">
+                            <Storyboard>
+                                <DoubleAnimation Duration="0"
+                                                 Storyboard.TargetName="PART_DisabledVisual"
+                                                 Storyboard.TargetProperty="Opacity"
+                                                 To="1" />
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
@@ -2052,6 +2052,13 @@
         </ControlTemplate>
         <ControlTemplate x:Key="ButtonControlTemplate2" TargetType="{x:Type Button}">
             <Grid Background="{DynamicResource RedBrush}" Cursor="Hand">
+                <ContentPresenter x:Name="buttonContent"
+                                  Margin="1,4,1,9"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Content="{TemplateBinding Content}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  TextElement.Foreground="#FF333333" />
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="Normal" />
@@ -2073,15 +2080,114 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <ContentPresenter x:Name="buttonContent"
-                                  Margin="1,4,1,9"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  Content="{TemplateBinding Content}"
-                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                  TextElement.Foreground="#FF333333" />
             </Grid>
         </ControlTemplate>
+        <PathGeometry x:Key="W0"
+                      Figures="M 0,0 C 2.4,11.2 5.44,27.2 8.32,47.04 9.92,57.44 11.04,67.36 11.68,67.2    12.8,66.88 9.44,25.44 11.2,24.96 12.64,24.48 17.12,50.72 19.68,75.68 20.16,80.32 20.48,84.32 20.8,87.2 z"
+                      FillRule="NonZero" />
 
+        <PathGeometry x:Key="W1"
+                      Figures="M 0,0 L -8.8,0 -8.8,-13.92 -7.04,-13.92 -7.04,-1.6 0,-1.6 z   M 3.52,-12.32 L 1.6,-12.32 1.6,-14.08 3.52,-14.08 z   M 3.52,0 L 1.76,0 1.76,-10.56 3.52,-10.56 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W2"
+                      Figures="M 0,0 C 0,1.92 -0.32,3.2 -1.12,4 -1.92,4.8 -3.2,5.28 -4.96,5.28    -5.44,5.28 -6.08,5.12 -6.56,5.12 -7.04,4.96 -7.52,4.96 -8.16,4.8 L -8.16,3.04    -8,3.04 C -7.68,3.04 -7.2,3.2 -6.56,3.36 -6.08,3.52 -5.44,3.68 -4.8,3.68    -4.16,3.68 -3.68,3.52 -3.2,3.36 -2.88,3.36 -2.56,3.04 -2.4,2.88 -2.08,2.56 -1.92,2.24 -1.92,1.92    -1.76,1.6 -1.76,1.28 -1.76,0.8 L -1.76,-0.16 C -2.24,0.32 -2.72,0.64 -3.2,0.8    -3.68,0.96 -4.32,1.12 -5.12,1.12 -6.4,1.12 -7.36,0.64 -8.16,-0.32 -8.8,-1.12 -9.12,-2.4 -9.12,-4    -9.12,-4.96 -9.12,-5.76 -8.8,-6.4 -8.64,-7.04 -8.16,-7.68 -7.84,-8.16 -7.36,-8.48 -6.88,-8.96 -6.24,-9.12    -5.76,-9.44 -5.12,-9.44 -4.64,-9.44 -4,-9.44 -3.52,-9.44 -3.04,-9.28 -2.56,-9.12 -2.24,-8.96 -1.76,-8.8   L -1.6,-9.28 0,-9.28 z   M -1.76,-1.6 L -1.76,-7.36 C -2.24,-7.52 -2.72,-7.68 -3.04,-7.84 -3.52,-7.84 -3.84,-7.84 -4.32,-7.84    -5.28,-7.84 -5.92,-7.52 -6.56,-6.88 -7.04,-6.24 -7.36,-5.28 -7.36,-4.16 -7.36,-2.88 -7.2,-2.08 -6.72,-1.44    -6.4,-0.8 -5.6,-0.48 -4.64,-0.48 -4.16,-0.48 -3.68,-0.64 -3.2,-0.8 -2.72,-0.96 -2.24,-1.28 -1.76,-1.6 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W3"
+                      Figures="M 0,0 L -1.76,0 -1.76,-5.92 C -1.76,-6.4 -1.76,-6.88 -1.76,-7.36 -1.92,-7.68 -1.92,-8.16 -2.08,-8.32    -2.24,-8.64 -2.56,-8.8 -2.72,-8.96 -3.04,-8.96 -3.52,-9.12 -4,-9.12 -4.48,-9.12 -4.96,-8.96 -5.44,-8.8    -5.92,-8.48 -6.4,-8.16 -7.04,-7.84 L -7.04,0 -8.8,0 -8.8,-14.56 -7.04,-14.56    -7.04,-9.28 C -6.4,-9.76 -5.92,-10.08 -5.28,-10.4 -4.64,-10.72 -4,-10.72 -3.52,-10.72    -2.24,-10.72 -1.44,-10.4 -0.8,-9.76 -0.32,-9.12 0,-8.16 0,-6.88 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W4"
+                      Figures="M 0,0 C -0.32,0.16 -0.8,0.16 -1.12,0.32 -1.6,0.32 -1.92,0.32 -2.24,0.32    -3.2,0.32 -4,0 -4.64,-0.48 -5.12,-1.12 -5.44,-2.08 -5.44,-3.2 L -5.44,-8.8    -6.72,-8.8 -6.72,-10.4 -5.44,-10.4 -5.44,-13.28 -3.68,-13.28 -3.68,-10.4 0,-10.4    0,-8.8 -3.68,-8.8 -3.68,-4 C -3.68,-3.52 -3.68,-3.04 -3.68,-2.72 -3.68,-2.4 -3.52,-2.24 -3.36,-1.92    -3.2,-1.6 -3.04,-1.44 -2.88,-1.44 -2.56,-1.28 -2.24,-1.12 -1.76,-1.12 -1.44,-1.12 -1.12,-1.28 -0.8,-1.28    -0.48,-1.44 -0.32,-1.44 -0.16,-1.6 L 0,-1.6 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W5"
+                      Figures="M 0,0 L -1.76,0 -1.76,-5.92 C -1.76,-6.4 -1.92,-6.88 -1.92,-7.36 -1.92,-7.68 -2.08,-8.16 -2.24,-8.32    -2.4,-8.64 -2.56,-8.8 -2.88,-8.96 -3.2,-8.96 -3.52,-9.12 -4,-9.12 -4.48,-9.12 -4.96,-8.96 -5.6,-8.8    -6.08,-8.48 -6.56,-8.16 -7.04,-7.84 L -7.04,0 -8.8,0 -8.8,-10.56 -7.04,-10.56    -7.04,-9.28 C -6.56,-9.76 -5.92,-10.08 -5.28,-10.4 -4.8,-10.72 -4.16,-10.72 -3.52,-10.72    -2.4,-10.72 -1.6,-10.4 -0.96,-9.76 -0.32,-9.12 0,-8.16 0,-6.88 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W6"
+                      Figures="M 0,0 L -2.08,0 -2.08,-1.76 0,-1.76 z   M -0.16,12.32 L -1.92,12.32 -1.92,1.76 -0.16,1.76 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W7"
+                      Figures="M 0,0 L -1.76,0 -1.76,-5.92 C -1.76,-6.4 -1.76,-6.88 -1.76,-7.36 -1.92,-7.68 -1.92,-8.16 -2.08,-8.32    -2.24,-8.64 -2.56,-8.8 -2.72,-8.96 -3.04,-8.96 -3.52,-9.12 -4,-9.12 -4.48,-9.12 -4.96,-8.96 -5.44,-8.8    -5.92,-8.48 -6.56,-8.16 -7.04,-7.84 L -7.04,0 -8.8,0 -8.8,-10.56 -7.04,-10.56    -7.04,-9.28 C -6.4,-9.76 -5.92,-10.08 -5.28,-10.4 -4.64,-10.72 -4,-10.72 -3.52,-10.72    -2.24,-10.72 -1.44,-10.4 -0.8,-9.76 -0.32,-9.12 0,-8.16 0,-6.88 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W8"
+                      Figures="M 0,0 C 0,1.92 -0.32,3.2 -1.12,4 -1.92,4.8 -3.2,5.28 -4.8,5.28    -5.44,5.28 -5.92,5.12 -6.4,5.12 -7.04,4.96 -7.52,4.96 -8,4.8 L -8,3.04    -8,3.04 C -7.68,3.04 -7.2,3.2 -6.56,3.36 -5.92,3.52 -5.28,3.68 -4.64,3.68    -4.16,3.68 -3.68,3.52 -3.2,3.36 -2.88,3.36 -2.56,3.04 -2.24,2.88 -2.08,2.56 -1.92,2.24 -1.76,1.92    -1.76,1.6 -1.76,1.28 -1.76,0.8 L -1.76,-0.16 C -2.24,0.32 -2.72,0.64 -3.2,0.8    -3.68,0.96 -4.32,1.12 -5.12,1.12 -6.24,1.12 -7.36,0.64 -8,-0.32 -8.8,-1.12 -9.12,-2.4 -9.12,-4    -9.12,-4.96 -8.96,-5.76 -8.8,-6.4 -8.48,-7.04 -8.16,-7.68 -7.68,-8.16 -7.36,-8.48 -6.88,-8.96 -6.24,-9.12    -5.6,-9.44 -5.12,-9.44 -4.48,-9.44 -3.84,-9.44 -3.36,-9.44 -3.04,-9.28 -2.56,-9.12 -2.08,-8.96 -1.76,-8.8   L -1.6,-9.28 0,-9.28 z   M -1.76,-1.6 L -1.76,-7.36 C -2.08,-7.52 -2.56,-7.68 -3.04,-7.84 -3.36,-7.84 -3.84,-7.84 -4.16,-7.84    -5.12,-7.84 -5.92,-7.52 -6.56,-6.88 -7.04,-6.24 -7.36,-5.28 -7.36,-4.16 -7.36,-2.88 -7.04,-2.08 -6.72,-1.44    -6.24,-0.8 -5.6,-0.48 -4.64,-0.48 -4.16,-0.48 -3.68,-0.64 -3.04,-0.8 -2.56,-0.96 -2.08,-1.28 -1.76,-1.6 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W9"
+                      Figures="M 0,0 C 0,0.64 -0.16,1.12 -0.32,1.76 -0.64,2.24 -0.96,2.72 -1.28,3.04    -1.76,3.52 -2.4,4 -3.04,4.16 -3.68,4.48 -4.48,4.48 -5.44,4.48 L -7.36,4.48    -7.36,9.76 -9.12,9.76 -9.12,-4.16 -5.44,-4.16 C -4.64,-4.16 -3.84,-4.16 -3.2,-4    -2.72,-3.84 -2.24,-3.68 -1.76,-3.36 -1.12,-3.04 -0.8,-2.56 -0.48,-2.08 -0.16,-1.44 0,-0.8 0,0 z   M -1.92,0 C -1.92,-0.48 -2.08,-0.8 -2.24,-1.28 -2.4,-1.6 -2.72,-1.92 -3.04,-2.08    -3.36,-2.24 -3.68,-2.4 -4,-2.56 -4.48,-2.56 -4.96,-2.56 -5.44,-2.56 L -7.36,-2.56    -7.36,2.88 -5.76,2.88 C -4.96,2.88 -4.48,2.88 -4,2.72 -3.52,2.56 -3.04,2.4 -2.72,2.08    -2.56,1.76 -2.24,1.44 -2.24,1.12 -2.08,0.8 -1.92,0.48 -1.92,0 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W10"
+                      Figures="M 0,0 L 0,0 C -0.32,0 -0.48,0 -0.8,0 -0.96,-0.16 -1.28,-0.16 -1.6,-0.16    -2.24,-0.16 -2.72,0 -3.2,0.32 -3.68,0.48 -4.16,0.8 -4.64,1.12 L -4.64,8.64    -6.4,8.64 -6.4,-1.92 -4.64,-1.92 -4.64,-0.32 C -4,-0.8 -3.36,-1.28 -2.88,-1.44    -2.24,-1.76 -1.76,-1.92 -1.28,-1.92 -0.96,-1.92 -0.64,-1.76 -0.48,-1.76 -0.48,-1.76 -0.16,-1.76 0,-1.76 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W11"
+                      Figures="M 0,0 C 0,1.76 -0.32,3.04 -1.28,4 -2.08,5.12 -3.36,5.6 -4.8,5.6    -6.24,5.6 -7.36,5.12 -8.32,4 -9.12,3.04 -9.6,1.76 -9.6,0 -9.6,-1.6 -9.12,-3.04 -8.32,-4    -7.36,-4.96 -6.24,-5.44 -4.8,-5.44 -3.36,-5.44 -2.08,-4.96 -1.28,-4 -0.32,-3.04 0,-1.6 0,0 z   M -1.76,0 C -1.76,-1.28 -2.08,-2.4 -2.56,-3.04 -3.04,-3.68 -3.84,-4 -4.8,-4    -5.76,-4 -6.4,-3.68 -7.04,-3.04 -7.52,-2.4 -7.84,-1.28 -7.84,0 -7.84,1.28 -7.52,2.4 -7.04,3.04    -6.4,3.68 -5.76,4 -4.8,4 -3.84,4 -3.04,3.68 -2.56,3.04 -2.08,2.4 -1.76,1.28 -1.76,0 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W12"
+                      Figures="M 0,0 C -0.48,0.16 -0.8,0.16 -1.12,0.32 -1.6,0.32 -1.92,0.32 -2.24,0.32    -3.2,0.32 -4.16,0 -4.64,-0.48 -5.12,-1.12 -5.44,-2.08 -5.44,-3.2 L -5.44,-8.8    -6.72,-8.8 -6.72,-10.4 -5.44,-10.4 -5.44,-13.28 -3.68,-13.28 -3.68,-10.4 0,-10.4    0,-8.8 -3.68,-8.8 -3.68,-4 C -3.68,-3.52 -3.68,-3.04 -3.68,-2.72 -3.68,-2.4 -3.52,-2.24 -3.36,-1.92    -3.2,-1.6 -3.04,-1.44 -2.88,-1.44 -2.56,-1.28 -2.24,-1.12 -1.76,-1.12 -1.44,-1.12 -1.12,-1.28 -0.8,-1.28    -0.48,-1.44 -0.32,-1.44 -0.16,-1.6 L 0,-1.6 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W13"
+                      Figures="M 0,0 L -7.68,0 C -7.68,0.64 -7.52,1.28 -7.36,1.76 -7.2,2.24 -6.88,2.56 -6.56,2.88    -6.24,3.2 -5.92,3.36 -5.44,3.52 -4.96,3.68 -4.48,3.84 -4,3.84 -3.2,3.84 -2.56,3.68 -1.76,3.36    -1.12,3.04 -0.48,2.88 -0.32,2.56 L -0.16,2.56 -0.16,4.48 C -0.8,4.64 -1.28,4.96 -1.92,5.12    -2.56,5.28 -3.2,5.28 -4,5.28 -5.6,5.28 -7.04,4.8 -8,4 -8.96,3.04 -9.44,1.6 -9.44,0    -9.44,-1.76 -8.96,-3.2 -8,-4.16 -7.04,-5.12 -5.92,-5.6 -4.32,-5.6 -2.88,-5.6 -1.92,-5.28 -1.12,-4.48    -0.32,-3.52 0,-2.4 0,-0.96 z   M -1.6,-1.28 C -1.6,-2.24 -1.92,-2.88 -2.4,-3.52 -2.88,-4 -3.52,-4.16 -4.48,-4.16    -5.44,-4.16 -6.08,-4 -6.72,-3.36 -7.2,-2.88 -7.52,-2.08 -7.68,-1.28 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W14"
+                      Figures="M 0,0 C -0.64,0.32 -1.12,0.48 -1.6,0.64 -2.24,0.8 -2.72,0.8 -3.36,0.8    -4.16,0.8 -4.8,0.8 -5.44,0.48 -6.08,0.32 -6.56,0 -7.04,-0.48 -7.52,-0.96 -7.84,-1.44 -8.16,-2.24    -8.32,-2.88 -8.48,-3.68 -8.48,-4.64 -8.48,-6.24 -8,-7.68 -7.04,-8.64 -6.08,-9.6 -4.96,-10.08 -3.36,-10.08    -2.72,-10.08 -2.24,-10.08 -1.6,-9.76 -0.96,-9.6 -0.48,-9.44 0,-9.28 L 0,-7.2    -0.16,-7.2 C -0.64,-7.68 -1.12,-8 -1.76,-8.16 -2.4,-8.48 -2.88,-8.64 -3.36,-8.64    -4.48,-8.64 -5.28,-8.16 -5.76,-7.52 -6.4,-6.88 -6.72,-5.92 -6.72,-4.64 -6.72,-3.36 -6.4,-2.4 -5.76,-1.76    -5.28,-0.96 -4.48,-0.64 -3.36,-0.64 -3.04,-0.64 -2.72,-0.64 -2.4,-0.8 -1.92,-0.96 -1.6,-0.96 -1.28,-1.12    -1.12,-1.28 -0.8,-1.44 -0.64,-1.6 -0.48,-1.76 -0.16,-1.92 -0.16,-1.92 L 0,-1.92 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W15"
+                      Figures="M 0,0 C -0.32,0.16 -0.64,0.16 -1.12,0.32 -1.44,0.32 -1.76,0.32 -2.08,0.32    -3.2,0.32 -4,0 -4.64,-0.48 -5.12,-1.12 -5.44,-2.08 -5.44,-3.2 L -5.44,-8.8    -6.56,-8.8 -6.56,-10.4 -5.44,-10.4 -5.44,-13.28 -3.68,-13.28 -3.68,-10.4 0,-10.4    0,-8.8 -3.68,-8.8 -3.68,-4 C -3.68,-3.52 -3.68,-3.04 -3.68,-2.72 -3.52,-2.4 -3.52,-2.24 -3.36,-1.92    -3.2,-1.6 -3.04,-1.44 -2.72,-1.44 -2.56,-1.28 -2.24,-1.12 -1.76,-1.12 -1.44,-1.12 -1.12,-1.28 -0.8,-1.28    -0.48,-1.44 -0.32,-1.44 -0.16,-1.6 L 0,-1.6 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W16"
+                      Figures="M 0,0 L -1.92,0 -1.92,-1.76 0,-1.76 z   M -0.16,12.32 L -1.92,12.32 -1.92,1.76 -0.16,1.76 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W17"
+                      Figures="M 0,0 C 0,1.76 -0.48,3.04 -1.44,4 -2.24,5.12 -3.36,5.6 -4.96,5.6    -6.4,5.6 -7.52,5.12 -8.48,4 -9.28,3.04 -9.76,1.76 -9.76,0 -9.76,-1.6 -9.28,-3.04 -8.48,-4    -7.52,-4.96 -6.4,-5.44 -4.96,-5.44 -3.36,-5.44 -2.24,-4.96 -1.44,-4 -0.48,-3.04 0,-1.6 0,0 z   M -1.92,0 C -1.92,-1.28 -2.08,-2.4 -2.72,-3.04 -3.2,-3.68 -4,-4 -4.96,-4    -5.92,-4 -6.56,-3.68 -7.04,-3.04 -7.68,-2.4 -7.84,-1.28 -7.84,0 -7.84,1.28 -7.68,2.4 -7.04,3.04    -6.56,3.68 -5.76,4 -4.96,4 -4,4 -3.2,3.68 -2.72,3.04 -2.08,2.4 -1.92,1.28 -1.92,0 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="W18"
+                      Figures="M 0,0 L -1.76,0 -1.76,-5.92 C -1.76,-6.4 -1.76,-6.88 -1.76,-7.36 -1.76,-7.68 -1.92,-8.16 -2.08,-8.32    -2.24,-8.64 -2.4,-8.8 -2.72,-8.96 -3.04,-8.96 -3.36,-9.12 -3.84,-9.12 -4.32,-9.12 -4.96,-8.96 -5.44,-8.8    -5.92,-8.48 -6.4,-8.16 -6.88,-7.84 L -6.88,0 -8.64,0 -8.64,-10.56 -6.88,-10.56    -6.88,-9.28 C -6.4,-9.76 -5.76,-10.08 -5.28,-10.4 -4.64,-10.72 -4,-10.72 -3.36,-10.72    -2.24,-10.72 -1.44,-10.4 -0.8,-9.76 -0.16,-9.12 0,-8.16 0,-6.88 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="T0"
+                      Figures="M 0,0 L 0,-18.88 C -0.16,-34.88 -3.52,-46.4 13.44,-46.56 L 55.84,-46.72 C 72.8,-46.88 68,-35.2 68.16,-19.36   L 68.32,11.52 C 68.32,19.52 71.36,39.84 63.84,46.88 59.2,51.52 42.08,51.52 39.84,51.52   L 11.2,50.08 C -7.36,50.24 0.16,16 0,0 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="T1"
+                      Figures="M 0,0 C 0,13.28 -11.04,24.16 -24.8,24.16 -38.4,24.16 -49.44,13.28 -49.44,0    -49.44,-13.28 -38.4,-24.16 -24.8,-24.16 -11.04,-24.16 0,-13.28 0,0 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="T2"
+                      Figures="M 0,0 L -4.96,0 -4.96,-0.96 -3.04,-0.96 -3.04,-7.2 -4.96,-7.2 -4.96,-8   C -4.8,-8 -4.48,-8 -4.16,-8 -3.84,-8.16 -3.68,-8.16 -3.52,-8.32 -3.36,-8.32 -3.2,-8.48 -3.04,-8.64    -2.88,-8.8 -2.88,-8.96 -2.88,-9.28 L -1.92,-9.28 -1.92,-0.96 0,-0.96 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="R0"
+                      Figures="M 0,0 L 0,-18.88 C -0.16,-34.88 -3.52,-46.4 13.44,-46.56 L 55.84,-46.72 C 72.8,-46.88 68,-35.2 68.16,-19.36   L 68.32,11.52 C 68.32,19.52 71.36,39.84 63.84,46.88 59.2,51.52 42.08,51.52 39.84,51.52   L 11.2,50.08 C -7.36,50.24 0.16,16 0,0 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="R1"
+                      Figures="M 0,0 C 0,13.44 -11.04,24.16 -24.64,24.16 -38.4,24.16 -49.44,13.44 -49.44,0    -49.44,-13.28 -38.4,-24.16 -24.64,-24.16 -11.04,-24.16 0,-13.28 0,0 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="R2"
+                      Figures="M 0,0 C 0,7.68 -6.24,13.92 -13.92,13.92 -21.76,13.92 -27.84,7.68 -27.84,0    -27.84,-7.68 -21.76,-13.92 -13.92,-13.92 -6.24,-13.92 0,-7.68 0,0 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="R3"
+                      Figures="M 0,0 L -2.56,0 -2.56,4.16 -4.8,4.16 -4.8,0 -13.28,0 -13.28,-2.08    -4.64,-10.24 -2.56,-10.24 -2.56,-1.44 0,-1.44 z   M -4.8,-1.44 L -4.8,-8 -11.68,-1.44 z"
+                      FillRule="NonZero" />
+
+        <PathGeometry x:Key="R4"
+                      Figures="M 0,0 L -3.2,5.44 -4.8,5.44 -2.88,0 z   M -4.8,0 L -8,5.44 -9.6,5.44 -7.68,0 z"
+                      FillRule="NonZero" />
     </Application.Resources>
 </Application>

@@ -8,7 +8,7 @@ using MRNNexus_Model;
 
 namespace MRNUIElements.Controllers
 {
-    internal partial class ServiceLayer
+   public partial class ServiceLayer
     {
         public double SumOfInvoices { get; set; }
         public double SumOfPayments { get; set; }

@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace MRNUIElements
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for RoofShapeSelector.xaml
     /// </summary>
-    public partial class SVGTestCanvas : Page
+    public partial class RoofShapeSelector : UserControl
     {
-        public SVGTestCanvas()
+        public RoofShapeSelector()
         {
             InitializeComponent();
-            var urisource = new Uri(@"../../ResourceFiles/HailHit.png", UriKind.Relative);
-            ImageBrush brush = new ImageBrush();
-            brush.ImageSource= new BitmapImage(urisource);
-            IC.Background = brush;
-            
         }
     }
 }
