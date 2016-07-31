@@ -49,24 +49,24 @@ namespace MRNUIElements
 		
 		async private void LoginClick(object sender, RoutedEventArgs e)
 		{
-            LoginBtn.IsEnabled = false;
-            Controllers.Login login = new Controllers.Login();
+			LoginBtn.IsEnabled = false;
+			Controllers.Login login = new Controllers.Login();
 
-            await login.UserLogin(UserName, PasswordBox);
+			await login.UserLogin(UserName, PasswordBox);
 
-            if (login.IsEmployeeLoggedIn)
-            {
-                var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
-                Schedule homePage = new Schedule();
-                this.NavigationService.Navigate(homePage);
-            }
-            else
-            {
+			if (login.IsEmployeeLoggedIn)
+			{
+				var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
+				Schedule homePage = new Schedule();
+				this.NavigationService.Navigate(homePage);
+			}
+			else
+			{
 
-                LoginBtn.IsEnabled = true;
-                MessageBox.Show(ServiceLayer.getInstance().LoggedInEmployee.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            /*LoginBtn.IsEnabled = false;
+				LoginBtn.IsEnabled = true;
+				MessageBox.Show(ServiceLayer.getInstance().LoggedInEmployee.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+			}
+			/*LoginBtn.IsEnabled = false;
 
 			
 			// 	 user.Username = UserName.Text;
@@ -75,7 +75,7 @@ namespace MRNUIElements
 			user.Pass = "Harvey1214";
 
 			AuthorizeLogin(user);*/
-        }
+		}
 
 		public static DTO_Employee  getCurrentLogInUser()
 		{
@@ -90,12 +90,12 @@ namespace MRNUIElements
 			
 			bool b = false;
 			while (!b){
-				Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+				BI.IsBusy=true;
 				b = await BuildLookupLists();
-				Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                BI.IsBusy = true; ;
 				await s1.Login(user);
 				getCurrentLogInUser();
-				Mouse.OverrideCursor = Cursors.Arrow;
+				BI.IsBusy=false;
 			}
 			int j = 3;
 			NexusHome Page = new NexusHome();
@@ -116,7 +116,8 @@ namespace MRNUIElements
 			
 			if (s1.LoggedInEmployee != null)
 			{
-				
+                var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
+                Page.MainMenu.Visibility = Visibility.Collapsed;
 				this.NavigationService.Navigate(Page);
 			}
 			
@@ -126,27 +127,27 @@ namespace MRNUIElements
 
 			
 		}
-        async private void loginBtn_Click(object sender, RoutedEventArgs e)
-        {
-            LoginBtn.IsEnabled = false;
-            Controllers.Login login = new Controllers.Login();
+		async private void loginBtn_Click(object sender, RoutedEventArgs e)
+		{
+			LoginBtn.IsEnabled = false;
+			Controllers.Login login = new Controllers.Login();
 
-            await login.UserLogin(UserName, PasswordBox);
+			await login.UserLogin(UserName, PasswordBox);
 
-            if (login.IsEmployeeLoggedIn)
-            {
-                var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
-                Schedule homePage = new Schedule();
-                this.NavigationService.Navigate(homePage);
-            }
-            else
-            {
+			if (login.IsEmployeeLoggedIn)
+			{
+				var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
+				Schedule homePage = new Schedule();
+				this.NavigationService.Navigate(homePage);
+			}
+			else
+			{
 
-                LoginBtn.IsEnabled = true;
-                MessageBox.Show(ServiceLayer.getInstance().LoggedInEmployee.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
-        async public Task<bool> BuildLookupLists()
+				LoginBtn.IsEnabled = true;
+				MessageBox.Show(ServiceLayer.getInstance().LoggedInEmployee.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+			}
+		}
+		async public Task<bool> BuildLookupLists()
 		{
 			await s1.GetClaimDocumentTypes();
 			await s1.GetEmployeeTypes();
@@ -170,6 +171,11 @@ namespace MRNUIElements
 			await s1.GetAllScopes();
 			await s1.GetClaimStatusTypes();
 			return true;
+		}
+
+		private void BI_LostFocus(object sender, RoutedEventArgs e)
+		{
+			BI.IsBusy = false;
 		}
 	}
 }

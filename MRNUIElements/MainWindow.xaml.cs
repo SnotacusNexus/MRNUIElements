@@ -84,11 +84,11 @@ namespace MRNUIElements
 			this.MRNClaimNexusMainFrame.NavigationService.Navigate(inspectionspage);
 		}
 
-        private void Claim_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		private void Claim_Click(object sender, RoutedEventArgs e)
+		{
+			
+		}
+	}
 }
 
 	 

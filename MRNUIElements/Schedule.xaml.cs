@@ -18,14 +18,14 @@ using MRNUIElements.Controllers;
 using Syncfusion.UI.Xaml.Grid;
 
 namespace MRNUIElements
+
 {
 	/// <summary>
 	/// Interaction logic for Schedule.xaml
 	/// </summary>
 	public partial class Schedule : Page
 	{
-        static ServiceLayer s1 = ServiceLayer.getInstance();
-		MRNNexus_Model.DTO_CalendarData calData;
+	   MRNNexus_Model.DTO_CalendarData calData;
 
 		GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
 
@@ -58,10 +58,11 @@ namespace MRNUIElements
 
 		async private void setUp()
 		{
-			Schedule schedule = new Schedule();
+			Controllers.Schedule schedule = new Controllers.Schedule();
 			await schedule.GetEmployeeAppointments();
 			this.calendar.ItemsSource = schedule.MappedAppointments;
 			this.appointments.ItemsSource = schedule.TodaysAppointments;
+			this.fappointments.ItemsSource = schedule.FutureAppointments;
 		}
 
 		private void appointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
@@ -91,7 +92,7 @@ namespace MRNUIElements
 		private void calendar_AppointmentCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 		{
 			//e holds the new record
-			Schedule schedule = new Schedule();
+			Controllers.Schedule schedule = new Controllers.Schedule();
 
 		}
 
@@ -110,7 +111,7 @@ namespace MRNUIElements
 
 					
 
-					Schedule schedule = new Schedule();
+					Controllers.Schedule schedule = new Controllers.Schedule();
 					await schedule.UpdateCalendarData(e);
 				}
 			}

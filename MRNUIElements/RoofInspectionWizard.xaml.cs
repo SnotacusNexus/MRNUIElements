@@ -57,7 +57,7 @@ namespace MRNUIElements
 			{
 				if ((dRidge > dRake) || (dEave > dRake))
 				{
-                    isHorizontal=true;
+					isHorizontal=true;
 				}
 				else isHorizontal = false;
 			}
@@ -246,7 +246,7 @@ namespace MRNUIElements
 							TL.X = (DrawingCanvas.Width / 2);							TR.X = (DrawingCanvas.Width / 2);
 							TL.Y = (DrawingCanvas.Height / 2) - VCenter;				TR.Y = (DrawingCanvas.Height / 2) - VCenter;//    
 						
-							          
+									  
 							BL.X = (DrawingCanvas.Width / 2) - HCenter;					BR.X = (DrawingCanvas.Width / 2) + HCenter;
 							BL.Y = (DrawingCanvas.Height / 2) + VCenter;				BR.Y = (DrawingCanvas.Height / 2) + VCenter;							
 												

@@ -263,7 +263,6 @@
     </Compile>
     <Compile Include="Controllers\Inspection.cs" />
     <Compile Include="Controllers\Login.cs" />
-    <Compile Include="Controllers\Schedule.cs" />
     <Compile Include="Controllers\ServiceLayer.cs" />
     <Compile Include="Controllers\ServiceLayerMembers.cs" />
     <Compile Include="DamageToolbar.xaml.cs">
@@ -274,14 +273,12 @@
     </Compile>
     <Compile Include="ImageResizer.cs" />
     <Compile Include="Inspection.cs" />
-    <Compile Include="InspectionSchedule.xaml.cs">
-      <DependentUpon>InspectionSchedule.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\Appointments.cs" />
     <Compile Include="MRNCalendar.cs" />
     <Compile Include="RoofShapeSelector.xaml.cs">
       <DependentUpon>RoofShapeSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Schedule.cs" />
     <Compile Include="Schedule.xaml.cs">
       <DependentUpon>Schedule.xaml</DependentUpon>
     </Compile>
@@ -495,18 +492,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="InspectionSchedule.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="RoofShapeSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Schedule.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <DependentUpon>ScopeViewer.xaml</DependentUpon>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SignatureBox.xaml">
       <SubType>Designer</SubType>
@@ -750,61 +742,6 @@
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
-    <None Include="MRNNexus_Model.DTO_AdditionalSupply.datasource" />
-    <None Include="MRNNexus_Model.DTO_Address.datasource" />
-    <None Include="MRNNexus_Model.DTO_Adjuster.datasource" />
-    <None Include="MRNNexus_Model.DTO_Adjustment.datasource" />
-    <None Include="MRNNexus_Model.DTO_Base.datasource" />
-    <None Include="MRNNexus_Model.DTO_CalculatedResults.datasource" />
-    <None Include="MRNNexus_Model.DTO_CalendarData.datasource" />
-    <None Include="MRNNexus_Model.DTO_CallLog.datasource" />
-    <None Include="MRNNexus_Model.DTO_Claim.datasource" />
-    <None Include="MRNNexus_Model.DTO_ClaimContacts.datasource" />
-    <None Include="MRNNexus_Model.DTO_ClaimDocument.datasource" />
-    <None Include="MRNNexus_Model.DTO_ClaimStatus.datasource" />
-    <None Include="MRNNexus_Model.DTO_ClaimVendor.datasource" />
-    <None Include="MRNNexus_Model.DTO_Customer.datasource" />
-    <None Include="MRNNexus_Model.DTO_Damage.datasource" />
-    <None Include="MRNNexus_Model.DTO_Employee.datasource" />
-    <None Include="MRNNexus_Model.DTO_EmployeeDetail.datasource" />
-    <None Include="MRNNexus_Model.DTO_Inspection.datasource" />
-    <None Include="MRNNexus_Model.DTO_InsuranceCompany.datasource" />
-    <None Include="MRNNexus_Model.DTO_Invoice.datasource" />
-    <None Include="MRNNexus_Model.DTO_KnockerResponse.datasource" />
-    <None Include="MRNNexus_Model.DTO_Lead.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_AdjustmentResult.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_AppointmentTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ClaimDocumentType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ClaimStatusTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_DamageTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_EmployeeType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_InvoiceType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_KnockResponseType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_LeadType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PayFrequncy.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PaymentDescription.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PaymentType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PayType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_Permissions.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PlaneTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_Product.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ProductType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_RidgeMaterialType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ScopeType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ServiceTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ShingleType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_UnitOfMeasure.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_VendorTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_NewRoof.datasource" />
-    <None Include="MRNNexus_Model.DTO_Order.datasource" />
-    <None Include="MRNNexus_Model.DTO_OrderItem.datasource" />
-    <None Include="MRNNexus_Model.DTO_Payment.datasource" />
-    <None Include="MRNNexus_Model.DTO_Plane.datasource" />
-    <None Include="MRNNexus_Model.DTO_Referrer.datasource" />
-    <None Include="MRNNexus_Model.DTO_Scope.datasource" />
-    <None Include="MRNNexus_Model.DTO_SurplusSupplies.datasource" />
-    <None Include="MRNNexus_Model.DTO_User.datasource" />
-    <None Include="MRNNexus_Model.DTO_Vendor.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

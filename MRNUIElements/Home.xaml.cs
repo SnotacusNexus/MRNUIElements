@@ -57,10 +57,8 @@ namespace MRNUIElements
 
 
 		   
-			InspectionSchedule sched = new InspectionSchedule();
-			sched.Height = 600;
-			sched.Width = 600;
-			sched.Visibility = Visibility.Visible;
+			Schedule sched = new Schedule();
+			
 
 			frame.Navigate(sched);
   
@@ -74,6 +72,39 @@ namespace MRNUIElements
 		private void LogOut(object sender, RoutedEventArgs e)
 		{
 			Login Page = new Login();
+			this.NavigationService.Navigate(Page);
+		}
+
+
+		private void DocumentUpload_Click(object sender, RoutedEventArgs e)
+		{
+			//AnalogFileUploadPage page = new AnalogFileUploadPage();
+			AddClaimDocumentation page = new AddClaimDocumentation();
+			this.NavigationService.Navigate(page);
+		}
+
+		private void InvoicePageBtn(object sender, RoutedEventArgs e)
+		{
+			InvoicePage page = new InvoicePage();
+			this.NavigationService.Navigate(page);
+
+		}
+
+		private void ScopeEntryButton(object sender, RoutedEventArgs e)
+		{
+			ScopeViewer page = new ScopeViewer();
+			this.NavigationService.Navigate(page);
+		}
+
+		private void PaymentEntryPagebtn(object sender, RoutedEventArgs e)
+		{
+			PaymentEntryPage page = new PaymentEntryPage();
+			this.NavigationService.Navigate(page);
+		}
+
+		private void ViewCapOutButton(object sender, RoutedEventArgs e)
+		{
+			CapOutSheet Page = new CapOutSheet();
 			this.NavigationService.Navigate(Page);
 		}
 
@@ -299,37 +330,7 @@ namespace MRNUIElements
 		}
 
 
-		private void DocumentUpload_Click(object sender, RoutedEventArgs e)
-		{
-			//AnalogFileUploadPage page = new AnalogFileUploadPage();
-			AddClaimDocumentation page = new AddClaimDocumentation();
-			this.NavigationService.Navigate(page);
-		}
-
-		private void InvoicePageBtn(object sender, RoutedEventArgs e)
-		{
-			InvoicePage page = new InvoicePage();
-			this.NavigationService.Navigate(page);
-
-		}
-
-		private void ScopeEntryButton(object sender, RoutedEventArgs e)
-		{
-			ScopeViewer page = new ScopeViewer();
-			this.NavigationService.Navigate(page);
-		}
-
-		private void PaymentEntryPagebtn(object sender, RoutedEventArgs e)
-		{
-			PaymentEntryPage page = new PaymentEntryPage();
-			this.NavigationService.Navigate(page);
-		}
-
-		private void ViewCapOutButton(object sender, RoutedEventArgs e)
-		{
-			CapOutSheet Page = new CapOutSheet();
-			this.NavigationService.Navigate(Page);
-		}
+		
 
 		private void AppointmentWebView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{

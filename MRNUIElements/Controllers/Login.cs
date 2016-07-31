@@ -13,7 +13,7 @@ namespace MRNUIElements.Controllers
 
         public bool IsEmployeeLoggedIn { get; set; }
 
-        public async Task UserLogin(TextBox usernameBox, TextBox passwordBox)
+        public async Task UserLogin(TextBox usernameBox, PasswordBox passwordBox)
         {
 
             

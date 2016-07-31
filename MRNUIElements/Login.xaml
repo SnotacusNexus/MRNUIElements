@@ -4,13 +4,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MRNUIElements"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       Title="MRN Nexus Login"
       mc:Ignorable="d">
 
 
 
-    <Grid x:Name="Grid1" Background="{StaticResource BackgroundGradient}">
-
+    <Grid x:Name="Grid1" >
+        <syncfusion:SfBusyIndicator x:Name="BI" IsBusy="True" Panel.ZIndex="10" AnimationType="Liquid" LostFocus="BI_LostFocus" />
         <StackPanel MinWidth="250"
                     MaxWidth="350"
                     HorizontalAlignment="Center"
@@ -47,7 +48,7 @@
                            Foreground="White">
                     Password
                 </TextBlock>
-                <TextBox x:Name="PasswordBox"
+                <PasswordBox x:Name="PasswordBox"
                              MinWidth="200"
                              Margin="5,0,0,0"
                              HorizontalAlignment="Stretch" />

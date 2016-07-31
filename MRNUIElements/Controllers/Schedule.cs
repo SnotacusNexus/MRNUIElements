@@ -10,16 +10,17 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using MRNUIElements.Controllers;
 using MRNUIElements.Models;
-namespace MRNUIElements
+namespace MRNUIElements.Controllers
 {
-    internal class Schedule
+   partial class Schedule
     {
+        static ServiceLayer s = ServiceLayer.getInstance();
         public ObservableCollection<MappedAppointment> MappedAppointments = new ObservableCollection<MappedAppointment>();
         public ObservableCollection<TodaysAppointment> TodaysAppointments = new ObservableCollection<TodaysAppointment>();
 
         public async Task GetEmployeeAppointments()
         {
-            ServiceLayer s = ServiceLayer.getInstance();
+
 
             //await s.MakeRequest(new DTO_User { Username = usernameBox.Text, Pass = passwordBox.Text }, typeof(DTO_Employee), "Login");
             await s.MakeRequest(s.LoggedInEmployee, typeof(List<DTO_CalendarData>), "GetCalendarDataByEmployeeID");
@@ -47,7 +48,7 @@ namespace MRNUIElements
                 /* TODAYS APPOINTMENTS*/
                 DateTime time = new DateTime(calData.StartTime.Year, calData.StartTime.Month, calData.StartTime.Day);
                 //if(time == DateTime.Today)
-                if (time == new DateTime(2016, 5, 10))
+                if (time >= new DateTime(2016, 5, 10))
                 {
 
                     await s.MakeRequest(new DTO_Lead { LeadID = (int)calData.LeadID }, typeof(DTO_Lead), "GetLeadByLeadID");
@@ -94,3 +95,5 @@ namespace MRNUIElements
                 MessageBox.Show(s.CalendarData.SuccessFlag.ToString(), "Failure", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+    }
+}
