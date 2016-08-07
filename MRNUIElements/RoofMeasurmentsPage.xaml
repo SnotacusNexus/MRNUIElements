@@ -56,7 +56,7 @@
                         <DatePicker Canvas.Left="8"
                                     Canvas.Top="7"
                                     Width="99"
-                                    CalendarStyle="{DynamicResource CalendarStyle1}" />
+                                    Style="{DynamicResource DatePickerStyle1}" Foreground="White"/>
                         <TextBlock Canvas.Left="18"
                                    Canvas.Top="33"
                                    Width="75"
@@ -152,7 +152,7 @@
                                    TextAlignment="Center" />
                         <DatePicker Canvas.Left="134"
                                     Canvas.Top="7"
-                                    Width="99" />
+                                    Width="99" Style="{DynamicResource DatePickerStyle1}" Foreground="White"/>
                         <TextBlock Canvas.Left="140"
                                    Canvas.Top="33"
                                    Width="75"
@@ -2263,8 +2263,8 @@
                                                TextAlignment="Center"
                                                TextWrapping="Wrap" />
                                     <TextBlock x:Name="ScheduledDeliveryDate"
-                                               Canvas.Left="259"
-                                               Canvas.Top="366"
+                                               Canvas.Left="275"
+                                               Canvas.Top="361"
                                                Width="98"
                                                Height="12"
                                                Focusable="True"

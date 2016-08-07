@@ -48,26 +48,31 @@
             </syncfusion:SfSchedule.AppointmentMapping>
         </syncfusion:SfSchedule>
 
-
-        <StackPanel Grid.Row="0"
-                    Grid.Column="1"
+        <StackPanel Grid.Row="3"
+                    Grid.Column="0"
+                    
                     HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch">
-            <TextBlock Margin="0,10,0, 10"
+                    VerticalAlignment="Top">
+          <!--  <TextBlock Margin="0,10,0, 10"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        FontSize="24"
                        Foreground="White"
-                       Text="Messages and Alerts" />
+                       Text="Messages and Alerts" />-->
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Content="Future Appointments"
+                   FontSize="24"
+                   Foreground="White" /> 
             <syncfusion:SfDataGrid x:Name="fappointments"
                                    AutoGenerateColumns="False"
                                    BorderBrush="#FFE81313"
                                    BorderThickness="1"
                                    ColumnSizer="Auto"
                                    ItemsSource="{Binding FutureAppointments}"
-                                   MouseDoubleClick="appointments_MouseDoubleClick"
+                                   MouseDoubleClick="fappointments_MouseDoubleClick"
                                    NavigationMode="Row"
-                                   SelectionChanged="appointments_SelectionChanged"
+                                   SelectionChanged="fappointments_SelectionChanged"
                                    SelectionMode="Single"
                                    SelectionUnit="Row"  HorizontalAlignment="Center" Foreground="White" RowHoverHighlightingBrush="#FF00D1FF" RowSelectionBrush="#64FF0000" SelectionForegroundBrush="White" AllowRowHoverHighlighting="True" AllowSelectionOnPointerPressed="True">
                 <syncfusion:SfDataGrid.Columns>
@@ -85,7 +90,7 @@
 
 
 
-        <StackPanel Grid.Row="2"
+         <!--  <StackPanel Grid.Row="2"
                     Grid.Column="0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
@@ -105,7 +110,7 @@
                                    SelectionChanged="appointments_SelectionChanged"
                                    SelectionMode="Single"
                                    SelectionUnit="Row"  HorizontalAlignment="Center" Foreground="White" RowHoverHighlightingBrush="#FF00D1FF" RowSelectionBrush="#64FF0000" SelectionForegroundBrush="White" AllowRowHoverHighlighting="True" AllowSelectionOnPointerPressed="True">
-                <syncfusion:SfDataGrid.Columns>
+             <syncfusion:SfDataGrid.Columns>
                     <syncfusion:GridTextColumn HeaderText="Type" MappingName="AppointmentType" />
                     <syncfusion:GridTextColumn HeaderText="From" MappingName="StartTime" />
                     <syncfusion:GridTextColumn HeaderText="Until" MappingName="EndTime" />
@@ -117,6 +122,6 @@
                 </syncfusion:SfDataGrid.Columns>
             </syncfusion:SfDataGrid>
 
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </Page>

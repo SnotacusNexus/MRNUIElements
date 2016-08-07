@@ -38,15 +38,15 @@ namespace MRNUIElements
 			setUp();
 
 			
-			this.appointments.QueryRowHeight += appointments_QueryRowHeight;
+			this.fappointments.QueryRowHeight += fappointments_QueryRowHeight;
 ;
 
 
 		}
 
-		void appointments_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
+		void fappointments_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
 		{
-			if(this.appointments.GridColumnSizer.GetAutoRowHeight(e.RowIndex, gridRowSizingOptions, out autoHeight))
+			if(this.fappointments.GridColumnSizer.GetAutoRowHeight(e.RowIndex, gridRowSizingOptions, out autoHeight))
 			{
 				if(autoHeight > 24)
 				{
@@ -61,14 +61,14 @@ namespace MRNUIElements
 			Controllers.Schedule schedule = new Controllers.Schedule();
 			await schedule.GetEmployeeAppointments();
 			this.calendar.ItemsSource = schedule.MappedAppointments;
-			this.appointments.ItemsSource = schedule.TodaysAppointments;
+		//	this.appointments.ItemsSource = schedule.TodaysAppointments;
 			this.fappointments.ItemsSource = schedule.FutureAppointments;
 		}
 
-		private void appointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+		private void fappointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
 		{
-			var record = this.appointments.SelectedItem;
-			var calDataInt = ((Appointments.TodaysAppointment)record).CalendarDataID;
+			var record = this.fappointments.SelectedItem;
+			var calDataInt = ((Appointments.FutureAppointment)record).CalendarDataID;
 
 			foreach(var cd in ServiceLayer.getInstance().CalendarDataList)
 			{
@@ -80,7 +80,7 @@ namespace MRNUIElements
 			}
 		}
 
-		private void appointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		private void fappointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
 			if (calData != null)
 			{

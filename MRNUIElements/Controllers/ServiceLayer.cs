@@ -461,8 +461,8 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
-			}
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
 		}
 
 		public async Task AddCustomer(DTO_Customer token)

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Awesomium.Windows.Controls;
+//using Awesomium.Windows.Controls;
 
 namespace MRNUIElements
 {
@@ -24,7 +24,7 @@ namespace MRNUIElements
         public RoofOrderPage()
         {
             InitializeComponent();
-			ProductionWebControl.Source= new Uri("https://weather.com/weather/tenday/l/30642:4:US");
+			//ProductionWebControl.Source= new Uri("https://weather.com/weather/tenday/l/30642:4:US");
 
 		}
 
@@ -36,8 +36,8 @@ namespace MRNUIElements
 
 		private void ProductionWebControl_MouseEnter(object sender, MouseEventArgs e)
 		{
-			ProductionWebControl.Width=MaxWidth;
-			ProductionWebControl.Height = MaxHeight;
+		//	ProductionWebControl.Width=MaxWidth;
+		//	ProductionWebControl.Height = MaxHeight;
 			
 		}
 	}

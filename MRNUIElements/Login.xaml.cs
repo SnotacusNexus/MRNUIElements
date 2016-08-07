@@ -117,7 +117,7 @@ namespace MRNUIElements
 			if (s1.LoggedInEmployee != null)
 			{
                 var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
-                Page.MainMenu.Visibility = Visibility.Collapsed;
+               
 				this.NavigationService.Navigate(Page);
 			}
 			

@@ -6,6 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MRNUIElements"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       Title="CustomerAgreement"
       Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}"
@@ -314,7 +315,7 @@
                         Height="400"
                         MinWidth="300"
                         MinHeight="400"
-                        Margin="0,10,20,0"
+                        Margin="10,10,10,0"
                         VerticalAlignment="Top"
                         Background="Transparent"
                         Foreground="White"
@@ -325,15 +326,14 @@
                          BorderBrush="Black"
                          Foreground="White"
                          Header="Lead Generation">
-                    <TabPanel Width="982"
+                    <TabPanel x:Name="LeadTab"
+                              Width="982"
                               Height="369"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Top"
                               RenderTransformOrigin="0.5,0.5">
 
-                        <StackPanel Height="300"
-                                    Margin="333,10,-333,-10"
-                                    HorizontalAlignment="Center">
+                        <StackPanel Margin="333,10,-333,-9" HorizontalAlignment="Center">
                             <StackPanel Margin="15,0,15,0"
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
@@ -347,49 +347,57 @@
                                 <StackPanel Margin="15,0,15,0"
                                             HorizontalAlignment="Right"
                                             Orientation="Horizontal">
-                                    <DatePicker x:Name="ContractDate" HorizontalAlignment="Right" />
+                                    <DatePicker x:Name="ContractDate"
+                                                HorizontalAlignment="Right"
+                                                IsTabStop="True"
+                                                TabIndex="0" />
                                 </StackPanel>
                                 <StackPanel Margin="15,5,15,5"
                                             HorizontalAlignment="Stretch"
                                             DataContext="{StaticResource dTO_EmployeeViewSource}"
                                             Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="FirstName"
-                                                           Width="80"
-                                                           Height="23"
-                                                           Text="{Binding FirstName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="First Name" />
+                                    <syncfusion:MaskedTextBox x:Name="FirstName"
+                                                              Width="80"
+                                                              Height="23"
+                                                              TabIndex="1"
+                                                              Text="{Binding FirstName}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="First Name" />
 
-                                    <xctk:WatermarkTextBox x:Name="MiddleName"
-                                                           Width="80"
-                                                           Height="23"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Middle Name" />
+                                    <syncfusion:MaskedTextBox x:Name="MiddleName"
+                                                              Width="80"
+                                                              Height="23"
+                                                              TabIndex="2"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Middle Name" />
 
-                                    <xctk:WatermarkTextBox x:Name="Lastname"
-                                                           Width="90"
-                                                           Height="23"
-                                                           Text="{Binding LastName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Last Name" />
-                                    <xctk:WatermarkTextBox x:Name="suffix"
-                                                           Width="40"
-                                                           Height="23"
-                                                           Text="{Binding Suffix}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Suffix" />
+                                    <syncfusion:MaskedTextBox x:Name="Lastname"
+                                                              Width="90"
+                                                              Height="23"
+                                                              TabIndex="3"
+                                                              Text="{Binding LastName}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Last Name" />
+                                    <syncfusion:MaskedTextBox x:Name="suffix"
+                                                              Width="40"
+                                                              Height="23"
+                                                              TabIndex="4"
+                                                              Text="{Binding Suffix}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Suffix" />
                                 </StackPanel>
                                 <StackPanel x:Name="stackPanel"
                                             Margin="15,5,15,5"
                                             HorizontalAlignment="Stretch"
                                             DataContext="{StaticResource dTO_AddressViewSource}"
                                             Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Address"
-                                                           Width="300"
-                                                           Height="23"
-                                                           Text="{Binding Address}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Address" />
+                                    <syncfusion:MaskedTextBox x:Name="Address"
+                                                              Width="300"
+                                                              Height="23"
+                                                              TabIndex="5"
+                                                              Text="{Binding Address}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Address" />
                                 </StackPanel>
                                 <StackPanel Margin="15,5,15,5"
                                             HorizontalAlignment="Stretch"
@@ -408,47 +416,51 @@
                                              IsEnabled="False"
                                              Text="State"
                                              TextWrapping="Wrap" />
-                                    <xctk:WatermarkTextBox x:Name="Zipcode"
-                                                           Width="50"
-                                                           Height="23"
-                                                           Text="{Binding Zip}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Zipcode" />
+                                    <syncfusion:MaskedTextBox x:Name="Zipcode"
+                                                              Width="50"
+                                                              Height="23"
+                                                              TabIndex="6"
+                                                              Text="{Binding Zip}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Zipcode" />
                                 </StackPanel>
                                 <StackPanel Margin="15,0,15,0"
                                             HorizontalAlignment="Stretch"
                                             DataContext="{StaticResource dTO_EmployeeViewSource}"
                                             Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Primary_Phone"
-                                                           Width="125"
-                                                           Height="23"
-                                                           MinWidth="100"
-                                                           Margin="10,5,15,5"
-                                                           HorizontalAlignment="Stretch"
-                                                           Padding="0"
-                                                           Text="{Binding CellPhone}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Primary Phone" />
-                                    <xctk:WatermarkTextBox x:Name="Secondary_Phone"
-                                                           Width="125"
-                                                           Height="23"
-                                                           MinWidth="100"
-                                                           Margin="10,5,15,5"
-                                                           HorizontalAlignment="Stretch"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Secondary Phone" />
+                                    <syncfusion:MaskedTextBox x:Name="Primary_Phone"
+                                                              Width="125"
+                                                              Height="23"
+                                                              MinWidth="100"
+                                                              Margin="10,5,15,5"
+                                                              HorizontalAlignment="Stretch"
+                                                              Padding="0"
+                                                              TabIndex="7"
+                                                              Text="{Binding CellPhone}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Primary Phone" />
+                                    <syncfusion:MaskedTextBox x:Name="Secondary_Phone"
+                                                              Width="125"
+                                                              Height="23"
+                                                              MinWidth="100"
+                                                              Margin="10,5,15,5"
+                                                              HorizontalAlignment="Stretch"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Secondary Phone" />
                                 </StackPanel>
                                 <StackPanel Margin="15,0,15,0"
                                             HorizontalAlignment="Stretch"
                                             DataContext="{StaticResource dTO_EmployeeViewSource}"
                                             Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Email_Address"
-                                                           Width="300"
-                                                           Height="23"
-                                                           HorizontalAlignment="Stretch"
-                                                           Text="{Binding Email}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Enter First Name" />
+                                    <syncfusion:MaskedTextBox x:Name="Email_Address"
+                                                              Width="300"
+                                                              Height="23"
+                                                              HorizontalAlignment="Stretch"
+                                                              TabIndex="8"
+                                                              Text="{Binding Email}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Enter First Name" />
+
                                 </StackPanel>
 
                             </StackPanel>
@@ -475,46 +487,39 @@
                                 <StackPanel Margin="15,0,15,0"
                                             HorizontalAlignment="Right"
                                             DataContext="{StaticResource dTO_ClaimStatusViewSource}"
-                                            Orientation="Horizontal">
-                                    <DatePicker x:Name="ContractDate1"
-                                                HorizontalAlignment="Right"
-                                                SelectedDate="{Binding ClaimStatusDate,
-                                                                       Mode=TwoWay,
-                                                                       NotifyOnValidationError=true,
-                                                                       ValidatesOnExceptions=true}" />
-                                </StackPanel>
+                                            Orientation="Horizontal" />
                                 <StackPanel Margin="15,5,15,5"
                                             HorizontalAlignment="Stretch"
                                             DataContext="{StaticResource dTO_CustomerViewSource}"
                                             Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="FirstName1"
-                                                           Width="80"
-                                                           Height="23"
-                                                           Margin="2,0,1,0"
-                                                           Text="{Binding FirstName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="First Name" />
-                                    <xctk:WatermarkTextBox x:Name="MiddleName1"
-                                                           Width="80"
-                                                           Height="23"
-                                                           Margin="1,0"
-                                                           Text="{Binding MiddleName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Middle Name" />
-                                    <xctk:WatermarkTextBox x:Name="LastName1"
-                                                           Width="90"
-                                                           Height="23"
-                                                           Margin="1,0"
-                                                           Text="{Binding LastName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Last Name" />
-                                    <xctk:WatermarkTextBox x:Name="Suffix1"
-                                                           Width="40"
-                                                           Height="23"
-                                                           Margin="1,0,2,0"
-                                                           Text="{Binding Suffix}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Suffix" />
+                                    <syncfusion:MaskedTextBox x:Name="FirstName1"
+                                                              Width="80"
+                                                              Height="23"
+                                                              Margin="2,0,1,0"
+                                                              Text="{Binding FirstName}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="First Name" />
+                                    <syncfusion:MaskedTextBox x:Name="MiddleName1"
+                                                              Width="80"
+                                                              Height="23"
+                                                              Margin="1,0"
+                                                              Text="{Binding MiddleName}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Middle Name" />
+                                    <syncfusion:MaskedTextBox x:Name="LastName1"
+                                                              Width="90"
+                                                              Height="23"
+                                                              Margin="1,0"
+                                                              Text="{Binding LastName}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Last Name" />
+                                    <syncfusion:MaskedTextBox x:Name="Suffix1"
+                                                              Width="40"
+                                                              Height="23"
+                                                              Margin="1,0,2,0"
+                                                              Text="{Binding Suffix}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Suffix" />
                                 </StackPanel>
 
                                 <StackPanel x:Name="stackPanel1"
@@ -522,13 +527,13 @@
                                             HorizontalAlignment="Stretch"
                                             DataContext="{StaticResource dTO_AddressViewSource}"
                                             Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Address1"
-                                                           Width="{Binding ActualWidth,
-                                                                           ElementName=stackPanel1}"
-                                                           Height="23"
-                                                           Text="{Binding Address}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Address" />
+                                    <syncfusion:MaskedTextBox x:Name="Address1"
+                                                              Width="{Binding ActualWidth,
+                                                                              ElementName=stackPanel1}"
+                                                              Height="23"
+                                                              Text="{Binding Address}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Address" />
                                 </StackPanel>
                                 <StackPanel Margin="15,0,0,0"
                                             HorizontalAlignment="Stretch"
@@ -539,6 +544,7 @@
                                              Width="120"
                                              Height="23"
                                              BorderThickness="1"
+                                             IsEnabled="False"
                                              IsReadOnly="True"
                                              IsReadOnlyCaretVisible="True"
                                              IsUndoEnabled="False"
@@ -550,55 +556,56 @@
                                              Margin="5,0"
                                              AllowDrop="False"
                                              Focusable="False"
+                                             IsEnabled="False"
                                              IsReadOnly="True"
                                              IsReadOnlyCaretVisible="True"
                                              IsTabStop="False"
                                              IsUndoEnabled="False"
                                              Text="State"
                                              TextWrapping="Wrap" />
-                                    <xctk:WatermarkTextBox x:Name="Zipcode1"
-                                                           Width="50"
-                                                           Height="23"
-                                                           Margin="0,0,5,0"
-                                                           Text="{Binding Zip}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Zipcode" />
+                                    <syncfusion:MaskedTextBox x:Name="Zipcode1"
+                                                              Width="50"
+                                                              Height="23"
+                                                              Margin="0,0,5,0"
+                                                              Text="{Binding Zip}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Zipcode" />
                                 </StackPanel>
                                 <StackPanel Margin="15,0,15,0"
                                             HorizontalAlignment="Stretch"
                                             DataContext="{StaticResource dTO_CustomerViewSource}"
                                             Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Primary_Phone1"
-                                                           Width="125"
-                                                           Height="23"
-                                                           MinWidth="100"
-                                                           Margin="10,5,15,5"
-                                                           HorizontalAlignment="Stretch"
-                                                           Padding="0"
-                                                           Text="{Binding PrimaryNumber}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Primary Phone" />
-                                    <xctk:WatermarkTextBox x:Name="Secondary_Phone1"
-                                                           Width="125"
-                                                           Height="23"
-                                                           MinWidth="100"
-                                                           Margin="10,5,15,5"
-                                                           HorizontalAlignment="Stretch"
-                                                           Text="{Binding SecondaryNumber}"
-                                                           Watermark="Secondary Phone" />
+                                    <syncfusion:MaskedTextBox x:Name="Primary_Phone1"
+                                                              Width="125"
+                                                              Height="23"
+                                                              MinWidth="100"
+                                                              Margin="10,5,15,5"
+                                                              HorizontalAlignment="Stretch"
+                                                              Padding="0"
+                                                              Text="{Binding PrimaryNumber}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Primary Phone" />
+                                    <syncfusion:MaskedTextBox x:Name="Secondary_Phone1"
+                                                              Width="125"
+                                                              Height="23"
+                                                              MinWidth="100"
+                                                              Margin="10,5,15,5"
+                                                              HorizontalAlignment="Stretch"
+                                                              Text="{Binding SecondaryNumber}"
+                                                              WatermarkText="Secondary Phone" />
                                 </StackPanel>
                                 <StackPanel Margin="15,0,15,0"
                                             HorizontalAlignment="Stretch"
                                             DataContext="{StaticResource dTO_CustomerViewSource}"
                                             Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Email_Address1"
-                                                           Width="{Binding ActualWidth,
-                                                                           ElementName=stackPanel1}"
-                                                           Height="23"
-                                                           HorizontalAlignment="Stretch"
-                                                           Text="{Binding Email}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Email Address" />
+                                    <syncfusion:MaskedTextBox x:Name="Email_Address1"
+                                                              Width="{Binding ActualWidth,
+                                                                              ElementName=stackPanel1}"
+                                                              Height="23"
+                                                              HorizontalAlignment="Stretch"
+                                                              Text="{Binding Email}"
+                                                              TextWrapping="Wrap"
+                                                              WatermarkText="Email Address" />
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
@@ -614,7 +621,12 @@
                         <Grid Width="688"
                               Margin="0,6,0,-148"
                               Background="Transparent">
-                            <TextBlock Margin="0,0,-43,0"
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="683*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.ColumnSpan="2"
+                                       Margin="0,0,-43,0"
                                        VerticalAlignment="Top"
                                        FontSize="25"
                                        FontWeight="Bold"
@@ -623,37 +635,41 @@
                                 <LineBreak /><Run Text=" Insurance &amp; Mortgage Company" />
                                 <LineBreak /><Run Text="Information" /></TextBlock>
                             <ComboBox x:Name="InsuranceLU"
-                                      Width="100"
+                                      Grid.Column="1"
+                                      Width="144"
                                       Height="20"
-                                      Margin="146,144,0,0"
+                                      Margin="65,149,0,0"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Top"
                                       Background="{x:Null}"
+                                      DataContext="{StaticResource dTO_InsuranceCompanyViewSource}"
+                                      DisplayMemberPath="CompanyName"
                                       Foreground="White"
-                                      IsReadOnly="True"
-                                      d:LayoutOverrides="Height" />
+                                      ItemsSource="{Binding Path=insco}"
+                                      SelectionChanged="InsuranceLU_SelectionChanged">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel />
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
                             <Label x:Name="label"
-                                   Margin="40,138,0,0"
+                                   Grid.Column="1"
+                                   Width="146"
+                                   Margin="63,120,0,0"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
                                    Content="Insurance Carrier:"
                                    Foreground="White" />
                             <Label x:Name="label_Copy"
-                                   Margin="54,0,0,91"
+                                   Grid.Column="1"
+                                   Margin="75,0,0,103"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Bottom"
                                    Content="Mortgage Holder:"
                                    Foreground="White" />
-                            <TextBox x:Name="InsPolicyNumber"
-                                     Width="146"
-                                     Height="23"
-                                     Margin="0,138,127,0"
-                                     HorizontalAlignment="Right"
-                                     VerticalAlignment="Top"
-                                     Background="{x:Null}"
-                                     Foreground="White"
-                                     TextWrapping="Wrap" />
                             <TextBox x:Name="Policy_Comments"
+                                     Grid.Column="1"
                                      Width="228"
                                      Height="89"
                                      Margin="0,0,45,91"
@@ -663,57 +679,57 @@
                                      Foreground="White"
                                      TextWrapping="Wrap" />
                             <TextBox x:Name="MortgageAcctNumber"
+                                     Grid.Column="1"
                                      Height="22"
-                                     Margin="260,0,258,56"
-                                     VerticalAlignment="Bottom"
-                                     Background="{x:Null}"
-                                     Foreground="White"
-                                     TextWrapping="Wrap" />
-                            <TextBox x:Name="ClaimsPhoneNumber"
-                                     Width="146"
-                                     Height="28"
-                                     Margin="68,194,0,0"
-                                     HorizontalAlignment="Left"
+                                     Margin="395,136,118,0"
                                      VerticalAlignment="Top"
                                      Background="{x:Null}"
                                      Foreground="White"
                                      TextWrapping="Wrap" />
-                            <Label x:Name="label_Copy2"
-                                   Width="132"
-                                   Margin="122,0,0,56"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Bottom"
-                                   Content="Mortgage Account #:"
-                                   Foreground="White" />
-                            <TextBox x:Name="MorgageHolder"
+                            <TextBox x:Name="ClaimsPhoneNumber"
+                                     Grid.Column="1"
+                                     Width="146"
+                                     Height="28"
+                                     Margin="63,194,0,0"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Top"
+                                     Background="Transparent"
+                                     DataContext="{StaticResource dTO_InsuranceCompanyViewSource}"
+                                     Foreground="White"
+                                     Text="{Binding /ClaimPhoneNumber,
+                                                    BindsDirectlyToSource=True,
+                                                    Mode=OneWay}"
+                                     TextWrapping="NoWrap" />
+                            <TextBox x:Name="MortgageHolder"
+                                     Grid.Column="1"
                                      Width="146"
                                      Height="29"
-                                     Margin="164,0,0,86"
+                                     Margin="59,0,0,64"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Bottom"
                                      Background="{x:Null}"
                                      Foreground="White"
-                                     TextWrapping="Wrap"
-                                     d:LayoutOverrides="VerticalAlignment" />
+                                     TextWrapping="Wrap" />
                             <Label x:Name="label_Copy3"
-                                   Margin="68,169,0,0"
+                                   Grid.Column="1"
+                                   Margin="63,169,0,0"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
                                    Content="Claims Phone Number:"
                                    Foreground="White" />
                             <Label x:Name="label_Copy1"
-                                   Margin="308,134,278,0"
+                                   Grid.Column="1"
+                                   Margin="303,134,278,0"
                                    VerticalAlignment="Top"
                                    Content="Policy Number:"
-                                   Foreground="White"
-                                   d:LayoutOverrides="Width" />
+                                   Foreground="White" />
                             <Label x:Name="label_Copy4"
+                                   Grid.Column="1"
                                    Height="32"
-                                   Margin="308,178,278,0"
+                                   Margin="303,178,278,0"
                                    VerticalAlignment="Top"
                                    Content="Comments:"
-                                   Foreground="White"
-                                   d:LayoutOverrides="Width" />
+                                   Foreground="White" />
                         </Grid>
                     </TabPanel>
                 </TabItem>
@@ -847,7 +863,7 @@
                             <TextBlock Margin="0,0,0,245"
                                        FontSize="25"
                                        FontWeight="Bold"
-                                       Padding="10"
+                                       Padding="0"
                                        TextAlignment="Center"><Run Text="Section 9" />
                                 <LineBreak /><Run Text="Finalizing Our Agreement" />
                                 <LineBreak /><Run Text="What To Expect Next" /></TextBlock>
@@ -858,8 +874,8 @@
                                     <local:SignatureBox x:Name="Sign1_Copy"
                                                         Height="300"
                                                         Margin="0"
-                                                        BorderThickness="2"
-                                                        Padding="0,10" />
+                                                        BorderThickness="0"
+                                                        Padding="0" />
                                 </Viewbox>
                                 <Viewbox Width="500"
                                          Height="75"
@@ -867,8 +883,8 @@
                                     <local:SignatureBox x:Name="Sign2_Copy"
                                                         Height="300"
                                                         Margin="0"
-                                                        BorderThickness="2"
-                                                        Padding="0,10" />
+                                                        BorderThickness="0"
+                                                        Padding="0" />
                                 </Viewbox>
                                 <Viewbox Width="500"
                                          Height="75"
@@ -876,9 +892,13 @@
                                     <local:SignatureBox x:Name="Sign3_Copy"
                                                         Height="300"
                                                         Margin="0"
-                                                        BorderThickness="2"
-                                                        Padding="0,10" />
+                                                        BorderThickness="0"
+                                                        Padding="0" />
                                 </Viewbox>
+                                <Button Width="100"
+                                        Height="20"
+                                        Click="Button_Click"
+                                        Content="Add Claim" />
                             </StackPanel>
 
 
@@ -887,6 +907,9 @@
                     </TabPanel>
 
                 </TabItem>
+
+
+
 
 
             </TabControl>

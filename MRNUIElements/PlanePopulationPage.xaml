@@ -1,0 +1,29 @@
+﻿<Page x:Class="MRNUIElements.Planes.PlanePopulationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="PlanePopulationPage">
+
+    <Grid>
+        <TextBlock Height="50" VerticalAlignment="Top" Text="How would you like to populate the PlanesData for this inspection?" Foreground="White" FontSize="36"></TextBlock>
+        <ComboBox x:Name="PlanePopComboBox" Height="30" Width="150" Foreground="White" ItemsSource="{Binding Claims}" Margin="0,0,0,125"></ComboBox>
+        <TextBlock x:Name="Option1" Text="Using Eagleview Data" Foreground="White" Width="100" Height="40" FontSize="14" TextAlignment="Center" TextWrapping="Wrap" Margin="0,200,150,0"></TextBlock>
+        <TextBlock x:Name="Option2" Text="Using My Own Data" Foreground="White" Width="100" Height="40" FontSize="14" TextAlignment="Center" TextWrapping="Wrap" Margin="150,200,0,0"></TextBlock>
+        <CheckBox x:Name="PlanePopCheckBox" IsChecked="True" Width="200" Height="20" Foreground="White" Content="Create Default Inspection Params" Margin="0,0,0,50"></CheckBox>
+        <Button Background="Transparent" BorderThickness="2" BorderBrush="Gray" Margin="0,100,150,0" Width="100" Height=" 50" Click="PlanePopulateExteriorSourceClick">
+            <Canvas x:Name="buttonCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="50" MinWidth="100">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="{StaticResource CheckMark}"></ImageBrush></Canvas.Background></Canvas></Button>
+        <Button Background="Transparent" BorderThickness="2" BorderBrush="Gray" Margin="150,100,0,0" Width="100" Height=" 50" Click="PlanePopulateInteriorSourceClick">
+            <Canvas x:Name="buttonCanvas2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="50" MinWidth="100">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="{StaticResource QuestionMark}"></ImageBrush>
+                </Canvas.Background>
+            </Canvas>
+        </Button>
+    </Grid>
+</Page>

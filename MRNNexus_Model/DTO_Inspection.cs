@@ -74,6 +74,8 @@ namespace MRNNexus_Model
         [DataMember]
         public int ShingleTypeID { get; set; }
         [DataMember]
+        public bool LightningProtection { get; set; }
+        [DataMember]
         public bool TearOff { get; set; }
         [DataMember]
         public bool Satellite { get; set; }

@@ -192,21 +192,21 @@ namespace MRNUIElements
 		{
 			double TotalExpense = 0;
 
-			if (RoofLaborBillAmountText.Value == null) RoofLaborBillAmountText.Value = 0;
+		//	if (RoofLaborBillAmountText.Value == null) RoofLaborBillAmountText.Value = 0;
 				 TotalExpense += (double)RoofLaborBillAmountText.Value;
-			if (InteriorBillAmountText.Value == null) InteriorBillAmountText.Value = 0;
+			//if (InteriorBillAmountText.Value == null) InteriorBillAmountText.Value = 0;
 				 TotalExpense += (double)InteriorBillAmountText.Value;
-			if (ExteriorBillAmountText.Value == null) ExteriorBillAmountText.Value = 0;
+		//	if (ExteriorBillAmountText.Value == null) ExteriorBillAmountText.Value = 0;
 				 TotalExpense += (double)ExteriorBillAmountText.Value;
-			if (GutterBillAmountText.Value == null) GutterBillAmountText.Value = 0;
+			//if (GutterBillAmountText.Value == null) GutterBillAmountText.Value = 0;
 				 TotalExpense += (double)GutterBillAmountText.Value;
-			if (MiscBillAmount.Value == null) MiscBillAmount.Value = 0;
+			//if (MiscBillAmount.Value == null) MiscBillAmount.Value = 0;
 				 TotalExpense += (double)MiscBillAmount.Value;
-			if (KnockerReferralAmountText.Value == null) KnockerReferralAmountText.Value = 0;
+			//if (KnockerReferralAmountText.Value == null) KnockerReferralAmountText.Value = 0;
 				 TotalExpense += (double)KnockerReferralAmountText.Value;
-			if (RoofMaterialExpenseSubtotalText.Value == null) RoofMaterialExpenseSubtotalText.Value = 0;
+			//if (RoofMaterialExpenseSubtotalText.Value == null) RoofMaterialExpenseSubtotalText.Value = 0;
 				 TotalExpense += (double)RoofMaterialExpenseSubtotalText.Value;
-			if (OverheadAmountText.Value == null) OverheadAmountText.Value = 0;
+			//if (OverheadAmountText.Value == null) OverheadAmountText.Value = 0;
 				 TotalExpense += (double)OverheadAmountText.Value;
 
 			return TotalExpense;
@@ -279,6 +279,7 @@ namespace MRNUIElements
 			checkBox.IsChecked = false;
 			ReferralKnockerText.Text = string.Empty;
 			TotalAmountCollectedText.Value = 0;
+			AmountCollectedSubTotal.Value = 0;
 			TotalExpenseText.Value = 0;
 			OverheadAmountText.Value = 0;
 			MiscBillAmount.Value = 0;
@@ -337,21 +338,11 @@ namespace MRNUIElements
 				{
 					StringBuilder sb = new StringBuilder();
 					sb.Clear();
-					if (SalespersonSplitText.PercentValue > 0)
+					if (OH>0)
 						if (SalespersonName.Text != string.Empty)
 						{
-							string tempstring = RecruiterText.Text;
-							if (tempstring.Contains(" "))
-								sb.Append(tempstring.Substring(0, tempstring.IndexOf(" ")));
-
-							else sb.Append(RecruiterText.Text);
-							sb.Append(" -3D- ");
-							sb.Append(SalesMP);
-							tempstring = sb.ToString();
-
-							if (tempstring.Length - tempstring.IndexOf(".") > 2)
-								RecruiterText.Text = tempstring.Substring(0, tempstring.IndexOf(".") + 3);
-						}
+							RecruiterText.Text = SalesMP.ToString();
+													}
 				}
 				#endregion
 				CPSQ = TotExp / NoSq;
@@ -530,42 +521,11 @@ namespace MRNUIElements
 		{
 			string str = string.Empty;
 			str = ZipcodeText.Text;
-			AddressZipcodeValidation azv = new AddressZipcodeValidation();
+			
 
 			if (str.All((char.IsNumber)) && str.Count() == 5)
 			{
-				if (azv.CityStateLookupRequest(str) == null)
-				{
-					System.Windows.Forms.MessageBox.Show("No such zipcode!");
-					ZipcodeText.Text = str = string.Empty;
-					return;
-				}
-				string citystate = azv.CityStateLookupRequest(str);
-
-				string city = citystate.Substring(citystate.IndexOf("<City>") + 6, citystate.IndexOf("</City>") - citystate.IndexOf("<City>") - 6);
-
-				string state = AddressZipcodeValidation.ConvertStateToAbbreviation(citystate.Substring(citystate.IndexOf("<State>") + 7, citystate.IndexOf("</State>") - citystate.IndexOf("<State>") - 7));
-				ZipcodeText.Text = CustomerAddressText.ToString();
-				string[] w = city.Split(' ');
-				city = "";
-				int i = 0;
-
-				foreach (string t in w)
-				{
-					city += t.Substring(0, 1).ToUpper();
-					city += t.Substring(1, t.Length - 1).ToLower();
-					if (i > 0)
-						city += " ";
-
-				}
-
-
-
-				//	city.ToLower();
-				//	TextInfo textinfo = new CultureInfo("en-US", false).TextInfo;
-				//	textinfo.ToTitleCase(city);
-				//city = Regex.Replace(city, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
-				ZipcodeText.Text = city + ", " + state + "  " + str;
+				ZipcodeText.Text = new AddressZipcodeValidation().CityStateLookupRequest(str,1);
 			}
 		}
 

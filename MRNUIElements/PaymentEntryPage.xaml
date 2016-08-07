@@ -84,14 +84,12 @@
                         Margin="5,12,0,13"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Background="{x:Null}"
                         Foreground="White"
                         LostFocus="paymentDateDatePicker_LostFocus"
                         SelectedDate="{Binding PaymentDate,
                                                Mode=TwoWay,
                                                NotifyOnValidationError=true,
-                                               ValidatesOnExceptions=true}"
-                        Style="{DynamicResource DatePickerStyle2}" />
+                                               ValidatesOnExceptions=true}" Style="{DynamicResource DatePickerStyle1}"/>
             <Label Grid.Row="1"
                    Grid.Column="0"
                    Width="100"
@@ -114,8 +112,7 @@
                       DisplayMemberPath="MRNNumber"
                       Foreground="White"
                       ItemsSource="{Binding}"
-                      SelectionChanged="claimIDComboBox_SelectionChanged"
-                      Style="{DynamicResource ComboBoxStyle3}">
+                      SelectionChanged="claimIDComboBox_SelectionChanged">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel />
@@ -190,23 +187,20 @@
                       Margin="111,6,-73,10"
                       HorizontalAlignment="Left"
                       VerticalAlignment="Center"
-                      Background="#FF080707"
-                      BorderBrush="#FF323030"
+                      Background="{x:Null}"
                       DataContext="{StaticResource dTO_LU_PaymentDescriptionViewSource}"
                       DisplayMemberPath="PaymentDescription"
-                      Foreground="#FFFF4646"
-                      IsEditable="True"
+                      Foreground="White"
                       ItemsSource="{Binding}"
-                      Opacity="0.98"
-                      OpacityMask="#FFB62929"
-                      SelectionChanged="paymentTypeComboBox_SelectionChanged"
-                      Style="{DynamicResource ComboBoxStyle4}">
+                      SelectionChanged="paymentTypeComboBox_SelectionChanged">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel />
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
+
+
         </Grid>
         <Canvas x:Name="FirstCheckStatus"
                 Width="32"

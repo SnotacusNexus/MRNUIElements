@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MRNNexus_Model;
+using MRNUIElements.Planes;
+using MRNUIElements.Controllers;
 
 namespace MRNUIElements
 {
@@ -21,6 +24,8 @@ namespace MRNUIElements
     /// </summary>
     public partial class RoofMeasurmentsPage : Page
     {
+        static ServiceLayer s = ServiceLayer.getInstance();
+        DTO_Claim claim = s.Claim;
         public double RidgeMeasurement { get; set; }
         public double HipMeasurement { get; set; }
         public double ValleyMeasurement { get; set; }
@@ -38,8 +43,15 @@ namespace MRNUIElements
         string longitude = "Longitude = ";
         string PropertyAddressBlockStart = "Online map of property";
         //    string PropertyAddressBlockEnd = "Directions from MRN Homes of Ga. to this property";
-        public RoofMeasurmentsPage()
+        public RoofMeasurmentsPage(DTO_Claim claim=null)
         {
+            if (claim == null)
+            {
+                claim = this.claim;
+            }
+            DTO_Inspection inspection = new DTO_Inspection();
+            List<DTO_Plane> planes = new List<DTO_Plane>();
+
             InitializeComponent();
             PDFTextExtractor pdfExtract = new PDFTextExtractor();
             var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "PDF Files (*.pdf)|*.pdf" };
@@ -227,6 +239,8 @@ namespace MRNUIElements
                 System.Windows.Forms.MessageBox.Show(ex.ToString());
                 throw;
             }
+
+            
         }
 
         public void FillVariables(string texttoparse)
@@ -401,16 +415,80 @@ namespace MRNUIElements
             sb.Clear();
             return new Uri(sb.ToString());
         }
+        async private void SetInspectionPlaneData()
+        {
 
+            await s.GetInspectionsByClaimID(this.claim);
+            if (s.Inspection == null)
+            {
+                await s.AddInspection(new DTO_Inspection {
+
+                    CoverPool = false,
+                    MagneticRollers = true,
+                    InspectionDate = DateTime.Now,
+                    ShingleTypeID = 1,
+                    SkyLights = true,
+                    Leaks = false,
+                    GutterDamage = false,
+                    DrivewayDamage = false,
+                    IceWaterShield = true,
+                    EmergencyRepair = false,
+                    EmergencyRepairAmount = 0,
+                    QualityControl = true,
+                    ProtectLandscaping = true,
+                    RemoveTrash = true,
+                    FurnishPermit = true,
+                    InteriorDamage = false,
+                    ExteriorDamage = false,
+                    RoofAge = 10,
+                    Satellite = false,
+                    TearOff = true,
+                    SolarPanels = false,
+                    RidgeMaterialTypeID = 1,
+                    LightningProtection = false,
+                    Comments = "none"
+
+
+                });
+
+            }
+
+            DTO_Plane p = new DTO_Plane();
+
+
+            p.SquareFootage = TotalSQFTOFF;
+            p.RidgeLength = (int)RidgeMeasurement;
+            p.RakeLength = (int)RakeMeasurement;
+            p.Pitch = PredPitch;
+            p.HipValley = (int)HipMeasurement;
+            p.GroupNumber = 1;
+            p.ItemSpec = "EV " + ValleyMeasurement.ToString();
+            p.EaveLength = (int)EaveMeasurement;
+            p.InspectionID = s.InspectionsList[0].InspectionID;
+            p.NumberDecking = int.Parse("2");
+            p.NumOfLayers = int.Parse("1");
+            p.PlaneTypeID = 15;
+            p.StepFlashing = int.Parse(stepFlashingTextBox.Text);
+
+            await s.AddPlane(p);
+        }
         public void DoMath()
         {
+            
             OrderSqShingle.Text = FigureWaste(Slider.Value, TotalSQFTOFF).ToString();
+            
             OrderRoofNails.Text = FigureRoofNails().ToString();
+
             OrderRidgeVent.Text = FigureRidgevent().ToString();
+
             OrderButtonCaps.Text = FigurePlasticCaps().ToString();
+
             OrderIceWater.Text = FigureIceAndWater().ToString();
+
             OrderHipandRidge.Text = FigureHipRidge().ToString();
+
             OrderDripEdge.Text = FigureDripedge().ToString();
+
             OrderStarter.Text = FigureStarter().ToString();
             if (UnderlaymentCombo.SelectedIndex<2)
                 OrderUnderlayment.Text = FigureUnderlayment(10).ToString();
@@ -647,12 +725,15 @@ namespace MRNUIElements
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RoofMeasurmentsPage());
+            NavigationService.Navigate(new RoofMeasurmentsPage(new DTO_Claim()));
         }
 
         private void On_OK(object sender, RoutedEventArgs e)
         {
+
+            SetInspectionPlaneData();
             NavigationService.Navigate(new NexusHome());
+            
         }
 
         private void OrderBrand_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -678,7 +759,7 @@ namespace MRNUIElements
 
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RoofMeasurmentsPage());
+            NavigationService.Navigate(new RoofMeasurmentsPage(new DTO_Claim()));
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
@@ -887,6 +968,7 @@ namespace MRNUIElements
             double dbl = 0;
             double.TryParse(Eaves.Text, out dbl);
             EaveMeasurement = dbl;
+
             DoMath();
         }
 

@@ -36,37 +36,6 @@
                     <RowDefinition Height="15*" />
                     <RowDefinition Height="68*"/>
                 </Grid.RowDefinitions>
-                <Menu x:Name="MainMenu"
-                  Height="35" Margin="10,0,-10,0" Grid.ColumnSpan="2">
-                    <MenuItem x:Name="FileMenu" Header="_Claim">
-                        <MenuItem x:Name="NewCommand"
-                              Command="New"
-                              Header="_New" />
-                        <MenuItem x:Name="OpenClaim"
-                              Command="Open"
-                              Header="_Open" />
-                        <Separator />
-                        <MenuItem x:Name="KillClaim" Header="_Kill Claim" />
-                        <MenuItem x:Name="RescueClaim" Header="R_escue Claim" />
-                        <Separator />
-                        <MenuItem x:Name="PrintClaim" Header="_Print (Ctrl + P)" />
-                        <MenuItem x:Name="Exit" Header="_Exit" />
-                        <Separator />
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem x:Name="ViewMenu" Header="_View">
-                        <MenuItem x:Name="Statistics" Header="Statistics" />
-                        <MenuItem x:Name="Contest" Header="Contest..." />
-
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem x:Name="OptionMenu" Header="_Options">
-                        <MenuItem x:Name="MilestoneMenu" Header="_Milestones" />
-                        <MenuItem x:Name="Theme" Header="Choose Theme" />
-
-                    </MenuItem>
-
-                </Menu>
 
 
                 <!--<Grid x:Name="grid"
@@ -93,19 +62,18 @@
                     <!--  <local:InspectionSchedule x:Name="schedule" />-->
                 </Grid>
                 <TextBlock x:Name="textBlock"
-                       Grid.Row="1"
                        Width="500"
-                       Height="30"
-                       Margin="338,5,136,0"
+                       Height="60"
+                       Margin="338,10,136,0"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
-                       FontSize="22"
+                       FontSize="36"
                        FontStyle="Italic"
                        FontWeight="Bold"
                        Foreground="White"
                        Text="My MRN Claim Services"
                        TextDecorations="Underline"
-                       TextWrapping="Wrap" />
+                       TextWrapping="Wrap" Grid.RowSpan="2" />
                 <Canvas
                     MinWidth="150"
                     MinHeight="150" HorizontalAlignment="Right" Width="194" Grid.Column="1" Grid.Row="2">
@@ -116,9 +84,9 @@
                 </Canvas>
                 <StackPanel
                         Width="154"
-                        Height="338"
+                        Height="670"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" Margin="0,0,10,10">
+                        VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" Margin="0,0,10,0">
                     <Button x:Name="button"
                         Width="147"
                         Height="30"
@@ -183,15 +151,94 @@
                         Content="View Capout"
                         FontSize="22"
                         Style="{DynamicResource normal}" />
-
                     <Button x:Name="Roof_Order_Btn"
                         Width="147"
                         Height="38"
                         Margin="1,5,0,5"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Click="button_Click"
+                        Click="Roof_Order_BtnClick"
                         Content="Order Roof"
+                        FontSize="22"
+                        Style="{DynamicResource normal}" />
+                    <Button x:Name="PlaneEntry"
+                        Width="147"
+                        Height="38"
+                        Margin="1,5,0,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="PlaneEntryClick"
+                        Content="Plane Entry"
+                        FontSize="22"
+                        Style="{DynamicResource normal}" RenderTransformOrigin="0.51,1.316" />
+                    <Button x:Name="NewClaimBtn"
+                    Width="147"
+                    Height="38"
+                    Margin="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="NewClaimBtnClick"
+                    Content="New Claim"
+                    FontSize="22"
+                    Style="{DynamicResource normal}" />
+                    <Button x:Name="AddCustomerBtn"
+                    Width="147"
+                    Height="38"
+                    Margin="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="AddCustomerBtnClick"
+                    Content="New Customer"
+                    FontSize="22"
+                    Style="{DynamicResource normal}" />
+                    <Button x:Name="AddInspectionBtn"
+                    Width="147"
+                    Height="38"
+                    Margin="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="AddInspectionBtnClick"
+                    Content="New Inspection"
+                    FontSize="22"
+                    Style="{DynamicResource normal}" />
+                    <Button x:Name="AddPlaneData"
+                        Width="147"
+                        Height="38"
+                        Margin="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="AddPlaneDataClick"
+                        Content="Add Plane Data"
+                        FontSize="22"
+                        Style="{DynamicResource normal}" />
+                    <Button x:Name="AddUserBtn"
+                        Width="147"
+                        Height="38"
+                        Margin="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="AddUserBtnClick"
+                        Content="New User"
+                        FontSize="22"
+                        Style="{DynamicResource normal}" />
+                    <Button x:Name="ViewClaimDetails"
+                        Width="147"
+                        Height="38"
+                        Margin="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="ViewClaimDetailsClick"
+                        Content="Claim Detail"
+                        FontSize="22"
+                        Style="{DynamicResource normal}" />
+                    <Button x:Name="AddLeadBtn"
+                        Width="147"
+                        Height="38"
+                        Margin="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="AddLeadButtonClick"
+                        Content="New Lead"
                         FontSize="22"
                         Style="{DynamicResource normal}" />
                 </StackPanel>

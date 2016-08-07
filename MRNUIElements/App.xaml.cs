@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using Awesomium.Core;
+//using Awesomium.Core;
 using System.Diagnostics;
 using System.Windows.Input;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Threading.Tasks;
-using Awesomium.Windows.Controls;
+//using Awesomium.Windows.Controls;
 using System.Collections.ObjectModel;
 
 using System.Text;
@@ -28,7 +28,7 @@ using System.Globalization;
 using Jarloo.Calendar;
 using MRNNexus_Model;
 
-using Awesomium.Core.Data;
+//using Awesomium.Core.Data;
 
 #endregion
 
