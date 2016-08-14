@@ -52,8 +52,8 @@
             Width="637"
             Height="696"
             Margin="0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
         <StackPanel x:Name="stkpan"
@@ -69,14 +69,13 @@
                                        Path=ActualWidth}"
                        Height="57"
                        HorizontalAlignment="Center"
-                       Background="{StaticResource Color2}"
                        FontSize="36"
                        FontWeight="Bold"
-                       Foreground="White"
+                       Foreground="#FF727272"
                        Text="MRN Job Profit Breakdown"
                        TextAlignment="Center"
                        TextDecorations="Underline"
-                       TextWrapping="Wrap" />
+                       TextWrapping="Wrap" Background="Transparent" />
 
 
         </StackPanel>
@@ -331,8 +330,8 @@
                                     WatermarkTextForeground="#FF6D6D6D"
                                     WatermarkTextIsVisible="True" />
         <Label x:Name="label1_Copy1"
-               Canvas.Left="27"
-               Canvas.Top="342"
+               Canvas.Left="29"
+               Canvas.Top="395"
                Width="49"
                Height="13"
                Panel.ZIndex="2"
@@ -469,7 +468,7 @@
                                     TargetNullValue=null}" />
         <Label x:Name="label1_Copy3"
                Canvas.Left="28"
-               Canvas.Top="395"
+               Canvas.Top="342"
                Width="50"
                Height="13"
                Panel.ZIndex="2"
@@ -553,7 +552,7 @@
                                    ValidationOnLostFocus="False"
                                    ValueValidation="OnKeyPress"
                                    WatermarkText="Salesperson Overhead %"
-                                   WatermarkTextIsVisible="True" />
+                                   WatermarkTextIsVisible="True" PercentValueChanged="OverheadMultiplierAmountText_PercentValueChanged" />
         <syncfusion:PercentTextBox x:Name="SalespersonSplitText"
                                    Canvas.Left="135"
                                    Canvas.Top="545"
@@ -583,7 +582,7 @@
                                    ValidationOnLostFocus="False"
                                    ValueValidation="OnKeyPress"
                                    WatermarkText="Salesperson Split %"
-                                   WatermarkTextIsVisible="True" />
+                                   WatermarkTextIsVisible="True" PercentValueChanged="SalespersonSplitText_PercentValueChanged" />
         <Label x:Name="label_Copy8"
                Canvas.Left="234"
                Canvas.Top="243"
@@ -629,9 +628,9 @@
                   BorderThickness="0"
                   Foreground="Black"
                   OpacityMask="Black" />
-        <TextBlock x:Name="textBlock1"
-                   Canvas.Left="241"
-                   Canvas.Top="673"
+        <TextBlock x:Name="MRNTEXTBLOCK"
+                   Canvas.Left="470"
+                   Canvas.Top="665"
                    Width="75"
                    Height="23"
                    HorizontalAlignment="Right"
@@ -1207,8 +1206,8 @@
                Padding="0"
                ScrollViewer.VerticalScrollBarVisibility="Disabled" />
         <TextBlock x:Name="textBlock1_Copy"
-                   Canvas.Left="321"
-                   Canvas.Top="673"
+                   Canvas.Left="550"
+                   Canvas.Top="665"
                    Width="75"
                    Height="23"
                    Text="{Binding Text,
@@ -1222,7 +1221,7 @@
                                  TabIndex="4"
                                  TextAlignment="Center"
                                  TextWrapping="Wrap"
-                                 Watermark="Customer Name" />
+                                 Watermark="Customer Name" TextChanged="CustomerNameText_TextChanged" />
         <Label x:Name="label_Copy35"
                Canvas.Left="382"
                Canvas.Top="314"
@@ -1257,7 +1256,7 @@
                                  TabIndex="5"
                                  TextAlignment="Center"
                                  TextWrapping="Wrap"
-                                 Watermark="Customer Address" />
+                                 Watermark="Customer Address" TextChanged="CustomerAddressText_TextChanged" />
         <syncfusion:SfTextBoxExt x:Name="ZipcodeText"
                                  Canvas.Left="393"
                                  Canvas.Top="155"
@@ -1589,7 +1588,7 @@
                 Content="Exit"
                 FontSize="20"
                 RenderTransformOrigin="0.489,1.939"
-                TabIndex="31" />
+                TabIndex="31" Panel.ZIndex="10" />
         <Label x:Name="label_Copy15"
                Canvas.Left="524"
                Canvas.Top="342"

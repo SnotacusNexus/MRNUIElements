@@ -98,7 +98,8 @@ namespace MRNUIElements
 				BI.IsBusy=false;
 			}
 			int j = 3;
-			NexusHome Page = new NexusHome();
+			LoginAs Page = new LoginAs();
+		//	NexusHome Page = new NexusHome();
 			StringBuilder s = new StringBuilder();
 			s.Append("The username and password combination is not what is on file.  / n / r You have failed to login ");
 			s.Append(i.ToString() + " of " + j.ToString() + " times. /r/n If you fail " + (j - i).ToString() + " more time");

@@ -18,7 +18,7 @@ using MRNUIElements.Models;
 using MRNUIElements;
 using System.Collections.ObjectModel;
 
-namespace MRNUIElements.Planes
+namespace MRNUIElements
 {
     /// <summary>
     /// Interaction logic for InspectionPage.xaml

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="MRNUIElements.Viewers.PdfViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cc="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MRNUIElements"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             syncfusion:SkinStorage.VisualStyle="Metro"
+            
+             mc:Ignorable="d">
+    <Grid>
+        <cc:PdfViewerControl x:Name="pdfviewer1"
+                             AllowDrop="True"
+                             BorderBrush="Black" />
+    </Grid>
+</UserControl>

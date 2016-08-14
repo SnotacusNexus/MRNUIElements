@@ -56,7 +56,8 @@
                         <DatePicker Canvas.Left="8"
                                     Canvas.Top="7"
                                     Width="99"
-                                    Style="{DynamicResource DatePickerStyle1}" Foreground="White"/>
+                                    Foreground="White"
+                                    Style="{DynamicResource DatePickerStyle1}" />
                         <TextBlock Canvas.Left="18"
                                    Canvas.Top="33"
                                    Width="75"
@@ -152,7 +153,9 @@
                                    TextAlignment="Center" />
                         <DatePicker Canvas.Left="134"
                                     Canvas.Top="7"
-                                    Width="99" Style="{DynamicResource DatePickerStyle1}" Foreground="White"/>
+                                    Width="99"
+                                    Foreground="White"
+                                    Style="{DynamicResource DatePickerStyle1}" />
                         <TextBlock Canvas.Left="140"
                                    Canvas.Top="33"
                                    Width="75"
@@ -229,7 +232,7 @@
                                   BorderBrush="Red"
                                   Foreground="White"
                                   IsSynchronizedWithCurrentItem="True"
-                                  SelectionChanged="OrderBrand_SelectionChanged">
+                                  SelectionChanged="OrderBrand_SelectionChanged" IsReadOnly="True">
                             <ComboBoxItem Width="128"
                                           HorizontalAlignment="Left"
                                           Content="Owens Corning" />
@@ -275,7 +278,7 @@
                                   Text="{Binding ThreeAndOne,
                                                  Mode=TwoWay,
                                                  NotifyOnValidationError=true,
-                                                 ValidatesOnExceptions=true}">
+                                                 ValidatesOnExceptions=true}" SelectionChanged="InstallerCombo_SelectionChanged">
                             <ComboBoxItem Content="Marteen" />
                             <ComboBoxItem Content="Oscar" />
 
@@ -301,7 +304,7 @@
                                   BorderBrush="Red"
                                   Foreground="White"
                                   IsSynchronizedWithCurrentItem="True"
-                                  SelectionChanged="OrderBrandType_SelectionChanged" />
+                                  SelectionChanged="OrderBrandType_SelectionChanged" IsReadOnly="True" />
                         <TextBlock Canvas.Left="407"
                                    Canvas.Top="75"
                                    Width="53"
@@ -415,7 +418,7 @@
                                   Height="23"
                                   Background="Black"
                                   BorderBrush="Red"
-                                  Foreground="White" />
+                                  Foreground="White" IsSynchronizedWithCurrentItem="True" IsReadOnly="True" />
                         <syncfusion:MaskedTextBox x:Name="maskedTextBoxCustomerCSZ"
                                                   Canvas.Left="576"
                                                   Canvas.Top="141"
@@ -2052,7 +2055,7 @@
                                                Foreground="#FFA40000"
                                                LineHeight="10"
                                                TextAlignment="Center"
-                                               TextWrapping="Wrap" />
+                                               TextWrapping="Wrap" Text="{Binding Text, ElementName=OrderBrandType}" />
                                     <TextBlock x:Name="MRNNumber"
                                                Canvas.Left="113"
                                                Canvas.Top="94"
@@ -2262,20 +2265,6 @@
                                                Text="$"
                                                TextAlignment="Center"
                                                TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ScheduledDeliveryDate"
-                                               Canvas.Left="275"
-                                               Canvas.Top="361"
-                                               Width="98"
-                                               Height="12"
-                                               Focusable="True"
-                                               FontFamily="Georgia"
-                                               FontSize="11"
-                                               FontWeight="Bold"
-                                               Foreground="#FFA40000"
-                                               Text="Black"
-                                               TextAlignment="Center"
-                                               TextDecorations="{x:Null}"
-                                               TextWrapping="Wrap" />
                                     <TextBlock x:Name="UnderlaymentType"
                                                Canvas.Left="275"
                                                Canvas.Top="316"
@@ -2292,6 +2281,20 @@
                                                               ElementName=UnderlaymentCombo,
                                                               Mode=OneWay}"
                                                TextAlignment="Center"
+                                               TextWrapping="Wrap" />
+                                    <TextBlock x:Name="ScheduledDeliveryDate"
+                                               Canvas.Left="275"
+                                               Canvas.Top="361"
+                                               Width="98"
+                                               Height="12"
+                                               Focusable="True"
+                                               FontFamily="Georgia"
+                                               FontSize="11"
+                                               FontWeight="Bold"
+                                               Foreground="#FFA40000"
+                                               Text="Black"
+                                               TextAlignment="Center"
+                                               TextDecorations="{x:Null}"
                                                TextWrapping="Wrap" />
                                     <TextBlock x:Name="CustomerName"
                                                Canvas.Left="313"

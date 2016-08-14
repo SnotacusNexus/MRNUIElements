@@ -1,0 +1,16 @@
+{
+  "images": {
+    "hovernewroofbutton": "HoverNewRoofButton.png",
+    "newroofbutton": "NewRoofButton.png",
+    "pushednewroofbtn": "PushedNewRoofBtn.png"
+  },
+  "orientation": "vertical",
+  "optimize": "lossless",
+  "padding": 10,
+  "output": "png",
+  "stylesheet": "css",
+  "pathprefix": "",
+  "customstyles": {
+    "display": "block"
+  }
+}

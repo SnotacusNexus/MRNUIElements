@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,43 +23,85 @@ namespace MRNUIElements
 	public partial class PaymentEntryPage : Page
 	{
 		static ServiceLayer s1 = ServiceLayer.getInstance();
+		public DTO_Claim Claim { get; set; }
+		public DateTime PaymentDate { get; set; }
+		public int PaymentDescriptionID { get; set; }
 
-		public PaymentEntryPage()
+		public PaymentEntryPage(DTO_Claim claim=null, int DocTypeID=0)
 		{
 		//	OnInit();
 			InitializeComponent();
-			this.claimIDComboBox.DataContext = s1.ClaimsList;
-			this.paymentTypeComboBox.DataContext = s1.PaymentDescriptions;
+			OnInit();
+			switch (DocTypeID)
+			{
+				case 13:
+					{
+						PaymentDescriptionID = 1;
+						PaymentDescriptionTextBlock.Text = "First/Deposit Check";
+						break;
+					}
+				case 14:
+					{
+						PaymentDescriptionID = 5;
+						PaymentDescriptionTextBlock.Text = "Deductible Check";
+						break;
+					}
+				case 15:
+					{
+						PaymentDescriptionID = 3;
+						PaymentDescriptionTextBlock.Text = "Depreciation Check";
+						break;
+					}
+				case 16:
+					{
+						PaymentDescriptionID = 2;
+						PaymentDescriptionTextBlock.Text = "Supplemental Check";
+						break;
+					}
+				default:
+					{
+						PaymentDescriptionID = 4;
+						PaymentDescriptionTextBlock.Text = "Upgrade Check";
+						break;
+					}
+			}
+			if (claim != null) {
+				Claim = claim;
+				ClaimIDTextBlock.Text = Claim.MRNNumber;
+			}
+			while (s1.PaymentsList == null)
+				Thread.Sleep(10);
 
+
+			if (Claim !=null)
+  				if (s1.PaymentsList.Exists(x => x.ClaimID == Claim.ClaimID && x.PaymentDescriptionID == this.PaymentDescriptionID))
+ 				{
+ 					System.Windows.Forms.MessageBox.Show("A Payment of this type has already been recorded.");
+  					DisplayPayment(Claim, PaymentDescriptionID);
+  					//new MainWindow().MRNClaimNexusMainFrame.Navigate(new GetClaimsPage());
+ 				}
 		}
-		private void OnInit()
+		async private void OnInit()
 		{
-		
+			await s1.GetAllPayments();
 
 		}
 
 		private void paymentDateDatePicker_LostFocus(object sender, RoutedEventArgs e)
 		{
-
+			if(paymentDateDatePicker.SelectedDate.HasValue)
+			PaymentDate = paymentDateDatePicker.SelectedDate.Value;
 		}
 
-		private void claimIDComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-
-		}
-
+		
 		private void amountTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			double d;
-			if (amountTextBox.Text == string.Empty) amountTextBox.Text = "0";
+			
+			if (amountTextBox.Text == string.Empty) amountTextBox.Value = 0;
 			if (amountTextBox.Text != string.Empty) SubmitScopeEntry.IsEnabled = true;
-			if (!double.TryParse(amountTextBox.Text, out d)) MessageBox.Show("Not a valid value.");
+			
 		}
-
-		private void paymentTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-					  
-		}
+	  
 
 		private void CancelScopeEntry_Click(object sender, RoutedEventArgs e)
 		{
@@ -69,17 +112,14 @@ namespace MRNUIElements
 		async private void SubmitScopeEntry_Click(object sender, RoutedEventArgs e)
 		{
 
-			int.Parse(s1.ClaimsList[claimIDComboBox.SelectedIndex].ClaimID.ToString());
-			if (claimIDComboBox.SelectedIndex > -1)
-				if (paymentTypeComboBox.SelectedIndex > -1)
-					if (paymentDateDatePicker.SelectedDate != null && paymentDateDatePicker.SelectedDate >= DateTime.Today)
+			if (paymentDateDatePicker.SelectedDate != null && paymentDateDatePicker.SelectedDate <= DateTime.Today && amountTextBox.Value>0)
 					{
 						DTO_Payment p = new DTO_Payment();
 
-						p.Amount = double.Parse(amountTextBox.Text);
+						p.Amount = (double)amountTextBox.Value;
 						p.PaymentDate = paymentDateDatePicker.SelectedDate.Value;
-						p.PaymentDescriptionID = ((DTO_LU_PaymentDescription)paymentTypeComboBox.SelectedValue).PaymentDescriptionID;
-						p.ClaimID = ((DTO_Claim)claimIDComboBox.SelectedValue).ClaimID;
+						p.PaymentDescriptionID = this.PaymentDescriptionID;
+						p.ClaimID = Claim.ClaimID;
 						p.PaymentTypeID = 1;
 						await s1.AddPayment(p);
 					
@@ -87,17 +127,20 @@ namespace MRNUIElements
 			
 						if (s1.Payment.Message == null)
 						{
-							MessageBox.Show(s1.Payment.PaymentID.ToString());
+							MessageBox.Show("Payment Added.");
+
 						}
 						else
 						{
 							MessageBox.Show(s1.Payment.Message);
 						}
 					}
-					else MessageBox.Show("Select a date");
-				else MessageBox.Show("Select a Payment Description");
-			else MessageBox.Show("Pick a Claim Number");
+					
 
+		}
+		private void DisplayPayment(DTO_Claim claim, int paymentDescriptionType)
+		{
+			System.Windows.Forms.MessageBox.Show("On " + s1.PaymentsList.Find(x => x.ClaimID == claim.ClaimID && x.PaymentDescriptionID == paymentDescriptionType).PaymentDate.ToString() + " a payment was made for the amount of $ " + s1.PaymentsList.Find(x => x.ClaimID == claim.ClaimID && x.PaymentDescriptionID == paymentDescriptionType).Amount.ToString());	
 		}
 	}
 }															

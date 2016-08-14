@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using Syncfusion.Windows.Controls.Primitives;
 using MRNUIElements.Models;
 using System.ComponentModel;
-using MRNUIElements.TextParsing;
+using MRNUIElements.Models.Structure;
 
 
 namespace MRNUIElements
@@ -33,9 +33,7 @@ namespace MRNUIElements
         ObservableCollection<ModelPlane> planes = new ObservableCollection<ModelPlane>();
         public DrawPlanePage()
         {
-           // ShapeCanvas1.Points = GetRoofPlaneShape(1);
-
-            // ObservableCollection<ModelPlane> planes = new ObservableCollection<ModelPlane>();
+           
             InitializeComponent();
             DrawPitch((double)Pitch.Value * -1, ((double)RunFeet.Value * 12));
             ShapeCanvas1.Points = GetRoofPlaneShape(1);
@@ -560,11 +558,8 @@ namespace MRNUIElements
 
         private void OK_Btn(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
-            ParseXML px = new ParseXML();
-            px.DoIT();
-            GetText gt = new GetText();
-            gt.Sorting();
+            NavigationService.Navigate(new ModelMaker());
+          
         }
     }
 }

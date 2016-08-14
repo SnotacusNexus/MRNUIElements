@@ -17,6 +17,7 @@ using MRNNexus_Model;
 //using Awesomium.Windows.Controls;
 //using Awesomium.Core.Data;
 //using Awesomium.Core;
+using static System.Windows.Navigation.NavigationService;
 using Syncfusion.UI.Xaml.Schedule;
 using Syncfusion.UI.Xaml.Grid;
 using System.Collections.Specialized;
@@ -24,8 +25,9 @@ using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using MRNUIElements.Models;
+using MRNUIElements.ViewModels;
 using MRNUIElements.Controllers;
-using MRNUIElements.Planes;
+
 //using static MRNUIElements.ScheduleAppointmentModel;
 using static MRNUIElements.Models.Appointments;
 
@@ -37,27 +39,35 @@ namespace MRNUIElements
 	/// </summary>
 	public partial class NexusHome : Page
 	{
-	static ServiceLayer s = ServiceLayer.getInstance();
+		static ServiceLayer s = ServiceLayer.getInstance();
+	  
+	 
 
-       
-        //MRNNexus_Model.DTO_CalendarData calData;
+		//MRNNexus_Model.DTO_CalendarData calData;
 
-        //	GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
+		//	GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
 
-        //		double autoHeight;
-        //ObservableCollection<MappedAppointment> MappedAppointment = new ObservableCollection<MappedAppointment>();
-        //	ObservableCollection<TodaysAppointment> TodaysAppointment = new ObservableCollection<TodaysAppointment>();
-        private string FinishedName;
+		//		double autoHeight;
+		//ObservableCollection<MappedAppointment> MappedAppointment = new ObservableCollection<MappedAppointment>();
+		//	ObservableCollection<TodaysAppointment> TodaysAppointment = new ObservableCollection<TodaysAppointment>();
+		private string FinishedName;
 		static ServiceLayer s1 = ServiceLayer.getInstance();
+		static ScopeModel sm = ScopeModel.getInstance();
+		static ObservableCollection<ScopeModel> ff = ScopeModel.lgetInstance();
+		static public Frame _frame;
 	//	DTO_CalendarData caldata;
 		bool b = false;
 		public NexusHome()
 		{
-           
-            InitializeComponent();
-            
+		  
+		   
+			InitializeComponent();
+			//    calculationsDataGrid.DataContext = sm;
+			//      calculationsDataGrid.ItemsSource = ff;
+			_frame = frame;
+			
 			frame.Navigate(new Schedule());
-  
+		  //  frame.Navigate(new CompoundDataGridRow());
 		}
 
 	  
@@ -76,41 +86,41 @@ namespace MRNUIElements
 		{
 			//AnalogFileUploadPage page = new AnalogFileUploadPage();
 			
-			this.NavigationService.Navigate(new AddClaimDocumentation());
+			frame.Navigate(new AddClaimDocumentation());
 		}
 
 		private void InvoicePageBtn(object sender, RoutedEventArgs e)
 		{
 			
-			NavigationService.Navigate(new InvoicePage());
+			frame.Navigate(new InvoicePage());
 
 		}
 
 		private void ScopeEntryButton(object sender, RoutedEventArgs e)
 		{
 			
-			NavigationService.Navigate(new ScopeViewer());
+			frame.Navigate(new ScopeViewer());
 		}
 
 		private void PaymentEntryPagebtn(object sender, RoutedEventArgs e)
 		{
 			
-			NavigationService.Navigate(new PaymentEntryPage());
+			frame.Navigate(new PaymentEntryPage());
 		}
 
 		private void ViewCapOutButton(object sender, RoutedEventArgs e)
 		{
 			
-			NavigationService.Navigate(new CapOutSheet());
+			frame.Navigate(new CapOutSheet());
 		}
 
 
 
 		async private void GetLeadsByEmployeeAsSalepersonID(int iemployeeID)
 		{
-            await s1.GetAllInsuranceCompanies();
+			await s1.GetAllInsuranceCompanies();
 
-            await s1.GetCalendarDataByEmployeeID(s1.LoggedInEmployee);
+			await s1.GetCalendarDataByEmployeeID(s1.LoggedInEmployee);
 
 			foreach (DTO_CalendarData c in s1.CalendarDataList)
 			{
@@ -169,65 +179,65 @@ namespace MRNUIElements
 
 
 
-        async private void GetCustomerDetailsByLeadID(int leadID)
-        {
-            DTO_Lead ld = new DTO_Lead();
-            DTO_Customer cu = new DTO_Customer();
-            DTO_Address ad = new DTO_Address();
-            ld.LeadID = leadID;
-            await s1.GetLeadByLeadID(ld);
-            ld = s1.Lead;
-            ad.AddressID = ld.AddressID;
-            cu.CustomerID = ld.CustomerID;
-            await s1.GetCustomerByID(cu);
-            await s1.GetAddressByID(ad);
-            cu = s1.Cust;
-            ad = s1.Address1;
-            FinishedName = "";
-            if (cu.FirstName != string.Empty)
-                FinishedName += cu.FirstName + " ";
+		async private void GetCustomerDetailsByLeadID(int leadID)
+		{
+			DTO_Lead ld = new DTO_Lead();
+			DTO_Customer cu = new DTO_Customer();
+			DTO_Address ad = new DTO_Address();
+			ld.LeadID = leadID;
+			await s1.GetLeadByLeadID(ld);
+			ld = s1.Lead;
+			ad.AddressID = ld.AddressID;
+			cu.CustomerID = ld.CustomerID;
+			await s1.GetCustomerByID(cu);
+			await s1.GetAddressByID(ad);
+			cu = s1.Cust;
+			ad = s1.Address1;
+			FinishedName = "";
+			if (cu.FirstName != string.Empty)
+				FinishedName += cu.FirstName + " ";
 
-            if (cu.MiddleName != string.Empty)
-                FinishedName += cu.MiddleName + " ";
+			if (cu.MiddleName != string.Empty)
+				FinishedName += cu.MiddleName + " ";
 
-            if (cu.LastName != string.Empty)
-                FinishedName += cu.LastName + " ";
+			if (cu.LastName != string.Empty)
+				FinishedName += cu.LastName + " ";
 
-            if (cu.Suffix != string.Empty)
-                FinishedName += cu.Suffix;
+			if (cu.Suffix != string.Empty)
+				FinishedName += cu.Suffix;
 
-            if (cu.PrimaryNumber != string.Empty)
-                //	leadPriPhoneText.Text = cu.PrimaryNumber;
+			if (cu.PrimaryNumber != string.Empty)
+				//	leadPriPhoneText.Text = cu.PrimaryNumber;
 
-                if (cu.SecondaryNumber != string.Empty)
-                    //leadSecPhoneText.Text = cu.SecondaryNumber;
+				if (cu.SecondaryNumber != string.Empty)
+					//leadSecPhoneText.Text = cu.SecondaryNumber;
 
-                    if (cu.Email != string.Empty)
-                        //leadEmailAddressText.Text = cu.Email;
-                        ;
-            //MessageBox.Show(FinishedName);
-            //leadNameText.Text = FinishedName;
+					if (cu.Email != string.Empty)
+						//leadEmailAddressText.Text = cu.Email;
+						;
+			//MessageBox.Show(FinishedName);
+			//leadNameText.Text = FinishedName;
 
-            AddressZipcodeValidation citystatefromzip = new AddressZipcodeValidation();
-            string citystate = citystatefromzip.CityStateLookupRequest(ad.Zip);
+			AddressZipcodeValidation citystatefromzip = new AddressZipcodeValidation();
+			string citystate = citystatefromzip.CityStateLookupRequest(ad.Zip);
 
-            string city = citystate.Substring(citystate.IndexOf("<City>") + 6, citystate.IndexOf("</City>") - citystate.IndexOf("<City>") - 6);
+			string city = citystate.Substring(citystate.IndexOf("<City>") + 6, citystate.IndexOf("</City>") - citystate.IndexOf("<City>") - 6);
 
-            string state = AddressZipcodeValidation.ConvertStateToAbbreviation(citystate.Substring(citystate.IndexOf("<State>") + 7, citystate.IndexOf("</State>") - citystate.IndexOf("<State>") - 7));
-            //leadAddressText.Text = ad.Address.ToString();
-            string[] w = city.Split(' ');
-            city = "";
-            int i = 0;
+			string state = AddressZipcodeValidation.ConvertStateToAbbreviation(citystate.Substring(citystate.IndexOf("<State>") + 7, citystate.IndexOf("</State>") - citystate.IndexOf("<State>") - 7));
+			//leadAddressText.Text = ad.Address.ToString();
+			string[] w = city.Split(' ');
+			city = "";
+			int i = 0;
 
-            foreach (string t in w)
-            {
-                city += t.Substring(0, 1).ToUpper();
-                city += t.Substring(1, t.Length - 1).ToLower();
-                if (i > 0)
-                    city += " ";
+			foreach (string t in w)
+			{
+				city += t.Substring(0, 1).ToUpper();
+				city += t.Substring(1, t.Length - 1).ToLower();
+				if (i > 0)
+					city += " ";
 
-            }
-        }
+			}
+		}
 			
 				
 		//	city.ToLower();
@@ -356,12 +366,12 @@ namespace MRNUIElements
 
 		private void CustomerAgreementClick(object sender, RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new CustomerAgreement());
+			frame.Navigate(new CustomerAgreement());
 		}
 
 		private void button1_Click(object sender, RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new SVGTestCanvas());
+			frame.Navigate(new SVGTestCanvas());
 		}
 
 		private void button2_Click(object sender, RoutedEventArgs e)
@@ -369,51 +379,51 @@ namespace MRNUIElements
 
 		}
 
-        private void Roof_Order_BtnClick(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new RoofMeasurmentsPage());
-        }
+		private void Roof_Order_BtnClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new RoofMeasurmentsPage());
+		}
 
-        private void PlaneEntryClick(object sender, RoutedEventArgs e)
-        {
+		private void PlaneEntryClick(object sender, RoutedEventArgs e)
+		{
 
-        }
+		}
 
-        private void NewClaimBtnClick(object sender, RoutedEventArgs e)
-        {
+		private void NewClaimBtnClick(object sender, RoutedEventArgs e)
+		{
 
-        }
+		}
 
-        private void AddCustomerBtnClick(object sender, RoutedEventArgs e)
-        {
+		private void AddCustomerBtnClick(object sender, RoutedEventArgs e)
+		{
 
-        }
+		}
 
-        private void AddInspectionBtnClick(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new InspectionPage());
-        }
+		private void AddInspectionBtnClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new InspectionPage());
+		}
 
-        private void AddPlaneDataClick(object sender, RoutedEventArgs e)
-        {
+		private void AddPlaneDataClick(object sender, RoutedEventArgs e)
+		{
 
-        }
+		}
 
-        private void AddUserBtnClick(object sender, RoutedEventArgs e)
-        {
+		private void AddUserBtnClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new Claims_Receivables());
+		}
 
-        }
+		private void ViewClaimDetailsClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate( new GetClaimsPage());
+		}
 
-        private void ViewClaimDetailsClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddLeadButtonClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-    }
+		private void AddLeadButtonClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new CompetitionResultsDisplay());
+		}
+	}
 	/*public class ScheduleAppointmentModel : INotifyPropertyChanged
 	{
 		#region Properties

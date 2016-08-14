@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MRNUIElements"
-      xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" x:Class="MRNUIElements.Planes.PlaneEntryPage"
+      xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" x:Class="MRNUIElements.PlaneEntryPage"
       mc:Ignorable="d"
       Title="PlaneEntryPage" Height="380" >
 

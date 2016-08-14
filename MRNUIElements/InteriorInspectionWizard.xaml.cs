@@ -15,12 +15,12 @@ using System.Windows.Shapes;
 using System.Windows.Media.Media3D;
 using System.Windows.Media.Animation;
 using MRNUIElements.Controllers;
-using MRNUIElements.Planes;
+
 using MRNUIElements.RoofOrder;
-using HelixToolkit.Wpf.Input;
+//using HelixToolkit.Wpf.Input;
 //using HelixToolkit.Wpf.SharpDX;
-using HelixToolkit.Wpf;
-using HelixToolkit;
+//using HelixToolkit.Wpf;
+//using HelixToolkit;
 
 namespace MRNUIElements
 {
@@ -33,9 +33,9 @@ namespace MRNUIElements
         {
             InitializeComponent();
         }
-        MeshBuilder mb = new MeshBuilder();
+        //MeshBuilder mb = new MeshBuilder();
 
-        Polygon3D pg3d = new Polygon3D();
+    //    Polygon3D pg3d = new Polygon3D();
         
 
         MeshGeometry3D MCube()
@@ -52,10 +52,10 @@ namespace MRNUIElements
             corners.Add(new Point3D(-24, -48, -0.5));
             corners.Add(new Point3D(24, -48, -0.5));
             cube.Positions = corners;
-            mb.ToMesh().Positions = corners;
+        //    mb.ToMesh().Positions = corners;
            
-            ViewCubeVisual3D vp3d = new ViewCubeVisual3D();
-            vp3d.Size = 500;
+         //   ViewCubeVisual3D vp3d = new ViewCubeVisual3D();
+         //   vp3d.Size = 500;
                          
             Int32[] indices ={
    //front

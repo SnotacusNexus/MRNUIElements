@@ -1,0 +1,254 @@
+﻿<Page  x:Class="MRNUIElements.ViewModels.ShowList"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       mc:Ignorable="d"
+       xmlns:Models="clr-namespace:MRNUIElements.Models"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements"
+      xmlns:Converters="clr-namespace:MRNUIElements.ViewModels.Converters"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      d:DesignHeight="300"
+      Title="ShowList" >
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="scopeModelViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:ScopeModel}, CreateList=True}" />
+        <Converters:BackgroundConverter x:Key="BGC"/>
+        <Converters:NumberSign x:Key="NS"/>
+        <DataTemplate x:Key="CDGRR">
+            <ListView>
+                <ListViewItem Content="{Binding Content}"/>
+            </ListView>
+        </DataTemplate>
+      
+        <Style x:Key="DataGridStyle1" TargetType="{x:Type DataGrid}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="#FF688CAF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGrid}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false" Margin="1,5,-1,-5">
+                                <ScrollViewer.Template>
+                                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Command="{x:Static DataGrid.SelectAllCommand}" Focusable="true" Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                            <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" Grid.ColumnSpan="2" Grid.Row="1"/>
+                                            <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Grid.Row="1" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}"/>
+                                            <Grid Grid.Column="1" Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Column="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ScrollViewer.Template>
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsGrouping" Value="true"/>
+                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+       
+    </Page.Resources>
+    <Grid x:Name="layoutRoot" Margin="30,50,30,50" Background="{Binding Value {StaticResource BGC}}">
+      
+            
+
+
+        <ListView x:Name="scopeModelDataGrid" ItemsSource="{Binding}" SelectionMode="Single" MouseRightButtonUp="scopeModelDataGrid_MouseRightButtonUp" Visibility="Collapsed">
+            <ItemsPanelTemplate>
+                <ItemsControl>
+                    <ListViewItem>
+                        <ContentControl Content="{Binding CDGRR}">
+                            <ContentControl.Template>
+                                <ControlTemplate>
+                                    <HeaderedItemsControl x:Name="hdr" Height="30" HorizontalAlignment="Stretch">
+                                        <UserControl>
+                                            <Grid x:Name="layoutroot">
+                                                <Grid.DataContext>
+                                                    <x:Type TypeName="local:CompoundDataGridRow"/>
+                                                </Grid.DataContext>
+                                            </Grid>
+                                        </UserControl>
+                                    </HeaderedItemsControl>
+                                </ControlTemplate>
+                            </ContentControl.Template>
+                        </ContentControl>
+
+                    </ListViewItem>
+                </ItemsControl>
+            </ItemsPanelTemplate>
+
+        </ListView>
+
+      
+            <Grid x:Name="grd" DataContext="{StaticResource scopeModelViewSource}" >
+          
+                <DataGrid x:Name="scopeModelDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="scopeModelDataGrid1_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn x:Name="aCVColumn" Header="ACV" Width="SizeToHeader" MinWidth="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ACV}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridTextColumn x:Name="amountDepCollectedColumn" Binding="{Binding AmountDepCollected}" Header="Amount Dep Collected" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="amountFirstCollectedColumn" Binding="{Binding AmountFirstCollected}" Header="Amount First Collected" Width="SizeToHeader"/>
+                        <DataGridTemplateColumn x:Name="averageProfitPerDealColumn" Header="Average Profit Per Deal" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding AverageProfitPerDeal}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->
+                        <DataGridTextColumn x:Name="branchColumn" Binding="{Binding Branch}" Header="Branch" Width="SizeToHeader"/>
+                        <DataGridTemplateColumn x:Name="claimNumberColumn" Header="Claim Number" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                <TextBlock Text="{Binding ClaimNumber}"/>
+                            </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn x:Name="customerNameColumn" Binding="{Binding CustomerName}" Header="Customer Name" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="deductibleColumn" Binding="{Binding Deductible}" Header="Deductible" Width="SizeToHeader"/>
+                        <!--<DataGridTextColumn x:Name="deductibleOutstandingColumn" Binding="{Binding DeductibleOutstanding}" Header="Deductible Outstanding" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="depreciationOutstandingColumn" Binding="{Binding DepreciationOutstanding}" Header="Depreciation Outstanding" Width="SizeToHeader"/>-->
+                        <DataGridTextColumn x:Name="estimatedCapoutTotalColumn" Binding="{Binding EstimatedCapoutTotal}" Header="Estimated Capout Total" Width="SizeToHeader"/>
+                        <!--<DataGridTemplateColumn x:Name="firstCheckTotalsColumn" Header="First Check Totals" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding FirstCheckTotals}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->
+                        <!--<DataGridTemplateColumn x:Name="firstOutstandingColumn" Header="First Outstanding" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding FirstOutstanding}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->
+                        <DataGridCheckBoxColumn x:Name="hasOWColumn" Binding="{Binding HasOW}" Header="Has OW" Width="SizeToHeader"/>
+                        <!--<DataGridTextColumn x:Name="howMuchHasBeenCollectedColumn" Binding="{Binding HowMuchHasBeenCollected}" Header="How Much Has Been Collected" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="howMuchNeedsCollectedColumn" Binding="{Binding HowMuchNeedsCollected}" Header="How Much Needs Collected" Width="SizeToHeader"/>-->
+                        <DataGridTextColumn x:Name="howMuchOwedColumn" Binding="{Binding HowMuchOwed}" Header="How Much Owed" Width="SizeToHeader"/>
+                        <DataGridCheckBoxColumn x:Name="isCollectedDedColumn" Binding="{Binding IsCollectedDed}" Header="Is Collected Ded" Width="SizeToHeader"/>
+                        <DataGridCheckBoxColumn x:Name="isCollectedDepColumn" Binding="{Binding IsCollectedDep}" Header="Is Collected Dep" Width="SizeToHeader"/>
+                        <DataGridCheckBoxColumn x:Name="isCollectedFirstColumn" Binding="{Binding IsCollectedFirst}" Header="Is Collected First" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="isPaidOWColumn" Binding="{Binding IsPaidOW}" Header="Is Paid OW" Width="SizeToHeader"/>
+                        <DataGridCheckBoxColumn x:Name="isReferralColumn" Binding="{Binding IsReferral}" Header="Is Referral" Width="SizeToHeader"/>
+                        <DataGridCheckBoxColumn x:Name="isSettledColumn" Binding="{Binding IsSettled}" Header="Is Settled" Width="SizeToHeader"/>
+                        <DataGridCheckBoxColumn x:Name="isSupervisedColumn" Binding="{Binding IsSupervised}" Header="Is Supervised" Width="SizeToHeader"/>
+                        <DataGridTemplateColumn x:Name="materialAmountColumn" Header="Material Amount" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MaterialAmount}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="noSquaresColumn" Header="No Squares" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NoSquares}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="oWAmountColumn" Header="OWAmount" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding OWAmount}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="oWAmountPaidColumn" Header="OWAmount Paid" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding OWAmountPaid}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="rCVColumn" Header="RCV" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RCV}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridCheckBoxColumn x:Name="readyToCapColumn" Binding="{Binding ReadyToCap}" Header="Ready To Cap" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="roofAmountColumn" Binding="{Binding RoofAmount}" Header="Roof Amount" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="salespersonColumn" Binding="{Binding Salesperson}" Header="Salesperson" Width="SizeToHeader"/>
+                        <DataGridTemplateColumn x:Name="scheduledCOCDateColumn" Header="Scheduled COCDate" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ScheduledCOCDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="scheduledRoofDateColumn" Header="Scheduled Roof Date" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ScheduledRoofDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="scopeDateColumn" Header="Scope Date" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ScopeDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="settlementAmountColumn" Header="Settlement Amount" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SettlementAmount}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="supplementAmountColumn" Header="Supplement Amount" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SupplementAmount}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn x:Name="totalProfitColumn" Binding="{Binding TotalProfit}" Header="Total Profit" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="totalSquaresColumn" Binding="{Binding TotalSquares}" Header="Total Squares" Width="SizeToHeader"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        
+    </Grid>
+
+</Page>

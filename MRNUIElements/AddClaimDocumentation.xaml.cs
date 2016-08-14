@@ -15,11 +15,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
-//using System.Drawing;
+using System.Drawing;
 //using System.Drawing.Imaging;
 //using System.Drawing.Drawing2D;
 //using System.Drawing.Text;
-
+using MRNUIElements.ImageManipulation;
 
 using System.IO;
 using MRNNexus_Model;
@@ -33,12 +33,14 @@ namespace MRNUIElements
 
 	public partial class AddClaimDocumentation : Page
 	{
+
 		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public BitmapImage bitmap = new BitmapImage();
 		public static ImageSource imgsrc = (ImageSource)new ImageSourceConverter().ConvertFromString("C:\\Users\\Snotacus\\Dropbox\\MRNUIElements\\MRNUIElements\\ResourceFiles\\RoofInspectionWizardBkgnd.png");
 		Geometry _textGeometry = null;
 		Geometry _textHighlightGeometry = null;
 		List<string> FileList = new List<string>();
+		public DTO_Claim claim = new DTO_Claim();
 		
 		string FullFilePath = "";
 		public AddClaimDocumentation()
@@ -57,65 +59,129 @@ namespace MRNUIElements
 			//ShowImage();
 		}
 
-		private void SelectFile()
+		private List<string> SelectFile(int docTypeID)
 		{
 			var fileDialog = new System.Windows.Forms.OpenFileDialog();
-			fileDialog.Multiselect = true;
+			if (docTypeID == 2)
+				fileDialog.Multiselect = true;
+			else
+				fileDialog.Multiselect = false;
+			fileDialog.Title = AvailableDocuments.SelectedValue.ToString() + " Import Tool";
+			fileDialog.Filter = Filter(docTypeID);
 			var result = fileDialog.ShowDialog();
 			if (result == DialogResult.OK)
 			{
 				FullFilePath = fileDialog.FileName;
 				foreach (string s in fileDialog.FileNames)
 				{
-					//FileList.Add(s);
-					FileListBox.Items.Add(s);
+					
+					FileNames.Add(s);
 				}
-			//	FileListBox.ItemsSource = FileList;
+				FileListBox.ItemsSource = FileNames;
 				FileListBox.SelectedIndex = 0;
 			}
+			
+			return FileNames;
+		}
+		List<string> FileNames = new List<string>();
+		string Filter(int docTypeID)
+		{
+			switch (docTypeID)
+			{
+				case 2:
+					return "All Image Types (*.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.png) | *.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.png";
+					
+				default:
+					return "All Image Types (*.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.png) | *.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.png | All Document Types (*.pdf;*.doc;*.docx;*.txt;*.xml) | *.pdf;*.doc;*.docx;*.txt;*.xml| All File Types(*.*) | *.*";
+
+			}
+
+
+
+
 		}
 		
-		protected BitmapImage ShowImage(ImageSource imgsrc=null, RenderTargetBitmap tarbmp=null, string filetoshow = null, bool isUpdate = false)
+		protected BitmapImage DisplayImage(ImageSource imgsrc)
 		{
-			////if (imgsrc != null)
-			////{
-			////	return (BitmapImage)imgsrc;
+			
+			return (BitmapImage)imgsrc;
 
-			////}
-			////if (tarbmp != null)
-			////{
-			////	image.Source = tarbmp;
-			////}
-			if (bitmap != null && isUpdate)//this is used just to make the program flow the best as far as programming goes
+	  
+		}
+
+
+	
+
+	  bool Checkifimagetype(string path)
+		{			
+			
+												
+			string ext = System.IO.Path.GetExtension(path);
+
+			if (ext.Contains('.'))
+				ext = ext.Remove(ext.IndexOf('.'),1);
+
+			switch (ext)
 			{
-				BitmapSource bmpsrc = bitmap;
-				image.Source = bitmap;
-				//	image.Stretch = Stretch.Uniform;
-				//	image.StretchDirection = StretchDirection.DownOnly;
-				//return (BitmapImage)image.Source;
-				return bitmap;
+				case "jpg":
+					{
+						return true;
+					}
+				case "bmp":
+					{
+						return true;
+					}
+				case "png":
+					{
+						return true;
+					}
+				case "tif":
+					{
+						return true;
+					}
+				case "jpeg":
+					{
+						return true;
+					}
+
+				default:
+					return false;
 			}
-			else
-			{
-					bitmap.BeginInit();
-				//if (filetoshow != null)  //supposed to be for when you have a location and want to generate a bitmap of that file
-				//{
-				//	bitmap.UriSource = new Uri(filetoshow, UriKind.Absolute);
+
+		}
+
+
+
+
+		protected BitmapImage ShowImage( MemoryStream ms = null, string filetoshow = null, bool isUpdate = false)
+		{
+			if(ms != null)
+			bitmap.StreamSource = ms;
+			if (bitmap != null)
+				return bitmap;
+			bitmap.BeginInit();
+				if (filetoshow != null)  //supposed to be for when you have a location and want to generate a bitmap of that file
+				{
+					bitmap.UriSource = new Uri(filetoshow, UriKind.Absolute);
 					
-				//}
-				//else
-				//{
-					SelectFile();  //initialization function if you try to use this function this forces you to find a bitmap to kick the whole thing off
-					if (FileListBox.HasItems)
+				}
+				else
+				{
+				   
+					SelectFile(AvailableDocuments.SelectedIndex+1);  //initialization function if you try to use this function this forces you to find a bitmap to kick the whole thing off
+				   if (FileListBox.HasItems)
+				if(Checkifimagetype(FullFilePath))
 						bitmap.UriSource = new Uri(FullFilePath, UriKind.Absolute);
-				//}
+				UploadImage(FullFilePath);
+				}
 				
 				bitmap.EndInit();
 				image.Source = bitmap;
 				image.Stretch = Stretch.Uniform;
 				image.StretchDirection = StretchDirection.DownOnly;
 				return bitmap;
-			}
+			
+		   
 		}
 
 		private void LogOut(object sender, RoutedEventArgs e)
@@ -126,14 +192,19 @@ namespace MRNUIElements
 		
 		private void SubmitBtn_Click(object sender, RoutedEventArgs e)
 		{
-			//var onlyFileName = System.IO.Path.GetFileNameWithoutExtension(file);
+			//if (string.IsNullOrEmpty(FullFilePath))
+			//	SelectFile();
+			
+
+			//var onlyFileName = System.IO.Path.GetFileNameWithoutExtension(FullFilePath);
 			//if (AvailableDocuments.SelectedItem.ToString() == string.Empty || AvailableDocuments.SelectedItem.ToString() == null)
 			//	onlyFileName = AvailableDocuments.SelectedItem.ToString();
 			//onlyFileName = onlyFileName.Replace(" ", "_");
-
-
+		//	System.Windows.Forms.MessageBox.Show(FileListBox.SelectedValue.ToString());
+			//UploadImage(FileListBox.SelectedValue.ToString());
 			// ****************** We Have a winner, we select this file as the winner now do what you will currently it saves it locally but we can if we want to upload it.**************
-			UpdateImageText(FormatText(TextToOverlayPicture.Text, System.Windows.Media.Brushes.Cyan, new Typeface("Times New Roman")), FullFilePath, true);
+		//	UpdateImageText(FormatText(TextToOverlayPicture.Text, System.Windows.Media.Brushes.Cyan, new Typeface("Times New Roman")), FullFilePath, true);
+			UploadImage(FullFilePath);
 		}
 		
 		private void BtnFileOpen_Click(object sender, RoutedEventArgs e)
@@ -154,7 +225,7 @@ namespace MRNUIElements
 		{
 			
 			//call this function anytime a text change is made to be displayed on to image shows in real time carries the save boolean when user has finished making changes and accepts
-			WriteTextToImage(ShowImage(null, null, ImgPath, true), ImgPath, text, new System.Windows.Point((bitmap.PixelWidth / 2) - (text.Width / 2), bitmap.PixelHeight - text.Height), bSave, _textGeometry);
+			WriteTextToImage(ShowImage(null, ImgPath, true), ImgPath, text, new System.Windows.Point((bitmap.PixelWidth / 2) - (text.Width / 2), bitmap.PixelHeight - text.Height), bSave, _textGeometry);
 		}
 
 		private FormattedText FormatText(string str, System.Windows.Media.Brush brush, Typeface tf)
@@ -162,7 +233,7 @@ namespace MRNUIElements
 			// function that is work to prepare for display function as to help compartmentalize all the necessary steps in making text changes to display in realtime
 			FormattedText text = new FormattedText(
 			str,
-			CultureInfo.InvariantCulture,
+			CultureInfo.CurrentCulture,
 			System.Windows.FlowDirection.LeftToRight,
 			tf,
 			bitmap.PixelHeight/10,
@@ -200,13 +271,13 @@ namespace MRNUIElements
 						dc.DrawGeometry(System.Windows.Media.Brushes.DarkRed, new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, bitmap.Height/500), _textGeometry);
 					if (_textHighlightGeometry != null)
 						dc.DrawGeometry(new System.Windows.Media.ImageBrush(new System.Windows.Controls.Image().Source = (ImageSource)new ImageSourceConverter().ConvertFromString("C:\\Users\\Snotacus\\Dropbox\\MRNUIElements\\MRNUIElements\\ResourceFiles\\RoofInspectionWizardBkgnd.png")), new System.Windows.Media.Pen(new System.Windows.Media.ImageBrush(new System.Windows.Controls.Image().Source = (ImageSource)new ImageSourceConverter().ConvertFromString("C:\\Users\\Snotacus\\Dropbox\\MRNUIElements\\MRNUIElements\\ResourceFiles\\RoofInspectionWizardBkgnd.png")), 2), _textHighlightGeometry);
-
+					dc.Close();
 				}
 
 				//bitmap1.EndInit();
 				RenderTargetBitmap target = new RenderTargetBitmap(bitmap.PixelWidth, bitmap.PixelHeight, 96,96, PixelFormats.Default);
 				target.Render(visual);
-/*
+
 				var renderTargetbitmap = target;
 				var bitmapImage = new BitmapImage();
 				var bitmapEncoder = new PngBitmapEncoder();
@@ -214,15 +285,15 @@ namespace MRNUIElements
 				using (var stream = new MemoryStream())
 				{
 					bitmapEncoder.Save(stream);
-					stream.Seek(0, SeekOrigin.Begin);
-					bitmapImage.BeginInit();
-					bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+				//	stream.Seek(0, SeekOrigin.Begin);
+					//bitmapImage.BeginInit();
+					//bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
 					bitmapImage.StreamSource = stream;
-					bitmapImage.EndInit();
+				//	bitmapImage.EndInit();
 				}
 				bitmap = bitmapImage;
 				image.Source = bitmapImage;
-*/
+
 				image.Source = target;
 				image.Stretch = Stretch.Uniform;
 				image.StretchDirection = StretchDirection.DownOnly;
@@ -269,6 +340,7 @@ namespace MRNUIElements
 			{
 				AvailableDocuments.IsEnabled = true;
 				AvailableDocuments.Focus();
+				//ShowCollectedClaimDocuments((DTO_Claim)ClaimList.SelectedItem);
 			}
 			else
 			{
@@ -332,23 +404,41 @@ namespace MRNUIElements
 				//	bitmap = null;
 		}
 		
-		async public Task<bool> CheckFileExist()
+		async public Task<bool> CheckFileExist(int cdt=0)
 		{															//the worker function to callback after determining if the file exists in the location that has been picked if so it will ask what would you like to do with it.
-			await s1.GetClaimDocumentsByClaimID(new DTO_Claim { MRNNumber = ClaimList.SelectedValue.ToString() });
-			if (s1.ClaimDocumentsList[AvailableDocuments.SelectedIndex] != null)
+			await s1.GetAllClaimDocuments(); 
+			if (s1.ClaimDocumentsList.Exists(x => x.DocTypeID==AvailableDocuments.SelectedIndex+1 && x.ClaimID==((DTO_Claim)ClaimList.SelectedItem).ClaimID))
 				return true;
 			else return false;
 		}
 
 		async private void getImage_Click(object sender, RoutedEventArgs e)
 		{
-			await s1.GetClaimDocumentsByClaimID(new DTO_Claim
-			{
-				ClaimID = 30
-			});
+			DTO_Claim claim = new DTO_Claim();
+			claim.ClaimID = ((DTO_Claim)AvailableDocuments.SelectedItem).ClaimID;
+
+			await s1.GetAllClaimDocuments();
+
+			ShowCollectedClaimDocuments(claim);
 			bitmap.UriSource = new Uri(FileListBox.SelectedItem.ToString(), UriKind.Absolute);
 		}
 
+		string GetDocumentTypeByID(int doctypeid)
+		{
+			return ((DTO_LU_ClaimDocumentType)s1.ClaimDocTypes.Where(t => t.ClaimDocumentTypeID== doctypeid)).ClaimDocumentType.ToString();
+		}
+
+
+		void ShowCollectedClaimDocuments(DTO_Claim claim)
+		{
+			
+			string s = "This claim has ";
+			foreach (var cd in s1.ClaimDocumentsList.Where(t => t.ClaimID == claim.ClaimID))
+				s += " \n\r" + (GetDocumentTypeByID(cd.DocTypeID)) + " ,";
+
+			s += "documents present.";
+			System.Windows.Forms.MessageBox.Show(s);
+		}
 		private void DisplayVisual(RenderTargetBitmap target, string outputFile, bool Save = false)
 		{// part 2 of the display to save operation... this is picking out the appropriate encoder for saving the file in the format that was opened
 			BitmapEncoder encoder = null;
@@ -385,7 +475,7 @@ namespace MRNUIElements
 					{//get ready to save stream set
 						encoder.Save(outputStream);//ok spit that shit to the file biatch
 						PopTheTopOfListBox();// ok now then since the file has been appropriated then we can remove its name from our list of files to appropriate
-			//	UploadImage(outputFile);
+				UploadImage(outputFile);
 					}
 				}
 			}
@@ -423,11 +513,18 @@ namespace MRNUIElements
 						FileBytes = Convert.ToBase64String(imageBytes),
 						FileName = onlyFileName,
 						FileExt = ext,
-						ClaimID = int.Parse(ClaimList.Text),
-						DocTypeID = AvailableDocuments.SelectedIndex,
+						ClaimID = ((DTO_Claim)ClaimList.SelectedItem).ClaimID,
+						DocTypeID = ((DTO_LU_ClaimDocumentType)AvailableDocuments.SelectedItem).ClaimDocumentTypeID,
 						DocumentDate = DateTime.Today
+						
 					};
+					
 					await s1.AddClaimDocument(documentUploadRequest);
+						
+					if (documentUploadRequest.Message == null)
+					{
+						System.Windows.Forms.MessageBox.Show("Success");
+					}
 					//SAVING FILES TO DISK
 					//string filename = fileDialog.FileName = @"newfile" + ext;
 					//using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
@@ -445,7 +542,14 @@ namespace MRNUIElements
 					break;
 			}
 		}
+			bool UploadInProgress(DTO_ClaimDocument cd)
+		{
 
+
+
+
+			return true;
+		}
 		private void lbVCKicks_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			System.Diagnostics.Process.Start("http://vcskicks.com/");
@@ -563,19 +667,25 @@ namespace MRNUIElements
 		{
 			if (FileListBox.HasItems)
 			{
-				if (FileListBox.SelectedIndex<FileListBox.Items.Count)
+				if (FileListBox.SelectedIndex < FileListBox.Items.Count)
 					if (FileListBox.SelectedValue.ToString() != string.Empty)
 						FullFilePath = FileListBox.SelectedValue.ToString();
-				BitmapSource bitmap = (BitmapSource)new ImageSourceConverter().ConvertFromString(FullFilePath);
-				image.Source = bitmap;
-			//	image.Stretch = Stretch.Uniform;
-			//	image.StretchDirection = StretchDirection.DownOnly;
-				
+				if (!Checkifimagetype(FileListBox.SelectedValue.ToString()))
+					UploadImage(FileListBox.SelectedValue.ToString());
+				else
+				{
+
+					BitmapSource bitmap = (BitmapSource)new ImageSourceConverter().ConvertFromString(FullFilePath);
+					image.Source = bitmap;
+					//	image.Stretch = Stretch.Uniform;
+					//	image.StretchDirection = StretchDirection.DownOnly;
+
+				}
 			}
 			else
 			{
 				ResetButtons();
-			//	bitmap = null;
+				//	bitmap = null;
 			}
 		}
 
@@ -614,7 +724,10 @@ namespace MRNUIElements
 
 		private void AvailableDocuments_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			FileListBox.SelectedIndex = 0;
+			SelectFile(AvailableDocuments.SelectedIndex+1);
+	//		if (AvailableDocuments.SelectedValue.ToString().Contains("Check"))
+				UploadImage();
+
 		}
 	}
 }

@@ -17,7 +17,7 @@ using MRNUIElements.Controllers;
 using MRNUIElements.Models;
 using MRNUIElements;
 
-namespace MRNUIElements.Planes
+namespace MRNUIElements
 {
     /// <summary>
     /// Interaction logic for PlanePopulationPage.xaml

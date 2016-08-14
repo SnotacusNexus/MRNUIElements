@@ -24,29 +24,46 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Converters;
 
-
-
+using static MRNUIElements.MainWindow;
 using MRNNexus_Model;
 using Newtonsoft.Json.Linq;
 using static Newtonsoft.Json.Linq.JToken;
 using System.Collections;
 using System.Net.Http.Formatting;
+using System.Windows.Controls;
 
 namespace MRNUIElements.Controllers
 {
 	 public partial class ServiceLayer
 	{
+
+		//public TextBlock mw = (TextBlock)App.Current.MainWindow.TryFindResource("VerboseStatusDisplay");
+
+	//	int errorcount = 0;
+		public string hold = "";
 		private const string URL = @"http://services.mrncontracting.com/MRNNexus_Service.svc/";
 		// private const string URL = @"http://localhost:50899/MRNNexus_Service.svc/";
 		private HttpClient client = new HttpClient();
 		public static ServiceLayer s1;
 		//public DateTime serviceCreated;
-
+		public static DTO_Claim CurrentClaim { get; set; }
 		private ServiceLayer()
 		{
+		//	var mw = App.Current.MainWindow.TryFindResource("VerboseStatusDisplay");
 			client.BaseAddress = new Uri(URL);
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			client.Timeout = new TimeSpan(0, 5, 0);
+			
+
+		}
+
+		public static DTO_Claim getCurrentClaim()
+		{
+			if (CurrentClaim != null)
+				return CurrentClaim;
+			
+
+			return new DTO_Claim();
 		}
 
 		public static ServiceLayer getInstance()
@@ -73,12 +90,17 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
+			//	if (errorcount < 5)
+				//	mw.Text=".";
 
+			//	else
+			//	mw.Text="Error Making Request Task"+ex.ToString();
 			}
 		}
 
 		async public Task buildLUs()
 		{
+			//mw.Text = "Building Adjustment Results Lookup Table";
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AppointmentTypes>), "GetAppointmentTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimDocumentType>), "GetClaimDocumentTypes");
@@ -95,12 +117,17 @@ namespace MRNUIElements.Controllers
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Permissions>), "GetPermissions");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PlaneTypes>), "GetPlaneTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ProductType>), "GetProductTypes");
+		//	mw.Text = "Building Ridge Material Types Lookup Table";
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_RidgeMaterialType>), "GetRidgeMaterialTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ScopeType>), "GetScopeTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ServiceTypes>), "GetServiceTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ShingleType>), "GetShingleTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_UnitOfMeasure>), "GetUnitsOfMeasure");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetvendorTypes");
+
+			//Non LU
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllOpenClaims");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
 		}
 
 		public void setResults(string json, Type type, string methodName)
@@ -145,6 +172,7 @@ namespace MRNUIElements.Controllers
 			if (type == typeof(List<DTO_LU_AdjustmentResult>))
 			{
 				AdjustmentResults = JsonConvert.DeserializeObject<List<DTO_LU_AdjustmentResult>>(json);
+			//	mw.Text = "Building Adjustment Results Lookup Table...Completed";
 				return;
 			}
 
@@ -241,6 +269,7 @@ namespace MRNUIElements.Controllers
 			if (type == typeof(List<DTO_LU_RidgeMaterialType>))
 			{
 				RidgeMaterialTypes = JsonConvert.DeserializeObject<List<DTO_LU_RidgeMaterialType>>(json);
+				//mw.Text = "Building Ridge Material Types Lookup Table";
 				return;
 			}
 
@@ -274,6 +303,11 @@ namespace MRNUIElements.Controllers
 				return;
 			}
 
+			if (type == typeof(List<DTO_Claim>))
+			{
+				OpenClaimsList = JsonConvert.DeserializeObject<List<DTO_Claim>>(json);
+				return;
+			}
 
 		}
 
@@ -326,7 +360,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddAdditionalSupply Task" + ex.ToString());
 			}
 		}
 
@@ -341,7 +375,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddAddress Task" + ex.ToString());
 			}
 		}
 
@@ -356,7 +390,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddAdjuster Task" + ex.ToString());
 			}
 		}
 
@@ -371,7 +405,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddAdjustment Task" + ex.ToString());
 			}
 		}
 
@@ -386,7 +420,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddCalendarData Task" + ex.ToString());
 			}
 		}
 
@@ -401,7 +435,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddCallLog Task" + ex.ToString());
 			}
 		}
 
@@ -416,7 +450,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddClaim Task" + ex.ToString());
 			}
 		}
 
@@ -446,7 +480,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddClaimStatus Task" + ex.ToString());
 			}
 		}
 
@@ -461,8 +495,8 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-            }
+				System.Windows.Forms.MessageBox.Show(ex.ToString());
+			}
 		}
 
 		public async Task AddCustomer(DTO_Customer token)
@@ -476,7 +510,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddCustomer Task" + ex.ToString());
 			}
 		}
 
@@ -491,7 +525,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddDamage Task" + ex.ToString());
 			}
 		}
 
@@ -521,7 +555,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddInspection Task" + ex.ToString());
 			}
 		}
 
@@ -536,7 +570,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddAddress Task" + ex.ToString());
 			}
 		}
 
@@ -566,7 +600,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddAddress Task" + ex.ToString());
 			}
 		}
 
@@ -581,7 +615,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddAddress Task" + ex.ToString());
 			}
 		}
 
@@ -671,7 +705,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddReferrer Task" + ex.ToString());
 			}
 		}
 
@@ -686,7 +720,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddScope Task" + ex.ToString());
 			}
 		}
 
@@ -716,7 +750,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request AddVendor Task" + ex.ToString());
 			}
 		}
 
@@ -735,7 +769,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAdditionalSuppliesByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -750,7 +784,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAddressByID Task" + ex.ToString());
 			}
 		}
 
@@ -765,7 +799,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAdjusterByID Task" + ex.ToString());
 			}
 		}
 
@@ -780,7 +814,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAdjustmentsByAdjusterID Task" + ex.ToString());
 			}
 		}
 
@@ -795,7 +829,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAdjustmentsByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -810,7 +844,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetCalendarDataByEmployeeID Task" + ex.ToString());
 			}
 		}
 
@@ -825,7 +859,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetCallLogsByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -838,9 +872,10 @@ namespace MRNUIElements.Controllers
 				response.EnsureSuccessStatusCode();
 				Claim = await response.Content.ReadAsAsync<DTO_Claim>();
 			}
-			catch (Exception ex)
+			catch (Exception )
+			
 			{
-
+				//System.Windows.Forms.MessageBox.Show("Error Making Request GetClaimByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -870,6 +905,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetClaimDocumentsByClaimID Task" + ex.ToString());
 
 			}
 		}
@@ -885,7 +921,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetClaimStatusByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -900,7 +936,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetClaimVendorsByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -915,7 +951,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetCustomerByID Task" + ex.ToString());
 			}
 		}
 
@@ -930,7 +966,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetEmployeesByEmployeeTypeID Task" + ex.ToString());
 			}
 		}
 
@@ -945,7 +981,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetEmployeeByID Task" + ex.ToString());
 			}
 		}
 
@@ -960,7 +996,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetInspectionByID Task" + ex.ToString());
 			}
 		}
 
@@ -975,7 +1011,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetInspectionsByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -990,7 +1026,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetInsuranceCompanyByID Task" + ex.ToString());
 			}
 		}
 
@@ -1005,7 +1041,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetInvoicesByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1020,7 +1056,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetKnockerResponseByID Task" + ex.ToString());
 			}
 		}
 
@@ -1035,7 +1071,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetKnockerResponsesByKnockerID Task" + ex.ToString());
 			}
 		}
 
@@ -1050,7 +1086,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetKnockerResponsesByTypeID Task" + ex.ToString());
 			}
 		}
 
@@ -1065,7 +1101,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetLeadByLeadID Task" + ex.ToString());
 			}
 		}
 
@@ -1080,7 +1116,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetLeadsBySalesPersonID Task" + ex.ToString());
 			}
 		}
 
@@ -1095,7 +1131,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetMostRecentDateByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1110,7 +1146,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetNewRoofByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1125,7 +1161,22 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetOrderItemsByOrderID Task" + ex.ToString());
+			}
+		}
 
+		public async Task GetOpenClaimsBySalespersonID(DTO_Employee token)
+		{
+			try
+			{
+				var response = await client.PostAsJsonAsync(string.Format(@"{0}{1}", URL, "GetOpenClaimsBySalespersonID"),
+					token);
+				response.EnsureSuccessStatusCode();
+				EmployeeOpenClaimsList = await response.Content.ReadAsAsync<List<DTO_Claim>>();
+			}
+			catch (Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetOpenClaimsBySalespersonID Task" + ex.ToString());
 			}
 		}
 
@@ -1140,7 +1191,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetOrdersByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1155,7 +1206,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetPaymentsByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1170,7 +1221,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetPlanesByInspectionID Task" + ex.ToString());
 			}
 		}
 
@@ -1184,7 +1235,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetReferrerByID Task" + ex.ToString());
 			}
 		}
 
@@ -1199,7 +1250,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetScopesByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1214,7 +1265,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetSumOfInvoicesByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1229,7 +1280,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetSumOfPaymentsByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1244,7 +1295,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetSurplusSuppliesByClaimID Task" + ex.ToString());
 			}
 		}
 
@@ -1259,7 +1310,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetVendorByID Task" + ex.ToString());
 			}
 		}
 
@@ -1278,7 +1329,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllAdditionalSupplies Task" + ex.ToString());
 			}
 		}
 
@@ -1293,7 +1344,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllAddresses Task" + ex.ToString());
 			}
 		}
 
@@ -1308,6 +1359,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllAdjusters Task" + ex.ToString());
 
 			}
 		}
@@ -1323,7 +1375,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllAdjustments Task" + ex.ToString());
 			}
 		}
 
@@ -1338,7 +1390,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllCalendarData Task" + ex.ToString());
 			}
 		}
 
@@ -1353,7 +1405,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllCallLogs Task" + ex.ToString());
 			}
 		}
 
@@ -1368,7 +1420,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllClaims Task" + ex.ToString());
 			}
 		}
 
@@ -1383,7 +1435,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllClaimContacts Task" + ex.ToString());
 			}
 		}
 
@@ -1398,7 +1450,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllClaimDocuments Task" + ex.ToString());
 			}
 		}
 
@@ -1413,7 +1465,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllClaimStatuses Task" + ex.ToString());
 			}
 		}
 
@@ -1428,7 +1480,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllClaimVendors Task" + ex.ToString());
 			}
 		}
 
@@ -1443,7 +1495,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllCustomers Task" + ex.ToString());
 			}
 		}
 
@@ -1458,7 +1510,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllDamages Task" + ex.ToString());
 			}
 		}
 
@@ -1473,6 +1525,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllEmployees Task" + ex.ToString());
 
 			}
 		}
@@ -1488,7 +1541,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllInspections Task" + ex.ToString());
 			}
 		}
 
@@ -1503,7 +1556,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllInsuranceCompanies Task" + ex.ToString());
 			}
 		}
 
@@ -1518,7 +1571,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllInvoices Task" + ex.ToString());
 			}
 		}
 
@@ -1533,7 +1586,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllKnockerResponses Task" + ex.ToString());
 			}
 		}
 
@@ -1548,7 +1601,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllLeads Task" + ex.ToString());
 			}
 		}
 
@@ -1563,7 +1616,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllNewRoofs Task" + ex.ToString());
 			}
 		}
 
@@ -1578,7 +1631,21 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllOrderItems Task" + ex.ToString());
+			}
+		}
+		public async Task GetAllOpenClaims()
+		{
+			try
+			{
+				var response = await client.PostAsJsonAsync(string.Format(@"{0}{1}", URL, "GetAllOpenClaims"),
+					new DTO_Base());
+				response.EnsureSuccessStatusCode();
+				OpenClaimsList = await response.Content.ReadAsAsync<List<DTO_Claim>>();
+			}
+			catch (Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllOpenClaims Task" + ex.ToString());
 			}
 		}
 
@@ -1593,7 +1660,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllOrders Task" + ex.ToString());
 			}
 		}
 
@@ -1608,7 +1675,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllPayments Task" + ex.ToString());
 			}
 		}
 
@@ -1623,7 +1690,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllPlanes Task" + ex.ToString());
 			}
 		}
 
@@ -1638,7 +1705,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllReferrers Task" + ex.ToString());
 			}
 		}
 
@@ -1653,7 +1720,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllScopes Task" + ex.ToString());
 			}
 		}
 
@@ -1668,7 +1735,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllSurplusSupplies Task" + ex.ToString());
 			}
 		}
 
@@ -1683,7 +1750,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllUsers Task" + ex.ToString());
 			}
 		}
 
@@ -1698,6 +1765,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
+				System.Windows.Forms.MessageBox.Show("Error Making Request GetAllVendors Task" + ex.ToString());
 
 			}
 		}
@@ -1717,7 +1785,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateAdditionalSupplies Task" + ex.ToString());
 			}
 		}
 
@@ -1731,7 +1799,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateAddress Task" + ex.ToString());
 			}
 		}
 
@@ -1745,7 +1813,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateAdjuster Task" + ex.ToString());
 			}
 		}
 
@@ -1759,7 +1827,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateAdjustment Task" + ex.ToString());
 			}
 		}
 
@@ -1774,7 +1842,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateCalendarData Task" + ex.ToString());
 			}
 		}
 
@@ -1788,7 +1856,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateClaim Task" + ex.ToString());
 			}
 		}
 
@@ -1802,7 +1870,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateClaimContacts Task" + ex.ToString());
 			}
 		}
 
@@ -1817,7 +1885,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateClaimStatuses Task" + ex.ToString());
 			}
 		}
 
@@ -1832,7 +1900,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateCustomer Task" + ex.ToString());
 			}
 		}
 
@@ -1846,7 +1914,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateDamage Task" + ex.ToString());
 			}
 		}
 
@@ -1861,7 +1929,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateEmployee Task" + ex.ToString());
 			}
 		}
 
@@ -1876,7 +1944,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateInspection Task" + ex.ToString());
 			}
 		}
 
@@ -1891,7 +1959,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateInsuranceCompany Task" + ex.ToString());
 			}
 		}
 
@@ -1906,7 +1974,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateInvoice Task" + ex.ToString());
 			}
 		}
 
@@ -1921,7 +1989,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateKnockerResponse Task" + ex.ToString());
 			}
 		}
 
@@ -1936,7 +2004,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateLead Task" + ex.ToString());
 			}
 		}
 
@@ -1951,7 +2019,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateNewRoof Task" + ex.ToString());
 			}
 		}
 
@@ -1966,7 +2034,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateOrder Task" + ex.ToString());
 			}
 		}
 
@@ -1981,7 +2049,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateOrderItem Task" + ex.ToString());
 			}
 		}
 
@@ -1996,7 +2064,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdatePayment Task" + ex.ToString());
 			}
 		}
 
@@ -2011,7 +2079,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdatePlane Task" + ex.ToString());
 			}
 		}
 
@@ -2026,7 +2094,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateReferrer Task" + ex.ToString());
 			}
 		}
 
@@ -2041,7 +2109,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateScope Task" + ex.ToString());
 			}
 		}
 
@@ -2056,7 +2124,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateSurplusSupplies Task" + ex.ToString());
 			}
 		}
 
@@ -2071,7 +2139,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateUser Task" + ex.ToString());
 			}
 		}
 
@@ -2086,7 +2154,7 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-
+				System.Windows.Forms.MessageBox.Show("Error Making Request UpdateVendor Task" + ex.ToString());
 			}
 		}
 
