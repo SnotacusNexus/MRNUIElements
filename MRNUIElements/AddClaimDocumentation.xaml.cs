@@ -614,7 +614,7 @@ namespace MRNUIElements
 
 		private void AvailableDocuments_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			FileListBox.SelectedIndex = 0;
+			//FileListBox.SelectedIndex = 0;
 		}
 	}
 }

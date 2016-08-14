@@ -25,7 +25,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using MRNUIElements.Models;
 using MRNUIElements.Controllers;
-using MRNUIElements.Planes;
+
 //using static MRNUIElements.ScheduleAppointmentModel;
 using static MRNUIElements.Models.Appointments;
 

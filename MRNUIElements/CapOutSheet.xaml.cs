@@ -61,7 +61,8 @@ namespace MRNUIElements
 				label1_Copy24.Visibility = Visibility.Hidden;
 				RecruiterText.Visibility = Visibility.Hidden;
 				ClearButton.Visibility = Visibility.Hidden;
-				textBlock.Background = System.Windows.Media.Brushes.White;
+                ClearButton_Copy.Visibility = Visibility.Hidden;
+                textBlock.Background = System.Windows.Media.Brushes.White;
 				textBlock.Foreground = System.Windows.Media.Brushes.Black;
 				Canvas.Background = System.Windows.Media.Brushes.White;
 				PrintButton.Visibility = Visibility.Hidden;
@@ -86,23 +87,25 @@ namespace MRNUIElements
 				textBlock.Foreground = System.Windows.Media.Brushes.White;
 				Canvas.Background = System.Windows.Media.Brushes.Transparent;
 				ClearButton.Visibility = Visibility.Visible;
-				PrintButton.Visibility = Visibility.Visible;
+                ClearButton_Copy.Visibility = Visibility.Visible;
+                PrintButton.Visibility = Visibility.Visible;
 				SplitOverride.Visibility = Visibility.Visible;
 				SalespersonSplitText.Visibility = Visibility.Visible;
-			
 
-			}
+             
+
+            }
 		}
 
 		private void Print()
 		{
 			PrintDialog printDlg = new System.Windows.Controls.PrintDialog();
-			Canvas.LayoutTransform = new ScaleTransform(1, 1);
-			Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight-300);
+		//	Canvas.LayoutTransform = new ScaleTransform(1, 1);
+			Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight);
 			Canvas.Measure(pageSize);
 			Canvas.Arrange(new Rect(0,0, pageSize.Width, pageSize.Height));
 			printDlg.PrintVisual(Canvas, "Job Profit Loss Report");
-			Canvas.LayoutTransform = null;
+			//Canvas.LayoutTransform = null;
 
 
 			PeekABoo(true);
@@ -315,10 +318,11 @@ namespace MRNUIElements
 			InitialDrawAmountText.Value = 500;
 			if (NoSq != 0)
 			{
-				double OH = TotChk * (ohvar * .01);
-				double RawProfit = TotalProfit();
-				double SalesProfit = RawProfit - (RawProfit * ((100 - splitvar) * .01));
-				double MRNSP = RawProfit - SalesProfit;
+				double OH = (double)FinalScopeAmount.Value * (ohvar * .01);
+                OverheadAmountText.Value = (decimal)OH;
+               // double RawProfit = TotalProfit();
+				double SalesProfit = TotalProfit() - (TotalProfit() * ((100 - splitvar) * .01));
+				double MRNSP = TotalProfit() - SalesProfit;
 				double SalesMP = OH * (smp * .01);
 				double MRNTP = MRNSP - SalesMP;
 				double CPSQ = 0;
@@ -326,11 +330,11 @@ namespace MRNUIElements
 				   
 				TotalAmountCollectedText.Value = (decimal)ChecksTotal();
 				TotalExpenseText.Value = (decimal)TotalExpense();
-				OverheadAmountText.Value = (decimal)OH;
+				
 				MiscBillAmount.Value = (decimal)MiscCost();
-				if (ReferralKnockerText.Text != string.Empty)
-					KnockerReferralAmountText.Value = (decimal)FigureKnockerReferralFee(NoSq);
-				RoofLaborBillAmountText.Value = (decimal)FigureRoofersBill(NoSq, (bool)checkBox.IsChecked);
+                if (ReferralKnockerText.Text != string.Empty)
+                    KnockerReferralAmountText.Value = (decimal)FigureKnockerReferralFee(NoSq);
+                RoofLaborBillAmountText.Value = (decimal)FigureRoofersBill(NoSq, (bool)checkBox.IsChecked);
 				RoofMaterialExpenseSubtotalText.Value = (decimal)FigureJobMaterialCost();
 				AdjustedRoofSubtotalAmountText.Value = RoofMaterialExpenseSubtotalText.Value;
 				#region FigureSalesManagerPortion
@@ -347,9 +351,9 @@ namespace MRNUIElements
 				#endregion
 				CPSQ = TotExp / NoSq;
 				CostPerSquareAmount.Value = (decimal)CPSQ;
-				PPSQ = RawProfit / NoSq;
+				PPSQ = TotalProfit() / NoSq;
 				ProfitPerSquareAmount.Value = (decimal)PPSQ;
-				ProfitAmountText.Value = (decimal)RawProfit;
+				ProfitAmountText.Value = (decimal)TotalProfit();
 				AmountCollectedSubTotal.Value = (decimal)ChecksTotal();
 				SalespersonSplitAmountText.Value = (decimal)SalesProfit;
 				MRNAmountDueText.Value = (decimal)MRNTP;
@@ -368,8 +372,10 @@ namespace MRNUIElements
 			{
 				SettlementDifferenceAmount.Value = (decimal)FigureScopeDiff();
 
-
-				if (NumberOfSquaresAmountText.Value != 0)
+                if (NumberOfSquaresAmountText.Value == null)
+                    NumberOfSquaresAmountText.Value = 0;
+                if (NumberOfSquaresAmountText.Value == 0)
+                    NumberOfSquaresAmountText.Value = 1;
 					CapOutJob((double)ChecksTotal(), (double)TotalExpense(), (double)NumberOfSquaresAmountText.Value, (double)SalespersonSplitText.PercentValue, (double)OverheadMultiplierAmountText.PercentValue, (double)25);
 			}
 		}
@@ -527,11 +533,35 @@ namespace MRNUIElements
 			{
 				ZipcodeText.Text = new AddressZipcodeValidation().CityStateLookupRequest(str,1);
 			}
+            CapOut();
 		}
 
 		private void ExitButton_Click(object sender, RoutedEventArgs e)
 		{
 			NavigationService.Navigate(new NexusHome());
 		}
-	}
+
+        private void CustomerNameText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.IsLoaded && this.IsInitialized)
+                CapOut();
+        }
+
+        private void CustomerAddressText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.IsLoaded && this.IsInitialized)
+                CapOut();
+        }
+
+        private void SalespersonSplitText_PercentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {if (this.IsLoaded && this.IsInitialized)
+            CapOut();
+        }
+
+        private void OverheadMultiplierAmountText_PercentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (this.IsLoaded && this.IsInitialized)
+                CapOut();
+        }
+    }
 }

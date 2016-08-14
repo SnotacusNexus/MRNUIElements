@@ -101,7 +101,11 @@ namespace MRNUIElements.Controllers
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ShingleType>), "GetShingleTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_UnitOfMeasure>), "GetUnitsOfMeasure");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetvendorTypes");
-		}
+
+            //Non LU
+            await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllOpenClaims");
+            await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
+        }
 
 		public void setResults(string json, Type type, string methodName)
 		{
@@ -274,8 +278,13 @@ namespace MRNUIElements.Controllers
 				return;
 			}
 
+            if (type == typeof(List<DTO_Claim>))
+            {
+                OpenClaimsList = JsonConvert.DeserializeObject<List<DTO_Claim>>(json);
+                return;
+            }
 
-		}
+        }
 
 
 		public async Task Login(DTO_User token)
@@ -1129,7 +1138,22 @@ namespace MRNUIElements.Controllers
 			}
 		}
 
-		public async Task GetOrdersByClaimID(DTO_Claim token)
+        public async Task GetOpenClaimsBySalespersonID(DTO_Employee token)
+        {
+            try
+            {
+                var response = await client.PostAsJsonAsync(string.Format(@"{0}{1}", URL, "GetOpenClaimsBySalespersonID"),
+                    token);
+                response.EnsureSuccessStatusCode();
+                EmployeeOpenClaimsList = await response.Content.ReadAsAsync<List<DTO_Claim>>();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async Task GetOrdersByClaimID(DTO_Claim token)
 		{
 			try
 			{
@@ -1581,8 +1605,22 @@ namespace MRNUIElements.Controllers
 
 			}
 		}
+        public async Task GetAllOpenClaims()
+        {
+            try
+            {
+                var response = await client.PostAsJsonAsync(string.Format(@"{0}{1}", URL, "GetAllOpenClaims"),
+                    new DTO_Base());
+                response.EnsureSuccessStatusCode();
+                OpenClaimsList = await response.Content.ReadAsAsync<List<DTO_Claim>>();
+            }
+            catch (Exception ex)
+            {
 
-		public async Task GetAllOrders()
+            }
+        }
+
+        public async Task GetAllOrders()
 		{
 			try
 			{

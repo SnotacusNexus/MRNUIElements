@@ -119,6 +119,10 @@
       <HintPath>..\packages\HelixToolkit.Wpf.SharpDX.2015.1.715\lib\net45\HelixToolkit.Wpf.SharpDX.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ImageProcessor, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.2.4.4.0\lib\net45\ImageProcessor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Jarloo.Calendar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Jarloo.Calendar\Jarloo.Calendar\obj\Debug\Jarloo.Calendar.dll</HintPath>
@@ -318,13 +322,23 @@
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImageResize.cs" />
     <Compile Include="ImageResizer.cs" />
     <Compile Include="Inspection.cs" />
     <Compile Include="InspectionPage.xaml.cs">
       <DependentUpon>InspectionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModelMaker.xaml.cs">
+      <DependentUpon>ModelMaker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Appointments.cs" />
+    <Compile Include="Models\KeyValueModel.cs" />
+    <Compile Include="Models\Lines.cs" />
+    <Compile Include="Models\Points.cs" />
+    <Compile Include="Models\Planes.cs" />
     <Compile Include="Models\RoofPlanes.cs" />
+    <Compile Include="Models\Stucture.cs" />
+    <Compile Include="Models\Sub_Stucture.cs" />
     <Compile Include="MRNCalendar.cs" />
     <Compile Include="PlaneEntryPage.xaml.cs">
       <DependentUpon>PlaneEntryPage.xaml</DependentUpon>
@@ -490,6 +504,7 @@
     <Compile Include="ScrollingText.xaml.cs">
       <DependentUpon>ScrollingText.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\PlaneViewModel.cs" />
     <Compile Include="WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -550,6 +565,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="InspectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModelMaker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

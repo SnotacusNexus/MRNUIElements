@@ -60,6 +60,8 @@ namespace MRNUIElements.Controllers
         public List<DTO_CalendarData> CalendarDataList { get; set; }
         public List<DTO_CallLog> CallLogsList { get; set; }
         public List<DTO_Claim> ClaimsList { get; set; }
+        public List<DTO_Claim> OpenClaimsList { get; set; }
+        public List<DTO_Claim> EmployeeOpenClaimsList { get; set; }
         public List<DTO_ClaimContacts> ClaimContactsList { get; set; }
         public List<DTO_ClaimDocument> ClaimDocumentsList { get; set; }
         public List<DTO_ClaimStatus> ClaimStatusList { get; set; }

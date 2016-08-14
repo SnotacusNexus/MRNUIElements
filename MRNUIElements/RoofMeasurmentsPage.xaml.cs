@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNNexus_Model;
-using MRNUIElements.Planes;
+
 using MRNUIElements.Controllers;
 
 namespace MRNUIElements

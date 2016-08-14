@@ -10,6 +10,8 @@
       Height="720"
       mc:Ignorable="d">
     <Page.Resources>
+        <CollectionViewSource x:Key="dTO_ClaimViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Claim}, CreateList=True}" />
+
         <CollectionViewSource x:Key="dTO_LU_ClaimDocumentTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_ClaimDocumentType}, CreateList=True}" />
         <Image x:Key="imagesrc2">
             <Image.Source x:Uid="n">
