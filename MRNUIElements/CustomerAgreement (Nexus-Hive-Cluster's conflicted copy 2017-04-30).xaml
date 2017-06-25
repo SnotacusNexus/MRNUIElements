@@ -1,0 +1,2086 @@
+﻿<Page x:Class="NexusClaimGenerator.CustomerAgreement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:diag="http://mindfusion.eu/diagramming/wpf"
+      xmlns:local="clr-namespace:NexusClaimGenerator"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      Title="CustomerAgreement"
+      Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}"
+      Height="1855"
+      mc:Ignorable="d">
+
+
+    <Page.Resources>
+
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
+        <Style xmlns:sys="clr-namespace:System;assembly=mscorlib"
+               x:Key="PromptingTextBox"
+               TargetType="{x:Type TextBox}">
+            <Style.Resources>
+                <VisualBrush x:Key="CueBannerBrush"
+                             AlignmentX="Left"
+                             AlignmentY="Center"
+                             Stretch="None">
+                    <VisualBrush.Visual>
+
+                        <Label Content="Duh" Foreground="{StaticResource brushWatermarkForeground}" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Style.Resources>
+            <Style.Triggers>
+
+                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                </Trigger>
+                <Trigger Property="Text" Value="{x:Null}">
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
+
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <!--    <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />-->
+        <Style x:Key="EntryFieldStyle" TargetType="{x:Type Grid}">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2"
+                                   SnapsToDevicePixels="true"
+                                   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                   StrokeDashArray="1 2"
+                                   StrokeThickness="1" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <LinearGradientBrush x:Key="TabItem.Static.Background" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="Transparent" />
+            <GradientStop Offset="1.0" Color="Transparent" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="TabItem.Static.Border" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="Lime" />
+            <GradientStop Offset="1.0" Color="Yellow" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="TabItem.MouseOver.Background" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="HotPink" />
+            <GradientStop Offset="1.0" Color="Green" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="TabItem.MouseOver.Border" Color="Yellow" />
+        <SolidColorBrush x:Key="TabItem.Disabled.Background" Color="DarkGray" />
+        <SolidColorBrush x:Key="TabItem.Disabled.Border" Color="Black" />
+        <LinearGradientBrush x:Key="TabItem.Selected.Border" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="Yellow" />
+            <GradientStop Offset="1.0" Color="LimeGreen" />
+        </LinearGradientBrush>
+
+        <RadialGradientBrush x:Key="TabItem.Selected.Background">
+            <GradientStop Offset="0.0" Color="Black" />
+            <GradientStop Offset="1.0" Color="Red" />
+        </RadialGradientBrush>
+
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Background" Value="{StaticResource TabItem.Static.Background}" />
+            <Setter Property="BorderBrush" Value="{StaticResource TabItem.Static.Border}" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="6,2,6,2" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+                            <Border x:Name="mainBorder"
+                                    Margin="0"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1,1,1,0">
+                                <Border x:Name="innerBorder"
+                                        Margin="-1"
+                                        Background="{StaticResource TabItem.Selected.Background}"
+                                        BorderBrush="{StaticResource TabItem.Selected.Border}"
+                                        BorderThickness="1,1,1,0"
+                                        Opacity="0" />
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{Binding HorizontalContentAlignment,
+                                                                            RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                              VerticalAlignment="{Binding VerticalContentAlignment,
+                                                                          RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                              ContentSource="Header"
+                                              Focusable="False"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
+                                <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
+                                <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
+                                <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
+                                <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
+                                <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
+                                <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
+                                <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
+                                <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
+                                <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
+                                <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
+                                <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
+                                <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
+                                <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
+                                <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Margin" Value="-2,-2,0,-2" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Margin" Value="-2,0,-2,-2" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Margin" Value="0,-2,-2,-2" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Margin" Value="-2,-2,-2,0" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
+                            </MultiDataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        </Style>
+        <CollectionViewSource x:Key="dTO_CustomerViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Customer}, CreateList=True}" />
+        <CollectionViewSource x:Key="dTO_ClaimStatusViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_ClaimStatus}, CreateList=True}" />
+        <CollectionViewSource x:Key="dTO_EmployeeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Employee}, CreateList=True}" />
+        <CollectionViewSource x:Key="dTO_AddressViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Address}, CreateList=True}" />
+        <CollectionViewSource x:Key="dTO_InsuranceCompanyViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_InsuranceCompany}, CreateList=True}" />
+    </Page.Resources>
+
+    <Grid x:Name="MainGrid" Margin="0,0,-129,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="366*" />
+            <ColumnDefinition Width="47*" />
+        </Grid.ColumnDefinitions>
+        <Canvas Grid.ColumnSpan="1"
+                Width="1817"
+                Height="1879"
+                Margin="10,10,0,-34"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" />
+        <Image x:Name="image"
+               Width="90"
+               Height="100"
+               Margin="1315,55,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top" />
+        <Grid Grid.ColumnSpan="2"
+              Width="Auto"
+              Height="Auto"
+              Margin="40,-27,0,23">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="425*" />
+                <RowDefinition Height="425*" />
+                <RowDefinition Height="425*" />
+                <RowDefinition Height="500*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500*" />
+                <ColumnDefinition Width="500*" />
+                <ColumnDefinition Width="500*" />
+                <ColumnDefinition Width="600*" />
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="Lead_Gen_Grid_Copy2"
+                  Grid.ColumnSpan="2"
+                  Width="475"
+                  Height="445"
+                  Margin="10,0,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <syncfusion:MaskedTextBox x:Name="Cust_Suffix_Copy1"
+                                          Height="22"
+                                          Margin="114,166,361,236"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Suffix}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Suffix"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_Zipcode_Copy1"
+                                          Height="22"
+                                          Margin="101,215,374,187"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Zip}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Zipcode"
+                                          WatermarkTextForeground="White" />
+                <local:SignatureBox x:Name="Sign3_Copy"
+                                    Grid.RowSpan="2"
+                                    Width="502"
+                                    Height="225"
+                                    Margin="56,209,-83,-9"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    BorderThickness="0"
+                                    Padding="0"
+                                    RenderTransformOrigin="0.5,0.5">
+                    <local:SignatureBox.LayoutTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.7" />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </local:SignatureBox.LayoutTransform>
+                    <local:SignatureBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.95" ScaleY="0.2" />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </local:SignatureBox.RenderTransform>
+                </local:SignatureBox>
+                <syncfusion:MaskedTextBox x:Name="Cust_FirstName"
+                                          Height="22"
+                                          Margin="57,167,283,235"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding FirstName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="First Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_MiddleName"
+                                          Height="22"
+                                          Margin="191,167,189,235"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding MiddleName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Middle Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_LastName"
+                                          Height="22"
+                                          Margin="286,167,93,235"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding LastName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Last Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_Suffix"
+                                          Height="22"
+                                          Margin="382,167,58,235"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Suffix}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Suffix"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_Address"
+                                          Height="22"
+                                          Margin="57,191,57,211"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Address}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Address"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_City"
+                                          Height="22"
+                                          Margin="56,215,294,187"
+                                          Background="{x:Null}"
+                                          BorderThickness="1"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          IsReadOnly="True"
+                                          IsReadOnlyCaretVisible="True"
+                                          IsUndoEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Enter Zipcode --&gt;"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_State"
+                                          Height="22"
+                                          Margin="185,215,169,187"
+                                          Background="{x:Null}"
+                                          BorderThickness="1"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          IsReadOnly="True"
+                                          IsReadOnlyCaretVisible="True"
+                                          IsUndoEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Enter Zipcode --&gt;"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_Zipcode"
+                                          Height="22"
+                                          Margin="306,215,58,187"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Zip}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Zipcode"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_Primary_Phone"
+                                          Height="22"
+                                          MinWidth="100"
+                                          Margin="55,241,239,161"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Padding="0"
+                                          Text="{Binding PrimaryNumber}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Primary Phone #"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_Secondary_Phone"
+                                          Height="22"
+                                          MinWidth="100"
+                                          Margin="241,241,58,161"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding SecondaryNumber}"
+                                          WatermarkText="Secondary Phone #"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Cust_Email_Address"
+                                          Height="22"
+                                          Margin="55,265,58,137"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Email}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Email Address"
+                                          WatermarkTextForeground="White" />
+                <TextBlock Margin="101,0,109,307"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Section 2" />
+                    <LineBreak /><Run Text="Client Pre-Inspection" />
+                    <LineBreak /><Run Text="Interview" /></TextBlock>
+                <DatePicker x:Name="ContractDate"
+                            Width="102"
+                            Margin="0,352,58,63"
+                            HorizontalAlignment="Right"
+                            IsTabStop="True"
+                            TabIndex="0" />
+            </Grid>
+
+
+            <Grid x:Name="Lead_Gen_Grid"
+                  Grid.RowSpan="2"
+                  Grid.Column="1"
+                  Width="442"
+                  Height="443"
+                  Margin="18,5,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Margin="106,0,114,330"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Section 1" />
+                    <LineBreak /><Run Text="Lead Generation" /></TextBlock>
+
+                <local:SignatureBox x:Name="Lead_Sign"
+                                    Grid.RowSpan="2"
+                                    Width="502"
+                                    Height="226"
+                                    Margin="48,199,-105,-10"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    BorderThickness="0"
+                                    Padding="0"
+                                    RenderTransformOrigin="0.5,0.5">
+                    <local:SignatureBox.LayoutTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.7" />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </local:SignatureBox.LayoutTransform>
+                    <local:SignatureBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.95" ScaleY="0.2" />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </local:SignatureBox.RenderTransform>
+                </local:SignatureBox>
+                <syncfusion:MaskedTextBox x:Name="Lead_FirstName"
+                                          Height="22"
+                                          Margin="49,157,261,235"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding FirstName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="First Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_MiddleName"
+                                          Height="22"
+                                          Margin="183,157,167,235"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding MiddleName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Middle Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_LastName"
+                                          Height="22"
+                                          Margin="278,157,71,235"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding LastName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Last Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_Suffix"
+                                          Height="22"
+                                          Margin="374,157,36,235"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Suffix}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Suffix"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_Address"
+                                          Height="22"
+                                          Margin="49,181,35,211"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Address}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Address"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_City"
+                                          Height="22"
+                                          Margin="48,205,272,187"
+                                          Background="{x:Null}"
+                                          BorderThickness="1"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          IsReadOnly="True"
+                                          IsReadOnlyCaretVisible="True"
+                                          IsUndoEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Enter Zipcode --&gt;"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_State"
+                                          Height="22"
+                                          Margin="177,205,147,187"
+                                          Background="{x:Null}"
+                                          BorderThickness="1"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          IsReadOnly="True"
+                                          IsReadOnlyCaretVisible="True"
+                                          IsUndoEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Enter Zipcode --&gt;"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_Zipcode"
+                                          Height="22"
+                                          Margin="298,205,36,187"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Zip}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Zipcode"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_Primary_Phone"
+                                          Height="22"
+                                          MinWidth="100"
+                                          Margin="47,231,217,161"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Padding="0"
+                                          Text="{Binding PrimaryNumber}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Primary Phone #"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_Secondary_Phone"
+                                          Height="22"
+                                          MinWidth="100"
+                                          Margin="233,231,36,161"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding SecondaryNumber}"
+                                          WatermarkText="Secondary Phone #"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Lead_Email_Address"
+                                          Height="22"
+                                          Margin="47,255,36,137"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Email}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Email Address"
+                                          WatermarkTextForeground="White" />
+                <DatePicker x:Name="Lead_Contract_Date"
+                            Width="102"
+                            Margin="0,348,36,65"
+                            HorizontalAlignment="Right"
+                            IsTabStop="True"
+                            TabIndex="0" />
+            </Grid>
+            <Grid x:Name="Lead_Gen_Grid_Copy"
+                  Grid.Column="2"
+                  Width="477"
+                  Height="445"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+
+                <local:SignatureBox x:Name="Sign1"
+                                    Width="502"
+                                    Height="226"
+                                    Margin="60,206,-85,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    BorderThickness="0"
+                                    Padding="0"
+                                    RenderTransformOrigin="0.5,0.5">
+                    <local:SignatureBox.LayoutTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.7" />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </local:SignatureBox.LayoutTransform>
+                    <local:SignatureBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.95" ScaleY="0.2" />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </local:SignatureBox.RenderTransform>
+                </local:SignatureBox>
+                <syncfusion:MaskedTextBox x:Name="Employee_FirstName"
+                                          Height="22"
+                                          Margin="61,164,281,248"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding FirstName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="First Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_MiddleName"
+                                          Height="22"
+                                          Margin="195,164,187,248"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding MiddleName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Middle Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_LastName"
+                                          Height="22"
+                                          Margin="290,164,91,248"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding LastName}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Last Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_Suffix"
+                                          Height="22"
+                                          Margin="386,164,56,248"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Suffix}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Suffix"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_Address"
+                                          Height="22"
+                                          Margin="61,188,55,224"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Address}"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Address"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_City"
+                                          Height="22"
+                                          Margin="60,212,292,200"
+                                          Background="{x:Null}"
+                                          BorderThickness="1"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          IsReadOnly="True"
+                                          IsReadOnlyCaretVisible="True"
+                                          IsUndoEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Enter Zipcode --&gt;"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_State"
+                                          Height="22"
+                                          Margin="189,212,167,200"
+                                          Background="{x:Null}"
+                                          BorderThickness="1"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          IsReadOnly="True"
+                                          IsReadOnlyCaretVisible="True"
+                                          IsUndoEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkBackground="{x:Null}"
+                                          WatermarkText="Enter Zipcode --&gt;"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_Zipcode"
+                                          Height="22"
+                                          Margin="310,212,56,200"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Zip}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Zipcode"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_Primary_Phone"
+                                          Height="22"
+                                          MinWidth="100"
+                                          Margin="59,238,237,174"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Padding="0"
+                                          Text="{Binding PrimaryNumber}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Primary Phone #"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_Secondary_Phone"
+                                          Height="22"
+                                          MinWidth="100"
+                                          Margin="245,238,56,174"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding SecondaryNumber}"
+                                          WatermarkText="Secondary Phone #"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="Employee_Email_Address"
+                                          Height="22"
+                                          Margin="59,262,56,150"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          Text="{Binding Email}"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Email Address"
+                                          WatermarkTextForeground="White" />
+                <TextBlock Margin="118,10,95,0"
+                           VerticalAlignment="Top"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Employee " />
+                    <LineBreak /><Run Text="Onboarding Step 1" /></TextBlock>
+            </Grid>
+            <TextBlock Grid.Column="3"
+                       Height="87"
+                       Margin="0,10,275,0"
+                       VerticalAlignment="Top"
+                       FontSize="25"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Padding="10"
+                       TextAlignment="Center"><Run Text="Employee" />
+                <LineBreak /><Run Text=" Onboarding Step 2" />
+            </TextBlock>
+            <Grid x:Name="Lead_Gen_Grid_Copy1"
+                  Grid.Column="3"
+                  Width="344"
+                  Height="433"
+                  Margin="10,10,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <syncfusion:PercentTextBox x:Name="percentTextBox"
+                                           Width="100"
+                                           Margin="179,118,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           PercentDecimalDigits="2"
+                                           PercentDecimalSeparator="."
+                                           PercentGroupSeparator=","
+                                           Text="PercentTextBox"
+                                           TextWrapping="Wrap" />
+                <syncfusion:PercentTextBox x:Name="Overhead_PercentTextBox"
+                                           Width="100"
+                                           Margin="179,145,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           PercentDecimalDigits="2"
+                                           PercentDecimalSeparator="."
+                                           PercentGroupSeparator=","
+                                           Text="PercentTextBox"
+                                           TextWrapping="Wrap" />
+                <syncfusion:MaskedTextBox x:Name="maskedTextBox2"
+                                          Width="100"
+                                          Margin="44,142,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Text="MaskedTextBox"
+                                          TextWrapping="Wrap" />
+                <syncfusion:MaskedTextBox x:Name="maskedTextBox3"
+                                          Width="100"
+                                          Margin="44,119,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Text="MaskedTextBox"
+                                          TextWrapping="Wrap" />
+            </Grid>
+            <Grid x:Name="Lead_Gen_Grid_Copy5"
+                  Grid.Row="0"
+                  Grid.RowSpan="1"
+                  Grid.Column="3"
+                  Width="195"
+                  Height="438"
+                  Margin="374,5,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <syncfusion:MaskedTextBox x:Name="ValleyMaterial"
+                                          Width="100"
+                                          Margin="44,237,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Valley Material"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="ShingleStyle"
+                                          Width="100"
+                                          Margin="44,168,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Shingle Style"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="ShingleGrade"
+                                          Width="100"
+                                          Margin="44,191,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Shingle Grade"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="RidgeMaterial"
+                                          Width="100"
+                                          Margin="44,214,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Ridge Material Type"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="PlumbingJack4"
+                                          Width="100"
+                                          Margin="44,260,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Ventilation Type"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="PlumbingStack3"
+                                          Width="46"
+                                          Margin="44,283,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="3/1"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="PlumbingStack4"
+                                          Width="46"
+                                          Height="18"
+                                          Margin="98,283,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="4'' or greater"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="NoOfLayers"
+                                          Width="100"
+                                          Margin="44,306,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="# of Layers"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="MetalEdgeColor"
+                                          Width="100"
+                                          Margin="44,329,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Metal Edge Color"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="RoofPitch"
+                                          Width="100"
+                                          Margin="44,352,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Roof Pitch"
+                                          WatermarkTextForeground="White" />
+                <TextBlock Margin="0,10,5,0"
+                           VerticalAlignment="Top"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Section 6" />
+                    <LineBreak /><Run Text="Existing Roof" />
+                    <LineBreak /><Run Text="Specifications" /></TextBlock>
+            </Grid>
+            <Grid x:Name="InsuranceAndMortgage"
+                  Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  Width="475"
+                  Height="445"
+                  Margin="10,0,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="683*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1"
+                           Height="113"
+                           Margin="30,-15,58,0"
+                           VerticalAlignment="Top"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Section 3" />
+                    <LineBreak /><Run Text=" Insurance Company/Lien Holder" />
+                    <LineBreak /><Run Text="Information" /></TextBlock>
+
+                <Label x:Name="label"
+                       Grid.Column="1"
+                       Width="146"
+                       Margin="31,159,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Content="Insurance Carrier:"
+                       Foreground="White" />
+                <Label x:Name="label_Copy"
+                       Grid.Column="1"
+                       Width="146"
+                       Margin="31,0,0,111"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Content="Lien Holder #1"
+                       Foreground="White" />
+                <syncfusion:MaskedTextBox x:Name="Policy_Comments"
+                                          Grid.Column="1"
+                                          Width="146"
+                                          Height="51"
+                                          Margin="245,233,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="MortgageAcctNumber"
+                                          Grid.Column="1"
+                                          Width="129"
+                                          Height="17"
+                                          Margin="245,189,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Policy #"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="ClaimsPhoneNumber"
+                                          Grid.Column="1"
+                                          Width="182"
+                                          Height="16"
+                                          Margin="31,233,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          DataContext="{StaticResource dTO_InsuranceCompanyViewSource}"
+                                          Foreground="White"
+                                          Text="{Binding /ClaimPhoneNumber,
+                                                         BindsDirectlyToSource=True,
+                                                         Mode=OneWay}"
+                                          TextWrapping="NoWrap"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="MortgageHolder"
+                                          Grid.Column="1"
+                                          Width="146"
+                                          Height="18"
+                                          Margin="31,0,0,88"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Bottom"
+                                          Background="{x:Null}"
+                                          EnterToMoveNext="True"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Lien Holder #1 Name"
+                                          WatermarkTextForeground="White" />
+                <Label x:Name="label_Copy3"
+                       Grid.Column="1"
+                       Margin="31,208,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Content="Claims Phone Number:"
+                       Foreground="White" />
+                <Label x:Name="label_Copy1"
+                       Grid.Column="1"
+                       Height="32"
+                       Margin="231,167,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Content="Policy Number:"
+                       Foreground="White" />
+                <Label x:Name="label_Copy4"
+                       Grid.Column="1"
+                       Width="90"
+                       Height="23"
+                       Margin="245,208,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Content="Comments:"
+                       Foreground="White" />
+                <syncfusion:MaskedTextBox x:Name="MortgageHolder1Address"
+                                          Grid.Column="1"
+                                          Width="146"
+                                          Height="18"
+                                          Margin="31,0,0,65"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Bottom"
+                                          Background="{x:Null}"
+                                          EnterToMoveNext="True"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Lien Holder #1 Address"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="MortgageHolder1AcctNumber"
+                                          Grid.Column="1"
+                                          Width="146"
+                                          Height="18"
+                                          Margin="31,0,0,42"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Bottom"
+                                          Background="{x:Null}"
+                                          EnterToMoveNext="True"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Lien Holder #1 Acct #"
+                                          WatermarkTextForeground="White" />
+                <Label x:Name="label_Copy2"
+                       Grid.Column="1"
+                       Width="146"
+                       Margin="245,0,0,111"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Content="Lien Holder #2"
+                       Foreground="White" />
+                <syncfusion:MaskedTextBox x:Name="MortgageHolder2"
+                                          Grid.Column="1"
+                                          Width="146"
+                                          Height="18"
+                                          Margin="245,0,0,88"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Bottom"
+                                          Background="{x:Null}"
+                                          EnterToMoveNext="True"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Lien Holder #2 Name"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="MortgageHolder2Address"
+                                          Grid.Column="1"
+                                          Width="146"
+                                          Height="18"
+                                          Margin="245,0,0,65"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Bottom"
+                                          Background="{x:Null}"
+                                          EnterToMoveNext="True"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Lien Holder #2 Address"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="MortgageHolder2AcctNumber"
+                                          Grid.Column="1"
+                                          Width="146"
+                                          Height="18"
+                                          Margin="245,0,0,42"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Bottom"
+                                          Background="{x:Null}"
+                                          EnterToMoveNext="True"
+                                          Foreground="White"
+                                          IsEnabled="False"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Lien Holder #2 Acct #"
+                                          WatermarkTextForeground="White" />
+                <Button x:Name="button1"
+                        Grid.Column="1"
+                        Width="82"
+                        Margin="379,188,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content="Upload Policy" />
+                <syncfusion:ComboBoxAdv x:Name="InsuranceLU"
+                                        Grid.Column="1"
+                                        Width="185"
+                                        Height="25"
+                                        Margin="28,181,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        AlternationCount="2"
+                                        DefaultText="Click To Pick Insurance Carrier"
+                                        ForceCursor="True" Style="{DynamicResource normal}" />
+                <syncfusion:MaskedTextBox x:Name="MortgageAcctNumber_Copy"
+                                          Grid.Column="1"
+                                          Width="129"
+                                          Height="17"
+                                          Margin="28,142,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="MRN Number"
+                                          WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="MortgageAcctNumber_Copy1"
+                                          Grid.Column="1"
+                                          Width="129"
+                                          Height="17"
+                                          Margin="245,142,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="Wrap"
+                                          WatermarkText="Insurance Claim Number"
+                                          WatermarkTextForeground="White" />
+                <DatePicker x:Name="Lead_Contract_Date1"
+                            Grid.Column="1"
+                            Width="102"
+                            Margin="0,103,358,313"
+                            HorizontalAlignment="Right"
+                            IsTabStop="True"
+                            TabIndex="0" />
+                <syncfusion:CurrencyTextBox x:Name="DeductibleAmount"
+                                            Grid.Column="1"
+                                            Width="102"
+                                            Margin="272,103,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            Background="Transparent"
+                                            CurrencyDecimalSeparator="."
+                                            CurrencyGroupSeparator=","
+                                            CurrencySymbol="$"
+                                            Foreground="White"
+                                            PositiveForeground="White"
+                                            SelectionForeground="White"
+                                            TextWrapping="Wrap"
+                                            WatermarkText="Deductible Amount"
+                                            WatermarkTextForeground="Gray" NullValue="0" IsScrollingOnCircle="False" UseNullOption="True" WatermarkTextIsVisible="True" MinValidation="OnLostFocus" MaxValidation="OnLostFocus" />
+            </Grid>
+            <Grid x:Name="Lead_Gen_Grid_Copy3"
+                  Grid.Row="1"
+                  Grid.RowSpan="2"
+                  Grid.Column="1"
+                  Width="480"
+                  Height="444"
+                  Margin="0,3,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <CheckBox x:Name="checkBox"
+                          Margin="34,197,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Driway Damage"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy"
+                          Margin="34,217,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Roof Leaks"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy1"
+                          Margin="34,237,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Interior Damage"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy2"
+                          Margin="34,257,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Attic/Crawlspace"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy3"
+                          Margin="34,277,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Metal Fascia"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy4"
+                          Margin="34,317,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Lightning Protection"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy5"
+                          Margin="34,297,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Skylights"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy6"
+                          Margin="213,197,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Satellite"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy7"
+                          Margin="213,217,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Gable Cornice"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy8"
+                          Margin="213,237,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Chimney Cricket"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy9"
+                          Margin="213,257,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Window Screen Damaged"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy10"
+                          Margin="213,277,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Marks on exterior walls"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy11"
+                          Margin="213,297,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Nail pops interior ceilings"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy12"
+                          Margin="213,317,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Swimming Pools/ Ponds"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy13"
+                          Margin="213,335,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Unsuitable Driveway Entrance"
+                          Foreground="White" />
+                <CheckBox x:Name="checkBox_Copy14"
+                          Margin="34,335,0,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}"
+                          Content="Mailbox Damage"
+                          Foreground="White" />
+                <TextBlock x:Name="textBlock1"
+                           Width="320"
+                           Height="35"
+                           Margin="63,157,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Foreground="White"
+                           Text="Check any that apply and take photo's for documentation."
+                           TextWrapping="Wrap" />
+                <Button x:Name="button"
+                        Width="90"
+                        Margin="333,397,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content="Upload Photos" />
+                <TextBlock Height="115"
+                           Margin="139,0,192,0"
+                           VerticalAlignment="Top"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Section 4 " />
+                    <LineBreak /><Run Text="Site" />
+                    <LineBreak /><Run Text="Inspection" />
+                    <LineBreak /><Run /></TextBlock>
+            </Grid>
+            <Grid x:Name="Lead_Gen_Grid_Copy4"
+                  Grid.Row="1"
+                  Grid.RowSpan="2"
+                  Grid.Column="2"
+                  Width="479"
+                  Height="447"
+                  Margin="3,3,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button x:Name="button_Copy"
+                        Width="90"
+                        Margin="285,387,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content="Upload Photos" />
+            </Grid>
+            <TextBlock Grid.Row="1"
+                       Grid.Column="2"
+                       Height="115"
+                       Margin="95.379,5,102.621,0"
+                       VerticalAlignment="Top"
+                       FontSize="25"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Padding="10"
+                       TextAlignment="Center"><Run Text="Section 5 " />
+                <LineBreak /><Run Text="Interior" />
+                <LineBreak /><Run Text="Inspection" />
+                <LineBreak /><Run /></TextBlock>
+            <Grid x:Name="Lead_Gen_Grid_Copy11"
+                  Grid.Row="1"
+                  Grid.Column="3"
+                  Width="559"
+                  Height="425"
+                  Margin="10,10,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button Margin="359,347,100,57"
+                        Click="Button_Click"
+                        Content="Add Claim" />
+            </Grid>
+            <Grid x:Name="Section7RoofInspection"
+                  Grid.Row="2"
+                  Grid.RowSpan="2"
+                  Grid.ColumnSpan="2"
+                  Width="481"
+                  Height="449"
+                  Margin="4,2,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Height="107"
+                           Margin="160,0,166,0"
+                           VerticalAlignment="Top"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Section 7" />
+                    <LineBreak /><Run Text="Roof" />
+                    <LineBreak /><Run Text="Inspection" /></TextBlock>
+                <Button x:Name="button_Copy1"
+                        Width="90"
+                        Margin="381,112,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content="Upload Photos" />
+                <syncfusion:IntegerTextBox x:Name="integerTextBox"
+                                           MinWidth="100"
+                                           Margin="194,147,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Background="#FF152C2E"
+                                           Foreground="White"
+                                           NumberGroupSeparator=","
+                                           PositiveForeground="White"
+                                           SelectionForeground="White"
+                                           Text="100"
+                                           TextWrapping="Wrap"
+                                           WatermarkTextForeground="White" />
+                <syncfusion:IntegerTextBox x:Name="integerTextBox_Copy"
+                                           MinWidth="100"
+                                           Margin="194,198,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Background="#FF152C2E"
+                                           Foreground="White"
+                                           NumberGroupSeparator=","
+                                           PositiveForeground="White"
+                                           SelectionForeground="White"
+                                           Text="100"
+                                           TextWrapping="Wrap"
+                                           WatermarkTextForeground="White" />
+                <syncfusion:IntegerTextBox x:Name="integerTextBox_Copy1"
+                                           MinWidth="100"
+                                           Margin="298,172,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Background="#FF152C2E"
+                                           Foreground="White"
+                                           NumberGroupSeparator=","
+                                           PositiveForeground="White"
+                                           SelectionForeground="White"
+                                           Text="100"
+                                           TextWrapping="Wrap"
+                                           WatermarkTextForeground="White" />
+                <syncfusion:IntegerTextBox x:Name="integerTextBox_Copy2"
+                                           MinWidth="100"
+                                           Margin="94,172,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Background="#FF152C2E"
+                                           Foreground="White"
+                                           NumberGroupSeparator=","
+                                           PositiveForeground="White"
+                                           SelectionForeground="White"
+                                           Text="100"
+                                           TextWrapping="Wrap"
+                                           WatermarkTextForeground="White" />
+                <syncfusion:IntegerTextBox x:Name="integerTextBox_Copy3"
+                                           MinWidth="100"
+                                           Margin="194,236,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Background="#FF243C1F"
+                                           Foreground="White"
+                                           NumberGroupSeparator=","
+                                           PositiveForeground="White"
+                                           SelectionForeground="White"
+                                           Text="100"
+                                           TextWrapping="Wrap"
+                                           WatermarkTextForeground="White" />
+                <syncfusion:IntegerTextBox x:Name="integerTextBox_Copy4"
+                                           MinWidth="100"
+                                           Margin="194,286,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Background="#FF243C1F"
+                                           Foreground="White"
+                                           NumberGroupSeparator=","
+                                           PositiveForeground="White"
+                                           SelectionForeground="White"
+                                           Text="100"
+                                           TextWrapping="Wrap"
+                                           WatermarkTextForeground="White" />
+                <syncfusion:IntegerTextBox x:Name="integerTextBox_Copy5"
+                                           MinWidth="100"
+                                           Margin="298,261,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Background="#FF243C1F"
+                                           Foreground="White"
+                                           NumberGroupSeparator=","
+                                           PositiveForeground="White"
+                                           SelectionForeground="White"
+                                           Text="100"
+                                           TextWrapping="Wrap"
+                                           WatermarkTextForeground="White" />
+                <syncfusion:IntegerTextBox x:Name="integerTextBox_Copy6"
+                                           MinWidth="100"
+                                           Margin="94,261,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Background="#FF243C1F"
+                                           Foreground="White"
+                                           NumberGroupSeparator=","
+                                           PositiveForeground="White"
+                                           SelectionForeground="White"
+                                           Text="100"
+                                           TextWrapping="Wrap"
+                                           WatermarkTextForeground="White" />
+                <syncfusion:MaskedTextBox x:Name="maskedTextBox1_Copy"
+                                          Width="400"
+                                          Height="73"
+                                          Margin="41,365,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          AcceptsReturn="True"
+                                          Background="{x:Null}"
+                                          Foreground="White"
+                                          TextWrapping="WrapWithOverflow"
+                                          WatermarkText="Additional Comments"
+                                          WatermarkTextForeground="White" />
+                <TextBlock Height="47"
+                           Margin="194,155,188,0"
+                           VerticalAlignment="Top"
+                           Panel.ZIndex="-9"
+                           Background="#FF152C2E"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           Text="Wind"
+                           TextAlignment="Center" />
+                <TextBlock Height="42"
+                           Margin="194,244,187,0"
+                           VerticalAlignment="Top"
+                           Panel.ZIndex="-6"
+                           Background="#FF243C1F"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           Text="Hail"
+                           TextAlignment="Center" />
+                <syncfusion:DropDownButtonAdv x:Name="NSBT"
+                                              Width="175"
+                                              Height="35"
+                                              Margin="156,110,0,0"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Top"
+                                              Background="#FF231010"
+                                              Cursor="Cross"
+                                              Foreground="White"
+                                              IconHeight="24"
+                                              IconWidth="24"
+                                              Label="North Slope Brittle Test Results"
+                                              LargeIcon="ResourceFiles/MRNIcon.png"
+                                              SmallIcon="ResourceFiles/MRN CONTRACTING LOGO.png" />
+                <syncfusion:DropDownButtonAdv Width="175"
+                                              Height="30"
+                                              Margin="156,311,0,0"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Top"
+                                              Background="#FF231010"
+                                              Cursor="Cross"
+                                              Foreground="White"
+                                              IconHeight="24"
+                                              IconWidth="24"
+                                              Label="South Slope Brittle Test Results"
+                                              LargeIcon="ResourceFiles/MRNIcon.png"
+                                              SmallIcon="ResourceFiles/MRN CONTRACTING LOGO.png" />
+                <syncfusion:DropDownButtonAdv Width="167"
+                                              Height="30"
+                                              Margin="294,209,0,0"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Top"
+                                              Background="#FF231010"
+                                              Content="Pass,Fail"
+                                              Cursor="Cross"
+                                              Foreground="White"
+                                              IconHeight="24"
+                                              IconWidth="24"
+                                              Label="East Slope Brittle Test Results"
+                                              LargeIcon="ResourceFiles/MRNIcon.png"
+                                              SmallIcon="ResourceFiles/MRN CONTRACTING LOGO.png" />
+                <syncfusion:DropDownButtonAdv Width="171"
+                                              Height="30"
+                                              Margin="10,209,0,0"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Top"
+                                              Background="#FF231010"
+                                              Cursor="Cross"
+                                              Foreground="White"
+                                              IconHeight="24"
+                                              IconWidth="24"
+                                              Label="West Slope Brittle Test Results"
+                                              LargeIcon="ResourceFiles/MRNIcon.png"
+                                              SmallIcon="ResourceFiles/MRN CONTRACTING LOGO.png" />
+            </Grid>
+            <Grid x:Name="Lead_Gen_Grid_Copy6"
+                  Grid.Row="2"
+                  Grid.RowSpan="2"
+                  Grid.Column="1"
+                  Width="482"
+                  Height="442"
+                  Margin="0,5,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Height="119"
+                           Margin="128,0,142,0"
+                           VerticalAlignment="Top"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Section 8" />
+                    <LineBreak /><Run Text="New Roof" />
+                    <LineBreak /><Run Text="Specifications" />
+                    <LineBreak /><Run /></TextBlock>
+            </Grid>
+            <Grid Grid.Row="2"
+                  Grid.RowSpan="2"
+                  Grid.Column="1"
+                  Width="464"
+                  Margin="18,444,0,18"
+                  HorizontalAlignment="Center" />
+            <Grid x:Name="Lead_Gen_Grid_Copy10"
+                  Grid.Row="2"
+                  Grid.Column="2"
+                  Width="472"
+                  Height="435"
+                  Margin="0,9,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="textBlock"
+                           Margin="56,172,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Text="TextBlock"
+                           TextWrapping="Wrap" />
+                <RadioButton x:Name="radioButton"
+                             Margin="231,352,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Background="{x:Null}"
+                             Content="RadioButton"
+                             Foreground="White" />
+                <RadioButton x:Name="radioButton_Copy"
+                             Margin="151,237,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Background="{x:Null}"
+                             Content="RadioButton"
+                             Foreground="White" />
+                <RadioButton x:Name="radioButton_Copy1"
+                             Margin="151,267,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Background="{x:Null}"
+                             Content="RadioButton"
+                             Foreground="White" />
+                <RadioButton x:Name="radioButton1"
+                             Margin="301,212,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Background="{x:Null}"
+                             Content="RadioButton"
+                             Foreground="White" />
+                <RadioButton x:Name="radioButton1_Copy"
+                             Margin="301,240,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Background="{x:Null}"
+                             Content="RadioButton"
+                             Foreground="White" />
+                <ComboBox x:Name="comboBox"
+                          Width="120"
+                          Margin="331,267,-38,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}" />
+                <ComboBox x:Name="comboBox1"
+                          Width="120"
+                          Margin="351,312,-58,0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Background="{x:Null}" />
+                <syncfusion:MaskedTextBox x:Name="maskedTextBox1"
+                                          Width="205"
+                                          Height="57"
+                                          Margin="151,294,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Background="{x:Null}"
+                                          Text="MaskedTextBox"
+                                          TextWrapping="Wrap" />
+                <RadioButton x:Name="radioButton_Copy2"
+                             Margin="151,355,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Background="{x:Null}"
+                             Content="RadioButton"
+                             Foreground="White" />
+                <RadioButton x:Name="radioButton_Copy3"
+                             Margin="61,358,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Background="{x:Null}"
+                             Content="RadioButton"
+                             Foreground="White" />
+            </Grid>
+            <TextBlock Grid.Row="2"
+                       Grid.Column="2"
+                       Margin="78.379,10,119.621,0"
+                       VerticalAlignment="Top"
+                       FontSize="25"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Padding="10"
+                       TextAlignment="Center"><Run Text="Section 9" />
+                <LineBreak /><Run Text="Exterior/Gutter " />
+                <LineBreak /><Run Text="Inspection" /></TextBlock>
+            <Grid x:Name="Lead_Gen_Grid_Copy9"
+                  Grid.Row="2"
+                  Grid.RowSpan="2"
+                  Grid.Column="3"
+                  Width="559"
+                  Height="447"
+                  Margin="10,0,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+            </Grid>
+            <Grid x:Name="Lead_Gen_Grid_Copy7"
+                  Grid.Row="3"
+                  Grid.ColumnSpan="2"
+                  Width="475"
+                  Height="506"
+                  Margin="10,0,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Margin="101,10,100,0"
+                           VerticalAlignment="Top"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="10"
+                           TextAlignment="Center"><Run Text="Section 9 " />
+                    <LineBreak /><Run Text="Means Testing" /></TextBlock>
+            </Grid>
+            <Grid Grid.Row="3"
+                  Grid.Column="2"
+                  Width="474"
+                  Margin="3,0,5,18"
+                  HorizontalAlignment="Center" />
+            <Grid x:Name="Lead_Gen_Grid_Copy12"
+                  Grid.Row="3"
+                  Grid.Column="3"
+                  Width="631"
+                  Height="507"
+                  Margin="47,17,-99,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Width="228"
+                           Margin="108,77,86,0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="0"
+                           Text="Upload Claim Documentation"
+                           TextAlignment="Center" />
+                <Button x:Name="Roof_Inspection1"
+                        Width="176"
+                        Margin="279,115,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Roof_Inspection_Click"
+                        Content="Roof Inspection"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Gutter_Inspection1"
+                        Width="203"
+                        Margin="279,155,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Gutter_Inspection_Click"
+                        Content="Gutter Inspection"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Interior_Inspection1"
+                        Width="203"
+                        Margin="279,237,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Interior_Inspection_Click"
+                        Content="Interior Inspection"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Exterior_Inspection1"
+                        Width="203"
+                        Margin="279,196,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Exterior_Inspection_Click"
+                        Content="Exterior Inspection"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Edit_Inspection1"
+                        Width="161"
+                        Margin="279,277,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Edit_Inspection_Click"
+                        Content="Edit Inspection"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Original_Scope"
+                        Width="175"
+                        Margin="73,121,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Roof_Inspection_Click"
+                        Content="Original Scope"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Newest_Scope"
+                        Width="175"
+                        Margin="73,161,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Gutter_Inspection_Click"
+                        Content="Newest Scope"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="RoofColorVerification"
+                        Width="247"
+                        Margin="0,242,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Interior_Inspection_Click"
+                        Content="Roof Color Verification"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="AuthorizationOfCommunication"
+                        Width="238"
+                        Height="36"
+                        Margin="10,202,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Exterior_Inspection_Click"
+                        Content="Authorization Of Communication"
+                        FontSize="16"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="SpecialInstructions"
+                        Width="218"
+                        Margin="30,283,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Edit_Inspection_Click"
+                        Content="Special Instructions"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="AuthorizationOfCommunication_Copy"
+                        Width="198"
+                        Height="36"
+                        Margin="50,323,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Exterior_Inspection_Click"
+                        Content="Customer Payment Record"
+                        FontSize="16"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="SpecialInstructions_Copy"
+                        Width="175"
+                        Margin="73,405,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Edit_Inspection_Click"
+                        Content="Material Bills"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="RoofColorVerification_Copy"
+                        Width="247"
+                        Margin="0,364,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Interior_Inspection_Click"
+                        Content="Subcontractor Invoices"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Interior_Inspection_Copy"
+                        Width="131"
+                        Margin="279,358,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Interior_Inspection_Click"
+                        Content="Roof Order"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Exterior_Inspection_Copy"
+                        Width="131"
+                        Margin="279,317,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Exterior_Inspection_Click"
+                        Content="Roof Sketch"
+                        Style="{DynamicResource normal}" />
+                <Button x:Name="Edit_Inspection_Copy"
+                        Width="131"
+                        Margin="279,399,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Edit_Inspection_Click"
+                        Content="Bringbacks"
+                        Style="{DynamicResource normal}" />
+            </Grid>
+            <Viewbox Grid.Row="3"
+                     Grid.Column="3"
+                     Margin="10,0,0,10" />
+            <Grid x:Name="Lead_Gen_Grid_Copy13"
+                  Grid.Row="3"
+                  Grid.Column="3"
+                  Width="579"
+                  Height="496"
+                  Margin="0,10,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+
+</Page>

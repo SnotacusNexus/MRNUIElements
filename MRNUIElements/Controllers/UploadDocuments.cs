@@ -58,52 +58,60 @@ namespace MRNUIElements.Controllers
 			else
 			{
 
-			}
-			switch (result)
-			{
-				case System.Windows.Forms.DialogResult.OK:
-					if (filepathtoupload == null)
-						FullFilePath = fileDialog.FileName;
-					else
-						FullFilePath = filepathtoupload;
-					var file = FullFilePath;
-					
-					var onlyFileName = System.IO.Path.GetFileNameWithoutExtension(file);
-					
-					onlyFileName = onlyFileName.Replace(" ", "_");
-					byte[] imageBytes = System.IO.File.ReadAllBytes(file);
-					string ext = System.IO.Path.GetExtension(file);
-					DTO_ClaimDocument documentUploadRequest = new DTO_ClaimDocument
-					{
-						FileBytes = Convert.ToBase64String(imageBytes),
-						FileName = onlyFileName,
-						FileExt = ext,
-						ClaimID = Claim.ClaimID,
-						DocTypeID = DocType.ClaimDocumentTypeID,
-						DocumentDate = DateTime.Today
-						
-					};
+				switch (result)
+				{
+					case System.Windows.Forms.DialogResult.OK:
+						if (filepathtoupload == null)
+							FullFilePath = fileDialog.FileName;
+						else
+							FullFilePath = filepathtoupload;
+						var file = FullFilePath;
 
-					await s1.AddClaimDocument(documentUploadRequest);
+						var onlyFileName = System.IO.Path.GetFileNameWithoutExtension(file);
 
-					if (documentUploadRequest.Message == null)
-					{
-						System.Windows.Forms.MessageBox.Show("Success");
-					}
-					//SAVING FILES TO DISK
-					//string filename = fileDialog.FileName = @"newfile" + ext;
-					//using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
-					//{
-					//    saveFileDialog1.FileName = filename;
-					//    if (System.Windows.Forms.DialogResult.OK != saveFileDialog1.ShowDialog())
-					//        return;
-					//    System.IO.File.WriteAllBytes(saveFileDialog1.FileName,Convert.FromBase64String(s1.ClaimDocument.FileBytes));
-					//}
-					break;
-				case System.Windows.Forms.DialogResult.Cancel:
-				default:
-					
-					break;
+						onlyFileName = onlyFileName.Replace(" ", "_");
+						byte[] imageBytes = System.IO.File.ReadAllBytes(file);
+						string ext = System.IO.Path.GetExtension(file);
+						DTO_ClaimDocument documentUploadRequest = new DTO_ClaimDocument
+						{
+							FileBytes = Convert.ToBase64String(imageBytes),
+							FileName = onlyFileName,
+							FileExt = ext,
+							ClaimID = Claim.ClaimID,
+							DocTypeID = DocType.ClaimDocumentTypeID,
+							DocumentDate = DateTime.Today
+
+						};
+						try
+						{
+							await s1.AddClaimDocument(documentUploadRequest);
+
+							if (documentUploadRequest.Message == null)
+							{
+								System.Windows.Forms.MessageBox.Show("Success");
+							}
+							//SAVING FILES TO DISK
+							//string filename = fileDialog.FileName = @"newfile" + ext;
+							//using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+							//{
+							//    saveFileDialog1.FileName = filename;
+							//    if (System.Windows.Forms.DialogResult.OK != saveFileDialog1.ShowDialog())
+							//        return;
+							//    System.IO.File.WriteAllBytes(saveFileDialog1.FileName,Convert.FromBase64String(s1.ClaimDocument.FileBytes));
+							//}
+						}
+						catch (Exception ex)
+						{
+							System.Windows.Forms.MessageBox.Show(ex.ToString());
+
+						}
+
+						break;
+					case System.Windows.Forms.DialogResult.Cancel:
+					default:
+
+						break;
+				}
 			}
 		}
 	}

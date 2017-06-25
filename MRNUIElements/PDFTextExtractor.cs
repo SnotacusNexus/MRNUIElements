@@ -21,18 +21,17 @@ namespace MRNUIElements
     public partial class PDFTextExtractor
     {
 
-       public string Extract(string filename, bool all = false)
+       public string Extract(Stream stream, bool all = false)
         {
             string extractedText = string.Empty;
-            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(filename);
-            if (!all)
-            {
+			try
+			{
+				PdfLoadedDocument loadedDocument = new PdfLoadedDocument(stream);
+
+			if (!all) {
+					PdfPageBase page = loadedDocument.Pages[0]; extractedText= page.ExtractText();
                
-                PdfPageBase page = loadedDocument.Pages[0];
-              
-               extractedText= page.ExtractText();
-               
-            }
+            }   
             else
             {
                 PdfLoadedPageCollection loadedPages = loadedDocument.Pages;
@@ -43,7 +42,19 @@ namespace MRNUIElements
 
             }
             loadedDocument.Close(true);
-            return extractedText;
+            
+			}
+			catch (Exception ex)
+			{
+
+				MessageBox.Show(ex.ToString());
+			}
+            
+           
+               return extractedText;
+                
+              
+           
         }
     }
 }

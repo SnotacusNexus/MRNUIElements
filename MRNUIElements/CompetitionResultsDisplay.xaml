@@ -57,11 +57,14 @@
                 <EventTrigger RoutedEvent="TextBlock.Loaded">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation
-                Storyboard.TargetName="AnimatedTranslateTransform" 
-                Storyboard.TargetProperty="X"
-                From="-1300" To="{Binding Width, ElementName=BigTextBlock_Copy}" Duration="0:0:10" 
-                AutoReverse="False" RepeatBehavior="Forever" />
+                            <DoubleAnimation AutoReverse="False"
+                                             Duration="0:0:10"
+                                             From="-1300"
+                                             RepeatBehavior="Forever"
+                                             Storyboard.TargetName="AnimatedTranslateTransform"
+                                             Storyboard.TargetProperty="X"
+                                             To="{Binding Width,
+                                                          ElementName=BigTextBlock_Copy}" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
@@ -1031,59 +1034,94 @@
 
 
         </Grid>
-        <StackPanel VerticalAlignment="Bottom" Background="Black" Width="{Binding Width, ElementName=page}">
-        <StackPanel Orientation="Horizontal" Height="200"
+        <StackPanel Width="{Binding Width,
+                                    ElementName=page}"
+                    VerticalAlignment="Bottom"
+                    Background="Black">
+            <StackPanel Height="200"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
-                    Background="Black">
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                        Background="Black"
+                        Orientation="Horizontal">
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="All Claims" Label="All Claims" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" Width="100" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="All Claims"
+                                      Label="All Claims"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="Preston" Label="Preston" Width="100" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="Preston"
+                                      Label="Preston"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="Foy" Width="100" Label="Foy" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="Foy"
+                                      Label="Foy"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="Tony" Width="100" Label="Tony" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="Tony"
+                                      Label="Tony"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="Josh" Width="100" Label="Josh" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="Josh"
+                                      Label="Josh"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="Taylor_BJ" Width="100" Label="Taylor/BJ" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="Taylor_BJ"
+                                      Label="Taylor/BJ"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="LeeLogan" Width="100" Label="Lee/Logan" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="LeeLogan"
+                                      Label="Lee/Logan"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="Richard" Width="100" Label="Richard" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="Richard"
+                                      Label="Richard"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="Havard" Width="100" Label="Havard" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
-            <syncfusion:ButtonAdv Margin="0,20,0,0"
+                                      Content="Havard"
+                                      Label="Havard"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+                <syncfusion:ButtonAdv Width="100"
+                                      Margin="0,20,0,0"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Top"
-                                      Content="Craig" Width="100" SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" Label="Craig" />
-        </StackPanel>
+                                      Content="Craig"
+                                      Label="Craig"
+                                      SmallIcon="/MRNUIElements;component/ResourceFiles/MRNIcon.png" />
+            </StackPanel>
         </StackPanel>
         <TextBlock x:Name="BigTextBlock_Copy"
-            Width="{Binding Width, ElementName=page}"
-            Height="100"
-            Margin="0,170,0,930"
-            Background="Black"
-            Foreground="White">
+                   Width="{Binding Width,
+                                   ElementName=page}"
+                   Height="100"
+                   Margin="0,170,0,930"
+                   Background="Black"
+                   Foreground="White">
             <TextBlock.RenderTransform>
 
                 <TranslateTransform x:Name="AnimatedTranslateTransform1" X="0" Y="0" />

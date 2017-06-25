@@ -40,8 +40,8 @@ namespace MRNUIElements
 	public partial class NexusHome : Page
 	{
 		static ServiceLayer s = ServiceLayer.getInstance();
-	  
-	 
+
+
 
 		//MRNNexus_Model.DTO_CalendarData calData;
 
@@ -55,29 +55,42 @@ namespace MRNUIElements
 		static ScopeModel sm = ScopeModel.getInstance();
 		static ObservableCollection<ScopeModel> ff = ScopeModel.lgetInstance();
 		static public Frame _frame;
-	//	DTO_CalendarData caldata;
+		static public DTO_Claim CurrentClaim { get; set; }
+										   //	DTO_CalendarData caldata;
 		bool b = false;
 		public NexusHome()
 		{
-		  
-		   
+
+
 			InitializeComponent();
 			//    calculationsDataGrid.DataContext = sm;
 			//      calculationsDataGrid.ItemsSource = ff;
 			_frame = frame;
+			try
+			{
+			   if (string.IsNullOrEmpty(CurrentClaim.ClaimID.ToString()))
+					new ClaimPickerPopUp().Show();
+			}
+			catch (Exception ex)
+			{
+
+				System.Windows.Forms.MessageBox.Show(ex.ToString());
+				frame.Navigate(new Schedule());
+			}
 			
-			frame.Navigate(new Schedule());
+			
+				
 		  //  frame.Navigate(new CompoundDataGridRow());
 		}
 
-	  
-	
+
+
 
 
 
 		private void LogOut(object sender, RoutedEventArgs e)
 		{
-		
+
 			this.NavigationService.Navigate(new Login());
 		}
 
@@ -85,32 +98,32 @@ namespace MRNUIElements
 		private void DocumentUpload_Click(object sender, RoutedEventArgs e)
 		{
 			//AnalogFileUploadPage page = new AnalogFileUploadPage();
-			
+
 			frame.Navigate(new AddClaimDocumentation());
 		}
 
 		private void InvoicePageBtn(object sender, RoutedEventArgs e)
 		{
-			
+
 			frame.Navigate(new InvoicePage());
 
 		}
 
 		private void ScopeEntryButton(object sender, RoutedEventArgs e)
 		{
+
 			
-			frame.Navigate(new ScopeViewer());
 		}
 
 		private void PaymentEntryPagebtn(object sender, RoutedEventArgs e)
 		{
-			
+
 			frame.Navigate(new PaymentEntryPage());
 		}
 
 		private void ViewCapOutButton(object sender, RoutedEventArgs e)
 		{
-			
+
 			frame.Navigate(new CapOutSheet());
 		}
 
@@ -238,8 +251,8 @@ namespace MRNUIElements
 
 			}
 		}
-			
-				
+
+
 		//	city.ToLower();
 		//	TextInfo textinfo = new CultureInfo("en-US", false).TextInfo;
 		//	textinfo.ToTitleCase(city);
@@ -256,7 +269,7 @@ namespace MRNUIElements
 
 		//}
 
-			
+
 
 		private void ShowOnMap(string from = null, string to = null)
 		{
@@ -292,7 +305,7 @@ namespace MRNUIElements
 				{ */
 
 			//ShowOnMap(null, MakeAddress(leadAddressText.Text, "", "", leadCitySTZipText.Text));
-			/*	} 
+			/*	}
 				else
 				{
 					ShowOnMap(null, leadAddressText.Text);
@@ -336,7 +349,7 @@ namespace MRNUIElements
 		}
 
 
-		
+
 
 		private void AppointmentWebView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
@@ -347,11 +360,11 @@ namespace MRNUIElements
 			}
 			else {
 				//ShowOnMap(null, MakeAddress(leadAddressText.Text, "", "", leadCitySTZipText.Text));
-				b = true; 
+				b = true;
 			}
 		}
 
-	  
+
 		private void AppointmentWebView_MouseEnter(object sender, MouseEventArgs e)
 		{
 		//	AppointmentWebView.Height = this.Height;
@@ -360,8 +373,8 @@ namespace MRNUIElements
 
 		private void button_Click(object sender, RoutedEventArgs e)
 		{
-			
-			
+
+
 		}
 
 		private void CustomerAgreementClick(object sender, RoutedEventArgs e)
@@ -381,7 +394,10 @@ namespace MRNUIElements
 
 		private void Roof_Order_BtnClick(object sender, RoutedEventArgs e)
 		{
-			frame.Navigate(new RoofMeasurmentsPage());
+			if (CurrentClaim != null)
+				frame.Navigate(new RoofMeasurmentsPage(CurrentClaim));
+			else
+				frame.Navigate(new PlanePopulationPage());
 		}
 
 		private void PlaneEntryClick(object sender, RoutedEventArgs e)
@@ -523,8 +539,8 @@ namespace MRNUIElements
 			public ScheduleViewModel()
 			{
 				Schedule dt = new Schedule();
-			 
-				
+
+
 				var startDate = Syncfusion.Windows.Controls.DateTimeExtension.StartOfWeek(DateTime.Now,DayOfWeek.Monday);
 				ScheduleAppointmentModel appointment1 = new ScheduleAppointmentModel()
 				{

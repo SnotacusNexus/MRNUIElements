@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using MRNUIElements.Models;
-using static MRNUIElements.ViewModels.ViewModelBase;
-using static MRNUIElements.Models.ScopeModel;
-//using static MRNUIElements.Models.Calculations;
-using static MRNUIElements.Models.TransactionModel;
+using NexusClaimGenerator.Models;
+using static NexusClaimGenerator.ViewModels.ViewModelBase;
+using static NexusClaimGenerator.Models.ScopeModel;
+//using static NexusClaimGenerator.Models.Calculations;
+using static NexusClaimGenerator.Models.TransactionModel;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,8 +23,8 @@ using System.Diagnostics.Tracing;
 using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.Windows.Data;
 using System.ComponentModel;
-using static MRNUIElements.MainWindow;
-using static MRNUIElements.CompoundDataGridRow;
+using static NexusClaimGenerator.MainWindow;
+using static NexusClaimGenerator.CompoundDataGridRow;
 using System.Diagnostics;
 using System.Drawing.Printing;
 using System.Drawing.Text;
@@ -33,7 +33,7 @@ using System.Windows.Forms;
 using Syncfusion.Windows.Controls.Grid;
 using Microsoft.Windows.Themes;
 
-namespace MRNUIElements.ViewModels
+namespace NexusClaimGenerator.ViewModels
 {
 
 

@@ -10,8 +10,12 @@
 
 
 
-    <Grid x:Name="Grid1" >
-        <syncfusion:SfBusyIndicator x:Name="BI" IsBusy="True" Panel.ZIndex="10" AnimationType="Liquid" LostFocus="BI_LostFocus" />
+    <Grid x:Name="Grid1">
+        <syncfusion:SfBusyIndicator x:Name="BI"
+                                    Panel.ZIndex="10"
+                                    AnimationType="Liquid"
+                                    IsBusy="True"
+                                    LostFocus="BI_LostFocus" />
         <StackPanel MinWidth="250"
                     MaxWidth="350"
                     HorizontalAlignment="Center"
@@ -59,12 +63,13 @@
             <Button x:Name="LoginBtn"
                     Click="LoginClick"
                     Content="Click To Login"
-                    IsDefault="True"
-                    Style="{StaticResource normal}" />
+                    IsDefault="True" />
             <Button x:Name="ResetPassBtn"
                     Click="LoginClick"
-                    Content="Reset Password"
-                    Style="{StaticResource normal}" />
+                    Content="Reset Password" />
+            <Button x:Name="RegisterNewUserBtn"
+                    Click="RegisterNewUser"
+                    Content="Register New User" />
 
         </StackPanel>
     </Grid>

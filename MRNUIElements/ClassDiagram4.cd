@@ -1,0 +1,1001 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MRNUIElements.Add_Vendor_Page" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Add Vendor Page.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.AddClaimDocumentation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAqBACEgTEAAAAgQoIAAAgIAhCCAABAZBAMABhBACA=</HashCode>
+      <FileName>AddClaimDocumentation.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.AddClaimPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddClaimPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.AddressZipcodeValidation" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAACAAAgAAAAAYBAAEhAAAgCAAAAABgAAABAIAIAA=</HashCode>
+      <FileName>AddressZipcodeValidation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.App" Collapsed="true">
+    <Position X="23" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ClaimFolderView" Collapsed="true">
+    <Position X="23" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAEAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Claim Administration.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ApplicationCommand" Collapsed="true">
+    <Position X="24.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABIQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Claim Administration.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Claim_Administration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>J0AQBEIiDwBiBEgBBpAADqhGABQDAgpH6QkKADpAgSg=</HashCode>
+      <FileName>Claim Administration.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ClaimAdministrationListItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimAdministrationListItem.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ClaimDataManipulation" Collapsed="true">
+    <Position X="16" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimDataManipulation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ClaimPickerPopUp" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAgBAAAAAAQgAAABAAAAB2AAAAFAEAAA=</HashCode>
+      <FileName>ClaimPickerPopUp.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.CustomerAgreement" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAAAAAQAAAAAAAEBAAYAgCAIKJAAAAAAACA=</HashCode>
+      <FileName>CustomerAgreement.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.DamageToolbar" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DamageToolbar.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.GetClaimsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JoURhEIiBwgiFCFEApAYDg3GABWCIgYEaAgKmglDNSg=</HashCode>
+      <FileName>GetClaimsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.InvoicePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAgABAARAgAAgACAAAAgAAAAACAAQAIAAgAAAgI=</HashCode>
+      <FileName>InvoicePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ClaimInvoice" Collapsed="true">
+    <Position X="26.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAABAAAAAAAAAIAAACACAAAAAAAAAAAA=</HashCode>
+      <FileName>InvoicePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Login" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAABAAAAAAAAARICAAAAAAYAAAAAAAAQA=</HashCode>
+      <FileName>Login.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MRNUIElements.LoginAs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAACAAUAAAAAEAAAgAAAAAAAAAAAAAAAIAEAAAAA=</HashCode>
+      <FileName>LoginAs.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIIAgEAEAAAACAAAAAAAAAAAgAAAADwAAAAAAAACA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.MRNLOGO" Collapsed="true">
+    <Position X="14.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MRNLOGO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.MRNLogo1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MRNLogo1.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.PaymentEntryPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAoAAQADNAEAQAAAAEAACIAQAAAAQQYAAACABJQhM=</HashCode>
+      <FileName>PaymentEntryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.PDFTextExtractor" Collapsed="true">
+    <Position X="24.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PDFTextExtractor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.PlaneEntryPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAIAAAAAAACA=</HashCode>
+      <FileName>PlaneEntryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.PlanePopulationPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAIAAEAABAAAEAAQAAAQAIAAAA=</HashCode>
+      <FileName>PlanePopulationPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Quick_Claim_Entry" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Quick Claim Entry.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.QuickClaimAdder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>QuickClaimAdder.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.RoofInspectionWizard" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBAAACQgAQggABAABAABAAAABAAAEAAAQAgAAAAJAA=</HashCode>
+      <FileName>RoofInspectionWizard.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.RoofOrderPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RoofOrderPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ScopeViewer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAMTBIARAAQAGYUoAE4AYyQECCQAMGYUIACCAIAE2I=</HashCode>
+      <FileName>ScopeViewer.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.SignatureBox" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAIAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>SignatureBox.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.SignaturePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SignaturePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.TextInputToVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TextInputToVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utilities" Collapsed="true">
+    <Position X="17.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEEIBAAEAAEACAACAIBAAAAAAAAAAAAQACAAAAAAAA=</HashCode>
+      <FileName>Utilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ClaimCustomerInfo" Collapsed="true">
+    <Position X="12.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAIAAAAAAAAAEAAAAAAAAAgAAAAAACBACAAAAAAAA=</HashCode>
+      <FileName>ViewClaimInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ViewClaimInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAEAAAAAAAAIAAAAAABAAEQAAAAAAAAKAAAAABAAA=</HashCode>
+      <FileName>ViewClaimInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.AddClaimDocumentationUC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAqBACEgTEAAAAgQIIAAAgIAhCCAABAZBAMABhBACA=</HashCode>
+      <FileName>ViewModels\UserControls\AddClaimDocumentation.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.InvoicePageUC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAgABAAQAgAAgAAAAAAgAAAAACAAQAIAAAAAAwI=</HashCode>
+      <FileName>ViewModels\UserControls\InvoicePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.PaymentEntryPageUC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAoAAQACMAEAQAQIAEAAgIAQAQAARAYAAAAABJAgI=</HashCode>
+      <FileName>ViewModels\UserControls\PaymentEntryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ScopeViewerUC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAISBIARABQAGYUgAEgAYyQECAQAECYUIICAAIAEiI=</HashCode>
+      <FileName>ViewModels\UserControls\ScopeViewerUC.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.ClaimData" Collapsed="true">
+    <Position X="14.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAQAABCAAIAAAAAAAAgEgABAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.Inspection" Collapsed="true">
+    <Position X="24.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAABAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.InspectionImage" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.InspectionItem" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAQAAAAIAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.InspectionItemType" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.ClaimContacts" Collapsed="true">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.ContactInfo" Collapsed="true">
+    <Position X="21.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAACAAEAAAAAgAAAAAIAAAAABAAAAAgAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.CustomerInfo" Collapsed="true">
+    <Position X="24.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAQAAAQAggAAACAAAAAQAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.ClaimInfo" Collapsed="true">
+    <Position X="24.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAACAAAAAAAAgAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.Invoices" Collapsed="true">
+    <Position X="19.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAACACAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.Checks" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAMAACAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.ScheduledRoofOrder" Collapsed="true">
+    <Position X="3.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEAAAAADAAQAAAQAAAAAECAAAAAAAAEAAAAIAAAAgA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.RoofOrder" Collapsed="true">
+    <Position X="14.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.RoofMeasurements" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQAAAAAACEAAQAAAAwARBAAgAJAACIBIAAACAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.LeadInfo" Collapsed="true">
+    <Position X="24.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAIAAAAAAQAAAAAAAACAAAABQAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.InsurancePolicyInfo" Collapsed="true">
+    <Position X="12.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAEQAAAAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.CallLog" Collapsed="true">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAMQAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.ClaimStatusData" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAEAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.ClaimContactInfo" Collapsed="true">
+    <Position X="9" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAIAAABAAAAAEAAAAAAAIAAAAAgAKAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.AdjustedSupplies" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.InvoiceItem" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAKAAAAAAABAAAAAAAAAAAAAAAAIAAAAAAgAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.MiscReceipt" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Collection.CapOut" Collapsed="true">
+    <Position X="14.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAABAERJABgEAgAIAAAAAAACECAIDABIAAAAAAAk=</HashCode>
+      <FileName>ClaimData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ClaimUtilities.ClaimDataService" Collapsed="true">
+    <Position X="17.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAATQEAUsCAUAgCBBAIAqABEAIAEgSARSgQABAIBCAg=</HashCode>
+      <FileName>ClaimDataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.ClaimDetails" Collapsed="true">
+    <Position X="21.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ZgIAAAAAANERgQAAQCoFABAEABABIICCAsAAgAAEEQA=</HashCode>
+      <FileName>ClaimDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.CapoutResult" Collapsed="true">
+    <Position X="17.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAgAAgAAkgAAAAAAAAAAAAAAAAAABAACAAAAAA=</HashCode>
+      <FileName>ClaimDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.CapoutQuestion" Collapsed="true">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAIEIFgEAAAgABAAIgAEAAAAYAQBgCQAAAAEEQGAA=</HashCode>
+      <FileName>ClaimDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.Appointments" Collapsed="true">
+    <Position X="26.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Appointments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.DetailedClaimModel" Collapsed="true">
+    <Position X="9" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>chRCIQAqwADBkGHZcAlEQgQBUDIgJECTXBzKSGIACQA=</HashCode>
+      <FileName>Models\DetailedClaimModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.KeyValueFilterModel" Collapsed="true">
+    <Position X="21.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\KeyValueFilterModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.InspectionPhoto" Collapsed="true">
+    <Position X="10.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAEAAAAAAAAABAAAAAAAAAAMAA=</HashCode>
+      <FileName>Models\RoofInspectionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.RoofInspectionModel" Collapsed="true">
+    <Position X="26.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABBAQAAAAAABAAAAAgAAAIAJIAAIIAACAAJACA=</HashCode>
+      <FileName>Models\RoofInspectionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.EagleViewPlaneMeasurement" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIwAAAEAAAgAAQAAIAAAAAIAAgAAABJAAABAAAAA=</HashCode>
+      <FileName>Models\RoofPlanes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.RoofMaterialOrder" Collapsed="true">
+    <Position X="10.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAQAEAAAAEAAgICAABAAAAAAAAASAAAAAAAAAAKAIE=</HashCode>
+      <FileName>Models\RoofPlanes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.EagleViewPlaneMeasurementConverter" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\RoofPlanes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.DetailedCompactClaimModel" Collapsed="true">
+    <Position X="10.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AmGH4hJIWCBAAsMgLgBRQQZRAGAQCkSCQAiIFABBIQg=</HashCode>
+      <FileName>Models\ScopeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.ScopeModel" Collapsed="true">
+    <Position X="24.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GArjDEAWbAlyGkHh4c2gBRQEYjFWVN6DAgQApAQAIQA=</HashCode>
+      <FileName>Models\ScopeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.TransactionModel" Collapsed="true">
+    <Position X="14.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAEQAAAAAAAABAAAIAAACAQAAAAAEAQEAAA=</HashCode>
+      <FileName>Models\ScopeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.RoofStatsModel" Collapsed="true">
+    <Position X="17.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAABAQAAEAAAAABAAAAAAADAQISAAAAAAEAAA=</HashCode>
+      <FileName>Models\ScopeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.ShapePresetModel" Collapsed="true">
+    <Position X="17.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ShapePresetModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ClaimDataService.AccessableClaimsList" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAABAAAAAAAICAAAAAAAQggAAAAAACA=</HashCode>
+      <FileName>ClaimUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.ClaimView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ClaimView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.DownloadFilePath" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAGIAAAACAQACAEYAEAIIAAgAAAAAQCQAhAACABAAA=</HashCode>
+      <FileName>Controllers\DownloadFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Inspection" Collapsed="true">
+    <Position X="26.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\Inspection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Login" Collapsed="true">
+    <Position X="3.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.New_Inspection_Page" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAIAAABAAABAAAAFAAAAQAABAAAA=</HashCode>
+      <FileName>Controllers\New Inspection Page.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Controllers.InspectionImage" Collapsed="true">
+    <Position X="9" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAACAIAAAAAAQAQAAAAABAAQEAAgEAAIAA=</HashCode>
+      <FileName>Controllers\New Inspection Page.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.Schedule" Collapsed="true">
+    <Position X="23" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAIAAAAAAIAAAAgAAgA=</HashCode>
+      <FileName>Controllers\Schedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.ServiceLayer" Collapsed="true">
+    <Position X="12.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>u32Ndfv8b8P0rv7Z/a8ct1Y5e7CfN83KcJPfl23fEXw=</HashCode>
+      <FileName>Controllers\ServiceLayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Controllers.UploadDocuments" Collapsed="true">
+    <Position X="16" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAAAAAAgAAAAAAAAAYAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\UploadDocuments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.RoofOrder.RoofOrder" Collapsed="true">
+    <Position X="12.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJgQABAAAAAAAAAAACgRAEQAAAAAAICAAIAAAAAAAAA=</HashCode>
+      <FileName>Controllers\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ImageManipulation.ImageResizer" Collapsed="true">
+    <Position X="23" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImageResizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Interface.Command.CloseCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Interface\Command\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Interface.Command.AddInvoiceCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAEAAAAAAAACA=</HashCode>
+      <FileName>Interface\Command\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Interface.Command.AddPaymentCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAgEAAAAAAAAAAAAAAEAAAAAAAACA=</HashCode>
+      <FileName>Interface\Command\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Interface.Command.SelectClaimCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAEAAAAACAACA=</HashCode>
+      <FileName>Interface\Command\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Interface.Command.RoutedCommands" Collapsed="true">
+    <Position X="19.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAA=</HashCode>
+      <FileName>Interface\Command\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Interface.Command.ClaimCommands" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\Command\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Models.Structure.KeyValueModel" Collapsed="true">
+    <Position X="23" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAIAAAAAAAAAAAAAAACAAAAAAAAAAKAAYCACAA=</HashCode>
+      <FileName>Models\KeyValueModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.Structure.Lines" Collapsed="true">
+    <Position X="26.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAsAAACQAAAQAAAAAAAAAAAAAAoAAgwAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Lines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.Structure.Planes" Collapsed="true">
+    <Position X="14.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACQAQAAAAAAAQAAAAAAAAqgAgQAAABAAAAAAAA=</HashCode>
+      <FileName>Models\Planes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.Structure.Point3d" Collapsed="true">
+    <Position X="17.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIACYIAAAAAAAAAgAAAAAAAQAAAQAAAgAAAAAYAE=</HashCode>
+      <FileName>Models\Points.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.Structure.Stucture" Collapsed="true">
+    <Position X="23" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Stucture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Models.Structure.Sub_Stucture" Collapsed="true">
+    <Position X="24.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAIAAAAAAAA=</HashCode>
+      <FileName>Models\Sub_Stucture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Viewers.PdfViewer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>PdfViewer.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Properties.Resources" Collapsed="true">
+    <Position X="24.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Properties.Settings" Collapsed="true">
+    <Position X="14.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAIAAAAAABAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Utility.Command" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACAAQAAEAAAABAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Utility\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utility.BooleanToVisibility" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utility.Inverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utility.Ext" Collapsed="true">
+    <Position X="17.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Utility.EnumtoVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utility.TexttoPercentageConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utility.PickerVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utility.ColorToBrushConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utility.BindableStaticResource" Collapsed="true">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Utility.ResourceKeyToResourceConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.Utility.GalarySelection" Collapsed="true">
+    <Position X="19.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAAAAAAIAAABAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.Utility.ShapeHelper" Collapsed="true">
+    <Position X="16" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.ClaimCaroselView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ClaimCaroselView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.ClaimDetailGroupBarView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ClaimDetailGroupBarView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.ClaimTreeView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ClaimTreeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.PlaneViewModel" Collapsed="true">
+    <Position X="16" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\PlaneViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.TextConverter" Collapsed="true">
+    <Position X="26.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ViewModels\TextConverterCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.TextConverterCommand" Collapsed="true">
+    <Position X="9" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\TextConverterCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.ViewModelBase" Collapsed="true">
+    <Position X="21.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAFAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.Commands.SaveCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Commands\SaveCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.Converters.BackgroundConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Converters\BackgroundConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.Converters.NumberSign" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Converters\BackgroundConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.Converters.DoubleToDurationConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Converters\BackgroundConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MRNUIElements.ViewModels.Converters.ListToCollection" Collapsed="true">
+    <Position X="9" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAQAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Converters\ListToCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MRNUIElements.Utility.Controls" Collapsed="true">
+    <Position X="9" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUAAABAAAAAAEAAAAAAQEgBAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MRNUIElements.Utility.Tabs" Collapsed="true">
+    <Position X="14.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MRNUIElements.Utility.Groups" Collapsed="true">
+    <Position X="10.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAABAAAEAAgECAAAAAAAAAEAAAAQAgAACASAAA=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MRNUIElements.Utility.ICons" Collapsed="true">
+    <Position X="12.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgRQhlAOEWAImjAiEMhQ1qAUaggaCBBWCAGAyIEKAkE=</HashCode>
+      <FileName>Utility\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

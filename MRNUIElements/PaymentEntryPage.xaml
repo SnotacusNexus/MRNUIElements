@@ -1,43 +1,44 @@
-﻿<Page x:Class="MRNUIElements.PaymentEntryPage"
+﻿<PageFunction x:Class="MRNUIElements.PaymentEntryPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"    
+      x:TypeArguments="sys:Object"
       xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+      xmlns:claimspage="clr-namespace:MRNUIElements"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       xmlns:local="clr-namespace:MRNUIElements"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       Title="Payment Entry Page"
-      d:DesignHeight="300"
-      d:DesignWidth="300"
+      Width="421"
+      Height="240"
+      Loaded="Page_Loaded"
       mc:Ignorable="d">
 
     <Page.Resources>
-
-        <CollectionViewSource x:Key="dTO_PaymentViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Payment}, CreateList=True}" />
-
-        <CollectionViewSource x:Key="dTO_LU_PaymentDescriptionViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_PaymentDescription}, CreateList=True}" />
 
 
 
     </Page.Resources>
 
-    <Grid Width="477"
-          Height="300"
-          Margin="-2,0,-175,0"
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center">
-        <StackPanel VerticalAlignment="Top">
-            <TextBlock x:Name="textBlock"
-                       Margin="0"
-                       HorizontalAlignment="Center"
-                       Style="{StaticResource normal}"
-                       Text="Payment Entry"
-                       TextWrapping="Wrap" />
-        </StackPanel>
+    <Grid Width="420"
+          Height="240"
+          Margin="0,0,1,0"
+          HorizontalAlignment="Right"
+          VerticalAlignment="Top">
+
+        <TextBlock x:Name="textBlock"
+                   Width="156"
+                   Margin="134,20,130,190"
+                   HorizontalAlignment="Center"
+                   Style="{StaticResource normal}"
+                   Text="Payment Entry"
+                   TextWrapping="Wrap" />
+
         <Button x:Name="SubmitScopeEntry"
                 Width="75"
-                Margin="52,270,0,0"
+                Margin="112,194,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="SubmitScopeEntry_Click"
@@ -45,7 +46,7 @@
                 IsEnabled="False" />
         <Button x:Name="CancelScopeEntry"
                 Width="75"
-                Margin="188,270,0,0"
+                Margin="224,194,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="CancelScopeEntry_Click"
@@ -53,21 +54,23 @@
                 IsCancel="True" />
         <Grid x:Name="grid1"
               Width="252"
-              Margin="38,116,0,0"
+              Height="88"
+              Margin="54,92,0,0"
               HorizontalAlignment="Left"
               VerticalAlignment="Top"
-              DataContext="{StaticResource dTO_PaymentViewSource}">
-            <Grid.ColumnDefinitions>
+              >
+        <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="67" />
                 <ColumnDefinition Width="Auto" MinWidth="137" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="29"/>
+                <RowDefinition Height="29" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" MinHeight="35" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
             <Label Grid.Row="1"
                    Width="100"
                    Height="29"
@@ -86,170 +89,58 @@
                         VerticalAlignment="Center"
                         Foreground="White"
                         LostFocus="paymentDateDatePicker_LostFocus"
-                        SelectedDate="{Binding PaymentDate,
-                                               Mode=TwoWay,
-                                               NotifyOnValidationError=true,
-                                               ValidatesOnExceptions=true}" Style="{DynamicResource DatePickerStyle1}"/>
-            <Label
-                   Width="100"
-                   Height="30"
+                        SelectedDate=""
+                        Style="{DynamicResource DatePickerStyle1}" />
+            <Label Grid.Row="2"
+                   Width="86"
+                   Height="25"
+                   Margin="0,0,0,1"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Background="{x:Null}"
-                   Content="Claim ID:"
+                   Content="Payment Type:"
                    Foreground="White" />
-            <TextBlock Grid.Column="1" x:Name="ClaimIDTextBlock" Foreground="White" Background="Transparent" FontSize="16" TextAlignment="Center" Text=""/>
+            <TextBlock x:Name="PaymentDescriptionTextBlock"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       Margin="0,1,0,0"
+                       Background="Transparent"
+                       FontSize="16"
+                       Foreground="White"
+                       TextAlignment="Right" />
             <Label Grid.Row="3"
                    Width="100"
-                   Height="28"
-                   Margin="0,0,0,7"
+                   Height="25"
+                   Margin="0,4,0,6"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
                    Background="{x:Null}"
                    Content="Amount:"
                    Foreground="White" />
             <syncfusion:CurrencyTextBox x:Name="amountTextBox"
-                     Grid.Row="3"
-                     Grid.Column="1"
-                     Width="120"
-                     Height="23"
-                     Margin="0,0,0,12"
-                     HorizontalAlignment="Left"
-                     VerticalAlignment="Center"
-                     Background="{x:Null}"
-                     Foreground="#FFFBFBFB"
-                     Text="{Binding Amount,
-                                    Mode=TwoWay,
-                                    NotifyOnValidationError=true,
-                                    ValidatesOnExceptions=true}"
-                     TextChanged="amountTextBox_TextChanged" PositiveForeground="White" WatermarkTextForeground="#FFAEAEAE" ApplyNegativeForeground="True" EnableFocusColors="True" NullValue="0" WatermarkTextIsVisible="True" WatermarkText="Payment Amount" Value="0" UseNullOption="True" />
-            <Label
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Content="Payment Type:"
-                   Foreground="White" Height="26" Width="86" Grid.Row="2" />
-            <TextBlock x:Name="PaymentDescriptionTextBlock" Foreground="White" Background="Transparent" FontSize="16" TextAlignment="Center" Text="" Grid.Column="1" Grid.Row="2"/>
-        </Grid>
-        <Grid x:Name="grid2"
-              Margin="80,81,0,0"
-              HorizontalAlignment="Left"
-              VerticalAlignment="Top"
-              DataContext="{StaticResource dTO_LU_PaymentDescriptionViewSource}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-        </Grid>
-        <Grid x:Name="grid3"
-              Width="252"
-              Margin="38,69,0,0"
-              HorizontalAlignment="Left"
-              VerticalAlignment="Top"
-              DataContext="{DynamicResource dTO_LU_PaymentDescriptionViewSource}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Width="120"
+                                        Height="23"
+                                        Margin="4,5,0,7"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ApplyNegativeForeground="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FFDC4040"
+                                        EnableFocusColors="True"
+                                        FocusedBorderBrush="#FFF3D512"
+                                        Foreground="#FFFBFBFB"
+                                        PositiveForeground="White"
+                                        TextChanged="amountTextBox_TextChanged"
+                                        WatermarkText="Payment Amount"
+                                        WatermarkTextForeground="#FFAEAEAE"
+                                        WatermarkTextIsVisible="True"
+                                      />
 
 
         </Grid>
-        <Canvas x:Name="FirstCheckStatus"
-                Width="32"
-                Height="32"
-                Margin="317,83,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" Visibility="Hidden">
-            <Canvas.Background>
-                <ImageBrush ImageSource="ResourceFiles/CheckMark.png" />
-            </Canvas.Background>
-        </Canvas>
-        <Canvas x:Name="DepreciationCheckStatus"
-                Width="32"
-                Height="32"
-                Margin="317,121,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" Visibility="Hidden">
-            <Canvas.Background>
-                <ImageBrush ImageSource="ResourceFiles/QuestionMark.png" />
-            </Canvas.Background>
-        </Canvas>
-        <Canvas x:Name="SupplementCheckStatus"
-                Width="32"
-                Height="32"
-                Margin="317,159,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" Visibility="Hidden">
-            <Canvas.Background>
-                <ImageBrush ImageSource="ResourceFiles/StopHand.png" />
-            </Canvas.Background>
-        </Canvas>
-        <Canvas x:Name="UpgradeCheckStatus"
-                Width="32"
-                Height="32"
-                Margin="317,196,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" Visibility="Hidden">
-            <Canvas.Background>
-                <ImageBrush ImageSource="ResourceFiles/XMark.png" />
-            </Canvas.Background>
-        </Canvas>
-        <Canvas x:Name="DeductibleCheckStatus"
-                Width="32"
-                Height="32"
-                Margin="317,233,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" Visibility="Hidden">
-            <Canvas.Background>
-                <ImageBrush ImageSource="ResourceFiles/GreenArrow.png" />
-            </Canvas.Background>
-        </Canvas>
-        <Label x:Name="label"
-               Width="104"
-               Height="27"
-               Margin="363,86,0,0"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Content="First Check"
-               Foreground="White" Visibility="Hidden" />
-        <Label x:Name="label_Copy"
-               Width="104"
-               Height="27"
-               Margin="363,124,0,0"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Content="Supplement"
-               Foreground="White" Visibility="Hidden" />
-        <Label x:Name="label_Copy1"
-               Width="104"
-               Height="27"
-               Margin="363,162,0,0"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Content="Depreciation"
-               Foreground="White" Visibility="Hidden" />
-        <Label x:Name="label_Copy2"
-               Width="104"
-               Height="27"
-               Margin="363,199,0,0"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Content="Upgrade"
-               Foreground="White" Visibility="Hidden" />
-        <Label x:Name="label_Copy3"
-               Width="104"
-               Height="27"
-               Margin="363,237,0,0"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Content="Deductible"
-               Foreground="White" Visibility="Hidden" />
+       
 
-
+  
     </Grid>
-</Page>
+</PageFunction>

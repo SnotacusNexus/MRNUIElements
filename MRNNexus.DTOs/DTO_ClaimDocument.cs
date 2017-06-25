@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace MRNNexusDTOs
+namespace MRNNexus_Model
 {
     [KnownType(typeof(DTO_Base))]
     [DataContract]
@@ -55,5 +55,8 @@ namespace MRNNexusDTOs
         public string InitialImagePath { get; set; }
         [DataMember]
         public Nullable<int> NumInitials { get; set; }
-    }
+		[DataMember]
+		public string DocumentComments { get; set; }
+
+	}
 }

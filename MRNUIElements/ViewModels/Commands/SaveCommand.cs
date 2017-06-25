@@ -7,23 +7,23 @@ using System.Windows.Input;
 
 namespace MRNUIElements.ViewModels.Commands
 {
-    public class SaveCommand : ICommand
-    {
-        public ViewModelBase ViewModel   {get;set;} 
-        public SaveCommand(ViewModelBase viewModel)
-        {
-            this.ViewModel = viewModel;
-        }
-        public event EventHandler CanExecuteChanged;
+	public class SaveCommand : ICommand
+	{
+		public ViewModelBase ViewModel { get; set; }
+		public SaveCommand(ViewModelBase viewModel)
+		{
+			this.ViewModel = viewModel;
+		}
+		public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
+		public bool CanExecute(object parameter)
+		{
+			return true;
+		}
 
-        public void Execute(object parameter)
-        {
-            this.ViewModel.SaveMethod();
-        }
-    }
+		public void Execute(object parameter)
+		{
+			this.ViewModel.SaveMethod();
+		}
+	}
 }

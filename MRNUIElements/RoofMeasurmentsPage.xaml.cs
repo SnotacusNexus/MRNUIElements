@@ -59,31 +59,56 @@ namespace MRNUIElements
 		//    string PropertyAddressBlockEnd = "Directions from MRN Homes of Ga. to this property";
 		public RoofMeasurmentsPage(DTO_Claim claim = null)
 		{
+			if (claim != null)
+				this.claim = claim;
+
 			InitializeComponent();
-			_busyIndicator = ((MainWindow)App.Current.MainWindow).busyIndicator;
-			GetDialogData();
-			if (claim == null)
+			//	_busyIndicator = ((MainWindow)App.Current.MainWindow).busyIndicator;
+			if (claim != null || this.claim != null)
 			{
-				claim = this.claim;
+
+				try
+				{
+
+
+
+					if (claim == null && this.claim != null)
+					{
+						claim = this.claim;
+					}
+					if (s.Claim != null && this.claim == null)
+						this.claim = s.Claim;
+					GetDialogData(claim);
+					Inspection = new DTO_Inspection();
+					Plane = new DTO_Plane();
+				}
+				catch (Exception ex)
+				{
+					System.Windows.Forms.MessageBox.Show(ex.ToString());
+
+				}
 			}
-			if (s.Claim != null && claim == null)
-				this.claim = s.Claim;
+			else
+			{
+				System.Windows.Forms.MessageBox.Show("Something went wrong I'm going back!");
 
-			Inspection = new DTO_Inspection();
-			Plane = new DTO_Plane();
+				var ns = NavigationService.GetNavigationService(this);
 
-			PDFTextExtractor pdfExtract = new PDFTextExtractor();
-			var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "PDF Files (*.pdf)|*.pdf" };
-			var result = ofd.ShowDialog();
-			if (result == false) return;
-			textbox.Text = pdfExtract.Extract(ofd.FileName, true);
-			FillVariables(pdfExtract.Extract(ofd.FileName, true));
-			this.DataContext = this;
+				return;
+
+			}
+
+
+
 
 		}
 
-			async private Task<bool> DoesMeasurementsExist(DTO_Claim _claim)
+		async private Task<bool> DoesMeasurementsExist(DTO_Claim _claim)
 		{
+			if (_claim == null && claim != null)
+				_claim = this.claim;
+			else claim = _claim;
+
 			if (s.InspectionsList != null)
 				s.InspectionsList = null;
 			if (s.PlanesList != null)
@@ -95,8 +120,8 @@ namespace MRNUIElements
 			catch (Exception)
 			{
 				System.Windows.Forms.MessageBox.Show("Need to add an inspection for the list to have any to find.");
-															 //TODO add ADD Inspection for claim Here
-															 //throw;
+				//TODO add ADD Inspection for claim Here
+				//throw;
 			}
 			try
 			{
@@ -108,6 +133,16 @@ namespace MRNUIElements
 				System.Windows.Forms.MessageBox.Show("Need to add measurements for the list to have any to find.");
 
 				//TODO add AddPlane script here
+				try
+				{
+
+				}
+				catch (Exception Ex)
+				{
+
+					throw;
+				}
+
 				return false;
 
 				//throw;
@@ -124,11 +159,11 @@ namespace MRNUIElements
 				{
 
 					System.Windows.Forms.MessageBox.Show("Something went wrong.");
-					return false;											 //throw;
+					return false;                                            //throw;
 				}
 
 
-			
+
 			try
 			{
 				if (s.PlanesList.Exists(y => y.InspectionID == s.Inspection.InspectionID))
@@ -151,32 +186,99 @@ namespace MRNUIElements
 
 
 
-					
+
 
 		}
 
+		//async void ViewDocument(string str, string str2 = null)
+		//{
+		//	try { 
+		//		var web = new System.Net.WebClient();
+		//		stream = new MemoryStream(await web.DownloadDataTaskAsync(str));
+		//		while (stream == null)
+		//			if (_busyIndicator.Visibility == Visibility.Collapsed)
+		//				_busyIndicator.Visibility = Visibility.Visible;
+
+
+		//		_busyIndicator.Visibility = Visibility.Collapsed;
+		//	}
+		//	catch (Exception ex)
+		//	{
+
+		//		System.Windows.Forms.MessageBox.Show(ex.ToString());
+		//		throw;
+		//	}
+
+
+
+		//}
+
+
+		string DisplayRecordedClaimDocuments(DTO_ClaimDocument _claimDocument, DTO_ClaimDocument _claimDocument2 = null)
+		{
+			_busyIndicator.Visibility = Visibility.Visible;
+			if (_claimDocument != null)
+				if (_claimDocument.FileExt == ".pdf" || _claimDocument.FileExt == ".PDF")
+				{
+					return "http://" + _claimDocument.FilePath + _claimDocument.FileName + _claimDocument.FileExt;
+				}
+			return null;
+		}
+		DTO_ClaimDocument GetClaimDocument(DTO_Claim _claim, int _claimDocTypeID)
+		{
+			return s.ClaimDocumentsList.Find(x => x.ClaimID == _claim.ClaimID && x.DocTypeID == _claimDocTypeID);
+
+		}
 		async private void GetProducts()
 		{
 			await s.GetProducts();
 		}
-		async private void GetDialogData()
+		async private void GetDialogData(DTO_Claim claim)
 		{
+			DTO_Claim _claim = new DTO_Claim();
 			if (s.Products != null)
 				s.Products = null;
 			await s.GetProducts();
-			if(!_busyIndicator.IsVisible)
-			_busyIndicator.Visibility = Visibility.Visible;
-			while (s.Products == null)
-				_busyIndicator.IsBusy=true;
-			_busyIndicator.Visibility = Visibility.Collapsed;
-			
+			//	if(!_busyIndicator.IsVisible)
+			//	_busyIndicator.Visibility = Visibility.Visible;
+			//	while (s.Products == null)
+			//		_busyIndicator.IsBusy=true;
+			//	_busyIndicator.Visibility = Visibility.Collapsed;
 
-					
-				
-								
-			
+			if (!string.IsNullOrEmpty(claim.ClaimID.ToString()))
+				_claim = claim;
+			else if (!string.IsNullOrEmpty(this.claim.ToString()))
+				_claim = this.claim;
 
-			
+			else
+				System.Windows.Forms.MessageBox.Show("No Claim To Get For Dialog Data.");
+
+
+			if (await DoesMeasurementsExist(_claim))
+			{
+				PDFTextExtractor pdfExtract = new PDFTextExtractor();
+				DisplayRecordedClaimDocuments(GetClaimDocument(_claim, 3));
+
+				//textbox.Text = pdfExtract.Extract(DisplayRecordedClaimDocuments(GetClaimDocument(_claim, 3)), true);
+				//FillVariables(pdfExtract.Extract(DisplayRecordedClaimDocuments(GetClaimDocument(_claim, 3)), true));
+				this.DataContext = this;
+				System.Windows.Forms.MessageBox.Show("We found claim." + _claim.ClaimID.ToString());
+			}
+
+			else
+			{
+				System.Windows.Forms.MessageBox.Show("We couldn't find a claim associated to gather plane details so we will give you the opportunity to find it yourself.");
+				PDFTextExtractor pdfExtract = new PDFTextExtractor();
+				var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "PDF Files (*.pdf)|*.pdf" };
+				var result = ofd.ShowDialog();
+				if (result == false) return;
+				//textbox.Text = pdfExtract.Extract(ofd.FileName, true);
+				//FillVariables(pdfExtract.Extract(ofd.FileName, true));
+				this.DataContext = this;
+			}
+
+
+
 
 		}
 		private List<string> products = new List<string>();
@@ -208,14 +310,14 @@ namespace MRNUIElements
 
 			return ItemList;
 		}
-			//TODO:    Finish working the selectionlists for shingle
-			//TODO:	   Link NewRoofs Table
-			//TODO:	   GetCurrentClaimFromParent
-			//TODO:    Find and implement another browser to display google maps and implement PDF Viewer to display the pdf created by this for viewing later "Resume Feature"
-			//TODO:	   Update ClaimContacts when ordered
-			//TODO:    Build Order
-			//TODO:	   Add Order
-			//TODO:    Retrieve All info that is available to enable resume feature
+		//TODO:    Finish working the selectionlists for shingle
+		//TODO:	   Link NewRoofs Table
+		//TODO:	   GetCurrentClaimFromParent
+		//TODO:    Find and implement another browser to display google maps and implement PDF Viewer to display the pdf created by this for viewing later "Resume Feature"
+		//TODO:	   Update ClaimContacts when ordered
+		//TODO:    Build Order
+		//TODO:	   Add Order
+		//TODO:    Retrieve All info that is available to enable resume feature
 
 		public List<string> URL(string str)
 		{
@@ -472,8 +574,8 @@ namespace MRNUIElements
 		async private void SetInspectionPlaneData()
 		{
 			DTO_Inspection token = new DTO_Inspection();
-			DTO_Claim claim = new DTO_Claim { ClaimID = 27 };
-			try
+
+			//TODO Try Catch
 			//{
 			//	await s.GetAllInspections();
 			//	if (s.InspectionsList.Exists(x => x.ClaimID == claim.ClaimID))
@@ -482,111 +584,128 @@ namespace MRNUIElements
 
 
 			//	else
-				{
-					if (s.Inspection == null)
-					{
 
-						{
-							token.ClaimID = claim.ClaimID;
-							token.Comments = "None";
-							token.CoverPool = false;
-							token.MagneticRollers = true;
-							token.InspectionDate = DateTime.Now;
-							token.ShingleTypeID = 1;
-							token.SkyLights = true;
-							token.Leaks = false;
-							token.GutterDamage = false;
-							token.DrivewayDamage = false;
-							token.IceWaterShield = true;
-							token.EmergencyRepair = false;
-							token.EmergencyRepairAmount = 0;
-							token.QualityControl = true;
-							token.ProtectLandscaping = true;
-							token.RemoveTrash = true;
-							token.FurnishPermit = true;
-							token.InteriorDamage = false;
-							token.ExteriorDamage = false;
-							token.RoofAge = 10;
-							token.Satellite = false;
-							token.TearOff = true;
-							token.SolarPanels = false;
-							token.RidgeMaterialTypeID = 1;
-							token.LightningProtection = false;
-
-
-
-
-							await s.AddInspection(token);
-						}
-						//token.ClaimID = result.ClaimID;
-						//token.Comments = result.Comments;
-						//token.CoverPool = result.CoverPool;
-						//token.DrivewayDamage = result.DrivewayDamage;
-						//token.EmergencyRepair = result.EmergencyRepair;
-						//token.EmergencyRepairAmount = result.EmergencyRepairAmount;
-						//token.ExteriorDamage = result.ExteriorDamage;
-						//token.FurnishPermit = result.FurnishPermit;
-						//token.GutterDamage = result.GutterDamage;
-						//token.IceWaterShield = result.IceWaterShield;
-						//token.InspectionDate = result.InspectionDate;
-						//token.InteriorDamage = result.InteriorDamage;
-						//token.Leaks = result.Leaks;
-						//token.MagneticRollers = result.MagneticRollers;
-						//token.ProtectLandscaping = result.ProtectLandscaping;
-						//token.QualityControl = result.QualityControl;
-						//token.RemoveTrash = result.RemoveTrash;
-						//token.RidgeMaterialTypeID = result.RidgeMaterialTypeID;
-						//token.RoofAge = result.RoofAge;
-						//token.Satellite = result.Satellite;
-						//token.ShingleTypeID = result.ShingleTypeID;
-						//token.SkyLights = result.SkyLights;
-						//token.SolarPanels = result.SolarPanels;
-						//token.TearOff = result.TearOff;
-						//token.LightningProtection = result.LightningProtection;
-						//token.SuccessFlag = true;
-						if (s.Inspection.Message == null) {
-
-
-
-
-							DTO_Plane p = new DTO_Plane();
-
-
-							p.SquareFootage = TotalSQFTOFF;
-							p.RidgeLength = (int)RidgeMeasurement;
-							p.RakeLength = (int)RakeMeasurement;
-							p.Pitch = PredPitch;
-							p.HipValley = (int)HipMeasurement;
-							p.GroupNumber = 1;
-							p.ItemSpec = "EV " + ValleyMeasurement.ToString();
-							p.EaveLength = (int)EaveMeasurement;
-							p.InspectionID = s.Inspection.InspectionID;
-							p.NumberDecking = int.Parse("2");
-							p.NumOfLayers = int.Parse("1");
-							p.PlaneTypeID = 15;
-							p.StepFlashing = int.Parse("0");
-
-							await s.AddPlane(p);
-
-
-							System.Windows.Forms.MessageBox.Show(s.Inspection.InspectionID.ToString());
-							if (s.Plane.Message==null)
-								System.Windows.Forms.MessageBox.Show(s.Plane.PlaneID.ToString());
-							else
-								System.Windows.Forms.MessageBox.Show(s.Plane.Message);
-
-						}
-						else System.Windows.Forms.MessageBox.Show(s.Inspection.Message);
-						}
-				s.Inspection = null;
-			//	}
-			}
-			catch (Exception ex)
+			if (s.Inspection == null)
 			{
 
+				{
+					token.ClaimID = claim.ClaimID;
+					token.Comments = "None";
+					token.CoverPool = false;
+					token.MagneticRollers = true;
+					token.InspectionDate = DateTime.Now;
+					token.ShingleTypeID = 1;
+					token.SkyLights = true;
+					token.Leaks = false;
+					token.GutterDamage = false;
+					token.DrivewayDamage = false;
+					token.IceWaterShield = true;
+					token.EmergencyRepair = false;
+					token.EmergencyRepairAmount = 0;
+					token.QualityControl = true;
+					token.ProtectLandscaping = true;
+					token.RemoveTrash = true;
+					token.FurnishPermit = true;
+					token.InteriorDamage = false;
+					token.ExteriorDamage = false;
+					token.RoofAge = 10;
+					token.Satellite = false;
+					token.TearOff = true;
+					token.SolarPanels = false;
+					token.RidgeMaterialTypeID = 1;
+					token.LightningProtection = false;
+					//new PageFunction()
+
+						try
+					{
+						await s.AddInspection(token);
+					}
+					catch (Exception ex)
+					{
+						System.Windows.Forms.MessageBox.Show(ex.ToString());
+
+					}
 
 
+
+					//token.ClaimID = result.ClaimID;
+					//token.Comments = result.Comments;
+					//token.CoverPool = result.CoverPool;
+					//token.DrivewayDamage = result.DrivewayDamage;
+					//token.EmergencyRepair = result.EmergencyRepair;
+					//token.EmergencyRepairAmount = result.EmergencyRepairAmount;
+					//token.ExteriorDamage = result.ExteriorDamage;
+					//token.FurnishPermit = result.FurnishPermit;
+					//token.GutterDamage = result.GutterDamage;
+					//token.IceWaterShield = result.IceWaterShield;
+					//token.InspectionDate = result.InspectionDate;
+					//token.InteriorDamage = result.InteriorDamage;
+					//token.Leaks = result.Leaks;
+					//token.MagneticRollers = result.MagneticRollers;
+					//token.ProtectLandscaping = result.ProtectLandscaping;
+					//token.QualityControl = result.QualityControl;
+					//token.RemoveTrash = result.RemoveTrash;
+					//token.RidgeMaterialTypeID = result.RidgeMaterialTypeID;
+					//token.RoofAge = result.RoofAge;
+					//token.Satellite = result.Satellite;
+					//token.ShingleTypeID = result.ShingleTypeID;
+					//token.SkyLights = result.SkyLights;
+					//token.SolarPanels = result.SolarPanels;
+					//token.TearOff = result.TearOff;
+					//token.LightningProtection = result.LightningProtection;
+					//token.SuccessFlag = true;
+					if (s.Inspection.Message == null)
+					{
+
+
+
+
+						DTO_Plane p = new DTO_Plane();
+
+
+						p.SquareFootage = TotalSQFTOFF;
+						p.RidgeLength = (int)RidgeMeasurement;
+						p.RakeLength = (int)RakeMeasurement;
+						p.Pitch = PredPitch;
+						p.HipValley = (int)HipMeasurement;
+						p.GroupNumber = 1;
+						p.ItemSpec = "EV " + ValleyMeasurement.ToString();
+						p.EaveLength = (int)EaveMeasurement;
+						p.InspectionID = s.Inspection.InspectionID;
+						//TODO Make this Dynamic
+						if (!string.IsNullOrEmpty(OrderOSB.Text))
+							p.NumberDecking = int.Parse(OrderOSB.Text);
+						else p.NumberDecking = 0;
+						if (!string.IsNullOrEmpty(OrderNoOfLayers.Text))
+							p.NumOfLayers = int.Parse(OrderNoOfLayers.Text);
+						else p.NumOfLayers = 1;
+
+						p.PlaneTypeID = 15;
+						p.StepFlashing = int.Parse("0");
+						try
+						{
+							await s.AddPlane(p);
+						}
+						catch (Exception ex)
+						{
+							System.Windows.Forms.MessageBox.Show(ex.ToString());
+
+
+						}
+						System.Windows.Forms.MessageBox.Show(s.Inspection.InspectionID.ToString());
+						if (s.Plane.Message == null)
+							System.Windows.Forms.MessageBox.Show(s.Plane.PlaneID.ToString());
+						else
+							System.Windows.Forms.MessageBox.Show(s.Plane.Message);
+
+					}
+					else System.Windows.Forms.MessageBox.Show(s.Inspection.Message);
+				}
+			//	new DTO_Claim Order({ })
+				s.Inspection = null;
+				//	}
 			}
+
 
 		}
 		public void DoMath()
@@ -1099,7 +1218,7 @@ namespace MRNUIElements
 
 		private void InstallerCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			
+
 		}
 
 		private void TotalAreaOFF_TextChanged(object sender, TextChangedEventArgs e)

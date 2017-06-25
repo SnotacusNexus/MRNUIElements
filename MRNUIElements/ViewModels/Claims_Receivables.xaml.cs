@@ -24,7 +24,7 @@ using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.Windows.Data;
 using System.ComponentModel;
 using MRNUIElements.ViewModels;
-using static MRNUIElements.CompoundDataGridRow;
+//using static MRNUIElements.CompoundDataGridRow;
 using System.Diagnostics;
 using System.Drawing.Printing;
 using System.Drawing.Text;
@@ -45,8 +45,8 @@ namespace MRNUIElements.ViewModels
      //   static public Calculations C = Calculations.getInstance();
      //   static public ObservableCollection<Calculations> C1 = Calculations.lgetInstance();
         static public ObservableCollection<ScopeModel> ScopeList = ScopeModel.lgetInstance();
-        static public ObservableCollection<CompoundDataGridRow> cdr = CompoundDataGridRow.lgetInstance();
-        static public CompoundDataGridRow CDGR = CompoundDataGridRow.getInstance();
+ //       static public ObservableCollection<CompoundDataGridRow> cdr = CompoundDataGridRow.lgetInstance();
+  //      static public CompoundDataGridRow CDGR = CompoundDataGridRow.getInstance();
        // Syncfusion.UI.Xaml.Grid.SfDataGrid dataGrid = new SfDataGrid();
       // public static ObservableCollection<CompoundDataGridRow> collection { get; set; } 
         bool needsUpdate = false;
@@ -190,7 +190,7 @@ namespace MRNUIElements.ViewModels
 
         private void ButtonAdv_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ShowList());
+       //    this.NavigationService.Navigate(new ShowList());
         }
 
         private void CanelClick(object sender, RoutedEventArgs e)
@@ -213,7 +213,7 @@ namespace MRNUIElements.ViewModels
                     {
                         
                         // Calculations.C1.Add(Calculations.C.Calculate(s));
-                        listBox.Items.Add(new CompoundDataGridRow(i));
+                    //    listBox.Items.Add(new CompoundDataGridRow(i));
                         
                         i++;
                     }
@@ -311,12 +311,12 @@ namespace MRNUIElements.ViewModels
 
         private void ViewList(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MonthOutlookGridview());
+         //   NavigationService.Navigate(new MonthOutlookGridview());
         }
 
         private void listBox_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new NexusHome());
+         //   NavigationService.Navigate(new NexusHome());
         }
     }
 }

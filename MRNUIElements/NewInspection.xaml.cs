@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using MRNNexus.WPFClient.Controllers;
+using MRNUIElements.Controllers;
 
-namespace MRNNexus.WPFClient
+namespace MRNUIElements
 {
     /// <summary>
     /// Interaction logic for NewInspection.xaml

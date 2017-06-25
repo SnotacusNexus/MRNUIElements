@@ -591,15 +591,17 @@
                         </ListView.View>
                     </ListView>
                 </Grid>
-                <Viewbox Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Frame x:Name="frame"
-                       Grid.Row="2"
-                       Grid.RowSpan="2"
-                       Margin="50,10,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Content="Page"
-                       NavigationUIVisibility="Hidden" />
+                <Viewbox Grid.Row="2"
+                         Grid.RowSpan="2"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch">
+                    <Frame x:Name="frame"
+                           Grid.Row="2"
+                           Grid.RowSpan="2"
+                           Margin="50,10,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           NavigationUIVisibility="Hidden" />
                 </Viewbox>
                 <Canvas Grid.Row="2"
                         Grid.Column="1"

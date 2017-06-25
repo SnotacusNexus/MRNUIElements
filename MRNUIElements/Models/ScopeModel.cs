@@ -23,9 +23,181 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using MRNUIElements.Models.Structure;
+using MRNUIElements.Controllers;
+using MRNNexus_Model;
 
 namespace MRNUIElements.Models
 {
+	public class DetailedCompactClaimModel
+	{
+		static ServiceLayer s1 = ServiceLayer.getInstance();
+		public static DetailedCompactClaimModel DCM;
+		public static ObservableCollection<DetailedCompactClaimModel> DCML;
+
+
+		public DetailedCompactClaimModel()
+		{
+			BuildList();
+		}
+
+		#region Members For DetailedCompactClaimModel
+
+		public DTO_Claim Claim { get; set; }
+		public string InsCoClaimNumber { get; set; }
+		public string MRNClaimNumber { get; set; }
+		public string ClaimCustomer { get; set; }
+		public string Salesperson { get; set; }
+		public string ClaimReferral { get; set; }
+		public DateTime SignedDate { get; set; }
+		public DateTime AdjustmentDate { get; set; }
+		public bool Bought { get; set; }
+		public DateTime FirstCheckCollected { get; set; }
+		public int ClaimAge { get; set; }
+		public bool bFirstCheckCollected { get; set; }
+		public DateTime InspectionDate { get; set; }
+		public DateTime PlaneMeasurementsRcvd { get; set; }
+		public DateTime EstimateCompleted { get; set; }
+		public DateTime SupplemetSent { get; set; }
+		public DateTime SupplementSettled { get; set; }
+		public DateTime RoofScheduled { get; set; }
+		public DateTime RoofCompleted { get; set; }
+		public DateTime GuttersScheduled { get; set; }
+		public DateTime InteriorScheduled { get; set; }
+		public DateTime ExteriorScheduled { get; set; }
+		public DateTime CertOfCompSent { get; set; }
+		public DateTime SupplementCheckRcvd { get; set; }
+		public DateTime SupplementCheckColl { get; set; }
+		public DateTime DepreciationCheckRcvd { get; set; }
+		public DateTime DepreciationCheckColl { get; set; }
+		public DateTime DeductibleCheckColl { get; set; }
+		public DateTime CappedOut { get; set; }
+		public DateTime WarrantySent { get; set; }
+		public string ClaimAddress { get; set; }
+		public string ClaimCSZ { get; set; }
+		public string ClaimZip { get; set; }
+		public DTO_ClaimStatus ClaimStatus { get; set; }
+		public List<DTO_ClaimStatus> ClaimStatuses { get; set; }
+		public DTO_ClaimContacts ClaimContact { get; set; }
+		public List<DTO_ClaimContacts> ClaimContacts { get; set; }
+		public string Supervisor { get; set; }
+		public string Supplier { get; set; }
+		public string Installer { get; set; }
+		public string DeductibleAmount { get; set; }
+		public DateTime LossDate { get; set; }
+		public string LossType { get; set; }
+		public DTO_ClaimDocument ClaimDoc { get; set; }
+		public List<DTO_ClaimDocument> ClaimDocs { get; set; }
+		public List<DTO_Invoice> InvoiceList { get; set; }
+		public List<DTO_Payment> PaymentsList { get; set; }
+		public string LeadType { get; set; }
+		public ObservableCollection<DTO_Employee> ClaimEmployees { get; set; }
+		public List<DTO_CallLog> ClaimCallLogs { get; set; }
+		public List<DTO_Employee> AvailableViewers { get; set; }
+		public bool bHasViewPermission { get; set; }
+		public List<string> CallLogComments { get; set; }
+		public DTO_Customer Customer { get; set; }
+		public DTO_Address Address { get; set; }
+		public DTO_Lead Lead { get; set; }
+		public DTO_Adjustment ClaimAdjustment { get; set; }
+		public DTO_Adjuster Adjuster { get; set; }
+		public DTO_CalculatedResults CalculatedResults { get; set; }
+		public DTO_ClaimVendor ClaimVendor { get; set; }
+		public List<DTO_ClaimVendor> ClaimVendors { get; set; }
+		public DTO_Inspection Inspection { get; set; }
+		public DTO_InsuranceCompany InsuranceCompany { get; set; }
+		public DTO_Order RoofOrder { get; set; }
+		public DTO_Referrer Referral { get; set; }
+		public DTO_Scope WorkingScope { get; set; }
+		public List<DTO_Scope> ScopesList { get; set; }
+		public List<DTO_SurplusSupplies> ClaimSurplusSupplies { get; set; }
+		public List<DTO_AdditionalSupply> ClaimAdditionalSupplies { get; set; }
+		public List<DTO_Adjustment> ClaimAdjustmentResults { get; set; }
+		public DTO_Inspection WorkingInspection { get; set; }
+
+
+
+		#endregion
+
+		#region Functions For DetailedCompactClaimModel
+		public static DetailedCompactClaimModel getInstance()
+		{
+			if (DCM == null)
+				DCM = new DetailedCompactClaimModel();
+
+
+			return DCM;
+
+
+		}
+		async void BuildList()
+		{
+			await s1.GetAllOpenClaims();
+			foreach (DTO_Claim c in s1.OpenClaimsList)
+			{
+				PopulateLists(c);
+
+			}
+
+		}
+		async void PopulateLists(DTO_Claim Claim)
+		{
+			DetailedCompactClaimModel D = new DetailedCompactClaimModel();
+
+			await s1.GetAdditionalSuppliesByClaimID(Claim);
+			ClaimAdditionalSupplies = s1.AdditionalSuppliesList.ToList();
+			await s1.GetAdjustmentsByClaimID(Claim);
+			ClaimAdjustmentResults = s1.AdjustmentsList;
+			ClaimAdjustment = s1.AdjustmentsList.LastOrDefault(x => x.ClaimID == Claim.ClaimID);
+			await s1.GetLeadByLeadID(new DTO_Lead { LeadID = Claim.LeadID });
+			Lead = s1.Lead;
+			await s1.GetCustomerByID(new DTO_Customer { CustomerID = Claim.CustomerID });
+			Customer = s1.Cust;
+			await s1.GetAddressByID(new DTO_Address { AddressID = Lead.AddressID });
+			Address = s1.Address;
+			await s1.GetCallLogsByClaimID(Claim);
+			ClaimCallLogs = s1.CallLogsList;
+			await s1.GetClaimContactsByClaimID(Claim);
+			ClaimContacts = s1.ClaimContactsList;
+			await s1.GetClaimDocumentsByClaimID(Claim);
+			ClaimDocs = s1.ClaimDocumentsList;
+			await s1.GetClaimStatusByClaimID(Claim);
+			ClaimStatuses = s1.ClaimStatusList;
+			await s1.GetMostRecentDateByClaimID(Claim);
+			try
+			{
+				ClaimStatus = s1.ClaimStatus;
+			}
+			catch (Exception ex)
+			{
+
+				ClaimStatus = ClaimStatuses.Last();
+
+			}
+
+			await s1.GetClaimVendorsByClaimID(Claim);
+			ClaimVendors = s1.ClaimVendorsList;
+			await s1.GetInspectionsByClaimID(Claim);
+			WorkingInspection = s1.InspectionsList.Last();
+			await s1.GetInvoicesByClaimID(Claim);
+			InvoiceList = s1.InvoicesList;
+			await s1.GetPaymentsByClaimID(Claim);
+			PaymentsList = s1.PaymentsList;
+
+
+			DCML.Add(this);
+
+		}
+		#endregion
+
+
+		#region DBOperations for DetailedCompactClaimModel
+
+
+
+		#endregion
+
+	}
+
 	public class ScopeModel
 	{
 
@@ -36,9 +208,9 @@ namespace MRNUIElements.Models
 
 		public ScopeModel()
 		{
-			
+
 			PopulateLists();
-		
+
 
 		}
 
@@ -46,7 +218,7 @@ namespace MRNUIElements.Models
 
 		#region Members for ScopeModel
 
-	   public ObservableCollection<ScopeModel> ScopesList3 = new ObservableCollection<ScopeModel>();
+		public ObservableCollection<ScopeModel> ScopesList3 = new ObservableCollection<ScopeModel>();
 		public string ClaimNumber { get; set; }
 		public DateTime ScopeDate { get; set; }
 		public bool IsEstimate { get; set; }
@@ -57,7 +229,7 @@ namespace MRNUIElements.Models
 		public double Deductible { get; set; }
 		public double NoSquares { get; set; }
 		public double AmountDepCollected { get; set; }
-		public double NumberofFirstChecksNotCollected { get; set;}
+		public double NumberofFirstChecksNotCollected { get; set; }
 		public int NumberofDepChecksNotCollected { get; set; }
 		public int NumberofDedChecksNotCollected { get; set; }
 		public bool CollectingDeductible { get; set; }
@@ -96,7 +268,7 @@ namespace MRNUIElements.Models
 		public bool IsSettled { get; set; }
 		public bool ReadyToCap { get; set; }
 		public double LaborAmount { get; set; }
-		
+
 
 		public double TotalSquares { get; set; }
 		public double TotalProfit { get; set; }
@@ -152,13 +324,13 @@ namespace MRNUIElements.Models
 
 
 
-	
 
 
 
-	#region Lists For ScopeModel
 
-	public string ALLTEXT1 = "";
+		#region Lists For ScopeModel
+
+		public string ALLTEXT1 = "";
 		public List<string> RAW = new List<string>();
 		public List<string> FILTER = new List<string>();
 		public List<string> KEYS = new List<string>();
@@ -177,8 +349,8 @@ namespace MRNUIElements.Models
 			BRANCHES.Add("Future Expansion");
 
 
-						 
-		SALESPERSON.Add("Preston");
+
+			SALESPERSON.Add("Preston");
 			SALESPERSON.Add("Tony");
 			SALESPERSON.Add("Foy");
 			SALESPERSON.Add("Jeremy");
@@ -229,15 +401,15 @@ namespace MRNUIElements.Models
 			FILTER.Add("TakesFirst");//30
 			FILTER.Add("SalesSplit");//31
 			FILTER.Add("TakesFirst");//32
-			//TransactionValues
+									 //TransactionValues
 			FILTER.Add("AccountTo");
 			FILTER.Add("AccountFrom");
 			FILTER.Add("TransactionDate");
 			FILTER.Add("For");
 			FILTER.Add("AmountofTransaction");
 
-			
-			
+
+
 		}
 		#endregion
 
@@ -300,7 +472,7 @@ namespace MRNUIElements.Models
 				{
 
 					ScopeModel ns = new ScopeModel();
-				
+
 
 					if (notfirsttime)
 						j--;
@@ -342,12 +514,12 @@ namespace MRNUIElements.Models
 					ns.IsSupervised = bool.Parse(RAW[j++]);//32
 
 					ScopesList.Add(ns);
-				
-					
-					
-					
-				  
-				  
+
+
+
+
+
+
 				}
 				if (RAW.Count > 0)
 					RAW.Clear();
@@ -363,7 +535,8 @@ namespace MRNUIElements.Models
 		public ScopeModel MakeUpdatedList(ScopeModel ns)
 		{
 
-			return new ScopeModel{
+			return new ScopeModel
+			{
 				ACV = ns.ACV,// = double.Parse(RAW[j++]);//0
 				Branch = ns.Branch,// = RAW[j++].ToString();//1
 				ClaimNumber = ns.ClaimNumber,// = RAW[j++].ToString();//2
@@ -414,8 +587,8 @@ namespace MRNUIElements.Models
 
 			foreach (var ab in ScopesList)
 			{
-				ScopeModel ns =new ScopeModel();
-					ns= ab;
+				ScopeModel ns = new ScopeModel();
+				ns = ab;
 				var sm = new ScopeModel();
 				sm = MakeUpdatedList(ns);
 				ns = sm;
@@ -435,7 +608,7 @@ namespace MRNUIElements.Models
 				if (ns.IsCollectedDed)
 					//  HowMuchHasBeenCollected += ns.Deductible;
 					if (ns.IsCollectedFirst)
-						
+
 						ns.HowMuchHasBeenCollected += (ns.RCV - ns.ACV - ns.Deductible - ns.Tax);
 				if (IsCollectedFirst)
 					ns.HowMuchHasBeenCollected += AmountFirstCollected;
@@ -450,7 +623,7 @@ namespace MRNUIElements.Models
 
 
 				//  if (d<3)
-			 
+
 				ScopesList3.Add(ns);
 			}
 
@@ -458,12 +631,12 @@ namespace MRNUIElements.Models
 
 
 
-			ScopesList2 = ScopesList3; 
+			ScopesList2 = ScopesList3;
 
 		}
 
 
-	  
+
 		public void SaveClaimDetails(bool DirtyFile = false, ScopeModel g = null)
 		{
 
@@ -839,7 +1012,7 @@ namespace MRNUIElements.Models
 	//        return dt.Subtract(new DateTime(2016, 8, 1)).TotalDays;
 	//    }
 	//    #endregion
-		
+
 	//    #region Calculating
 	//    public Calculations Calculate(ScopeModel s)
 	//    {

@@ -160,7 +160,6 @@
 
             <DataGrid x:Name="scopeModelDataGrid1"
                       Width="1490"
-                      Height="900"
                       AlternatingRowBackground="LightGray"
                       AlternationCount="2"
                       AutoGenerateColumns="False"

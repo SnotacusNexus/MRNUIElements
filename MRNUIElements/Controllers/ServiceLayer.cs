@@ -31,15 +31,16 @@ using static Newtonsoft.Json.Linq.JToken;
 using System.Collections;
 using System.Net.Http.Formatting;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace MRNUIElements.Controllers
 {
-	 public partial class ServiceLayer
+	public partial class ServiceLayer
 	{
 
 		//public TextBlock mw = (TextBlock)App.Current.MainWindow.TryFindResource("VerboseStatusDisplay");
 
-	//	int errorcount = 0;
+		//	int errorcount = 0;
 		public string hold = "";
 		private const string URL = @"http://services.mrncontracting.com/MRNNexus_Service.svc/";
 		// private const string URL = @"http://localhost:50899/MRNNexus_Service.svc/";
@@ -47,21 +48,27 @@ namespace MRNUIElements.Controllers
 		public static ServiceLayer s1;
 		//public DateTime serviceCreated;
 		public static DTO_Claim CurrentClaim { get; set; }
+
+		//	public static ObservableCollection<DTO_ClaimStatus> CurrentClaimStatus { get; set; }
+		//	public static ObservableCollection<ClaimData> 
 		private ServiceLayer()
 		{
-		//	var mw = App.Current.MainWindow.TryFindResource("VerboseStatusDisplay");
+			//	var mw = App.Current.MainWindow.TryFindResource("VerboseStatusDisplay");
 			client.BaseAddress = new Uri(URL);
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			client.Timeout = new TimeSpan(0, 5, 0);
-			
+
 
 		}
 
 		public static DTO_Claim getCurrentClaim()
 		{
 			if (CurrentClaim != null)
+			{
+				//CurrentClaimStatus = getCurrentClaimStatus(CurrentClaim);
+
 				return CurrentClaim;
-			
+			}
 
 			return new DTO_Claim();
 		}
@@ -70,7 +77,15 @@ namespace MRNUIElements.Controllers
 		{
 			if (s1 == null)
 			{
-				s1 = new ServiceLayer();
+				try
+				{
+					s1 = new ServiceLayer();
+
+				}
+				catch (Exception ex)
+				{
+					System.Windows.Forms.MessageBox.Show(ex.ToString());
+				}
 			}
 
 			return s1;
@@ -90,11 +105,11 @@ namespace MRNUIElements.Controllers
 			}
 			catch (Exception ex)
 			{
-			//	if (errorcount < 5)
+				//	if (errorcount < 5)
 				//	mw.Text=".";
 
-			//	else
-			//	mw.Text="Error Making Request Task"+ex.ToString();
+				//	else
+				//	mw.Text="Error Making Request Task"+ex.ToString();
 			}
 		}
 
@@ -117,7 +132,7 @@ namespace MRNUIElements.Controllers
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Permissions>), "GetPermissions");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PlaneTypes>), "GetPlaneTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ProductType>), "GetProductTypes");
-		//	mw.Text = "Building Ridge Material Types Lookup Table";
+			//	mw.Text = "Building Ridge Material Types Lookup Table";
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_RidgeMaterialType>), "GetRidgeMaterialTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ScopeType>), "GetScopeTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ServiceTypes>), "GetServiceTypes");
@@ -128,6 +143,8 @@ namespace MRNUIElements.Controllers
 			//Non LU
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllOpenClaims");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllClaimDocuments");
 		}
 
 		public void setResults(string json, Type type, string methodName)
@@ -172,7 +189,7 @@ namespace MRNUIElements.Controllers
 			if (type == typeof(List<DTO_LU_AdjustmentResult>))
 			{
 				AdjustmentResults = JsonConvert.DeserializeObject<List<DTO_LU_AdjustmentResult>>(json);
-			//	mw.Text = "Building Adjustment Results Lookup Table...Completed";
+				//	mw.Text = "Building Adjustment Results Lookup Table...Completed";
 				return;
 			}
 
@@ -309,6 +326,17 @@ namespace MRNUIElements.Controllers
 				return;
 			}
 
+			if (type == typeof(List<DTO_Vendor>))
+			{
+				VendorsList = JsonConvert.DeserializeObject<List<DTO_Vendor>>(json);
+				return;
+			}
+			if (type == typeof(List<DTO_ClaimDocument>))
+			{
+				ClaimDocumentsList = JsonConvert.DeserializeObject<List<DTO_ClaimDocument>>(json);
+				return;
+			}
+
 		}
 
 
@@ -327,15 +355,15 @@ namespace MRNUIElements.Controllers
 			}
 		}
 
-		public async Task RegisterUser()
+		public async Task RegisterUser(DTO_User token)
 		{
 			try
 			{
-				DTO_User token = new DTO_User
-				{
-					EmployeeID = 50,
-					PermissionID = 1
-				};
+				//DTO_User token = new DTO_User
+				//{
+				//	EmployeeID = 50,
+				//	PermissionID = 1
+				//};
 
 				var response = await client.PostAsJsonAsync(string.Format(@"{0}{1}", URL, "RegisterUser"),
 					token);
@@ -346,6 +374,9 @@ namespace MRNUIElements.Controllers
 			{
 				Console.Write(e.StackTrace);
 			}
+			if (User.Message == null)
+				System.Windows.Forms.MessageBox.Show("Active Status: " + User.Active.ToString() + ", Username: " + User.Username.ToString() + ", Password: " + User.Pass.ToString() + ", EmployeeID: " + User.EmployeeID.ToString());
+			else System.Windows.Forms.MessageBox.Show(User.Message.ToString());
 		}
 
 		#region Adds
@@ -872,8 +903,8 @@ namespace MRNUIElements.Controllers
 				response.EnsureSuccessStatusCode();
 				Claim = await response.Content.ReadAsAsync<DTO_Claim>();
 			}
-			catch (Exception )
-			
+			catch (Exception)
+
 			{
 				//System.Windows.Forms.MessageBox.Show("Error Making Request GetClaimByClaimID Task" + ex.ToString());
 			}

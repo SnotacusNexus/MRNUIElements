@@ -214,7 +214,6 @@
                 VerticalAlignment="Top"
                 Content="Delete Current File"
                 IsEnabled="False" />
-
         <Button x:Name="getImage"
                 Width="150"
                 Margin="687,0,0,71"
@@ -233,9 +232,7 @@
                                 DisplayMemberPath="MRNNumber"
                                 DropDownClosed="ClaimList_DropDownClosed"
                                 GotFocus="ClaimList_GotFocus"
-                                ItemsSource="{Binding Mode=OneWay}"
-                                Style="{Binding ComboBoxAdvControlTemplate1}"
-                                Template="{DynamicResource ComboBoxAdvControlTemplate1}" />
+                                ItemsSource="{Binding Mode=OneWay}" />
         <Canvas x:Name="canvas"
                 Width="1071"
                 Height="397"
@@ -274,9 +271,7 @@
                                 GotFocus="AvailableDocuments_GotFocus"
                                 ItemsSource="{Binding Mode=OneWay}"
                                 SelectedValuePath="ClaimDocumentType"
-                                SelectionChanged="AvailableDocuments_SelectionChanged"
-                                Style="{Binding ComboBoxAdvControlTemplate1}"
-                                Template="{DynamicResource ComboBoxAdvControlTemplate2}" />
+                                SelectionChanged="AvailableDocuments_SelectionChanged" />
         <Label x:Name="DocumentTypesLabel"
                Margin="460,0,469,147"
                VerticalAlignment="Bottom"

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MRNUIElements.Models.Structure;
 namespace MRNUIElements.ViewModels
 {
-    class PlaneViewModel
-    {
-    }
+	class PlaneViewModel
+	{
+	}
 }

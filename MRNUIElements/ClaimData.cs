@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MRNNexus_Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace MRNUIElements.Controllers.Collection
 {
-	
-	public class ClaimData:ObservableCollection<ClaimData>
+	public class ClaimData
 	{
-
 		public int OriginalScopeID { get; set; }
 		public int MRNEstimateID { get; set; }
 		public int NewScopeID { get; set; }
@@ -19,11 +18,60 @@ namespace MRNUIElements.Controllers.Collection
 		public ObservableCollection<string> InspectionImages { get; set; }
 		public ObservableCollection<double> RoofMeasurements { get; set; }
 		public ObservableCollection<int> RoofOrder { get; set; }
-		
+		public ObservableCollection<ClaimContacts> ClaimContact { get; set; }
 
 
 
 	}
+	public class Inspection : ObservableCollection<InspectionItem>
+	{
+
+		public int InspectionID { get; set; }
+		public DateTime InspectionDate { get; set; }
+		public int InspectorID { get; set; }
+
+		public Inspection()
+		{
+
+		}
+	}
+	public class InspectionImage
+	{
+		public int InspectionImageID { get; set; }
+		public string RelativeImagePath { get; set; }
+		public string ImagePath { get; set; }
+	}
+	public class InspectionItem:InspectionImage
+	{
+		public int InspectionTypeID { get; set; }
+		public string Comments { get; set; }
+		public InspectionImage InspectionImage { get; set; }
+	}
+
+	public class InspectionItemType : InspectionItem
+	{
+		public int InspectionItemTypeID { get; set; }
+		public string ItemTitle { get; set; }
+
+	}
+	public class ClaimContacts
+	{
+		public string position { get; set; }
+		public int claimContactID { get; set; }
+
+	}
+
+	public class ContactInfo
+	{
+		public string ContactName { get; set; }
+		public string PrimaryPhone { get; set; }
+		public string EmailAddress { get; set; }
+		public string PhysicalAddress { get; set; }
+		public string ServiceType { get; set; }
+		public string MRNNumber { get; set; }
+		public string ZipCode { get; set; }
+	}
+
 	public class CustomerInfo
 	{
 
@@ -67,12 +115,14 @@ namespace MRNUIElements.Controllers.Collection
 
 	}
 
-	public class RoofOrder
+	public class ScheduledRoofOrder
 	{
+		public int ScheduledRoofOrderID { get; set; }
+		public RoofMeasurements RoofMeasurements { get; set; }
 		public string RoofMaterialSupplier { get; set; }
 		public string RoofLaborSupplier { get; set; }
 		public CustomerInfo Customer { get; set; }
-		public DateTime DropDate { get; set; }		   
+		public DateTime DropDate { get; set; }
 		public DateTime InstallDateRoof { get; set; }
 		public DateTime InstallDateGutter { get; set; }
 		public DateTime InstallDateInterior { get; set; }
@@ -80,9 +130,14 @@ namespace MRNUIElements.Controllers.Collection
 		public string SpecialInstructions { get; set; }
 
 	}
-
-	public class RoofMeasurements
+	public class RoofOrder
 	{
+		DTO_Claim Claim { get; set; }
+		ScheduledRoofOrder ScheduledRoofOrder { get; set; }
+	}
+	public class RoofMeasurements:ScheduledRoofOrder
+	{
+		public int RoofMeasurementID { get; set; }
 		public double RidgeFeet { get; set; }
 		public double RakeFeet { get; set; }
 		public double HipFeet { get; set; }
@@ -124,7 +179,7 @@ namespace MRNUIElements.Controllers.Collection
 		public string PolicyID { get; set; }
 	}
 
-	public class CallLog
+	public class CallLog:ClaimStatusData
 	{
 		public DateTime CallTime { get; set; }
 		public string ReasonForCall { get; set; }
@@ -137,7 +192,7 @@ namespace MRNUIElements.Controllers.Collection
 	public class ClaimStatusData
 	{
 		public ObservableCollection<CallLog> CallLog { get; set; }
-		public DateTime ClaimDate { get; set;}
+		public DateTime ClaimDate { get; set; }
 		public String CurrentStatus { get; set; }
 
 	}
@@ -156,7 +211,7 @@ namespace MRNUIElements.Controllers.Collection
 
 	}
 
-	public class AdjustedSupplies:InvoiceItem
+	public class AdjustedSupplies : InvoiceItem
 	{
 		public double Amount { get; set; }
 		public bool PositiveTowardClaim { get; set; }
@@ -166,6 +221,8 @@ namespace MRNUIElements.Controllers.Collection
 
 	public class InvoiceItem
 	{
+		public int InvoiceID { get; set; }
+		public int InvoiceItemID { get; set; }
 		public string UnitName { get; set; }
 		public string UnitDescription { get; set; }
 		public int Quantity { get; set; }
@@ -174,7 +231,7 @@ namespace MRNUIElements.Controllers.Collection
 
 	}
 
-	public class MiscReceipt:InvoiceItem
+	public class MiscReceipt : InvoiceItem
 	{
 		public double Amount { get; set; }
 	}
@@ -182,11 +239,10 @@ namespace MRNUIElements.Controllers.Collection
 	public class CapOut
 	{
 		public double RoofLaborTotal { get; set; }
-		public double RoofMaterialTotal { get;set; }
+		public double RoofMaterialTotal { get; set; }
 		public double ReferralAmount { get; set; }
 		public double Draw { get; set; }
 		public int OverheadPercentSplit { get; set; }     //10% default value greater increases job cost
-
 		public int ProfitPercentSplit { get; set; }     // Salesperson = X  Company = Y default formula X<=100  Y=100-X
 		public double OriginalScopeAmout { get; set; }
 		public int RoofLaborFactor { get; set; }

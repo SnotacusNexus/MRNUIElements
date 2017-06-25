@@ -7,10 +7,8 @@
              xmlns:local="clr-namespace:MRNUIElements"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-             StartupUri="MainWindow.xaml"
-             mc:Ignorable="d">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-
         <BitmapImage x:Key="CheckMark" UriSource="ResourceFiles/CheckMark.png" />
         <BitmapImage x:Key="QuestionMark" UriSource="ResourceFiles/QuestionMark.png" />
         <BitmapImage x:Key="StopHand" UriSource="ResourceFiles/StopHand.png" />
@@ -2677,6 +2675,7 @@
             <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         </Style>
         <ImageBrush x:Key="ResourceFiles_MRN_CONTRACTING_LOGO_png" ImageSource="ResourceFiles/MRN CONTRACTING LOGO.png" />
+
 
     </Application.Resources>
 </Application>

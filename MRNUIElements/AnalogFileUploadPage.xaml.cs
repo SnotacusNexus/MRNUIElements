@@ -45,7 +45,7 @@ namespace MRNUIElements
 		ServiceLayer s1 = MRNUIElements.Controllers.ServiceLayer.getInstance();
 		public WhenClicked whenclicked = new WhenClicked();
 		public BitmapImage bitmap = new BitmapImage();
-		static Uri src = new Uri(@"/MRNUIElements;/ResourceFiles/RoofInspectionWizardBkgnd.png", UriKind.Relative);
+		static Uri src = new Uri(@"/MRNUIElements/ResourceFiles/RoofInspectionWizardBkgnd.png", UriKind.Relative);
 		BitmapImage img = new BitmapImage(src);
 		public List<string> FileList = new List<string>();
 		Geometry _textGeometry = null;
@@ -327,7 +327,7 @@ namespace MRNUIElements
 				image.Source = target;
 
 				// Save is set to true when user is satisfied with the text on the picture
-				// some functional changes will need to be made to make this save files in the write place on upload but that should be taken care of on upload this is for temporary storage only 
+				// some functional changes will need to be made to make this save files in the right place on upload but that should be taken care of on upload this is for temporary storage only 
 				// 
 
 
@@ -497,7 +497,7 @@ namespace MRNUIElements
 
 		async private void AvailableDocuments_DropDownClosed(object sender, EventArgs e)
 		{
-			//called when user selects a claimdocument to verify that the document doesnt exist to make sure that the actions pending are congruent with the database schema
+			//called when user selects a claimdocument to verify that the document doesn't exist to make sure that the actions pending are congruent with the database schema
 			await CheckForExistingDocument(AvailableDocuments.SelectedIndex + 1);
 
 
@@ -507,7 +507,7 @@ namespace MRNUIElements
 
 		async private Task<bool> CheckForExistingDocument(int DocumentTypeID)
 		{
-			// prototype unchecked at this point to validate that the file about to be scheduled for upload is not existant and if so should it be overwritten or kept
+			// prototype unchecked at this point to validate that the file about to be scheduled for upload is non existent and if so should it be overwritten or kept
 
 			DTO_Claim claim = new DTO_Claim();
 			claim.MRNNumber = ClaimList.SelectedItem.ToString();

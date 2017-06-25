@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MRNUIElements.Models
 {
-    class KeyValueFilterModel
-    {
-    }
+	class KeyValueFilterModel
+	{
+	}
 }

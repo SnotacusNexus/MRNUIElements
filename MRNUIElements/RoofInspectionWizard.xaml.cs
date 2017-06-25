@@ -454,9 +454,9 @@ namespace MRNUIElements
 				DrawingCanvas.SetValue(VisibilityProperty, System.Windows.Visibility.Hidden);
 				MainCanvas.SetValue(VisibilityProperty, System.Windows.Visibility.Visible);
 			}
-		else { ScopeViewer Page = new ScopeViewer();
-				this.NavigationService.Navigate(Page);
-			}
+		//else { ScopeViewer Page = new ScopeViewer();
+		//		this.NavigationService.Navigate(Page);
+	//		}
 		}
 
 		private void RidgeLengthTextBox_GotFocus(object sender, RoutedEventArgs e)

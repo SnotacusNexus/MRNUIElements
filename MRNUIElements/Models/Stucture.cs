@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MRNUIElements.Models.Structure
 {
-    class Stucture
-    {
-        public int StructureID { get; set; }
-        public ObservableCollection<Sub_Stucture> Sub_Structures { get; set; }
-    }
+	class Stucture
+	{
+		public int StructureID { get; set; }
+		public ObservableCollection<Sub_Stucture> Sub_Structures { get; set; }
+	}
 }

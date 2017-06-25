@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace MRNUIElements.Models.Structure
 {
-    class Sub_Stucture
-    {
-        public int SubStructureID { get; set; }
-        public ObservableCollection<Planes> Planes { get; set; }
-        public int Level { get; set; }
-    }
+	class Sub_Stucture
+	{
+		public int SubStructureID { get; set; }
+		public ObservableCollection<Planes> Planes { get; set; }
+		public int Level { get; set; }
+	}
 }

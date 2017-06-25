@@ -1,23 +1,85 @@
 ﻿<Page x:Class="MRNUIElements.LoginAs"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MRNUIElements"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="LoginAs">
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="LoginAs"
+      d:DesignHeight="300"
+      d:DesignWidth="300"
+      mc:Ignorable="d">
 
     <Grid>
-        <Button x:Name="LoginAsSalesperson" Content="Salesperson" HorizontalAlignment="Left" Margin="80,65,0,0" VerticalAlignment="Top" Width="145" Click="LoginAsSalesperson_Click"/>
-        <Button x:Name="LoginAsAuditor" Content="Auditor" HorizontalAlignment="Left" Margin="80,90,0,0" VerticalAlignment="Top" Width="145" Click="LoginAsAuditor_Click"/>
-        <Button x:Name="LoginAsAuditingAsst" Content="Auditing Assistant" HorizontalAlignment="Left" Margin="80,115,0,0" VerticalAlignment="Top" Width="145" Click="LoginAsAuditingAsst_Click"/>
-        <Button x:Name="LoginAsSalesManager" Content="Sales Manager" HorizontalAlignment="Left" Margin="80,140,0,0" VerticalAlignment="Top" Width="145" Click="LoginAsSalesManager_Click"/>
-        <Button x:Name="LoginAsProdManager" Content="Production Manager" HorizontalAlignment="Left" Margin="80,165,0,0" VerticalAlignment="Top" Width="145" Click="LoginAsProdManager_Click"/>
-        <Button x:Name="LoginAsBoss" Content="Boss" HorizontalAlignment="Left" Margin="80,190,0,0" VerticalAlignment="Top" Width="145" Click="LoginAsBoss_Click"/>
-        <Button x:Name="LoginAsGODMode" Content="God Mode" HorizontalAlignment="Left" Margin="80,215,0,0" VerticalAlignment="Top" Width="145" Click="LoginAsGODMode_Click"/>
-        <Button x:Name="LoginAsSuperAdmin" Content="Erase All Data - &#xD;&#xA;Corrupt Database -&#xD;&#xA;And Fucking Die" HorizontalAlignment="Left" Margin="80,240,0,0" VerticalAlignment="Top" Width="145" Click="LoginAsSuperAdmin_Click"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="80,25,0,0" TextWrapping="Wrap" Text="Login As....." VerticalAlignment="Top" Height="25" Width="145" Foreground="White" FontSize="20" FontWeight="Bold" FontStyle="Italic" TextDecorations="{x:Null}" TextAlignment="Center"/>
+        <Button x:Name="LoginAsSalesperson"
+                Width="145"
+                Margin="80,65,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="LoginAsSalesperson_Click"
+                Content="Salesperson" />
+        <Button x:Name="LoginAsAuditor"
+                Width="145"
+                Margin="80,90,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="LoginAsAuditor_Click"
+                Content="Auditor" />
+        <Button x:Name="LoginAsAuditingAsst"
+                Width="145"
+                Margin="80,115,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="LoginAsAuditingAsst_Click"
+                Content="Auditing Assistant" />
+        <Button x:Name="LoginAsSalesManager"
+                Width="145"
+                Margin="80,140,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="LoginAsSalesManager_Click"
+                Content="Sales Manager" />
+        <Button x:Name="LoginAsProdManager"
+                Width="145"
+                Margin="80,165,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="LoginAsProdManager_Click"
+                Content="Production Manager" />
+        <Button x:Name="LoginAsBoss"
+                Width="145"
+                Margin="80,190,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="LoginAsBoss_Click"
+                Content="Boss" />
+        <Button x:Name="LoginAsGODMode"
+                Width="145"
+                Margin="80,215,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="LoginAsGODMode_Click"
+                Content="God Mode" />
+        <Button x:Name="LoginAsSuperAdmin"
+                Width="145"
+                Margin="80,240,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="LoginAsSuperAdmin_Click"
+                Content="Erase All Data - &#xD;&#xA;Corrupt Database -&#xD;&#xA;And Fucking Die" />
+        <TextBlock x:Name="textBlock"
+                   Width="145"
+                   Height="25"
+                   Margin="80,25,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="20"
+                   FontStyle="Italic"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   Text="Login As....."
+                   TextAlignment="Center"
+                   TextDecorations="{x:Null}"
+                   TextWrapping="Wrap" />
 
     </Grid>
 </Page>

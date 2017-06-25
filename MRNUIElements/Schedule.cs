@@ -101,36 +101,37 @@ namespace MRNUIElements.Controllers
 
 			
 
-		public async Task UpdateCalendarData(Syncfusion.UI.Xaml.Schedule.AppointmentEditorClosedEventArgs e)
-		{
-			MappedAppointment appointment = e.EditedAppointment as MappedAppointment;
-			MappedAppointment original = e.OriginalAppointment as MappedAppointment;
+		//public async Task UpdateCalendarData(Syncfusion.UI.Xaml.Schedule.AppointmentEditorClosedEventArgs e)
+		//{
+		//	MappedAppointment appointment = e.EditedAppointment as MappedAppointment;
+		//	MappedAppointment original = e.OriginalAppointment as MappedAppointment;
 
-			appointment.CalendarDataID = original.CalendarDataID;
-			appointment.LeadID = original.LeadID;
+		//	appointment.CalendarDataID = original.CalendarDataID;
+		//	appointment.LeadID = original.LeadID;
 			
 
-			ServiceLayer s = ServiceLayer.getInstance();
-			s.CalendarData = s.CalendarDataList.Find (c => c.EntryID == appointment.CalendarDataID);
-			s.CalendarData.StartTime = appointment.MappedStartTime;
-			s.CalendarData.EndTime = appointment.MappedEndTime;
-			s.CalendarData.Note = appointment.MappedNote;
+			//ServiceLayer s = ServiceLayer.getInstance();
+		//	s.CalendarData = s.CalendarDataList.Find (c => c.EntryID == appointment.CalendarDataID);
+		//	s.CalendarData.StartTime = appointment.MappedStartTime;
+		//	s.CalendarData.EndTime = appointment.MappedEndTime;
+		//	s.CalendarData.Note = appointment.MappedNote;
 
-			await s.MakeRequest(s.CalendarData, typeof(DTO_CalendarData), "UpdateCalendarData");
+		//	await s.MakeRequest(s.CalendarData, typeof(DTO_CalendarData), "UpdateCalendarData");
 
-			if (s.CalendarData.SuccessFlag)
-			{
-				MessageBox.Show(s.CalendarData.SuccessFlag.ToString(), "Success", MessageBoxButton.OK, MessageBoxImage.Warning);
-			}
-			else
-			{
-				MessageBox.Show(s.CalendarData.SuccessFlag.ToString(), "Failure", MessageBoxButton.OK, MessageBoxImage.Warning);
-			}
-		}
+		//	if (s.CalendarData.SuccessFlag)
+		//	{
+		//		MessageBox.Show(s.CalendarData.SuccessFlag.ToString(), "Success", MessageBoxButton.OK, MessageBoxImage.Warning);
+		//	}
+		//	else
+		//	{
+		//		MessageBox.Show(s.CalendarData.SuccessFlag.ToString(), "Failure", MessageBoxButton.OK, MessageBoxImage.Warning);
+		//	}
+		//}
 		string CustomerName = "", CustomerPhone1 = "", CustomerPhone2 = "", CustomerEmail = "";
 		
 		public async Task GetCustomerDetailsByLeadID(int leadID=0)
 		{
+			ServiceLayer s = ServiceLayer.getInstance();
 			if (leadID == 0)
 				leadID = s.Lead.LeadID;
 		   

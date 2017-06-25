@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:MRNUIElements"
       xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" x:Class="MRNUIElements.PlaneEntryPage"
       mc:Ignorable="d"
-      Title="PlaneEntryPage" Height="380" >
+      Title="PlaneEntryPage" Height="1220" >
 
     <Page.Resources>
         <CollectionViewSource x:Key="dTO_PlaneViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Plane}, CreateList=True}"/>
     </Page.Resources>
 
-    <Grid DataContext="{StaticResource dTO_PlaneViewSource}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="1650" Margin="0,-100,0,-600">
-        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="160,73,0,0" VerticalAlignment="Top">
+    <Grid DataContext="{StaticResource dTO_PlaneViewSource}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="1645" Margin="0,75,0,10">
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="711,215,0,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -45,22 +45,16 @@
             <TextBox x:Name="eaveHeightTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding EaveHeight, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Foreground="White"/>
             <Label Content="Eave Length:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" Foreground="White"/>
             <TextBox x:Name="eaveLengthTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding EaveLength, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Foreground="White"/>
-            <Label Content="Exception:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" Foreground="White"/>
-            <TextBox x:Name="exceptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Exception, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Foreground="White"/>
             <Label Content="Four And Up:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" Foreground="White"/>
             <TextBox x:Name="fourAndUpTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding FourAndUp, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Group Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center" Foreground="White"/>
             <TextBox x:Name="groupNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding GroupNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Hip Valley:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center" Foreground="White"/>
             <TextBox x:Name="hipValleyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding HipValley, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Inner Exception:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center" Foreground="White"/>
-            <TextBox x:Name="innerExceptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding InnerException, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Inspection ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center" Foreground="White"/>
             <TextBox x:Name="inspectionIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding InspectionID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Item Spec:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center" Foreground="White"/>
             <TextBox x:Name="itemSpecTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding ItemSpec, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Message:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center" Foreground="White"/>
-            <TextBox x:Name="messageTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding Message, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Number Decking:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center" Foreground="White"/>
             <TextBox x:Name="numberDeckingTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="10" Text="{Binding NumberDecking, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Num Of Layers:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center" Foreground="White"/>
@@ -84,7 +78,7 @@
             <Label Content="Three And One:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="20" VerticalAlignment="Center" Foreground="White"/>
             <TextBox x:Name="threeAndOneTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="20" Text="{Binding ThreeAndOne, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Foreground="White"/>
         </Grid>
-        <DataGrid x:Name="dTO_PlaneDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,750,10,145" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="dTO_PlaneDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,750,10,145" RowDetailsVisibilityMode="VisibleWhenSelected" Visibility="Collapsed">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="eaveHeightColumn" Binding="{Binding EaveHeight}" Header="Eave Height" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="eaveLengthColumn" Binding="{Binding EaveLength}" Header="Eave Length" Width="SizeToHeader"/>

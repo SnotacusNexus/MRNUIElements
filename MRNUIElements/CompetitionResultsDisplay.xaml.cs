@@ -57,7 +57,7 @@ namespace MRNUIElements
 		public CompetitionResultsDisplay()
 		{
 			InitializeComponent();
-			//	initializeTicker();
+				
 			C.PopulateDummyData();
 
 			foreach (var item in contestants) // new ObservableCollection<string>() { "Item1", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7", "Item8", "Item9" };
@@ -78,6 +78,7 @@ namespace MRNUIElements
 			TickDrawer();
 			PopulateLeaderBoard();
 			GetLeaderBoard();
+			initializeTicker();
 		}
 
 		void PopulateLeaderBoard()
@@ -147,47 +148,73 @@ namespace MRNUIElements
 		List<string> WordsForTheLedDisplays = new List<string>();
 		public string TickerString { get; set; }
 
-		//  void BuildTickerData(List<string> stringlist, int index=-1)
+		//void BuildTickerData(List<string> stringlist, int index = -1)
 		//{
 		//	if (stringlist.Count > -1 && stringlist != null)
 		//		foreach (var item in stringlist)
 		//			sb.Append("#" + item + "!");
 		//	TickerString = sb.ToString();
 		//}
-		//void initializeTicker()
-		//{
-		//	for (int i = 0; i < BigTextBlock.Text.Length;i++)
-		//		sb.Append("*");
-		//	sb.Append("TESTING");
-		//	for (int i = 0; i < BigTextBlock.Text.Length;i++)
-		//		sb.Append("*");
+		async void initializeTicker()
+		{
+			for (int i = 0; i < BigTextBlock.Text.Length; i++)
+				sb.Append("*");
+			sb.Append("TESTING");
+			for (int i = 0; i < BigTextBlock.Text.Length; i++)
+				sb.Append("*");
+
+
+			
+
+
+			WordsForTheLedDisplays.Add("SYSTEM__");
+			WordsForTheLedDisplays.Add("OVERLOAD");
+			WordsForTheLedDisplays.Add("LOADING_");
+			WordsForTheLedDisplays.Add("_TESTING");
+			WordsForTheLedDisplays.Add("__CHECK_");
+			WordsForTheLedDisplays.Add("ECHOECHO");
+			WordsForTheLedDisplays.Add("KNOCK...");
+			WordsForTheLedDisplays.Add("...KNOCK");
+			WordsForTheLedDisplays.Add("ARE_YOU_");
+			WordsForTheLedDisplays.Add("__THAT__");
+			WordsForTheLedDisplays.Add("_MOTHER_");
+			WordsForTheLedDisplays.Add("FUCKER!!");
+
+
+
+			//BuildTickerData(WordsForTheLedDisplays);
+
+			await PowerUpDisplay();
 
 
 
 
+		}
 
-		//	WordsForTheLedDisplays.Add("SYSTEM__");
-		//	WordsForTheLedDisplays.Add("OVERLOAD");
-		//	WordsForTheLedDisplays.Add("LOADING_");
-		//	WordsForTheLedDisplays.Add("_TESTING");
-		//	WordsForTheLedDisplays.Add("__CHECK_");
-		//	WordsForTheLedDisplays.Add("ECHOECHO");
-		//	WordsForTheLedDisplays.Add("KNOCK...");
-		//	WordsForTheLedDisplays.Add("...KNOCK");
-		//	WordsForTheLedDisplays.Add("ARE_YOU_");
-		//	WordsForTheLedDisplays.Add("__THAT__");
-		//	WordsForTheLedDisplays.Add("_MOTHER_");
-		//	WordsForTheLedDisplays.Add("FUCKER!!");
+		async Task<bool> PowerUpDisplay()
+		{
+			Random rand = new Random();
+			var rnd = new Random();
+				var result = WordsForTheLedDisplays.OrderBy(item => rnd.Next());
+			int i =0;
+			while(i!=13)
+			for (int j = 0; j<4; j++)
+			foreach (var item in result)
+			{
+				displayControls[i++].Value = item;
 
+				if (i == 12)
+				{
+				//	await Task.Yield();
 
-		//	BuildTickerData(WordsForTheLedDisplays);
+					i = 0;
+					await Task.Delay(300);
+				}
+			} 
+			
 
-
-
-
-
-
-		//}
+			return true;
+		}
 
 		public void DisplayController(bool? DisplayMode = null)
 		{
@@ -723,9 +750,9 @@ namespace MRNUIElements.Models
 				SALESPERSON.Clear();
 			{
 				SALESPERSON.Add("Jay");
-			   	SALESPERSON.Add("Silent Bob");
-			   	SALESPERSON.Add("Harvard");
-			  	SALESPERSON.Add("Matt");
+				SALESPERSON.Add("Silent Bob");
+				SALESPERSON.Add("Harvard");
+				SALESPERSON.Add("Matt");
 				SALESPERSON.Add("Craig");
 				SALESPERSON.Add("Richard");
 				SALESPERSON.Add("Lee/Logan");
@@ -843,8 +870,9 @@ namespace MRNUIElements.Models
 				2),
 				_textGeometry);
 				//dc.DrawGeometry(System.Windows.Media.Brushes.DarkRed, new System.Windows.Media.Pen(System.Windows.Media.Brushes.Green, rect.Height / 10), _textGeometry);
-				drawingcontext.Close();
+			
 			}
+			
 			System.Windows.Controls.Image img = new System.Windows.Controls.Image();
 
 			RenderTargetBitmap target = new RenderTargetBitmap((int)rect.Width, (int)rect.Height, 96, 96, PixelFormats.Default);
