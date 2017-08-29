@@ -62,10 +62,8 @@ namespace MRNUIElements.RoofOrder
 				TotalEaves += (int)p.EaveLength;
 				PJB4 += (int)p.FourAndUp;
 				//p.GroupNumber;
-				if ((int)p.HipValley > 0)
-					Hips += (int)p.HipValley;
-				if ((int)p.HipValley < 0)
-					Valleys = (int)p.HipValley;
+				Hips += (int)p.Hip;
+				Valleys = (int)p.Valley;
 				p.ItemSpec = "";
 				Pitches = (int)p.Pitch;
 				Rakes = (int)p.RakeLength;

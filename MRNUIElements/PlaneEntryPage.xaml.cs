@@ -45,7 +45,8 @@ namespace MRNUIElements
             pl.SquareFootage = int.Parse(squareFootageTextBox.Text);
             pl.ThreeAndOne = int.Parse("0");
             pl.FourAndUp = int.Parse("0");
-            pl.HipValley = int.Parse(hipValleyTextBox.Text);
+            pl.Hip = int.Parse(hipTextBox.Text);
+			pl.Valley = int.Parse(valleyTextBox.Text);
             pl.GroupNumber = int.Parse(groupNumberTextBox.Text);
             pl.ItemSpec = itemSpecTextBox.Text;
             pl.NumberDecking = int.Parse(numberDeckingTextBox.Text);

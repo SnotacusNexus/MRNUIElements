@@ -363,7 +363,7 @@
                 Click="CustomerAgreementBtn_Click"
                 Content="Customer Agreement"
                 FontSize="14"
-                Style="{DynamicResource normal}" />
+               />
         <Grid x:Name="grid5"
               Margin="45,-188,0,0"
               HorizontalAlignment="Left"
@@ -730,7 +730,7 @@
                 Click="MRNEstimateBtn_Click"
                 Content="MRN Estimate"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="OriginalScopeBtn"
                 Grid.Column="1"
                 Margin="339,188,247,10"
@@ -738,7 +738,7 @@
                 Click="OriginalScopeBtn_Click"
                 Content="Original Scope"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="NewestScopeBtn"
                 Grid.Column="1"
                 Margin="552,188,36,10"
@@ -746,7 +746,7 @@
                 Click="NewestScopeBtn_Click"
                 Content="Newest Scope"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="AuthorizatonOfCommunicationBtn"
                 Grid.Column="1"
                 Margin="13,153,374,45"
@@ -754,7 +754,7 @@
                 Click="AuthorizatonOfCommunicationBtn_Click"
                 Content="Auth. of Communication"
                 FontSize="13"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="PolicyBtn"
                 Grid.Column="1"
                 Margin="375,153,10,45"
@@ -762,7 +762,7 @@
                 Click="PolicyBtn_Click"
                 Content="Policy"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <TextBlock x:Name="DateTimeBlock"
                    Grid.Column="3"
                    Width="162"
@@ -2088,7 +2088,7 @@
                 Click="InspectionReportBtn_Click"
                 Content="Inspection Report"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="RoofMeasurementBtn"
                 Grid.Row="1"
                 Margin="272,441,12,12"
@@ -2096,7 +2096,7 @@
                 Click="RoofMeasurementBtn_Click"
                 Content="Roof Measurements"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="PlaneDamages"
                 Grid.Row="1"
                 Margin="10,443,273,10"
@@ -2104,7 +2104,7 @@
                 Click="PlaneDamages_Click"
                 Content="Plane Damages"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
 
 
         <Grid x:Name="grid7"
@@ -3158,7 +3158,7 @@
                 Click="MaterialInvoiceBtn_Click"
                 Content="Material Invoice"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="RoofLaborInvoiceBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3167,7 +3167,7 @@
                 Click="RoofLaborInvoiceBtn_Click"
                 Content="Roof Labor Invoice"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="GutterInvoiceBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3176,7 +3176,7 @@
                 Click="GutterInvoiceBtn_Click"
                 Content="Gutter Invoice"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="InteriorInvoice"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3186,7 +3186,7 @@
                 Click="InteriorInvoice_Click"
                 Content="Interior Invoice"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+             />
         <Button x:Name="SupplementCheckBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3194,7 +3194,7 @@
                 HorizontalAlignment="Stretch"
                 Content="Supplement Check"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+                />
         <Button x:Name="FirstCheckBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3202,7 +3202,7 @@
                 HorizontalAlignment="Stretch"
                 Content="1st Check"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+                 />
         <Button x:Name="DeductibleCheckBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3210,7 +3210,7 @@
                 HorizontalAlignment="Stretch"
                 Content="Deductible Check"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+                />
         <Button x:Name="DepreciationCheckBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3218,7 +3218,7 @@
                 HorizontalAlignment="Stretch"
                 Content="Depreciation Check"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="CertificateOfCompletionBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3227,7 +3227,7 @@
                 Click="CertificateOfCompletionBtn_Click"
                 Content="CoC"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="LienWaiverBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3236,7 +3236,7 @@
                 Click="LienWaiverBtn_Click"
                 Content="Lien Waiver"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="SatisfactionSurveyBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3245,7 +3245,7 @@
                 Click="SatisfactionSurveyBtn_Click"
                 Content="Satisfaction Survey"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+              />
         <Button x:Name="WarrantyBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3254,7 +3254,7 @@
                 Click="WarrantyBtn_Click"
                 Content="Warranty"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+              />
         <Button x:Name="ThankyouLetterBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3263,7 +3263,7 @@
                 Click="ThankyouLetterBtn_Click"
                 Content="Thank You Letter"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+                />
         <Button x:Name="RoofOrderBtn"
                 Grid.Row="1"
                 Grid.Column="2"
@@ -3272,7 +3272,7 @@
                 Click="RoofOrderBtn_Click"
                 Content="Roof Order"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="LeftButton"
                 Grid.Row="1"
                 Grid.Column="3"
@@ -3298,7 +3298,7 @@
                 Click="InspectionPhotos_Click"
                 Content="Inspection Photos"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+                />
         <Button x:Name="SketchBtn"
                 Grid.Row="2"
                 Margin="272,5,11,171"
@@ -3306,7 +3306,7 @@
                 Click="SketchBtn_Click"
                 Content="Sketch"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+              />
         <ListView x:Name="listView"
                   Grid.Row="2"
                   Width="100"
@@ -3614,7 +3614,7 @@
                 Click="CapOutBtn_Click"
                 Content="Cap Out"
                 FontSize="16"
-                Style="{DynamicResource normal}" />
+               />
 
 
     </Grid>

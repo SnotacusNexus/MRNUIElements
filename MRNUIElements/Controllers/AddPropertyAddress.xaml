@@ -1,24 +1,52 @@
-﻿<PageFunction
+﻿<Page
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MRNUIElements.Controllers"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+    xmlns:converters="clr-namespace:MRNUIElements.Utility"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     x:Class="MRNUIElements.Controllers.AddPropertyAddress"
-    x:TypeArguments="sys:Object"
+   
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="300" RemoveFromJournal="True"
-    Title="AddPropertyAddress">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="71,41,0,0" TextWrapping="Wrap" Text="Add Claim Property Address" VerticalAlignment="Top" Height="19" Width="166" Foreground="White" FontWeight="Bold" TextDecorations="Underline"/>
+    d:DesignHeight="300" d:DesignWidth="300" 
+    Title="AddPropertyAddress" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Page.Resources>
+        <local:MRNClaim x:Key="MRNClaim"/>
+        <converters:StringtoBooleanConverter x:Key="TexttoBool"/>
+        <converters:ScopeTypeConverter x:Key="stc"/>
+        <converters:AddressBlockFromAddressIDConverter x:Key="addressinfo"/>
+        <converters:MRNClaimNumberConverter x:Key="MRNNumber"/>
+        <converters:PaymentDescriptionIDConverter x:Key="PayDescription"/>
+        <converters:PaymentTypeIDConverter x:Key="PayType"/>
+        <converters:VendorFromIDConverter x:Key="VendorName"/>
+        <converters:InvoiceTypeIDConverter x:Key="InvoiceType"/>
+        <converters:ClaimContactsConverter x:Key="CCConverter"/>
+    </Page.Resources>
+    <Grid Focusable="True">
+        <TextBlock HorizontalAlignment="Left" Margin="71,10,0,0" TextWrapping="Wrap" Text="Add Claim Property Address" VerticalAlignment="Top" Height="19" Width="166" Foreground="White" FontWeight="Bold" TextDecorations="Underline"/>
 
-        <syncfusion:ComboBoxAdv x:Name="AddressCombo" HorizontalAlignment="Left" Height="20" Margin="69,111,0,0" VerticalAlignment="Top" Width="158" IsEditable="True" EnableOKCancel="True" IsTextSearchEnabled="True" DisplayMemberPath="Address" DefaultText="Enter or Select Address" SelectionChanged="ComboBoxAdv_SelectionChanged"/>
-        <syncfusion:MaskedTextBox x:Name="ZipcodeBox"  HorizontalAlignment="Left" Height="20" Margin="171,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Background="{x:Null}" Foreground="White" WatermarkTextForeground="White" TextAlignment="Center" MaxLength="5" SelectionOpacity="0" WatermarkText="Zipcode" TextChanged="MaskedTextBox_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Height="20" Margin="71,86,0,0" TextWrapping="Wrap" Text="Address Lookup" VerticalAlignment="Top" Width="95" Foreground="White" TextAlignment="Center" TextDecorations="Underline" FontWeight="Bold"/>
-        <Button x:Name="Select_Button" Content="Select" HorizontalAlignment="Left" Margin="171,187,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="57,187,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <TextBox x:Name="AddressTextbox" HorizontalAlignment="Left" Height="20" Margin="69,120.609,0,0" VerticalAlignment="Top" Width="158"   TextChanged="AddressTextbox_TextChanged"/>
+        <syncfusion:IntegerTextBox x:Name="ZipcodeBox"  HorizontalAlignment="Left" Height="20" Margin="112,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Background="{x:Null}" Foreground="White" WatermarkTextForeground="White" TextAlignment="Center" MaxLength="5" SelectionOpacity="0" WatermarkText="Zipcode" TextChanged="MaskedTextBox_TextChanged" PositiveForeground="White" SelectionForeground="White" ValueChanged="ZipcodeBox_ValueChanged" GroupSeperatorEnabled="False" MaxValue="99999" MinValue="0" NullValue="0" TextSelectionOnFocus="False"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="93,90,0,0" TextWrapping="Wrap" Text="2.) Address Lookup" VerticalAlignment="Top" Width="95" Foreground="White" TextAlignment="Center" TextDecorations="Underline" FontWeight="Bold"/>
+        <Button x:Name="Select_Button" Content="Select" HorizontalAlignment="Left" Margin="215,269,0,0" VerticalAlignment="Top" Width="75" Click="Select_Button_Click"/>
+        <Button x:Name="Cancel_Button"  Content="Cancel" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="93,34,0,0" TextWrapping="Wrap" Text="1.) Zipcode" VerticalAlignment="Top" Width="95" Foreground="White" TextAlignment="Center" TextDecorations="Underline" FontWeight="Bold"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="118" Margin="10,146,0,0" VerticalAlignment="Top" Width="280" SelectionChanged="listView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="250" Header="Addresses Found">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Width="250" Height="25" HorizontalAlignment="Left" TextAlignment="Center" Text="{Binding Address}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="90,271,0,0" TextWrapping="Wrap" Text="{Binding ZipcodeBox.Text, ConverterParameter='ZipCity', Converter={StaticResource addressinfo}}"  VerticalAlignment="Top" Width="78" Foreground="White"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="174,271,0,0" TextWrapping="Wrap"  Text="{Binding ZipcodeBox.Text, ConverterParameter='ZipState', Converter={StaticResource addressinfo}}" VerticalAlignment="Top" Width="36" Foreground="White"/>
 
     </Grid>
-</PageFunction>
+</Page>

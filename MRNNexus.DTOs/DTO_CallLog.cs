@@ -25,5 +25,8 @@ namespace MRNNexusDTOs
         public string WhoAnswered { get; set; }
         [DataMember]
         public string CallResults { get; set; }
-    }
+		[DataMember]
+		public string AdditionalComments { get; set; }
+
+	}
 }

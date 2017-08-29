@@ -29,6 +29,7 @@ using MRNUIElements.Models;
 using MRNNexus_Model;
 using Syncfusion.Windows.Shared;
 using Syncfusion.Windows.Tools.Controls;
+using System.Threading;
 
 
 
@@ -53,6 +54,7 @@ namespace MRNUIElements
 		static DTO_Claim claim { get; set; }
 		public static Syncfusion.Windows.Controls.Notification.SfBusyIndicator _busyindicator;
 		static public string Status = "Loading...!!!";
+		static public bool DoneLoading;
 	//	public static Syncfusion.Windows.Controls.Notification.SfBusyIndicator busyindicator { get; set; }
 
 	
@@ -112,23 +114,33 @@ namespace MRNUIElements
 
 			await s1.buildLUs();
 
-			bool doneLoading = false;
+			bool DoneLoading = false;
 
-			while (!doneLoading)
+			while (!DoneLoading)
 			{
-				if (s1.VendorTypes != null)
-				{
-					doneLoading = true;
 
-					busyIndicator.IsBusy = false;
+				//if (s1.VendorsList != null)
+				//{
+					
+					//	await Task.Run(async()=> await Task.Delay(500));
+					//	doneLoading = true;
+					DoneLoading = ServiceLayer.DoneLoading;
+					//	busyIndicator.IsBusy = true;
+					
 					// moved to login.xaml.cs menuBar.IsEnabled = true;
-
-					Login loginpage = new Login();
-
+					//	if (s1.InvoicesList != null)
+					//	System.Windows.Forms.MessageBox.Show("Invoices Loaded");
+					//	if (s1.VendorsList != null)
+					//		System.Windows.Forms.MessageBox.Show("Vendors Loaded");
+				//}
+			}
+				busyIndicator.IsBusy = false;
+				Login loginpage = new Login();
+					
 
 					this.MRNClaimNexusMainFrame.NavigationService.Navigate(loginpage);
-				}
-			}
+				
+			
 		}
 		public static Syncfusion.Windows.Controls.Notification.SfBusyIndicator getBusyIndicator()
 		{
@@ -149,7 +161,15 @@ namespace MRNUIElements
 			//this.MRNClaimNexusMainFrame.NavigationService.Navigate(inspectionspage);
 		}
 
-		private void calendar_Click(object sender, RoutedEventArgs e)
+        private void GoHome_Click(object sender, RoutedEventArgs e)
+        {
+            ns.Navigate(new LoginAs());
+            //CustomerAgreement inspectionspage = new CustomerAgreement();
+            //this.MRNClaimNexusMainFrame.NavigationService.Navigate(inspectionspage);
+        }
+
+
+        private void calendar_Click(object sender, RoutedEventArgs e)
 		{
 		//	Schedule inspectionspage = new Schedule();
 		//	this.MRNClaimNexusMainFrame.NavigationService.Navigate(inspectionspage);

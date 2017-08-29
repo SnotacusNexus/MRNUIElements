@@ -27,11 +27,12 @@ namespace MRNUIElements
 	/// </summary>
 	public partial class ClaimPickerPopUp : Window
 	{
+       
 		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public DTO_Claim Claim { get; set; }
 		public DTO_Employee Creds { get; set; }
 		public DTO_Employee currentLoggedInUser = s1.LoggedInEmployee;
-		public static NavigationService ns { get; set; }
+        public static NavigationService ns = MainWindow.getNavigationService();
 		protected ObservableCollection<DTO_Claim> colOfClaims = new ObservableCollection<DTO_Claim>();
 		protected ObservableCollection<DTO_Employee> colOfEmployees = new ObservableCollection<DTO_Employee>();
 
@@ -41,7 +42,7 @@ namespace MRNUIElements
 			//System.Windows.Forms.MessageBox.Show(currentLoggedInUser.ToString());
 			try
 			{
-				GetActiveClaims(currentLoggedInUser);
+				GetActiveClaims();
 			}
 			catch (Exception ex)
 			{
@@ -77,27 +78,30 @@ namespace MRNUIElements
 			dTO_ClaimViewSource.Source = this.DataContext;
 		}
 
-		private async void GetActiveClaims(DTO_Employee emp)
+		private async void GetActiveClaims()
 		{	
-			await s1.GetAllOpenClaims();
-			if (s1.OpenClaimsList == null)
-				
-				await s1.GetAllEmployees();
+			await s1.GetAllClaims();
+            //if (s1.OpenClaimsList == null)
 
-		  if (Admin(emp))
-			{
-				if (colOfClaims.Count > 0)
-					colOfClaims.Clear();
+            //	await s1.GetAllEmployees();
 
-				foreach (var c in s1.OpenClaimsList)
-				{
-					
-					colOfClaims.Add(c);
-				}
-			}
-			dTO_ClaimComboBoxAdv.DataContext = colOfClaims;
-			dTO_ClaimComboBoxAdv.ItemsSource = colOfClaims;
+            // if (Admin(emp))
+            //{
+            //	if (colOfClaims.Count > 0)
+            //		colOfClaims.Clear();
 
+            //	foreach (var c in s1.OpenClaimsList)
+            //	{
+
+            //		colOfClaims.Add(c);
+            //	}
+            //}
+            int k = 0;
+            while (s1.ClaimsList == null)
+                k++;
+			ClaimListView.DataContext = s1.ClaimsList;
+            ClaimListView.ItemsSource = s1.ClaimsList;
+         
 
 		}
 		private bool Admin(DTO_Employee emp)
@@ -108,7 +112,7 @@ namespace MRNUIElements
 
 		private void SelectBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Claim = (DTO_Claim)dTO_ClaimComboBoxAdv.SelectedItem;
+			Claim = (DTO_Claim)ClaimListView.SelectedItem;
 			Application.Current.Properties["CurrentClaim"] = Claim;
 
 
@@ -132,5 +136,17 @@ namespace MRNUIElements
 		{
 
 		}
-	}
+
+        private void NewClaimViewSelectBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Claim = (DTO_Claim)ClaimListView.SelectedItem;
+            Application.Current.Properties["CurrentClaim"] = Claim;
+
+
+            DialogResult = true;
+            Close();
+            if (ClaimListView.SelectedItem != null)
+                ns.Navigate(new ClaimView(Claim));
+        }
+    }
 }

@@ -437,7 +437,7 @@
                 Content="_Submit"
                 IsDefault="True"
                 IsEnabled="False"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="CancelScopeEntry"
                 Width="75"
                 Margin="50,480,0,0"
@@ -446,7 +446,7 @@
                 Click="CancelScopeEntry_Click"
                 Content="_Cancel"
                 IsCancel="True"
-                Style="{DynamicResource normal}" />
+               />
         <Grid x:Name="grid1"
               Width="255"
               Margin="45,72,0,132"
@@ -792,7 +792,7 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
                    FontSize="20"
-                   Style="{StaticResource normal}"
+                   
                    Text="Scope Entry"
                    TextWrapping="Wrap" />
         <Button x:Name="NewScopeBtn"
@@ -802,7 +802,7 @@
                 VerticalAlignment="Top"
                 Click="NewScopeBtn_Click"
                 Content="New Scope"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="EstimateBtn"
                 Width="125"
                 Margin="300,185,0,0"
@@ -811,7 +811,7 @@
                 Click="EstimateBtn_Click"
                 Content="Estimate"
                 FocusVisualStyle="{DynamicResource normal}"
-                Style="{DynamicResource normal}" />
+               />
         <Button x:Name="OldScopeBtn"
                 Width="125"
                 Margin="300,230,0,0"
@@ -819,7 +819,7 @@
                 VerticalAlignment="Top"
                 Click="OldScopeBtn_Click"
                 Content="Old Scope"
-                Style="{DynamicResource normal}" />
+               />
         <CheckBox x:Name="SettledCheckBox"
                   Width="125"
                   Height="40"

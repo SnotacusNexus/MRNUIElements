@@ -141,9 +141,9 @@ namespace MRNUIElements
 		}
 		private async void Init()
 		{
-			await s1.GetAllClaimDocuments();
-			await UpdateClaimDocumentsLists();
-			await s1.GetAllOpenClaims();
+		//	await s1.GetAllClaimDocuments();
+			//await UpdateClaimDocumentsLists();
+			//await s1.GetAllOpenClaims();
 			frame.Navigate(new MRNLogo1());
 			EditData = false;
 			EDcheckBox.IsChecked = false;

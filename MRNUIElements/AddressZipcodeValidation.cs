@@ -125,6 +125,13 @@ namespace MRNUIElements
 					s += " ";
 			}
 			City = s;
+			if (AbbST == 3)
+				return City;
+			else if (AbbST == 4)
+				return ST;
+			else if (AbbST == 5)
+				return State;
+
 
 			string CSZ = City + ", " + State + "  " + ZipCode;
 			string CSTZ = City + ", " + ST + "  " + ZipCode;

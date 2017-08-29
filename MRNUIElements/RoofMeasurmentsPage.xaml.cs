@@ -273,7 +273,7 @@ namespace MRNUIElements
 				var result = ofd.ShowDialog();
 				if (result == false) return;
 				//textbox.Text = pdfExtract.Extract(ofd.FileName, true);
-				//FillVariables(pdfExtract.Extract(ofd.FileName, true));
+			//	FillVariables(pdfExtract.Extract(ofd.FileName, true));
 				this.DataContext = this;
 			}
 
@@ -399,7 +399,7 @@ namespace MRNUIElements
 
 		}
 
-		public void FillVariables(string texttoparse)
+		public DTO_Plane FillVariables(string texttoparse)
 		{
 			List<double> MeasurementList2 = new List<double>();
 			List<string> MeasurementList3 = new List<string>();
@@ -439,6 +439,8 @@ namespace MRNUIElements
 			TotalSQFTOFF = S2D(MeasurementList2[11].ToString());
 			PredPitch = (int)S2D(MeasurementList2[12].ToString());
 			DoMath();
+
+			return Plane;
 		}
 		/// <summary>
 		/// Takes Data in the form usually of string objects has the selector to identify which function to call with the data and 2 other control variables
@@ -667,9 +669,9 @@ namespace MRNUIElements
 						p.RidgeLength = (int)RidgeMeasurement;
 						p.RakeLength = (int)RakeMeasurement;
 						p.Pitch = PredPitch;
-						p.HipValley = (int)HipMeasurement;
+						p.Hip = (int)HipMeasurement;
 						p.GroupNumber = 1;
-						p.ItemSpec = "EV " + ValleyMeasurement.ToString();
+						p.Valley = (int)ValleyMeasurement;
 						p.EaveLength = (int)EaveMeasurement;
 						p.InspectionID = s.Inspection.InspectionID;
 						//TODO Make this Dynamic
@@ -679,7 +681,7 @@ namespace MRNUIElements
 						if (!string.IsNullOrEmpty(OrderNoOfLayers.Text))
 							p.NumOfLayers = int.Parse(OrderNoOfLayers.Text);
 						else p.NumOfLayers = 1;
-
+						p.ItemSpec = "EV ";
 						p.PlaneTypeID = 15;
 						p.StepFlashing = int.Parse("0");
 						try
@@ -698,10 +700,12 @@ namespace MRNUIElements
 						else
 							System.Windows.Forms.MessageBox.Show(s.Plane.Message);
 
+						Plane = p;
 					}
 					else System.Windows.Forms.MessageBox.Show(s.Inspection.Message);
 				}
-			//	new DTO_Claim Order({ })
+			
+				//	new DTO_Claim Order({ })
 				s.Inspection = null;
 				//	}
 			}

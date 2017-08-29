@@ -1,25 +1,18 @@
 ﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+
+using System.IO;
+
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Converters;
@@ -29,9 +22,14 @@ using MRNNexus_Model;
 using Newtonsoft.Json.Linq;
 using static Newtonsoft.Json.Linq.JToken;
 using System.Collections;
-using System.Net.Http.Formatting;
+using System.Net.Http.Formatting;//using System.Net.Http.Formatting;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
+
+//using System.Web.Script.Serialization;
+using System.Diagnostics;
+using System.Web.Helpers;
+using System.ServiceModel.Web;
 
 namespace MRNUIElements.Controllers
 {
@@ -42,35 +40,32 @@ namespace MRNUIElements.Controllers
 
 		//	int errorcount = 0;
 		public string hold = "";
-		private const string URL = @"http://services.mrncontracting.com/MRNNexus_Service.svc/";
-		// private const string URL = @"http://localhost:50899/MRNNexus_Service.svc/";
+		private const string URL = "http://services.mrncontracting.com/MRNNexus_Service.svc/";
+		//private const string URL = @"http://localhost:50899/MRNNexus_Service.svc/";
 		private HttpClient client = new HttpClient();
 		public static ServiceLayer s1;
 		//public DateTime serviceCreated;
-		public static DTO_Claim CurrentClaim { get; set; }
+		public static DTO_Claim CurrentClaim;
 
+		public static bool DoneLoading;
 		//	public static ObservableCollection<DTO_ClaimStatus> CurrentClaimStatus { get; set; }
 		//	public static ObservableCollection<ClaimData> 
 		private ServiceLayer()
 		{
 			//	var mw = App.Current.MainWindow.TryFindResource("VerboseStatusDisplay");
-			client.BaseAddress = new Uri(URL);
-			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			client.Timeout = new TimeSpan(0, 5, 0);
-
+			
+		//	getCurrentClaim();
 
 		}
 
 		public static DTO_Claim getCurrentClaim()
 		{
-			if (CurrentClaim != null)
-			{
-				//CurrentClaimStatus = getCurrentClaimStatus(CurrentClaim);
 
-				return CurrentClaim;
-			}
+			if (CurrentClaim == null)
+				CurrentClaim = new DTO_Claim();
 
-			return new DTO_Claim();
+			return CurrentClaim;
+
 		}
 
 		public static ServiceLayer getInstance()
@@ -90,11 +85,76 @@ namespace MRNUIElements.Controllers
 
 			return s1;
 		}
+		
+			
+		//public async Task<bool> GetData( DTO_Base token, Type type, string methodName)
+		//{
+		//	// Clear text of Output textbox 
+	
 
-		public async Task MakeRequest(DTO_Base token, Type returnType, string methodName)
+		//		var httpClient = new HttpClient();
+		
+		
+		//	try
+		//	{
+		//		string resourceAddress =URL+"/"+methodName;
+							
+		//		httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+		//		string obody = JsonSerializer(token);
+		//		var result = await httpClient.PostAsync(resourceAddress, new StringContent(obody, Encoding.UTF8, "application/json"));
+
+		//		string results = await jsonresult.Content.ReadAsStringAsync().Result);
+		//		setResults(results, type, methodName);
+
+		//	}
+		//	catch (HttpRequestException hre)
+		//	{
+		//		NotifyUser("Error:" + hre.Message);
+		//	}
+		//	catch (TaskCanceledException)
+		//	{
+		//		NotifyUser("Request canceled.");
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		NotifyUser(ex.Message);
+		//	}
+		//	finally
+		//	{
+				
+		//		if (httpClient != null)
+		//		{
+		//			httpClient.Dispose();
+		//			httpClient = null;
+		//		}
+				
+		//	}
+			
+		//	return true;
+		//}
+		public void NotifyUser(string message)
 		{
-			try
-			{
+			System.Windows.Forms.MessageBox.Show(message);
+		}
+
+
+		public async Task<bool> MakeRequest(DTO_Base token, Type returnType, string methodName)
+		{
+
+
+			var client = new HttpClient();
+	//		var client2 = new HttpClient();
+			client.BaseAddress = new Uri(URL);
+	//		client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+	//		client2.Timeout = new TimeSpan(0, 5, 0);
+	//		client2.BaseAddress = new Uri(URL);
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			client.Timeout = new TimeSpan(0, 5, 0);
+			string results = "";
+
+			try {
+				//{
+
 				var response = await client.PostAsJsonAsync(string.Format(@"{0}{1}", URL, methodName),
 					token);
 				//HttpRequestMessage msg = new HttpRequestMessage(new HttpMethod("POST"), new Uri(URL + methodName));
@@ -102,16 +162,106 @@ namespace MRNUIElements.Controllers
 				//msg.Content.Headers.ContentType = new HttpMediaTypeHeaderValue("application/json");
 				//HttpResponseMessage response = await client.SendRequestAsync(msg).AsTask();
 				setResults(await response.Content.ReadAsStringAsync(), returnType, methodName);
+			//	string resourceAddress = URL+ methodName;
+				
+				//	client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+				//	string obody = JsonSerializer(token);
+					//var response = await client.PostAsJsonAsync(resourceAddress, obody);
+		//		var response1 = await client.PostAsync(methodName, new StringContent(obody, Encoding.UTF8, "application/json"));
+			//	JObject joblect = await response.Content.ReadAsAsync(returnType) as JObject;
+		//		string result = await response.Content.ReadAsStringAsync();
+			//	var result1 = await response1.Content.ReadAsStringAsync();
+			//	//System.Windows.Forms.MessageBox.Show(result);
+			//	//System.Windows.Forms.MessageBox.Show(result1);
+			//	var c = joblect.ToObject(returnType);
+	//		 var b =JsonConvert.DeserializeObject(result1);
+			//		//System.Windows.Forms.MessageBox.Show(a.ToString());
+			////	System.Windows.Forms.MessageBox.Show(b.ToString());
+
+
+		//		results = GetJsonValue(result);
+
+	//	var resultd =await client2.PostAsync(resourceAddress, new StringContent(JsonConvert.SerializeObject(token), Encoding.UTF8, "application/json"));
+	//			string a = await resultd.Content.ReadAsStringAsync();
+
+	//			setResults(a, returnType, methodName);
+
+			}
+			catch (HttpRequestException hre)
+			{
+				NotifyUser("Error:" + hre.Message);
+			}
+			catch (TaskCanceledException)
+			{
+				NotifyUser("Request canceled.");
 			}
 			catch (Exception ex)
 			{
-				//	if (errorcount < 5)
-				//	mw.Text=".";
-
-				//	else
-				//	mw.Text="Error Making Request Task"+ex.ToString();
+				NotifyUser(ex.Message);
 			}
+			finally
+			{
+
+				//if (client2 != null)
+				//{
+				//	client2.Dispose();
+				//	client2 = null;
+				//}
+				if (client != null)
+				{
+					client.Dispose();
+					client = null;
+				}
+			}
+		
+			return true;
 		}
+	
+		
+
+		/// <summary>
+		/// Serialize Person object to Json string
+		/// </summary>
+		/// <param name="objectToSerialize">Person object instance</param>
+		/// <returns>return Json String</returns>
+		public string JsonSerializer(Object objectToSerialize)
+		{
+			if (objectToSerialize == null)
+			{
+				throw new ArgumentException("objectToSerialize must not be null");
+			}
+			MemoryStream ms = null;
+
+			DataContractJsonSerializer serializer = new DataContractJsonSerializer(objectToSerialize.GetType());
+			ms = new MemoryStream();
+			serializer.WriteObject(ms, objectToSerialize);
+			ms.Seek(0, SeekOrigin.Begin);
+			StreamReader sr = new StreamReader(ms);
+			return sr.ReadToEnd();
+		}
+
+		
+
+		/// <summary>
+		/// Get Result from Json String
+		/// </summary>
+		/// <param name="jsonString">Json string which returns from WCF Service</param>
+		/// <returns>Result string</returns>
+		public string GetJsonValue(string jsonString)
+		{
+		
+					
+				int ValueLength = jsonString.LastIndexOf("\"") - (jsonString.IndexOf(":") + 2);
+				string value = jsonString.Substring(jsonString.IndexOf(":") + 2, ValueLength);
+
+		
+				return value;
+			
+			
+		
+
+		}
+
 
 		async public Task buildLUs()
 		{
@@ -122,6 +272,7 @@ namespace MRNUIElements.Controllers
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimStatusTypes>), "GetClaimStatusTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_DamageTypes>), "GetDamageTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_EmployeeType>), "GetEmployeeTypes");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Invoice>), "GetAllInvoices");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_InvoiceType>), "GetInvoiceTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_KnockResponseType>), "GetKnockResponseTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_LeadType>), "GetLeadTypes");
@@ -138,30 +289,143 @@ namespace MRNUIElements.Controllers
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ServiceTypes>), "GetServiceTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ShingleType>), "GetShingleTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_UnitOfMeasure>), "GetUnitsOfMeasure");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetvendorTypes");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetVendorTypes");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_InsuranceCompany>), "GetAllInsuranceCompanies");
+			//	//Non LU
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Inspection>), "GetAllInspections");
+			//	await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimDocument>), "GetAllClaimDocuments");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Payment>), "GetAllPayments");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Employee>), "GetAllEmployees");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimContacts>), "GetAllClaimContacts");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Address>), "GetAllAddresses");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Customer>), "GetAllCustomers");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_EmployeeDetail>), "GetAllEmployeeDetail");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Product>), "GetAllProducts");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Scope>), "GetAllScopes");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimStatus>), "GetAllClaimStatuses");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Lead>), "GetAllLeads");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Plane>), "GetAllPlanes");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_User>), "GetAllUsers");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_AdditionalSupply>), "GetAllAdditionalSupplies");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_SurplusSupplies>), "GetAllSurplusSupplies");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Referrer>), "GetAllReferrers");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Damage>), "GetAllDamages");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaimsToSchedule");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaims");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_CallLog>), "GetAllCallLogs");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjustment>), "GetAllAdjustments");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjuster>), "GetAllAdjusters");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_NewRoof>), "GetAllNewRoofs");
+			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_KnockerResponse>), "GetAllKnockerResponses");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllInactiveClaims");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClosedClaims");
+			if (OpenClaimsList == null)
+				OpenClaimsList = getOpenClaims();
+			if (ClosedClaimsList == null)
+				ClosedClaimsList = getClosedClaims();
+			if (InactiveClaimsList == null)
+				InactiveClaimsList = getInactiveClaims();
+			DoneLoading = await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
 
-			//Non LU
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllOpenClaims");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllClaimDocuments");
+			
+
+
 		}
+		private List<DTO_Claim> getOpenClaims()
+		{
+			var a = new List<DTO_Claim>();
+			foreach (var item in ClaimStatusList.Where(x => x.ClaimStatusTypeID < 23))
+			{ 
+				if (a.Exists(x => x.ClaimID == item.ClaimID))
+					a.Add(ClaimsList.Find(x => x.ClaimID == item.ClaimID));
+			}
+
+			if (a == null)
+			a.Add(new DTO_Claim());
+			return a;
+		}
+		private List<DTO_Claim> getClosedClaims()
+		{
+			var a = new List<DTO_Claim>();
+			foreach (var item in ClaimStatusList.Where(x => x.ClaimStatusTypeID == 23))
+			{
+				if (a.Exists(x => x.ClaimID == item.ClaimID))
+					a.Add(ClaimsList.Find(x => x.ClaimID == item.ClaimID));
+			}
+			if (a == null)
+				a.Add(new DTO_Claim());
+
+			return a;
+		}
+		private List<DTO_Claim> getInactiveClaims()
+		{
+			var a = new List<DTO_Claim>();
+
+			foreach (var item in ClaimStatusList.Where(x => x.ClaimStatusTypeID < 23 && x.ClaimStatusDate.AddDays(14) < DateTime.Today))
+			{
+
+				if (a.Exists(x => x.ClaimID == item.ClaimID))
+				{
+					a.Add(ClaimsList.Find(x => x.ClaimID == item.ClaimID));
+				}
+				else
+				{
+					//Do Nothing
+				}
+
+			}
+
+			if (a == null)
+				a.Add(new DTO_Claim());
+
+			return a;
+		}
+		//GetRecentInspectionsBySalesPersonIDGetRecentLeadsBySalesPersonIDGetRecentClaimsBySalesPersonID
+
+	
+
+
 
 		public void setResults(string json, Type type, string methodName)
 		{
+			
 
 			if (methodName == "Login")
 			{
+				Type a = type.GetType();
+				//LoggedInEmployee = ((DTO_Employee)JsonConvert.DeserializeObject((string)json, a));
 				LoggedInEmployee = JsonConvert.DeserializeObject<DTO_Employee>(json);
 				return;
 			}
-
+			if (type == typeof(DTO_AdditionalSupply))
+			{
+				AdditionalSupply = JsonConvert.DeserializeObject<DTO_AdditionalSupply>(json);
+				return;
+			}
 			if (type == typeof(DTO_Address))
 			{
 				Address1 = JsonConvert.DeserializeObject<DTO_Address>(json);
 				return;
 			}
-
+			if (type == typeof(DTO_Customer))
+			{
+				Cust = JsonConvert.DeserializeObject<DTO_Customer>(json);
+				return;
+			}
+			if (type == typeof(DTO_ClaimContacts))
+			{
+				ClaimContacts = JsonConvert.DeserializeObject<DTO_ClaimContacts>(json);
+				return;
+			}
+			if (type == typeof(DTO_Claim))
+			{
+				Claim = JsonConvert.DeserializeObject<DTO_Claim>(json);
+				CurrentClaim = Claim;
+				return;
+			}
 			if (type == typeof(DTO_Employee))
 			{
 				Employee = JsonConvert.DeserializeObject<DTO_Employee>(json);
@@ -173,13 +437,22 @@ namespace MRNUIElements.Controllers
 				InsuranceCompaniesList = JsonConvert.DeserializeObject<List<DTO_InsuranceCompany>>(json);
 				return;
 			}
+			if (type == typeof(List<DTO_CallLog>))
+			{
+				CallLogsList = JsonConvert.DeserializeObject<List<DTO_CallLog>>(json);
+				return;
+			}
 
 			if (type == typeof(DTO_Lead))
 			{
 				Lead = JsonConvert.DeserializeObject<DTO_Lead>(json);
 				return;
 			}
-
+			if (type == typeof(DTO_SurplusSupplies))
+			{
+				SurplusSupplies = JsonConvert.DeserializeObject<DTO_SurplusSupplies>(json);
+				return;
+			}
 			if (type == typeof(List<DTO_CalendarData>))
 			{
 				CalendarDataList = JsonConvert.DeserializeObject<List<DTO_CalendarData>>(json);
@@ -276,7 +549,28 @@ namespace MRNUIElements.Controllers
 				PlaneTypes = JsonConvert.DeserializeObject<List<DTO_LU_PlaneTypes>>(json);
 				return;
 			}
+			if (type == typeof(List<DTO_Adjuster>))
+			{
+				AdjustersList = JsonConvert.DeserializeObject<List<DTO_Adjuster>>(json);
+				return;
+			}
 
+			if (type == typeof(List<DTO_Adjustment>))
+			{
+				AdjustmentsList = JsonConvert.DeserializeObject<List<DTO_Adjustment>>(json);
+				return;
+			}
+
+			if (type == typeof(List<DTO_NewRoof>))
+			{
+				NewRoofsList = JsonConvert.DeserializeObject<List<DTO_NewRoof>>(json);
+				return;
+			}
+			if (type == typeof(List<DTO_KnockerResponse>))
+			{
+				KnockerResponsesList = JsonConvert.DeserializeObject<List<DTO_KnockerResponse>>(json);
+				return;
+			}
 			if (type == typeof(List<DTO_LU_ProductType>))
 			{
 				ProductTypes = JsonConvert.DeserializeObject<List<DTO_LU_ProductType>>(json);
@@ -319,13 +613,11 @@ namespace MRNUIElements.Controllers
 				VendorTypes = JsonConvert.DeserializeObject<List<DTO_LU_VendorTypes>>(json);
 				return;
 			}
-
-			if (type == typeof(List<DTO_Claim>))
+			if (type == typeof(List<DTO_Referrer>))
 			{
-				OpenClaimsList = JsonConvert.DeserializeObject<List<DTO_Claim>>(json);
+				ReferrersList = JsonConvert.DeserializeObject<List<DTO_Referrer>>(json);
 				return;
 			}
-
 			if (type == typeof(List<DTO_Vendor>))
 			{
 				VendorsList = JsonConvert.DeserializeObject<List<DTO_Vendor>>(json);
@@ -335,6 +627,82 @@ namespace MRNUIElements.Controllers
 			{
 				ClaimDocumentsList = JsonConvert.DeserializeObject<List<DTO_ClaimDocument>>(json);
 				return;
+			}
+			if (type == typeof(List<DTO_Invoice>))
+			{
+				InvoicesList = JsonConvert.DeserializeObject<List<DTO_Invoice>>(json);
+				return;
+			}
+			if (type == typeof(List<DTO_ClaimStatus>))
+			{
+				ClaimStatusList = JsonConvert.DeserializeObject<List<DTO_ClaimStatus>>(json);
+				return;
+			}
+			if (type == typeof(List<DTO_Payment>))
+			{
+				PaymentsList = JsonConvert.DeserializeObject<List<DTO_Payment>>(json);
+
+				return;
+			}
+			if (type == typeof(List<DTO_Employee>))
+			{
+				EmployeesList = JsonConvert.DeserializeObject<List<DTO_Employee>>(json);
+				return;
+			}
+			if (type == typeof(List<DTO_ClaimContacts>))
+			{
+				ClaimContactsList = JsonConvert.DeserializeObject<List<DTO_ClaimContacts>>(json);
+				return;
+			}
+			if (type == typeof(List<DTO_Address>))
+			{
+				AddressesList = JsonConvert.DeserializeObject<List<DTO_Address>>(json);
+				return;
+			}
+			if (type == typeof(List<DTO_Customer>))
+			{
+				CustomersList = JsonConvert.DeserializeObject<List<DTO_Customer>>(json);
+				return;
+			}
+			if (type == typeof(List<DTO_Scope>))
+			{
+				ScopesList = JsonConvert.DeserializeObject<List<DTO_Scope>>(json);
+
+
+			}
+			if (type == typeof(List<DTO_Plane>))
+			{
+				PlanesList = JsonConvert.DeserializeObject<List<DTO_Plane>>(json);
+			}
+			if (type == typeof(List<DTO_Order>))
+			{
+				OrdersList = JsonConvert.DeserializeObject<List<DTO_Order>>(json);
+
+			}
+			if (type == typeof(List<DTO_User>))
+			{
+				UsersList = JsonConvert.DeserializeObject<List<DTO_User>>(json);
+
+			}
+			if (type == typeof(List<DTO_AdditionalSupply>))
+			{
+				AdditionalSuppliesList = JsonConvert.DeserializeObject<List<DTO_AdditionalSupply>>(json);
+
+			}
+			if (type == typeof(List<DTO_SurplusSupplies>))
+			{
+				SurplusSuppliesList = JsonConvert.DeserializeObject<List<DTO_SurplusSupplies>>(json);
+
+			}
+			if (type == typeof(List<DTO_Lead>))
+			{
+				LeadsList = JsonConvert.DeserializeObject<List<DTO_Lead>>(json);
+
+			}
+			if (type == typeof(List<DTO_Inspection>))
+			{
+				InspectionsList = JsonConvert.DeserializeObject<List<DTO_Inspection>>(json);
+
 			}
 
 		}

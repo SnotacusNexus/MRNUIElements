@@ -105,6 +105,7 @@ namespace MRNUIElements
 
 		}
 		public DTO_Claim claim { get; set; }
+		
 		public List<DTO_Claim> OpenClaimsList { get; set; }
 		private void LogOut(object sender, RoutedEventArgs e)
 		{
@@ -113,13 +114,8 @@ namespace MRNUIElements
 		}
 		private async void Init()
 		{
-			EditData = false;
-			await s1.GetAllClaimDocuments();
-		/*	while (s1.ClaimDocumentsList == null)
-				BusyIndicator.Visibility = Visibility.Visible;
-			BusyIndicator.Visibility = Visibility.Collapsed;
-	*/	
-	}
+			CurrentClaim = claim = new DTO_Claim();
+			claim = s1.ClaimsList.Find(x => x.ClaimID == 19); }
 		public Claim_Administration()
 		{
 			InitializeComponent();
@@ -484,6 +480,8 @@ namespace MRNUIElements
 			//if (s1.ClaimDocumentsList != null)
 				foreach (var cdt in s1.ClaimDocTypes)
 				{
+				//claim = new DTO_Claim();
+				//claim.ClaimID = 19;
 					DTO_ClaimDocument cd = new DTO_ClaimDocument { ClaimID = claim.ClaimID, DocTypeID = i++ };
 
 					if (claimdocs.Exists(x => x.ClaimID == cd.ClaimID && x.DocTypeID == cd.DocTypeID))

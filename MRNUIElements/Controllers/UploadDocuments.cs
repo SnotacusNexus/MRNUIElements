@@ -30,24 +30,28 @@ namespace MRNUIElements.Controllers
 	{
 		public DTO_Claim Claim { get; set; }
 		public DTO_LU_ClaimDocumentType DocType { get; set; }
-
-		public string FullFilePath { get; set; }
-
+		static public DTO_Claim _Claim;
+		static public DTO_LU_ClaimDocumentType _DocType;
+		public static string FullFilePath;
 		public static ServiceLayer s1 = ServiceLayer.getInstance();
 		public UploadDocuments(DTO_Claim claim, DTO_LU_ClaimDocumentType docType, string filePath)
 		{
 			if (Claim == null && claim != null)
-				this.Claim = claim;
+				_Claim=this.Claim = claim;
 			if (DocType == null && docType != null)
-				this.DocType = docType;
+				_DocType=this.DocType = docType;
 			if (FullFilePath == null && filePath != null)
-				this.FullFilePath = filePath;
+				FullFilePath = filePath;
 
 
 
 		}
+		public string GenerateMRNClaimNumber(int SalesPersonID, int CustomerID)
+		{
+		 return SalesPersonID.ToString() + "-" + CustomerID.ToString() + "-" + DateTime.UtcNow;
+		}
 
-		async private void UploadImage(string filepathtoupload = null)
+		static async public void UploadImage(string filepathtoupload = null)
 		{
 			var fileDialog = new System.Windows.Forms.OpenFileDialog();
 			var result = System.Windows.Forms.DialogResult.OK;
@@ -77,8 +81,8 @@ namespace MRNUIElements.Controllers
 							FileBytes = Convert.ToBase64String(imageBytes),
 							FileName = onlyFileName,
 							FileExt = ext,
-							ClaimID = Claim.ClaimID,
-							DocTypeID = DocType.ClaimDocumentTypeID,
+							ClaimID = _Claim.ClaimID,
+							DocTypeID = _DocType.ClaimDocumentTypeID,
 							DocumentDate = DateTime.Today
 
 						};
@@ -86,9 +90,9 @@ namespace MRNUIElements.Controllers
 						{
 							await s1.AddClaimDocument(documentUploadRequest);
 
-							if (documentUploadRequest.Message == null)
+							if (documentUploadRequest.Message != null)
 							{
-								System.Windows.Forms.MessageBox.Show("Success");
+								System.Windows.Forms.MessageBox.Show(documentUploadRequest.Message.ToString());
 							}
 							//SAVING FILES TO DISK
 							//string filename = fileDialog.FileName = @"newfile" + ext;

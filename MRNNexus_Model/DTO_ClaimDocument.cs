@@ -56,7 +56,7 @@ namespace MRNNexus_Model
         [DataMember]
         public Nullable<int> NumInitials { get; set; }
 		[DataMember]
-		public string DocumentComments { get; set; }
+		public string DocumentComments  { get; set; }
 
 	}
 }

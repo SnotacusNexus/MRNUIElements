@@ -630,7 +630,7 @@
                             Click="CustomerAgreementClick"
                             Content="Customer Agreement"
                             FontSize="15"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="Invoice_Viewer"
                             Width="147"
                             Height="23"
@@ -640,7 +640,7 @@
                             Click="InvoicePageBtn"
                             Content="Invoice Viewer"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="PaymentEntryPageBtn"
                             Width="144"
                             Height="32"
@@ -650,7 +650,7 @@
                             Click="PaymentEntryPagebtn"
                             Content="Payment Entry"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="DocumentUpload"
                             Width="144"
                             Height="40"
@@ -673,7 +673,7 @@
                             Click="ScopeEntryButton"
                             Content="Scope Entry"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
 
                     <Button x:Name="CapOut_Viewer"
                             Width="147"
@@ -684,7 +684,7 @@
                             Click="ViewCapOutButton"
                             Content="View Capout"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="Roof_Order_Btn"
                             Width="147"
                             Height="38"
@@ -694,7 +694,7 @@
                             Click="Roof_Order_BtnClick"
                             Content="Order Roof"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="PlaneEntry"
                             Width="147"
                             Height="38"
@@ -705,7 +705,7 @@
                             Content="Plane Entry"
                             FontSize="22"
                             RenderTransformOrigin="0.51,1.316"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="NewClaimBtn"
                             Width="147"
                             Height="38"
@@ -715,7 +715,7 @@
                             Click="NewClaimBtnClick"
                             Content="New Claim"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="AddCustomerBtn"
                             Width="147"
                             Height="38"
@@ -725,7 +725,7 @@
                             Click="AddCustomerBtnClick"
                             Content="New Customer"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="AddInspectionBtn"
                             Width="147"
                             Height="38"
@@ -735,7 +735,7 @@
                             Click="AddInspectionBtnClick"
                             Content="New Inspection"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="AddPlaneData"
                             Width="147"
                             Height="38"
@@ -745,7 +745,7 @@
                             Click="AddPlaneDataClick"
                             Content="Add Plane Data"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="AddUserBtn"
                             Width="147"
                             Height="38"
@@ -755,7 +755,7 @@
                             Click="AddUserBtnClick"
                             Content="New User"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="ViewClaimDetails"
                             Width="147"
                             Height="38"
@@ -765,7 +765,7 @@
                             Click="ViewClaimDetailsClick"
                             Content="Claim Detail"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="AddLeadBtn"
                             Width="147"
                             Height="38"
@@ -775,7 +775,7 @@
                             Click="AddLeadButtonClick"
                             Content="New Lead"
                             FontSize="22"
-                            Style="{DynamicResource normal}" />
+                           />
                 </StackPanel>
 
             </Grid>

@@ -302,7 +302,7 @@
                                 VerticalAlignment="Center"
                                 Panel.ZIndex="1"
                                 Content="Damage&#xA;Type"
-                                Style="{StaticResource normal}"
+                                
                                 d:LayoutOverrides="LeftMargin, RightMargin" />
                         <Button Width="85"
                                 Height="68"
@@ -311,7 +311,7 @@
                                 VerticalAlignment="Center"
                                 Panel.ZIndex="1"
                                 Content="Plane &#xD;&#xA;Specs"
-                                Style="{StaticResource normal}"
+                                
                                 d:LayoutOverrides="LeftMargin, RightMargin" />
                     </Grid>
                 </StackPanel>

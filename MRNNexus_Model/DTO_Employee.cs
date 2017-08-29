@@ -17,6 +17,8 @@ namespace MRNNexus_Model
         public int EmployeeTypeID { get; set; }
         [DataMember]
         public string FirstName { get; set; }
+		[DataMember]
+		public string MiddleName { get; set; }
         [DataMember]
         public string LastName { get; set; }
         [DataMember]
@@ -27,5 +29,13 @@ namespace MRNNexus_Model
         public string CellPhone { get; set; }
         [DataMember]
         public bool Active { get; set; }
-    }
+
+		public string FullName => FirstName + " " + LastName;
+
+		public override string ToString()
+		{
+			return FullName.ToString();
+		}
+
+	}
 }

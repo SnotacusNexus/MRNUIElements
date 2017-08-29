@@ -38,7 +38,7 @@
             <StackPanel Width="100"
                         HorizontalAlignment="Center"
                         DockPanel.Dock="Right">
-                <Button Style="{StaticResource normal}" />
+                <Button  />
             </StackPanel>
 
             <StackPanel x:Name="leftstack"
@@ -59,7 +59,7 @@
                                 HorizontalAlignment="Stretch"
                                 Content="Claim Statistics"
                                 FontSize="12"
-                                Style="{StaticResource normal}"
+                                
                                 d:LayoutOverrides="TopMargin, BottomMargin" />
 
                         <Button x:Name="ClaimDocs_Copy"
@@ -67,20 +67,20 @@
                                 Margin="0,5"
                                 Content="Claim Documents"
                                 FontSize="12"
-                                Style="{StaticResource normal}" />
+                                 />
 
                         <Button x:Name="ClaimDocs"
                                 Content="Claim Documents"
                                 FontSize="12"
-                                Style="{StaticResource normal}" />
+                                 />
 
 
                         <Button x:Name="CallLogDetails"
                                 Content="Call Log Details"
                                 FontSize="12"
-                                Style="{StaticResource normal}" />
+                                 />
 
-                        <Button Style="{StaticResource normal}" />
+                        <Button  />
 
                     </HeaderedItemsControl>
 
@@ -521,7 +521,7 @@
                                 Grid.IsSharedSizeScope="True"
                                 IsCancel="True"
                                 Padding="1,0"
-                                Style="{DynamicResource normal}" />
+                               />
                         <Button x:Name="Print"
                                 Canvas.Left="595"
                                 Canvas.Top="451"
@@ -532,7 +532,7 @@
                                 FontSize="22"
                                 Grid.IsSharedSizeScope="True"
                                 Padding="1,0"
-                                Style="{DynamicResource normal}" />
+                               />
                         <Button x:Name="button_Copy"
                                 Canvas.Left="595"
                                 Canvas.Top="485"
@@ -545,7 +545,7 @@
                                 IsCancel="True"
                                 IsDefault="True"
                                 Padding="1,0"
-                                Style="{DynamicResource normal}" />
+                               />
                     </Canvas>
                 </Viewbox>
             </Grid>

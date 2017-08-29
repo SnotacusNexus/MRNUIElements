@@ -32,7 +32,7 @@
                    Width="156"
                    Margin="134,20,130,190"
                    HorizontalAlignment="Center"
-                   Style="{StaticResource normal}"
+                   
                    Text="Payment Entry"
                    TextWrapping="Wrap" />
 

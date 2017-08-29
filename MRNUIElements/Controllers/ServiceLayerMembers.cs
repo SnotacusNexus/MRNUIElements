@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using MRNNexus_Model;
+using System.Collections.ObjectModel;
 
 namespace MRNUIElements.Controllers
 {
@@ -61,6 +62,8 @@ namespace MRNUIElements.Controllers
 		public List<DTO_CallLog> CallLogsList { get; set; }
 		public List<DTO_Claim> ClaimsList { get; set; }
 		public List<DTO_Claim> OpenClaimsList { get; set; }
+		public List<DTO_Claim> ClosedClaimsList { get; set; }
+		public List<DTO_Claim> InactiveClaimsList { get; set; }
 		public List<DTO_Claim> EmployeeOpenClaimsList { get; set; }
 		public List<DTO_ClaimContacts> ClaimContactsList { get; set; }
 		public List<DTO_ClaimDocument> ClaimDocumentsList { get; set; }
@@ -72,12 +75,15 @@ namespace MRNUIElements.Controllers
 		public List<DTO_Inspection> InspectionsList { get; set; }
 		public List<DTO_InsuranceCompany> InsuranceCompaniesList { get; set; }
 		public List<DTO_Invoice> InvoicesList { get; set; }
+	
 		public List<DTO_KnockerResponse> KnockerResponsesList { get; set; }
 		public List<DTO_Lead> LeadsList { get; set; }
 		public List<DTO_NewRoof> NewRoofsList { get; set; }
 		public List<DTO_Order> OrdersList { get; set; }
 		public List<DTO_OrderItem> OrderItemsList { get; set; }
 		public List<DTO_Payment> PaymentsList { get; set; }
+	
+		
 		public List<DTO_Plane> PlanesList { get; set; }
 		public List<DTO_Referrer> ReferrersList { get; set; }
 		public List<DTO_Scope> ScopesList { get; set; }

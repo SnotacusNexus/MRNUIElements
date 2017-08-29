@@ -37,41 +37,15 @@ namespace MRNUIElements.Controllers
 
 		private void NewClaimBtn_Click(object sender, RoutedEventArgs e)
 		{
-			var AddressReturn = new AddPropertyAddress();
-			AddressReturn.Return += new ReturnEventHandler<object>(AddPropertyAddress_Return);
-			NavigationService.Navigate(AddressReturn);
+		
+			NavigationService.Navigate(new AddPropertyAddress(MRNClaim));
+			
 		}
-		private void AddPropertyAddress_Return(object sender, ReturnEventArgs<Object> e)
-		{
-			var propertyaddress = (DTO_Address)e.Result;
-			MRNClaim.a = propertyaddress;
-			var claimLead = new AddLeadInformation();
-			claimLead.Return += new ReturnEventHandler<object>(AddClaimLeadInformation_Return);
-			NavigationService.Navigate(claimLead);
-
-		}
+		
 	
-		private void AddClaimLeadInformation_Return(object sender, ReturnEventArgs<Object> e)
-		{
-			var claimLeadReturn = new DTO_Lead();
-			claimLeadReturn = (DTO_Lead)e.Result;
-			MRNClaim.Lead = claimLeadReturn;
-			var claimCustomer = new AddClaimCustomer();
-			claimCustomer.Return += new ReturnEventHandler<object>(AddClaimCustomer_Return);
-			NavigationService.Navigate(claimCustomer);
-
-		}
+	
 
 
-		private void AddClaimCustomer_Return(object sender, ReturnEventArgs<Object> e)
-		{
-			var claimCustomerReturn = new DTO_Customer();
-			claimCustomerReturn = (DTO_Customer)e.Result;
-			MRNClaim.c = claimCustomerReturn;
-			var claimInsuranceCarrier = new AddClaimInsuranceCarrier();
-			claimInsuranceCarrier.Return += new ReturnEventHandler<object>(AddClaimInsuranceCarrier_Return);
-			NavigationService.Navigate(claimInsuranceCarrier);
-		}
 		private void AddClaimInsuranceCarrier_Return(object sender, ReturnEventArgs<Object> e)
 		{
 
@@ -90,12 +64,12 @@ namespace MRNUIElements.Controllers
 
 		}
 
-		private void AddClaim_Return(object sender, ReturnEventArgs<Object> e)
-		{
-			var inspection = new AddClaimInspection();
-			inspection.Return += new ReturnEventHandler<object>(AddInspection_Return);
-			NavigationService.Navigate(inspection);
-		}
+		//private void AddClaim_Return(object sender, ReturnEventArgs<Object> e)
+		//{
+		//	var inspection = new AddClaimInspection();
+		//	inspection.Return += new ReturnEventHandler<object>(AddInspection_Return);
+		//	NavigationService.Navigate(inspection);
+		//}
 		private void AddClaimAdjustment_Return(object sender, ReturnEventArgs<Object> e)
 		{
 		}

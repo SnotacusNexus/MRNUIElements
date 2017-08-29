@@ -74,8 +74,6 @@ namespace MRNNexus_Model
         [DataMember]
         public int ShingleTypeID { get; set; }
         [DataMember]
-        public bool LightningProtection { get; set; }
-        [DataMember]
         public bool TearOff { get; set; }
         [DataMember]
         public bool Satellite { get; set; }
@@ -83,5 +81,7 @@ namespace MRNNexus_Model
         public bool SolarPanels { get; set; }
         [DataMember]
         public string Comments { get; set; }
-    }
+		[DataMember]
+		public bool LightningProtection { get; set; }
+	}
 }

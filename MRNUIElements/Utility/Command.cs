@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 #endif
 using System.Windows.Input;
 
-namespace NexusClaimGenerator.Utility
+namespace MRNUIElements.Utility
 {
     internal class Command : ICommand
     {

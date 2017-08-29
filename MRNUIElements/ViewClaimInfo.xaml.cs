@@ -56,6 +56,8 @@ namespace MRNUIElements
 
 		async void PopulateCCI(DTO_Claim claim)
 		{
+			claim = claim == null ? s.ClaimsList.Find(x => x.ClaimID == 19) : claim;
+
 			await s.GetClaimContactsByClaimID(claim);
 			if (s.ClaimContacts != null)
 				cc = s.ClaimContacts;
@@ -72,6 +74,7 @@ namespace MRNUIElements
 			if (s.CustomersList != null)
 				s.CustomersList = null;
 
+
 			await s.GetCustomerByID(new DTO_Customer { CustomerID = claim.CustomerID });
 			if (s.Cust != null)
 				cci.Customer = s.Cust;
@@ -83,12 +86,13 @@ namespace MRNUIElements
 				cci.Address = s.Address;
 
 			await s.GetLeadByLeadID(new DTO_Lead { LeadID = claim.LeadID });
-			if (s.Lead.LeadTypeID == 1)
-				if (s.Employee != null)
-					s.Employee = null;
-				await s.GetEmployeeByID(new DTO_Employee { EmployeeID = (int)s.Lead.CreditToID });
-
-			if (s.Employee != null)
+            if (s.Lead.LeadTypeID == 1)
+            {
+                if (s.Employee != null)
+                    s.Employee = null;
+                await s.GetEmployeeByID(new DTO_Employee { EmployeeID = (int)s.Lead.CreditToID });
+            }
+			if (s.Employee.Message == null)
 				cci.LeadKnocker = s.Employee;
 			
 			

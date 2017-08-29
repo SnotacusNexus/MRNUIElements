@@ -18,11 +18,21 @@ using MRNNexus_Model;
 
 namespace MRNUIElements
 {
+	
 	/// <summary>
 	/// Interaction logic for LoginAs.xaml
 	/// </summary>
 	public partial class LoginAs : Page
 	{
+		static LoginAs W;
+		public static LoginAs getInstance()
+		{
+			if (W == null)
+				W = new LoginAs();
+			return W;
+		}
+
+
 		static ServiceLayer s1 = ServiceLayer.getInstance();
 
 		public LoginAs()
@@ -38,14 +48,14 @@ namespace MRNUIElements
 
 		private void LoginAsAuditor_Click(object sender, RoutedEventArgs e)
 		{
+			NavigationService.Navigate(new ClaimStartPage());
 
-			var claim = (DTO_Claim)s1.ClaimsList.Where(x => x.ClaimID == 19);
-			NavigationService.Navigate(new Controllers.ClaimView(claim));
+			
 		}
 
 		private void LoginAsAuditingAsst_Click(object sender, RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new GetClaimsPage());
+			NavigationService.Navigate(new CustomerAgreement());
 		}
 		
 
@@ -57,9 +67,18 @@ namespace MRNUIElements
 
 		private void LoginAsProdManager_Click(object sender, RoutedEventArgs e)
 		{
-			var claim = s1.ClaimsList.Single(x => x.ClaimID == 19);
-			NavigationService.Navigate(new Controllers.ClaimView(claim));
+			try
+			{
+                var CPD = new ClaimPickerPopUp();
+                if ((bool)CPD.ShowDialog())
 
+                    //	var claim = s1.ClaimsList.Single(x => x.ClaimID == 37);
+                    NavigationService.Navigate(new Controllers.ClaimView(CPD.Claim));
+			}
+			catch(Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show(ex.ToString());
+			}
 		}
 
 		private void LoginAsBoss_Click(object sender, RoutedEventArgs e)
@@ -69,12 +88,15 @@ namespace MRNUIElements
 
 		private void LoginAsGODMode_Click(object sender, RoutedEventArgs e)
 		{
-
-		}
+            var CPD = new ClaimPickerPopUp();
+           
+            if ((bool)CPD.ShowDialog())
+            NavigationService.Navigate(new Controllers.ClaimView(CPD.Claim));
+        }
 
 		private void LoginAsSuperAdmin_Click(object sender, RoutedEventArgs e)
 		{
-
+			NavigationService.Navigate(new MRNClaimConverter());
 		}
 	}
 }

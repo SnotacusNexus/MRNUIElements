@@ -1,6 +1,7 @@
 ﻿using MRNNexus_Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -175,6 +176,13 @@ namespace MRNUIElements.Controllers
 
 	public class MRNClaim
 	{
+		static MRNClaim _MrnClaim;
+		public static MRNClaim getInstance()
+		{
+			if (_MrnClaim == null)
+				_MrnClaim = new MRNClaim();
+			return _MrnClaim;
+		}
 		public DTO_ClaimContacts cc { get; set; }
 		//ClaimContact **cc**
 
@@ -189,6 +197,8 @@ namespace MRNUIElements.Controllers
 		bool isReferral;
 		//bool isreferral
 		public DTO_Referrer r { get; set; }
+
+		public DTO_LU_LeadType lt { get; set; }
 		//Referral  cc
 		public DTO_Employee k { get; set; }
 		//Knocker  cc
@@ -204,7 +214,9 @@ namespace MRNUIElements.Controllers
 		public DTO_CalendarData schedinspect { get; set; }
 		public DTO_Inspection i { get; set; }
 		//Inspection
-		public List<DTO_Damage> damagePhotos { get; set; }
+		public List<DTO_ClaimDocument> inspectionPhotos { get; set; }
+
+		public List<DTO_Damage> damageLocations { get; set; }
 		//Damages
 		public List<DTO_ClaimDocument> claimDocs { get; set; }
 		public DTO_ClaimDocument contract { get; set; }
@@ -325,6 +337,7 @@ namespace MRNUIElements.Controllers
 		//Invoice -- Exterior -- ClaimVendor
 		//Invoice -- Gutter -- ClaimVendor
 		public DTO_Adjuster newinsideAdjuster { get; set; }
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 		//Supplement -- 
 		public DTO_CallLog cocRecCor { get; set; }
 		//CallLog -- Settle
@@ -335,10 +348,110 @@ namespace MRNUIElements.Controllers
 		//Payment -- Deductible
 		public DTO_CalculatedResults cr { get; set; }
 		//Capout -- CalculatedResults
+		public string MortgageCo { get; set; }
+		public string MortgageCoAcctNum { get; set; }
+		public async Task<bool> InitalizeClaim(MRNClaim mrnClaim)
+		{
+			await s1.AddCustomer(c);
+			if (mrnClaim.c.Message == null)
+			{
+				mrnClaim.Lead.CustomerID = mrnClaim.a.CustomerID = mrnClaim.c.CustomerID;
+				await s1.AddAddress(mrnClaim.a);
+				if (mrnClaim.a.Message == null)
+					mrnClaim.Lead.LeadDate = DateTime.Today;
+				await s1.AddLead(mrnClaim.Lead);
+
+				if (mrnClaim.Lead == null)
+					await s1.AddReferrer(r);
+				if (mrnClaim.r.Message == null)
+
+					mrnClaim._claim.IsOpen = true;
+				mrnClaim._claim.LeadID = mrnClaim.Lead.LeadID;
+				mrnClaim._claim.BillingID = mrnClaim.a.AddressID;
+				await s1.AddClaim(mrnClaim._claim);
+				if (mrnClaim._claim.Message == null)
+					await s1.AddClaimStatus(new DTO_ClaimStatus { ClaimID = mrnClaim._claim.ClaimID, ClaimStatusTypeID = 1, ClaimStatusDate = DateTime.Today });
+				mrnClaim.cc.ClaimID = mrnClaim._claim.ClaimID;
+				await s1.UpdateClaimContacts(cc);
+			}
+
+			return true;
+		}
+	
+}
+	public class MRNClaimVendors
+	{
+		static ServiceLayer s1 = ServiceLayer.getInstance();
+		List<DTO_ClaimVendor> ClaimVendorsList = new List<DTO_ClaimVendor>();
+		DTO_Claim Claim = new DTO_Claim();
+		DTO_Vendor Roofer = new DTO_Vendor();
+		DTO_Vendor GutterGuy = new DTO_Vendor();
+		DTO_Vendor ExteriorGuy = new DTO_Vendor();
+		DTO_Vendor InteriorGuy = new DTO_Vendor();
+		DTO_Vendor RoofMaterialSupplier = new DTO_Vendor();
+		
+
+		public MRNClaimVendors(DTO_Claim Claim)
+		{
+			var roofer = new DTO_ClaimVendor();
+			var gutterGuy = new DTO_ClaimVendor();
+			var exteriorGuy = new DTO_ClaimVendor();
+			var interiorGuy = new DTO_ClaimVendor();
+			var roofmaterialSupplier = new DTO_ClaimVendor();
+			roofer.ClaimID = gutterGuy.ClaimID=exteriorGuy.ClaimID=interiorGuy.ClaimID= roofmaterialSupplier.ClaimID = Claim.ClaimID; ;
+			roofer.ServiceTypeID = 4;
+			exteriorGuy.ServiceTypeID = 1;
+			gutterGuy.ServiceTypeID = 2;
+			interiorGuy.ServiceTypeID = 3;
+			roofmaterialSupplier.ServiceTypeID = 5;
+
+			roofer.VendorID = Roofer.VendorID;
+			exteriorGuy.VendorID = ExteriorGuy.VendorID;
+			interiorGuy.VendorID = InteriorGuy.VendorID;
+			gutterGuy.VendorID = GutterGuy.VendorID;
+			roofmaterialSupplier.VendorID = RoofMaterialSupplier.VendorID;
+			
+
+			ClaimVendorsList.Add(roofer);
+			ClaimVendorsList.Add(gutterGuy);
+			ClaimVendorsList.Add(exteriorGuy);
+			ClaimVendorsList.Add(interiorGuy);
+			ClaimVendorsList.Add(roofmaterialSupplier);
+		
+		}
+		async Task<List<DTO_ClaimVendor>> GetClaimVendors(DTO_Claim claim)
+		{
+
+			await s1.GetAllClaimVendors();
+
+			return new List<DTO_ClaimVendor>(s1.ClaimVendorsList.FindAll(x => x.ClaimID == claim.ClaimID));
+		}
+		async Task<bool> AddClaimVendors(List<DTO_ClaimVendor> claimVendorList)
+		{
+
+			var claimvendors = await GetClaimVendors(new DTO_Claim { ClaimID = claimVendorList[0].ClaimID });
+
+
+			foreach (var item in claimVendorList)
+			{
+				try {
+					if (item != null)
+						if (!claimvendors.Exists(x => x.ServiceTypeID == item.ServiceTypeID))
+							await s1.AddClaimVendor(item);
+					Debug.Write("ClaimVendor Added.");
+				}
+				catch(Exception ex){
+					Debug.Write(ex.ToString());
+					return false;
+				}
+			}
+
+				return true;
+			}
 	}
 	public class MRNRoofOrder 
 	{
-		ServiceLayer s1 = ServiceLayer.getInstance();
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public string ShingleColor { get; set; }
 		public List<List<string>> ShingleColors { get; set; }
 		public List<List<string>> OwensCorningShingleColors = new List<List<string>>();
@@ -347,19 +460,137 @@ namespace MRNUIElements.Controllers
 		public List<string> Trudef = new List<string>();
 		public List<string> Supreme = new List<string>();
 		public List<string> DesignerDuration = new List<string>();
-		public MRNRoofOrder(int type)
+
+
+		public double SquareFeetOff { get; set; }
+		public double Ridges { get; set; }
+		public int HipShingleBundles { get; set; }
+		public int RollsValleysUnderlayment { get; set; }
+		public int RollsUnderlayment { get; set; }
+		public double Eaves { get; set; }
+		public double Rakes { get; set; }
+		public double DripEdge { get; set; }
+		public string ShingleManufacurer { get; set; }
+		public string ShingleType { get; set; }
+		public int StarterShingle { get; set; }
+		public string Underlayment { get; set; }
+		public string Ventilation { get; set; }
+		public int PredPitch { get; set; }
+		public string ValleyUnderlayment { get; set; }
+		public int TurtleBacks { get; set; }
+
+		public MRNRoofOrder(/*List<DTO_Plane> planesList, int ventType, int iunderlayment, int iValleyType, int HipRidgeType, bool bDripEdge=true, bool RakesOnly =true , bool isInchesMeasured = true, int turtleBacks = 0, bool fillInTurtles= true*/)
 		{
+			//double sQCtAggregate = 0, ridgesAggregate = 0, hipsAggregate = 0, valleysAggregate = 0, rakesAggregate = 0, eavesAggregate = 0;
+			//int pjb3 = 0, pjb4 = 0, noOfDecking = 0;
+			//double sdivisor = isInchesMeasured ? 144 : 1;
+			//double ldivisor = isInchesMeasured ? 12 : 1;
+			//double TotsSq = 0;
 			
-		
-		
+			//// lets add some shit up and get the totals so we can order;
+			//bool hasTurtleBackRR = turtleBacks > 0 ? true : false;
+			//int tempDeck = 0; 
+			//// totalSquares off
+			//foreach (var item in planesList)
+			//{
+			//	sQCtAggregate += (double)((((item.EaveLength + item.RidgeLength) * (item.RakeLength + item.RakeLength))/2) / sdivisor);
+			//	ridgesAggregate += (double)(item.RidgeLength);
+			//	hipsAggregate += (double)(item.Hip);
+			//	valleysAggregate += (double)(item.Valley);
+			//	rakesAggregate += (double)(item.RakeLength);
+			//	eavesAggregate += (double)(item.EaveLength);
+			//	pjb3 += (int)(item.ThreeAndOne);
+			//	pjb4 += (int)(item.FourAndUp);
+			//	TotsSq += (double)(item.SquareFootage);
+			//	noOfDecking += item.NumberDecking > 0 ? (int)item.NumberDecking : 0;
+				
+			//}
+			//noOfDecking += (fillInTurtles == hasTurtleBackRR) ? turtleBacks / 6 : 0;
+			//this.SquareFeetOff = sQCtAggregate;
+			//this.HipShingleBundles =(int)Math.Ceiling((hipsAggregate + ridgesAggregate) / 26);
+			//this.RollsValleysUnderlayment = (int)Math.Ceiling(valleysAggregate / 66);
+			//this.RollsUnderlayment = (int)Math.Ceiling(TotsSq / 20);
+			//this.
+
+
 
 
 		}
-		public List<object> BuildRoofOrder(int Manufacturer, int Type, int color, int vent, int iunderlayment, int valley, int HipRidge)
+		async Task<bool> GotNewRoof(DTO_Claim claim) {
+			await s1.GetAllNewRoofs();
+
+			return s1.NewRoofsList.Exists(x => x.ClaimID == claim.ClaimID);
+			
+
+		}
+
+		async private Task<DTO_NewRoof> GetNewRoof(DTO_Claim claim)
+		{
+			return await GotNewRoof(claim) ? s1.NewRoofsList.Find(x => x.ClaimID == claim.ClaimID) : null;
+		}
+
+		async Task<bool> figureMaterials(List<DTO_Plane> planesList, DTO_NewRoof roof)
+		{
+
+			double sQCtAggregate = 0, ridgesAggregate = 0, hipsAggregate = 0, valleysAggregate = 0, rakesAggregate = 0, eavesAggregate = 0;
+			int pjb3 = 0, pjb4 = 0, noOfDecking = 0, turtleBacks = 0;
+			
+			double TotsSq = 0;
+			bool isInchesMeasured = true;
+			bool fillInTurtles = true;
+			int tempDeck = 0;
+			double sdivisor = isInchesMeasured ? 144 : 1;
+			double ldivisor = isInchesMeasured ? 12 : 1;
+			// totalSquares off
+			foreach (var item in planesList)
+			{
+				sQCtAggregate += (double)((((item.EaveLength + item.RidgeLength) * (item.RakeLength + item.RakeLength)) / 2) / sdivisor);
+				ridgesAggregate += (double)(item.RidgeLength);
+				hipsAggregate += (double)(item.Hip);
+				valleysAggregate += (double)(item.Valley);
+				rakesAggregate += (double)(item.RakeLength);
+				eavesAggregate += (double)(item.EaveLength);
+				pjb3 += (int)(item.ThreeAndOne);
+				pjb4 += (int)(item.FourAndUp);
+				TotsSq += (double)(item.SquareFootage);
+				noOfDecking += item.NumberDecking > 0 ? (int)item.NumberDecking : 0;
+				turtleBacks += item.TurtleBacks == null ? 0 : (int)item.TurtleBacks;
+			}
+			
+			// lets add some shit up and get the totals so we can order;
+			bool hasTurtleBackRR = turtleBacks > 0 ? true : false;
+
+			noOfDecking += (fillInTurtles == hasTurtleBackRR) ? turtleBacks / 6 : 0;
+			this.SquareFeetOff = sQCtAggregate;
+			this.primaryshingles.Quantity = (int)((this.SquareFeetOff / 100) * 3);
+			this.HipShingleBundles = (int)Math.Ceiling((hipsAggregate + ridgesAggregate) / 26);
+			this.ridgeShingles.Quantity = this.HipShingleBundles;
+			this.RollsValleysUnderlayment = (int)Math.Ceiling(valleysAggregate / 66);
+			this.valleyunderlayment.Quantity = this.RollsValleysUnderlayment;
+
+			this.RollsUnderlayment = (int)Math.Ceiling(TotsSq / 20);
+			this.underlayment.Quantity = this.RollsUnderlayment;
+			this.StarterShingle = (int)Math.Ceiling((eavesAggregate + rakesAggregate) / 100);
+			this.startershingle.Quantity = StarterShingle;
+			this.DripEdge = !roof.DripEdgeInstall ? 0 : roof.RakesOnly ? (int)Math.Ceiling(rakesAggregate / 9.1) : (int)Math.Ceiling((rakesAggregate + eavesAggregate) / 9.1);
+			this.dripedge.Quantity = (int)this.DripEdge;
+
+			this.plasticCaps.Quantity = (int)Math.Ceiling(TotsSq / 20);
+			this.coilnails.Quantity = (int)Math.Ceiling((TotsSq*1.15) / 16);
+			this.osb.Quantity =noOfDecking;
+			this.ridgeVent.Quantity = (int)Math.Ceiling(ridgesAggregate / 4);
+			this.paint.Quantity = 3;
+			this.caulk.Quantity = 3;
+
+			return true;
+		}
+
+		public List<object> BuildRoofOrder(DTO_NewRoof roof)
 		{
 			List<object> mrnRoofOrder = new List<object>();
 			mrnRoofOrder.Add(roofOrder);
-			roofOrderContents.Add((DTO_OrderItem)(s1.Products.Where(x => x.Name == OwensCorningShingles[Type].ToString()).Select(x=>x.Name)));
+			primaryshingles = s1.Products.Where(x => x.ProductID == roof.ProductID) as DTO_OrderItem;
+			roofOrderContents.Add(primaryshingles); // OwensCorningShingles[Type].ToString()).Select(x=>x.Name)));
 			roofOrderContents.Add(startershingle);
 			roofOrderContents.Add(underlayment);
 			roofOrderContents.Add(valleyunderlayment);
@@ -399,6 +630,9 @@ namespace MRNUIElements.Controllers
 	/// </summary>
 	public partial class StartClaim : Page
 	{
+		static ServiceLayer s1 = ServiceLayer.getInstance();
+
+
 		public StartClaim()
 		{
 			InitializeComponent();
@@ -408,7 +642,7 @@ namespace MRNUIElements.Controllers
 		{
 			DTO_Employee Salesperson = new DTO_Employee();
 			this.NavigationService.Navigate(new MRNUIElements.Controllers.SalespersonSelectionPage());
-				
+
 		}
 
 		public MRNClaim GenerateNewClaim()

@@ -107,9 +107,10 @@ namespace MRNUIElements
             p.RidgeLength = 65;
             p.RakeLength = 80;
             p.Pitch = 12;
-            p.HipValley = 45;
-            p.GroupNumber = 1;
-            p.ItemSpec = "EV " +90.ToString();
+            p.Hip = 45;
+			p.Valley = 45;
+			p.GroupNumber = 1;
+            p.ItemSpec = "EV ";
             p.EaveLength = 95;
             p.InspectionID = s.InspectionsList[0].InspectionID;
             p.NumberDecking = int.Parse("2");

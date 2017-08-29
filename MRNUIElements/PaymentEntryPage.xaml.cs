@@ -44,6 +44,8 @@ namespace MRNUIElements
 		public static string PaymentDescription { get; set; }
 		public static double Amount { get; set; }
 		public static int DocTypeID { get; set; }
+		public int Valley { get; internal set; }
+
 		protected int ClaimStatusType = 0;
 		protected string FullFilePath;
 		public System.Drawing.Image bitmap;

@@ -42,15 +42,8 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         RenderTransformOrigin="-0.305,-0.21">
-                    <Canvas.ContextMenu>
-                        <syncfusion:CustomContextMenu>
-                            <MenuItem Command="Cut" CommandTarget="{Binding ElementName=SvgCanvas}" />
-                            <MenuItem Command="Copy" CommandTarget="{Binding ElementName=FileMenu}" />
-                            <MenuItem Command="Paste" CommandTarget="{Binding ElementName=FileMenu}" />
-                            <Separator />
-                            <MenuItem Header="SelectAnotherShape" />
-                        </syncfusion:CustomContextMenu>
-                    </Canvas.ContextMenu>
+                  
+                     
 
                     <Ellipse Margin="30,15,-84,-20"
                              HorizontalAlignment="Stretch"

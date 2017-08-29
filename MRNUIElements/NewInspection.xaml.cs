@@ -26,17 +26,17 @@ namespace MRNUIElements
         {
             InitializeComponent();
 
-            setUp();
+    //        setUp();
 
-            this.ridgeMaterialCbo.ItemsSource = ServiceLayer.getInstance().RidgeMaterialTypes;
-            this.shingleTypeCbo.ItemsSource = ServiceLayer.getInstance().ShingleTypes;
+    //        this.ridgeMaterialCbo.ItemsSource = ServiceLayer.getInstance().RidgeMaterialTypes;
+   //         this.shingleTypeCbo.ItemsSource = ServiceLayer.getInstance().ShingleTypes;
         }
 
         async private void setUp()
         {
-            Controllers.Inspection inspection = new Controllers.Inspection();
-            await inspection.GetInsuranceCompanies();
-            insuranceCompanyCbo.ItemsSource = ServiceLayer.getInstance().InsuranceCompaniesList;
+          //  Controllers.Inspection inspection = new Controllers.Inspection();
+         //   await inspection.GetInsuranceCompanies();
+          //  insuranceCompanyCbo.ItemsSource = ServiceLayer.getInstance().InsuranceCompaniesList;
         }
     }
 }

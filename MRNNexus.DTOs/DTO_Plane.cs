@@ -28,7 +28,9 @@ namespace MRNNexusDTOs
         [DataMember]
         public int? Pitch { get; set; }
         [DataMember]
-        public int? HipValley { get; set; }
+		public int? Hip { get; set; }
+		[DataMember]
+		public int? Valley { get; set; }
         [DataMember]
         public int? RidgeLength { get; set; }
         [DataMember]

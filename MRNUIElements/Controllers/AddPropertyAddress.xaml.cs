@@ -14,59 +14,54 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Text.RegularExpressions;
 namespace MRNUIElements.Controllers
 {
+
+
 	/// <summary>
 	/// Interaction logic for AddPropertyAddress.xaml
 	/// </summary>
-	public partial class AddPropertyAddress : PageFunction<Object>
+	public partial class AddPropertyAddress
 	{
 		static ServiceLayer s1 = ServiceLayer.getInstance();
-		DTO_Address address = new DTO_Address();
+		public DTO_Address address = new DTO_Address();
+		static public MRNClaim MrnClaim;
 
-		//public ReturnEventHandler<object> Return { get; internal set; }
 
-		public AddPropertyAddress()
+		public AddPropertyAddress(MRNClaim MrnClaim)
 		{
 			InitializeComponent();
+			AddPropertyAddress.MrnClaim = MrnClaim;
 			Select_Button.IsEnabled = false;
 			GetAddress();
-			while (s1.AddressesList == null)
-				Thread.Sleep(10);
+
 		}
 
 		private async void GetAddress()
 		{
+
+			List<string> strlist = new List<string>();
+			strlist.Add("Loading...");
+			listView.ItemsSource = strlist;
 			await s1.GetAllAddresses();
-		}
-
-		private void Button_Click(object sender, ReturnEventArgs<object> e)
-		{
-			e.Result = address;
-			//Return = (System.Windows.Navigation.ReturnEventHandler<object>)e.Result;
-			
-			//Select Address
+			AddressTextbox.IsEnabled = false;
+			Select_Button.IsEnabled = false;
 
 		}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e)
-		{
-			//Cancel
-			NavigationService ns = NavigationService.GetNavigationService((DependencyObject)sender);
 
-		}
+
+
 
 		private void ComboBoxAdv_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			UpdateAddress((DTO_Address)AddressCombo.SelectedItem);
+			address = (DTO_Address)listView.SelectedItem;
 		}
 
-		DTO_Address UpdateAddress(DTO_Address _address = null, string zip="", string addressstring="")
+		DTO_Address UpdateAddress(string addressstring = "", string zip = "")
 		{
-			if (_address != null)
-				address = _address;
-			else if (zip != "" && addressstring != "")
+			if (!string.IsNullOrEmpty(addressstring) && !string.IsNullOrEmpty(zip))
 			{
 				address.Address = addressstring;
 				address.Zip = zip;
@@ -79,16 +74,107 @@ namespace MRNUIElements.Controllers
 
 		private void MaskedTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (ZipcodeBox.Text.Length != 5 || string.IsNullOrEmpty(AddressCombo.SelectedValue.ToString()))
+			if (ZipcodeBox.Text.Length != 5)
+			{
+				List<DTO_Address> addList = new List<DTO_Address>();
+				var a = new DTO_Address { Address = "Zipcode Required...", Zip = "" };
+
+
+				listView.ItemsSource = addList;
+				AddressTextbox.IsEnabled = false;
 				return;
+			}
+
 			else
-				AddressCombo.ItemsSource = s1.AddressesList.Where(x => x.Zip == ZipcodeBox.Text).ToList();
-			Select_Button.IsEnabled = true;
+			{
+			
+				listView.ItemsSource = s1.AddressesList.FindAll(x => x.Zip == ZipcodeBox.Text);
+			
+
+			
+				AddressTextbox.IsEnabled = true;
+			}
+
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+
+
+		private void ZipcodeBox_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			Button_Click(sender, e);
+			if (ZipcodeBox.Text.Length != 5)
+			{
+				List<DTO_Address> addList = new List<DTO_Address>();
+				var a = new DTO_Address{ Address = "Zipcode Required...", Zip = ""  };
+
+				
+				listView.ItemsSource = addList;
+				AddressTextbox.IsEnabled = false;
+				return;
+			}
+
+			else
+			{
+				listView.ItemsSource = s1.AddressesList.FindAll(x => x.Zip == ZipcodeBox.Text);
+				
+				AddressTextbox.IsEnabled = true;
+			}
+
+		}
+
+		private bool CheckIfExists(string streetAddress)
+		{
+
+
+			if (!s1.AddressesList.Exists(x => x.Address == streetAddress))
+				return false;
+			else if (s1.AddressesList.Exists(x => x.Address == streetAddress))
+				if (MessageBoxResult.Yes == System.Windows.MessageBox.Show("Address is already in system, is this a new claim?", "Duplicate Address Entry", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No))
+					//Button_Click(this, new ReturnEventArgs<object>(address));
+					return false;
+
+			return true;
+		}
+
+		private void Select_Button_Click(object sender, RoutedEventArgs e)
+		{
+			if (!CheckIfExists(AddressTextbox.Text))
+			{
+				MrnClaim.a = UpdateAddress(AddressTextbox.Text, ZipcodeBox.Text);
+				//	e.Result = UpdateAddress(AddressCombo.searchText, ZipcodeBox.Text);
+				NavigationService.Navigate(new AddLeadInformation(MrnClaim));
+			}
+		}
+
+		private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.GoBack();
+		}
+
+		private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (listView.SelectedIndex < 0 && string.IsNullOrEmpty(AddressTextbox.Text))
+			{
+				Select_Button.IsEnabled = false;
+				return;
+			}
+			else
+				Select_Button.IsEnabled = true;
+
+
+			MrnClaim.a =address= (DTO_Address)listView.SelectedItem;
+			AddressTextbox.Text = ((DTO_Address)listView.SelectedItem).Address;
+		}
+
+		private void AddressTextbox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (string.IsNullOrEmpty(AddressTextbox.Text))
+				listView.ItemsSource = s1.AddressesList.FindAll(x => x.Zip == ZipcodeBox.Text);
+			else
+			{
+				listView.IsEnabled = true;
+				listView.ItemsSource = s1.AddressesList.FindAll(x => x.Address.Contains(AddressTextbox.Text) && x.Zip == ZipcodeBox.Text).ToList();
+				Select_Button.IsEnabled = true;
+			}
 		}
 	}
 }

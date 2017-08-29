@@ -89,7 +89,7 @@
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             Content="Add To Queue"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Canvas x:Name="ProductionCanvas"
                             Grid.Row="1"
                             Width="722"
@@ -281,7 +281,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Content="Reset"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Button x:Name="button1_Copy1"
                             Grid.Row="1"
                             Width="153"
@@ -292,7 +292,7 @@
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             Content="Import Roof &#10;Measurements"
-                            Style="{DynamicResource normal}" />
+                           />
                     <ComboBox x:Name="SupersProdCombo"
                               Grid.Row="1"
                               Width="92"
@@ -832,7 +832,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Content="Cancel"
-                            Style="{DynamicResource normal}" />
+                           />
                     <Label x:Name="label"
                            Grid.Row="1"
                            Width="84"

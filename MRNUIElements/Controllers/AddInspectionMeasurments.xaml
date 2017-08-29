@@ -1,0 +1,89 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements.Controllers"
+    xmlns:converters="clr-namespace:MRNUIElements.Utility"
+      xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="MRNUIElements.Controllers.AddInspectionMeasurments"
+      mc:Ignorable="d"
+      Title="AddInspectionMeasurments" Height="425.37" Width="542.465">
+
+    <Page.Resources>
+        <local:MRNClaim x:Key="MRNClaim" />
+        <CollectionViewSource x:Key="dTO_PlaneViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Plane}, CreateList=True}"/>
+    </Page.Resources>
+
+    <Grid x:Name="InspectionMeasurementsGrid" DataContext="{StaticResource MRNClaim}" Margin="0,29,0,0" Height="322" VerticalAlignment="Top">
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="482">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+            <Label Content="Eave Height:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:DoubleTextBox x:Name="eaveHeightDoubleTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding EaveHeight}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Eave Length:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:DoubleTextBox x:Name="eaveLengthDoubleTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding EaveLength}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Four And Up:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:IntegerTextBox x:Name="fourAndUpIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding FourAndUp}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Group Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:IntegerTextBox x:Name="groupNumberIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding GroupNumber}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Hip:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:DoubleTextBox x:Name="hipDoubleTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding Hip}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Inspection ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:IntegerTextBox x:Name="inspectionIDIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding InspectionID}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Item Spec:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center" Foreground="White"/>
+            <TextBox x:Name="itemSpecTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding ItemSpec, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Number Decking:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:IntegerTextBox x:Name="numberDeckingIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding NumberDecking}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Num Of Layers:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:IntegerTextBox x:Name="numOfLayersIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding NumOfLayers}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Pitch:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:IntegerTextBox x:Name="pitchIntegerTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Pitch}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Plane ID:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:IntegerTextBox x:Name="planeIDIntegerTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding PlaneID}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Plane Type ID:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" Foreground="White"/>
+            <ComboBox x:Name="planeTypeIDComboBox" Grid.Column="3" DisplayMemberPath="PlaneType" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <Label Content="Rake Length:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:DoubleTextBox x:Name="rakeLengthDoubleTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding RakeLength}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Ridge Length:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:DoubleTextBox x:Name="ridgeLengthDoubleTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding RidgeLength}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Square Footage:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:DoubleTextBox x:Name="squareFootageDoubleTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding SquareFootage}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Step Flashing:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:DoubleTextBox x:Name="stepFlashingDoubleTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding StepFlashing}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Three And One:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:IntegerTextBox x:Name="threeAndOneIntegerTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding ThreeAndOne}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Valley:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center" Foreground="White"/>
+            <syncfusion:DoubleTextBox x:Name="valleyDoubleTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding Valley}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Button x:Name="Prevbutton" Content="Prev" HorizontalAlignment="Left" Height="27" Margin="30,324,0,-29" VerticalAlignment="Top" Width="120" Click="Prevbutton_Click"/>
+        <Button x:Name="Save_Finishbutton" Content="Save/Finish" HorizontalAlignment="Left" Height="27" Margin="410,356,0,-61" VerticalAlignment="Top" Width="102"/>
+        <Button x:Name="Advance1Record" Content="&gt;" HorizontalAlignment="Left" Height="27" Margin="292,324,0,-29" VerticalAlignment="Top" Width="102" Click="Advance1Record_Click"/>
+        <Button x:Name="Decrease1Record" Content="&lt;" HorizontalAlignment="Left" Height="27" Margin="171,324,0,-29" VerticalAlignment="Top" Width="102" Click="Decrease1Record_Click"/>
+        <Button x:Name="ImportEagleView" Content="Import Eagle View" HorizontalAlignment="Left" Height="27" Margin="30,356,0,-61" VerticalAlignment="Top" Width="120" Click="ImportEagleView_Click" />
+        <Button x:Name="UPPlaneGroup" Content="/\" HorizontalAlignment="Left" Height="27" Margin="410,324,0,-29" VerticalAlignment="Top" Width="102" Click="UPPlaneGroup_Click"/>
+        <Button x:Name="PageAdvanceRecords" Content="Adjust Order" HorizontalAlignment="Left" Height="27" Margin="292,356,0,-61" VerticalAlignment="Top" Width="102" Click="PageAdvanceRecords_Click"/>
+        <Button x:Name="PageDecreaseRecords" Content="Make Order" HorizontalAlignment="Left" Height="27" Margin="171,356,0,-61" VerticalAlignment="Top" Width="102" Click="PageDecreaseRecords_Click"/>
+    </Grid>
+</Page>

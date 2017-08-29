@@ -424,7 +424,7 @@
                     Click="InspectionReportBtn_Click"
                     Content="Inspection Report"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="InspectionPhotos"
                     Grid.Row="1"
                     Width="150"
@@ -433,7 +433,7 @@
                     Click="InspectionPhotos_Click"
                     Content="Inspection Photos"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="MaterialInvoiceBtn"
                     Grid.Row="1"
                     Width="150"
@@ -442,7 +442,7 @@
                     Click="MaterialInvoiceBtn_Click"
                     Content="Material Invoice"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="RoofLaborInvoiceBtn"
                     Grid.Row="1"
                     Width="150"
@@ -451,7 +451,7 @@
                     Click="RoofLaborInvoiceBtn_Click"
                     Content="Roof Labor Invoice"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="RoofMeasurementBtn"
                     Grid.Row="1"
                     Width="150"
@@ -460,7 +460,7 @@
                     Click="RoofMeasurementBtn_Click"
                     Content="Roof Measurements"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="SketchBtn"
                     Grid.Row="1"
                     Width="150"
@@ -469,7 +469,7 @@
                     Click="SketchBtn_Click"
                     Content="Sketch"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="GutterInvoiceBtn"
                     Grid.Row="1"
                     Width="150"
@@ -478,7 +478,7 @@
                     Click="GutterInvoiceBtn_Click"
                     Content="Gutter Invoice"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="InteriorInvoice"
                     Grid.Row="1"
                     Width="150"
@@ -487,7 +487,7 @@
                     Click="InteriorInvoice_Click"
                     Content="Interior Invoice"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="CustomerAgreementBtn"
                     Grid.Row="1"
                     Width="150"
@@ -496,7 +496,7 @@
                     Click="CustomerAgreementBtn_Click"
                     Content="Customer Agreement"
                     FontSize="14"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="MRNEstimateBtn"
                     Grid.Row="1"
                     Width="150"
@@ -505,7 +505,7 @@
                     Click="MRNEstimateBtn_Click"
                     Content="MRN Estimate"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="SupplementCheckBtn"
                     Grid.Row="1"
                     Width="150"
@@ -514,7 +514,7 @@
                     Click="SupplementCheckBtn_Click"
                     Content="Supplement Check"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="FirstCheckBtn"
                     Grid.Row="1"
                     Width="150"
@@ -523,7 +523,7 @@
                     Click="FirstCheckBtn_Click"
                     Content="1st Check"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="OriginalScopeBtn"
                     Grid.Row="1"
                     Width="150"
@@ -532,7 +532,7 @@
                     Click="OriginalScopeBtn_Click"
                     Content="Original Scope"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="NewestScopeBtn"
                     Grid.Row="1"
                     Width="150"
@@ -541,7 +541,7 @@
                     Click="NewestScopeBtn_Click"
                     Content="Newest Scope"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="DeductibleCheckBtn"
                     Grid.Row="1"
                     Width="150"
@@ -550,7 +550,7 @@
                     Click="DeductibleCheckBtn_Click"
                     Content="Deductible Check"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="DepreciationCheckBtn"
                     Grid.Row="1"
                     Width="150"
@@ -559,7 +559,7 @@
                     Click="DepreciationCheckBtn_Click"
                     Content="Depreciation Check"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="CertificateOfCompletionBtn"
                     Grid.Row="1"
                     Width="150"
@@ -568,7 +568,7 @@
                     Click="CertificateOfCompletionBtn_Click"
                     Content="CoC"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="LienWaiverBtn"
                     Grid.Row="1"
                     Width="150"
@@ -577,7 +577,7 @@
                     Click="LienWaiverBtn_Click"
                     Content="Lien Waiver"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="PlaneDamages"
                     Grid.Row="1"
                     Width="150"
@@ -586,7 +586,7 @@
                     Click="PlaneDamages_Click"
                     Content="Job Cost Adjustment"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="AuthorizatonOfCommunicationBtn"
                     Grid.Row="1"
                     Width="150"
@@ -595,7 +595,7 @@
                     Click="AuthorizatonOfCommunicationBtn_Click"
                     Content="Auth. of Communication"
                     FontSize="13"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="SatisfactionSurveyBtn"
                     Grid.Row="1"
                     Width="150"
@@ -604,7 +604,7 @@
                     Click="SatisfactionSurveyBtn_Click"
                     Content="Satisfaction Survey"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
 
             <Button x:Name="CapOutBtn"
                     Grid.Row="1"
@@ -614,7 +614,7 @@
                     Click="CapOutBtn_Click"
                     Content="Cap Out"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="WarrantyBtn"
                     Grid.Row="1"
                     Width="150"
@@ -623,7 +623,7 @@
                     Click="WarrantyBtn_Click"
                     Content="Warranty"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="ThankyouLetterBtn"
                     Grid.Row="1"
                     Width="150"
@@ -632,7 +632,7 @@
                     Click="ThankyouLetterBtn_Click"
                     Content="Thank You Letter"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="RoofOrderBtn"
                     Grid.Row="1"
                     Width="150"
@@ -641,7 +641,7 @@
                     Click="RoofOrderBtn_Click"
                     Content="Roof Order"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Button x:Name="PolicyBtn"
                     Grid.Row="1"
                     Width="150"
@@ -650,7 +650,7 @@
                     Click="PolicyBtn_Click"
                     Content="Policy"
                     FontSize="16"
-                    Style="{DynamicResource normal}" />
+                   />
             <Frame x:Name="frame"
                    Grid.Row="1"
                    Width="465"
@@ -671,7 +671,7 @@
                        Foreground="White"
                        Text="{Binding XPath=statusText}"
                        TextWrapping="Wrap" />
-            <WebBrowser x:Name="Browser" x:FieldModifier="public"  HorizontalAlignment="Left" Height="455" Margin="10,405,0,0" VerticalAlignment="Top" Width="763" Panel.ZIndex="120" Grid.Row="1"/>
+            <WebBrowser x:Name="Browser" x:FieldModifier="public"  HorizontalAlignment="Left" Height="455" Margin="17,405,0,0" VerticalAlignment="Top" Width="763" Panel.ZIndex="120" Grid.Row="1"/>
 
         </Grid>
 

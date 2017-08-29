@@ -1,0 +1,24 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements.Controllers"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="MRNUIElements.Controllers.AddInspectionPhotos"
+      mc:Ignorable="d" 
+      d:DesignHeight="600"
+      Title="AddInspectionPhotos" Width="1053">
+
+    <Grid>
+
+        <syncfusion:Carousel x:Name="ImageCarosel" x:FieldModifier="public" Margin="1,371,-244,-207"  VisualMode="CustomPath" Height="136" VerticalAlignment="Top" HorizontalAlignment="Left" Width="543" />
+        <Image x:Name="image" HorizontalAlignment="Left" Height="298" Margin="174,9,0,0" VerticalAlignment="Top" Width="370"/>
+        <WrapPanel x:Name="wp" Height="504" Margin="573,3,-757,-207" VerticalAlignment="Top" HorizontalAlignment="Left" Width="484"/>
+        <Button x:Name="nextImageBtn" Content="Next&gt;" HorizontalAlignment="Left" Margin="94,314,0,-35" VerticalAlignment="Top" Width="75"/>
+        <ListBox x:Name="imagelistBox" HorizontalAlignment="Left" Height="308" Margin="1,-1,0,-7" VerticalAlignment="Top" Width="168" />
+        <Button x:Name="addImagesbutton" Content="Add Images" Width="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="1,342,0,238" Height="20"/>
+        <Button x:Name="nextImageBtn_Copy" Content="&lt;Prev" HorizontalAlignment="Left" Margin="1,314,0,-35" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="commentsBox" HorizontalAlignment="Left" Height="55" Margin="174,307,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="370"/>
+
+    </Grid>
+</Page>

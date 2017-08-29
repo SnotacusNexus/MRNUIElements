@@ -15,5 +15,10 @@ namespace MRNNexus_Model
         public int LeadTypeID { get; set; }
         [DataMember]
         public string LeadType { get; set; }
-    }
+
+		public override string ToString()
+		{
+			return LeadType.ToString();	
+		}
+	}
 }

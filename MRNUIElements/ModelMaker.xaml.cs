@@ -444,7 +444,7 @@ namespace MRNUIElements
 
         private void GoDoIt()
         {
-
+            viewport3d.Children.Clear();
             lines.Clear();
             points.Clear();
             planes.Clear();

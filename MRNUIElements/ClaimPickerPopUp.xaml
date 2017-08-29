@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:MRNUIElements"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+         xmlns:converters="clr-namespace:MRNUIElements.Utility"
         Title="Claim Picker Pop-Up"
         Width="294"
         Height="300"
@@ -16,9 +17,9 @@
         mc:Ignorable="d">
     <Window.Resources>
         <CollectionViewSource x:Key="dTO_ClaimViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Claim}, CreateList=True}" />
-
+        <converters:CustomerIDToNameConverter x:Key="customerinfo"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource dTO_ClaimViewSource}">
+    <Grid DataContext="{StaticResource dTO_ClaimViewSource}" Background="White">
         <Button x:Name="SelectBtn"
                 Width="75"
                 Margin="105,225,0,0"
@@ -40,16 +41,6 @@
                 VerticalAlignment="Top"
                 Click="CancelBtn_Click"
                 Content="_Cancel" />
-
-
-
-        <syncfusion:ComboBoxAdv x:Name="dTO_ClaimComboBoxAdv"
-                                Margin="15,25,16,222"
-                                DisplayMemberPath="MRNNumber"
-                                Foreground="White"
-                                ItemsSource="{Binding}"
-                                SelectedValuePath="MRNNumber"
-                                Template="{DynamicResource ComboBoxAdvControlTemplate1}" />
         <TextBlock x:Name="textBlock"
                    Margin="15,4,0,0"
                    HorizontalAlignment="Left"
@@ -57,6 +48,28 @@
                    Foreground="White"
                    Text="Select Claim :"
                    TextWrapping="Wrap" />
+        <ListView x:Name="ClaimListView" HorizontalAlignment="Left" Height="166" Margin="21,43,0,0" VerticalAlignment="Top" Width="244">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="150" Header="Claim Customer">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Width="150" Height="25" HorizontalAlignment="Left" TextAlignment="Center" Text="{Binding CustomerID,Converter={StaticResource customerinfo}}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                </GridView>
+            </ListView.View>
+            </ListView>
+        <Button x:Name="NewClaimViewSelectBtn"
+            Width="98"
+            Margin="90,249,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+           
+            Content="New Claim View" Click="NewClaimViewSelectBtn_Click" />
+
 
 
 

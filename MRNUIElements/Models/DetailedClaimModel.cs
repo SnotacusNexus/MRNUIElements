@@ -6,15 +6,36 @@ using System.Text;
 using System.Threading.Tasks;
 using MRNNexus_Model;
 using MRNUIElements.Controllers;
+using System.ComponentModel;
+using PropertyChanged;
 
 namespace MRNUIElements.Models
 {
-	class DetailedClaimModel
+	[AddINotifyPropertyChangedInterface]
+
+	class DetailedClaimModel : INotifyPropertyChanged
 
 	{
 
+		#region INotifyPropertyChanged Members
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		private void OnPropertyChanged(string propertyName)
+		{
+			PropertyChangedEventHandler handler = PropertyChanged;
+
+			if (handler != null)
+			{
+				handler(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		#endregion	
+
+
 		static public ServiceLayer s1 = ServiceLayer.getInstance();
-		public DTO_Claim Claim { get; set; }
+		public static DTO_Claim Claim { get; set; }
 		public int ClaimID { get; set; }
 		public string MRNNumber { get; set; }
 		public string Salesperson { get; set; }
@@ -86,15 +107,19 @@ namespace MRNUIElements.Models
 		public ObservableCollection<DTO_Invoice> VendorInvoices { get; set; }
 		public ObservableCollection<DTO_Scope> Scopes { get; set; }
 		public ObservableCollection<DTO_CallLog> ClaimMessages { get; set; }
+		static DetailedClaimModel dcm;
 
-
-		public void BuildDCM()
+		public static DetailedClaimModel DCM()
 		{
-			var _claim = new DTO_Claim();
+			if (dcm == null)
+				dcm = new DetailedClaimModel();
+			return dcm;
+		} 
 
-			if (this.Claim == null && this.ClaimID > 0)
-				_claim.ClaimID = this.ClaimID;
-			Init(_claim);
+		public void BuildDCM(DTO_Claim claim)
+		{
+		
+			Init(claim);
 
 
 
@@ -106,15 +131,15 @@ namespace MRNUIElements.Models
 			{
 
 
-				await s1.GetClaimByClaimID(Claim);
-				await s1.GetAllCallLogs();
-				await s1.GetAllScopes();
-				await s1.GetAllInvoices();
-				await s1.GetAllPayments();
-				await s1.GetAllClaimDocuments();
-				await s1.GetAllClaimContacts();
-				await s1.GetAllClaimStatuses();
-				await s1.GetAllOrders();
+				//await s1.GetClaimByClaimID(Claim);
+				//await s1.GetAllCallLogs();
+				//await s1.GetAllScopes();
+				//await s1.GetAllInvoices();
+				//await s1.GetAllPayments();
+				//await s1.GetAllClaimDocuments();
+				//await s1.GetAllClaimContacts();
+				//await s1.GetAllClaimStatuses();
+				//await s1.GetAllOrders();
 
 			}
 			catch (Exception)

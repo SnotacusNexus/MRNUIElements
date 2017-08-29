@@ -18,11 +18,36 @@ namespace MRNUIElements.Controllers
 	/// <summary>
 	/// Interaction logic for AddClaimInspection.xaml
 	/// </summary>
-	public partial class AddClaimInspection : PageFunction<Object>
-	{
-		public AddClaimInspection()
+	public partial class AddClaimInspection
+	{ static ServiceLayer s1 = ServiceLayer.getInstance();
+		static MRNClaim MrnClaim;
+
+		public AddClaimInspection(MRNClaim MrnClaim)
 		{
 			InitializeComponent();
+			AddClaimInspection.MrnClaim = MrnClaim;
+			this.DataContext = MrnClaim;
+		}
+
+		private void AddInspectPhotos_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new AddInspectionPhotos(MrnClaim));
+
+		}
+
+		private void AddInspectionMeasurements_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new AddInspectionMeasurments(MrnClaim));
+		}
+
+		private void ReqCashEst_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new ReqCashEst(MrnClaim));
+		}
+
+		private void Prevbutton_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.GoBack();
 		}
 	}
 }

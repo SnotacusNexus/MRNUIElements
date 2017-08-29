@@ -620,8 +620,14 @@ namespace MRNUIElements
 		else EditData = false;
 
 	}
-	#endregion
-	private void SupplementModeSelector_Clicked(object sender, RoutedEventArgs e)
+        #endregion
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //CapOutDownload
+        }
+
+        private void SupplementModeSelector_Clicked(object sender, RoutedEventArgs e)
 	{
 		if (pdfviewer1.Visibility == Visibility.Collapsed)
 			pdfviewer1.Visibility = Visibility.Visible;

@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace MRNUIElements.Controllers
 {
-	internal class Inspection
+	internal class inspection
 	{
 		//public ObservableCollection<DTO_InsuranceCompany> insuranceCompanies = new ObservableCollection<DTO_InsuranceCompany>();
 
