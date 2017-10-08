@@ -28,14 +28,13 @@ using static Syncfusion.Windows.Controls.Notification.SfBusyIndicator;
 using MRNUIElements.Controllers;
 using System.Windows.Forms;
 using System.IO;
-//using static MRNUIElements.Utilities;
-//using static MRNUIElements.Controllers.UploadDocuments;
-
-
+using static MRNUIElements.Utilities;
+using static MRNUIElements.Controllers.UploadDocuments;
 using System.ComponentModel;
 using PropertyChanged;
 using Syncfusion.UI.Xaml.Schedule;
 using System.Net.Http;
+
 
 namespace MRNUIElements.Controllers
 {
@@ -60,6 +59,7 @@ namespace MRNUIElements.Controllers
         public object dTO_InvoiceViewSource { get; private set; }
         public object dTO_PaymentViewSource { get; private set; }
         public object dTO_AddressViewSource { get; private set; }
+        public object dTO_CustomerViewSource { get; private set; }
         static ServiceLayer s1 = ServiceLayer.getInstance();
         static public DTO_Claim _Claim;
         public Syncfusion.Windows.Controls.Notification.SfBusyIndicator _busyIndicator { get; set; }
@@ -77,6 +77,10 @@ namespace MRNUIElements.Controllers
         public bool HasMeasurements { get; set; }
         public int PredPitch { get; set; }
         public string googleAddress { get; set; }
+        public DTO_Scope OS { get; set; }
+        public DTO_Scope NS { get; set; }
+        public DTO_Scope ES { get; set; }
+
         string startsubstring = "Lengths, Areas and Pitches";
 
         //        List<string> Lststg = new List<string>();
@@ -102,13 +106,14 @@ namespace MRNUIElements.Controllers
             //dTO_ScopeViewSource = s1.ScopesList.Find(x => x.ClaimID == _Claim.ClaimID && x.ScopeTypeID == 2);
             //dTO_NScopeViewSource = s1.ScopesList.Find(x => x.ClaimID == _Claim.ClaimID && x.ScopeTypeID == 3);
             dTO_LU_ServiceTypesViewSource = s1.ScopeTypes;
-            ralphOS.DataContext = grid1OS.DataContext = dTO_ScopeViewSource = s1.ScopesList.Find(x => x.ClaimID == _Claim.ClaimID && x.ScopeTypeID == 2);
-            ralphNS.DataContext = grid1NS.DataContext = dTO_NScopeViewSource = s1.ScopesList.Find(x => x.ClaimID == _Claim.ClaimID && x.ScopeTypeID == 3);
-            ralphE.DataContext = grid1E.DataContext = dTO_EScopeViewSource = s1.ScopesList.Find(x => x.ClaimID == _Claim.ClaimID && x.ScopeTypeID == 1);
+            ralphOS.DataContext = grid1OS.DataContext = dTO_ScopeViewSource =OS= s1.ScopesList.Find(x => x.ClaimID == _Claim.ClaimID && x.ScopeTypeID == 2);
+            ralphNS.DataContext = grid1NS.DataContext = dTO_NScopeViewSource=NS = s1.ScopesList.Find(x => x.ClaimID == _Claim.ClaimID && x.ScopeTypeID == 3);
+            ralphE.DataContext = grid1E.DataContext =  dTO_EScopeViewSource = ES = s1.ScopesList.Find(x => x.ClaimID == _Claim.ClaimID && x.ScopeTypeID == 1);
             InvoiceTypeList.ItemsSource = s1.InvoiceTypes;
             VendorList.ItemsSource = s1.VendorsList;
             dTO_AddressViewSource = s1.CustomersList.Find(x => x.CustomerID == _Claim.CustomerID);
-            CustomerGrid.DataContext = s1.CustomersList.Find(x => x.CustomerID == _Claim.CustomerID);
+            CustomerNameText.Text = (string)new Utility.CustomerIDToNameConverter().Convert(s1.CustomersList.Find(x => x.CustomerID == _Claim.CustomerID).CustomerID,typeof(DTO_Customer),null,System.Globalization.CultureInfo.CurrentCulture);
+            dTO_CustomerViewSource = CustomerGrid.DataContext = s1.CustomersList.Find(x => x.CustomerID == _Claim.CustomerID);
             Cust_Address.DataContext = s1.AddressesList.Find(x => x.AddressID == _Claim.BillingID);
             Cust_City.DataContext = s1.AddressesList.Find(x => x.AddressID == _Claim.BillingID);
             Cust_State.DataContext = s1.AddressesList.Find(x => x.AddressID == _Claim.BillingID);
@@ -127,10 +132,11 @@ namespace MRNUIElements.Controllers
             {
                 InspectionGrid.DataContext = inspection = s1.InspectionsList.Find(y => y.ClaimID == _Claim.ClaimID);
 
+                        GetPlaneDataFromClaim(_Claim);
 
+                  }
+            else System.Windows.Forms.MessageBox.Show("Need Measurements!");
 
-                System.Windows.Forms.MessageBox.Show("Need Measurements!");
-            }
         }
 
         async void GetPlaneDataFromClaim(DTO_Claim claim)
@@ -139,7 +145,7 @@ namespace MRNUIElements.Controllers
             //    if (s1.PlanesList.Exists(x => x.InspectionID == inspection.InspectionID && x.PlaneTypeID == 15)) //14888083_ECPremiumReport
             //        stkpnl.DataContext = s1.PlanesList.Find(x => x.InspectionID == inspection.InspectionID && x.PlaneTypeID == 15);
 
-            await GetPlaneDataFromClaim(claim);
+         
             await s1.GetAllPlanes();
             if (!s1.PlanesList.Exists(x => x.InspectionID == s1.InspectionsList.Find(y => y.ClaimID == _Claim.ClaimID).InspectionID)) //we have inspection but no plane data
                                                                                                                                       //What Type of plane data do we have to import?
@@ -151,11 +157,19 @@ namespace MRNUIElements.Controllers
                 {
                     PDFTextExtractor pdfExtract = new PDFTextExtractor();
                     DisplayRecordedClaimDocuments(GetClaimDocument(claim, 3));
-                    var client = new HttpClient();
-                    var response = client.GetStreamAsync(new Uri((DisplayRecordedClaimDocuments(GetClaimDocument(claim, 3))), true));
-                    System.Windows.Forms.MessageBox.Show(response.ToString());
-                    textbox.Text = pdfExtract.Extract(response);
-                    FillVariables(pdfExtract.Extract(await client.GetStreamAsync(new Uri((DisplayRecordedClaimDocuments(GetClaimDocument(claim, 3))))), true));
+                     var client = new HttpClient();
+               
+                 var response = await client.GetAsync(new Uri(DisplayRecordedClaimDocuments(GetClaimDocument(claim, 3))), HttpCompletionOption.ResponseContentRead);
+                    var stream = await response.Content.ReadAsStreamAsync();
+
+                    //System.Windows.Forms.MessageBox.Show(a);
+                                                                 //var response = client.GetStreamAsync(new Uri((DisplayRecordedClaimDocuments(GetClaimDocument(claim, 3)))));
+                                                                 //System.Windows.Forms.MessageBox.Show(response.ToString());
+                    FillVariables(pdfExtract.Extract(stream,true));
+                   //pdfExtract.Extract(await HttpGetForLargeFileInRightWay(DisplayRecordedClaimDocuments(GetClaimDocument(claim, 3))),true);
+                    //var file = await new PDFTextExtractor().DownloadFile( DisplayRecordedClaimDocuments(GetClaimDocument(claim, 3)));
+                    //var text = new PDFTextExtractor().Extract(DisplayRecordedClaimDocuments(GetClaimDocument(claim, 3)), true);
+                    // System.Windows.Forms.MessageBox.Show(textbox.Text);
                     client.Dispose();
                     this.DataContext = this;
                     System.Windows.Forms.MessageBox.Show("We found claim." + claim.ClaimID.ToString());
@@ -174,7 +188,27 @@ namespace MRNUIElements.Controllers
                 }
         }
 
+        static async Task<Stream> HttpGetForLargeFileInRightWay(string url)
+        {
+            string fileToWriteTo = System.IO.Path.GetTempFileName();
+            using (HttpClient client = new HttpClient())
+            {
+                
+                //const string url = "https://github.com/tugberkugurlu/ASPNETWebAPISamples/archive/master.zip";
+                using (HttpResponseMessage response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead))
+                using (Stream streamToReadFrom = await response.Content.ReadAsStreamAsync())
+                {
+                    
+                    using (Stream streamToWriteTo = File.Open(fileToWriteTo, FileMode.Create))
+                    {
+                        await streamToReadFrom.CopyToAsync(streamToWriteTo);
+                        return streamToWriteTo;
+                    }
 
+                }
+            }
+            
+        }
         public class ProductTypes : DTO_LU_ProductType, INotifyPropertyChanged
         {
 
@@ -246,7 +280,7 @@ namespace MRNUIElements.Controllers
             eaveLengthTextBox.Text = p.EaveLength.ToString();
             fourAndUpTextBox.Text = p.FourAndUp.ToString();
             groupNumberTextBox.Text = p.GroupNumber.ToString();// = string.IsNullOrEmpty(groupNumberTextBox.Text) ? 0 : int.Parse();
-            hipValleyTextBox.Text = p.Hip.ToString();// = string.IsNullOrEmpty(hipValleyTextBox.Text) ? 0 : int.Parse(hipValleyTextBox.Text);
+            hipTextBox.Text = p.Hip.ToString();// = string.IsNullOrEmpty(hipValleyTextBox.Text) ? 0 : int.Parse(hipValleyTextBox.Text);
             inspectionIDTextBox1.Text = p.InspectionID.ToString(); //= string.IsNullOrEmpty(inspectionIDTextBox1.Text) ? 0 : int.Parse(inspectionIDTextBox1.Text);
             numberDeckingTextBox.Text = p.NumberDecking.ToString();// = string.IsNullOrEmpty(numberDeckingTextBox.Text) ? 0 : int.Parse(numberDeckingTextBox.Text);
             numOfLayersTextBox.Text = p.NumOfLayers.ToString();// = string.IsNullOrEmpty(numOfLayersTextBox.Text) ? 0 : int.Parse(numOfLayersTextBox.Text);
@@ -259,6 +293,7 @@ namespace MRNUIElements.Controllers
             stepFlashingTextBox.Text = p.StepFlashing.ToString();// = string.IsNullOrEmpty(stepFlashingTextBox.Text) ? 0 : int.Parse(stepFlashingTextBox.Text);
             threeAndOneTextBox.Text = p.ThreeAndOne.ToString(); //= string.IsNullOrEmpty(threeAndOneTextBox.Text) ? 0 : int.Parse(threeAndOneTextBox.Text);
             turtleBacksTextBox.Text = p.TurtleBacks.ToString();// = string.IsNullOrEmpty(turtleBacksTextBox.Text) ? 0 : int.Parse(turtleBacksTextBox.Text);
+            valleyTextBox.Text = p.Valley.ToString();
         }
         DTO_Plane MakePlaneFromCalc()
         {
@@ -268,7 +303,7 @@ namespace MRNUIElements.Controllers
             p.EaveLength = string.IsNullOrEmpty(eaveLengthTextBox.Text) ? 0 : int.Parse(eaveLengthTextBox.Text);
             p.FourAndUp = string.IsNullOrEmpty(fourAndUpTextBox.Text) ? 0 : int.Parse(fourAndUpTextBox.Text);
             p.GroupNumber = string.IsNullOrEmpty(groupNumberTextBox.Text) ? 0 : int.Parse(groupNumberTextBox.Text);
-            p.Hip = string.IsNullOrEmpty(hipValleyTextBox.Text) ? 0 : int.Parse(hipValleyTextBox.Text);
+            p.Hip = string.IsNullOrEmpty(hipTextBox.Text) ? 0 : int.Parse(hipTextBox.Text);
             p.InspectionID = string.IsNullOrEmpty(inspectionIDTextBox1.Text) ? 0 : int.Parse(inspectionIDTextBox1.Text);
             p.ItemSpec = itemSpecTextBox.Text;
             p.NumberDecking = string.IsNullOrEmpty(numberDeckingTextBox.Text) ? 0 : int.Parse(numberDeckingTextBox.Text);
@@ -282,6 +317,7 @@ namespace MRNUIElements.Controllers
             p.StepFlashing = string.IsNullOrEmpty(stepFlashingTextBox.Text) ? 0 : int.Parse(stepFlashingTextBox.Text);
             p.ThreeAndOne = string.IsNullOrEmpty(threeAndOneTextBox.Text) ? 0 : int.Parse(threeAndOneTextBox.Text);
             p.TurtleBacks = string.IsNullOrEmpty(turtleBacksTextBox.Text) ? 0 : int.Parse(turtleBacksTextBox.Text);
+            p.Valley = string.IsNullOrEmpty(valleyTextBox.Text) ? 0 : int.Parse(valleyTextBox.Text);
             return p;
         }
 
@@ -548,9 +584,9 @@ namespace MRNUIElements.Controllers
             p.Pitch = PredPitch;
             p.Hip = (int)HipMeasurement;
             p.GroupNumber = 1;
-            P.Valley = (int)ValleyMeasurement;
+          
             p.EaveLength = (int)EaveMeasurement;
-            p.InspectionID = s1.Inspection.InspectionID;
+         //   p.InspectionID = (int)s1.Inspection.InspectionID;
             //TODO Make this Dynamic
             if (!string.IsNullOrEmpty(OrderOSB.Text))
                 p.NumberDecking = int.Parse(OrderOSB.Text);
@@ -562,6 +598,7 @@ namespace MRNUIElements.Controllers
             p.PlaneTypeID = 15;
             p.StepFlashing = int.Parse("0");
             p.TurtleBacks = 0;
+            p.Valley = (int)ValleyMeasurement;
             MakeTextBoxFullFromPlane(p);
         }
 
@@ -4102,8 +4139,7 @@ DTO_ClaimDocument GetClaimDocument(/*DTO_Claim _claim,*/
 ////		}
 
 
-////		#endregion
-
+////		
 ////	}
 ////}
 #endregion

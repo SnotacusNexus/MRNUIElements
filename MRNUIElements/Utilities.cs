@@ -35,7 +35,7 @@ namespace MRNUIElements
 #endregion
 		public static ServiceLayer s1 = ServiceLayer.getInstance();
 		public static int ClaimID { get; set; }
-		private static DTO_Claim _claim;
+		
 
 		
 		

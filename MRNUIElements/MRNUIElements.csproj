@@ -16,7 +16,8 @@
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>ftp://localhost/service/</PublishUrl>
     <Install>false</Install>
     <InstallFrom>Web</InstallFrom>
@@ -46,7 +47,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -481,6 +483,9 @@
     <Compile Include="Controllers\ClaimIT.xaml.cs">
       <DependentUpon>ClaimIT.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ClaimMOOO.xaml.cs">
+      <DependentUpon>ClaimMOOO.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ClaimOrderAdjustments.xaml.cs">
       <DependentUpon>ClaimOrderAdjustments.xaml</DependentUpon>
     </Compile>
@@ -492,9 +497,6 @@
       <DependentUpon>ClaimStartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ClaimValues.cs" />
-    <Compile Include="Controllers\ClaimView.xaml.cs">
-      <DependentUpon>ClaimView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\Class1.cs" />
     <Compile Include="Controllers\DownloadFile.cs" />
     <Compile Include="Controllers\EmployeeOnboarding.xaml.cs">
@@ -519,6 +521,9 @@
     <Compile Include="Controllers\ProductItem.cs" />
     <Compile Include="Controllers\ReqCashEst.xaml.cs">
       <DependentUpon>ReqCashEst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\RoofSchedulerPage.xaml.cs">
+      <DependentUpon>RoofSchedulerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Schedule.cs" />
     <Compile Include="Controllers\ScheduleAppointment.xaml.cs">
@@ -950,6 +955,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controllers\ClaimMOOO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controllers\ClaimOrderAdjustments.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -959,10 +968,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controllers\ClaimStartPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controllers\ClaimView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -987,6 +992,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controllers\ReqCashEst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controllers\RoofSchedulerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

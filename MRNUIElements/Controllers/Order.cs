@@ -55,23 +55,30 @@ namespace MRNUIElements.RoofOrder
 			int HeighestPlaneHeight = 0;
 			int HeighestPlaneID = 0;
 			int NumberOfPlanes = 0;
+            int TotEaveHeight = 0;
+           
 
-
+            int a = 0;
 			foreach (DTO_Plane p in s.PlanesList)
 			{
+                a++;
+               
 				TotalEaves += (int)p.EaveLength;
 				PJB4 += (int)p.FourAndUp;
-				//p.GroupNumber;
+				p.GroupNumber=a;
 				Hips += (int)p.Hip;
-				Valleys = (int)p.Valley;
+				Valleys += (int)p.Valley;
 				p.ItemSpec = "";
-				Pitches = (int)p.Pitch;
-				Rakes = (int)p.RakeLength;
-				TotalRidges = (int)p.RidgeLength;
-				TotalSquareFootage = (double)p.SquareFootage;
-				PJB3 = (int)p.ThreeAndOne;
-				AverageEaveHeight = (int)p.EaveHeight;
-			}
+				Pitches += (int)p.Pitch;
+				Rakes += (int)p.RakeLength;
+				TotalRidges += (int)p.RidgeLength;
+				TotalSquareFootage += (double)p.SquareFootage;
+				PJB3 += (int)p.ThreeAndOne;
+				TotEaveHeight += (int)p.EaveHeight;
+                AverageEaveHeight = (int)TotEaveHeight / a;
+                    AveragePitch = (int)Pitches / a;
+
+            }
 
 
 

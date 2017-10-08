@@ -12,8 +12,7 @@ using Syncfusion.Pdf.Native;
 using Syncfusion.PdfViewer;
 using System.Windows.Forms;
 using System.IO;
-
-
+using System.Net.Http;
 
 namespace MRNUIElements
 {
@@ -21,40 +20,118 @@ namespace MRNUIElements
     public partial class PDFTextExtractor
     {
 
-       public string Extract(Stream stream, bool all = false)
+        public string Extract(Stream stream, bool all = false)
         {
             string extractedText = string.Empty;
-			try
-			{
-				PdfLoadedDocument loadedDocument = new PdfLoadedDocument(stream);
-
-			if (!all) {
-					PdfPageBase page = loadedDocument.Pages[0]; extractedText= page.ExtractText();
-               
-            }   
-            else
+            try
             {
-                PdfLoadedPageCollection loadedPages = loadedDocument.Pages;
-                foreach (PdfLoadedPage lpage in loadedPages)
+                PdfLoadedDocument loadedDocument = new PdfLoadedDocument(stream);
+
+                if (!all)
                 {
-                    extractedText += lpage.ExtractText();
+                    PdfPageBase page = loadedDocument.Pages[0]; extractedText = page.ExtractText();
+
                 }
+                else
+                {
+                    PdfLoadedPageCollection loadedPages = loadedDocument.Pages;
+                    foreach (PdfLoadedPage lpage in loadedPages)
+                    {
+                        extractedText += lpage.ExtractText();
+                    }
+
+                }
+                loadedDocument.Close(true);
 
             }
-            loadedDocument.Close(true);
-            
-			}
-			catch (Exception ex)
-			{
+            catch (Exception ex)
+            {
 
-				MessageBox.Show(ex.ToString());
-			}
-            
-           
-               return extractedText;
-                
-              
-           
+                MessageBox.Show(ex.ToString());
+            }
+
+
+            return extractedText;
+
+
+
+        }
+
+        public string Extract(string file, bool all = false)
+        {
+            string extractedText = string.Empty;
+            try
+            {
+                PdfLoadedDocument loadedDocument = new PdfLoadedDocument(file);
+
+                if (!all)
+                {
+                    PdfPageBase page = loadedDocument.Pages[0]; extractedText = page.ExtractText();
+
+                }
+                else
+                {
+                    PdfLoadedPageCollection loadedPages = loadedDocument.Pages;
+                    foreach (PdfLoadedPage lpage in loadedPages)
+                    {
+                        extractedText += lpage.ExtractText();
+                    }
+
+                }
+                loadedDocument.Close(true);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+
+            return extractedText;
+
+
+
+        }
+
+        async public Task<Stream> DownloadFile(string url)
+        {
+            using (var client = new HttpClient())
+            {
+                var stream = await client.GetStreamAsync(url);
+
+                // OR to get the content of the file as you do now
+                var data = await client.GetByteArrayAsync(url);
+
+
+                return stream;
+                // do whatever you need to do with your file here
+            }
         }
     }
 }
+//// Load an existing PDF document.
+
+//PdfLoadedDocument loadedDocument = new PdfLoadedDocument(fileName);
+
+//// Loading page collections
+
+//PdfLoadedPageCollection loadedPages = loadedDocument.Pages;
+
+//string extractedText = string.Empty;
+
+//// Extract text from existing PDF document pages
+
+//foreach (PdfLoadedPage loadedPage in loadedPages)
+
+//{
+
+//extractedText += loadedPage.ExtractText();
+
+//}
+
+//// Close the document.
+
+//loadedDocument.Close(true);
+
+    

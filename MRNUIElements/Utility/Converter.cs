@@ -32,100 +32,15 @@ namespace MRNUIElements.Utility
 {
 
 
-	public class InsuranceCoIDToClaimPhoneNumber : IValueConverter
-	{
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			var a = s1.InsuranceCompaniesList.Find(x => x.InsuranceCompanyID == (int)value);
-				return a.ClaimPhoneNumber + " " + a.ClaimPhoneExt == null ? "":a.ClaimPhoneExt;
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
-
-	public class CreditToIDConverter : IValueConverter
-	{
-
-		/// <summary>
-		/// Pass in as parameter the LeadTypeID the result the person responsible for the lead
-		/// </summary>
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			List<DTO_Employee> EL = s1.EmployeesList;
-		
-			List<DTO_Customer> CL = s1.CustomersList;
-			
-			List<DTO_Referrer> rl = s1.ReferrersList;
-
-			
-			if ((string)parameter == "1")//Knocker
-				return EL.Find(x => x.EmployeeID == (int)value).ToString();
-			else if ((string)parameter == "2")//Referrer
-				return rl.Find(x => x.ReferrerID == (int)value).ToString();
-			else if ((string)parameter == "3")//PreviousCustomer
-				return CL.Find(x => x.CustomerID == (int)value).ToString();
-			else if ((string)parameter == "4")//Office
-				return "House Deal";
-			else if ((string)parameter == "5")//SelfGenerated
-				return EL.Find(x => x.EmployeeID == (int)value).ToString();
-			
-			else return "";
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
-
-
-	public class ClaimContactsConverter : IValueConverter
-	{
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			List<DTO_Employee> EL = s1.EmployeesList;
-			List<DTO_Adjuster> AL = s1.AdjustersList;
-			List<DTO_Customer> CL = s1.CustomersList;
-			List<DTO_Claim> cl = s1.ClaimsList;
-			List<DTO_Referrer> rl = s1.ReferrersList;
-
-			if ((string)parameter == "0")//Adjuster
-				return AL.Find(x => x.AdjusterID == (int)value).ToString();
-			else if ((string)parameter == "1")//Customer
-				return CL.Find(x => x.CustomerID == (int)value).ToString();
-			else if ((string)parameter == "2")//Knocker
-				return EL.Find(x => x.EmployeeID == (int)value).ToString();
-			else if ((string)parameter == "3")//Salesperson
-				return EL.Find(x => x.EmployeeID == (int)value).ToString();
-			else if ((string)parameter == "4")//Supervisor
-				return EL.Find(x => x.EmployeeID == (int)value).ToString();
-			else if ((string)parameter == "5")//SalesManager
-				return EL.Find(x => x.EmployeeID == (int)value).ToString();
-			else if ((string)parameter == "6")//Referrer
-				return rl.Find(x => x.ReferrerID == (int)value).ToString();
-			else return "";
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
     public class CustomerIDToNameConverter : IValueConverter
     {
         static ServiceLayer s1 = ServiceLayer.getInstance();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            DTO_Customer customer= s1.CustomersList.Find(x => x.CustomerID== (int)value);
+            DTO_Customer customer = s1.CustomersList.Find(x => x.CustomerID == (int)value);
             var sb = new StringBuilder();
+            sb.Clear();
             sb.Append(customer.FirstName);
             sb.Append(" ");
             if (!string.IsNullOrEmpty(customer.MiddleName))
@@ -142,7 +57,7 @@ namespace MRNUIElements.Utility
             {
                 sb.Append(" ");
                 sb.Append(customer.Suffix);
-              
+
             }
 
             return sb.ToString();
@@ -155,141 +70,317 @@ namespace MRNUIElements.Utility
         }
     }
 
+    public class GetEmployeeNameFromID : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var emp = new DTO_Employee();
+
+            if (s1.EmployeesList.Exists(x => x.EmployeeID == (int)value))
+               emp = s1.EmployeesList.Find(x => x.EmployeeID == (int)value);
+
+            return emp.FullName;
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+    }
+
+    public class GetSuperVisorName : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+
+            var CCI = new DTO_ClaimContacts();
+
+            if (s1.ClaimContactsList.Exists(x => x.ClaimID == (int)value))
+            {
+                CCI = ((DTO_ClaimContacts)s1.ClaimContactsList.Find(x => x.ClaimID == (int)value));
+                return s1.EmployeesList.Find(y => y.EmployeeID == CCI.SupervisorID);
+            }
+
+                return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class InsuranceCoIDToClaimPhoneNumber : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var a = s1.InsuranceCompaniesList.Find(x => x.InsuranceCompanyID == (int)value);
+            return a.ClaimPhoneNumber + " " + a.ClaimPhoneExt == null ? "" : a.ClaimPhoneExt;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class CreditToIDConverter : IValueConverter
+    {
+
+        /// <summary>
+        /// Pass in as parameter the LeadTypeID the result the person responsible for the lead
+        /// </summary>
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            List<DTO_Employee> EL = s1.EmployeesList;
+
+            List<DTO_Customer> CL = s1.CustomersList;
+
+            List<DTO_Referrer> rl = s1.ReferrersList;
+
+
+            if ((string)parameter == "1")//Knocker
+                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            else if ((string)parameter == "2")//Referrer
+                return rl.Find(x => x.ReferrerID == (int)value).ToString();
+            else if ((string)parameter == "3")//PreviousCustomer
+                return CL.Find(x => x.CustomerID == (int)value).ToString();
+            else if ((string)parameter == "4")//Office
+                return "House Deal";
+            else if ((string)parameter == "5")//SelfGenerated
+                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+
+            else return "";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class ClaimContactsConverter : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            List<DTO_Employee> EL = s1.EmployeesList;
+            List<DTO_Adjuster> AL = s1.AdjustersList;
+            List<DTO_Customer> CL = s1.CustomersList;
+            List<DTO_Claim> cl = s1.ClaimsList;
+            List<DTO_Referrer> rl = s1.ReferrersList;
+
+            if ((string)parameter == "0")//Adjuster
+                return AL.Find(x => x.AdjusterID == (int)value).ToString();
+            else if ((string)parameter == "1")//Customer
+                return CL.Find(x => x.CustomerID == (int)value).ToString();
+            else if ((string)parameter == "2")//Knocker
+                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            else if ((string)parameter == "3")//Salesperson
+                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            else if ((string)parameter == "4")//Supervisor
+                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            else if ((string)parameter == "5")//SalesManager
+                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            else if ((string)parameter == "6")//Referrer
+                return rl.Find(x => x.ReferrerID == (int)value).ToString();
+            else return "";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+  
+
     public class AddressBlockFromAddressIDConverter : IValueConverter
-	{
+    {
 
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		static AddressZipcodeValidation azv = new AddressZipcodeValidation();
-	//	List<string> addblock = new List<string>();
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-		
-
-			//value being passed in is an AddressID then we will get the zipcode value from that object in the DB
-			DTO_Address address = s1.AddressesList.Find(x => x.AddressID == (int)value);
-			if ((string)parameter == "0")
-				return address.Address;
-			else if ((string)parameter == "1")
-				return azv.CityStateLookupRequest(address.Zip, 3);
-			else if ((string)parameter == "2")
-				return azv.CityStateLookupRequest(address.Zip, 4);
-			else if ((string)parameter == "3")
-				return address.Zip;
-			else if ((string)parameter == "4")
-				return azv.CityStateLookupRequest(address.Zip, 3) + ", " + azv.CityStateLookupRequest(address.Zip, 4) + "  " + address.Zip;
-
-			//value being passed in is an actual zipcode to convert to city/state lookup values
-			else if ((string)parameter == "ZipState")
-				return azv.CityStateLookupRequest((string)value, 4);
-			else if ((string)parameter == "ZipCity")
-				return azv.CityStateLookupRequest((string)value, 3);
-			else return "";
-			
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
-
-	public class VendorFromIDConverter : IValueConverter
-	{
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-
-			var a = s1.VendorsList.Find(x => x.VendorID == (int)value).CompanyName.ToString();
-
-			return a;
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
-	public class PaymentTypeIDConverter : IValueConverter
-	{
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			var a = s1.PaymentTypes.Find(x => x.PaymentTypeID == (int)value).PaymentType.ToString();
-			return a;
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
-	public class InvoiceTypeIDConverter : IValueConverter
-	{
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			var a =s1.InvoiceTypes.Find(x => x.InvoiceTypeID == (int)value).InvoiceType.ToString();
-			return a;
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
-
-	public class PaymentDescriptionIDConverter : IValueConverter
-	{
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			
-		var a = s1.PaymentDescriptions.Find(x => x.PaymentDescriptionID == (int)value).PaymentDescription.ToString();
-			return a;
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        static AddressZipcodeValidation azv = new AddressZipcodeValidation();
+        //	List<string> addblock = new List<string>();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
 
 
-	public class MRNClaimNumberConverter : IValueConverter
-	{
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			var a =s1.ClaimsList.Find(x => x.ClaimID == (int)value).MRNNumber.ToString();
-			return a;
-		}
-	
+            //value being passed in is an AddressID then we will get the zipcode value from that object in the DB
+            DTO_Address address = s1.AddressesList.Find(x => x.AddressID == (int)value);
+            if ((string)parameter == "0")
+                return address.Address;
+            else if ((string)parameter == "1")
+                return azv.CityStateLookupRequest(address.Zip, 3);
+            else if ((string)parameter == "2")
+                return azv.CityStateLookupRequest(address.Zip, 4);
+            else if ((string)parameter == "3")
+                return address.Zip;
+            else if ((string)parameter == "4")
+                return azv.CityStateLookupRequest(address.Zip, 3) + ", " + azv.CityStateLookupRequest(address.Zip, 4) + "  " + address.Zip;
 
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
+            //value being passed in is an actual zipcode to convert to city/state lookup values
+            else if ((string)parameter == "ZipState")
+                return azv.CityStateLookupRequest((string)value, 4);
+            else if ((string)parameter == "ZipCity")
+                return azv.CityStateLookupRequest((string)value, 3);
+            else return "";
 
-	public class ScopeTypeConverter : IValueConverter
-	{
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			switch (value)
-			{
-				case 1: { return "MRNEstimate"; }
-				case 2: { return "Original Scope"; }
-				case 3: { return "Settled Scope"; }
-				default: { return null; }
-			}
-		}
+        }
 
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
-	public class BooleanToVisibility : IValueConverter
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+    }
+
+    public class VendorFromIDConverter : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (s1.VendorsList.Exists(x => x.VendorID == (int)value))
+            {
+                var a = s1.VendorsList.Find(x => x.VendorID == (int)value).CompanyName.ToString();
+
+                return a;
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class PaymentTypeIDConverter : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var a = s1.PaymentTypes.Find(x => x.PaymentTypeID == (int)value).PaymentType.ToString();
+            return a;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class InvoiceTypeIDConverter : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var a = s1.InvoiceTypes.Find(x => x.InvoiceTypeID == (int)value).InvoiceType.ToString();
+            return a;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class PaymentDescriptionIDConverter : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+
+            var a = s1.PaymentDescriptions.Find(x => x.PaymentDescriptionID == (int)value).PaymentDescription.ToString();
+            return a;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class MRNClaimNumberConverter : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var a = s1.ClaimsList.Find(x => x.ClaimID == (int)value).MRNNumber.ToString();
+            return a;
+        }
+
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+            //throw new NotImplementedException();
+        }
+    }
+    public class ScopeFinder : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            
+            DTO_Scope scopereturn = new DTO_Scope();
+            Task.Run(async() => await s1.GetScopesByClaimID((DTO_Claim)value));
+
+            switch ((string)parameter)
+            {
+                case "1":
+                    {
+                        if (s1.ScopesList.Exists(c => c.ScopeTypeID == 1))
+                            return s1.ScopesList.Find(c => c.ScopeTypeID == 1);
+                        return value;
+                    }
+                case "2":
+                    {
+                        if (s1.ScopesList.Exists(c => c.ScopeTypeID == 2))
+                            return s1.ScopesList.Find(c => c.ScopeTypeID == 2);
+                        return value;
+                    }
+                case "3":
+                    {
+                        if (s1.ScopesList.Exists(c => c.ScopeTypeID == 3))
+                            return s1.ScopesList.Find(c => c.ScopeTypeID == 3);
+                        return value;
+                    }
+                default: { return value; }
+                    // throw new NotImplementedException();
+
+            }
+         
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class ScopeTypeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            switch (value)
+            {
+                case 1: { return "MRNEstimate"; }
+                case 2: { return "Original Scope"; }
+                case 3: { return "Settled Scope"; }
+                default: { return null; }
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class BooleanToVisibility : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -317,28 +408,28 @@ namespace MRNUIElements.Utility
             }
         }
     }
-	public class PaymentDescriptor : DTO_Payment
-	{
-		ServiceLayer s1 = ServiceLayer.getInstance();
-		public string PaymentDescription { get; set; }
-		public string  PaymentType { get; set; }
-		public PaymentDescriptor()
-		{
-			var payD = s1.PaymentDescriptions;
-			var payT = s1.PaymentTypes;
+    public class PaymentDescriptor : DTO_Payment
+    {
+        ServiceLayer s1 = ServiceLayer.getInstance();
+        public string PaymentDescription { get; set; }
+        public string PaymentType { get; set; }
+        public PaymentDescriptor()
+        {
+            var payD = s1.PaymentDescriptions;
+            var payT = s1.PaymentTypes;
 
-			this.PaymentDescription = payD.Find(x => x.PaymentDescriptionID == PaymentDescriptionID).PaymentDescription.ToString();
+            this.PaymentDescription = payD.Find(x => x.PaymentDescriptionID == PaymentDescriptionID).PaymentDescription.ToString();
 
-			this.PaymentType = payT.Find(x => x.PaymentTypeID == PaymentTypeID).PaymentType.ToString();
+            this.PaymentType = payT.Find(x => x.PaymentTypeID == PaymentTypeID).PaymentType.ToString();
 
 
-		}
-		
+        }
 
-	}
+
+    }
     public class Inverter : IValueConverter
     {
-       public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if ((Visibility)value == Visibility.Visible)
             {
@@ -358,7 +449,8 @@ namespace MRNUIElements.Utility
 
     public static class Ext
     {
-        public static Color ToColor(this string value) {
+        public static Color ToColor(this string value)
+        {
             Color c;
             var match = Regex.Match(value, "#([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})");
             int a = Convert.ToInt32(match.Groups[1].Value, 16);
@@ -380,76 +472,76 @@ namespace MRNUIElements.Utility
         }
     }
 
-	//public class StringtoCommandConverter : DependencyObject, IValueConverter
-	//{
+    //public class StringtoCommandConverter : DependencyObject, IValueConverter
+    //{
 
 
-	//public NexusClaimGenerator Context
-	//{
-	//    get { return (NexusClaimGenerator)GetValue(ContextProperty); }
-	//    set { SetValue(ContextProperty, value); }
-	//}
+    //public NexusClaimGenerator Context
+    //{
+    //    get { return (NexusClaimGenerator)GetValue(ContextProperty); }
+    //    set { SetValue(ContextProperty, value); }
+    //}
 
-	//// Using a DependencyProperty as the backing store for Context.  This enables animation, styling, binding, etc...
-	//public static readonly DependencyProperty ContextProperty =
-	//    DependencyProperty.Register("Context", typeof(NexusClaimGenerator), typeof(StringtoCommandConverter), new PropertyMetadata(null, onPropertychanged));
+    //// Using a DependencyProperty as the backing store for Context.  This enables animation, styling, binding, etc...
+    //public static readonly DependencyProperty ContextProperty =
+    //    DependencyProperty.Register("Context", typeof(NexusClaimGenerator), typeof(StringtoCommandConverter), new PropertyMetadata(null, onPropertychanged));
 
-	//private static void onPropertychanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-	//{
+    //private static void onPropertychanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    //{
 
-	//}
+    //}
 
 
-	//public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-	//{
-	//    string command = value.ToString();
-	//    ////DiagramBuilderVM vm = values[1] as DiagramBuilderVM;
-	//    //if (vm != null)
-	//    //{
-	//    //    switch (command)
-	//    //    {
-	//    //        case "Cut":
-	//    //            return vm.Cut;
-	//    //            break;
-	//    //        case "Copy":
-	//    //            return vm.Copy;
-	//    //            break;
-	//    //        case "Paste":
-	//    //            return vm.Paste;
-	//    //            break;
+    //public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    //{
+    //    string command = value.ToString();
+    //    ////DiagramBuilderVM vm = values[1] as DiagramBuilderVM;
+    //    //if (vm != null)
+    //    //{
+    //    //    switch (command)
+    //    //    {
+    //    //        case "Cut":
+    //    //            return vm.Cut;
+    //    //            break;
+    //    //        case "Copy":
+    //    //            return vm.Copy;
+    //    //            break;
+    //    //        case "Paste":
+    //    //            return vm.Paste;
+    //    //            break;
 
-	//    //    }
-	//    //}
-	//    return null;
-	//    }
+    //    //    }
+    //    //}
+    //    return null;
+    //    }
 
-	//    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-	//    {
-	//        throw new NotImplementedException();
-	//    }
-	//}
-	public class StringtoBooleanConverter : IValueConverter
-	{
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			if (value != null)
-			{
+    //    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
+    public class StringtoBooleanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
 
-				if (value.ToString() == "True" || value.ToString() == "true" || value.ToString() == "TRUE" || value.ToString() == "1")
-					return true;
-				else if (value.ToString() == "False" || value.ToString() == "false" || value.ToString() == "FALSE" || value.ToString() == "0")
-					return false;
-			}
-			 return null;
-		}
+                if (value.ToString() == "True" || value.ToString() == "true" || value.ToString() == "TRUE" || value.ToString() == "1")
+                    return true;
+                else if (value.ToString() == "False" || value.ToString() == "false" || value.ToString() == "FALSE" || value.ToString() == "0")
+                    return false;
+            }
+            return null;
+        }
 
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
-	public class EnumtoVisibilityConverter : IValueConverter
+    public class EnumtoVisibilityConverter : IValueConverter
     {
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -485,7 +577,7 @@ namespace MRNUIElements.Utility
         }
     }
 
-    class PickerVisibilityConverter:IValueConverter
+    class PickerVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -512,9 +604,9 @@ namespace MRNUIElements.Utility
             if (value != null)
             {
                 var converter = new System.Windows.Media.BrushConverter();
-               
-                  Brush   brush = (Brush) converter.ConvertFromString(value.ToString());
-             
+
+                Brush brush = (Brush)converter.ConvertFromString(value.ToString());
+
                 return (brush as SolidColorBrush).Color;
             }
             return null;
@@ -573,14 +665,14 @@ namespace MRNUIElements.Utility
                             {
                                 if (set.Property == FrameworkElement.TagProperty)
                                 {
-                                    var brush = (Brush) converter.ConvertFromString(set.Value.ToString());
+                                    var brush = (Brush)converter.ConvertFromString(set.Value.ToString());
                                     tt.Foreground = brush;
                                 }
                             }
                         }
                         else if ((dobject as Grid).Children[0] is Path)
                         {
-                            
+
                             Path tt = (dobject as Grid).Children[0] as Path;
                             foreach (Setter set in (resource as Style).Setters)
                             {
@@ -590,15 +682,15 @@ namespace MRNUIElements.Utility
                                     tt.Fill = brush;
                                 }
                             }
-                            
+
                         }
                     }
                 }
-              
-            }
-          
 
-           
+            }
+
+
+
             return resource;
         }
 
@@ -608,7 +700,7 @@ namespace MRNUIElements.Utility
         }
     }
 
-    public class GalarySelection 
+    public class GalarySelection
     {
 
         public static ICommand SelectCommand(DependencyObject obj)
@@ -623,7 +715,7 @@ namespace MRNUIElements.Utility
         public static readonly DependencyProperty SelectCommandProperty =
             DependencyProperty.RegisterAttached("SelectCommand", typeof(ICommand), typeof(GalarySelection),
                 new PropertyMetadata(null, OnPropertyChanged));
-        
+
 
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -641,7 +733,7 @@ namespace MRNUIElements.Utility
                 command.Execute(name);
             }
         }
-        
+
     }
 
     internal static class ShapeHelper

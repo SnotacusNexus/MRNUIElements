@@ -99,7 +99,7 @@ namespace MRNUIElements
             int k = 0;
             while (s1.ClaimsList == null)
                 k++;
-			ClaimListView.DataContext = s1.ClaimsList;
+			//ClaimListView.DataContext = s1.ClaimsList;
             ClaimListView.ItemsSource = s1.ClaimsList;
          
 
@@ -118,10 +118,12 @@ namespace MRNUIElements
 
 			DialogResult = true;
 			Close();
+            if (ClaimListView.SelectedItem != null)
+                ns.Navigate(new ClaimView(Claim));
 
-		}
+        }
 
-		private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
 		{
 
 			DialogResult = false;
@@ -137,16 +139,27 @@ namespace MRNUIElements
 
 		}
 
-        private void NewClaimViewSelectBtn_Click(object sender, RoutedEventArgs e)
+        //private void NewClaimViewSelectBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Claim = (DTO_Claim)ClaimListView.SelectedItem;
+        //    Application.Current.Properties["CurrentClaim"] = Claim;
+
+
+        //    DialogResult = true;
+        //    Close();
+        //    if (ClaimListView.SelectedItem != null)
+        //        ns.Navigate(new ClaimView(Claim));
+        //}
+
+       async private void ClaimListView_GotFocus(object sender, RoutedEventArgs e)
         {
-            Claim = (DTO_Claim)ClaimListView.SelectedItem;
-            Application.Current.Properties["CurrentClaim"] = Claim;
+           
+        }
 
-
-            DialogResult = true;
-            Close();
-            if (ClaimListView.SelectedItem != null)
-                ns.Navigate(new ClaimView(Claim));
+       async private void ClaimListView_Initialized(object sender, EventArgs e)
+        {
+ await s1.GetAllClaims();
+            ClaimListView.ItemsSource = s1.ClaimsList;
         }
     }
 }
