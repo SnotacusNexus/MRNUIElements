@@ -14,41 +14,44 @@
         Background="Transparent"
         Loaded="Window_Loaded"
         Topmost="True"
-        mc:Ignorable="d">
+        mc:Ignorable="d" Style="{DynamicResource WindowStyle1}">
     <Window.Resources>
         <CollectionViewSource x:Key="dTO_ClaimViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Claim}, CreateList=True}" />
         <converters:CustomerIDToNameConverter x:Key="customerinfo"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource dTO_ClaimViewSource}" Background="White">
+    <Grid DataContext="{StaticResource dTO_ClaimViewSource}" Background="{DynamicResource ResourceFiles_MRN_CONTRACTING_LOGO_png}" Style="{DynamicResource FocusVisual}">
         <Button x:Name="SelectBtn"
                 Width="75"
                 Margin="105,225,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="SelectBtn_Click"
-                Content="_OK" Style="{DynamicResource ButtonStyle1}" />
+                Content="_OK" Style="{DynamicResource ButtonStyle2}" />
         <Button x:Name="AddBtn"
                 Width="75"
                 Margin="15,225,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="AddBtn_Click"
-                Content="_Add New" />
+                Content="_Add New" Style="{DynamicResource ButtonStyle2}"/>
         <Button x:Name="CancelBtn"
                 Width="75"
                 Margin="195,225,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="CancelBtn_Click"
-                Content="_Cancel" />
+                Content="_Cancel" Style="{DynamicResource ButtonStyle2}"  />
         <TextBlock x:Name="textBlock"
                    Margin="15,4,0,0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    Foreground="White"
                    Text="Select Claim :"
-                   TextWrapping="Wrap" />
-        <ListView x:Name="ClaimListView" HorizontalAlignment="Left" Height="166" Margin="21,43,0,0" VerticalAlignment="Top" Width="244" Initialized="ClaimListView_Initialized">
+                   TextWrapping="Wrap"  />
+        <ListView x:Name="ClaimListView" HorizontalAlignment="Left" Height="166" Margin="26,43.227,0,0" VerticalAlignment="Top" Width="244" Initialized="ClaimListView_Initialized">
+            <ListView.Background>
+                <SolidColorBrush Color="White" Opacity="0.48"/>
+            </ListView.Background>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="150" Header="Claim Customer">
@@ -58,11 +61,11 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    
+
                 </GridView>
             </ListView.View>
-            </ListView>
-        
+        </ListView>
+
 
 
 
