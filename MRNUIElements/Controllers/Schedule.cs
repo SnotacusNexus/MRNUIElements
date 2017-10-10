@@ -15,8 +15,8 @@ namespace MRNUIElements.Controllers
 	partial class Schedule
 	{
 		static ServiceLayer s = ServiceLayer.getInstance();
-		public ObservableCollection<MappedAppointment> MappedAppointments = new ObservableCollection<MappedAppointment>();
-		public ObservableCollection<TodaysAppointment> TodaysAppointments = new ObservableCollection<TodaysAppointment>();
+		public ObservableCollection<Appointments.MappedAppointment> MappedAppointments = new ObservableCollection<Appointments.MappedAppointment>();
+		public ObservableCollection<Appointments.TodaysAppointment> TodaysAppointments = new ObservableCollection<Appointments.TodaysAppointment>();
 
 		public async Task GetEmployeeAppointments()
 		{
@@ -30,7 +30,7 @@ namespace MRNUIElements.Controllers
 
 				await s.MakeRequest(new DTO_Lead { LeadID = (int)calData.LeadID }, typeof(DTO_Lead), "GetLeadByLeadID");
 				await s.MakeRequest(new DTO_Address { AddressID = (int)s.Lead.AddressID }, typeof(DTO_Address), "GetAddressByID");
-				MappedAppointments.Add(new MappedAppointment
+				MappedAppointments.Add(new Appointments.MappedAppointment
 				{
 					MappedSubject = s.AppointmentTypes[calData.AppointmentTypeID - 1].AppointmentType,
 					MappedStartTime = calData.StartTime,
@@ -54,7 +54,7 @@ namespace MRNUIElements.Controllers
 					await s.MakeRequest(new DTO_Lead { LeadID = (int)calData.LeadID }, typeof(DTO_Lead), "GetLeadByLeadID");
 					await s.MakeRequest(new DTO_Address { AddressID = (int)s.Lead.AddressID }, typeof(DTO_Address), "GetAddressByID");
 
-					TodaysAppointments.Add(new TodaysAppointment
+					TodaysAppointments.Add(new Appointments.TodaysAppointment
 					{
 						AppointmentType = s.AppointmentTypes[calData.AppointmentTypeID - 1].AppointmentType,
 						StartTime = calData.StartTime.ToString("h:mm tt"), //calData.StartTime.TimeOfDay.ToString("tt"),
@@ -71,8 +71,8 @@ namespace MRNUIElements.Controllers
 
 		public async Task UpdateCalendarData(Syncfusion.UI.Xaml.Schedule.AppointmentEditorClosedEventArgs e)
 		{
-			MappedAppointment appointment = e.EditedAppointment as MappedAppointment;
-			MappedAppointment original = e.OriginalAppointment as MappedAppointment;
+            Appointments.MappedAppointment appointment = e.EditedAppointment as Appointments.MappedAppointment;
+            Appointments.MappedAppointment original = e.OriginalAppointment as Appointments.MappedAppointment;
 
 			appointment.CalendarDataID = original.CalendarDataID;
 			appointment.LeadID = original.LeadID;

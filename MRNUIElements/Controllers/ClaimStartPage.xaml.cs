@@ -17,91 +17,108 @@ using System.Windows.Shapes;
 
 namespace MRNUIElements.Controllers
 {
-	/// <summary>
-	/// Interaction logic for ClaimStartPage.xaml
-	/// </summary>
-	public partial class ClaimStartPage : Page
-	{
-		static ServiceLayer s1 = ServiceLayer.getInstance();
-		public DTO_Claim Claim { get; set; }
-		
-		public static MRNClaim MRNClaim;
+    /// <summary>
+    /// Interaction logic for ClaimStartPage.xaml
+    /// </summary>
+    public partial class ClaimStartPage : Page
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public DTO_Claim Claim { get; set; }
 
-		public ClaimStartPage()
-		{
-			InitializeComponent();
-			if (MRNClaim == null)
-				MRNClaim = new MRNClaim();
+        public static MRNClaim MRNClaim;
 
-		}
+        public ClaimStartPage()
+        {
+            InitializeComponent();
+            if (MRNClaim == null)
+                MRNClaim = new MRNClaim();
 
-		private void NewClaimBtn_Click(object sender, RoutedEventArgs e)
-		{
-		
-			NavigationService.Navigate(new AddPropertyAddress(MRNClaim));
-			
-		}
-		
-	
-	
+        }
+        public static MRNClaim getClaimInstance()
+        {
+            if (MRNClaim == null)
+                MRNClaim = new MRNClaim();
+            return MRNClaim;
+        }
 
+        private void NewClaimBtn_Click(object sender, RoutedEventArgs e)
+        {
 
-		private void AddClaimInsuranceCarrier_Return(object sender, ReturnEventArgs<Object> e)
-		{
+            NavigationService.Navigate(new AddPropertyAddress(MRNClaim));
 
-
-		}
-
-
-			private void AddInspection_Return(object sender, ReturnEventArgs<Object> e)
-		{
+        }
 
 
 
-			var inspectionImages = (ObservableCollection<InspectionImage>)e.Result;
-			foreach (var inspectionimage in inspectionImages)
-				MRNClaim.claimDocs.Add(inspectionimage);
-
-		}
-
-		//private void AddClaim_Return(object sender, ReturnEventArgs<Object> e)
-		//{
-		//	var inspection = new AddClaimInspection();
-		//	inspection.Return += new ReturnEventHandler<object>(AddInspection_Return);
-		//	NavigationService.Navigate(inspection);
-		//}
-		private void AddClaimAdjustment_Return(object sender, ReturnEventArgs<Object> e)
-		{
-		}
 
 
-		private void AddInspectionImages_Return(object sender, ReturnEventArgs<Object> e)
-		{
+        private void AddClaimInsuranceCarrier_Return(object sender, ReturnEventArgs<Object> e)
+        {
+
+
+        }
+
+
+        private void AddInspection_Return(object sender, ReturnEventArgs<Object> e)
+        {
 
 
 
-			var inspectionImages = (ObservableCollection<InspectionImage>)e.Result;
-			foreach (var inspectionimage in inspectionImages)
-				MRNClaim.claimDocs.Add(inspectionimage);
-		
-		}
+            var inspectionImages = (ObservableCollection<InspectionImage>)e.Result;
+            foreach (var inspectionimage in inspectionImages)
+                MRNClaim.claimDocs.Add(inspectionimage);
 
-		private void OpenEditBtn_Click(object sender, RoutedEventArgs e)
-		{
-			var ClaimPickerDialog = new ClaimPickerDialog();
-		}
+        }
 
-		private void OptionsBtn_Click(object sender, RoutedEventArgs e)
-		{
-			System.Windows.Forms.MessageBox.Show("They ain't no options fool!");
-		}
-
-		private MRNClaim BuildMRNClaim()
-		{
+        //private void AddClaim_Return(object sender, ReturnEventArgs<Object> e)
+        //{
+        //	var inspection = new AddClaimInspection();
+        //	inspection.Return += new ReturnEventHandler<object>(AddInspection_Return);
+        //	NavigationService.Navigate(inspection);
+        //}
+        private void AddClaimAdjustment_Return(object sender, ReturnEventArgs<Object> e)
+        {
+        }
 
 
+        private void AddInspectionImages_Return(object sender, ReturnEventArgs<Object> e)
+        {
 
-			return new MRNClaim();
-		}
-	}
+
+
+            var inspectionImages = (ObservableCollection<InspectionImage>)e.Result;
+            foreach (var inspectionimage in inspectionImages)
+                MRNClaim.claimDocs.Add(inspectionimage);
+
+        }
+
+        private void OpenEditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var CPD = new ClaimPickerPopUp();
+                if ((bool)CPD.ShowDialog())
+
+                    //	var claim = s1.ClaimsList.Single(x => x.ClaimID == 37);
+                    NavigationService.Navigate(new Controllers.ClaimView(CPD.Claim));
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void OptionsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("They ain't no options fool!");
+        }
+
+        private MRNClaim BuildMRNClaim()
+        {
+
+
+
+            return new MRNClaim();
+        }
+    }
 }

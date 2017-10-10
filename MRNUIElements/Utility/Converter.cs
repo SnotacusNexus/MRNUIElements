@@ -40,7 +40,8 @@ namespace MRNUIElements.Utility
         {
             DTO_Customer customer = s1.CustomersList.Find(x => x.CustomerID == (int)value);
             var sb = new StringBuilder();
-            sb.Clear();
+            sb.Clear();if (customer == null)
+                return 0;
             sb.Append(customer.FirstName);
             sb.Append(" ");
             if (!string.IsNullOrEmpty(customer.MiddleName))
@@ -252,6 +253,19 @@ namespace MRNUIElements.Utility
                 return a;
             }
             return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class LeadTypeIDConverter : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return s1.LeadTypes.Find(x => x.LeadTypeID == (int)value).LeadType;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -32,7 +32,7 @@
                 FontWeight="Bold"
                 Padding="10"
                 TextAlignment="Center" Foreground="White"><Run Text="Section 1"/><LineBreak/><Run Text="Lead Generation"/></TextBlock>
-            <Button x:Name="button1" Content="Previous" HorizontalAlignment="Left" Margin="53,324,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="button1" Content="Previous" HorizontalAlignment="Left" Margin="53,324,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
             <ComboBox x:Name="LeadTypecomboBox" HorizontalAlignment="Left" Margin="115,81,0,0" VerticalAlignment="Top" Width="196" SelectionChanged="LeadTypecomboBox_SelectionChanged" />
             <ComboBox x:Name="ExistingContactInfoCombo" HorizontalAlignment="Left" Margin="104,111,0,0" VerticalAlignment="Top" Width="222" Visibility="Hidden" SelectionChanged="ExistingContactInfoCombo_SelectionChanged"/>
             <ComboBox x:Name="SalesPersonInfoCombo" HorizontalAlignment="Left" Margin="104,285,0,0" VerticalAlignment="Top" Width="222" Visibility="Visible" SelectionChanged="SalesPersonInfoCombo_SelectionChanged"/>

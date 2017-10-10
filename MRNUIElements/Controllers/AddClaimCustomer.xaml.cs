@@ -21,7 +21,7 @@ namespace MRNUIElements.Controllers
 	/// </summary>
 	public partial class AddClaimCustomer 
 	{
-		static MRNClaim MrnClaim;
+		static MRNClaim MrnClaim= MRNClaim.getInstance();
 		static ServiceLayer s1 = ServiceLayer.getInstance();
 
 		public AddClaimCustomer(MRNClaim MrnClaim)
@@ -30,26 +30,26 @@ namespace MRNUIElements.Controllers
 			AddClaimCustomer.MrnClaim = MrnClaim;
 			if (MrnClaim.a != null)
 			{
-				Cust_Address.DataContext = MrnClaim.a;
-				Cust_Zipcode.DataContext = MrnClaim.a;
-				Cust_City.DataContext = MrnClaim.a;
-				Cust_State.DataContext = MrnClaim.a;
+				Cust_Address.Text = MrnClaim.a.Address;
+				Cust_Zipcode.Text = MrnClaim.a.Zip;
+				//Cust_City.Text = MrnClaim.a;
+				//Cust_State.Text = MrnClaim.a;
 			}
 			if (MrnClaim.c != null)
 			{
-				Cust_FirstName.DataContext = MrnClaim.c;
-				Cust_MiddleName.DataContext = MrnClaim.c;
-				Cust_LastName.DataContext = MrnClaim.c;
-				Cust_Suffix.DataContext = MrnClaim.c;
-				Cust_PrimaryNumber.DataContext = MrnClaim.c;
-				Cust_SecondaryNumber.DataContext = MrnClaim.c;
-				Cust_Email.DataContext = MrnClaim.c;
+				Cust_FirstName.Text = MrnClaim.c.FirstName;
+				Cust_MiddleName.Text = MrnClaim.c.MiddleName;
+				Cust_LastName.Text = MrnClaim.c.LastName;
+				Cust_Suffix.Text = MrnClaim.c.Suffix;
+				Cust_PrimaryNumber.Text = MrnClaim.c.PrimaryNumber;
+				Cust_SecondaryNumber.Text = MrnClaim.c.SecondaryNumber;
+				Cust_Email.Text = MrnClaim.c.Email;
 			}
 		}
 
 		private void Cust_Zipcode_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (MrnClaim.a == null)
+			if (MRNClaim.getInstance().a == null)
 			{
 				if (Cust_Zipcode.Text.Length != 5)
 				{
@@ -67,15 +67,27 @@ namespace MRNUIElements.Controllers
 
 		private void NextButton_Click(object sender, RoutedEventArgs e)
 		{
+            var c = new DTO_Customer()
+            {
+                FirstName = Cust_FirstName.Text,
+                MiddleName = Cust_MiddleName.Text,
+                LastName = Cust_LastName.Text,
+                Suffix = Cust_Suffix.Text,
+                PrimaryNumber = Cust_PrimaryNumber.Text,
+                SecondaryNumber = Cust_SecondaryNumber.Text,
+                Email = Cust_Email.Text,
+                MailPromos = (bool)mailPromosCheckBox.IsChecked
+            };
+            MRNClaim.getInstance().c = c;
 
-			NavigationService.Navigate(new AddClaimInsuranceCarrier(MrnClaim));
+            NavigationService.Navigate(new AddClaimInsuranceCarrier(MRNClaim.getInstance()));
 			//Next Step
 			//Insurance/Mortgage Input
 		}
 
 		private void PreviousCustomercomboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			MrnClaim.c = ((DTO_Customer)PreviousCustomercomboBox.SelectedItem);
+            MRNClaim.getInstance().c = ((DTO_Customer)PreviousCustomercomboBox.SelectedItem);
 		}
 	}
 }

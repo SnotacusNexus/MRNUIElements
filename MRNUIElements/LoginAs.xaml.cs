@@ -42,8 +42,8 @@ namespace MRNUIElements
 
 		private void LoginAsSalesperson_Click(object sender, RoutedEventArgs e)
 		{
-			Claim_Administration Page = new Claim_Administration();
-			NavigationService.Navigate(Page);
+			
+			NavigationService.Navigate(new CompetitionResultsDisplay());
 		}
 
 		private void LoginAsAuditor_Click(object sender, RoutedEventArgs e)
@@ -83,15 +83,13 @@ namespace MRNUIElements
 
 		private void LoginAsBoss_Click(object sender, RoutedEventArgs e)
 		{
-			this.NavigationService.Navigate(new Controllers.StartClaim());
+			this.NavigationService.Navigate(new GetClaimsPage());
 		}
 
 		private void LoginAsGODMode_Click(object sender, RoutedEventArgs e)
-		{
-            var CPD = new ClaimPickerPopUp();
-           
-            if ((bool)CPD.ShowDialog())
-            NavigationService.Navigate(new Controllers.ClaimView(CPD.Claim));
+		{          
+            
+            NavigationService.Navigate(new Controllers.RoofSchedulerPage());
         }
 
 		private void LoginAsSuperAdmin_Click(object sender, RoutedEventArgs e)

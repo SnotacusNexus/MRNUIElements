@@ -24,9 +24,9 @@
         <converters:ClaimContactsConverter x:Key="CCConverter"/>
     </Page.Resources>
     <Grid Focusable="True">
-        <TextBlock HorizontalAlignment="Left" Margin="71,10,0,0" TextWrapping="Wrap" Text="Add Claim Property Address" VerticalAlignment="Top" Height="19" Width="166" Foreground="White" FontWeight="Bold" TextDecorations="Underline"/>
+        <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="71,10,0,0" TextWrapping="Wrap" Text="Address Lookup" VerticalAlignment="Top" Height="19" Width="166" Foreground="White" FontWeight="Bold" TextDecorations="Underline"/>
 
-        <TextBox x:Name="AddressTextbox" HorizontalAlignment="Left" Height="20" Margin="69,120.609,0,0" VerticalAlignment="Top" Width="158"   TextChanged="AddressTextbox_TextChanged"/>
+        <TextBox x:Name="AddressTextbox" HorizontalAlignment="Left" Height="20" Margin="69,120.609,0,0" VerticalAlignment="Top" Width="158" TextChanged="AddressTextbox_TextChanged"/>
         <syncfusion:IntegerTextBox x:Name="ZipcodeBox"  HorizontalAlignment="Left" Height="20" Margin="112,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Background="{x:Null}" Foreground="White" WatermarkTextForeground="White" TextAlignment="Center" MaxLength="5" SelectionOpacity="0" WatermarkText="Zipcode" TextChanged="MaskedTextBox_TextChanged" PositiveForeground="White" SelectionForeground="White" ValueChanged="ZipcodeBox_ValueChanged" GroupSeperatorEnabled="False" MaxValue="99999" MinValue="0" NullValue="0" TextSelectionOnFocus="False"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="93,90,0,0" TextWrapping="Wrap" Text="2.) Address Lookup" VerticalAlignment="Top" Width="95" Foreground="White" TextAlignment="Center" TextDecorations="Underline" FontWeight="Bold"/>
         <Button x:Name="Select_Button" Content="Select" HorizontalAlignment="Left" Margin="215,269,0,0" VerticalAlignment="Top" Width="75" Click="Select_Button_Click"/>

@@ -1488,6 +1488,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="FodyWeavers.xml" />
+    <Resource Include="CheckMark.png" />
     <Content Include="ResourceFiles\mysprite.sprite.css">
       <DependentUpon>mysprite.sprite</DependentUpon>
     </Content>

@@ -25,7 +25,7 @@
         <converters:VendorFromIDConverter x:Key="VendorName"/>
         <converters:InvoiceTypeIDConverter x:Key="InvoiceType"/>
         <converters:ClaimContactsConverter x:Key="CCConverter"/>
-     
+
     </Page.Resources>
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{StaticResource MRNClaim}">
 
@@ -60,25 +60,25 @@
             <CheckBox x:Name="PreviousCustomercheckBox" Content="Previous &#xA;Customer" HorizontalAlignment="Left" Margin="11,92,0,269" Foreground="White" Height="39" Width="84"/>
             <ComboBox x:Name="PreviousCustomercomboBox" HorizontalAlignment="Left" Height="23" Margin="100,92,0,285" Width="179" SelectionChanged="PreviousCustomercomboBox_SelectionChanged" IsEnabled="{Binding IsChecked, ElementName=PreviousCustomercheckBox}"/>
             <Grid x:Name="CustomerGrid" Margin="0,-5,0,0" DataContext="{StaticResource MRNClaim}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="428">
-                <TextBox x:Name="Cust_FirstName" HorizontalAlignment="Left" Height="24" Margin="68,135,0,241" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="79"/>
-                <TextBox x:Name="Cust_MiddleName" HorizontalAlignment="Left" Height="23" Margin="152,135,0,242" Text="{Binding MiddleName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="98"/>
-                <TextBox x:Name="Cust_LastName" HorizontalAlignment="Left" Height="23" Margin="255,135,0,242" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="96"/>
-                <TextBox x:Name="Cust_Suffix" HorizontalAlignment="Left" Height="22" Margin="356,136,0,242" Text="{Binding Suffix, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="37"/>
-                <TextBox x:Name="Cust_SecondaryNumber" HorizontalAlignment="Left" Height="23" Margin="270,227,0,150" Text="{Binding SecondaryNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                <TextBox x:Name="Cust_PrimaryNumber" HorizontalAlignment="Left" Height="23" Margin="65,223,0,154" Text="{Binding PrimaryNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                <TextBox x:Name="Cust_Email" HorizontalAlignment="Left" Height="22" Margin="65,255,0,123" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="325"/>
+                <TextBox x:Name="Cust_FirstName" HorizontalAlignment="Left" Height="24" Margin="62,140,0,236" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="79"/>
+                <TextBox x:Name="Cust_MiddleName" HorizontalAlignment="Left" Height="23" Margin="149,140,0,237" Text="{Binding MiddleName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="98"/>
+                <TextBox x:Name="Cust_LastName" HorizontalAlignment="Left" Height="23" Margin="252,140,0,237" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="96"/>
+                <TextBox x:Name="Cust_Suffix" HorizontalAlignment="Left" Height="22" Margin="350,141,0,237" Text="{Binding Suffix, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="37"/>
+                <TextBox x:Name="Cust_SecondaryNumber" HorizontalAlignment="Left" Height="23" Margin="267,228,0,149" Text="{Binding SecondaryNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="Cust_PrimaryNumber" HorizontalAlignment="Left" Height="23" Margin="62,228,0,149" Text="{Binding PrimaryNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="Cust_Email" HorizontalAlignment="Left" Height="22" Margin="62,260,0,118" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="325"/>
                 <TextBlock x:Name="fullNameTextBlock" HorizontalAlignment="Left" Margin="-69,471,0,-88" Text="{Binding FullName}" VerticalAlignment="Center" Width="325"/>
-                <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="66,164,0,0" VerticalAlignment="Top" Width="325" Height="54">
+                <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="63,169,0,0" VerticalAlignment="Top" Width="325" Height="54">
 
                     <TextBox x:Name="Cust_Zipcode" HorizontalAlignment="Left" Height="24" Margin="205,30,0,0" Text="{Binding Zip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                     <TextBox x:Name="Cust_Address" HorizontalAlignment="Left" Height="24" Margin="0,0,0,30" Grid.Row="0" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="325"/>
                     <TextBox x:Name="Cust_City" HorizontalAlignment="Left" Height="23" Margin="0,30,0,0" TextWrapping="Wrap"  Text="{Binding Cust_ZipCode.Text, ConverterParameter='ZipCity', Converter={StaticResource addressinfo}}" VerticalAlignment="Top" Width="145"/>
-                    <TextBox x:Name="Cust_State" HorizontalAlignment="Left" Height="23" Margin="150,29,0,0" TextWrapping="Wrap"  Text="{Binding Cust_ZipCode.Text, ConverterParameter='ZipState', Converter={StaticResource addressinfo}}" VerticalAlignment="Top" Width="50"/>
+                    <TextBox x:Name="Cust_State" HorizontalAlignment="Left" Height="23" Margin="150,30,0,0" TextWrapping="Wrap"  Text="{Binding Cust_ZipCode.Text, ConverterParameter='ZipState', Converter={StaticResource addressinfo}}" VerticalAlignment="Top" Width="50"/>
                 </Grid>
                 <TextBlock FontSize="25"
                 FontWeight="Bold"
                 Padding="10"
-                TextAlignment="Center" Foreground="White" Margin="30,0,0,298" HorizontalAlignment="Left"><Run Text="Section 2"/><LineBreak/><Run Text="Client Pre-Inspection Interview"/></TextBlock>
+                TextAlignment="Center" Foreground="White" Margin="30,0,0,312" HorizontalAlignment="Left"><Run Text="Section 2"/><LineBreak/><Run Text="Client Pre-Inspection Interview"/></TextBlock>
                 <Button x:Name="PreviousButton" Content="Prev" HorizontalAlignment="Left" Margin="30,364,0,0" Width="75"/>
                 <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="339,364,0,0" Width="75" Click="NextButton_Click"/>
                 <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="160,366,0,0" VerticalAlignment="Top">

@@ -91,7 +91,7 @@ namespace MRNUIElements.Models
             var temprooforderitems = GenerateCompleteRoofOrder(inspection, newroof, new DTO_Order { OrderID = 0 });
             //TODO: Call Scheduler to Fillout OrderFinished Order
             var order = s1.OrdersList.Find(x => x.ClaimID == claim.ClaimID);//this can only becalled when the page return with valid data
-            await GenerateCompleteRoofOrder(await getInspectionForClaim(claim),newroof,)
+            await GenerateCompleteRoofOrder(await getInspectionForClaim(claim), newroof, order);
         }
 		public async Task<List<DTO_OrderItem>> GenerateCompleteRoofOrder(DTO_Inspection inspection, DTO_NewRoof newRoofSpecs, DTO_Order order)
         {

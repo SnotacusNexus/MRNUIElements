@@ -26,7 +26,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="SelectBtn_Click"
-                Content="_OK" />
+                Content="_OK" Style="{DynamicResource ButtonStyle1}" />
         <Button x:Name="AddBtn"
                 Width="75"
                 Margin="15,225,0,0"

@@ -26,17 +26,18 @@ namespace MRNUIElements
     {
         static ServiceLayer s = ServiceLayer.getInstance();
         ObservableCollection<DTO_InsuranceCompany> insco = new ObservableCollection<DTO_InsuranceCompany>();
-      //  ObservableCollection<DTO_InsuranceCompany> INSCO = new ObservableCollection<DTO_InsuranceCompany>();
+        //  ObservableCollection<DTO_InsuranceCompany> INSCO = new ObservableCollection<DTO_InsuranceCompany>();
         int i = 1;
-       
+
         public CustomerAgreement()
         {
             InitializeComponent();
             Getem();
-           // InsuranceLU.ItemsSource = s.InsuranceCompaniesList;
+            // InsuranceLU.ItemsSource = s.InsuranceCompaniesList;
         }
 
-        async public void Getem() {
+        async public void Getem()
+        {
 
             await s.GetAllReferrers();
             await s.GetAllInsuranceCompanies();
@@ -127,7 +128,7 @@ namespace MRNUIElements
 
         private void Exterior_Inspection_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate( new ClaimItPage());
+            NavigationService.Navigate(new ClaimItPage());
         }
 
         private void Edit_Inspection_Click(object sender, RoutedEventArgs e)
@@ -146,7 +147,7 @@ namespace MRNUIElements
             NavigationService.Navigate(new InteriorInspectionWizard());
         }
 
-       
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -156,10 +157,10 @@ namespace MRNUIElements
         #endregion
         #region Add a claim
 
-      
+
         async public void AddClaim()
         {
-            
+
             try
             {
 
@@ -176,7 +177,7 @@ namespace MRNUIElements
                 DTO_OrderItem orderItem = new DTO_OrderItem();
                 DTO_Scope scope = new DTO_Scope();
 
-               
+
 
                 DTO_Referrer referral = new DTO_Referrer();
                 #endregion
@@ -203,37 +204,50 @@ namespace MRNUIElements
                 int referrerID = 0;
                 referral.FirstName = FirstName.Text;
                 referral.Zip = Zipcode.Text;
+
                 referral.LastName = Lastname.Text;
                 referral.Suffix = suffix.Text;
                 referral.CellPhone = Primary_Phone.Text;
                 referral.MailingAddress = Address.Text;
                 referral.Email = Email_Address.Text;
                 //CheckIfTheyExist if so get the referralID
-              
-                  if (s.ReferrersList.Count > 0)
-                        foreach (DTO_Referrer r in s.ReferrersList)
-                        {
-                            if (r.Equals(referral))
 
-                                referrerID = r.ReferrerID;
-                            break;
-                        }
-
-                if (referrerID == 0)
+                if (s.ReferrersList.Count > 0)
                 {
-                    await s.AddReferrer(referral);
-                }
-                else referrerID = s.Referrer.ReferrerID;
+                    if (s.ReferrersList.Exists(x => x.FirstName == FirstName.Text && x.LastName == Lastname.Text))
+                    {
+                        referral.ReferrerID = s.ReferrersList.Find(x => x.FirstName == FirstName.Text && x.LastName == Lastname.Text).ReferrerID;
+                        lead.LeadTypeID = 2;
+                        lead.CreditToID = referral.ReferrerID;
 
-                //
+                    }
+
+
+                    if (s.CustomersList.Exists(x => x.FirstName == FirstName.Text && x.LastName == Lastname.Text))
+                    {
+                        lead.CreditToID = s.CustomersList.Find(x => x.FirstName == FirstName.Text && x.LastName == Lastname.Text).CustomerID;
+                        lead.LeadTypeID = 3;
+                    }
+                    //
+                    if (s.EmployeesList.Exists(x => x.FirstName == FirstName.Text && x.LastName == Lastname.Text))
+                    {
+                        lead.CreditToID = s.EmployeesList.Find(x => x.FirstName == FirstName.Text && x.LastName == Lastname.Text).EmployeeID;
+                        lead.LeadTypeID = 1;
+                    }
+
+                    if (!s.ReferrersList.Exists(x => x.FirstName == FirstName.Text && x.LastName == Lastname.Text))
+                    {
+                        await s.AddReferrer(referral);
+                    }
+                }
                 #endregion
                 #region Populate Lead
                 lead.Temperature = "W";
-                lead.CreditToID = referrerID;
+                lead.CreditToID = referral.ReferrerID;
                 lead.SalesPersonID = s.LoggedInEmployee.EmployeeID;
                 lead.KnockerResponseID = null;
                 lead.LeadDate = ContractDate.SelectedDate.Value;
-                lead.LeadTypeID = 1;
+                lead.LeadTypeID = lead.LeadTypeID==0?5:5;
                 #endregion
                 #region Claim Addition Underway
 
@@ -293,7 +307,7 @@ namespace MRNUIElements
                 if (s.Claim.Message == null)
                 {
                     claim.LeadID = s.Lead.LeadID;
-                    System.Windows.Forms.MessageBox.Show("Congratulations You Have Successfully became a statistic! Your Claim and Experience is now associated with "+ s.Claim.MRNNumber.ToString());
+                    System.Windows.Forms.MessageBox.Show("Congratulations You Have Successfully became a statistic! Your Claim and Experience is now associated with " + s.Claim.MRNNumber.ToString());
                 }
                 else
                     System.Windows.Forms.MessageBox.Show(s.Lead.Message.ToString());
@@ -348,8 +362,8 @@ namespace MRNUIElements
                 //orderItem.ProductID = 1;
                 //orderItem.Quantity = 99;
 
-                
-                
+
+
                 ////orderitems?
 
             }
@@ -374,7 +388,8 @@ namespace MRNUIElements
 
         #region Update Claims Number on comboBox Selection Change
         private void InsuranceLU_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {   if (InsuranceLU.SelectedIndex > -1 && InsuranceLU.SelectedIndex < insco.Count())
+        {
+            if (InsuranceLU.SelectedIndex > -1 && InsuranceLU.SelectedIndex < insco.Count())
                 if (!string.IsNullOrEmpty(insco[InsuranceLU.SelectedIndex].ClaimPhoneNumber))
                     ClaimsPhoneNumber.Text = insco[InsuranceLU.SelectedIndex].ClaimPhoneNumber;
                 else ClaimsPhoneNumber.Text = "No Number Available";
@@ -386,7 +401,7 @@ namespace MRNUIElements
 }
 
 
-	
+
 
 
 

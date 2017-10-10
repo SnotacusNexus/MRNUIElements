@@ -1,14 +1,94 @@
-﻿<Page x:Class="MRNUIElements.Controllers.RoofSchedulerPage"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MRNUIElements.Controllers"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="RoofSchedulerPage">
+      xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="MRNUIElements.Controllers.RoofSchedulerPage"
+      mc:Ignorable="d"
+      Title="RoofSchedulerPage" Height="900" Width="1600.8">
 
-    <Grid>
-        
+    <Page.Resources>
+        <CollectionViewSource x:Key="dTO_CalendarDataViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_CalendarData}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_OrderViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Order}, CreateList=True}"/>
+    </Page.Resources>
+
+    <Grid DataContext="{StaticResource dTO_CalendarDataViewSource}" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="152*"/>
+            <RowDefinition Height="170*"/>
+            <RowDefinition Height="145*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="197*"/>
+            <ColumnDefinition Width="948*"/>
+            <ColumnDefinition Width="456*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <DataGrid x:Name="dTO_CalendarDataDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" Margin="10.2,104.8,11.8,10" Grid.Row="1" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="appointmentTextColumn" Width="SizeToHeader" Header="Appointment Text" Binding="{Binding AppointmentText}"/>
+                <DataGridTextColumn x:Name="appointmentTypeIDColumn" Width="SizeToHeader" Header="Appointment Type ID" Binding="{Binding AppointmentTypeID}"/>
+                <DataGridTextColumn x:Name="claimIDColumn" Width="SizeToHeader" Header="Claim ID" Binding="{Binding ClaimID}"/>
+                <DataGridTextColumn x:Name="employeeIDColumn" Width="SizeToHeader" Header="Employee ID" Binding="{Binding EmployeeID}"/>
+                <DataGridTemplateColumn x:Name="endTimeColumn" Width="SizeToHeader" Header="End Time">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding EndTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="entryIDColumn" Width="SizeToHeader" Header="Entry ID" Binding="{Binding EntryID}"/>
+                <DataGridTextColumn x:Name="exceptionColumn" Width="SizeToHeader" Header="Exception" Binding="{Binding Exception}"/>
+                <DataGridTextColumn x:Name="innerExceptionColumn" Width="SizeToHeader" Header="Inner Exception" Binding="{Binding InnerException}"/>
+                <DataGridTextColumn x:Name="leadIDColumn" Width="SizeToHeader" Header="Lead ID" Binding="{Binding LeadID}"/>
+                <DataGridTextColumn x:Name="messageColumn" Width="SizeToHeader" Header="Message" Binding="{Binding Message}"/>
+                <DataGridTextColumn x:Name="noteColumn" Width="SizeToHeader" Header="Note" Binding="{Binding Note}"/>
+                <DataGridTemplateColumn x:Name="startTimeColumn" Width="SizeToHeader" Header="Start Time">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding StartTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridCheckBoxColumn x:Name="successFlagColumn" Width="SizeToHeader" Header="Success Flag" Binding="{Binding SuccessFlag}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ListBox x:Name="RoofsToOrder" HorizontalAlignment="Left" Height="273" Margin="10,10,0,0" VerticalAlignment="Top" Width="177"/>
+
+        <syncfusion:SfSchedule x:Name="RoofSchedule" FocusedMonth="LightGreen" HorizontalAlignment="Left" Margin="0.2,0,0,0" NonFocusedMonth="DarkGray" ScheduleType="Month" VerticalAlignment="Top" WorkEndHour="18" WorkStartHour="7" CurrentDateBackground="Black" CurrentDateForeground="Red" Background="Aqua" Height="393" Width="936" Grid.RowSpan="2" Grid.Column="1"/>
+        <DataGrid x:Name="dTO_OrderDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource dTO_OrderViewSource}}" Margin="0.2,0,11.8,-0.2" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="2" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="claimIDColumn1" Binding="{Binding ClaimID}" Header="Claim ID" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="dateDroppedColumn" Header="Date Dropped" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DateDropped, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="dateOrderedColumn" Header="Date Ordered" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DateOrdered, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="scheduledInstallationColumn" Header="Scheduled Installation" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding ScheduledInstallation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="vendorIDColumn" Binding="{Binding VendorID}" Header="Vendor ID" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <WebBrowser x:Name="top" Grid.Column="2" HorizontalAlignment="Left" Height="283" VerticalAlignment="Top" Width="454" Margin="2.2,0,-0.2,0"/>
+        <WebBrowser x:Name="mid" Grid.Column="2" HorizontalAlignment="Left" Height="308" Margin="2.2,10.2,-0.2,0" VerticalAlignment="Top" Width="454" Grid.Row="1"/>
+        <WebBrowser x:Name="back" Grid.Column="2" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="454" Grid.Row="2" Margin="2.2,10.2,-0.2,0"/>
+
     </Grid>
 </Page>
