@@ -23,6 +23,11 @@ namespace MRNUIElements
         public SVGTestCanvas()
         {
             InitializeComponent();
+            var urisource = new Uri(@"../../ResourceFiles/HailHit.png", UriKind.Relative);
+            ImageBrush brush = new ImageBrush();
+            brush.ImageSource= new BitmapImage(urisource);
+            IC.Background = brush;
+            
         }
     }
 }

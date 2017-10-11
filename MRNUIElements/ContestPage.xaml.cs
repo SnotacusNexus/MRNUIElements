@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -23,19 +24,13 @@ namespace MRNUIElements
         public ContestPage()
         {
             InitializeComponent();
+            RotateTransform3D myRotateTransform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 1));
+
         }
-        private void LogOut(object sender, RoutedEventArgs e)
+
+        private void OK_CLick(object sender, RoutedEventArgs e)
         {
-            Login Page = new Login();
-            this.NavigationService.Navigate(Page);
+            NavigationService.GoBack();
         }
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			tab1.Visibility = Visibility.Collapsed;
-			tab2.Visibility = Visibility.Collapsed;
-			tab3.Visibility = Visibility.Collapsed;
-			var tab = (sender as Button).Tag as TabControl;
-			if (null != tab) tab.Visibility = Visibility.Visible;
-		}
-	}
+    }
 }

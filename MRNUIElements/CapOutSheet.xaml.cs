@@ -31,7 +31,7 @@ namespace MRNUIElements
 		{
 	
 			InitializeComponent();
-            Initialize();
+			Initialize();
 	
 			SalespersonName.Focus();
 		}
@@ -39,20 +39,20 @@ namespace MRNUIElements
 
 		private void Window_Initialized(object sender, EventArgs e)
 		{
-            Initialize();
+			Initialize();
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-            Initialize();
-        }
+			Initialize();
+		}
 
 		private void PeekABoo(bool bVisible = false)
 		{
 			if (!bVisible)
 			{
-                if (ReferralKnockerText.Text == string.Empty)
-                    ReferralKnockerText.Visibility = Visibility.Hidden;
+				if (ReferralKnockerText.Text == string.Empty)
+					ReferralKnockerText.Visibility = Visibility.Hidden;
 				OverheadOverride.Visibility = Visibility.Hidden;
 				OverheadMultiplierAmountText.Visibility = Visibility.Hidden;
 				label1_Copy15.Visibility = Visibility.Hidden;
@@ -61,7 +61,8 @@ namespace MRNUIElements
 				label1_Copy24.Visibility = Visibility.Hidden;
 				RecruiterText.Visibility = Visibility.Hidden;
 				ClearButton.Visibility = Visibility.Hidden;
-				textBlock.Background = System.Windows.Media.Brushes.White;
+                ClearButton_Copy.Visibility = Visibility.Hidden;
+                textBlock.Background = System.Windows.Media.Brushes.White;
 				textBlock.Foreground = System.Windows.Media.Brushes.Black;
 				Canvas.Background = System.Windows.Media.Brushes.White;
 				PrintButton.Visibility = Visibility.Hidden;
@@ -74,7 +75,7 @@ namespace MRNUIElements
 			{
 
 
-                ReferralKnockerText.Visibility = Visibility.Visible;
+				ReferralKnockerText.Visibility = Visibility.Visible;
 				OverheadOverride.Visibility = Visibility.Visible;
 				OverheadMultiplierAmountText.Visibility = Visibility.Visible;
 				label1_Copy15.Visibility = Visibility.Visible;
@@ -82,27 +83,29 @@ namespace MRNUIElements
 				SplitOverRideGroupbox.Visibility = Visibility.Visible;
 				label1_Copy24.Visibility = Visibility.Visible;
 				RecruiterText.Visibility = Visibility.Visible;
-                textBlock.Background = Brushes.Transparent;
+				textBlock.Background = Brushes.Transparent;
 				textBlock.Foreground = System.Windows.Media.Brushes.White;
 				Canvas.Background = System.Windows.Media.Brushes.Transparent;
 				ClearButton.Visibility = Visibility.Visible;
-				PrintButton.Visibility = Visibility.Visible;
+                ClearButton_Copy.Visibility = Visibility.Visible;
+                PrintButton.Visibility = Visibility.Visible;
 				SplitOverride.Visibility = Visibility.Visible;
 				SalespersonSplitText.Visibility = Visibility.Visible;
-			
 
-			}
+             
+
+            }
 		}
 
 		private void Print()
 		{
 			PrintDialog printDlg = new System.Windows.Controls.PrintDialog();
-			Canvas.LayoutTransform = new ScaleTransform(1, 1);
-			Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight-300);
+		//	Canvas.LayoutTransform = new ScaleTransform(1, 1);
+			Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight);
 			Canvas.Measure(pageSize);
 			Canvas.Arrange(new Rect(0,0, pageSize.Width, pageSize.Height));
 			printDlg.PrintVisual(Canvas, "Job Profit Loss Report");
-			Canvas.LayoutTransform = null;
+			//Canvas.LayoutTransform = null;
 
 
 			PeekABoo(true);
@@ -117,9 +120,9 @@ namespace MRNUIElements
 
 		private void ClearButton_Click(object sender, RoutedEventArgs e)
 		{
-            Page page = new CapOutSheet();
-            NavigationService.Navigate(page);
-          //  Initialize();
+			Page page = new CapOutSheet();
+			NavigationService.Navigate(page);
+		  //  Initialize();
 			
 		}
 
@@ -165,16 +168,16 @@ namespace MRNUIElements
 		}
 
 
-        private double FigureJobMaterialCost(double MaterialBillAmount = 0, double BringBackAmount = 0)
+		private double FigureJobMaterialCost(double MaterialBillAmount = 0, double BringBackAmount = 0)
 		{
-            if (MaterialBillAmountText.Value != null)
-                MaterialBillAmount = (double)MaterialBillAmountText.Value;
+			if (MaterialBillAmountText.Value != null)
+				MaterialBillAmount = (double)MaterialBillAmountText.Value;
 
-            if (BringBackAmountText.Value != null)
-                BringBackAmount = (double)BringBackAmountText.Value;
+			if (BringBackAmountText.Value != null)
+				BringBackAmount = (double)BringBackAmountText.Value;
 
 
-            return (double)MaterialBillAmount + (double)BringBackAmount;
+			return (double)MaterialBillAmount + (double)BringBackAmount;
 			//return 0;
 		}
 
@@ -192,22 +195,22 @@ namespace MRNUIElements
 		{
 			double TotalExpense = 0;
 
-            if (RoofLaborBillAmountText.Value == null) RoofLaborBillAmountText.Value = 0;
-                 TotalExpense += (double)RoofLaborBillAmountText.Value;
-            if (InteriorBillAmountText.Value == null) InteriorBillAmountText.Value = 0;
-                 TotalExpense += (double)InteriorBillAmountText.Value;
-            if (ExteriorBillAmountText.Value == null) ExteriorBillAmountText.Value = 0;
-                 TotalExpense += (double)ExteriorBillAmountText.Value;
-            if (GutterBillAmountText.Value == null) GutterBillAmountText.Value = 0;
-                 TotalExpense += (double)GutterBillAmountText.Value;
-            if (MiscBillAmount.Value == null) MiscBillAmount.Value = 0;
-                 TotalExpense += (double)MiscBillAmount.Value;
-            if (KnockerReferralAmountText.Value == null) KnockerReferralAmountText.Value = 0;
-                 TotalExpense += (double)KnockerReferralAmountText.Value;
-            if (RoofMaterialExpenseSubtotalText.Value == null) RoofMaterialExpenseSubtotalText.Value = 0;
-                 TotalExpense += (double)RoofMaterialExpenseSubtotalText.Value;
-            if (OverheadAmountText.Value == null) OverheadAmountText.Value = 0;
-                 TotalExpense += (double)OverheadAmountText.Value;
+		//	if (RoofLaborBillAmountText.Value == null) RoofLaborBillAmountText.Value = 0;
+				 TotalExpense += (double)RoofLaborBillAmountText.Value;
+			//if (InteriorBillAmountText.Value == null) InteriorBillAmountText.Value = 0;
+				 TotalExpense += (double)InteriorBillAmountText.Value;
+		//	if (ExteriorBillAmountText.Value == null) ExteriorBillAmountText.Value = 0;
+				 TotalExpense += (double)ExteriorBillAmountText.Value;
+			//if (GutterBillAmountText.Value == null) GutterBillAmountText.Value = 0;
+				 TotalExpense += (double)GutterBillAmountText.Value;
+			//if (MiscBillAmount.Value == null) MiscBillAmount.Value = 0;
+				 TotalExpense += (double)MiscBillAmount.Value;
+			//if (KnockerReferralAmountText.Value == null) KnockerReferralAmountText.Value = 0;
+				 TotalExpense += (double)KnockerReferralAmountText.Value;
+			//if (RoofMaterialExpenseSubtotalText.Value == null) RoofMaterialExpenseSubtotalText.Value = 0;
+				 TotalExpense += (double)RoofMaterialExpenseSubtotalText.Value;
+			//if (OverheadAmountText.Value == null) OverheadAmountText.Value = 0;
+				 TotalExpense += (double)OverheadAmountText.Value;
 
 			return TotalExpense;
 		}
@@ -232,143 +235,135 @@ namespace MRNUIElements
 
 		private double FigureKnockerReferralFee(double NOS)
 		{
-            
 			
-                if (NOS < 40)
-                    return 250;
-                else
-                    return 500;
+			
+				if (NOS < 40)
+					return 250;
+				else
+					return 500;
 			
 		}
 		#endregion
 		
 		#region WorkFunctions
 
-        private void Initialize()
-        {
-           
-            NumberOfSquaresAmountText.Value = 1;
-            MaterialBillAmountText.Value = 0;
-            BringBackAmountText.Value = 0;
-          
-           
-            OriginalScopeAmountText.Value = 0;
-            FinalScopeAmount.Value = 0;
-            SettlementDifferenceAmount.Value = 0;
-            DeductibleCheckAmountText.Value = 0;
-            FirstCheckAmountText.Value = 0;
-            DepreciationAmountText.Value = 0;
-            UpgradeCheckAmountText.Value = 0;
-            SupplementCheckAmountText.Value = 0;
-            ReceiptAmount1Text.Value = 0;
-            ReceiptAmount2Text.Value = 0;
-            ReceiptAmount3Text.Value = 0;
-            ReceiptAmount4Text.Value = 0;
-            ReceiptAmount5Text.Value = 0;
-            SalespersonName.Text = string.Empty;
-            CustomerNameText.Text = string.Empty;
-            CustomerAddressText.Text = string.Empty;
-            ZipcodeText.Text = string.Empty;
-            SalespersonSplitText.PercentValue = 50;
-            OverheadMultiplierAmountText.PercentValue = 10;
-            if ((bool)SplitOverride.IsChecked)
-                SplitOverride.IsChecked = false;
-            if ((bool)OverheadOverride.IsChecked)
-            OverheadOverride.IsChecked = false;
-            if((bool)checkBox.IsChecked)
-            checkBox.IsChecked = false;
-            ReferralKnockerText.Text = string.Empty;
-            TotalAmountCollectedText.Value = 0;
-            TotalExpenseText.Value = 0;
-            OverheadAmountText.Value = 0;
-            MiscBillAmount.Value = 0;
-            KnockerReferralAmountText.Value = 0;
-            RoofLaborBillAmountText.Value = 0;
-            RoofMaterialExpenseSubtotalText.Value = 0;
-            AdjustedRoofSubtotalAmountText.Value = 0;
-            RecruiterText.Text = string.Empty;
-            CostPerSquareAmount.Value = 0;
-            ProfitPerSquareAmount.Value = 0;
-            ProfitAmountText.Value = 0;
-            AmountCollectedSubTotal.Value = 0;
-            SalespersonSplitAmountText.Value =0;
-            MRNAmountDueText.Value = 0;
-            SalespersonAmountDueText.Value = 0;
-            TotalExpenseText.Value = 0;
-            GutterBillAmountText.Value = 0;
-            InteriorBillAmountText.Value = 0;
-            ExteriorBillAmountText.Value = 0;
-            RoofLaborBillAmountText.Value = 0;
-            ChecksTotal();
-            TotalExpense();
-            InitialDrawAmountText.Value = 500;
-            SalespersonName.Focus();
-
-        }
+		private void Initialize()
+		{
+		   
+			NumberOfSquaresAmountText.Value = 1;
+			MaterialBillAmountText.Value = 0;
+			BringBackAmountText.Value = 0;
+		  
+		   
+			OriginalScopeAmountText.Value = 0;
+			FinalScopeAmount.Value = 0;
+			SettlementDifferenceAmount.Value = 0;
+			DeductibleCheckAmountText.Value = 0;
+			FirstCheckAmountText.Value = 0;
+			DepreciationAmountText.Value = 0;
+			UpgradeCheckAmountText.Value = 0;
+			SupplementCheckAmountText.Value = 0;
+			ReceiptAmount1Text.Value = 0;
+			ReceiptAmount2Text.Value = 0;
+			ReceiptAmount3Text.Value = 0;
+			ReceiptAmount4Text.Value = 0;
+			ReceiptAmount5Text.Value = 0;
+			SalespersonName.Text = string.Empty;
+			CustomerNameText.Text = string.Empty;
+			CustomerAddressText.Text = string.Empty;
+			ZipcodeText.Text = string.Empty;
+			SalespersonSplitText.PercentValue = 50;
+			OverheadMultiplierAmountText.PercentValue = 10;
+			if ((bool)SplitOverride.IsChecked)
+				SplitOverride.IsChecked = false;
+			if ((bool)OverheadOverride.IsChecked)
+			OverheadOverride.IsChecked = false;
+			if((bool)checkBox.IsChecked)
+			checkBox.IsChecked = false;
+			ReferralKnockerText.Text = string.Empty;
+			TotalAmountCollectedText.Value = 0;
+			AmountCollectedSubTotal.Value = 0;
+			TotalExpenseText.Value = 0;
+			OverheadAmountText.Value = 0;
+			MiscBillAmount.Value = 0;
+			KnockerReferralAmountText.Value = 0;
+			RoofLaborBillAmountText.Value = 0;
+			RoofMaterialExpenseSubtotalText.Value = 0;
+			AdjustedRoofSubtotalAmountText.Value = 0;
+			RecruiterText.Text = string.Empty;
+			CostPerSquareAmount.Value = 0;
+			ProfitPerSquareAmount.Value = 0;
+			ProfitAmountText.Value = 0;
+			AmountCollectedSubTotal.Value = 0;
+			SalespersonSplitAmountText.Value =0;
+			MRNAmountDueText.Value = 0;
+			SalespersonAmountDueText.Value = 0;
+			TotalExpenseText.Value = 0;
+			GutterBillAmountText.Value = 0;
+			InteriorBillAmountText.Value = 0;
+			ExteriorBillAmountText.Value = 0;
+			RoofLaborBillAmountText.Value = 0;
+			ChecksTotal();
+			TotalExpense();
+			InitialDrawAmountText.Value = 500;
+			SalespersonName.Focus();
+            MRNTEXTBLOCK.Text = "";
+		}
 
 
 		private void CapOutJob(double TotChk = 0, double TotExp = 0, double NoSq = .01, double splitvar = 50, double ohvar = 10, double smp = 25)
 		{
-            if (NumberOfSquaresAmountText.Value != 0)
-            NoSq = (double)NumberOfSquaresAmountText.Value;
-            InitialDrawAmountText.Value = 500;
-            if (NoSq != 0)
-            {
-                double OH = TotChk * (ohvar * .01);
-                double RawProfit = TotalProfit();
-                double SalesProfit = RawProfit - (RawProfit * ((100 - splitvar) * .01));
-                double MRNSP = RawProfit - SalesProfit;
-                double SalesMP = OH * (smp * .01);
-                double MRNTP = MRNSP - SalesMP;
-                double CPSQ = 0;
-                double PPSQ = 0;
-                   
-                TotalAmountCollectedText.Value = (decimal)ChecksTotal();
-                TotalExpenseText.Value = (decimal)TotalExpense();
+			if (NumberOfSquaresAmountText.Value != 0)
+			NoSq = (double)NumberOfSquaresAmountText.Value;
+			InitialDrawAmountText.Value = 500;
+			if (NoSq != 0)
+			{
+				double OH = (double)FinalScopeAmount.Value * (ohvar * .01);
                 OverheadAmountText.Value = (decimal)OH;
-                MiscBillAmount.Value = (decimal)MiscCost();
+               // double RawProfit = TotalProfit();
+				double SalesProfit = TotalProfit() - (TotalProfit() * ((100 - splitvar) * .01));
+				double MRNSP = TotalProfit() - SalesProfit;
+				double SalesMP = (ChecksTotal()*.1) * (smp * .01);
+				double MRNTP = MRNSP - SalesMP;
+				double CPSQ = 0;
+				double PPSQ = 0;
+				   
+				TotalAmountCollectedText.Value = (decimal)ChecksTotal();
+				TotalExpenseText.Value = (decimal)TotalExpense();
+				
+				MiscBillAmount.Value = (decimal)MiscCost();
                 if (ReferralKnockerText.Text != string.Empty)
                     KnockerReferralAmountText.Value = (decimal)FigureKnockerReferralFee(NoSq);
                 RoofLaborBillAmountText.Value = (decimal)FigureRoofersBill(NoSq, (bool)checkBox.IsChecked);
-                RoofMaterialExpenseSubtotalText.Value = (decimal)FigureJobMaterialCost();
-                AdjustedRoofSubtotalAmountText.Value = RoofMaterialExpenseSubtotalText.Value;
-                #region FigureSalesManagerPortion
-                if (RecruiterText.Text != string.Empty)
-                {
-                    StringBuilder sb = new StringBuilder();
-                    sb.Clear();
-                    if (SalespersonSplitText.PercentValue > 0)
-                        if (SalespersonName.Text != string.Empty)
-                        {
-                            string tempstring = RecruiterText.Text;
-                            if (tempstring.Contains(" "))
-                                sb.Append(tempstring.Substring(0, tempstring.IndexOf(" ")));
+				RoofMaterialExpenseSubtotalText.Value = (decimal)FigureJobMaterialCost();
+				AdjustedRoofSubtotalAmountText.Value = RoofMaterialExpenseSubtotalText.Value;
+				#region FigureSalesManagerPortion
+				if (RecruiterText.Text != string.Empty)
+				{
+					StringBuilder sb = new StringBuilder();
+					sb.Clear();
+					if (ChecksTotal()>0)
+						if (SalespersonName.Text != string.Empty)
+						{
+							RecruiterText.Text = SalesMP.ToString();
+													}
+				}
+				#endregion
+				CPSQ = TotExp / NoSq;
+				CostPerSquareAmount.Value = (decimal)CPSQ;
+				PPSQ = TotalProfit() / NoSq;
+				ProfitPerSquareAmount.Value = (decimal)PPSQ;
+				ProfitAmountText.Value = (decimal)TotalProfit();
+				AmountCollectedSubTotal.Value = (decimal)ChecksTotal();
+				SalespersonSplitAmountText.Value = (decimal)SalesProfit;
+				MRNAmountDueText.Value = (decimal)MRNTP;
+                MRNTEXTBLOCK.Text = MRNTP.ToString();
+				SalespersonAmountDueText.Value = (decimal)SalesProfit - (decimal)InitialDrawAmountText.Value;
+			  
+			}
 
-                            else sb.Append(RecruiterText.Text);
-                            sb.Append(" -- $");
-                            sb.Append(SalesMP);
-                            tempstring = sb.ToString();
-
-                            if (tempstring.Length - tempstring.IndexOf(".") > 2)
-                                RecruiterText.Text = tempstring.Substring(0, tempstring.IndexOf(".") + 3);
-                        }
-                }
-                #endregion
-                CPSQ = TotExp / NoSq;
-                CostPerSquareAmount.Value = (decimal)CPSQ;
-                PPSQ = RawProfit / NoSq;
-                ProfitPerSquareAmount.Value = (decimal)PPSQ;
-                ProfitAmountText.Value = (decimal)RawProfit;
-                AmountCollectedSubTotal.Value = (decimal)ChecksTotal();
-                SalespersonSplitAmountText.Value = (decimal)SalesProfit;
-                MRNAmountDueText.Value = (decimal)MRNTP;
-               
-                SalespersonAmountDueText.Value = (decimal)SalesProfit - (decimal)InitialDrawAmountText.Value;
-              
-            }
-
-            else
-                MessageBox.Show("You can't divide by Zero (0) that's just retarded!", "Stupid People Doing Stupid Shit!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+			else
+				MessageBox.Show("You can't divide by Zero (0) that's just retarded!", "Stupid People Doing Stupid Shit!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 
 		}
 
@@ -377,8 +372,10 @@ namespace MRNUIElements
 			{
 				SettlementDifferenceAmount.Value = (decimal)FigureScopeDiff();
 
-
-                if (NumberOfSquaresAmountText.Value != 0)
+                if (NumberOfSquaresAmountText.Value == null)
+                    NumberOfSquaresAmountText.Value = 0;
+                if (NumberOfSquaresAmountText.Value == 0)
+                    NumberOfSquaresAmountText.Value = 1;
 					CapOutJob((double)ChecksTotal(), (double)TotalExpense(), (double)NumberOfSquaresAmountText.Value, (double)SalespersonSplitText.PercentValue, (double)OverheadMultiplierAmountText.PercentValue, (double)25);
 			}
 		}
@@ -524,54 +521,47 @@ namespace MRNUIElements
 		}
 
 
-        #endregion
+		#endregion
 
-        private void ZipcodeText_TextChanged(object sender, TextChangedEventArgs e)
+		private void ZipcodeText_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			string str = string.Empty;
+			str = ZipcodeText.Text;
+			
+
+			if (str.All((char.IsNumber)) && str.Count() == 5)
+			{
+				ZipcodeText.Text = new AddressZipcodeValidation().CityStateLookupRequest(str,1);
+			}
+            CapOut();
+		}
+
+		private void ExitButton_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new NexusHome());
+		}
+
+        private void CustomerNameText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string str = string.Empty;
-            str = ZipcodeText.Text;
-            AddressZipcodeValidation azv = new AddressZipcodeValidation();
-
-            if (str.All((char.IsNumber)) && str.Count() == 5)
-            {
-                if (azv.CityStateLookupRequest(str) == null)
-                {
-                    System.Windows.Forms.MessageBox.Show("No such zipcode!");
-                    ZipcodeText.Text = str = string.Empty;
-                    return;
-                }
-                string citystate = azv.CityStateLookupRequest(str);
-
-                string city = citystate.Substring(citystate.IndexOf("<City>") + 6, citystate.IndexOf("</City>") - citystate.IndexOf("<City>") - 6);
-
-                string state = AddressZipcodeValidation.ConvertStateToAbbreviation(citystate.Substring(citystate.IndexOf("<State>") + 7, citystate.IndexOf("</State>") - citystate.IndexOf("<State>") - 7));
-                ZipcodeText.Text = CustomerAddressText.ToString();
-                string[] w = city.Split(' ');
-                city = "";
-                int i = 0;
-
-                foreach (string t in w)
-                {
-                    city += t.Substring(0, 1).ToUpper();
-                    city += t.Substring(1, t.Length - 1).ToLower();
-                    if (i > 0)
-                        city += " ";
-
-                }
-
-
-
-                //	city.ToLower();
-                //	TextInfo textinfo = new CultureInfo("en-US", false).TextInfo;
-                //	textinfo.ToTitleCase(city);
-                //city = Regex.Replace(city, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
-                ZipcodeText.Text = city + ", " + state + "  " + str;
-            }
+            if (this.IsLoaded && this.IsInitialized)
+                CapOut();
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        private void CustomerAddressText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            NavigationService.Navigate(new NexusHome());
+            if (this.IsLoaded && this.IsInitialized)
+                CapOut();
+        }
+
+        private void SalespersonSplitText_PercentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {if (this.IsLoaded && this.IsInitialized)
+            CapOut();
+        }
+
+        private void OverheadMultiplierAmountText_PercentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (this.IsLoaded && this.IsInitialized)
+                CapOut();
         }
     }
 }

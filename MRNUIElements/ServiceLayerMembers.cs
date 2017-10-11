@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MRNNexus_Model;
 
-namespace MRNUIElements
+namespace MRNUIElements.Controllers
 {
-    partial class ServiceLayer
+    internal partial class ServiceLayer
     {
 
         public double SumOfInvoices { get; set; }

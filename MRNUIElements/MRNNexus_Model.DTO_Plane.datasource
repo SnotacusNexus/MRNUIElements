@@ -7,4 +7,162 @@
 -->
 <GenericObjectDataSource DisplayName="DTO_Plane" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
    <TypeInfo>MRNNexus_Model.DTO_Plane, MRNNexus_Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeUISetting>
+      <PropertyUISettings>
+         <PropertyUISetting Name="SuccessFlag">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Message">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="InnerException">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Exception">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="EaveHeight">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="DoubleTextBox" Type="Syncfusion.Windows.Shared.DoubleTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="EaveLength">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="DoubleTextBox" Type="Syncfusion.Windows.Shared.DoubleTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="FourAndUp">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="GroupNumber">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Hip">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="DoubleTextBox" Type="Syncfusion.Windows.Shared.DoubleTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="InspectionID">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="ItemSpec">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="NumberDecking">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="NumOfLayers">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Pitch">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="PlaneID">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="PlaneTypeID">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="RakeLength">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="DoubleTextBox" Type="Syncfusion.Windows.Shared.DoubleTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="RidgeLength">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="DoubleTextBox" Type="Syncfusion.Windows.Shared.DoubleTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="SquareFootage">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="DoubleTextBox" Type="Syncfusion.Windows.Shared.DoubleTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="StepFlashing">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="DoubleTextBox" Type="Syncfusion.Windows.Shared.DoubleTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="ThreeAndOne">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Valley">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="DoubleTextBox" Type="Syncfusion.Windows.Shared.DoubleTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+      </PropertyUISettings>
+   </TypeUISetting>
 </GenericObjectDataSource>

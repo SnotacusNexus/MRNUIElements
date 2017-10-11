@@ -1,0 +1,165 @@
+﻿<UserControl x:Class="MRNUIElements.RoofShapeSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MRNUIElements"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="RSS"
+             Width="955"
+             mc:Ignorable="d">
+    <Viewbox>
+        <Grid Width="970">
+            <ToolBar x:Name="RoofShape"
+                     Width="981"
+                     Height="125"
+                     Margin="0"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center">
+                <Button x:Name="button1"
+                        Width="116"
+                        Height="120"
+                        Margin="0,0,0,0">
+                    <Path Width="102"
+                          Height="90"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Panel.ZIndex="0"
+                          Data="M-2,-4l-20,-80h-60l20,80Z"
+                          Fill="Red"
+                          Stretch="Fill"
+                          Stroke="Black"
+                          StrokeThickness="3"
+                          Visibility="visible" />
+                </Button>
+                <Button x:Name="button1_Copy2"
+                        Width="120"
+                        Height="120">
+                    <Viewbox Width="100"
+                             Margin="2,-3,0,-5"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center">
+                        <Rectangle Width="120"
+                                   Height="120"
+                                   Panel.ZIndex="2"
+                                   d:IsLocked="True"
+                                   Fill="Red"
+                                   Stroke="Black"
+                                   StrokeThickness="5"
+                                   Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="EqTrianglebtn"
+                        Width="120"
+                        Height="120">
+                    <Viewbox Width="106" Height="97">
+                        <Path Width="100"
+                              Height="100"
+                              Margin="0,-3,0,0"
+                              Panel.ZIndex="0"
+                              Data="M-9.85567010309277,-4.639257731958756l-40,60.9280h80Z"
+                              Fill="Red"
+                              Stretch="Fill"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="Trianglebtn"
+                        Width="120"
+                        Height="120"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                    <Viewbox>
+                        <Path Width="100"
+                              Height="109"
+                              Margin="10,11,0,-2"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Panel.ZIndex="0"
+                              Data="M-4,-4v100h100Z"
+                              Fill="Red"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="button"
+                        Width="120"
+                        Height="120">
+                    <Path Width="100"
+                          Height="100"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Panel.ZIndex="0"
+                          Data="M-2,-4l-20,80h-60l-20,-80Z"
+                          Fill="Red"
+                          RenderTransformOrigin="0,1"
+                          Stretch="Fill"
+                          Stroke="Black"
+                          StrokeThickness="3"
+                          Visibility="visible" />
+                </Button>
+                <Button x:Name="button1_Copy"
+                        Height="120"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                    <Viewbox>
+                        <Path Width="100"
+                              Height="100"
+                              Margin="0,8,0,6"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Panel.ZIndex="0"
+                              Data="M-2,-4l-20,20v40l20,20h40l20,-20v-40l-20,-20Z"
+                              Fill="Red"
+                              Stretch="Fill"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="button1_Copy4"
+                        Width="120"
+                        Height="120"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                    <Viewbox>
+                        <Path Margin="14,0,0,-5"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Panel.ZIndex="0"
+                              Data="M-4,-4 H 100v80 h-37l-15,-15l-15,15h-37z"
+                              Fill="Red"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+                <Button x:Name="Diamondbtnn"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                    <Viewbox Width="120"
+                             Height="120"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center">
+                        <Path x:Name="Diamond"
+                              Width="100"
+                              Height="100"
+                              Margin="13,0,0,-3"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Panel.ZIndex="0"
+                              Data="M0,-40l-40,40l40,40l40,-40Z"
+                              Fill="Red"
+                              Stretch="Fill"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Visibility="visible" />
+                    </Viewbox>
+                </Button>
+            </ToolBar>
+
+        </Grid>
+    </Viewbox>
+
+</UserControl>

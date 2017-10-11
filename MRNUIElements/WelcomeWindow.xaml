@@ -14,7 +14,7 @@
 			<TextBlock HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="35">My MRN Claim Services</TextBlock>
 			
 
-				<Button Style="{StaticResource normal}" HorizontalAlignment="Center" Click="ClaimServices" Content="My MRN Claim Services"/>
+				<Button  HorizontalAlignment="Center" Click="ClaimServices" Content="My MRN Claim Services"/>
 
 
 			</StackPanel>

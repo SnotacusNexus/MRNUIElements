@@ -33,6 +33,14 @@ namespace MRNNexusDTOs
 		public double OandP { get; set; }
         [DataMember]
         public double RoofAmount { get; set; }
+        [DataMember]
+        public bool Accepted { get; set; }
+		[DataMember]
+		public double ACV { get; set; }
+		[DataMember]
+		public double RCV { get; set; }
+		[DataMember]
+		public double Depreciation { get; set; }
 
-    }
+	}
 }

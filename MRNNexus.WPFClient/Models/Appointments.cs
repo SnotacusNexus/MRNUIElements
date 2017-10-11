@@ -33,7 +33,11 @@ namespace MRNNexus.WPFClient.Models
 				else
 					return false;
 			}
-		}
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
+            }
+        }
 
 		public class TodaysAppointment
 		{

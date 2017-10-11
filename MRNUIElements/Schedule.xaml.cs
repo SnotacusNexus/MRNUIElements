@@ -13,81 +13,81 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using MRNNexus_Model;
-
-
-
-
+using MRNUIElements.Models;
+using MRNUIElements.Controllers;
+using Syncfusion.UI.Xaml.Grid;
 
 namespace MRNUIElements
+
 {
-    /// <summary>
-    /// Interaction logic for Schedule.xaml
-    /// </summary>
-    public partial class Schedule : Page
-    {
-        MRNNexusDTOs.DTO_CalendarData calData;
+	/// <summary>
+	/// Interaction logic for Schedule.xaml
+	/// </summary>
+	public partial class Schedule : Page
+	{
+	   MRNNexus_Model.DTO_CalendarData calData;
 
-        GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
+		GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
 
-        double autoHeight;
+		double autoHeight;
 
-        public Schedule()
-        {
-            InitializeComponent();
+		public Schedule()
+		{
+			InitializeComponent();
 
-            setUp();
+			setUp();
 
-            
-            this.appointments.QueryRowHeight += appointments_QueryRowHeight;
+			
+			this.fappointments.QueryRowHeight += fappointments_QueryRowHeight;
 ;
 
 
-        }
+		}
 
-        void appointments_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
-        {
-            if(this.appointments.GridColumnSizer.GetAutoRowHeight(e.RowIndex, gridRowSizingOptions, out autoHeight))
-            {
-                if(autoHeight > 24)
-                {
-                    e.Height = autoHeight;
-                    e.Handled = true;
-                }
-            }
-        }
+		void fappointments_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
+		{
+			if(this.fappointments.GridColumnSizer.GetAutoRowHeight(e.RowIndex, gridRowSizingOptions, out autoHeight))
+			{
+				if(autoHeight > 24)
+				{
+					e.Height = autoHeight;
+					e.Handled = true;
+				}
+			}
+		}
 
-        async private void setUp()
-        {
-            Controllers.Schedule schedule = new Controllers.Schedule();
-            await schedule.GetEmployeeAppointments();
-            this.calendar.ItemsSource = schedule.MappedAppointments;
-            this.appointments.ItemsSource = schedule.TodaysAppointments;
-        }
+		async private void setUp()
+		{
+			Controllers.Schedule schedule = new Controllers.Schedule();
+			await schedule.GetEmployeeAppointments();
+			this.calendar.ItemsSource = schedule.MappedAppointments;
+		//	this.appointments.ItemsSource = schedule.TodaysAppointments;
+			this.fappointments.ItemsSource = schedule.FutureAppointments;
+		}
 
-        private void appointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
-        {
-            var record = this.appointments.SelectedItem;
-            var calDataInt = ((Appointments.TodaysAppointment)record).CalendarDataID;
+		private void fappointments_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+		{
+			var record = this.fappointments.SelectedItem;
+			var calDataInt = ((Appointments.FutureAppointment)record).CalendarDataID;
 
-            foreach(var cd in ServiceLayer.getInstance().CalendarDataList)
-            {
-                if(cd.EntryID == calDataInt)
-                {
-                    calData = cd;
-                    break;
-                }
-            }
-        }
+			foreach(var cd in ServiceLayer.getInstance().CalendarDataList)
+			{
+				if(cd.EntryID == calDataInt)
+				{
+					calData = cd;
+					break;
+				}
+			}
+		}
 
-        private void appointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (calData != null)
-            {
-                MessageBox.Show(calData.EntryID.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                calData = null;
-            }
-        }
+		private void fappointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			if (calData != null)
+			{
+				MessageBox.Show(calData.EntryID.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+				calData = null;
+			}
+		}
 
 		private void calendar_AppointmentCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 		{

@@ -1,11 +1,15 @@
 ﻿
-	<Window x:Class="MRNUIElements.DrawMe"
+<Window x:Class="MRNUIElements.DrawMe"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Dreaw Me" Height="350" Width="525">
-		<Canvas  Name="paintSurface" MouseDown="Canvas_MouseDown_1" MouseMove="Canvas_MouseMove_1" >
-			<Canvas.Background>
-				<SolidColorBrush Color="White" Opacity="0"/>
-			</Canvas.Background>
-		</Canvas>
-	</Window>
+        Title="Dreaw Me"
+        Width="525"
+        Height="350">
+    <Canvas Name="paintSurface"
+            MouseDown="Canvas_MouseDown_1"
+            MouseMove="Canvas_MouseMove_1">
+        <Canvas.Background>
+            <SolidColorBrush Opacity="0" Color="White" />
+        </Canvas.Background>
+    </Canvas>
+</Window>

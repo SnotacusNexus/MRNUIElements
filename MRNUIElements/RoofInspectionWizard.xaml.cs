@@ -56,7 +56,8 @@ namespace MRNUIElements
 			if (!isTriangle)
 			{
 				if ((dRidge > dRake) || (dEave > dRake))
-				{ //isHorizontal?
+				{
+					isHorizontal=true;
 				}
 				else isHorizontal = false;
 			}
@@ -245,7 +246,7 @@ namespace MRNUIElements
 							TL.X = (DrawingCanvas.Width / 2);							TR.X = (DrawingCanvas.Width / 2);
 							TL.Y = (DrawingCanvas.Height / 2) - VCenter;				TR.Y = (DrawingCanvas.Height / 2) - VCenter;//    
 						
-							          
+									  
 							BL.X = (DrawingCanvas.Width / 2) - HCenter;					BR.X = (DrawingCanvas.Width / 2) + HCenter;
 							BL.Y = (DrawingCanvas.Height / 2) + VCenter;				BR.Y = (DrawingCanvas.Height / 2) + VCenter;							
 												
@@ -453,9 +454,9 @@ namespace MRNUIElements
 				DrawingCanvas.SetValue(VisibilityProperty, System.Windows.Visibility.Hidden);
 				MainCanvas.SetValue(VisibilityProperty, System.Windows.Visibility.Visible);
 			}
-		else { ScopeViewer Page = new ScopeViewer();
-				this.NavigationService.Navigate(Page);
-			}
+		//else { ScopeViewer Page = new ScopeViewer();
+		//		this.NavigationService.Navigate(Page);
+	//		}
 		}
 
 		private void RidgeLengthTextBox_GotFocus(object sender, RoutedEventArgs e)

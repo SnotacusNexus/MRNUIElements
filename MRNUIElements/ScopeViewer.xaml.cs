@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNNexus_Model;
-
+using MRNUIElements.Controllers;
 
 namespace MRNUIElements
 {
@@ -22,201 +24,160 @@ namespace MRNUIElements
 	/// </summary>
 	public partial class ScopeViewer : Page
 	{
-		
-		public ServiceLayer s1 = ServiceLayer.getInstance();
+		const int ESTIMATE = 6;
+		const int OLDSCOPE = 7;
+		const int NEWSCOPE = 10;
+		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public List<DTO_Scope> claimscopelist = new List<DTO_Scope>();
-		public int scopetype;
+		static protected ObservableCollection<DTO_Scope> claimScopes = new ObservableCollection<DTO_Scope>();
+		//public int scopetype;
+		static GetClaimsPage G = GetClaimsPage.getInstanceH();
+		public static int scopeType { get; set; }
+		public int TypeScope { get; set; }
 		public DTO_Scope scope = new DTO_Scope();
 		public double acv;
 		public double depreciation;
 		public double roof;
 		public int ScopeID;
-		public bool bab=true;
+		public bool bab = true;
 		private double temp = 0;
+		static public string selTxt { get; set; }
+		protected List<bool> ScopeExist = new List<bool>();
+		public List<DTO_Scope> ScopesList { get; set; }
+		public DTO_Claim claim { get; set; }
+		bool EstimateExists = false;
+		bool OldScopeExists = false;
+		bool NewScopeExists = false;
+
+
+		public ScopeViewer(DTO_Claim _claim, int scopeType = 0, DTO_Scope scope = null)   //should be 6, 7, 8
+		{ InitializeComponent();
+
+
+			switch (scopeType)
+			{
+				case 6:
+					{
+						scopeType = ESTIMATE;
+						break;
+					}
+				case 7:
+					{
+						scopeType = OLDSCOPE;
+						break;
+					}
+				case 10:
+					{
+						scopeType = NEWSCOPE;
+						break;
+					}
 		
+			}
+			if (s1.ScopesList.Count() > 0)
+			{
+				DisplayScopeInfo(scope);
+			//	ScopesList = orderScopes(s1.ScopesList.Where(x => x.ClaimID == claim.ClaimID).ToList());
 
-			  DTO_Claim claim = new DTO_Claim();
+			}
 
-		public ScopeViewer()
-		{
-			InitializeComponent();
-
-			ClearData();
-		SubmitScopeEntry.IsEnabled = false;
-
-
-			this.claimIDComboBox.DataContext = s1.ClaimsList;
-		
-
-		}
-
-
-		private void radioButton_Checked(object sender, RoutedEventArgs e)
-		{
-
+		//	ShowsAvailableScopes(ScopesList);
+			ScopeTypeTextBlock.Text = new DTO_LU_ScopeType[scopeType].ToString();
+			//GetScopes(_claim, scopeType); //Find all scopes for claim and store them in order for structured retrieval
+			if (_claim != null && scopeType > 0)
+			{
+				claimIDTextBox.Text = _claim.MRNNumber;
+			}
 			
-			claim = (DTO_Claim)claimIDComboBox.SelectedValue;
-			ClaimScopeListProcessingForDisplay(GetScopes(claim), 1);
-
-			totalTextBox.IsEnabled = true;
-			DisplayScopeInfo(GetScopes(claim),1, claim);
-
-		}
-
-		private void radioButton_Copy_Checked(object sender, RoutedEventArgs e)
-		{
-
-		//	DTO_Claim claim = new DTO_Claim();
-			claim = (DTO_Claim)claimIDComboBox.SelectedValue;
-			ClaimScopeListProcessingForDisplay(GetScopes(claim), 2);
-
-			totalTextBox.IsEnabled = true;
-			DisplayScopeInfo(GetScopes(claim), 2, claim);
-		}
-
-		private void radioButton_Copy1_Checked(object sender, RoutedEventArgs e)
-		{
-
-		//	DTO_Claim claim = new DTO_Claim();
-			claim = (DTO_Claim)claimIDComboBox.SelectedValue;
-			ClaimScopeListProcessingForDisplay(GetScopes(claim), 3);
-
-			totalTextBox.IsEnabled = true;
-			DisplayScopeInfo(GetScopes(claim), 3, claim);
-		}
-
-		private int SetScopeByScopeID(DTO_Scope scope)
-		{
-			int i = scope.ScopeTypeID;
-
-			switch (i)
+		
+			else if (scope != null)
 			{
-				case 1:
-					{
-						ImageBrush ib = new ImageBrush();
-						ib.ImageSource = new BitmapImage(new Uri(@"../../ResourceFiles/CheckMark.png", UriKind.Relative));
-						MRNEstimateStatusImage.Background = ib;
 
 
+				DisplayScopeInfo(scope);
+			}
+			else
+			{
 
-						radioButton.IsChecked = true;
-						claimscopelist.Add(scope);
-						return i;
-					}
-				case 2:
-					{
-						ImageBrush ib = new ImageBrush();
-						ib.ImageSource = new BitmapImage(new Uri(@"../../ResourceFiles/CheckMark.png", UriKind.Relative));
-						OldScopeStatusImage.Background = ib;
-
-						radioButton_Copy.IsChecked = true;
-						claimscopelist.Add(scope);
-						return i;
-					}
-				case 3:
-					{
-						ImageBrush ib = new ImageBrush();
-						ib.ImageSource = new BitmapImage(new Uri(@"../../ResourceFiles/CheckMark.png", UriKind.Relative));
-						NewScopeStatusImage.Background = ib;
-						radioButton_Copy1.IsChecked = true;
-					
-						return i;
-
-					}
-				default:
-					{
-						if (i < 1)
-						{
-							if (MessageBoxResult.Yes == MessageBox.Show("No Scopes were available for this Claim. Would you like to enter our estimate details?", "No previous data found", MessageBoxButton.YesNo, MessageBoxImage.Question))
-							{
-								radioButton.IsChecked = true;
-								
-
-								claimscopelist.Add(scope);
-								i = 1;
-							}
-						}
-						else if (i > 3)
-						{
-							if (MessageBoxResult.Yes == MessageBox.Show("A Scope with an out of range value has been found for this claim it may be a final scope. Would you like to enter the view it's details?", "Scope Out of Range", MessageBoxButton.YesNo, MessageBoxImage.Warning))
-							{
-								
-								radioButton_Copy1.IsChecked = true;
-								i = 3;
-							}
-						}
-					}
-					return i;
+				//basic initialization
 			}
 
+		}//end function
 
-		}
-
-	 public List<DTO_Scope> GetScopes(DTO_Claim claim)
+		async void GetScopes(DTO_Claim claim, int scopeType)
 		{
 
-
-
-			//	if (s1.ScopesList.Count == 1)
-			//{
-			//		if (s1.ScopesList[0].Message != string.Empty)
-			//			claimscopelist.Clear();
-			//			DTO_Scope scope = new DTO_Scope();
-			////		scope.ScopeTypeID = 1;
-			//	claimscopelist.Add(scope);
-			//	}
-			ImageBrush ib = new ImageBrush();
-			ib.ImageSource = new BitmapImage(new Uri(@"../../ResourceFiles/XMark.png", UriKind.Relative));
-			MRNEstimateStatusImage.Background = ib;
-			OldScopeStatusImage.Background = ib;
-			NewScopeStatusImage.Background = ib;
-			claimscopelist.Clear();
-			foreach (DTO_Scope c in s1.ScopesList)
-				{
-				if (c.ClaimID == claim.ClaimID)
-				{
-					claimscopelist.Add(c);
-					SetScopeByScopeID(c);
-				}
-				}
-
-			return claimscopelist;
-		}
-
-		private DTO_Scope ClaimScopeListProcessingForDisplay(List<DTO_Scope> cl, int ScopeTypeRequested)
-		{
-
-			if (cl.Count == 0)
-			{
-				if (MessageBoxResult.Yes == MessageBox.Show("The scope type you requested has not been saved for this claim, in fact no scopes are recorded for this claim.  Would you like to enter the estimate details now?", "No previous data found", MessageBoxButton.YesNo, MessageBoxImage.Question))
-					return new DTO_Scope();	
-				
-			}
-			foreach (DTO_Scope c in cl)
-			{
-				if (c.ScopeTypeID == ScopeTypeRequested) return c; ; //found it send it back
-
-
-
-
-			}
-			return null;
-			}
-
+			await s1.GetScopesByClaimID(claim);
+			while (s1.ScopesList == null)
+				;
 
 		
 
 
+		}
 
+
+
+		async Task<bool> DisplayScopeInfo(DTO_Scope scope = null, List<DTO_Scope> scopeList = null, int scopeType = 0)
+		{ if (scope == null)
+				scope = new DTO_Scope();
+			else
+			{
+				claimIDTextBox.Text = s1.ClaimsList.Where(x => x.ClaimID == scope.ClaimID).ToList()[0].MRNNumber.ToString();
+				ScopeTypeTextBlock.Text = s1.ScopeTypes[scope.ScopeTypeID - 1].ToString().ToString();
+				deductibleTextBox.Value = (decimal)scope.Deductible;
+				oandPTextBox.Value = (decimal)scope.OandP;
+				interiorTextBox.Value = (decimal)scope.Interior;
+				gutterTextBox.Value = (decimal)scope.Gutter;
+				totalTextBox.Value = (decimal)scope.Total;
+				exteriorTextBox.Value = (decimal)scope.Exterior;
+				taxTextBox.Value = (decimal)scope.Tax;
+				Roof.Value = (decimal)scope.RoofAmount;
+				return true;
+			}
+			if (scopeList != null && scopeType > 0) {
+				{
+					scope = scopeList[scopeType - 1];
+
+
+
+					claimIDTextBox.Text = s1.ClaimsList.Where(x => x.ClaimID == scope.ClaimID).ToList()[0].MRNNumber.ToString();
+					ScopeTypeTextBlock.Text = s1.ScopeTypes[scope.ScopeTypeID - 1].ToString().ToString();
+					deductibleTextBox.Value = (decimal)scope.Deductible;
+					oandPTextBox.Value = (decimal)scope.OandP;
+					interiorTextBox.Value = (decimal)scope.Interior;
+					gutterTextBox.Value = (decimal)scope.Gutter;
+					totalTextBox.Value = (decimal)scope.Total;
+					exteriorTextBox.Value = (decimal)scope.Exterior;
+					taxTextBox.Value = (decimal)scope.Tax;
+					Roof.Value = (decimal)scope.RoofAmount;
+					return true;
+				} }
+			return false;
+
+		}
+		
+
+
+
+
+		
+		void EnableAddButton()
+		{
+			if (this.gutterTextBox != null && this.exteriorTextBox != null && this.deductibleTextBox != null && this.claimIDTextBox != null && this.ACV != null && this.Depreciation != null && this.interiorTextBox != null && this.oandPTextBox != null && this.Roof != null && this.taxTextBox != null && this.totalTextBox != null && !SubmitScopeEntry.IsEnabled)
+				SubmitScopeEntry.IsEnabled = true;
+			else
+				SubmitScopeEntry.IsEnabled = true;
+
+
+		}
 
 
 		async private void SubmitScopeEntry_Click(object sender, RoutedEventArgs e)
 		{
 			if (MessageBoxResult.Yes == MessageBox.Show("Are the figures correct?", "Confirm addition of information to claim", MessageBoxButton.YesNo, MessageBoxImage.Question))
 			{
-				 await AddScope((DTO_Claim)claimIDComboBox.SelectedValue, GetScopeTypeByButtonSelected());
-				//NexusHome Page = new NexusHome();
-				//this.NavigationService.Navigate(Page);
+				await AddScope(claim, TypeScope);
+
 			}
 		}
 
@@ -229,318 +190,204 @@ namespace MRNUIElements
 		private void CancelScopeEntry_Click(object sender, RoutedEventArgs e)
 		{
 
-			NexusHome Page = new NexusHome();
-			this.NavigationService.Navigate(Page);
+			EnableAddButton();
 		}
 
-		private void claimIDComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			
-			if (bab == false)
-			{
 
-				
-			
-		//	DTO_Claim claim = new DTO_Claim();
-			claim = (DTO_Claim)claimIDComboBox.SelectedValue;
-			ClaimScopeListProcessingForDisplay(GetScopes(claim),GetScopeTypeByButtonSelected());
-
-			totalTextBox.IsEnabled = true;
-			DisplayScopeInfo(GetScopes(claim),GetScopeTypeByButtonSelected(),claim);
-		}
-			bab = false;
-		}
 		private void totalTextBox_GotFocus(object sender, RoutedEventArgs e)
 		{
-			if (totalTextBox.Text == string.Empty) totalTextBox.Text = "0";
-
-			totalTextBox.SelectAll();
+			EnableAddButton();
 		}
 
 		private void totalTextBox_LostFocus(object sender, RoutedEventArgs e)
 		{
-			if (totalTextBox.Text == string.Empty) totalTextBox.Text = "0";
-			exteriorTextBox.IsEnabled = true;
-			exteriorTextBox.SelectAll();
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
 
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
+			EnableAddButton();
+
+
 		}
 		private void totalTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (totalTextBox.Text == string.Empty) totalTextBox.Text = "0"; ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
+			EnableAddButton();
 
 		}
 
 		private void exteriorTextBox_LostFocus(object sender, RoutedEventArgs e)
 		{
-			if (exteriorTextBox.Text == string.Empty) exteriorTextBox.Text = "0";
-	   
-			gutterTextBox.IsEnabled = true;
-			gutterTextBox.SelectAll(); ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
 
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
+
+
+			EnableAddButton();
+
 
 
 		}
 		private void exteriorTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (exteriorTextBox.Text == string.Empty) exteriorTextBox.Text = "0";
 
-
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
-
+			EnableAddButton();
 		}
 
 		private void gutterTextBox_LostFocus(object sender, RoutedEventArgs e)
-		{		if (gutterTextBox.Text == string.Empty) gutterTextBox.Text = "0";
-			interiorTextBox.IsEnabled = true;
-			interiorTextBox.SelectAll(); ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
+		{
 
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
+			EnableAddButton();
 
 		}
 		private void gutterTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			{
-				if (gutterTextBox.Text == string.Empty) gutterTextBox.Text = "0";
-
-				temp = double.Parse(gutterTextBox.Text); ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-				Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
-			}
+			EnableAddButton();
 		}
 
 		private void interiorTextBox_LostFocus(object sender, RoutedEventArgs e)
 		{
-			if (interiorTextBox.Text == string.Empty) interiorTextBox.Text = "0";
-			oandPTextBox.IsEnabled = true;
-			oandPTextBox.SelectAll(); ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
+			EnableAddButton();
 		}
 		private void interiorTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (interiorTextBox.Text == string.Empty) interiorTextBox.Text = "0";
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
+			EnableAddButton();
 
 		}
 
 		private void oandPTextBox_LostFocus(object sender, RoutedEventArgs e)
 		{
-			if (oandPTextBox.Text == string.Empty) oandPTextBox.Text = "0";
-			taxTextBox.IsEnabled = true;
-			taxTextBox.SelectAll(); ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
 
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
+			EnableAddButton();
 		}
 		private void oandPTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (oandPTextBox.Text == string.Empty) oandPTextBox.Text = "0";
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
-
-
+			EnableAddButton();
 		}
 
 		private void taxTextBox_LostFocus(object sender, RoutedEventArgs e)
 		{
-			if (taxTextBox.Text == string.Empty) taxTextBox.Text = "0";
-			deductibleTextBox.IsEnabled = true;
-			deductibleTextBox.SelectAll(); ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
+			EnableAddButton();
 		}
 		private void taxTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (taxTextBox.Text == string.Empty) taxTextBox.Text = "0";
-
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
-
-
+			EnableAddButton();
 		}
 
 		private void deductibleTextBox_LostFocus(object sender, RoutedEventArgs e)
-		{						if (deductibleTextBox.Text == string.Empty) deductibleTextBox.Text = "0";
-			
-			SubmitScopeEntry.IsEnabled = true;
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
+		{
+			EnableAddButton();
 
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
 
 		}
 		private void deductibleTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (deductibleTextBox.Text == string.Empty) deductibleTextBox.Text = "0";
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
-
-
-
+			EnableAddButton();
 		}
 		private void Roof_TextChanged(object sender, TextChangedEventArgs e)
-		{ 
-						if (Roof.Text == string.Empty) Roof.Text = "0";
-
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
+		{
+			EnableAddButton();
 		}
 
 		private void Roof_LostFocus(object sender, RoutedEventArgs e)
 		{
-			ACV.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text,deductibleTextBox.Text, taxTextBox.Text, true);
-
-			Depreciation.Text = Calculate(interiorTextBox.Text, exteriorTextBox.Text, gutterTextBox.Text, Roof.Text, totalTextBox.Text, oandPTextBox.Text, deductibleTextBox.Text, taxTextBox.Text, false);
-
+			EnableAddButton();
 		}
-		private int SetDisplayToScopeTypeIDByScope(DTO_Scope s)
+
+
+		virtual public double Calculate(decimal interior = 0, decimal exterior = 0, decimal gutters = 0, decimal roof = 0, decimal total = 0, decimal oandp = 0, decimal tax = 0, decimal deductible = 0, bool acv = true)
 		{
-			int scopeType = s.ScopeTypeID;
-			if (scopeType == 1) {  radioButton.IsChecked = true; }
-			if (scopeType == 2) {  radioButton_Copy.IsChecked = true;  }
-			if (scopeType == 3) {  radioButton_Copy1.IsChecked = true; }
-			return scopeType;
-		}
-		private int GetScopeTypeByButtonSelected()
-		{
-			int i = 0;
-			if (radioButton.IsChecked == true) return 1;
-			else if (radioButton_Copy.IsChecked == true) return 2;
-			else if (radioButton_Copy1.IsChecked == true) return 3;
-			else if (i < 1) return 1;
-			else if (i > 3) return 3;
-			else return i;
-		}
 
-		virtual public double Calculate(DTO_Scope scope, bool acv=true)
-		{ 
-			if (acv)
-				return scope.Total - scope.Interior - scope.Exterior - scope.Gutter - scope.RoofAmount - scope.Deductible - scope.OandP - scope.Tax;
-			else
-				return scope.Total - scope.Interior - scope.Exterior - scope.Gutter - scope.RoofAmount - scope.Tax;
-		}
+			double a, b, c, d, e, f, g, h;
 
+			a = (double)interior;
 
-		virtual public double Calculate(double interior, double exterior, double gutters, double roof, double total, double oandp,double deductible, double tax,bool acv=true)
-		{
-			
+			b = (double)exterior;
 
+			c = (double)gutters;
 
-			if (acv)
-				return total - interior - exterior - gutters - roof - deductible- oandp;
-			else return total - interior - exterior - gutters - roof - tax;
+			d = (double)roof;
 
+			e = (double)total;
 
-		}
-		virtual public string Calculate(string interior="0", string exterior="0", string gutters = "0", string roof = "0", string total = "0", string oandp = "0", string tax = "0", string deductible="0", bool acv= true)
-		{
-			
-			double a, b, c, d, e, f, g,h;
-			if (interior == "") interior = "0";
-			a = double.Parse(interior);
-			if (exterior == "") exterior = "0";
-			b = double.Parse(exterior);
-			if (gutters == "") gutters = "0";
-			c = double.Parse(gutters);
-			if (roof == "") roof = "0";
-			d = double.Parse(roof);
-			if (total == "") total = "0";
-			e = double.Parse(total);
-			if (oandp == "") oandp = "0";
-			f = double.Parse(oandp);
-			if (tax == "") tax = "0";
-			g = double.Parse(tax);
-			if (deductible == "") deductible = "0";
-			h = double.Parse(deductible);
+			f = (double)oandp;
 
+			g = (double)tax;
 
-
-
+			h = (double)deductible;
 
 			if (acv)
 
-				return (e - a - b - c - d - f - g-h).ToString();
+				return (double)total - (double)interior - (double)exterior - (double)gutters - (double)roof - (double)oandp - (double)tax - (double)deductible;
 
 
-			return (e - a - b - c - d - g).ToString();
+			return (double)total - (double)interior - (double)exterior - (double)gutters - (double)roof - (double)tax;
 
 		}
 
-		private void scopeTypeIDComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		async private Task<List<DTO_Scope>> GetScopes(DTO_Claim claim)
 		{
-			throw new NotImplementedException();
-		}
+			await s1.GetScopesByClaimID(claim);
+			while (s1.ScopesList == null)
+				await Task.Delay(1);
+		return GetClaimScopes(claim, s1.ScopesList);
 
-		private DTO_Scope DisplayScopeInfo(List<DTO_Scope> scopelist, int typescope, DTO_Claim c)
+		}
+		List<DTO_Scope> GetClaimScopes(DTO_Claim claim,List<DTO_Scope> scopesList)
 		{
-			DTO_Scope t = new DTO_Scope();
-			if (scope != null && c != null && typescope > 0 && typescope < 4)
+			List<DTO_Scope> claimScopes = new List<DTO_Scope>();
+			for(int i =0; i<3; i++)
+			{
+
+				claimScopes.Add(FetchScope(scopesList.Where(x => x.ClaimID == claim.ClaimID).ToList(), i));
+			}
+			return claimScopes;
+
+		}
+		DTO_Scope FetchScope(List<DTO_Scope> scopesList, int scopeType)
+		{
+			if (ScopeExists(scopesList, scopeType))
 			{
 
 
-				foreach (DTO_Scope s in scopelist)
-				{
-					if (s.ScopeTypeID == typescope)
-					{
-						
-						
-						bool b = s.ScopeID.Equals(t.ScopeID);
-						if (!b)
-						{
-							SetDisplayToScopeTypeIDByScope(s);
-							deductibleTextBox.Text = s.Deductible.ToString();
-							oandPTextBox.Text = s.OandP.ToString();
-							interiorTextBox.Text = s.Interior.ToString();
-							gutterTextBox.Text = s.Gutter.ToString();
-							totalTextBox.Text = s.Total.ToString();
-							exteriorTextBox.Text = s.Exterior.ToString();
-							taxTextBox.Text = s.Tax.ToString();
-							Roof.Text = s.RoofAmount.ToString();
-							return scope;
-						}
-						else return t;
-
-					}
-				}
-			}  return t;
+			
+				
+				NewScopeBtn.IsEnabled = true;
+				EstimateBtn.IsEnabled = true;
+				OldScopeBtn.IsEnabled = true;
+				if (scopeType == 1) EstimateBtn.Background = Brushes.Green;
+				if (scopeType ==2) OldScopeBtn.Background = Brushes.Green;
+				if(scopeType==3) NewScopeBtn.Background = Brushes.Green;
+				return scopesList.Where(x => x.ScopeTypeID == scopeType).ToList()[0];
+			}
+			else
+			{
+				return new DTO_Scope { ScopeTypeID = scopeType };
+			}
+		}
+		bool ScopeExists(List<DTO_Scope> scopesList,int scopeType)
+		{
+			return scopesList.Exists(x => x.ScopeTypeID == scopeType);
 		}
 
+		
+
+		
+	
+		
 
 		private void ClearData()
 		{
+			OldScopeBtn.Background = Brushes.Red;
+			EstimateBtn.Background = Brushes.Red;
+			NewScopeBtn.Background = Brushes.Red;
 
-			deductibleTextBox.Text = "0";
-			oandPTextBox.Text = "0";
-			interiorTextBox.Text = "0";
-			gutterTextBox.Text = "0";
-			totalTextBox.Text = "0";
-			exteriorTextBox.Text = "0";
-			taxTextBox.Text = "0";
-			ACV.Text = "0";
-			Roof.Text = "0";
-			Depreciation.Text = "0";
+			deductibleTextBox.Value = 0;
+			oandPTextBox.Value = 0;
+			interiorTextBox.Value = 0;
+			gutterTextBox.Value = 0;
+			totalTextBox.Value = 0;
+			exteriorTextBox.Value = 0;
+			taxTextBox.Value = 0;
+			ACV.Value = 0;
+			Roof.Value = 0;
+			Depreciation.Value = 0;
 			SubmitScopeEntry.IsEnabled = false;
-		
+
 		}
 
 
@@ -549,7 +396,7 @@ namespace MRNUIElements
 
 
 			int claimstatustypeid = 0;
-			switch (typescope)
+			switch (TypeScope)
 			{
 				case 1:
 					{
@@ -571,15 +418,15 @@ namespace MRNUIElements
 			await s1.AddScope(new DTO_Scope
 			{
 				ClaimID = claim.ClaimID,
-				Deductible = double.Parse(deductibleTextBox.Text),
-				Exterior = double.Parse(exteriorTextBox.Text),
-				Interior = double.Parse(interiorTextBox.Text),
-				Gutter = double.Parse(gutterTextBox.Text),
-				ScopeTypeID = typescope,
-				Tax = double.Parse(taxTextBox.Text),
-				OandP = double.Parse(oandPTextBox.Text),
-				Total = double.Parse(totalTextBox.Text),
-				RoofAmount = double.Parse(Roof.Text)
+				Deductible = (double)deductibleTextBox.Value,
+				Exterior = (double)exteriorTextBox.Value,
+				Interior = (double)interiorTextBox.Value,
+				Gutter = (double)gutterTextBox.Value,
+				ScopeTypeID = TypeScope,
+				Tax = (double)taxTextBox.Value,
+				OandP = (double)oandPTextBox.Value,
+				Total = (double)totalTextBox.Value,
+				RoofAmount = (double)Roof.Value
 			});
 			if (s1.Scope.Message == null)
 			{
@@ -596,34 +443,67 @@ namespace MRNUIElements
 
 				if (s1.ClaimStatus.Message == null)
 				{
-					MessageBox.Show(s1.ClaimStatus.ClaimStatusID.ToString());
+					MessageBox.Show("Everything Uploaded Successfully");
 				}
 				else
 				{
 					MessageBox.Show(s1.ClaimStatus.Message);
 				}
 
-				MessageBox.Show(s1.Scope.ScopeID.ToString());
+
 			}
 			else
 			{
 				MessageBox.Show(s1.Scope.Message);
 			}
 
-			
+
 			return true;
 		}
 
 		private void ShapePickerBtn_Click(object sender, RoutedEventArgs e)
 		{
-			RoofInspectionWizard Page = new RoofInspectionWizard();
-			NavigationService.Navigate(Page);
+
+
+		}
+
+		private async void NewScopeBtn_Click(object sender, RoutedEventArgs e)
+		{
+			TypeScope = 3;
+			await DisplayScopeInfo(ScopesList[2], ScopesList,3);
+			SubmitScopeEntry.IsEnabled = false;
+			selTxt = "New Scope";
+			
+			NewScopeBtn.Foreground = Brushes.Gold;
+			OldScopeBtn.Foreground = Brushes.White;
+			EstimateBtn.Foreground = Brushes.White;
+		}
+
+		private async void EstimateBtn_Click(object sender, RoutedEventArgs e)
+		{
+			TypeScope = 1;
+		
+			await DisplayScopeInfo(ScopesList[0], ScopesList, 1);
+			SubmitScopeEntry.IsEnabled = false;
+			selTxt = "MRN Estimate";
+			EstimateBtn.Foreground = Brushes.Gold;
+		OldScopeBtn.Foreground = Brushes.White;
+			NewScopeBtn.Foreground = Brushes.White;
+		}
+
+		private async void OldScopeBtn_Click(object sender, RoutedEventArgs e)
+		{
+			TypeScope = 2;
+			await DisplayScopeInfo(ScopesList[1], ScopesList, 2);
+			SubmitScopeEntry.IsEnabled = false;
+			selTxt = "Original Scope";
+			OldScopeBtn.Foreground = Brushes.Gold;
+			NewScopeBtn.Foreground = Brushes.White;
+			EstimateBtn.Foreground = Brushes.White;
+
 		}
 	}
 }
-
-
-
 
 
 

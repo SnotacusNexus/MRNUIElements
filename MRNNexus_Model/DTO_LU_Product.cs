@@ -13,7 +13,9 @@ namespace MRNNexus_Model
     {
         [DataMember]
         public int ProductID { get; set; }
-        [DataMember]
+		[DataMember]
+		public string Brand { get; set; }
+		[DataMember]
         public string Name { get; set; }
         [DataMember]
         public int ProductTypeID { get; set; }

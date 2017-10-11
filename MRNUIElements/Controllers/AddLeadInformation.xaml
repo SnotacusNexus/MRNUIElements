@@ -1,0 +1,83 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MRNUIElements.Controllers"
+    xmlns:MRNUIElements="clr-namespace:MRNUIElements" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+    xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" 
+    x:Class="MRNUIElements.Controllers.AddLeadInformation"
+  
+    mc:Ignorable="d" d:DesignWidth="350"
+    Title="AddLeadInformation" Height="371" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Page.Resources>
+        <CollectionViewSource x:Key="dTO_LeadViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Lead}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_ReferrerViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Referrer}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_EmployeeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Employee}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_CustomerViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Customer}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_AddressViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Address}, CreateList=True}"/>
+    </Page.Resources>
+    <Grid>
+
+        <Grid x:Name="Lead_Gen_Grid" Height="350"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" Margin="-39,0,-59,0" Width="448">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="335*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Margin="10,0,25,273"
+                FontSize="25"
+                FontWeight="Bold"
+                Padding="10"
+                TextAlignment="Center" Foreground="White"><Run Text="Section 1"/><LineBreak/><Run Text="Lead Generation"/></TextBlock>
+            <Button x:Name="button1" Content="Previous" HorizontalAlignment="Left" Margin="53,324,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+            <ComboBox x:Name="LeadTypecomboBox" HorizontalAlignment="Left" Margin="115,81,0,0" VerticalAlignment="Top" Width="196" SelectionChanged="LeadTypecomboBox_SelectionChanged" />
+            <ComboBox x:Name="ExistingContactInfoCombo" HorizontalAlignment="Left" Margin="104,111,0,0" VerticalAlignment="Top" Width="222" Visibility="Hidden" SelectionChanged="ExistingContactInfoCombo_SelectionChanged"/>
+            <ComboBox x:Name="SalesPersonInfoCombo" HorizontalAlignment="Left" Margin="104,285,0,0" VerticalAlignment="Top" Width="222" Visibility="Visible" SelectionChanged="SalesPersonInfoCombo_SelectionChanged"/>
+            <CheckBox x:Name="PreviousReferrercheckBox" Visibility="Hidden"  Content="Previous&#xA;Referrer" HorizontalAlignment="Left" Margin="21,85,0,0" VerticalAlignment="Top" Foreground="White" Checked="PreviousReferrercheckBox_Checked" Unchecked="PreviousReferrercheckBox_Unchecked"/>
+            <Grid  x:Name="ReferralGrid" Margin="53,98,53,79" Visibility="Hidden">
+                <TextBox x:Name="cellPhoneTextBox" HorizontalAlignment="Left" Height="24" Margin="25,133,0,15" Text="{Binding CellPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" Height="23" Margin="25,162,0,-13" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="264"/>
+                <TextBox x:Name="firstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="8,49,0,100" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="94"/>
+                <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Height="23" Margin="197,49,0,100" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="70"/>
+                <TextBox x:Name="mailingAddressTextBox" HorizontalAlignment="Left" Height="23" Margin="8,75,0,74" Text="{Binding MailingAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="324"/>
+                <TextBox x:Name="suffixTextBox" HorizontalAlignment="Left" Height="23" Margin="272,49,0,100" Text="{Binding Suffix, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="42"/>
+                <TextBox x:Name="zipTextBox" HorizontalAlignment="Left" Height="23" Margin="257,104,0,45" Text="{Binding Zip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="75"/>
+            </Grid>
+            <Grid x:Name="EmployeeGrid" Visibility="Hidden" Margin="62,128,98,-16" Grid.RowSpan="2">
+                <CheckBox x:Name="activeCheckBox" Content="Active" HorizontalAlignment="Left" IsChecked="{Binding Active, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="127,212,0,10" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox x:Name="cellPhoneTextBox1" HorizontalAlignment="Left" Height="23" Margin="16,103,0,112" Text="{Binding CellPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="emailTextBox1" HorizontalAlignment="Left" Height="23" Margin="16,131,0,84" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266"/>
+                <ComboBox x:Name="employeeTypeIDComboBox" DisplayMemberPath="EmployeeTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="162,104,0,111" VerticalAlignment="Center" Width="120">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <TextBox x:Name="firstNameTextBox1" HorizontalAlignment="Left" Height="23" Margin="0,18,0,197" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="94"/>
+                <TextBox x:Name="lastNameTextBox1" HorizontalAlignment="Left" Height="23" Margin="187,18,0,197" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="68"/>
+                <TextBox x:Name="middleNameTextBox" Height="23" Margin="99,18,106,197" Text="{Binding MiddleName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                <TextBox x:Name="suffixTextBox1" HorizontalAlignment="Left" Height="23" Margin="260,18,-15,197" Text="{Binding Suffix, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="43"/>
+            </Grid>
+            <Grid x:Name="CustomerGrid" Visibility="Hidden" Margin="61,110,60,9">
+                <TextBox x:Name="emailTextBox2" HorizontalAlignment="Left" Height="23" Margin="17,149,0,58" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="264"/>
+                <TextBox x:Name="firstNameTextBox2" HorizontalAlignment="Left" Height="23" Margin="0,37,0,170" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="93"/>
+                <TextBox x:Name="lastNameTextBox2" HorizontalAlignment="Left" Height="23" Margin="190,36,0,171" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="67"/>
+                <CheckBox x:Name="mailPromosCheckBox" Content="Mail Promos" HorizontalAlignment="Left" IsChecked="{Binding MailPromos, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="128,230,0,-16" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox x:Name="middleNameTextBox1" HorizontalAlignment="Left" Height="23" Margin="99,37,0,170" Text="{Binding MiddleName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="86" TextChanged="middleNameTextBox1_TextChanged"/>
+                <TextBox x:Name="primaryNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="17,121,0,86" Text="{Binding PrimaryNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="secondaryNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="164,121,0,86" Text="{Binding SecondaryNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="suffixTextBox2" HorizontalAlignment="Left" Height="23" Margin="262,36,0,171" Text="{Binding Suffix, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="45"/>
+            </Grid>
+            <Grid x:Name="AddressGrid" Visibility="Hidden" Margin="62,173,59,110">
+                <TextBox x:Name="addressTextBox" HorizontalAlignment="Left" Height="23" Margin="2,0,0,43" Grid.Row="0" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="320"/>
+                <TextBox x:Name="zipTextBox1" HorizontalAlignment="Left" Height="23" Margin="249,29,0,14" Text="{Binding Zip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="75"/>
+            </Grid>
+        </Grid>
+        <Button x:Name="button" Content="Next" HorizontalAlignment="Left" Margin="275,321,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+
+    </Grid>
+</Page>

@@ -46,5 +46,8 @@ namespace MRNNexus_Model
         public bool Success { get; set; }
         [DataMember]
         public int? CreditToID { get; set; }
-    }
+		[DataMember]
+		public string Temperature { get; set; }
+
+	}
 }

@@ -28,10 +28,14 @@ namespace MRNNexus_Model
         [DataMember]
         public int? Pitch { get; set; }
         [DataMember]
-        public int? HipValley { get; set; }
+		public int? Hip { get; set; }
+		[DataMember]
+		public int? Valley { get; set; }
         [DataMember]
         public int? RidgeLength { get; set; }
-        [DataMember]
+		[DataMember]
+		public int? TurtleBacks { get; set; }
+		[DataMember]
         public int? RakeLength { get; set; }
         [DataMember]
         public int? EaveHeight { get; set; }

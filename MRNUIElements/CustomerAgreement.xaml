@@ -5,7 +5,9 @@
       xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MRNUIElements"
+     
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       Title="CustomerAgreement"
       Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}"
@@ -52,8 +54,8 @@
         <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
         <Style x:Key="EntryFieldStyle" TargetType="{x:Type Grid}">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Margin" Value="0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
         <Style x:Key="FocusVisual">
@@ -96,14 +98,13 @@
         </RadialGradientBrush>
 
         <Style TargetType="{x:Type TabItem}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
-            <Setter Property="Foreground" Value="White" />
             <Setter Property="Background" Value="{StaticResource TabItem.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource TabItem.Static.Border}" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="Margin" Value="0" />
             <Setter Property="Padding" Value="6,2,6,2" />
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="VerticalContentAlignment" Value="Stretch" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TabItem}">
@@ -137,9 +138,9 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
                                 </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -147,9 +148,9 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
                                 </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -157,9 +158,9 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
                                 </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -167,9 +168,9 @@
                                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
                                 </MultiDataTrigger.Conditions>
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.MouseOver.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.MouseOver.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -178,9 +179,9 @@
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -189,9 +190,9 @@
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -200,9 +201,9 @@
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -211,9 +212,9 @@
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="contentPresenter" Property="Opacity" Value="0.56" />
+                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter TargetName="mainBorder" Property="Background" Value="{StaticResource TabItem.Disabled.Background}" />
                                 <Setter TargetName="mainBorder" Property="BorderBrush" Value="{StaticResource TabItem.Disabled.Border}" />
-                                <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -229,10 +230,10 @@
                                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter Property="Margin" Value="-2,-2,0,-2" />
-                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,0,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -248,10 +249,10 @@
                                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter Property="Margin" Value="-2,0,-2,-2" />
-                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,0,1,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -267,10 +268,10 @@
                                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter Property="Margin" Value="0,-2,-2,-2" />
-                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter TargetName="innerBorder" Property="BorderThickness" Value="0,1,1,1" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />
                             </MultiDataTrigger>
                             <MultiDataTrigger>
@@ -286,16 +287,17 @@
                                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
                                     <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
                                 </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter Property="Margin" Value="-2,-2,-2,0" />
-                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
+                                <Setter Property="Panel.ZIndex" Value="1" />
                                 <Setter TargetName="innerBorder" Property="BorderThickness" Value="1,1,1,0" />
+                                <Setter TargetName="innerBorder" Property="Opacity" Value="1" />
                                 <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,1,0" />
                             </MultiDataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
         </Style>
         <CollectionViewSource x:Key="dTO_CustomerViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Customer}, CreateList=True}" />
         <CollectionViewSource x:Key="dTO_ClaimStatusViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_ClaimStatus}, CreateList=True}" />
@@ -304,155 +306,125 @@
         <CollectionViewSource x:Key="dTO_InsuranceCompanyViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_InsuranceCompany}, CreateList=True}" />
     </Page.Resources>
 
-    <StackPanel>
+    <Grid>
         <Grid MinWidth="400"
               MinHeight="400"
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
-              DataContext="{StaticResource dTO_InsuranceCompanyViewSource}">
+              DataContext="{StaticResource dTO_InsuranceCompanyViewSource}" Margin="282,195,281.4,243.4">
             <TabControl x:Name="CustomeerAgreement"
-                        Height="400"
+                        Height="426"
                         MinWidth="300"
                         MinHeight="400"
-                        Margin="0,10,20,0"
+                        Margin="0,1,-9.8,-27"
                         VerticalAlignment="Top"
                         Background="Transparent"
                         Foreground="White"
+                        HorizontalAlignment="Left"
                         SelectedIndex="{Binding Mode=OneWay}"
-                        TabStripPlacement="Top">
+                        TabStripPlacement="Top" Panel.ZIndex="10">
                 <TabItem x:Name="Lead_Generation"
                          Background="{DynamicResource ReverseBackgroundGradient}"
                          BorderBrush="Black"
                          Foreground="White"
                          Header="Lead Generation">
-                    <TabPanel Width="982"
+                    <TabPanel x:Name="LeadTab"
+                              Width="982"
                               Height="369"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Top"
-                              RenderTransformOrigin="0.5,0.5">
+                              >
 
-                        <StackPanel Height="300"
-                                    Margin="333,10,-333,-10"
-                                    HorizontalAlignment="Center">
-                            <StackPanel Margin="15,0,15,0"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        Orientation="Vertical">
-                                <TextBlock FontSize="25"
+                        <Grid Margin="144,0,-98,0" >
+
+                            <TextBlock FontSize="25"
                                            FontWeight="Bold"
                                            Padding="10"
-                                           TextAlignment="Center"><Run Text="Section 1" />
+                                           TextAlignment="Center" Margin="238,0,236,250" ><Run Text="Section 1" />
                                     <LineBreak /><Run Text="Lead Generation" />
                                     <LineBreak /><Run Text="Interview" /></TextBlock>
-                                <StackPanel Margin="15,0,15,0"
-                                            HorizontalAlignment="Right"
-                                            Orientation="Horizontal">
-                                    <DatePicker x:Name="ContractDate" HorizontalAlignment="Right" />
-                                </StackPanel>
-                                <StackPanel Margin="15,5,15,5"
-                                            HorizontalAlignment="Stretch"
-                                            DataContext="{StaticResource dTO_EmployeeViewSource}"
-                                            Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="FirstName"
-                                                           Width="80"
-                                                           Height="23"
-                                                           Text="{Binding FirstName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="First Name" />
+                            <Grid Margin="10,58,10,43">
 
-                                    <xctk:WatermarkTextBox x:Name="MiddleName"
-                                                           Width="80"
-                                                           Height="23"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Middle Name" />
-
-                                    <xctk:WatermarkTextBox x:Name="Lastname"
-                                                           Width="90"
-                                                           Height="23"
-                                                           Text="{Binding LastName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Last Name" />
-                                    <xctk:WatermarkTextBox x:Name="suffix"
-                                                           Width="40"
-                                                           Height="23"
-                                                           Text="{Binding Suffix}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Suffix" />
-                                </StackPanel>
-                                <StackPanel x:Name="stackPanel"
-                                            Margin="15,5,15,5"
-                                            HorizontalAlignment="Stretch"
-                                            DataContext="{StaticResource dTO_AddressViewSource}"
-                                            Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Address"
-                                                           Width="300"
-                                                           Height="23"
-                                                           Text="{Binding Address}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Address" />
-                                </StackPanel>
-                                <StackPanel Margin="15,5,15,5"
-                                            HorizontalAlignment="Stretch"
-                                            DataContext="{StaticResource dTO_AddressViewSource}"
-                                            Orientation="Horizontal">
-
-                                    <TextBox x:Name="City"
-                                             Width="120"
+                                <syncfusion:MaskedTextBox x:Name="Primary_Phone" TextAlignment="Center"
+                                                              Width="125"
+                                                              Height="23"
+                                                              MinWidth="100"
+                                                              Margin="190,201,0,0"
+                                                              HorizontalAlignment="Left"
+                                                              Padding="0"
+                                                              TabIndex="7"
+                                                              Text="{Binding CellPhone}"
+                                                              TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Center" WatermarkText="Phone #"
+                                                            />
+                                <DatePicker x:Name="ContractDate"
+                                                HorizontalAlignment="Left"
+                                                IsTabStop="True"
+                                                TabIndex="0" Margin="335,58,0,0" HorizontalContentAlignment="Center" VerticalAlignment="Top" />
+                                <syncfusion:MaskedTextBox x:Name="FirstName" TextAlignment="Center"
+                                                              Height="23"
+                                                              TabIndex="1"
+                                                              Text="{Binding FirstName}"
+                                                              TextWrapping="Wrap"
+                                                            Margin="190,86,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="76" WatermarkText="First" />
+                                <syncfusion:MaskedTextBox x:Name="MiddleName" TextAlignment="Center"
+                                                              Width="54"
+                                                              Height="23"
+                                                              TabIndex="2"
+                                                              TextWrapping="Wrap"
+                                                              Margin="271,86,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" WatermarkText="Middle" />
+                                <syncfusion:MaskedTextBox x:Name="Lastname" TextAlignment="Center"
+                                                              Width="69"
+                                                              Height="23"
+                                                              TabIndex="3"
+                                                              Text="{Binding LastName}"
+                                                              TextWrapping="Wrap"
+                                                            Margin="330,86,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" WatermarkText="Last" />
+                                <syncfusion:MaskedTextBox x:Name="suffix" TextAlignment="Center"
+                                                              Width="33"
+                                                              Height="23"
+                                                              TabIndex="4"
+                                                              Text="{Binding Suffix}"
+                                                              TextWrapping="Wrap"
+                                                               Margin="404,86,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" WatermarkText="Suffix" />
+                                <syncfusion:MaskedTextBox x:Name="Address" TextAlignment="Center"
+                                                              Width="248"
+                                                              Height="23"
+                                                              TabIndex="5"
+                                                              Text="{Binding Address}"
+                                                              TextWrapping="Wrap"
+                                                             Margin="189,117,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" WatermarkText="Address" />
+                                <syncfusion:MaskedTextBox x:Name="City"
                                              Height="23"
                                              IsEnabled="False"
                                              Text="City"
-                                             TextWrapping="Wrap" />
-                                    <TextBox x:Name="State"
-                                             Width="120"
+                                             TextWrapping="Wrap" Margin="189,145,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="108" WatermarkText="City" />
+                                <syncfusion:MaskedTextBox x:Name="State"
                                              Height="23"
                                              IsEnabled="False"
                                              Text="State"
-                                             TextWrapping="Wrap" />
-                                    <xctk:WatermarkTextBox x:Name="Zipcode"
-                                                           Width="50"
-                                                           Height="23"
-                                                           Text="{Binding Zip}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Zipcode" />
-                                </StackPanel>
-                                <StackPanel Margin="15,0,15,0"
-                                            HorizontalAlignment="Stretch"
-                                            DataContext="{StaticResource dTO_EmployeeViewSource}"
-                                            Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Primary_Phone"
-                                                           Width="125"
-                                                           Height="23"
-                                                           MinWidth="100"
-                                                           Margin="10,5,15,5"
-                                                           HorizontalAlignment="Stretch"
-                                                           Padding="0"
-                                                           Text="{Binding CellPhone}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Primary Phone" />
-                                    <xctk:WatermarkTextBox x:Name="Secondary_Phone"
-                                                           Width="125"
-                                                           Height="23"
-                                                           MinWidth="100"
-                                                           Margin="10,5,15,5"
-                                                           HorizontalAlignment="Stretch"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Secondary Phone" />
-                                </StackPanel>
-                                <StackPanel Margin="15,0,15,0"
-                                            HorizontalAlignment="Stretch"
-                                            DataContext="{StaticResource dTO_EmployeeViewSource}"
-                                            Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Email_Address"
-                                                           Width="300"
-                                                           Height="23"
-                                                           HorizontalAlignment="Stretch"
-                                                           Text="{Binding Email}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Enter First Name" />
-                                </StackPanel>
+                                             TextWrapping="Wrap" Margin="302,145,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="80" WatermarkText="State" />
+                                <syncfusion:MaskedTextBox x:Name="Zipcode"
+                                                              Width="50"
+                                                              Height="23"
+                                                              TabIndex="6"
+                                                              Text="{Binding Zip}"
+                                                              TextWrapping="Wrap"
+                                                           Margin="387,145,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" WatermarkText="Zipcode" />
+                                <syncfusion:MaskedTextBox x:Name="Email_Address" TextAlignment="Center"
+                                                              Width="247"
+                                                              Height="23"
+                                                              HorizontalAlignment="Left"
+                                                              TabIndex="8"
+                                                              Text="{Binding Email}"
+                                                              TextWrapping="Wrap" Margin="190,173,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" WatermarkText="Email Address"
+                                                            />
 
-                            </StackPanel>
-                        </StackPanel>
+                            </Grid>
+
+                            <ComboBox x:Name="LeadType" IsEditable="True" HorizontalAlignment="Left" Margin="202,119,0,0" VerticalAlignment="Top" Width="120" Text="Lead Type"/>
+
+
+                        </Grid>
                     </TabPanel>
                 </TabItem>
 
@@ -469,137 +441,121 @@
                                 <TextBlock FontSize="25"
                                            FontWeight="Bold"
                                            Padding="10"
-                                           TextAlignment="Center"><Run Text="Section 2" />
-                                    <LineBreak /><Run Text="Client Pre-Inspection" />
-                                    <LineBreak /><Run Text="Interview" /></TextBlock>
-                                <StackPanel Margin="15,0,15,0"
+                                           TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,0,0,0"><Run Text="Section 2"/><LineBreak/><Run Text="Customer Details"/></TextBlock>
+                                <Grid Margin="15,0,15,0"
                                             HorizontalAlignment="Right"
                                             DataContext="{StaticResource dTO_ClaimStatusViewSource}"
-                                            Orientation="Horizontal">
-                                    <DatePicker x:Name="ContractDate1"
-                                                HorizontalAlignment="Right"
-                                                SelectedDate="{Binding ClaimStatusDate,
-                                                                       Mode=TwoWay,
-                                                                       NotifyOnValidationError=true,
-                                                                       ValidatesOnExceptions=true}" />
-                                </StackPanel>
-                                <StackPanel Margin="15,5,15,5"
-                                            HorizontalAlignment="Stretch"
+                                        />
+                                <Grid Margin="15,5,15,5"
+                                            HorizontalAlignment="Left"
                                             DataContext="{StaticResource dTO_CustomerViewSource}"
-                                            Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="FirstName1"
-                                                           Width="80"
-                                                           Height="23"
-                                                           Margin="2,0,1,0"
-                                                           Text="{Binding FirstName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="First Name" />
-                                    <xctk:WatermarkTextBox x:Name="MiddleName1"
-                                                           Width="80"
-                                                           Height="23"
-                                                           Margin="1,0"
-                                                           Text="{Binding MiddleName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Middle Name" />
-                                    <xctk:WatermarkTextBox x:Name="LastName1"
-                                                           Width="90"
-                                                           Height="23"
-                                                           Margin="1,0"
-                                                           Text="{Binding LastName}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Last Name" />
-                                    <xctk:WatermarkTextBox x:Name="Suffix1"
-                                                           Width="40"
-                                                           Height="23"
-                                                           Margin="1,0,2,0"
-                                                           Text="{Binding Suffix}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Suffix" />
-                                </StackPanel>
+                                             VerticalAlignment="Top">
+                                    <TextBox x:Name="FirstName1"
+                                                              Width="80"
+                                                              Height="23"
+                                                              Margin="2,0,0,0"
+                                                              Text="{Binding FirstName}"
+                                                              TextWrapping="Wrap"
+                                                             HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <TextBox x:Name="MiddleName1"
+                                                              Width="60"
+                                                              Height="23"
+                                                              Margin="87,0,-55,0"
+                                                              Text="{Binding MiddleName}"
+                                                              TextWrapping="Wrap"
+                                                              HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <TextBox x:Name="LastName1"
+                                                              Width="70"
+                                                              Height="23"
+                                                              Margin="152,0,-130,0"
+                                                              Text="{Binding LastName}"
+                                                              TextWrapping="Wrap"
+                                                             HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <TextBox x:Name="Suffix1"
+                                                              Width="40"
+                                                              Height="23"
+                                                              Margin="227,0,-175,0"
+                                                              Text="{Binding Suffix}"
+                                                              TextWrapping="Wrap"
+                                                              HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                </Grid>
 
-                                <StackPanel x:Name="stackPanel1"
+                                <Grid x:Name="stackPanel1"
                                             Margin="15,5,15,5"
-                                            HorizontalAlignment="Stretch"
+                                            HorizontalAlignment="Left"
                                             DataContext="{StaticResource dTO_AddressViewSource}"
-                                            Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Address1"
-                                                           Width="{Binding ActualWidth,
-                                                                           ElementName=stackPanel1}"
-                                                           Height="23"
-                                                           Text="{Binding Address}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Address" />
-                                </StackPanel>
-                                <StackPanel Margin="15,0,0,0"
-                                            HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Top">
+                                    <TextBox x:Name="Address1"
+                                                              Width="265"
+                                                              Height="23"
+                                                              Text="{Binding Address}"
+                                                              TextWrapping="Wrap"
+                                                             HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,-213,0" />
+                                </Grid>
+                                <Grid Margin="15,0,0,0"
+                                            HorizontalAlignment="Left"
                                             DataContext="{StaticResource dTO_AddressViewSource}"
-                                            Orientation="Horizontal">
+                                            VerticalAlignment="Top">
 
                                     <TextBox x:Name="City1"
-                                             Width="120"
                                              Height="23"
                                              BorderThickness="1"
+                                             IsEnabled="False"
                                              IsReadOnly="True"
                                              IsReadOnlyCaretVisible="True"
                                              IsUndoEnabled="False"
                                              Text="City"
-                                             TextWrapping="Wrap" />
+                                             TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110" />
                                     <TextBox x:Name="State1"
-                                             Width="120"
+                                             Width="98"
                                              Height="23"
-                                             Margin="5,0"
+                                             Margin="115,0,-83,0"
                                              AllowDrop="False"
                                              Focusable="False"
+                                             IsEnabled="False"
                                              IsReadOnly="True"
                                              IsReadOnlyCaretVisible="True"
                                              IsTabStop="False"
                                              IsUndoEnabled="False"
                                              Text="State"
-                                             TextWrapping="Wrap" />
-                                    <xctk:WatermarkTextBox x:Name="Zipcode1"
-                                                           Width="50"
-                                                           Height="23"
-                                                           Margin="0,0,5,0"
-                                                           Text="{Binding Zip}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Zipcode" />
-                                </StackPanel>
-                                <StackPanel Margin="15,0,15,0"
-                                            HorizontalAlignment="Stretch"
+                                             TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <TextBox x:Name="Zipcode1"
+                                                              Width="50"
+                                                              Height="23"
+                                                              Margin="218,0,-138,0"
+                                                              Text="{Binding Zip}"
+                                                              TextWrapping="Wrap"
+                                                           HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                </Grid>
+                                <Grid Margin="15,0,15,0"
+                                    HorizontalAlignment="Left"
+                                    DataContext="{StaticResource dTO_CustomerViewSource}"
+                                            Height="33" VerticalAlignment="Top">
+                                    <TextBox x:Name="Primary_Phone1"
+                                        MinWidth="100"
+                                        HorizontalAlignment="Left"
+                                        Padding="0"
+                                        Text="{Binding PrimaryNumber}"
+                                        TextWrapping="Wrap"
+                                       Margin="0,5,0,0" VerticalAlignment="Top" Width="134" />
+                                    <TextBox x:Name="Secondary_Phone1"
+                                        MinWidth="100"
+                                        HorizontalAlignment="Left"
+                                        Text="{Binding SecondaryNumber}"
+                                    Margin="148,5,0,0" VerticalAlignment="Top" Width="120" />
+                                </Grid>
+                                <Grid Margin="15,0,15,0"
+                                            HorizontalAlignment="Left"
                                             DataContext="{StaticResource dTO_CustomerViewSource}"
-                                            Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Primary_Phone1"
-                                                           Width="125"
-                                                           Height="23"
-                                                           MinWidth="100"
-                                                           Margin="10,5,15,5"
-                                                           HorizontalAlignment="Stretch"
-                                                           Padding="0"
-                                                           Text="{Binding PrimaryNumber}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Primary Phone" />
-                                    <xctk:WatermarkTextBox x:Name="Secondary_Phone1"
-                                                           Width="125"
-                                                           Height="23"
-                                                           MinWidth="100"
-                                                           Margin="10,5,15,5"
-                                                           HorizontalAlignment="Stretch"
-                                                           Text="{Binding SecondaryNumber}"
-                                                           Watermark="Secondary Phone" />
-                                </StackPanel>
-                                <StackPanel Margin="15,0,15,0"
-                                            HorizontalAlignment="Stretch"
-                                            DataContext="{StaticResource dTO_CustomerViewSource}"
-                                            Orientation="Horizontal">
-                                    <xctk:WatermarkTextBox x:Name="Email_Address1"
-                                                           Width="{Binding ActualWidth,
-                                                                           ElementName=stackPanel1}"
-                                                           Height="23"
-                                                           HorizontalAlignment="Stretch"
-                                                           Text="{Binding Email}"
-                                                           TextWrapping="Wrap"
-                                                           Watermark="Email Address" />
-                                </StackPanel>
+                                          VerticalAlignment="Top">
+                                    <TextBox x:Name="Email_Address1"
+                                                              Width="266"
+                                                              Height="23"
+                                                              HorizontalAlignment="Left"
+                                                              Text="{Binding Email}"
+                                                              TextWrapping="Wrap"
+                                                             VerticalAlignment="Top" Margin="0,0,-214,0" />
+                                </Grid>
                             </StackPanel>
                         </Grid>
 
@@ -614,46 +570,55 @@
                         <Grid Width="688"
                               Margin="0,6,0,-148"
                               Background="Transparent">
-                            <TextBlock Margin="0,0,-43,0"
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="683*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                       Margin="130,10,118,0"
                                        VerticalAlignment="Top"
                                        FontSize="25"
                                        FontWeight="Bold"
                                        Padding="10"
-                                       TextAlignment="Center"><Run Text="Section 3" />
+                                       TextAlignment="Center" Grid.Column="1" Height="110"><Run Text="Section 3" />
                                 <LineBreak /><Run Text=" Insurance &amp; Mortgage Company" />
                                 <LineBreak /><Run Text="Information" /></TextBlock>
                             <ComboBox x:Name="InsuranceLU"
-                                      Width="100"
+                                      Grid.Column="1"
+                                      Width="144"
                                       Height="20"
-                                      Margin="146,144,0,0"
+                                      Margin="63,151,0,0"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Top"
                                       Background="{x:Null}"
+                                      DataContext="{StaticResource dTO_InsuranceCompanyViewSource}"
+                                      DisplayMemberPath="CompanyName"
                                       Foreground="White"
-                                      IsReadOnly="True"
-                                      d:LayoutOverrides="Height" />
+                                      ItemsSource="{Binding Path=insco}"
+                                      SelectionChanged="InsuranceLU_SelectionChanged">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel />
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
                             <Label x:Name="label"
-                                   Margin="40,138,0,0"
+                                   Grid.Column="1"
+                                   Width="146"
+                                   Margin="63,120,0,0"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
                                    Content="Insurance Carrier:"
                                    Foreground="White" />
                             <Label x:Name="label_Copy"
-                                   Margin="54,0,0,91"
+                                   Grid.Column="1"
+                                   Margin="65,0,0,111"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Bottom"
                                    Content="Mortgage Holder:"
-                                   Foreground="White" />
-                            <TextBox x:Name="InsPolicyNumber"
-                                     Width="146"
-                                     Height="23"
-                                     Margin="0,138,127,0"
-                                     HorizontalAlignment="Right"
-                                     VerticalAlignment="Top"
-                                     Background="{x:Null}"
-                                     Foreground="White"
-                                     TextWrapping="Wrap" />
+                                   Foreground="White" Width="140" />
                             <TextBox x:Name="Policy_Comments"
+                                     Grid.Column="1"
                                      Width="228"
                                      Height="89"
                                      Margin="0,0,45,91"
@@ -663,57 +628,56 @@
                                      Foreground="White"
                                      TextWrapping="Wrap" />
                             <TextBox x:Name="MortgageAcctNumber"
+                                     Grid.Column="1"
                                      Height="22"
-                                     Margin="260,0,258,56"
-                                     VerticalAlignment="Bottom"
-                                     Background="{x:Null}"
-                                     Foreground="White"
+                                     Margin="395,136,118,0"
+                                     VerticalAlignment="Top"
+                                   
                                      TextWrapping="Wrap" />
                             <TextBox x:Name="ClaimsPhoneNumber"
+                                     Grid.Column="1"
                                      Width="146"
-                                     Height="28"
-                                     Margin="68,194,0,0"
+                                     Height="16"
+                                     Margin="63,194,0,0"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Top"
-                                     Background="{x:Null}"
-                                     Foreground="White"
-                                     TextWrapping="Wrap" />
-                            <Label x:Name="label_Copy2"
-                                   Width="132"
-                                   Margin="122,0,0,56"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Bottom"
-                                   Content="Mortgage Account #:"
-                                   Foreground="White" />
-                            <TextBox x:Name="MorgageHolder"
+                                    
+                                     DataContext="{StaticResource dTO_InsuranceCompanyViewSource}"
+                                   
+                                     Text="{Binding /ClaimPhoneNumber,
+                                                    BindsDirectlyToSource=True,
+                                                    Mode=OneWay}"
+                                     TextWrapping="NoWrap" />
+                            <TextBox x:Name="MortgageHolder"
+                                     Grid.Column="1"
                                      Width="146"
                                      Height="29"
-                                     Margin="164,0,0,86"
+                                     Margin="63,0,0,77"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Bottom"
                                      Background="{x:Null}"
                                      Foreground="White"
-                                     TextWrapping="Wrap"
-                                     d:LayoutOverrides="VerticalAlignment" />
+                                     TextWrapping="Wrap" />
                             <Label x:Name="label_Copy3"
-                                   Margin="68,169,0,0"
+                                   Grid.Column="1"
+                                   Margin="63,169,0,0"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
                                    Content="Claims Phone Number:"
                                    Foreground="White" />
                             <Label x:Name="label_Copy1"
-                                   Margin="308,134,278,0"
+                                   Grid.Column="1"
+                                   Margin="303,134,278,0"
                                    VerticalAlignment="Top"
                                    Content="Policy Number:"
-                                   Foreground="White"
-                                   d:LayoutOverrides="Width" />
+                                   Foreground="White" />
                             <Label x:Name="label_Copy4"
+                                   Grid.Column="1"
                                    Height="32"
-                                   Margin="308,178,278,0"
+                                   Margin="303,178,278,0"
                                    VerticalAlignment="Top"
                                    Content="Comments:"
-                                   Foreground="White"
-                                   d:LayoutOverrides="Width" />
+                                   Foreground="White" />
                         </Grid>
                     </TabPanel>
                 </TabItem>
@@ -724,50 +688,49 @@
 
                     <TabPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 
-                        <Grid Width="674" Height="372">
-                            <TextBlock Margin="0"
+                        <Grid Width="674" Height="353" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0">
+                            <TextBlock Margin="250,0,114,0"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Top"
                                        FontSize="25"
                                        FontWeight="Bold"
                                        Padding="0"
-                                       TextAlignment="Center"><Run Text="Section 4" />
-                                <LineBreak /><Run Text=" Site Survey" /></TextBlock>
+                                       TextAlignment="Center" Width="310" Text="Section 4 - Site Survey"/>
                             <Button x:Name="Roof_Inspection"
-                                    Margin="-300,-100,0,0"
+                                    Margin="10,35,522,276"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Click="Roof_Inspection_Click"
-                                    Content="Roof Inspection"
-                                    Style="{DynamicResource normal}" />
+                                    Content="Import Measurements" Width="142" Height="20"
+                                     />
                             <Button x:Name="Gutter_Inspection"
-                                    Margin="-300,0,0,-100"
+                                    Margin="10,60,522,242"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Click="Gutter_Inspection_Click"
-                                    Content="Gutter Inspection"
-                                    Style="{DynamicResource normal}" />
+                                    Content="Add Images" Width="142" Height="29"
+                                     />
                             <Button x:Name="Interior_Inspection"
-                                    Margin="0,0,-300,-100"
+                                    Margin="10,126,522,175"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Click="Interior_Inspection_Click"
-                                    Content="Interior Inspection"
-                                    Style="{DynamicResource normal}" />
+                                    Content="Interior Inspection" Width="142" Height="30"
+                                     />
                             <Button x:Name="Exterior_Inspection"
-                                    Margin="0,-100,-300,0"
+                                    Margin="10,94,522,210"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Click="Exterior_Inspection_Click"
-                                    Content="Exterior Inspection"
-                                    Style="{DynamicResource normal}" />
+                                    Content="Exterior Inspection" Width="142" Height="27"
+                                     />
                             <Button x:Name="Edit_Inspection"
-                                    Margin="223.5,168"
+                                    Margin="10,10,522,301"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Click="Edit_Inspection_Click"
-                                    Content="Edit Inspection"
-                                    Style="{DynamicResource normal}" />
+                                    Content="Edit Inspection" Width="142" Height="20"
+                                     />
                         </Grid>
 
                     </TabPanel>
@@ -778,16 +741,20 @@
                          BorderBrush="{DynamicResource ReverseBackgroundGradient}"
                          Header="Damage Assessment">
 
-                    <TabPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <Grid Background="Transparent">
+                    <TabPanel  VerticalAlignment="Top" Height="368">
+                        <Grid Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="14,10,-15,-5" Width="973">
+
                             <TextBlock FontSize="25"
                                        FontWeight="Bold"
                                        Padding="10"
-                                       TextAlignment="Center"><Run Text="Section 5" />
+                                       TextAlignment="Center" Margin="252,0,270,270" HorizontalAlignment="Center" VerticalAlignment="Center" Width="478"  ><Run Text="Section 5" />
                                 <LineBreak /><Run Text="Damage Assessment" />
                                 <LineBreak /><Run Text="Information" /></TextBlock>
-                        </Grid>
 
+                            <Button x:Name="button" Content="Estimate" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="100" Margin="10,141,0,0"/>
+                            <Button x:Name="button_Copy" Content="Original Scope" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="100" Margin="10,171,0,0"/>
+                            <Button x:Name="button_Copy1" Content="New Scope" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="100" Margin="10,201,0,0"/>
+                        </Grid>
                     </TabPanel>
                 </TabItem>
 
@@ -825,7 +792,7 @@
                 <TabItem x:Name="Upgrades"
                          BorderBrush="{DynamicResource ReverseBackgroundGradient}"
                          Header="Upgrades &amp; Add-ons">
-                    <TabPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <TabPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,3,0,-2">
                         <Grid Width="900"
                               Height="400"
                               Background="Transparent">
@@ -847,38 +814,45 @@
                             <TextBlock Margin="0,0,0,245"
                                        FontSize="25"
                                        FontWeight="Bold"
-                                       Padding="10"
+                                       Padding="0"
                                        TextAlignment="Center"><Run Text="Section 9" />
                                 <LineBreak /><Run Text="Finalizing Our Agreement" />
                                 <LineBreak /><Run Text="What To Expect Next" /></TextBlock>
+                            <StackPanel Margin="0" VerticalAlignment="Bottom">
+                                <Viewbox Width="500"
+                                         Height="75"
+                                         Stretch="Fill">
+                                    <local:SignatureBox x:Name="Sign1_Copy"
+                                                        Height="300"
+                                                        Margin="0"
+                                                        BorderThickness="0"
+                                                        Padding="0" />
+                                </Viewbox>
+                                <Viewbox Width="500"
+                                         Height="75"
+                                         Stretch="Fill">
+                                    <local:SignatureBox x:Name="Sign2_Copy"
+                                                        Height="300"
+                                                        Margin="0"
+                                                        BorderThickness="0"
+                                                        Padding="0" />
+                                </Viewbox>
+                                <Viewbox Width="500"
+                                         Height="75"
+                                         Stretch="Fill">
+                                    <local:SignatureBox x:Name="Sign3_Copy"
+                                                        Height="300"
+                                                        Margin="0"
+                                                        BorderThickness="0"
+                                                        Padding="0" />
+                                </Viewbox>
+                                <Button Width="100"
+                                        Height="20"
+                                        Click="Button_Click"
+                                        Content="Add Claim" />
+                            </StackPanel>
 
 
-
-
-                            <Canvas Name="paintSurface"
-                                    Margin="234,136,197,187"
-                                    MouseDown="Canvas_MouseDown_1"
-                                    MouseMove="Canvas_MouseMove_1">
-                                <Canvas.Background>
-                                    <SolidColorBrush Opacity="100" Color="White" />
-                                </Canvas.Background>
-                            </Canvas>
-                            <Canvas Name="paintSurface1"
-                                    Margin="234,209,197,114"
-                                    MouseDown="Canvas_MouseDown_2"
-                                    MouseMove="Canvas_MouseMove_2">
-                                <Canvas.Background>
-                                    <SolidColorBrush Opacity="100" Color="White" />
-                                </Canvas.Background>
-                            </Canvas>
-                            <Canvas x:Name="paintSurface2"
-                                    Margin="234,281,197,42"
-                                    MouseDown="Canvas_MouseDown_3"
-                                    MouseMove="Canvas_MouseMove_3">
-                                <Canvas.Background>
-                                    <SolidColorBrush Opacity="100" Color="White" />
-                                </Canvas.Background>
-                            </Canvas>
                         </Grid>
 
                     </TabPanel>
@@ -886,11 +860,14 @@
                 </TabItem>
 
 
+
+
+
             </TabControl>
         </Grid>
 
 
-        <StackPanel Margin="0"
+        <StackPanel Margin="719,0,719.4,0.4"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Orientation="Horizontal">
@@ -899,31 +876,31 @@
                     VerticalAlignment="Bottom"
                     Click="PrevStep"
                     Content="Previous"
-                    Style="{StaticResource normal}" />
+                    />
             <Button x:Name="HomeButton"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Click="Home"
                     Content="Home"
-                    Style="{StaticResource normal}" />
+                    />
             <Button x:Name="NextButton"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Click="NextStep"
                     Content="Next"
-                    Style="{StaticResource normal}" />
+                    />
         </StackPanel>
-        <ProgressBar Height="39.077"
+        <ProgressBar Height="39"
                      MinWidth="300"
                      MinHeight="20"
-                     Margin="0"
+                     Margin="626,0,624.4,-43.6"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Bottom"
                      Background="Transparent"
                      BorderBrush="Black"
                      IsTabStop="False"
                      SmallChange="0" />
-    </StackPanel>
+    </Grid>
 
 
 </Page>

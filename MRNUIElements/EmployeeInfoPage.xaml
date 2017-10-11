@@ -12,7 +12,7 @@
         <StackPanel Orientation="Vertical">
             <TextBlock FontSize="25" Foreground="White" FontWeight="Bold" TextAlignment="Center" Padding="10" Text="Employee Information Page"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-                <Button Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Stretch" Foreground="White" FontWeight="Bold" Click="LogOut" Style="{StaticResource normal}">
+                <Button Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Stretch" Foreground="White" FontWeight="Bold" Click="LogOut" >
                     <TextBlock FontSize="16" Foreground="White" Text="Log Out" Margin="5" TextWrapping="WrapWithOverflow" Width="150" TextAlignment="Center"/>
                 </Button>
             </StackPanel>

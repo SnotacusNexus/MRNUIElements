@@ -55,5 +55,8 @@ namespace MRNNexus_Model
         public string InitialImagePath { get; set; }
         [DataMember]
         public Nullable<int> NumInitials { get; set; }
-    }
+		[DataMember]
+		public string DocumentComments  { get; set; }
+
+	}
 }

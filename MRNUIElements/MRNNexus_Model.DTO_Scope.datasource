@@ -7,4 +7,85 @@
 -->
 <GenericObjectDataSource DisplayName="DTO_Scope" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
    <TypeInfo>MRNNexus_Model.DTO_Scope, MRNNexus_Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeUISetting>
+      <PropertyUISettings>
+         <PropertyUISetting Name="ACV">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Depreciation">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Exterior">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Interior">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="OandP">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="RCV">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="RoofAmount">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Tax">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Total">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Deductible">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Gutter">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="CurrencyTextBox" Type="Syncfusion.Windows.Shared.CurrencyTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" AssemblyCodeBase="file:///C:/Program%20Files%20(x86)/Syncfusion/Essential%20Studio/15.1.0.33/Assemblies/4.6/Syncfusion.Shared.WPF.dll" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+      </PropertyUISettings>
+   </TypeUISetting>
 </GenericObjectDataSource>

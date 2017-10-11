@@ -51,6 +51,8 @@ namespace MRNNexus_Model
         public Nullable<int> ClaimID { get; set; }
         [DataMember]
         public string Note { get; set; }
+
 		public string AppointmentText { get; set; }
+		
 	}
 }

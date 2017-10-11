@@ -1,0 +1,49 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements.Controllers"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="MRNUIElements.Controllers.ClaimOrderAdjustments"
+      mc:Ignorable="d"
+      Title="ClaimOrderAdjustments" Height="327.791" Width="307.838">
+
+    <Grid>
+        <ListView x:Name="AdjustmentList" HorizontalAlignment="Left" Height="102" Margin="33,162,0,0" VerticalAlignment="Top" Width="241">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="Product">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Width="150" Height="25" HorizontalAlignment="Center" Text="{Binding Product}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="50" Header="Qty">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Width="50" Height="25" HorizontalAlignment="Center" Text="{Binding Quantity}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" Header="Amount">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Width="100" Height="25" HorizontalAlignment="Right" 
+                                           Text="{Binding Cost}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+      
+
+        <syncfusion:IntegerTextBox x:Name="QuantityIntBox" HorizontalAlignment="Left" Height="19" Margin="165,133,0,0" TextWrapping="Wrap" Text="IntegerTextBox" VerticalAlignment="Top" Width="68" WatermarkTextIsVisible="True" WatermarkText="Quantity" WatermarkTextForeground="White" Foreground="White" SelectionForeground="White" TextChanged="QuantityIntBox_TextChanged" />
+        <TextBlock x:Name="QuanTextBlock"  HorizontalAlignment="Left" Margin="55,134,0,0" TextWrapping="Wrap" Text="Quantity Changed" VerticalAlignment="Top" Foreground="White"/>
+        <syncfusion:CurrencyTextBox HorizontalAlignment="Left" Height="26" Margin="175,264,0,0" TextWrapping="Wrap" Text="CurrencyTextBox" VerticalAlignment="Top" Width="99"/>
+        <ListBox x:Name="OrderList" HorizontalAlignment="Left" Height="96" Margin="33,24,0,0" VerticalAlignment="Top" Width="241" SelectionChanged="OrderList_SelectionChanged"/>
+        <Button x:Name="ApplyBtn" Content="Apply Bringbacks" HorizontalAlignment="Left" Height="23" Margin="189,290,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click"/>
+
+    </Grid>
+</Page>

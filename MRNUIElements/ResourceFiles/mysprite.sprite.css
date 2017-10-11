@@ -1,0 +1,23 @@
+/*
+This is an example of how to use the image sprite in your own CSS files
+*/
+.mysprite {
+	background-image: url('mysprite.sprite.png');
+	background-repeat: no-repeat;
+	display: block;
+}
+.mysprite.hovernewroofbutton {
+	width: 1280px;
+	height: 1024px;
+	background-position: -10px -10px;
+}
+.mysprite.newroofbutton {
+	width: 1280px;
+	height: 1024px;
+	background-position: -10px -1044px;
+}
+.mysprite.pushednewroofbtn {
+	width: 1280px;
+	height: 1024px;
+	background-position: -10px -2078px;
+}

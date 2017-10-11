@@ -81,5 +81,7 @@ namespace MRNNexus_Model
         public bool SolarPanels { get; set; }
         [DataMember]
         public string Comments { get; set; }
-    }
+		[DataMember]
+		public bool LightningProtection { get; set; }
+	}
 }

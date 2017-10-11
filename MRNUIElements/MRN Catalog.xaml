@@ -14,7 +14,7 @@
 				
 			</StackPanel>
 			
-			<Button Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Stretch" Foreground="White" FontWeight="Bold" Click="LogOut" Style="{StaticResource normal}"/>
+			<Button Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Stretch" Foreground="White" FontWeight="Bold" Click="LogOut" />
         </StackPanel>
     </Grid>
 </Page>

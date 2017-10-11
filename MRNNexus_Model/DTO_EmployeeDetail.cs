@@ -63,5 +63,13 @@ namespace MRNNexus_Model
         public string CompanyPhotoPath { get; set; }
         [DataMember]
         public string SignaturePath { get; set; }
-    }
+		[DataMember]
+		public string BankAcctNumber { get; set; }
+		[DataMember]
+		public string RoutingNumber { get; set; }
+		[DataMember]
+		public string SSN_EIN { get; set; }
+		[DataMember]
+		public Nullable<bool> IsSSN { get; set; }
+	}
 }

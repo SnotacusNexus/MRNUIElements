@@ -13,8 +13,8 @@
 
 
 		<TextBlock HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="35" VerticalAlignment="Top">Claim Inspection Wizard</TextBlock>
-		<Button x:Name="button" Content="Add" HorizontalAlignment="Left" Margin="109,0,0,212" VerticalAlignment="Bottom" Width="75" Style="{DynamicResource normal}" IsDefault="True"/>
-		<Button x:Name="button_Copy" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,91,212" VerticalAlignment="Bottom" Width="75" Style="{DynamicResource normal}" IsDefault="True"/>
+		<Button x:Name="button" Content="Add" HorizontalAlignment="Left" Margin="109,0,0,212" VerticalAlignment="Bottom" Width="75" IsDefault="True"/>
+		<Button x:Name="button_Copy" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,91,212" VerticalAlignment="Bottom" Width="75" IsDefault="True"/>
 		<Slider x:Name="slider" Margin="209,0,191,265" VerticalAlignment="Bottom" Height="30" SmallChange="1" TickPlacement="Both" Maximum="50" Minimum="1"/>
 		<Label x:Name="label" Content="Damage Intensity" Margin="251,270,251,0" VerticalAlignment="Top" Padding="0,5,5,5" Foreground="White" d:LayoutOverrides="Width"/>
 		<TextBox x:Name="textBox" Height="23" Margin="0,273,200,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40" IsReadOnly="True" IsUndoEnabled="False" Background="{x:Null}" Foreground="White" Focusable="False" IsTabStop="False" AllowDrop="False"/>

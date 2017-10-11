@@ -12,48 +12,48 @@
 		<StackPanel><TextBlock FontSize="25" Foreground="White" FontWeight="Bold" TextAlignment="Center" Padding="10" Text="Claim Documents"/>
 		<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-					<Button Style="{StaticResource normal}"
+					<Button 
 							Content="Task1"
 				
 						/>
-					<Button Style="{StaticResource normal}"
+					<Button 
 							Content="Task2"
 					
 						/>
-					<Button Style="{StaticResource normal}" 
+					<Button  
 							Content="Task3"
 					
 						/>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-					<Button Style="{StaticResource normal}" 
+					<Button  
 							Content="Task4"
 				
 						/>
-					<Button Style="{StaticResource normal}" 
+					<Button  
 							Content="Task5"
 					
 						/>
-					<Button Style="{StaticResource normal}" 
+					<Button  
 							Content="Task6"					
 						/>
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-					<Button Style="{StaticResource normal}" 
+					<Button  
 							Content="Task7"					
 						/>
-					<Button Style="{StaticResource normal}"
+					<Button 
 							Content="Task8"						
 						/>
 
-					<Button Style="{StaticResource normal}"
+					<Button 
 							Content="Task9"				
 						/>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
 
 
-				<Button Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" Click="LogOut" Style="{StaticResource normal}">
+				<Button Background="{StaticResource BackgroundGradient}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" Click="LogOut" >
 					<TextBlock FontSize="16" Foreground="White" Text="Log Out" TextWrapping="WrapWithOverflow" Width="150" TextAlignment="Center"/>
 				</Button>
 			</StackPanel>

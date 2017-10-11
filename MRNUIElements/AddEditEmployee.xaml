@@ -1,0 +1,99 @@
+﻿<PageFunction
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MRNUIElements"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+    x:Class="MRNUIElements.Controllers.AddEditEmployee"
+    mc:Ignorable="d"
+    x:TypeArguments="sys:Object"
+    Title="AddEditEmployee" Height="443" Width="468">
+    <Grid>
+        <Grid Margin="10,0">
+            <Button x:Name="AddEmployeeDetailsbutton" Content="EmployeeDetails" HorizontalAlignment="Left" Margin="72,297,0,0" VerticalAlignment="Top" Width="99" Click="AddEmployeeDetailsbutton_Click"/>
+            <ComboBox x:Name="SalespersoncomboBox" HorizontalAlignment="Center" Margin="102,119,112,0" VerticalAlignment="Top" Width="232" HorizontalContentAlignment="Center"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="82,36,98,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Height="71" Width="256" Foreground="White" FontSize="24" TextAlignment="Center" FontWeight="Bold" TextDecorations="Underline"/>
+            <Button x:Name="Select_button" Content="Add" HorizontalAlignment="Left" Margin="295,297,0,0" VerticalAlignment="Top" Width="75" Click="Select_button_Click"/>
+            <syncfusion:MaskedTextBox x:Name="Employee_FirstName"
+                    Height="22"
+                    Background="{x:Null}"
+                    Text="{Binding FirstName}"
+                    TextWrapping="Wrap"
+                    WatermarkText="First Name" Foreground="White" WatermarkTextForeground="White" WatermarkBackground="{x:Null}" Margin="72,172,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="78" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+            <syncfusion:MaskedTextBox x:Name="Employee_MiddleName"
+                    Height="22"
+                    Background="{x:Null}"
+                    Text="{Binding MiddleName}"
+                    TextWrapping="Wrap"
+                    WatermarkText="Middle Name" Foreground="White" WatermarkTextForeground="White" WatermarkBackground="{x:Null}" Margin="156,172,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="80" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+            <syncfusion:MaskedTextBox x:Name="Employee_LastName"
+                    Height="22"
+                    Background="{x:Null}"
+                    Text="{Binding LastName}"
+                    TextWrapping="Wrap"
+                    WatermarkText="Last Name" Foreground="White" WatermarkTextForeground="White" WatermarkBackground="{x:Null}" Margin="242,172,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="90" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+            <syncfusion:MaskedTextBox x:Name="Employee_Suffix"
+                    Height="22"
+                    Background="{x:Null}"
+                    Text="{Binding Suffix}"
+                    TextWrapping="Wrap"
+                    WatermarkText="Suffix" Foreground="White" WatermarkTextForeground="White" WatermarkBackground="{x:Null}" Margin="336,172,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+            <syncfusion:MaskedTextBox x:Name="Cust_Address_Copy1"
+                    Height="22"
+                    Background="{x:Null}"
+                    Text="{Binding Address}"
+                    TextWrapping="Wrap"
+                    WatermarkText="Address" Foreground="White" WatermarkTextForeground="White" WatermarkBackground="{x:Null}" Margin="72,196,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="298" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+            <syncfusion:MaskedTextBox x:Name="Employee_City"
+                    Height="22"
+                    BorderThickness="1"
+                    IsEnabled="False"
+                    IsReadOnly="True"
+                    IsReadOnlyCaretVisible="True"
+                    IsUndoEnabled="False"
+                    TextWrapping="Wrap" Background="{x:Null}" Foreground="White" WatermarkTextForeground="White" WatermarkBackground="{x:Null}" WatermarkText="Enter Zipcode --&gt;" Margin="72,220,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="124" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+            <syncfusion:MaskedTextBox x:Name="Employee_State"
+                    Height="22"
+                    BorderThickness="1"
+                    IsEnabled="False"
+                    IsReadOnly="True"
+                    IsReadOnlyCaretVisible="True"
+                    IsUndoEnabled="False"
+                    TextWrapping="Wrap" Background="{x:Null}" Foreground="White" WatermarkTextForeground="White" WatermarkBackground="{x:Null}" WatermarkText="Enter Zipcode --&gt;" Margin="202,220,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="116" VerticalAlignment="Top" HorizontalContentAlignment="Center"  />
+            <syncfusion:MaskedTextBox x:Name="Employee_Zipcode"
+                    Height="22"
+                    Background="{x:Null}"
+                    Text="{Binding Zip}"
+                    TextWrapping="Wrap"
+                    WatermarkText="Zipcode" Foreground="White" WatermarkTextForeground="White" Margin="322,218,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="48" />
+            <syncfusion:MaskedTextBox x:Name="Employee_Primary_Phone"
+                    Height="22"
+                    MinWidth="100"
+                    HorizontalAlignment="Left"
+                    Background="{x:Null}"
+                    Padding="0"
+                    Text="{Binding PrimaryNumber}"
+                    TextWrapping="Wrap" Foreground="White" WatermarkTextForeground="White" WatermarkText="Primary Phone #"         Margin="72,246,0,0" VerticalContentAlignment="Center" Width="150" VerticalAlignment="Top" HorizontalContentAlignment="Center"         />
+            <syncfusion:MaskedTextBox x:Name="Employee_Secondary_Phone"
+                    Height="22"
+                    MinWidth="100"
+                    HorizontalAlignment="Left"
+                    Background="{x:Null}"
+                    Text="{Binding SecondaryNumber}"
+                    WatermarkText="Secondary Phone #" Foreground="White" WatermarkTextForeground="White" Margin="226,245,0,0" VerticalContentAlignment="Center" Width="144" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+            <syncfusion:MaskedTextBox x:Name="Employee_mail_Address"
+                    Height="22"
+                    HorizontalAlignment="Left"
+                    Background="{x:Null}"
+                    Text="{Binding Email}"
+                    TextWrapping="Wrap"
+                    WatermarkText="Email Address" Foreground="White" WatermarkTextForeground="White" Margin="72,270,0,0" VerticalContentAlignment="Center" Width="298" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+
+            <local:SignatureBox x:Name="EmployeeSignature" Width="Auto" Height="100" Foreground="Black" Background="White" Margin="0,343,0,0" ></local:SignatureBox> 
+
+        </Grid>
+
+    </Grid>
+</PageFunction>

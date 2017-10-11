@@ -14,60 +14,75 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
 using MRNNexus_Model;
-using Awesomium.Windows.Controls;
-using Awesomium.Core.Data;
-using Awesomium.Core;
+//using Awesomium.Windows.Controls;
+//using Awesomium.Core.Data;
+//using Awesomium.Core;
+using static System.Windows.Navigation.NavigationService;
 using Syncfusion.UI.Xaml.Schedule;
 using Syncfusion.UI.Xaml.Grid;
 using System.Collections.Specialized;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using MRNUIElements.Models;
+using MRNUIElements.ViewModels;
+using MRNUIElements.Controllers;
 
-
-using static MRNUIElements.ScheduleAppointmentModel;
-using static MRNUIElements.Appointments;
+//using static MRNUIElements.ScheduleAppointmentModel;
+using static MRNUIElements.Models.Appointments;
 
 namespace MRNUIElements
 {
 
-	
 	/// <summary>
 	/// Interaction logic for CustomGroupControl.xaml
 	/// </summary>
 	public partial class NexusHome : Page
 	{
+		static ServiceLayer s = ServiceLayer.getInstance();
 
 
 
+		//MRNNexus_Model.DTO_CalendarData calData;
 
-		ObservableCollection<MappedAppointment> MappedAppointment = new ObservableCollection<MappedAppointment>();
-		//ObservableCollection<DTO_CalendarData> MappedAppointment = new ObservableCollection<DTO_CalendarData>();
+		//	GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
+
+		//		double autoHeight;
+		//ObservableCollection<MappedAppointment> MappedAppointment = new ObservableCollection<MappedAppointment>();
+		//	ObservableCollection<TodaysAppointment> TodaysAppointment = new ObservableCollection<TodaysAppointment>();
 		private string FinishedName;
-		ServiceLayer s1 = ServiceLayer.getInstance();
-		DTO_CalendarData caldata;
+		static ServiceLayer s1 = ServiceLayer.getInstance();
+		static ScopeModel sm = ScopeModel.getInstance();
+		static ObservableCollection<ScopeModel> ff = ScopeModel.lgetInstance();
+		static public Frame _frame;
+		static public DTO_Claim CurrentClaim { get; set; }
+										   //	DTO_CalendarData caldata;
 		bool b = false;
 		public NexusHome()
 		{
-			InitializeComponent();
-			SfSchedule schedule = new SfSchedule();
-			schedule.ScheduleType = Syncfusion.UI.Xaml.Schedule.ScheduleType.Week;
-			//schedule.ItemsSource = caldata;//sion.UI.Xaml.Schedule.ScheduleAppointment() { StartTime = new DateTime(2016, 7, 20, 2, 30, 0), EndTime = new DateTime(2016, 7, 20, 3, 30, 0), Subject = "Get Fucked Up", Location = "Yo Mama House", AllDay = false });
-			this.DataContext = new ScheduleAppointmentCollection();
-		  
 
-			this.griddle.Children.Add(schedule);
-			int i = 0;
-			foreach (MappedAppointment m in MappedAppointment)
+
+			InitializeComponent();
+			//    calculationsDataGrid.DataContext = sm;
+			//      calculationsDataGrid.ItemsSource = ff;
+			_frame = frame;
+			try
 			{
-				System.Windows.Forms.MessageBox.Show(MappedAppointment[i].MappedStartTime.ToLongDateString()+"-til-" + MappedAppointment[i].MappedEndTime.ToLongDateString() +" Subject "+ MappedAppointment[i].MappedSubject.ToString());
+			   if (string.IsNullOrEmpty(CurrentClaim.ClaimID.ToString()))
+					new ClaimPickerPopUp().Show();
+			}
+			catch (Exception ex)
+			{
+
+				System.Windows.Forms.MessageBox.Show(ex.ToString());
+				frame.Navigate(new Schedule());
 			}
 			
-			//    this.DataContext = this;
-		   // this.DataContext = new ScheduleViewModel(); 
-  
-		//	GetLeadsByEmployeeAsSalepersonID(s1.LoggedInEmployee.EmployeeID);
+			
+				
+		  //  frame.Navigate(new CompoundDataGridRow());
 		}
+
 
 
 
@@ -75,16 +90,49 @@ namespace MRNUIElements
 
 		private void LogOut(object sender, RoutedEventArgs e)
 		{
-			Login Page = new Login();
-			this.NavigationService.Navigate(Page);
+
+			this.NavigationService.Navigate(new Login());
+		}
+
+
+		private void DocumentUpload_Click(object sender, RoutedEventArgs e)
+		{
+			//AnalogFileUploadPage page = new AnalogFileUploadPage();
+
+			frame.Navigate(new AddClaimDocumentation());
+		}
+
+		private void InvoicePageBtn(object sender, RoutedEventArgs e)
+		{
+
+			frame.Navigate(new InvoicePage());
+
+		}
+
+		private void ScopeEntryButton(object sender, RoutedEventArgs e)
+		{
+
+			
+		}
+
+		private void PaymentEntryPagebtn(object sender, RoutedEventArgs e)
+		{
+
+			frame.Navigate(new PaymentEntryPage());
+		}
+
+		private void ViewCapOutButton(object sender, RoutedEventArgs e)
+		{
+
+			frame.Navigate(new CapOutSheet());
 		}
 
 
 
 		async private void GetLeadsByEmployeeAsSalepersonID(int iemployeeID)
 		{
+			await s1.GetAllInsuranceCompanies();
 
-			
 			await s1.GetCalendarDataByEmployeeID(s1.LoggedInEmployee);
 
 			foreach (DTO_CalendarData c in s1.CalendarDataList)
@@ -184,11 +232,11 @@ namespace MRNUIElements
 			//leadNameText.Text = FinishedName;
 
 			AddressZipcodeValidation citystatefromzip = new AddressZipcodeValidation();
-			string citystate  =  citystatefromzip.CityStateLookupRequest(ad.Zip);
+			string citystate = citystatefromzip.CityStateLookupRequest(ad.Zip);
 
-			string city = citystate.Substring(citystate.IndexOf("<City>") + 6, citystate.IndexOf("</City>") - citystate.IndexOf("<City>")-6);
-			
-			string state = AddressZipcodeValidation.ConvertStateToAbbreviation(citystate.Substring(citystate.IndexOf("<State>") + 7, citystate.IndexOf("</State>") - citystate.IndexOf("<State>")-7));
+			string city = citystate.Substring(citystate.IndexOf("<City>") + 6, citystate.IndexOf("</City>") - citystate.IndexOf("<City>") - 6);
+
+			string state = AddressZipcodeValidation.ConvertStateToAbbreviation(citystate.Substring(citystate.IndexOf("<State>") + 7, citystate.IndexOf("</State>") - citystate.IndexOf("<State>") - 7));
 			//leadAddressText.Text = ad.Address.ToString();
 			string[] w = city.Split(' ');
 			city = "";
@@ -197,14 +245,14 @@ namespace MRNUIElements
 			foreach (string t in w)
 			{
 				city += t.Substring(0, 1).ToUpper();
-				city += t.Substring(1, t.Length-1).ToLower();
+				city += t.Substring(1, t.Length - 1).ToLower();
 				if (i > 0)
 					city += " ";
-				
-			}
 
-			
-				
+			}
+		}
+
+
 		//	city.ToLower();
 		//	TextInfo textinfo = new CultureInfo("en-US", false).TextInfo;
 		//	textinfo.ToTitleCase(city);
@@ -212,16 +260,16 @@ namespace MRNUIElements
 			//leadCitySTZipText.Text = city+", " + state +"  "+ ad.Zip.ToString();
 
 
-			ShowOnMap(null, MakeAddress(ad.Address.ToString(), city, state, ad.Zip.ToString()));
+		//	ShowOnMap(null, MakeAddress(ad.Address.ToString(), city, state, ad.Zip.ToString()));
 
 
 			//	this.dTO_LeadDataGrid.ItemsSource = s1.LeadList;
 
 
 
-		}
+		//}
 
-			
+
 
 		private void ShowOnMap(string from = null, string to = null)
 		{
@@ -257,7 +305,7 @@ namespace MRNUIElements
 				{ */
 
 			//ShowOnMap(null, MakeAddress(leadAddressText.Text, "", "", leadCitySTZipText.Text));
-			/*	} 
+			/*	}
 				else
 				{
 					ShowOnMap(null, leadAddressText.Text);
@@ -268,7 +316,7 @@ namespace MRNUIElements
 		private void ShowWeatherforZipcode(string webaddress)
 		{
 
-			AppointmentWebView.Source = new Uri(webaddress.ToString());
+			//AppointmentWebView.Source = new Uri(webaddress.ToString());
 
 		}
 
@@ -301,37 +349,7 @@ namespace MRNUIElements
 		}
 
 
-		private void DocumentUpload_Click(object sender, RoutedEventArgs e)
-		{
-			//AnalogFileUploadPage page = new AnalogFileUploadPage();
-			AddClaimDocumentation page = new AddClaimDocumentation();
-			this.NavigationService.Navigate(page);
-		}
 
-		private void InvoicePageBtn(object sender, RoutedEventArgs e)
-		{
-			InvoicePage page = new InvoicePage();
-			this.NavigationService.Navigate(page);
-
-		}
-
-		private void ScopeEntryButton(object sender, RoutedEventArgs e)
-		{
-			ScopeViewer page = new ScopeViewer();
-			this.NavigationService.Navigate(page);
-		}
-
-		private void PaymentEntryPagebtn(object sender, RoutedEventArgs e)
-		{
-			PaymentEntryPage page = new PaymentEntryPage();
-			this.NavigationService.Navigate(page);
-		}
-
-		private void ViewCapOutButton(object sender, RoutedEventArgs e)
-		{
-			CapOutSheet Page = new CapOutSheet();
-			this.NavigationService.Navigate(Page);
-		}
 
 		private void AppointmentWebView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
@@ -342,43 +360,87 @@ namespace MRNUIElements
 			}
 			else {
 				//ShowOnMap(null, MakeAddress(leadAddressText.Text, "", "", leadCitySTZipText.Text));
-				b = true; 
+				b = true;
 			}
 		}
 
-		private void appointments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		private void appointments_SelectionChanged(object sender, GridSelectionChangedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		private void calendar_AppointmentEditorClosed(object sender, Syncfusion.UI.Xaml.Schedule.AppointmentEditorClosedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		private void calendar_AppointmentCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
 
 		private void AppointmentWebView_MouseEnter(object sender, MouseEventArgs e)
 		{
-			AppointmentWebView.Height = this.Height;
-			AppointmentWebView.Width = this.Width;
+		//	AppointmentWebView.Height = this.Height;
+		//	AppointmentWebView.Width = this.Width;
 		}
 
 		private void button_Click(object sender, RoutedEventArgs e)
 		{
-			Page page = new RoofMeasurmentsPage();
-			NavigationService.Navigate(page);
+
+
+		}
+
+		private void CustomerAgreementClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new CustomerAgreement());
+		}
+
+		private void button1_Click(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new SVGTestCanvas());
+		}
+
+		private void button2_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void Roof_Order_BtnClick(object sender, RoutedEventArgs e)
+		{
+			if (CurrentClaim != null)
+				frame.Navigate(new RoofMeasurmentsPage(CurrentClaim));
+			else
+				frame.Navigate(new PlanePopulationPage());
+		}
+
+		private void PlaneEntryClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void NewClaimBtnClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddCustomerBtnClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddInspectionBtnClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new InspectionPage());
+		}
+
+		private void AddPlaneDataClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddUserBtnClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new Claims_Receivables());
+		}
+
+		private void ViewClaimDetailsClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate( new GetClaimsPage());
+		}
+
+		private void AddLeadButtonClick(object sender, RoutedEventArgs e)
+		{
+			frame.Navigate(new CompetitionResultsDisplay());
 		}
 	}
-	public class ScheduleAppointmentModel : INotifyPropertyChanged
+	/*public class ScheduleAppointmentModel : INotifyPropertyChanged
 	{
 		#region Properties
 
@@ -477,8 +539,8 @@ namespace MRNUIElements
 			public ScheduleViewModel()
 			{
 				Schedule dt = new Schedule();
-			 
-				
+
+
 				var startDate = Syncfusion.Windows.Controls.DateTimeExtension.StartOfWeek(DateTime.Now,DayOfWeek.Monday);
 				ScheduleAppointmentModel appointment1 = new ScheduleAppointmentModel()
 				{
@@ -537,7 +599,7 @@ namespace MRNUIElements
 
 			#endregion
 		}
-	}
+	}*/
 }
 
 

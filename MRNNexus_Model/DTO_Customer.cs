@@ -29,5 +29,12 @@ namespace MRNNexus_Model
         public string Email { get; set; }
         [DataMember]
         public bool MailPromos { get; set; }
-    }
+
+		public string FullName => FirstName + " " + LastName;
+
+		public override string ToString()
+		{
+			return FullName.ToString();
+		}
+	}
 }

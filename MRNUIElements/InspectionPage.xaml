@@ -1,0 +1,74 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements"
+      xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" x:Class="MRNUIElements.InspectionPage"
+      mc:Ignorable="d" 
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+      
+      Title="InspectionPage">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="dTO_LU_ShingleTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_ShingleType}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_LU_RidgeMaterialTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_RidgeMaterialType}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_ClaimViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Claim}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_InspectionViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Inspection}, CreateList=True}"/>
+    </Page.Resources>
+
+    <Grid DataContext="{StaticResource dTO_LU_ShingleTypeViewSource}" Width="600">
+        <CheckBox x:Name="SkyLights" Content="SkyLights" HorizontalAlignment="Left" Margin="210,137,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="74"/>
+        <CheckBox x:Name="Leaks" Content="Leaks" HorizontalAlignment="Left" Margin="360,70,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="102"/>
+        <CheckBox x:Name="Gutters" Content="Gutters" HorizontalAlignment="Left" Margin="360,88,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="122"/>
+        <CheckBox x:Name="Driveway" Content="Driveway" HorizontalAlignment="Left" Margin="210,67,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="70"/>
+        <CheckBox x:Name="MagneticRollers" Content="MagneticRollers" HorizontalAlignment="Left" Margin="14,84,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="112"/>
+        <CheckBox x:Name="IceWaterShield" Content="IceWaterShield" HorizontalAlignment="Left" Margin="210,85,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="102"/>
+        <CheckBox x:Name="EmergencyRepair" Content="CheckBoxEmergencyRepair" HorizontalAlignment="Left" Margin="14,105,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="174"/>
+        <CheckBox x:Name="QualityControl" Content="QualityControl" HorizontalAlignment="Left" Margin="210,103,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="100"/>
+        <CheckBox x:Name="ProtectLandscape" Content="ProtectLandscape" HorizontalAlignment="Left" Margin="360,106,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="124"/>
+        <CheckBox x:Name="RemoveTrash" Content="RemoveTrash" HorizontalAlignment="Left" Margin="360,123,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="124"/>
+        <CheckBox x:Name="FurnishPermit" Content="FurnishPermit" HorizontalAlignment="Left" Margin="360,139,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="124"/>
+        <CheckBox x:Name="CoverPool" Content="CoverPool" HorizontalAlignment="Left" Margin="360,156,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="124"/>
+        <CheckBox x:Name="InteriorDamage" Content="InteriorDamage" HorizontalAlignment="Left" Margin="210,153,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="108"/>
+        <CheckBox x:Name="ExteriorDamage" Content="ExteriorDamage" HorizontalAlignment="Left" Margin="210,120,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="112"/>
+        <CheckBox x:Name="LightningProtection" Content="LightningProtection" HorizontalAlignment="Left" Margin="14,124,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="134"/>
+        <CheckBox x:Name="TearOFF" Content="TearOFF" HorizontalAlignment="Left" Margin="14,65,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="68"/>
+        <CheckBox x:Name="Satellite" Content="Satellite" HorizontalAlignment="Left" Margin="14,162,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="68"/>
+        <CheckBox x:Name="SolarPanels" Content="SolarPanels" HorizontalAlignment="Left" Margin="14,142,0,0" VerticalAlignment="Top" Foreground="White" Height="15" Width="88"/>
+        <ComboBox x:Name="ClaimID" HorizontalAlignment="Left" Margin="316,234,0,0" VerticalAlignment="Top" Width="126" Height="22"  Background="{x:Null}" DataContext="{Binding dTO_ClaimViewSource}"
+                      DisplayMemberPath="MRNNumber"
+                      Foreground="White"
+                      ItemsSource="{Binding}"
+                      SelectionChanged="claimIDComboBox_SelectionChanged">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <ComboBox x:Name="RidgeMaterialTypeCombo" HorizontalAlignment="Left" Margin="168,234,0,0" VerticalAlignment="Top" Width="128" Height="22" DisplayMemberPath="RidgeMaterialType" ItemsSource="{Binding }"  DataContext="{Binding dTO_LU_RidgeMaterialTypeViewSource}"
+                      Foreground="White"
+                     
+                      SelectionChanged="RidgeMaterialTypeCombo_SelectionChanged">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <ComboBox x:Name="ShingleType" HorizontalAlignment="Left" Margin="14,234,0,0" VerticalAlignment="Top" Width="128" Height="22" ItemsSource="{Binding}" DisplayMemberPath="ShingleType" SelectionChanged="ShingleType_SelectionChanged"  Foreground="White"
+          DataContext="{Binding dTO_LU_ShingleTypeViewSource}"           
+                   >
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <DatePicker x:Name="planeEntryPicker" HorizontalAlignment="Left" Margin="242,38,0,0" VerticalAlignment="Top" Height="24" Width="108"/>
+        <TextBox x:Name="RoofAge" Width="232" Height="50" Margin="359,178,9,86" HorizontalAlignment="Center"/>
+        <TextBox x:Name="Comments" Height="20" Width="50" Margin="165,195,385,85" HorizontalAlignment="Center"/>
+
+    </Grid>
+</Page>

@@ -20,10 +20,10 @@
     </Window.Resources>
   
     <Grid>
-        <!--<Grid.RowDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="85"></RowDefinition>
-        </Grid.RowDefinitions>-->
+        </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="White">
         <diagramFrontPageUtility:DiagramFrontPage FrontPageImge="../Resource/umllogo.png"  x:Name="frontpage"
                                  Create="{Binding Path=Create}"
@@ -32,13 +32,13 @@
                                  Load="{Binding Path=Load}" />
 
         <floorPlanner:FloorPlannerDiagram FloorPlannerViewModel="{Binding}" Visibility="{Binding DiagramVisibility}" />
-            <!--<Grid Height="85" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Visibility="{Binding DiagramVisibility}" Background="{StaticResource AppBarBackgroundThemeBrush}">
+            <Grid Height="85" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Visibility="{Binding DiagramVisibility}" Background="{StaticResource AppBarBackgroundThemeBrush}">
                 <floorPlanner:FloorPlanAppBarView  Delete="{Binding Delete}"></floorPlanner:FloorPlanAppBarView>
-            </Grid>-->
+            </Grid>
         </Grid>
         
-        <!--<Grid x:Name="bar" Opacity="0.5" Background="#f2f2f2" Visibility="Collapsed" Height="40"  VerticalAlignment="Top">
+        <Grid x:Name="bar" Opacity="0.5" Background="#f2f2f2" Visibility="Collapsed" Height="40"  VerticalAlignment="Top">
             <Button HorizontalAlignment="Right" Content="&#xE10A;" Style="{StaticResource AppBarButtonStyle1}" Click="Close"></Button>
-        </Grid>-->
+        </Grid>
     </Grid>
 </shared:ChromelessWindow>

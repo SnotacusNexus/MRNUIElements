@@ -1,0 +1,96 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+   xmlns:converters="clr-namespace:MRNUIElements.Utility"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MRNUIElements.Controllers"
+    xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+    x:Class="MRNUIElements.Controllers.AddClaimInspection"
+   
+    mc:Ignorable="d"
+    d:DesignHeight="600" d:DesignWidth="600"
+    Title="AddClaimInspection">
+    <Page.Resources>
+
+        <converters:ClaimContactsConverter x:Key="ccvtr"/>
+
+    </Page.Resources>
+    <Grid Margin="10,-5,-10,5" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label Content="Claim ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="11,48,0,0" Grid.Row="0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock x:Name="claimIDTextBlock" HorizontalAlignment="Left" Margin="82,52,0,0" Text="{Binding ClaimID}" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="110" Height="24" Foreground="White"/>
+        <Label Content="Comments:" Grid.Column="0" HorizontalAlignment="Left" Margin="26,473,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="commentsTextBox" HorizontalAlignment="Left" Height="47" Margin="114,469,0,0" Text="{Binding Comments, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="465"/>
+        <Label Content="Cover Pool:" HorizontalAlignment="Left" Margin="195,420,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="coverPoolCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding CoverPool, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="350,431,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="customerIDTextBlock" HorizontalAlignment="Left" Margin="218,55,0,0" Text="{Binding CustomerID, ConverterParameter=3, Converter={StaticResource ccvtr}}" VerticalAlignment="Top" Width="168" Height="22" Foreground="White"/>
+        <Label Content="Driveway Damage:" HorizontalAlignment="Left" Margin="11,224,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="drivewayDamageCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding DrivewayDamage, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="157,234,0,0" VerticalAlignment="Top"/>
+        <Label Content="Emergency Repair:" Grid.Column="0" HorizontalAlignment="Left" Margin="11,417,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="emergencyRepairCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding EmergencyRepair, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="157,425,0,0" VerticalAlignment="Top"/>
+        <Label Content="Emergency Repair Amount:" Grid.Column="0" HorizontalAlignment="Left" Margin="419,13,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <syncfusion:CurrencyTextBox x:Name="emergencyRepairAmountCurrencyTextBox" HorizontalAlignment="Left" Height="22" Margin="436,48,0,0" Text="{Binding EmergencyRepairAmount}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Exterior Damage:" HorizontalAlignment="Left" Margin="11,262,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="exteriorDamageCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding ExteriorDamage, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="157,270,0,0" VerticalAlignment="Top"/>
+        <Label Content="Furnish Permit:" HorizontalAlignment="Left" Margin="390,425,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="furnishPermitCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding FurnishPermit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="536,428,0,0" VerticalAlignment="Top"/>
+        <Label Content="Gutter Damage:" HorizontalAlignment="Left" Margin="11,346,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="gutterDamageCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding GutterDamage, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="157,353,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ice Water Shield:" HorizontalAlignment="Left" Margin="390,358,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="iceWaterShieldCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding IceWaterShield, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="536,360,0,0" VerticalAlignment="Top"/>
+        <Label Content="Inspection Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="8,88,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <DatePicker x:Name="inspectionDateDatePicker" HorizontalAlignment="Left" Margin="120,91,0,0" SelectedDate="{Binding InspectionDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top"/>
+        <Label Content="Interior Damage:" HorizontalAlignment="Left" Margin="11,306,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="interiorDamageCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding InteriorDamage, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="157,314,0,0" VerticalAlignment="Top"/>
+        <Label Content="Leaks:" HorizontalAlignment="Left" Margin="11,382,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="leaksCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding Leaks, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="157,388,0,0" VerticalAlignment="Top"/>
+        <Label Content="Lightning Protection:" Grid.Column="0" HorizontalAlignment="Left" Margin="195,306,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="lightningProtectionCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding LightningProtection, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="350,314,0,0" VerticalAlignment="Top"/>
+        <Label Content="Magnetic Rollers:" Grid.Column="0" HorizontalAlignment="Left" Margin="390,322,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="magneticRollersCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding MagneticRollers, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="536,328,0,0" VerticalAlignment="Top"/>
+        <Label Content="Protect Landscaping:" Grid.Column="0" HorizontalAlignment="Left" Margin="390,262,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="protectLandscapingCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding ProtectLandscaping, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="536,266,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quality Control:" Grid.Column="0" HorizontalAlignment="Left" Margin="390,391,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="qualityControlCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding QualityControl, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="536,394,0,0" VerticalAlignment="Top"/>
+        <Label Content="Remove Trash:" Grid.Column="0" HorizontalAlignment="Left" Margin="390,292,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="removeTrashCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding RemoveTrash, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="536,296,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ridge Material" Grid.Column="0" HorizontalAlignment="Left" Margin="248,104,0,0" VerticalAlignment="Top" Foreground="White" Width="104"/>
+        <ComboBox x:Name="ridgeMaterialTypeIDComboBox" DisplayMemberPath="RidgeMaterialTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="361,108,0,0" VerticalAlignment="Top" Width="177">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel/>
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <Label Content="Roof Age:" Grid.Column="0" HorizontalAlignment="Left" Margin="20,123,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="roofAgeTextBox" HorizontalAlignment="Left" Height="22" Margin="120,127,0,0" Text="{Binding RoofAge, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="30"/>
+        <Label Content="Satellite:" Grid.Column="0" HorizontalAlignment="Left" Margin="195,268,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="satelliteCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding Satellite, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="350,276,0,0" VerticalAlignment="Top"/>
+        <Label Content="Shingle Type" Grid.Column="0" HorizontalAlignment="Left" Margin="254,140,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="shingleTypeIDComboBox" DisplayMemberPath="ShingleTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="361,140,0,0" VerticalAlignment="Top" Width="177">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel/>
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <Label Content="Sky Lights:" Grid.Column="0" HorizontalAlignment="Left" Margin="195,345,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="skyLightsCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding SkyLights, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="350,354,0,0" VerticalAlignment="Top"/>
+        <Label Content="Solar Panels:" Grid.Column="0" HorizontalAlignment="Left" Margin="195,383,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="solarPanelsCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding SolarPanels, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="350,387,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.825,-1.562"/>
+        <Label Content="Tear Off:" Grid.Column="0" HorizontalAlignment="Left" Margin="390,232,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="tearOffCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding TearOff, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="536,234,0,0" VerticalAlignment="Top"/>
+        <Label Content="Valley Metal" Grid.Column="0" HorizontalAlignment="Left" Margin="195,232,0,0" VerticalAlignment="Top" Foreground="White" Width="81"/>
+        <CheckBox x:Name="valleyCheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding Valley, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="350,236,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="28" Margin="218,22,0,0" TextWrapping="Wrap" Text="Initial Inspection" VerticalAlignment="Top" Width="152" Foreground="White" TextDecorations="Underline" FontWeight="Bold" TextAlignment="Center" FontSize="16"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="28" Margin="394,182,0,0" TextWrapping="Wrap" Text="Standard Reroof Includes:" VerticalAlignment="Top" Width="162" Foreground="White" TextDecorations="Underline" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Height="28" Margin="195,182,0,0" TextWrapping="Wrap" Text="Special Features" VerticalAlignment="Top" Width="104" Foreground="White" TextDecorations="Underline" FontWeight="Bold"/>
+        <Button x:Name="Prevbutton" Content="Prev" HorizontalAlignment="Left" Margin="36,560,0,-24" VerticalAlignment="Top" Width="75" Click="Prevbutton_Click"/>
+        <Button x:Name="ReqCashEst" Content="Request Cash Estimate" HorizontalAlignment="Left" Margin="447,560,0,-24" VerticalAlignment="Top" Width="132" Click="ReqCashEst_Click"/>
+        <Button x:Name="AddInspectionMeasurements" Content="Add Measurements" HorizontalAlignment="Left" Margin="313,560,0,-24" VerticalAlignment="Top" Width="117" Click="AddInspectionMeasurements_Click"/>
+        <Button x:Name="AddInspectPhotos" Content="Add Inspection Photos" HorizontalAlignment="Left" Margin="150,560,0,-24" VerticalAlignment="Top" Width="139" Click="AddInspectPhotos_Click"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Height="28" Margin="23,180,0,0" TextWrapping="Wrap" Text="Existing Damage" VerticalAlignment="Top" Width="104" Foreground="White" TextDecorations="Underline" FontWeight="Bold"/>
+
+    </Grid>
+</Page>

@@ -57,5 +57,8 @@ namespace MRNNexus_Model
 
         [DataMember]
         public string InsuranceClaimNumber { get; set; }
+
+        [DataMember]
+        public bool IsOpen { get; set; }
     }
 }

@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using MRNNexus.WPFClient.Controllers;
+using MRNUIElements.Controllers;
 
-namespace MRNNexus.WPFClient
+namespace MRNUIElements
 {
     /// <summary>
     /// Interaction logic for NewInspection.xaml
@@ -26,17 +26,17 @@ namespace MRNNexus.WPFClient
         {
             InitializeComponent();
 
-            setUp();
+    //        setUp();
 
-            this.ridgeMaterialCbo.ItemsSource = ServiceLayer.getInstance().RidgeMaterialTypes;
-            this.shingleTypeCbo.ItemsSource = ServiceLayer.getInstance().ShingleTypes;
+    //        this.ridgeMaterialCbo.ItemsSource = ServiceLayer.getInstance().RidgeMaterialTypes;
+   //         this.shingleTypeCbo.ItemsSource = ServiceLayer.getInstance().ShingleTypes;
         }
 
         async private void setUp()
         {
-            Controllers.Inspection inspection = new Controllers.Inspection();
-            await inspection.GetInsuranceCompanies();
-            insuranceCompanyCbo.ItemsSource = ServiceLayer.getInstance().InsuranceCompaniesList;
+          //  Controllers.Inspection inspection = new Controllers.Inspection();
+         //   await inspection.GetInsuranceCompanies();
+          //  insuranceCompanyCbo.ItemsSource = ServiceLayer.getInstance().InsuranceCompaniesList;
         }
     }
 }
