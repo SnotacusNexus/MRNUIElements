@@ -30,21 +30,15 @@ namespace MRNUIElements.Controllers
         public ClaimStartPage()
         {
             InitializeComponent();
-            if (MRNClaim == null)
-                MRNClaim = new MRNClaim();
+           
 
         }
-        public static MRNClaim getClaimInstance()
-        {
-            if (MRNClaim == null)
-                MRNClaim = new MRNClaim();
-            return MRNClaim;
-        }
+        
 
         private void NewClaimBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            NavigationService.Navigate(new AddPropertyAddress(MRNClaim));
+            NavigationService.Navigate(new AddPropertyAddress());
 
         }
 

@@ -80,8 +80,9 @@ namespace MRNUIElements.Controllers
 
                 MRNClaim.getInstance().r = r;
 			}
+            MRNClaim.getInstance().salesperson = s1.EmployeesList.Find(x=>x.EmployeeID==((DTO_Employee)SalesPersonInfoCombo.SelectedItem).EmployeeID);
            l.AddressID = MRNClaim.getInstance().a.AddressID;
-            c.PropertyID = MRNClaim.getInstance().a.AddressID;
+         //   c.PropertyID = MRNClaim.getInstance().a.AddressID;
             MRNClaim.getInstance().Lead = l;
             MRNClaim.getInstance()._claim = c;
             MRNClaim.getInstance().cc = cc;

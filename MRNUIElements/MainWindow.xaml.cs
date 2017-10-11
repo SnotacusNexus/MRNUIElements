@@ -178,52 +178,72 @@ namespace MRNUIElements
 		async private void Claim_Click(object sender, RoutedEventArgs e)
 		{
 
-			string str;
-			try
-			{
-				if (Claim == null)
-					System.Windows.MessageBox.Show("No Claim Currently Selected into Memory");
 
-				await s1.GetClaimByClaimID(Claim);
-				if (string.IsNullOrEmpty(Claim.InsuranceClaimNumber))
-					str = "No Insurance Company Claim Number Associated";
-				else str = Claim.InsuranceClaimNumber;
-				System.Windows.MessageBox.Show(Claim.MRNNumber.ToString() + " Is Selected AKA " + str);
+            ns.Navigate(new AddPropertyAddress());
+        }
 
+      
 
-			}
-			catch (Exception)
-			{
-				try
-				{
+        private void ModifyClaim_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var CPD = new ClaimPickerPopUp();
+                if ((bool)CPD.ShowDialog())
 
-					await s1.GetAllOpenClaims();
-				}
-				catch (Exception)
-				{
-					try
-					{
-						await s1.GetAllClaims();
-					}
-					catch (Exception)
-					{
+                    //	var claim = s1.ClaimsList.Single(x => x.ClaimID == 37);
+                    ns.Navigate(new Controllers.ClaimView(CPD.Claim));
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+        }
 
-						throw;
-					}
+        private void Add_Invoice_Click(object sender, RoutedEventArgs e)
+        {
 
-					MRNClaimNexusMainFrame.NavigationService.Navigate(new AddClaimPage());
-				}
+        }
 
+        private void Add_Payment_Click(object sender, RoutedEventArgs e)
+        {
 
-			}
-			finally
-			{
+        }
 
+        private void RemoveClaim_Click(object sender, RoutedEventArgs e)
+        {
 
-				MRNClaimNexusMainFrame.NavigationService.Navigate(new QuickClaimAdder());
-			}
+        }
 
-		}
-	}
+        private void Add_Inspection_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Adjustment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Contests_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddCycle_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ThisCycle_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NextCycle_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }
 
