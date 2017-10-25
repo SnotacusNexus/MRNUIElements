@@ -118,11 +118,26 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CoherentUINetControls, Version=2.2.0.0, Culture=neutral, PublicKeyToken=06c400a284f0f0fd, processorArchitecture=MSIL">
+      <HintPath>packages\CoherentUINETControls.2.2.0.0\lib\net45\CoherentUINetControls.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Base, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.WebBrowser, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.WebBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.WebBrowser.Wpf, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>packages\EO.WebBrowser.Wpf.17.3.13\lib\EO.WebBrowser.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.WebEngine, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.WebEngine.dll</HintPath>
     </Reference>
     <Reference Include="HelixToolkit, Version=2015.1.715.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
       <HintPath>..\packages\HelixToolkit.2015.1.715\lib\portable-net4+sl4+wp71+win8\HelixToolkit.dll</HintPath>
@@ -421,6 +436,7 @@
       <DependentUpon>ClaimPickerPopUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClaimUser.cs" />
+    <Compile Include="CoherentUI\License.cs" />
     <Compile Include="CompetitionResultsDisplay.xaml.cs">
       <DependentUpon>CompetitionResultsDisplay.xaml</DependentUpon>
     </Compile>
@@ -535,6 +551,9 @@
       <DependentUpon>StartClaim.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\UploadDocuments.cs" />
+    <Compile Include="Controllers\WebBrowser.xaml.cs">
+      <DependentUpon>WebBrowser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CSV.cs" />
     <Compile Include="CustomerAgreement.xaml.cs">
       <DependentUpon>CustomerAgreement.xaml</DependentUpon>
@@ -1007,6 +1026,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controllers\WebBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomerAgreement.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1351,6 +1374,16 @@
     <None Include="ClassDiagram2.cd" />
     <None Include="ClassDiagram3.cd" />
     <None Include="ClassDiagram4.cd" />
+    <None Include="CoherentUI\Bin\locales\en-US.pak" />
+    <None Include="CoherentUI\Bin\Win32\theme_resources_standard.pak" />
+    <None Include="CoherentUI\Bin\Win32\ui_resources_100_percent.pak" />
+    <None Include="CoherentUI\Bin\Win64\theme_resources_standard.pak" />
+    <None Include="CoherentUI\Bin\Win64\ui_resources_100_percent.pak" />
+    <None Include="CoherentUI\bootstrap_net_win32.bat" />
+    <None Include="CoherentUI\bootstrap_net_win64.bat" />
+    <None Include="CoherentUI\Debugger\html\devtools\devtools_resources.grd" />
+    <None Include="CoherentUI\doc\Coherent_UI_Documentation.chm" />
+    <None Include="CoherentUI\License.pdf" />
     <None Include="MRNNexus_Model.DTO_AdditionalSupply.datasource" />
     <None Include="MRNNexus_Model.DTO_Address.datasource" />
     <None Include="MRNNexus_Model.DTO_Adjuster.datasource" />
@@ -1489,6 +1522,190 @@
     </Content>
     <None Include="FodyWeavers.xml" />
     <Resource Include="CheckMark.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\trackVert.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\trackHoriz.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\toolbarItemSelected.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\toolbarIconsSmall.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\toolbarIcons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillYellow.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillRed.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillPurple.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillOrange.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillGreen.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillGray.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillBlue.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillYellow.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillRed.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillPurple.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillOrange.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillGreen.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillGray.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillBlue.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbVert.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbHoverVert.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbHoverHoriz.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbHoriz.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbActiveVert.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbActiveHoriz.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\statusbarResizerVertical.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\statusbarResizerHorizontal.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\statusbarButtonGlyphs2x.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\statusbarButtonGlyphs.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinnerInactiveSelected.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinnerInactive.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinnerActiveSelected.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinnerActive.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinner.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\settingsListRemove_2x.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\settingsListRemove.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\sessionStorage.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentSelectedEnd.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentSelected.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentHoverEnd.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentHover.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentEnd.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segment.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchSmallWhite.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchSmallGray.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchSmallBrightBlue.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchSmallBlue.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchPrev.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchNext.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourcesTimeGraphIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourcePlainIconSmall.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourcePlainIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourceJSIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourceDocumentIconSmall.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourceDocumentIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourceCSSIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\regionOverset.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\regionFit.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\regionEmpty.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\radioDot.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\programCounterBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\profileSmallIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\profileIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\profileGroupIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\popoverBackground.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\popoverArrows.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneSettingsButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneRefreshButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneFilterButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneElementStateButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneAddButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\namedFlowOverflow.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\localStorage.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\indexedDBObjectStore.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\indexedDBIndex.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\indexedDB.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\graphLabelCalloutRight.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\graphLabelCalloutLeft.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\glossyHeaderSelectedPressed.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\glossyHeaderSelected.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\glossyHeaderPressed.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\glossyHeader.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\frame.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\forward.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\fileSystem.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\domain.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\deleteIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\databaseTable.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\database.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\cookie.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\checker.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointCounterBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointConditionalCounterBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointConditionalBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointConditional2_2x.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointConditional2.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpoint2_2x.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpoint2.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\back.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\applicationCache.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\addIcon.png" />
+    <Resource Include="CoherentUI\Copyright.txt" />
+    <Resource Include="CoherentUI\Bin\Win64\CoherentUINetControls.xml" />
+    <Resource Include="CoherentUI\Bin\Win32\CoherentUINetControls.xml" />
+    <Content Include="CoherentUI\Activator\Activator.exe" />
+    <Content Include="CoherentUI\Bin\JavaScript\coherent.js" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUINetControls.dll" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUINetControls.pdb" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUI_Host.exe" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUI_Native.dll" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUI_Native.pdb" />
+    <Content Include="CoherentUI\Bin\Win32\D3DCompiler_43.dll" />
+    <Content Include="CoherentUI\Bin\Win32\ffmpegsumo.dll" />
+    <Content Include="CoherentUI\Bin\Win32\icudt.dll" />
+    <Content Include="CoherentUI\Bin\Win32\libEGL.dll" />
+    <Content Include="CoherentUI\Bin\Win32\libGLESv2.dll" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUI64_Native.dll" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUI64_Native.pdb" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUINetControls.dll" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUINetControls.pdb" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUI_Host.exe" />
+    <Content Include="CoherentUI\Bin\Win64\D3DCompiler_43.dll" />
+    <Content Include="CoherentUI\Bin\Win64\ffmpegsumo.dll" />
+    <Content Include="CoherentUI\Bin\Win64\icudt.dll" />
+    <Content Include="CoherentUI\Bin\Win64\libEGL.dll" />
+    <Content Include="CoherentUI\Bin\Win64\libGLESv2.dll" />
+    <Content Include="CoherentUI\Debugger\html\debugger.html" />
+    <Content Include="CoherentUI\Debugger\html\devtools\auditsPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\AuditsPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\breadcrumbList.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\breakpointsList.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\buildSystemOnly.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\canvasProfiler.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\cmdevtools.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\codemirror.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\CodeMirrorTextEditor.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\cssNamedFlows.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\dataGrid.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\devTools.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\devtools.html" />
+    <Content Include="CoherentUI\Debugger\html\devtools\DevTools.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\devtools_extension_api.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\elementsPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ElementsPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\filteredItemSelectionDialog.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\flameChart.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\heapProfiler.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\HeapSnapshotWorker.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\helpScreen.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\indexedDBViews.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\inspector.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\inspector.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\inspectorCommon.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\nativeMemoryProfiler.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\navigatorView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\networkLogView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\networkPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\NetworkPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\panelEnablerView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\profilesPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ProfilesPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\resourcesPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ResourcesPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\resourceView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\revisionHistory.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ScriptFormatterWorker.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\scriptsPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ScriptsPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\showhint.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\sidebarPane.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\spectrum.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\splitView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\tabbedPane.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\textEditor.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\textPrompt.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\timelinePanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\TimelinePanel.js" />
+    <Content Include="CoherentUI\Debugger\Win32\D3DCompiler_43.dll" />
+    <Content Include="CoherentUI\Debugger\Win32\d3dx9_43.dll" />
+    <Content Include="CoherentUI\Debugger\Win32\Debugger.exe" />
+    <Content Include="CoherentUI\Debugger\Win64\D3DCompiler_43.dll" />
+    <Content Include="CoherentUI\Debugger\Win64\d3dx9_43.dll" />
+    <Content Include="CoherentUI\Debugger\Win64\Debugger.exe" />
     <Content Include="ResourceFiles\mysprite.sprite.css">
       <DependentUpon>mysprite.sprite</DependentUpon>
     </Content>
@@ -1513,10 +1730,12 @@
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets" Condition="Exists('..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets')" />
+  <Import Project="packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets" Condition="Exists('packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

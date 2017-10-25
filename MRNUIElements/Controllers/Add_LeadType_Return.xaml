@@ -11,6 +11,6 @@
     d:DesignHeight="300" d:DesignWidth="300"
     Title="Add_LeadType_Return">
     <Grid>
-
+        <WebBrowser x:Name="MainBrowser"/>
     </Grid>
 </PageFunction>

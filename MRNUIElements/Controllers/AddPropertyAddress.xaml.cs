@@ -27,7 +27,7 @@ namespace MRNUIElements.Controllers
         static ServiceLayer s1 = ServiceLayer.getInstance();
 
         static MRNClaim MrnClaim = MRNClaim.getInstance();
-        private DTO_Address address { get; set; } = new DTO_Address();
+        private DTO_Address address { get; set; }
 
 
         public AddPropertyAddress()
@@ -51,6 +51,8 @@ namespace MRNUIElements.Controllers
         {
             if (!string.IsNullOrEmpty(addressstring) && !string.IsNullOrEmpty(zip))
             {
+                if(address==null)
+                    address = new DTO_Address();
 
                 address.Address = addressstring;
                 address.Zip = zip;

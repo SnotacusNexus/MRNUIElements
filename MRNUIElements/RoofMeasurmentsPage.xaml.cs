@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
+using System.Data;
+using System.Xml;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,12 +20,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNNexus_Model;
 using static Syncfusion.Windows.Controls.Notification.SfBusyIndicator;
-
+using Coherent.UI.Windows.Controls;
 using MRNUIElements.Controllers;
-
+using System.Diagnostics;
+using System.Net.Mail;
 
 namespace MRNUIElements
 {
+
+    
 	/// <summary>
 	/// Interaction logic for RoofMeasurmentsPage.xaml
 	/// </summary>
@@ -50,19 +56,33 @@ namespace MRNUIElements
 		public int PredPitch { get; set; }
 		public string googleAddress { get; set; }
 		string startsubstring = "Lengths, Areas and Pitches";
-		public static List<string> OC = new List<string>();
-		public static List<string> Certainteed = new List<string>();
+		//public static List<string> OC = new List<string>();
+		//public static List<string> Certainteed = new List<string>();
 		//        List<string> Lststg = new List<string>();
 		string latitude = "";
 		string longitude = "Longitude = ";
 		string PropertyAddressBlockStart = "Online map of property";
-		//    string PropertyAddressBlockEnd = "Directions from MRN Homes of Ga. to this property";
-		public RoofMeasurmentsPage(DTO_Claim claim = null)
+        //    string PropertyAddressBlockEnd = "Directions from MRN Homes of Ga. to this property";
+
+       
+        SqlConnection sqlConnection1 = new SqlConnection("");
+      //  SqlCommand cmd = new SqlCommand();
+        //SqlDataReader reader;
+
+       
+        public RoofMeasurmentsPage(DTO_Claim claim = null)
 		{
 			if (claim != null)
 				this.claim = claim;
-
+ //cmd.CommandText = "S*F C";
+ //       cmd.CommandType = CommandType.Text;
+ //       cmd.Connection = sqlConnection1;
+ //       sqlConnection1.Open();
+ //           reader = cmd.ExecuteReader();
+          
+ //           sqlConnection1.Close();
 			InitializeComponent();
+           
 			//	_busyIndicator = ((MainWindow)App.Current.MainWindow).busyIndicator;
 			if (claim != null || this.claim != null)
 			{
@@ -90,10 +110,10 @@ namespace MRNUIElements
 			}
 			else
 			{
-				System.Windows.Forms.MessageBox.Show("Something went wrong I'm going back!");
-
-				var ns = NavigationService.GetNavigationService(this);
-
+				//System.Windows.Forms.MessageBox.Show("Something went wrong I'm going back!");
+               
+                //var ns = NavigationService.GetNavigationService(this);
+                DoesMeasurementsExist();
 				return;
 
 			}
@@ -103,68 +123,71 @@ namespace MRNUIElements
 
 		}
 
-		async private Task<bool> DoesMeasurementsExist(DTO_Claim _claim)
+		async private Task<bool> DoesMeasurementsExist(DTO_Claim _claim=null)
 		{
-			if (_claim == null && claim != null)
-				_claim = this.claim;
-			else claim = _claim;
+            await s1.GetProducts();
 
-			if (s.InspectionsList != null)
-				s.InspectionsList = null;
-			if (s.PlanesList != null)
-				s.PlanesList = null;
-			try
-			{
-				await s.GetAllInspections();
-			}
-			catch (Exception)
-			{
-				System.Windows.Forms.MessageBox.Show("Need to add an inspection for the list to have any to find.");
-				//TODO add ADD Inspection for claim Here
-				//throw;
-			}
-			try
-			{
-				await s.GetAllPlanes();
-			}
-			catch (Exception)
-			{
+           OrderBrand.ItemsSource = s1.Products.FindAll(x => x.Brand != null).Distinct().ToList();
+            //if (_claim == null && claim != null)
+            //	_claim = this.claim;
+            //else claim = _claim;
 
-				System.Windows.Forms.MessageBox.Show("Need to add measurements for the list to have any to find.");
+            //if (s.InspectionsList != null)
+            //	s.InspectionsList = null;
+            //if (s.PlanesList != null)
+            //	s.PlanesList = null;
+            //try
+            //{
+            //	await s.GetAllInspections();
+            //}
+            //catch (Exception)
+            //{
+            //	System.Windows.Forms.MessageBox.Show("Need to add an inspection for the list to have any to find.");
+            //	//TODO add ADD Inspection for claim Here
+            //	//throw;
+            //}
+            //try
+            //{
+            //	await s.GetAllPlanes();
+            //}
+            //catch (Exception)
+            //{
 
-				//TODO add AddPlane script here
-				try
-				{
+            //	System.Windows.Forms.MessageBox.Show("Need to add measurements for the list to have any to find.");
 
-				}
-				catch (Exception Ex)
-				{
+            //	//TODO add AddPlane script here
+            //	try
+            //	{
 
-					throw;
-				}
+            //	}
+            //	catch (Exception Ex)
+            //	{
 
-				return false;
+            //		throw;
+            //	}
 
-				//throw;
-			}
-			if (s.InspectionsList.Exists(x => x.ClaimID == _claim.ClaimID))
-				try
-				{
-					if (s.Inspection != null)
-						s.Inspection = null;
+            //	return false;
 
-					await s.GetInspectionsByClaimID(_claim);
-				}
-				catch (Exception)
-				{
+            //	//throw;
+            //}
+            //if (s.InspectionsList.Exists(x => x.ClaimID == _claim.ClaimID))
+            //	try
+            //	{
+            //		if (s.Inspection != null)
+            //			s.Inspection = null;
 
-					System.Windows.Forms.MessageBox.Show("Something went wrong.");
-					return false;                                            //throw;
-				}
+            //		await s.GetInspectionsByClaimID(_claim);
+            //	}
+            //	catch (Exception)
+            //	{
+
+            //		System.Windows.Forms.MessageBox.Show("Something went wrong.");
+            //		return false;                                            //throw;
+            //	}
 
 
 
-			try
+            try
 			{
 				if (s.PlanesList.Exists(y => y.InspectionID == s.Inspection.InspectionID))
 					await s.GetPlanesByInspectionID(s.Inspection);
@@ -231,14 +254,17 @@ namespace MRNUIElements
 		}
 		async private void GetProducts()
 		{
-			await s.GetProducts();
+			await s1.GetProducts();
 		}
 		async private void GetDialogData(DTO_Claim claim)
 		{
+            await s1.GetProducts();
+
+
 			DTO_Claim _claim = new DTO_Claim();
-			if (s.Products != null)
-				s.Products = null;
-			await s.GetProducts();
+			if (s1.Products != null)
+				s1.Products = null;
+			await s1.GetProducts();
 			//	if(!_busyIndicator.IsVisible)
 			//	_busyIndicator.Visibility = Visibility.Visible;
 			//	while (s.Products == null)
@@ -260,7 +286,7 @@ namespace MRNUIElements
 				DisplayRecordedClaimDocuments(GetClaimDocument(_claim, 3));
 
 				//textbox.Text = pdfExtract.Extract(DisplayRecordedClaimDocuments(GetClaimDocument(_claim, 3)), true);
-				//FillVariables(pdfExtract.Extract(DisplayRecordedClaimDocuments(GetClaimDocument(_claim, 3)), true));
+				FillVariables(pdfExtract.Extract(DisplayRecordedClaimDocuments(GetClaimDocument(_claim, 3)), true));
 				this.DataContext = this;
 				System.Windows.Forms.MessageBox.Show("We found claim." + _claim.ClaimID.ToString());
 			}
@@ -273,7 +299,7 @@ namespace MRNUIElements
 				var result = ofd.ShowDialog();
 				if (result == false) return;
 				//textbox.Text = pdfExtract.Extract(ofd.FileName, true);
-			//	FillVariables(pdfExtract.Extract(ofd.FileName, true));
+				FillVariables(pdfExtract.Extract(ofd.FileName, true));
 				this.DataContext = this;
 			}
 
@@ -281,35 +307,8 @@ namespace MRNUIElements
 
 
 		}
-		private List<string> products = new List<string>();
-		private List<string> colors = new List<string>();
-
-		void GatherProducts(DTO_ClaimVendor vid = null, string ShingleLineName = null)
-		{
-			if (products.Count > 0)
-				products.Clear();
-			if (colors.Count > 0)
-				colors.Clear();
-
-			foreach (var v in ShingleLineName == null ? s.Products : s.Products.Where(x => x.Name == ShingleLineName))
-			{
-				products.Add(v.Name + " - " + v.Color);
-				colors.Add(v.Color);
-			}
-
-
-			OrderBrandType.ItemsSource = products;
-			NewShingleCombo.ItemsSource = colors;
-		}
-		public List<string> PopulateLists(string str = null)
-		{
-			List<string> ItemList = new List<string>();
-			ItemList.Clear();
-
-
-
-			return ItemList;
-		}
+		
+		
 		//TODO:    Finish working the selectionlists for shingle
 		//TODO:	   Link NewRoofs Table
 		//TODO:	   GetCurrentClaimFromParent
@@ -325,6 +324,8 @@ namespace MRNUIElements
 			char[] charseperatorarg = "\r\n".ToCharArray();
 			List<string> stringlist = new List<string>();
 			string w = "";
+            if (str == null)
+                return null;
 			stringlist = str.Split(charseperatorarg, StringSplitOptions.RemoveEmptyEntries).ToList<string>();
 			//  stringlist.RemoveAll(s => s.Contains("http://", "+") != true);
 			foreach (var l in stringlist)
@@ -398,15 +399,28 @@ namespace MRNUIElements
 
 
 		}
-
+        string zipcode = "";
+        string googlemaplink = "";
 		public DTO_Plane FillVariables(string texttoparse)
 		{
 			List<double> MeasurementList2 = new List<double>();
 			List<string> MeasurementList3 = new List<string>();
 			string workingtext = texttoparse.Substring(texttoparse.IndexOf(startsubstring));
 			string propertyaddress = URL(texttoparse.Substring(texttoparse.IndexOf(PropertyAddressBlockStart)))[0];
-			// string directionsaddress = URL(texttoparse.Substring(texttoparse.IndexOf(PropertyAddressBlockStart)))[1];
-			List<double> MeasurementList4 = new List<double>();
+            Plane = new DTO_Plane();
+            googlemaplink = propertyaddress;
+            string street = propertyaddress.Substring(propertyaddress.IndexOf("&q=") + 3, propertyaddress.IndexOf(',') - (propertyaddress.IndexOf("&q=")+3) );
+            street = street.Replace('+', ' ');
+            CustomerAddress.Text = street;
+            int j = 0; ;
+            j=propertyaddress.IndexOf(',')+1;
+          
+           
+            int k = propertyaddress.IndexOf("\r",j);
+            CustomerAddressCSZ.Text = propertyaddress.Substring(propertyaddress.IndexOf(',') + 1, propertyaddress.IndexOf(" ")- propertyaddress.IndexOf(','));
+            zipcode = CustomerAddressCSZ.Text.Substring(CustomerAddressCSZ.Text.Length - 5);
+            // string directionsaddress = URL(texttoparse.Substring(texttoparse.IndexOf(PropertyAddressBlockStart)))[1];
+            List <double> MeasurementList4 = new List<double>();
 			List<string> MeasurementList5 = new List<string>();
 			MeasurementList2 = FunWithStrings(workingtext);
 			MeasurementList3 = URL(workingtext);
@@ -439,6 +453,15 @@ namespace MRNUIElements
 			TotalSQFTOFF = S2D(MeasurementList2[11].ToString());
 			PredPitch = (int)S2D(MeasurementList2[12].ToString());
 			DoMath();
+            Plane.EaveLength = (int)S2D(MeasurementList2[6].ToString());
+            Plane.Valley = (int)S2D(MeasurementList2[3].ToString()); ;
+            Plane.Hip = (int)S2D(MeasurementList2[2].ToString()); ;
+            Plane.SquareFootage = (int)S2D(MeasurementList2[11].ToString()); ;
+            Plane.RidgeLength = (int)S2D(MeasurementList2[1].ToString()); ;
+            Plane.RakeLength = (int)S2D(MeasurementList2[4].ToString()); ;
+            Plane.Pitch = (int)S2D(MeasurementList2[12].ToString()); 
+            Plane.NumberDecking = 0 ;
+            Plane.EaveHeight = 0 ;
 
 			return Plane;
 		}
@@ -524,7 +547,7 @@ namespace MRNUIElements
 					{
 						OrderCanvas.Visibility = Visibility.Collapsed;
 						textbox.Visibility = Visibility.Collapsed;
-						//AppointmentWebView.Visibility = Visibility.Visible;
+						JobBrowser.Visibility = Visibility.Visible;
 						address = "https://www.google.com/maps/@" + jlbArg[0] + "," + jlbArg[1] + ",+" + jlbArg[2] + "m/data=!3m1!1e3?hl=en";//if satdata true 
 						break;
 					}
@@ -591,7 +614,8 @@ namespace MRNUIElements
 			{
 
 				{
-					token.ClaimID = claim.ClaimID;
+                    App.Current.Shutdown();
+					token.ClaimID = claim==null?0:claim.ClaimID;
 					token.Comments = "None";
 					token.CoverPool = false;
 					token.MagneticRollers = true;
@@ -734,8 +758,8 @@ namespace MRNUIElements
 				OrderUnderlayment.Text = FigureUnderlayment(10).ToString();
 			else
 				OrderUnderlayment.Text = FigureUnderlayment(4).ToString();
-			OrderPaint.Text = "3";
-			OrderCaulk.Text = "3";
+			//OrderPaint.Text = "3";
+			//OrderCaulk.Text = "3";
 
 			InstallerPrice.Text = (FigureWaste(Slider.Value, TotalSQFTOFF) * (double)60).ToString();
 
@@ -886,16 +910,18 @@ namespace MRNUIElements
 			return queryaddress.ToString();
 		}
 
-		private void FetchWebsite(string webaddress)
+		private void FetchWebsite(string webaddress, bool weather = false)
 		{
-			//  AppointmentWebView.Source = new Uri(webaddress.ToString());
-		}
+			 if (!weather)JobBrowser.WebView.LoadUrl(webaddress.ToString());
+            WeatherBrowser.WebView.LoadUrl(webaddress.ToString());
+
+        }
 
 		private void GetJobInfo(string Latatitude, string longitudestring, string address, string zipcode = "30052", bool b = true)
 		{
 			if (b == true)
 			{
-				FetchWebsite("https://weather.com/weather/today/l/" + zipcode + ":4:US");
+				FetchWebsite("https://weather.com/weather/today/l/" + zipcode + ":4:US",true);
 				b = false;
 			}
 			else
@@ -912,7 +938,7 @@ namespace MRNUIElements
 			{
 				StringBuilder queryaddress = new StringBuilder();
 				queryaddress.Append("http://maps.google.com/maps");
-				queryaddress.Append("/dir/196 Old Loganville Road,Loganville,Georgia,30052/" + to);
+			//	queryaddress.Append("/dir/196 Old Loganville Road,Loganville,Georgia,30052/" + to);
 				FetchWebsite(queryaddress.ToString());
 			}
 			catch (Exception ex)
@@ -933,6 +959,8 @@ namespace MRNUIElements
 				textBlock.Foreground = System.Windows.Media.Brushes.Black;
 				canvas.Background = System.Windows.Media.Brushes.White;
 				PrintButton.Visibility = Visibility.Hidden;
+                InstallerPrice.Visibility = Visibility.Hidden;
+                VendorPrice.Visibility = Visibility.Hidden;
 				Print();
 			}
 			else
@@ -941,7 +969,9 @@ namespace MRNUIElements
 				textBlock.Foreground = System.Windows.Media.Brushes.White;
 				canvas.Background = System.Windows.Media.Brushes.Transparent;
 				PrintButton.Visibility = Visibility.Visible;
-			}
+                InstallerPrice.Visibility = Visibility.Visible;
+                VendorPrice.Visibility = Visibility.Visible;
+            }
 		}
 
 		private void Print()
@@ -953,7 +983,10 @@ namespace MRNUIElements
 			Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight);
 			OrderCanvas.Measure(pageSize);
 			OrderCanvas.Arrange(new Rect(20, 20, pageSize.Width + 20, pageSize.Height + 50));
-			printDlg.PrintVisual(OrderCanvas, "Roof Order #" + MRNNumber);
+
+            printDlg.ShowDialog();
+            printDlg.PrintVisual(OrderCanvas, "Roof Order #" + MRNNumber);
+            
 			OrderCanvas.LayoutTransform = z;
 
 			PeekABoo(true);
@@ -996,13 +1029,32 @@ namespace MRNUIElements
 
 		private void NextButton_Click(object sender, RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new RoofMeasurmentsPage());
-		}
+            //NavigationService.Navigate(new RoofMeasurmentsPage());
+            System.Windows.Forms.MessageBox.Show("New Feature On the way getting address code finalized!");
 
+        }
+        private void SendMail(string to, string from, string message, string subject, string attachmnent) {
+            var mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress(from);
+            mailMessage.Subject = subject;
+            mailMessage.IsBodyHtml = true;
+            mailMessage.Body = "<span style='font-size: 12pt; color: red;'>" + message +"</span>";
+               
+
+            mailMessage.Attachments.Add(new Attachment(attachmnent));
+
+            var filename = "C://Temp/mymessage.eml";
+
+            //save the MailMessage to the filesystem
+           System.IO.File.OpenWrite(filename);
+
+            //Open the file with the default associated application registered on the local machine
+            Process.Start(filename);
+        }
 		private void toggleButton_Checked(object sender, RoutedEventArgs e)
 		{
-			OrderCanvas.Visibility = Visibility.Collapsed;
-			textbox.Visibility = Visibility.Collapsed;
+			//OrderCanvas.Visibility = Visibility.Collapsed;
+			//textbox.Visibility = Visibility.Collapsed;
 			//  AppointmentWebView.Visibility = Visibility.Visible;
 
 
@@ -1010,15 +1062,22 @@ namespace MRNUIElements
 
 		private void toggleButton_Click(object sender, RoutedEventArgs e)
 		{
-			if (toggleButton.IsChecked == true)
+            PDFTextExtractor pdfExtract = new PDFTextExtractor();
+            var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "PDF Files (*.pdf)|*.pdf" };
+            var result = ofd.ShowDialog();
+            if (result == false) return;
+            //textbox.Text = pdfExtract.Extract(ofd.FileName, true);
+            FillVariables(pdfExtract.Extract(ofd.FileName, true));
+            this.DataContext = this;
+          /*  if (toggleButton.IsChecked == true)
 				toggleButton.IsChecked = false;
-			else toggleButton.IsChecked = true;
+			else toggleButton.IsChecked = true;*/
 		}
 
 		private void toggleButton_Unchecked(object sender, RoutedEventArgs e)
 		{
-			OrderCanvas.Visibility = Visibility.Visible;
-			textbox.Visibility = Visibility.Collapsed;
+		/*	OrderCanvas.Visibility = Visibility.Visible;
+			textbox.Visibility = Visibility.Collapsed;*/
 			// AppointmentWebView.Visibility = Visibility.Collapsed;
 		}
 
@@ -1038,7 +1097,18 @@ namespace MRNUIElements
 
 		private void View_Order(object sender, RoutedEventArgs e)
 		{
-			OrderCanvas.Visibility = Visibility.Visible;
+            try
+            {
+                JobBrowser.WebView.Download(CheckForEVLink(JobBrowser.WebView.Url), @"%USERPROFILE%\ev.pdf");
+                FillVariables(new PDFTextExtractor().Extract(@"%USERPROFILE%\ev.pdf",true));
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("NO LINKY TO THE EAGLE VIEW FOR U!");
+            }
+            if(JobBrowser.Visibility==Visibility.Visible)
+            JobBrowser.Visibility = Visibility.Collapsed;
+            OrderCanvas.Visibility = Visibility.Visible;
 			textbox.Visibility = Visibility.Collapsed;
 			//  AppointmentWebView.Visibility = Visibility.Collapsed;
 		}
@@ -1047,32 +1117,51 @@ namespace MRNUIElements
 		{
 			OrderCanvas.Visibility = Visibility.Collapsed;
 			textbox.Visibility = Visibility.Collapsed;
-			// AppointmentWebView.Visibility = Visibility.Visible;
-		}
-		string a = "", b = "";
-		private void OrderBrand_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            JobBrowser.Visibility = Visibility.Visible;
+            FetchWebsite(googlemaplink);
+                                                                                                                                 // AppointmentWebView.Visibility = Visibility.Visible;
+        }
+//		string a = "", b = "";
+		async private void OrderBrand_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			a = OrderBrand.Text;
+            await s1.GetProducts();
+            var selectedItem = OrderBrand.SelectedItem;
+            var prods = s1.Products.FindAll(x => x.Name != null && x.Brand == ((System.Windows.Controls.ComboBoxItem)selectedItem).Content.ToString()).ToList();
+
+            var dumbassshithavingtodothanksmuckrosuft = new List<string>();
+            
+            foreach (var item in prods)
+            {
+                if(!dumbassshithavingtodothanksmuckrosuft.Exists(x=>x == item.Name))
+                            dumbassshithavingtodothanksmuckrosuft.Add(item.Name);
+
+            }
+            OrderBrandType.ItemsSource = dumbassshithavingtodothanksmuckrosuft;
+            //	OrderBrandType.ItemsSource = PopulateLists(OrderBrand.SelectedIndex == 1 ? 5 : 0);
 
 
 
-			if (OrderBrand.SelectedIndex > -1)
-				//	OrderBrandType.ItemsSource = PopulateLists(OrderBrand.SelectedIndex == 1 ? 5 : 0);
-
-				GetProducts();
-
-			DoMath();
+            DoMath();
 		}
 
 		private void OrderBrandType_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			//if (OrderBrandType.SelectedIndex > -1)
-			//  if (NewShingleCombo.HasItems)
-			//NewShingleCombo.ItemsSource = PopulateLists((OrderBrand.SelectedIndex == 0 ? 0 : 5) + OrderBrandType.SelectedIndex == 0 ? 1 : (OrderBrandType.SelectedIndex + 1));
-			//b = OrderBrandType.Text;
+             if (OrderBrandType.SelectedIndex == -1)
+                return;
+            var selectedItem = OrderBrandType.SelectedItem.ToString();
+          
+            var prods = s1.Products.FindAll(x => x.Color != null && x.Name == selectedItem).ToList();
 
-			//	ShingleType.Text = a + " - " + b;
-			DoMath();
+            var dumbassshithavingtodothanksmuckrosuft = new List<string>();
+
+            foreach (var item in prods)
+            {
+                if (!dumbassshithavingtodothanksmuckrosuft.Exists(x => x == item.Color))
+                    dumbassshithavingtodothanksmuckrosuft.Add(item.Color);
+
+            }
+            NewShingleCombo.ItemsSource = dumbassshithavingtodothanksmuckrosuft;
+            DoMath();
 		}
 
 
@@ -1225,12 +1314,110 @@ namespace MRNUIElements
 
 		}
 
-		private void TotalAreaOFF_TextChanged(object sender, TextChangedEventArgs e)
+        private void OrderBrandType_Loaded(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void OrderBrand_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TotalAreaOFF_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			double dbl = 0;
 			double.TryParse(TotalAreaOFF.Text, out dbl);
 			TotalSQFTOFF = dbl;
 			DoMath();
 		}
-	}
+
+        private void JobBrowser_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.JobBrowser.WebView.LoadUrl("http://www.gmail.com");
+        }
+
+        private void WeatherBrowser_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.WeatherBrowser.WebView.LoadUrl("http://www.weather.com");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            WeatherBrowser.BringIntoView();
+        }
+
+        private void JobBrowser_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
+
+        private void JobBrowser_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+         
+
+        }
+
+        string CheckForEVLink(string url)
+        {
+           
+            try
+            {
+              url = @"https://mail.google.com/mail/u/0/?ui=2&ik=50a0e2409a&view=att&th=" + url.Substring(url.LastIndexOf('/')+1)+ "&attid=0.2&disp=inline&safe=1&zw";
+            }
+
+
+            catch (Exception ex)
+            {
+               
+            }
+
+            return url;
+        }
+
+        
+
+        private void JobBrowser_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+           //     JobBrowser.WebView.Download(CheckForEVLink(JobBrowser.WebView.Url), @"%USERPROFILE%\ev.pdf");
+            }
+            catch (Exception ex)
+            {
+            //    System.Windows.Forms.MessageBox.Show("NO LINKY TO THE EAGLE VIEW FOR U!");
+            }
+        }
+
+        private void JobBrowser_IsReadyChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JobBrowser_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        EO.WebBrowser.NewWindowEventArgs NewWindowEventArgs(object sender, EO.WebBrowser.NewWindowEventArgs e)
+        {
+
+
+            return e;
+
+        }
+      
+
+      public delegate void NewWindowHandler(object sender, EO.WebBrowser.NewWindowEventArgs e);
+            
+
+           
+     
+
+       
+    }
 }

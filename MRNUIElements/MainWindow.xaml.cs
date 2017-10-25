@@ -227,7 +227,7 @@ namespace MRNUIElements
 
         private void Contests_Click(object sender, RoutedEventArgs e)
         {
-
+            ns.Navigate(new Controllers.WebBrowser());
         }
 
         private void AddCycle_Click(object sender, RoutedEventArgs e)
@@ -243,6 +243,16 @@ namespace MRNUIElements
         private void NextCycle_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ScheduleRoof_Click(object sender, RoutedEventArgs e)
+        {
+            ns.Navigate(new RoofMeasurmentsPage());
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
         }
     }
 }

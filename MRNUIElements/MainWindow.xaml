@@ -157,8 +157,17 @@
                         </syncfusion:MenuItemAdv.BorderBrush>
                     </syncfusion:MenuItemAdv>
                 </syncfusion:MenuItemAdv>
-
-                <syncfusion:MenuItemAdv x:Name="Exit" Header="Exit">
+                <syncfusion:MenuItemAdv x:Name="ScheduleRoof"
+                                                    Click="ScheduleRoof_Click"
+                                                    Header="Schedule/Order Roof">
+                    <syncfusion:MenuItemAdv.BorderBrush>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#FF17FF00" />
+                            <GradientStop Offset="1" Color="#FFFFE800" />
+                        </LinearGradientBrush>
+                    </syncfusion:MenuItemAdv.BorderBrush>
+                </syncfusion:MenuItemAdv>
+                <syncfusion:MenuItemAdv x:Name="Exit" Header="Exit" Click="Exit_Click">
                     <syncfusion:MenuItemAdv.BorderBrush>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="#FF17FF00" />
