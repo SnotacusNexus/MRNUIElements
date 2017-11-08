@@ -22,7 +22,7 @@ namespace MRNUIElements.Controllers
 	{
 		static ServiceLayer s1 = ServiceLayer.getInstance();
 		static MRNClaim MrnClaim = MRNClaim.getInstance();
-		public ClaimIT(MRNClaim MrnClaim)
+		public ClaimIT()
 		{
 			InitializeComponent();
 			ClaimIT.MrnClaim = MrnClaim;
@@ -41,6 +41,7 @@ namespace MRNUIElements.Controllers
 
 		async private void ClaimItbutton_Copy_Click(object sender, RoutedEventArgs e)
 		{
+            if(MrnClaim.r!=null)
             await s1.AddReferrer(MrnClaim.r);
             await s1.AddCustomer(MrnClaim.c);
             MrnClaim.c.CustomerID = s1.Cust.CustomerID;

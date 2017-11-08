@@ -35,10 +35,11 @@ namespace MRNUIElements
         public static NavigationService ns = MainWindow.getNavigationService();
 		protected ObservableCollection<DTO_Claim> colOfClaims = new ObservableCollection<DTO_Claim>();
 		protected ObservableCollection<DTO_Employee> colOfEmployees = new ObservableCollection<DTO_Employee>();
-
-		public ClaimPickerPopUp()
+        protected bool joy { get; set; }
+		public ClaimPickerPopUp(bool joy=true)
 		{
 			InitializeComponent();
+            this.joy = joy;
 			//System.Windows.Forms.MessageBox.Show(currentLoggedInUser.ToString());
 			try
 			{
@@ -78,7 +79,7 @@ namespace MRNUIElements
 			dTO_ClaimViewSource.Source = this.DataContext;
 		}
 
-		private async void GetActiveClaims()
+		private async void GetActiveClaims(bool joy=true)
 		{	
 			await s1.GetAllClaims();
             //if (s1.OpenClaimsList == null)
@@ -118,6 +119,7 @@ namespace MRNUIElements
 
 			DialogResult = true;
 			Close();
+            if(!joy)
             if (ClaimListView.SelectedItem != null)
                 ns.Navigate(new ClaimView(Claim));
 

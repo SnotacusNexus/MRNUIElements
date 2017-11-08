@@ -29,10 +29,10 @@ namespace MRNUIElements
 		const int NEWSCOPE = 10;
 		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public List<DTO_Scope> claimscopelist = new List<DTO_Scope>();
-		protected ObservableCollection<DTO_Scope> claimScopes = new ObservableCollection<DTO_Scope>();
+		static protected ObservableCollection<DTO_Scope> claimScopes = new ObservableCollection<DTO_Scope>();
 		//public int scopetype;
 		static GetClaimsPage G = GetClaimsPage.getInstanceH();
-		public int scopeType { get; set; }
+		public static int scopeType { get; set; }
 		public int TypeScope { get; set; }
 		public DTO_Scope scope = new DTO_Scope();
 		public double acv;
@@ -41,7 +41,7 @@ namespace MRNUIElements
 		public int ScopeID;
 		public bool bab = true;
 		private double temp = 0;
-		public string selTxt { get; set; }
+		static public string selTxt { get; set; }
 		protected List<bool> ScopeExist = new List<bool>();
 		public List<DTO_Scope> ScopesList { get; set; }
 		public DTO_Claim claim { get; set; }
@@ -80,12 +80,10 @@ namespace MRNUIElements
 
 			}
 
-            //	ShowsAvailableScopes(ScopesList);
-            ScopesList = s1.ScopesList.FindAll(y =>/* y.ScopeTypeID == scopeType &&*/ y.ClaimID == _claim.ClaimID);
-            if(scopeType>0)
-            ScopeTypeTextBlock.Text = s1.ScopeTypes.Find(x=>x.ScopeTypeID==scopeType).ScopeType.ToString();
+		//	ShowsAvailableScopes(ScopesList);
+			ScopeTypeTextBlock.Text = new DTO_LU_ScopeType[scopeType].ToString();
 			//GetScopes(_claim, scopeType); //Find all scopes for claim and store them in order for structured retrieval
-			if (_claim != null )
+			if (_claim != null && scopeType > 0)
 			{
 				claimIDTextBox.Text = _claim.MRNNumber;
 			}
@@ -354,7 +352,7 @@ namespace MRNUIElements
 				if (scopeType == 1) EstimateBtn.Background = Brushes.Green;
 				if (scopeType ==2) OldScopeBtn.Background = Brushes.Green;
 				if(scopeType==3) NewScopeBtn.Background = Brushes.Green;
-				return scopesList.Find(x => x.ScopeTypeID == scopeType);
+				return scopesList.Where(x => x.ScopeTypeID == scopeType).ToList()[0];
 			}
 			else
 			{

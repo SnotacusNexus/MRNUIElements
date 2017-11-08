@@ -391,7 +391,11 @@ namespace MRNUIElements.Utility
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+        
             bool val = (bool)value;
+            if (parameter != null)
+                val = !val;
+
             if (val)
             {
                 return Visibility.Visible;

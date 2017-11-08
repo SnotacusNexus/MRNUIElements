@@ -127,7 +127,7 @@ namespace MRNUIElements.Controllers
 			MRNClaim.getInstance()._claim.PropertyID = MRNClaim.getInstance().a.AddressID;
             MRNClaim.getInstance()._claim.MortgageAccount = LoanNumber.Text + LoanNumber2 != null ? (" "+LoanNumber2.Text) : " ";
             MRNClaim.getInstance()._claim.MortgageCompany = LienHolder.Text + LienHolder2 != null ? (" " + LienHolder2.Text) : " ";
-            NavigationService.Navigate(new ClaimIT(MRNClaim.getInstance()));
+            NavigationService.Navigate(new ClaimIT());
 		}
 
 		private void Prevbutton_Click(object sender, RoutedEventArgs e)

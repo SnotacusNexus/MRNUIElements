@@ -51,6 +51,7 @@ namespace MRNUIElements
 	{
 		public static ServiceLayer s1 = ServiceLayer.getInstance();
 		static NavigationService ns;
+        static MainWindow mw;
 		static DTO_Claim claim { get; set; }
 		public static Syncfusion.Windows.Controls.Notification.SfBusyIndicator _busyindicator;
 		static public string Status = "Loading...!!!";
@@ -84,6 +85,14 @@ namespace MRNUIElements
 			ns = this.MRNClaimNexusMainFrame.NavigationService;
 
 		}
+        static public MainWindow getMainWindowInstance()
+        {
+            if (mw == null)
+                mw = new MainWindow();
+
+            return mw;
+        }
+
 		static public DTO_Claim Claim
 		{
 			get
@@ -182,6 +191,13 @@ namespace MRNUIElements
             ns.Navigate(new AddPropertyAddress());
         }
 
+        public bool UpdateStatusBarText(string textToDisplay)
+        {
+
+            VerboseStatusDisplay.Items.Add(textToDisplay);
+
+            return true;
+        }
       
 
         private void ModifyClaim_Click(object sender, RoutedEventArgs e)
@@ -228,6 +244,7 @@ namespace MRNUIElements
         private void Contests_Click(object sender, RoutedEventArgs e)
         {
             ns.Navigate(new Controllers.WebBrowser());
+          
         }
 
         private void AddCycle_Click(object sender, RoutedEventArgs e)
@@ -253,6 +270,31 @@ namespace MRNUIElements
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
+        }
+
+        private void View_Console_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Generate_Supplement_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Settle_Claim_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void View_Order_Console_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Material_Adjustment_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
