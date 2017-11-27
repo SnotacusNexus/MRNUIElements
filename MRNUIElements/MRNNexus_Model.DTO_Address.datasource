@@ -6,20 +6,20 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="DTO_Address" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>MRNNexus_Model.DTO_Address, MRNNexus_Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>  MRNUIElements.DataObjectModels.DTO_Address,   MRNUIElements.DataObjectModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
    <TypeUISetting>
       <PropertyUISettings>
          <PropertyUISetting Name="AddressID">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
-                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
                </ControlSetting>
             </ControlSettings>
          </PropertyUISetting>
          <PropertyUISetting Name="CustomerID">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
-                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                  <BindableControlInfo Name="IntegerTextBox" Type="Syncfusion.Windows.Shared.IntegerTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
                </ControlSetting>
             </ControlSettings>
          </PropertyUISetting>
@@ -48,6 +48,20 @@
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
                   <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Address">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="MaskedTextBox" Type="Syncfusion.Windows.Shared.MaskedTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Zip">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="MaskedTextBox" Type="Syncfusion.Windows.Shared.MaskedTextBox" AssemblyName="Syncfusion.Shared.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
                </ControlSetting>
             </ControlSettings>
          </PropertyUISetting>

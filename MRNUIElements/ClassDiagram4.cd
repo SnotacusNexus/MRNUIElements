@@ -590,7 +590,7 @@
       <FileName>Models\ShapePresetModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MRNUIElements.ClaimDataService.AccessableClaimsList" Collapsed="true">
+  <Class Name=" MRNUIElements.DataObjectModels.AccessableClaimsList" Collapsed="true">
     <Position X="9" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAABAAAAAAAICAAAAAAAQggAAAAAACA=</HashCode>

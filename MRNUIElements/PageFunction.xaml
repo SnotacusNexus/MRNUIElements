@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
      x:Class="MRNUIElements.PageFunction"
-    xmlns:models="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
+    xmlns:models="MRNNexus_Model;assembly=MRNNexus_Model"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     x:TypeArguments="sys:Object"
     mc:Ignorable="d"

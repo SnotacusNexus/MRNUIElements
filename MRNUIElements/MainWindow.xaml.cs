@@ -144,6 +144,7 @@ namespace MRNUIElements
 				//}
 			}
 				busyIndicator.IsBusy = false;
+            VerboseStatusDisplay.Visibility = Visibility.Collapsed;
 				Login loginpage = new Login();
 					
 
@@ -233,7 +234,10 @@ namespace MRNUIElements
 
         private void Add_Inspection_Click(object sender, RoutedEventArgs e)
         {
+            var f = new Form1();
+            f.ShowDialog();
 
+            //ns.Navigate(new Form1());
         }
 
         private void Adjustment_Click(object sender, RoutedEventArgs e)
@@ -295,6 +299,12 @@ namespace MRNUIElements
         private void Material_Adjustment_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Add_Inspection_Photos_Click(object sender, RoutedEventArgs e)
+        {
+            var f2 = new Form2();
+            f2.ShowDialog();
         }
     }
 }

@@ -20,7 +20,7 @@ using static MRNUIElements.PaymentEntryPage;
 using static MRNUIElements.InvoicePage;
 using System.Drawing;
 using System.Threading;
-using MRNUIElements.ClaimDataService;
+using MRNNexus_Model;
 using static MRNUIElements.RoofMeasurmentsPage;
 using System.Text.RegularExpressions;
 using static MRNUIElements.MainWindow;
@@ -48,6 +48,8 @@ namespace MRNUIElements.Controllers
     {
 
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+      
+
         public ObservableCollection<DTO_OrderItem> OrderItem { get; set; }
         public ObservableCollection<BringBacks> adjustmentItems { get; set; }
         public object dTO_ScopeViewSource { get; private set; }
@@ -249,7 +251,7 @@ namespace MRNUIElements.Controllers
 
             public static ObservableCollection<Product> ClaimProducts;
 
-            public event PropertyChangedEventHandler PropertyChanged;
+            public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
             ServiceLayer s1 = ServiceLayer.getInstance();
             public List<string> ShingleBrands()
             {

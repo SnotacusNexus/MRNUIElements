@@ -267,7 +267,7 @@ namespace MRNUIElements.Controllers
 		{
 			//mw.Text = "Building Adjustment Results Lookup Table";
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
-            MainWindow.Di
+         //   MainWindow.Di
             await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AppointmentTypes>), "GetAppointmentTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimDocumentType>), "GetClaimDocumentTypes");
 			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimStatusTypes>), "GetClaimStatusTypes");
@@ -386,7 +386,7 @@ namespace MRNUIElements.Controllers
 		}
 		//GetRecentInspectionsBySalesPersonIDGetRecentLeadsBySalesPersonIDGetRecentClaimsBySalesPersonID
 
-	
+	     
 
 
 
@@ -400,7 +400,7 @@ namespace MRNUIElements.Controllers
 				//LoggedInEmployee = ((DTO_Employee)JsonConvert.DeserializeObject((string)json, a));
 				LoggedInEmployee = JsonConvert.DeserializeObject<DTO_Employee>(json);
 				return;
-			}
+			}            
 			if (type == typeof(DTO_AdditionalSupply))
 			{
 				AdditionalSupply = JsonConvert.DeserializeObject<DTO_AdditionalSupply>(json);
@@ -408,7 +408,7 @@ namespace MRNUIElements.Controllers
 			}
 			if (type == typeof(DTO_Address))
 			{
-				Address1 = JsonConvert.DeserializeObject<DTO_Address>(json);
+				Address = JsonConvert.DeserializeObject<DTO_Address>(json);
 				return;
 			}
 			if (type == typeof(DTO_Customer))
@@ -1847,6 +1847,8 @@ namespace MRNUIElements.Controllers
 					new DTO_Base());
 				response.EnsureSuccessStatusCode();
 				ClaimDocumentsList = await response.Content.ReadAsAsync<List<DTO_ClaimDocument>>();
+
+
 			}
 			catch (Exception ex)
 			{

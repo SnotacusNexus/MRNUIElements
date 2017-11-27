@@ -1,7 +1,7 @@
 ﻿<Page x:Class="MRNUIElements.Claim_Administration"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:ClaimDataService="clr-namespace:MRNUIElements.ClaimDataService"
+   xmlns:ClaimDataService="clr-namespace:MRNUIElements.ClaimDataService"
       xmlns:Collection="clr-namespace:MRNUIElements.Controllers.Collection"
       xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
       xmlns:Models="clr-namespace:MRNUIElements.Models"

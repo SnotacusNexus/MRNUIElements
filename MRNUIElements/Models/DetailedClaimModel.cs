@@ -11,23 +11,23 @@ using PropertyChanged;
 
 namespace MRNUIElements.Models
 {
-	[AddINotifyPropertyChangedInterface]
+    [AddINotifyPropertyChangedInterface]
 
-	class DetailedClaimModel : INotifyPropertyChanged
+    class DetailedClaimModel : INotifyPropertyChanged
 
-	{
+    {
 
-		#region INotifyPropertyChanged Members
+        #region INotifyPropertyChanged Members
 
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
 		private void OnPropertyChanged(string propertyName)
 		{
-			PropertyChangedEventHandler handler = PropertyChanged;
+			
 
-			if (handler != null)
+			if (PropertyChanged != null)
 			{
-				handler(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 

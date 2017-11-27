@@ -21,8 +21,10 @@ namespace MRNUIElements.Controllers
 
 		public static ObservableCollection<ClaimPayment> ClaimPayments;
 
-		public event PropertyChangedEventHandler PropertyChanged;
-		ServiceLayer s1 = ServiceLayer.getInstance();
+		public event PropertyChangedEventHandler OnPropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        ServiceLayer s1 = ServiceLayer.getInstance();
 		public ObservableCollection<ClaimPayment> GetClaimPayments()
 		{
 			ClaimPayments = new ObservableCollection<ClaimPayment>();

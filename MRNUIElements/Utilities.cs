@@ -25,11 +25,11 @@ namespace MRNUIElements
 
 		private void OnPropertyChanged(string propertyName)
 		{
-			PropertyChangedEventHandler handler = PropertyChanged;
+			
 
-			if (handler != null)
+			if (PropertyChanged != null)
 			{
-				handler(this, new PropertyChangedEventArgs(propertyName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 #endregion

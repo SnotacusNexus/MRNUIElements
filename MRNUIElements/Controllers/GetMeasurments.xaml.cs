@@ -20,7 +20,7 @@ namespace MRNUIElements.Controllers
 	/// </summary>
 	public partial class GetMeasurments : PageFunction<Object>
 	{
-		public MRNNexus_Model.DTO_Claim Claim { get; set; }
+		public   MRNNexus_Model.DTO_Claim Claim { get; set; }
 		public GetMeasurments()
 		{
 

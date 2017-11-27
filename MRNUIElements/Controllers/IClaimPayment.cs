@@ -11,7 +11,7 @@ namespace MRNUIElements.Controllers
 		string PaymentDescription { get; set; }
 		string PaymentType { get; set; }
 
-		event PropertyChangedEventHandler PropertyChanged;
+		event PropertyChangedEventHandler OnPropertyChanged;
 
 		ObservableCollection<ClaimPayment> GetClaimPayments();
 		List<DTO_LU_PaymentDescription> GetPaymentDescriptions();
