@@ -19,7 +19,7 @@
 
     <Page.Resources>
         <converters:ClaimContactsConverter x:Key="CCC"/>
-        <converters:BitmapImageConverter x:Key="Image"/>
+        <converters:BitmapImageConverter x:Key="BitmapImageConverter"/>
         <dom:Lead x:Key="_Lead"/>
         <dom:Customer x:Key="_Customer"/>
         <dom:ClaimStatus x:Key="_ClaimStatus"/>
@@ -33,7 +33,7 @@
         <dom:CallLog x:Key="_CallLog"/>
         <dom:CalendarData x:Key="_CalendarData"/>
         <dom:Invoice x:Key="_Invoice"/>
-
+        <converters:AddressBlockFromAddressIDConverter x:Key="AC"/>
         <dom:ClaimDocument x:Key="_ClaimDocument"/>
         <dom:Adjustment x:Key="_Adjustment"/>
         <dom:Adjuster x:Key="_Adjuster"/>
@@ -69,6 +69,8 @@
         <CollectionViewSource x:Key="dTO_OrderItemViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_OrderItem}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_OrderViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Order}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_LeadViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Lead}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_RidgeMaterialViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_RidgeMaterialType}, CreateList=True}"/>
+
         <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
         <Style xmlns:sys="clr-namespace:System;assembly=mscorlib"
                x:Key="PromptingTextBox"
@@ -361,7 +363,7 @@
                         Height="993"
                         MinWidth="300"
                         MinHeight="400"
-                        Margin="0,175,0,0"
+                        Margin="5,177,0,0"
                         VerticalAlignment="Top"
                         Background="#FFE0EBE3"
                         Foreground="White"
@@ -377,19 +379,30 @@
                     <Grid x:Name="CustomerGrid" Margin="2,0,0,0" DataContext="{StaticResource dTO_CustomerViewSource}">
                         <TextBlock x:Name="textBlock" Text="Customer Information" TextWrapping="Wrap" Margin="77,34,2270.333,905.333" FontSize="20" FontWeight="Bold" TextDecorations="Underline" Foreground="Black"/>
                         <Grid x:Name="CustomerComplete"  DataContext="{StaticResource dTO_CustomerViewSource}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="540*"/>
+                                <ColumnDefinition Width="534*"/>
+                                <ColumnDefinition Width="587*"/>
+                                <ColumnDefinition Width="619*"/>
+                                <ColumnDefinition Width="277*"/>
+                            </Grid.ColumnDefinitions>
 
-                            <Button x:Name="AddClaimBtn" Content="Submit Claim" Margin="890,480,1536.333,385.333" Click="AddClaimBtn_Click"/>
-                            <Button x:Name="NextClaimBtn" Content="Next" Margin="956,585,1534.333,280.333" Click="NextClaimBtn_Click"/>
-                            <Button x:Name="PrevClaimBtn" Content="Prev" Margin="890,585,1606.333,280.333" Click="PrevClaimBtn_Click"/>
+                            <Button x:Name="AddClaimBtn" Margin="370,572,33,293" Click="AddClaimBtn_Click" Grid.Column="1">
+                                <Grid>
+
+                                    <Image x:Name="SubmitButtonBackground" Source="{StaticResource XMark}" Stretch="Fill"/>
+                                    <TextBlock VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Heavy" Height="54" Margin="32,22,31,20" Panel.ZIndex="10" FontSize="18"><Run Text="Submit"/><LineBreak/><Run Text="Claim"/></TextBlock>
+
+                                </Grid>
+                            </Button>
                             <syncfusion:Carousel x:Name="carousel"   
                             VisualMode="CustomPath"
                             VerticalAlignment="Top"
                             ItemsPerPage="5"
                             RadiusX="250"
-                            Height="257"
-                            Width="558"    
+                            Height="297"    
                             SelectedIndex="4" 
-                            Margin="192,698,1807.333,0" Loaded="carousel_Loaded">
+                            Margin="10,558,32,0" Loaded="carousel_Loaded" Grid.Column="2">
 
                                 <syncfusion:Carousel.Path>
 
@@ -403,8 +416,11 @@
                                         <StackPanel Width="200" Height="200">
                                             <Border Height="100" Width="100" Background="LightBlue">
 
-                                                <Image Height="200" Width="200" Source = "{Binding Path=Image, IsAsync=True}" />
-
+                                                <InkCanvas Height="200" Width="200" >
+                                                    <InkCanvas.Background>
+                                                    <ImageBrush ImageSource="{Binding DocumentID, Source={StaticResource dTO_ClaimDocumentViewSource},Converter={StaticResource BitmapImageConverter},ConverterParameter=ClaimID, IsAsync=True}"/>
+                                                </InkCanvas.Background>
+                                                </InkCanvas>
                                             </Border>
 
 
@@ -416,35 +432,37 @@
                             </syncfusion:Carousel>
 
 
-                            <Image x:Name="image" Margin="1464,0,282.333,572.333"/>
-                            <WrapPanel Margin="1062,480,0.333,10.333"/>
+                            <Image x:Name="image" Margin="183,30,32,542" Grid.Column="2"/>
+                            <WrapPanel Margin="47,703,32,31" Grid.ColumnSpan="3"/>
                             <Grid x:Name="CustAddressGrid" DataContext="{StaticResource dTO_AddressViewSource}" HorizontalAlignment="Left" Margin="65,96,0,0" VerticalAlignment="Top" Height="60" Width="416">
 
                                 <syncfusion:MaskedTextBox x:Name="addressMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="0,2,0,35" Grid.Row="0" Text="{Binding Address}" VerticalAlignment="Center" Width="416" WatermarkText="Property Address" TextSelectionOnFocus="False"/>
                                 <syncfusion:IntegerTextBox x:Name="addressIDIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="1" Text="{Binding Address}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
                                 <syncfusion:IntegerTextBox x:Name="customerIDIntegerTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="2" Text="{Binding CustomerID, ElementName=customerIDIntegerTextBox, Mode=TwoWay}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
                                 <syncfusion:MaskedTextBox x:Name="zipMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="316,31,0,6" Text="{Binding Zip}" VerticalAlignment="Center" Width="100" WatermarkText="Zipcode"/>
-                                <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,6" VerticalAlignment="Center" Width="206" WatermarkText="City" Mask="" ReadOnly="True" IsUndoEnabled="True"/>
+                                <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,6" VerticalAlignment="Center" Width="206" WatermarkText="City" ReadOnly="True" IsUndoEnabled="True" Text="{Binding Zip, Source={StaticResource AddressViewSource}, Converter={StaticResource AC}, ConverterParameter=2}"/>
                                 <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="211,31,0,6" VerticalAlignment="Center" Width="100" WatermarkText="State" ReadOnly="True" Mask=""/>
                             </Grid>
 
 
 
-                            <syncfusion:IntegerTextBox x:Name="customerIDIntegerTextBox" HorizontalAlignment="Left" Height="23" Margin="494,70,0,872.333" MinWidth="10" NumberGroupSeparator="," Grid.Row="0" Text="{Binding CustomerID}" VerticalAlignment="Center" Width="30" IsReadOnlyCaretVisible="True" IsScrollingOnCircle="False"/>
+                            <syncfusion:IntegerTextBox x:Name="customerIDIntegerTextBox" HorizontalAlignment="Left" Height="23" Margin="494,70,0,872" MinWidth="10" NumberGroupSeparator="," Grid.Row="0" Text="{Binding CustomerID}" VerticalAlignment="Center" Width="30" IsReadOnlyCaretVisible="True" IsScrollingOnCircle="False"/>
 
-                            <syncfusion:MaskedTextBox x:Name="emailMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="66,185,0,757.333" Text="{Binding Email}" VerticalAlignment="Center" Width="415"/>
+                            <syncfusion:MaskedTextBox x:Name="emailMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="66,185,0,757" Text="{Binding Email}" VerticalAlignment="Center" Width="415"/>
 
-                            <syncfusion:MaskedTextBox x:Name="firstNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="66,69,0,873.333" Text="{Binding FirstName}" VerticalAlignment="Center" Width="100" WatermarkText="First Name"/>
+                            <syncfusion:MaskedTextBox x:Name="firstNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="66,69,0,873" Text="{Binding FirstName}" VerticalAlignment="Center" Width="100" WatermarkText="First Name"/>
 
-                            <syncfusion:MaskedTextBox x:Name="lastNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="276,70,0,872.333" Text="{Binding LastName}" VerticalAlignment="Center" Width="100" WatermarkText="Last Name"/>
+                            <syncfusion:MaskedTextBox x:Name="lastNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="276,70,0,872" Text="{Binding LastName}" VerticalAlignment="Center" Width="100" WatermarkText="Last Name"/>
 
-                            <CheckBox x:Name="mailPromosCheckBox" Content="Enrolled in Email Updates" HorizontalAlignment="Left" IsChecked="{Binding MailPromos, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="192,158,0,785.333" VerticalAlignment="Center" Width="162" Height="22" Foreground="#FF907373"/>
+                            <CheckBox x:Name="mailPromosCheckBox" Content="Enrolled in Email Updates" HorizontalAlignment="Left" IsChecked="{Binding MailPromos, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="192,158,0,785" VerticalAlignment="Center" Width="162" Height="22" Foreground="#FF907373"/>
 
-                            <syncfusion:MaskedTextBox x:Name="middleNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="171,69,0,873.333" Text="{Binding MiddleName}" VerticalAlignment="Center" Width="100" WatermarkText="Middle Name"/>
+                            <syncfusion:MaskedTextBox x:Name="middleNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="171,69,0,873" Text="{Binding MiddleName}" VerticalAlignment="Center" Width="100" WatermarkText="Middle Name"/>
 
-                            <syncfusion:MaskedTextBox x:Name="primaryNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="66,157,0,785.333" Text="{Binding PrimaryNumber}" VerticalAlignment="Center" Width="120" WatermarkText="Primary Number" Mask="(###) ###-####"/>
-                            <syncfusion:MaskedTextBox x:Name="secondaryNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="359,157,0,785.333" Text="{Binding SecondaryNumber}" VerticalAlignment="Center" Width="122" WatermarkText="Secondary Number" Mask="(###) ###-####" WatermarkOpacity="0"/>
-                            <syncfusion:MaskedTextBox x:Name="suffixMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="381,70,0,872.333" Text="{Binding Suffix}" VerticalAlignment="Center" Width="100" WatermarkText="Suffix"/>
+                            <syncfusion:MaskedTextBox x:Name="primaryNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="66,157,0,785" Text="{Binding PrimaryNumber}" VerticalAlignment="Center" Width="120" WatermarkText="Primary Number" Mask="(###) ###-####"/>
+                            <syncfusion:MaskedTextBox x:Name="secondaryNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="359,157,0,785" Text="{Binding SecondaryNumber}" VerticalAlignment="Center" Width="122" WatermarkText="Secondary Number" Mask="(###) ###-####" WatermarkOpacity="0"/>
+                            <syncfusion:MaskedTextBox x:Name="suffixMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="381,70,0,872" Text="{Binding Suffix}" VerticalAlignment="Center" Width="100" WatermarkText="Suffix"/>
+
+
                         </Grid>
                         <Grid x:Name="ReferrerGrid" DataContext="{Binding ElementName=creditToIDComboBox.SelectedItemValue, Converter={StaticResource CCC},ConverterParameter=2}"  HorizontalAlignment="Left" Margin="66,316,0,0" VerticalAlignment="Top" Height="170" Width="424">
 
@@ -473,7 +491,7 @@
                             <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox_IC" HorizontalAlignment="Left" Height="23" Margin="10,92,0,98" VerticalAlignment="Center" Width="144" WatermarkText="City" Mask="" ReadOnly="True" IsUndoEnabled="True"/>
                             <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_IC" HorizontalAlignment="Left" Height="23" Margin="157,92,0,98" VerticalAlignment="Center" Width="69" WatermarkText="State" ReadOnly="True" Mask=""/>
                         </Grid>
-                        <ComboBox x:Name="dTO_InsuranceCompanyComboBox" DisplayMemberPath="CompanyName" ItemsSource="{Binding Source={StaticResource dTO_InsuranceCompanyViewSource}}" Margin="66,486,2033.333,448.333" SelectedValuePath="InsuranceCompanyID">
+                        <ComboBox x:Name="dTO_InsuranceCompanyComboBox" DisplayMemberPath="CompanyName" ItemsSource="{Binding Source={StaticResource dTO_InsuranceCompanyViewSource}}" Margin="66,486,2033.333,448.333" SelectedValue="InsuranceCompanyID">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -521,7 +539,7 @@
 
                             <CheckBox x:Name="removeTrashCheckBox" Content="Remove Jobsite Debris" HorizontalAlignment="Left" IsChecked="{Binding RemoveTrash, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,116,0,0" VerticalAlignment="Top" Width="145"/>
                             <Label Content="Ridge Material Type" Grid.Column="0" HorizontalAlignment="Left" Margin="331,20,0,355" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="ridgeMaterialTypeIDComboBox" DisplayMemberPath="RidgeMaterialType" SelectedValue="RidgeMaterialTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="331,49,0,330" VerticalAlignment="Center" Width="120">
+                            <ComboBox x:Name="ridgeMaterialTypeIDComboBox" DisplayMemberPath="RidgeMaterialType" SelectedValue="RidgeMaterialTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding dTO_RidgeMaterialViewSource}" Margin="331,49,0,330" VerticalAlignment="Center" Width="120">
                                 <ComboBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <VirtualizingStackPanel/>
@@ -604,7 +622,7 @@
                                     </ItemsPanelTemplate>
                                 </ComboBox.ItemsPanel>
                             </ComboBox>
-                            <ComboBox x:Name="salesPersonIDComboBox1" DataContext="dTO_ClaimContactsViewSource" SelectedItem="{StaticResource _Employee}" HorizontalAlignment="Left" Height="22" ItemsSource="{Binding}" Margin="11,0,0,34" VerticalAlignment="Bottom" Width="122">
+                            <ComboBox x:Name="salesPersonIDComboBox1" DataContext="dTO_ClaimContactsViewSource" SelectedItem="{StaticResource _Employee}" HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="11,10,0,34" Width="122">
                                 <ComboBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <VirtualizingStackPanel/>
@@ -623,9 +641,9 @@
                     <ComboBox x:Name="ExistingContactInfoCombo" Margin="260,236,2102.333,707.333" SelectionChanged="ExistingContactInfoCombo_SelectionChanged_1"/>
                     <TextBlock x:Name="textBlock_Copy" TextWrapping="Wrap" Margin="77,231,2304.333,707.333" FontWeight="Bold" TextDecorations="Underline" Foreground="Black"><Run FontSize="20" Text="Lead "/><Run FontSize="20" Text="Information"/></TextBlock>
                     <TextBlock x:Name="textBlock_Copy1" Text="Insurance Provider" TextWrapping="Wrap" Margin="77,452,2303.333,485.333" FontSize="20" FontWeight="Bold" TextDecorations="Underline" Foreground="Black"/>
-                    <Grid Margin="1290,32,187.333,0.333">
+                    <Grid Margin="1091,65,386,375">
                         <Frame x:Name="frame" Content="Frame" HorizontalAlignment="Left" Height="245" Margin="24,63,0,0" VerticalAlignment="Top" Width="543" Visibility="Hidden"/>
-                        <syncfusion:SfMaskedEdit x:Name="ImageComments_Copy" HorizontalAlignment="Left" Height="131" Margin="-18,360,0,0" TextWrapping="Wrap" Text="SfMaskedEdit" VerticalAlignment="Top" Width="543"/>
+                        <syncfusion:SfMaskedEdit x:Name="ImageComments_Copy" HorizontalAlignment="Left" Height="131" Margin="0,359,0,0" TextWrapping="Wrap" Text="SfMaskedEdit" VerticalAlignment="Top" Width="543"/>
                         <WrapPanel x:Name="wp" Height="636" Margin="572,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="484"/>
 
                         <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource dTO_InspectionViewSource}" Width="431" Margin="94,318,0,0" Visibility="Hidden">
@@ -716,9 +734,9 @@
                             <CheckBox x:Name="valleyCheckBox1" VerticalAlignment="Center" Grid.Row="6" Margin="0,0,0,17" IsChecked="{Binding Valley, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Content="" Height="15" Width="20" Grid.Column="1"/>
                         </Grid>
                         <Button x:Name="nextImageBtn" Content="Next&gt;" HorizontalAlignment="Left" Margin="93,311,0,0" VerticalAlignment="Top" Width="75" Click="nextImageBtn_Click"/>
-                        <ListBox x:Name="imagelistBox" HorizontalAlignment="Left" Height="308" Margin="0,-4,0,0" VerticalAlignment="Top" Width="168" SelectionChanged="imagelistBox_SelectionChanged"/>
+                        <ListBox x:Name="imagelistBox" HorizontalAlignment="Left" Height="308" Margin="0,-2,0,0" VerticalAlignment="Top" Width="168" SelectionChanged="imagelistBox_SelectionChanged"/>
                         <Button x:Name="deleteImageButtonbutton" Content="Delete Image" HorizontalAlignment="Left" Margin="93,334,0,0" VerticalAlignment="Top" Width="75" Click="deleteImageButtonbutton_Click" Height="21"/>
-                        <Button x:Name="addImagesbutton" Content="Add Images" Width="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Click="addImagesbutton_Click" Margin="0,334,0,309" Height="20"/>
+                        <Button x:Name="addImagesbutton" Content="Add Images" Width="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Click="addImagesbutton_Click" Margin="0,335,0,170" Height="20"/>
                         <Button x:Name="nextImageBtn_Copy" Content="&lt;Prev" HorizontalAlignment="Left" Margin="0,311,0,0" VerticalAlignment="Top" Width="75" Click="nextImageBtn_Click"/>
 
                         <Button x:Name="SubmitBtn"  Content="Submit" HorizontalAlignment="Left" Height="26" Margin="494,897,0,0" VerticalAlignment="Top" Width="73" Click="Button_Click"/>

@@ -84,7 +84,7 @@ namespace MRNUIElements
         public CollectionViewSource AdjustmentResultViewSource { get; set; }
         public CollectionViewSource ClaimDocumentViewSource { get; set; }
         public CollectionViewSource AdjustmentViewSource { get; set; }
-
+        public CollectionViewSource RidgeMaterialViewSource { get; set; }
         public CollectionViewSource AdjusterViewSource { get; set; }
         public CollectionViewSource InspectionViewSource { get; set; }
         public CollectionViewSource PaymentViewSource { get; set; }
@@ -97,7 +97,7 @@ namespace MRNUIElements
             InitializeComponent();
 
             leadTypeIDComboBox.ItemsSource = s.LeadTypes;
-
+           
         }
 
 
@@ -141,6 +141,7 @@ namespace MRNUIElements
             NewRoofViewSource = ((CollectionViewSource)(this.FindResource("dTO_NewRoofViewSource")));
             OrderItemViewSource = ((CollectionViewSource)(this.FindResource("dTO_OrderItemViewSource")));
             OrderViewSource = ((CollectionViewSource)(this.FindResource("dTO_OrderViewSource")));
+            RidgeMaterialViewSource = ((CollectionViewSource)(this.FindResource("dTO_RidgeMaterialViewSource")));
             bool b = false;
             Task.Run(async () =>
             {
@@ -365,7 +366,7 @@ namespace MRNUIElements
 
 
         }
-
+       
         async static Task<List<DTO_ClaimDocument>> GetDocuments(DTO_Claim Claim)
         {
             await s.GetClaimDocumentsByClaimID(Claim);
@@ -1439,6 +1440,11 @@ namespace MRNUIElements
         {
             if (Claim != null)
                 ExistingContactInfoCombo.DataContext = s.LeadsList.Find(x => x.LeadID == Claim.LeadID);
+        }
+
+        private void salesPersonIDComboBox1_SelectionChanged()
+        {
+
         }
     }
     //public class CollectionViewSourceEnum

@@ -166,14 +166,20 @@ namespace MRNUIElements.Utility
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var uri = (Uri)value;
-            var img = new System.Windows.Controls.Image();
-            img.Source = new BitmapImage(uri) { CacheOption = BitmapCacheOption.None };
-            return img;
+            Task.Run(async () => {
+                ServiceLayer.getInstance().ClaimDocumentsList.Clear();
+
+                await ServiceLayer.getInstance().GetClaimDocumentsByClaimID(new DTO_Claim { ClaimID = (int)parameter });
+            });
+                DTO_ClaimDocument a = ServiceLayer.getInstance().ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
+            return "http://" + a.FilePath + a.FileName + a.FileExt;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+        {  var uri = (Uri)value;
+            var img = new System.Windows.Controls.Image();
+            img.Source = new BitmapImage(uri) { CacheOption = BitmapCacheOption.None };
+            return img;
             throw new NotImplementedException();
         }
     }

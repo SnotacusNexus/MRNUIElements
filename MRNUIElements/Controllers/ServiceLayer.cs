@@ -30,12 +30,13 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Web.Helpers;
 using System.ServiceModel.Web;
+using System.ComponentModel;
 
 namespace MRNUIElements.Controllers
 {
 	public partial class ServiceLayer
 	{
-
+        static MainWindow mw = MainWindow.getMainWindowInstance(); 
 		//public TextBlock mw = (TextBlock)App.Current.MainWindow.TryFindResource("VerboseStatusDisplay");
 
 		//	int errorcount = 0;
@@ -263,79 +264,81 @@ namespace MRNUIElements.Controllers
 		}
 
 
-		async public Task buildLUs()
+		async public Task buildLUs(object sender, BackgroundWorker myWorker)
 		{
-			//mw.Text = "Building Adjustment Results Lookup Table";
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
-         //   MainWindow.Di
-            await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AppointmentTypes>), "GetAppointmentTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimDocumentType>), "GetClaimDocumentTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimStatusTypes>), "GetClaimStatusTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_DamageTypes>), "GetDamageTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_EmployeeType>), "GetEmployeeTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Invoice>), "GetAllInvoices");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_InvoiceType>), "GetInvoiceTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_KnockResponseType>), "GetKnockResponseTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_LeadType>), "GetLeadTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayFrequncy>), "GetPayFrequencies");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentDescription>), "GetPayDescriptions");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentType>), "GetPaymentTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayType>), "GetPayTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Permissions>), "GetPermissions");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PlaneTypes>), "GetPlaneTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ProductType>), "GetProductTypes");
-			//	mw.Text = "Building Ridge Material Types Lookup Table";
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_RidgeMaterialType>), "GetRidgeMaterialTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ScopeType>), "GetScopeTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ServiceTypes>), "GetServiceTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ShingleType>), "GetShingleTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_UnitOfMeasure>), "GetUnitsOfMeasure");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetVendorTypes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_InsuranceCompany>), "GetAllInsuranceCompanies");
-			//	//Non LU
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Inspection>), "GetAllInspections");
-			//	await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimDocument>), "GetAllClaimDocuments");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Payment>), "GetAllPayments");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Employee>), "GetAllEmployees");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimContacts>), "GetAllClaimContacts");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Address>), "GetAllAddresses");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Customer>), "GetAllCustomers");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_EmployeeDetail>), "GetAllEmployeeDetail");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Product>), "GetAllProducts");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Scope>), "GetAllScopes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimStatus>), "GetAllClaimStatuses");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Lead>), "GetAllLeads");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Plane>), "GetAllPlanes");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_User>), "GetAllUsers");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_AdditionalSupply>), "GetAllAdditionalSupplies");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_SurplusSupplies>), "GetAllSurplusSupplies");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Referrer>), "GetAllReferrers");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Damage>), "GetAllDamages");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaimsToSchedule");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaims");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_CallLog>), "GetAllCallLogs");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjustment>), "GetAllAdjustments");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjuster>), "GetAllAdjusters");
+   //         int j = 0;
+   //         myWorker.ReportProgress(j++);
+			////mw.Text = "Building Adjustment Results Lookup Table";
 			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_NewRoof>), "GetAllNewRoofs");
-			await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_KnockerResponse>), "GetAllKnockerResponses");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllInactiveClaims");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClosedClaims");
-			if (OpenClaimsList == null)
-				OpenClaimsList = getOpenClaims();
-			if (ClosedClaimsList == null)
-				ClosedClaimsList = getClosedClaims();
-			if (InactiveClaimsList == null)
-				InactiveClaimsList = getInactiveClaims();
-			DoneLoading = await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
+   //         myWorker.ReportProgress(j++);
+   //         await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AppointmentTypes>), "GetAppointmentTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimDocumentType>), "GetClaimDocumentTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimStatusTypes>), "GetClaimStatusTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_DamageTypes>), "GetDamageTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_EmployeeType>), "GetEmployeeTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Invoice>), "GetAllInvoices");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_InvoiceType>), "GetInvoiceTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_KnockResponseType>), "GetKnockResponseTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_LeadType>), "GetLeadTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayFrequncy>), "GetPayFrequencies");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentDescription>), "GetPayDescriptions");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentType>), "GetPaymentTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayType>), "GetPayTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Permissions>), "GetPermissions");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PlaneTypes>), "GetPlaneTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ProductType>), "GetProductTypes");
+			////	mw.Text = "Building Ridge Material Types Lookup Table";
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_RidgeMaterialType>), "GetRidgeMaterialTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ScopeType>), "GetScopeTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ServiceTypes>), "GetServiceTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ShingleType>), "GetShingleTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_UnitOfMeasure>), "GetUnitsOfMeasure");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetVendorTypes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_InsuranceCompany>), "GetAllInsuranceCompanies");
+			////	//Non LU
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Inspection>), "GetAllInspections");
+			////	await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
+			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimDocument>), "GetAllClaimDocuments");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Payment>), "GetAllPayments");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Employee>), "GetAllEmployees");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimContacts>), "GetAllClaimContacts");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Address>), "GetAllAddresses");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Customer>), "GetAllCustomers");
+			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_EmployeeDetail>), "GetAllEmployeeDetail");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Product>), "GetAllProducts");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Scope>), "GetAllScopes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimStatus>), "GetAllClaimStatuses");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Lead>), "GetAllLeads");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Plane>), "GetAllPlanes");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_User>), "GetAllUsers");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_AdditionalSupply>), "GetAllAdditionalSupplies");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_SurplusSupplies>), "GetAllSurplusSupplies");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Referrer>), "GetAllReferrers");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Damage>), "GetAllDamages");
+			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaimsToSchedule");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaims");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_CallLog>), "GetAllCallLogs");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjustment>), "GetAllAdjustments");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjuster>), "GetAllAdjusters");
+			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_NewRoof>), "GetAllNewRoofs");
+			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_KnockerResponse>), "GetAllKnockerResponses");
+			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllInactiveClaims");
+			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClosedClaims");
+			//if (OpenClaimsList == null)
+			//	OpenClaimsList = getOpenClaims();
+			//if (ClosedClaimsList == null)
+			//	ClosedClaimsList = getClosedClaims();
+			//if (InactiveClaimsList == null)
+			//	InactiveClaimsList = getInactiveClaims();
+			//DoneLoading = await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
 
 			
 
 
 		}
-		private List<DTO_Claim> getOpenClaims()
+		public List<DTO_Claim> getOpenClaims()
 		{
 			var a = new List<DTO_Claim>();
 			foreach (var item in ClaimStatusList.Where(x => x.ClaimStatusTypeID < 23))
@@ -348,7 +351,7 @@ namespace MRNUIElements.Controllers
 			a.Add(new DTO_Claim());
 			return a;
 		}
-		private List<DTO_Claim> getClosedClaims()
+		public List<DTO_Claim> getClosedClaims()
 		{
 			var a = new List<DTO_Claim>();
 			foreach (var item in ClaimStatusList.Where(x => x.ClaimStatusTypeID == 23))
@@ -361,7 +364,7 @@ namespace MRNUIElements.Controllers
 
 			return a;
 		}
-		private List<DTO_Claim> getInactiveClaims()
+		public List<DTO_Claim> getInactiveClaims()
 		{
 			var a = new List<DTO_Claim>();
 

@@ -35,7 +35,7 @@
                                     IsBusy="True" />
         <Frame x:Name="MRNClaimNexusMainFrame"
                Grid.RowSpan="2"
-               Margin="0,0,0,-1"
+               Margin="1,0,-1,-2"
                HorizontalAlignment="Stretch"
                VerticalAlignment="Stretch"
                HorizontalContentAlignment="Center"
@@ -59,11 +59,11 @@
                    Height="21"
                    Margin="0,233.667,-0.333,-1.333"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   
                    FontSize="20"
                    FontWeight="Bold"
-                   Foreground="White" Grid.Row="1"
-                   />
+                   Foreground="White" Grid.Row="1" />
 
         <syncfusion:MenuAdv x:Name="menuBar"
                             Grid.Row="0"
@@ -94,7 +94,6 @@
                         <GradientStop Offset="1" Color="#FFFFE800" />
                     </LinearGradientBrush>
                 </syncfusion:MenuItemAdv.BorderBrush>
-
 
                 <syncfusion:MenuItemAdv Click="Claim_Click"
                                         Foreground="Black"
@@ -134,7 +133,7 @@
                         </LinearGradientBrush>
                     </syncfusion:MenuItemAdv.BorderBrush>
 
-                    <syncfusion:MenuItemAdv x:Name="Add_Inspection" Header="Add Inspection" Click="Add_Inspection_Click" >
+                    <syncfusion:MenuItemAdv x:Name="Add_Inspection" Header="Add Inspection" Click="Add_Inspection_Click">
                         <syncfusion:MenuItemAdv.BorderBrush>
                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                 <GradientStop Color="#FF17FF00" />
@@ -142,7 +141,7 @@
                             </LinearGradientBrush>
                         </syncfusion:MenuItemAdv.BorderBrush>
                     </syncfusion:MenuItemAdv>
-                    <syncfusion:MenuItemAdv x:Name="Add_Inspection_Photos" Header="Add Inspection Photos" Click="Add_Inspection_Photos_Click" >
+                    <syncfusion:MenuItemAdv x:Name="Add_Inspection_Photos" Header="Add Inspection Photos" Click="Add_Inspection_Photos_Click">
                         <syncfusion:MenuItemAdv.BorderBrush>
                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                 <GradientStop Color="#FF17FF00" />
@@ -197,7 +196,7 @@
                         </LinearGradientBrush>
                     </syncfusion:MenuItemAdv.BorderBrush>
                 </syncfusion:MenuItemAdv>
-                <syncfusion:MenuItemAdv x:Name="Generate_Supplement" Header="Generate Supplemnt" Click="Generate_Supplement_Click" >
+                <syncfusion:MenuItemAdv x:Name="Generate_Supplement" Header="Generate Supplemnt" Click="Generate_Supplement_Click">
                     <syncfusion:MenuItemAdv.BorderBrush>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="#FF17FF00" />
@@ -247,13 +246,29 @@
                 </syncfusion:MenuItemAdv>
             </syncfusion:MenuItemAdv>
 
-            <syncfusion:MenuItemAdv Foreground="White" Header="Payable/Receivable">
+            <syncfusion:MenuItemAdv Foreground="White" Header="Payable/Receivable" Opacity="0.5" >
                 <syncfusion:MenuItemAdv.BorderBrush>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Color="#FF17FF00" />
                         <GradientStop Offset="1" Color="#FFFFE800" />
                     </LinearGradientBrush>
                 </syncfusion:MenuItemAdv.BorderBrush>
+                <syncfusion:MenuItemAdv x:Name="AddPayment" Header="Add Claim Payments" Click="Add_Payment_Click">
+                    <syncfusion:MenuItemAdv.BorderBrush>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#FF17FF00" />
+                            <GradientStop Offset="1" Color="#FFFFE800" />
+                        </LinearGradientBrush>
+                    </syncfusion:MenuItemAdv.BorderBrush>
+                </syncfusion:MenuItemAdv>
+                <syncfusion:MenuItemAdv Header="Add Claim Invoices">
+                    <syncfusion:MenuItemAdv.BorderBrush>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#FF17FF00" />
+                            <GradientStop Offset="1" Color="#FFFFE800" />
+                        </LinearGradientBrush>
+                    </syncfusion:MenuItemAdv.BorderBrush>
+                </syncfusion:MenuItemAdv>
                 <syncfusion:MenuItemAdv Header="Payment Schedule">
                     <syncfusion:MenuItemAdv.BorderBrush>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -294,22 +309,7 @@
                             <GradientStop Offset="1" Color="#FFFFE800" />
                         </LinearGradientBrush>
                     </syncfusion:MenuItemAdv.BorderBrush>
-                    <syncfusion:MenuItemAdv Header="Add Claim Payments">
-                        <syncfusion:MenuItemAdv.BorderBrush>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Color="#FF17FF00" />
-                                <GradientStop Offset="1" Color="#FFFFE800" />
-                            </LinearGradientBrush>
-                        </syncfusion:MenuItemAdv.BorderBrush>
-                    </syncfusion:MenuItemAdv>
-                    <syncfusion:MenuItemAdv Header="Add Claim Invoices">
-                        <syncfusion:MenuItemAdv.BorderBrush>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Color="#FF17FF00" />
-                                <GradientStop Offset="1" Color="#FFFFE800" />
-                            </LinearGradientBrush>
-                        </syncfusion:MenuItemAdv.BorderBrush>
-                    </syncfusion:MenuItemAdv>
+                   
                     <syncfusion:MenuItemAdv Foreground="White" Header="Deductible Services">
                         <syncfusion:MenuItemAdv.BorderBrush>
                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -468,7 +468,6 @@
                     </LinearGradientBrush>
                 </syncfusion:MenuItemAdv.BorderBrush>
             </syncfusion:MenuItemAdv>
-
         </syncfusion:MenuAdv>
     </Grid>
 </Window>
