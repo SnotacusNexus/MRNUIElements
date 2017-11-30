@@ -36,7 +36,7 @@ namespace MRNUIElements.Controllers
 {
 	public partial class ServiceLayer
 	{
-        static MainWindow mw = MainWindow.getMainWindowInstance(); 
+      //  static MainWindow mw = MainWindow.getMainWindowInstance(); 
 		//public TextBlock mw = (TextBlock)App.Current.MainWindow.TryFindResource("VerboseStatusDisplay");
 
 		//	int errorcount = 0;

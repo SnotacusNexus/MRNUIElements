@@ -46,7 +46,7 @@
                Foreground="White"
                Grid.IsSharedSizeScope="True"
                NavigationUIVisibility="Hidden"
-               ScrollViewer.VerticalScrollBarVisibility="Disabled">
+               ScrollViewer.VerticalScrollBarVisibility="Disabled" Loaded="MRNClaimNexusMainFrame_Loaded">
             <Frame.BorderBrush>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Offset="0" Color="#FFF2FD00" />
@@ -56,14 +56,16 @@
         </Frame>
         <StatusBar x:Name="VerboseStatusDisplay"
                    Width="763"
-                   Height="21"
-                   Margin="0,233.667,-0.333,-1.333"
+                   Height="30"
+                   Margin="0,0,-0.333,-0.333"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"
                    
                    FontSize="20"
                    FontWeight="Bold"
-                   Foreground="White" Grid.Row="1" />
+                   Background="#FF8AACBD" Grid.Row="1">
+            <TextBox x:Name="setDisplayStatus" Width="{Binding ActualWidth, ElementName=VerboseStatusDisplay, Mode=OneWay}" HorizontalContentAlignment="Center"/>
+        </StatusBar>
 
         <syncfusion:MenuAdv x:Name="menuBar"
                             Grid.Row="0"
@@ -79,7 +81,8 @@
                             Foreground="White"
                             IsEnabled="False"
                             PopUpAnimationType="Fade"
-                            TextOptions.TextHintingMode="Animated" Height="22">
+                            TextOptions.TextHintingMode="Animated" Height="22"
+                               >
 
             <syncfusion:MenuAdv.BorderBrush>
                 <LinearGradientBrush StartPoint="1,0.5" EndPoint="0.5,1">

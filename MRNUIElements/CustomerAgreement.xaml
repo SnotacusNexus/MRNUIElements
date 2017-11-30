@@ -6,7 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MRNUIElements"
         xmlns:converters="clr-namespace:MRNUIElements.Utility"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
   xmlns:dom="clr-namespace:MRNUIElements.DataObjectModels"
       xmlns:Generic="clr-namespace:System.Collections.Generic;assembly=mscorlib" 
@@ -20,6 +20,7 @@
     <Page.Resources>
         <converters:ClaimContactsConverter x:Key="CCC"/>
         <converters:BitmapImageConverter x:Key="BitmapImageConverter"/>
+
         <dom:Lead x:Key="_Lead"/>
         <dom:Customer x:Key="_Customer"/>
         <dom:ClaimStatus x:Key="_ClaimStatus"/>
@@ -440,8 +441,8 @@
                                 <syncfusion:IntegerTextBox x:Name="addressIDIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="1" Text="{Binding Address}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
                                 <syncfusion:IntegerTextBox x:Name="customerIDIntegerTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="2" Text="{Binding CustomerID, ElementName=customerIDIntegerTextBox, Mode=TwoWay}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
                                 <syncfusion:MaskedTextBox x:Name="zipMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="316,31,0,6" Text="{Binding Zip}" VerticalAlignment="Center" Width="100" WatermarkText="Zipcode"/>
-                                <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,6" VerticalAlignment="Center" Width="206" WatermarkText="City" ReadOnly="True" IsUndoEnabled="True" Text="{Binding Zip, Source={StaticResource AddressViewSource}, Converter={StaticResource AC}, ConverterParameter=2}"/>
-                                <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="211,31,0,6" VerticalAlignment="Center" Width="100" WatermarkText="State" ReadOnly="True" Mask=""/>
+                                <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,6" VerticalAlignment="Center" Width="206" WatermarkText="City" ReadOnly="True" IsUndoEnabled="True" Text="{Binding Zip, Source={StaticResource _Address}, Converter={StaticResource AC}, ConverterParameter=3}"/>
+                                <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="211,31,0,6" VerticalAlignment="Center" Width="100" WatermarkText="State" ReadOnly="True" Mask="" Text="{Binding Zip, Source={StaticResource _Address}, Converter={StaticResource AC}, ConverterParameter=4}"/>
                             </Grid>
 
 

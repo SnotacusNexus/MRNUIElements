@@ -894,7 +894,9 @@
     </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="Utility\Command.cs" />
-    <Compile Include="Utility\Converter.cs" />
+    <Compile Include="Utility\Converter.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="VendorInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1528,7 +1530,6 @@
     <None Include="CoherentUI\doc\Coherent_UI_Documentation.chm" />
     <None Include="CoherentUI\License.pdf" />
     <None Include="MRNNexus_Model.DTO_AdditionalSupply.datasource" />
-    <None Include="MRNNexus_Model.DTO_AdditionalSupply1.datasource" />
     <None Include="MRNNexus_Model.DTO_Address.datasource" />
     <None Include="MRNNexus_Model.DTO_Address1.datasource" />
     <None Include="MRNNexus_Model.DTO_Adjuster.datasource" />

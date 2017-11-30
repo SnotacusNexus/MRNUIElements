@@ -61,19 +61,20 @@
             // paymentAmountTextBox
             // 
             this.paymentAmountTextBox.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.paymentAmountTextBox.BeforeTouchSize = new System.Drawing.Size(100, 20);
+            this.paymentAmountTextBox.BeforeTouchSize = new System.Drawing.Size(148, 26);
             this.paymentAmountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("BindableValue", this.dTOPaymentBindingSource, "Amount", true));
             this.paymentAmountTextBox.DecimalValue = new decimal(new int[] {
             0,
             0,
             0,
             131072});
-            this.paymentAmountTextBox.Location = new System.Drawing.Point(305, 50);
+            this.paymentAmountTextBox.Location = new System.Drawing.Point(458, 77);
+            this.paymentAmountTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.paymentAmountTextBox.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.paymentAmountTextBox.Name = "paymentAmountTextBox";
             this.paymentAmountTextBox.NullString = "";
             this.paymentAmountTextBox.OverWriteText = true;
-            this.paymentAmountTextBox.Size = new System.Drawing.Size(100, 20);
+            this.paymentAmountTextBox.Size = new System.Drawing.Size(148, 26);
             this.paymentAmountTextBox.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.paymentAmountTextBox.TabIndex = 1;
             this.paymentAmountTextBox.Text = "$0.00";
@@ -88,11 +89,12 @@
             this.PaymentClaimID.DataSource = this.dTOClaimBindingSource;
             this.PaymentClaimID.DisplayMember = "MRNNumber";
             this.PaymentClaimID.FormattingEnabled = true;
-            this.PaymentClaimID.Location = new System.Drawing.Point(12, 19);
+            this.PaymentClaimID.Location = new System.Drawing.Point(18, 29);
+            this.PaymentClaimID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PaymentClaimID.Name = "PaymentClaimID";
-            this.PaymentClaimID.Size = new System.Drawing.Size(161, 21);
+            this.PaymentClaimID.Size = new System.Drawing.Size(240, 28);
             this.PaymentClaimID.TabIndex = 2;
-            this.PaymentClaimID.Text = "MRN Number";
+            this.PaymentClaimID.Text = "Claim Look Up";
             this.PaymentClaimID.ValueMember = "ClaimID";
             this.PaymentClaimID.SelectedIndexChanged += new System.EventHandler(this.PaymentClaimID_SelectedIndexChanged);
             // 
@@ -102,25 +104,28 @@
             // 
             // ClaimCustomerPaymentTextBox
             // 
-            this.ClaimCustomerPaymentTextBox.Location = new System.Drawing.Point(12, 50);
+            this.ClaimCustomerPaymentTextBox.Location = new System.Drawing.Point(18, 77);
+            this.ClaimCustomerPaymentTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ClaimCustomerPaymentTextBox.Name = "ClaimCustomerPaymentTextBox";
             this.ClaimCustomerPaymentTextBox.ReadOnly = true;
-            this.ClaimCustomerPaymentTextBox.Size = new System.Drawing.Size(192, 20);
+            this.ClaimCustomerPaymentTextBox.Size = new System.Drawing.Size(286, 26);
             this.ClaimCustomerPaymentTextBox.TabIndex = 3;
             // 
             // customerAddressTextBoxPayment
             // 
-            this.customerAddressTextBoxPayment.Location = new System.Drawing.Point(12, 76);
+            this.customerAddressTextBoxPayment.Location = new System.Drawing.Point(18, 117);
+            this.customerAddressTextBoxPayment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.customerAddressTextBoxPayment.Name = "customerAddressTextBoxPayment";
             this.customerAddressTextBoxPayment.ReadOnly = true;
-            this.customerAddressTextBoxPayment.Size = new System.Drawing.Size(192, 20);
+            this.customerAddressTextBoxPayment.Size = new System.Drawing.Size(286, 26);
             this.customerAddressTextBoxPayment.TabIndex = 4;
             // 
             // MakePaymentBtn
             // 
-            this.MakePaymentBtn.Location = new System.Drawing.Point(305, 74);
+            this.MakePaymentBtn.Location = new System.Drawing.Point(458, 114);
+            this.MakePaymentBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MakePaymentBtn.Name = "MakePaymentBtn";
-            this.MakePaymentBtn.Size = new System.Drawing.Size(100, 22);
+            this.MakePaymentBtn.Size = new System.Drawing.Size(150, 34);
             this.MakePaymentBtn.TabIndex = 5;
             this.MakePaymentBtn.Text = "Make Payment";
             this.MakePaymentBtn.UseVisualStyleBackColor = true;
@@ -129,9 +134,10 @@
             // PaymentDatePIcker
             // 
             this.PaymentDatePIcker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dTOPaymentBindingSource, "PaymentDate", true));
-            this.PaymentDatePIcker.Location = new System.Drawing.Point(205, 20);
+            this.PaymentDatePIcker.Location = new System.Drawing.Point(308, 31);
+            this.PaymentDatePIcker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PaymentDatePIcker.Name = "PaymentDatePIcker";
-            this.PaymentDatePIcker.Size = new System.Drawing.Size(200, 20);
+            this.PaymentDatePIcker.Size = new System.Drawing.Size(298, 26);
             this.PaymentDatePIcker.TabIndex = 6;
             this.PaymentDatePIcker.ValueChanged += new System.EventHandler(this.PaymentDatePIcker_ValueChanged);
             // 
@@ -140,9 +146,10 @@
             this.PaymentTypeIDcomboboxP.DataSource = this.dTOLUPaymentTypeBindingSource;
             this.PaymentTypeIDcomboboxP.DisplayMember = "PaymentType";
             this.PaymentTypeIDcomboboxP.FormattingEnabled = true;
-            this.PaymentTypeIDcomboboxP.Location = new System.Drawing.Point(12, 103);
+            this.PaymentTypeIDcomboboxP.Location = new System.Drawing.Point(18, 158);
+            this.PaymentTypeIDcomboboxP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PaymentTypeIDcomboboxP.Name = "PaymentTypeIDcomboboxP";
-            this.PaymentTypeIDcomboboxP.Size = new System.Drawing.Size(192, 21);
+            this.PaymentTypeIDcomboboxP.Size = new System.Drawing.Size(286, 28);
             this.PaymentTypeIDcomboboxP.TabIndex = 7;
             this.PaymentTypeIDcomboboxP.Text = "Payment Type";
             this.PaymentTypeIDcomboboxP.ValueMember = "PaymentTypeID";
@@ -156,9 +163,10 @@
             // 
             this.ProofOfPaymentImage.BackgroundImage = global::MRNUIElements.Properties.Resources.RoofInspectionWizardBkgnd;
             this.ProofOfPaymentImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProofOfPaymentImage.Location = new System.Drawing.Point(12, 227);
+            this.ProofOfPaymentImage.Location = new System.Drawing.Point(18, 349);
+            this.ProofOfPaymentImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ProofOfPaymentImage.Name = "ProofOfPaymentImage";
-            this.ProofOfPaymentImage.Size = new System.Drawing.Size(392, 186);
+            this.ProofOfPaymentImage.Size = new System.Drawing.Size(588, 286);
             this.ProofOfPaymentImage.TabIndex = 8;
             this.ProofOfPaymentImage.TabStop = false;
             this.ProofOfPaymentImage.UseWaitCursor = true;
@@ -167,9 +175,10 @@
             // 
             // BrowsePaymentBtn
             // 
-            this.BrowsePaymentBtn.Location = new System.Drawing.Point(305, 103);
+            this.BrowsePaymentBtn.Location = new System.Drawing.Point(458, 158);
+            this.BrowsePaymentBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BrowsePaymentBtn.Name = "BrowsePaymentBtn";
-            this.BrowsePaymentBtn.Size = new System.Drawing.Size(100, 22);
+            this.BrowsePaymentBtn.Size = new System.Drawing.Size(150, 34);
             this.BrowsePaymentBtn.TabIndex = 9;
             this.BrowsePaymentBtn.Text = "Browse...";
             this.BrowsePaymentBtn.UseVisualStyleBackColor = true;
@@ -188,10 +197,11 @@
             this.PaymentComments.AcceptsReturn = true;
             this.PaymentComments.AcceptsTab = true;
             this.PaymentComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTOClaimDocumentBindingSource, "DocumentComments", true));
-            this.PaymentComments.Location = new System.Drawing.Point(12, 193);
+            this.PaymentComments.Location = new System.Drawing.Point(18, 297);
+            this.PaymentComments.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PaymentComments.Multiline = true;
             this.PaymentComments.Name = "PaymentComments";
-            this.PaymentComments.Size = new System.Drawing.Size(392, 28);
+            this.PaymentComments.Size = new System.Drawing.Size(586, 41);
             this.PaymentComments.TabIndex = 10;
             this.PaymentComments.Text = "Additional Comments:";
             this.PaymentComments.Enter += new System.EventHandler(this.PaymentComments_Enter);
@@ -202,9 +212,10 @@
             this.paymentDescriptions.DataSource = this.dTOLUPaymentDescriptionBindingSource;
             this.paymentDescriptions.DisplayMember = "PaymentDescription";
             this.paymentDescriptions.FormattingEnabled = true;
-            this.paymentDescriptions.Location = new System.Drawing.Point(12, 130);
+            this.paymentDescriptions.Location = new System.Drawing.Point(18, 200);
+            this.paymentDescriptions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.paymentDescriptions.Name = "paymentDescriptions";
-            this.paymentDescriptions.Size = new System.Drawing.Size(192, 21);
+            this.paymentDescriptions.Size = new System.Drawing.Size(286, 28);
             this.paymentDescriptions.TabIndex = 11;
             this.paymentDescriptions.Text = "Payment Description";
             this.paymentDescriptions.ValueMember = "PaymentDescriptionID";
@@ -220,9 +231,9 @@
             // 
             // PaymentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 425);
+            this.ClientSize = new System.Drawing.Size(624, 654);
             this.Controls.Add(this.paymentDescriptions);
             this.Controls.Add(this.PaymentComments);
             this.Controls.Add(this.BrowsePaymentBtn);
@@ -234,6 +245,7 @@
             this.Controls.Add(this.ClaimCustomerPaymentTextBox);
             this.Controls.Add(this.PaymentClaimID);
             this.Controls.Add(this.paymentAmountTextBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PaymentForm";
             this.Text = "PaymentForm";
             ((System.ComponentModel.ISupportInitialize)(this.paymentAmountTextBox)).EndInit();

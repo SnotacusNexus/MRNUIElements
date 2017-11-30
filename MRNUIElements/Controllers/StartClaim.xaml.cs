@@ -203,7 +203,7 @@ namespace MRNUIElements.Controllers
 		bool isReferral;
 		//bool isreferral
 		public DTO_Referrer r { get; set; }
-
+       
 		public DTO_LU_LeadType lt { get; set; }
 		//Referral  cc
 		public DTO_Employee k { get; set; }
@@ -221,7 +221,7 @@ namespace MRNUIElements.Controllers
 		public DTO_Inspection i { get; set; }
 		//Inspection
 		public List<DTO_ClaimDocument> inspectionPhotos { get; set; }
-
+        public List<DTO_Employee> el { get; set; }
 		public List<DTO_Damage> damageLocations { get; set; }
 		//Damages
 		public List<DTO_ClaimDocument> claimDocs { get; set; }
@@ -259,7 +259,7 @@ namespace MRNUIElements.Controllers
 		public DTO_ClaimDocument receipt4 { get; set; }
 		public DTO_ClaimDocument receipt5 { get; set; }
 		public DTO_ClaimDocument lienwaver { get; set; }
-
+        public List<DTO_CalendarData> cd { get; set; }
 		//ClaimDocumentation
 		public DTO_Plane roofData { get; set; }
 		//Plane
@@ -309,7 +309,7 @@ namespace MRNUIElements.Controllers
 		public DTO_OrderItem dripedge { get; set; }
 		public DTO_OrderItem caulk { get; set; }
 		public DTO_OrderItem paint { get; set; }
-
+        public List<DTO_ClaimStatus> cs { get; set; }
 		//Order -- OrderItems
 		public DTO_ClaimVendor roofer { get; set; }
 		public DTO_ClaimVendor supplier { get; set; }
@@ -335,8 +335,8 @@ namespace MRNUIElements.Controllers
 		//RoofGoesOn
 		//Additional Supply
 		public DTO_AdditionalSupply ads { get; set; }
-
-		public DTO_SurplusSupplies ss { get; set; }
+        public List<DTO_CalendarData> appts { get; set; }
+        public DTO_SurplusSupplies ss { get; set; }
 		//Surplus Supply
 
 		//Invoice -- Interior -- ClaimVendor
@@ -425,6 +425,7 @@ namespace MRNUIElements.Controllers
 			ClaimVendorsList.Add(roofmaterialSupplier);
 		
 		}
+       
 		async Task<List<DTO_ClaimVendor>> GetClaimVendors(DTO_Claim claim)
 		{
 

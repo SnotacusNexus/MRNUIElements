@@ -41,14 +41,31 @@ namespace MRNUIElements
                 return;
 
             cd.ClaimID = ((DTO_Claim)PaymentClaimID.SelectedItem).ClaimID;
-            cd.DocTypeID = ((DTO_LU_ClaimDocumentType)PaymentTypeIDcomboboxP.SelectedItem).ClaimDocumentTypeID;
+            cd.DocTypeID = ((DTO_LU_ClaimDocumentType)paymentToDocTypeID((DTO_LU_PaymentDescription)paymentDescriptions.SelectedItem)).ClaimDocumentTypeID;
             cd.InitialImagePath = openFileDialog1.FileName;
 
             cd.FileName = System.IO.Path.GetFileNameWithoutExtension(openFileDialog1.FileName);
             cd.FileExt = System.IO.Path.GetExtension(openFileDialog1.FileName);
             ProofOfPaymentImage.ImageLocation = openFileDialog1.FileName;
         }
+        DTO_LU_ClaimDocumentType paymentToDocTypeID(DTO_LU_PaymentDescription payment)
+        {
+            switch (payment.PaymentDescriptionID)
+            {
+                case 1:                   
+                        return new DTO_LU_ClaimDocumentType { ClaimDocumentTypeID = 13 };
+                case 2:
+                    return new DTO_LU_ClaimDocumentType { ClaimDocumentTypeID = 16 };
+                case 3:
+                       return new DTO_LU_ClaimDocumentType { ClaimDocumentTypeID = 15 };
+                case 4:
+                    return new DTO_LU_ClaimDocumentType { ClaimDocumentTypeID = 14 };
+                default:
+         
+            return new DTO_LU_ClaimDocumentType { ClaimDocumentTypeID = 13 };
+            }
 
+        }
         async private Task<bool> uploadPaymentImage(string file, DTO_Claim cl, DTO_ClaimDocument doc)
         {
             var onlyFileName = System.IO.Path.GetFileNameWithoutExtension(file);
