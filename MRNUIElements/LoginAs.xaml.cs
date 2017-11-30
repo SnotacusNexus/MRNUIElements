@@ -43,7 +43,7 @@ namespace MRNUIElements
 		private void LoginAsSalesperson_Click(object sender, RoutedEventArgs e)
 		{
 			
-			NavigationService.Navigate(new CompetitionResultsDisplay());
+			NavigationService.Navigate(new CustomerAgreement());
 		}
 
 		private void LoginAsAuditor_Click(object sender, RoutedEventArgs e)

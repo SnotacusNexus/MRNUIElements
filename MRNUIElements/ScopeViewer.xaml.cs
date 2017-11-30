@@ -29,10 +29,10 @@ namespace MRNUIElements
 		const int NEWSCOPE = 10;
 		static ServiceLayer s1 = ServiceLayer.getInstance();
 		public List<DTO_Scope> claimscopelist = new List<DTO_Scope>();
-		static protected ObservableCollection<DTO_Scope> claimScopes = new ObservableCollection<DTO_Scope>();
+		protected ObservableCollection<DTO_Scope> claimScopes = new ObservableCollection<DTO_Scope>();
 		//public int scopetype;
 		static GetClaimsPage G = GetClaimsPage.getInstanceH();
-		public static int scopeType { get; set; }
+		public int scopeType { get; set; }
 		public int TypeScope { get; set; }
 		public DTO_Scope scope = new DTO_Scope();
 		public double acv;
@@ -41,7 +41,7 @@ namespace MRNUIElements
 		public int ScopeID;
 		public bool bab = true;
 		private double temp = 0;
-		static public string selTxt { get; set; }
+		public string selTxt { get; set; }
 		protected List<bool> ScopeExist = new List<bool>();
 		public List<DTO_Scope> ScopesList { get; set; }
 		public DTO_Claim claim { get; set; }
@@ -80,10 +80,12 @@ namespace MRNUIElements
 
 			}
 
-		//	ShowsAvailableScopes(ScopesList);
-			ScopeTypeTextBlock.Text = new DTO_LU_ScopeType[scopeType].ToString();
+            //	ShowsAvailableScopes(ScopesList);
+            ScopesList = s1.ScopesList.FindAll(y =>/* y.ScopeTypeID == scopeType &&*/ y.ClaimID == _claim.ClaimID);
+            if(scopeType>0)
+            ScopeTypeTextBlock.Text = s1.ScopeTypes.Find(x=>x.ScopeTypeID==scopeType).ScopeType.ToString();
 			//GetScopes(_claim, scopeType); //Find all scopes for claim and store them in order for structured retrieval
-			if (_claim != null && scopeType > 0)
+			if (_claim != null )
 			{
 				claimIDTextBox.Text = _claim.MRNNumber;
 			}
@@ -190,7 +192,7 @@ namespace MRNUIElements
 		private void CancelScopeEntry_Click(object sender, RoutedEventArgs e)
 		{
 
-			EnableAddButton();
+			NavigationService.GoBack();
 		}
 
 
@@ -241,7 +243,7 @@ namespace MRNUIElements
 
 		private void interiorTextBox_LostFocus(object sender, RoutedEventArgs e)
 		{
-			EnableAddButton();
+            EnableAddButton();
 		}
 		private void interiorTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
@@ -352,7 +354,7 @@ namespace MRNUIElements
 				if (scopeType == 1) EstimateBtn.Background = Brushes.Green;
 				if (scopeType ==2) OldScopeBtn.Background = Brushes.Green;
 				if(scopeType==3) NewScopeBtn.Background = Brushes.Green;
-				return scopesList.Where(x => x.ScopeTypeID == scopeType).ToList()[0];
+				return scopesList.Find(x => x.ScopeTypeID == scopeType);
 			}
 			else
 			{
@@ -502,7 +504,29 @@ namespace MRNUIElements
 			EstimateBtn.Foreground = Brushes.White;
 
 		}
-	}
+
+        private void AddScopeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var a = System.Windows.Forms.MessageBox.Show("View Inspections/Photos (Yes), View Contract (No)", "Choose A Path!",System.Windows.Forms.MessageBoxButtons.YesNoCancel,System.Windows.Forms.MessageBoxIcon.Question,System.Windows.Forms.MessageBoxDefaultButton.Button3);
+
+            if (a == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            else if (a == System.Windows.Forms.DialogResult.No)
+                NavigationService.Navigate(new ScopeViewer(this.claim));
+            else NavigationService.Navigate(null);
+
+        }
+
+        private void AddSettlementBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddEVBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }
 
 

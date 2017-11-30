@@ -1,10 +1,3 @@
-#region Copyright Syncfusion Inc. 2001-2016.
-// Copyright Syncfusion Inc. 2001-2016. All rights reserved.
-// Use of this code is subject to the terms of our license.
-// A copy of the current license can be obtained at any time by e-mailing
-// licensing@syncfusion.com. Any infringement will be prosecuted under
-// applicable laws. 
-#endregion
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +19,8 @@ using Syncfusion.Windows.Tools.Controls;
 using System.Globalization;
 using MRNUIElements.Controllers;
 using MRNNexus_Model;
+using System.Drawing;
+using System.Windows.Media.Imaging;
 //using NexusClaimGenerator.ViewModel;
 
 namespace MRNUIElements.Utility
@@ -40,7 +35,7 @@ namespace MRNUIElements.Utility
         {
             DTO_Customer customer = s1.CustomersList.Find(x => x.CustomerID == (int)value);
             var sb = new StringBuilder();
-            sb.Clear();if (customer == null)
+            sb.Clear(); if (customer == null)
                 return 0;
             sb.Append(customer.FirstName);
             sb.Append(" ");
@@ -80,9 +75,9 @@ namespace MRNUIElements.Utility
             var emp = new DTO_Employee();
 
             if (s1.EmployeesList.Exists(x => x.EmployeeID == (int)value))
-               emp = s1.EmployeesList.Find(x => x.EmployeeID == (int)value);
+                emp = s1.EmployeesList.Find(x => x.EmployeeID == (int)value);
 
-            return emp.FullName;
+            return emp.ToString();
 
         }
 
@@ -106,7 +101,7 @@ namespace MRNUIElements.Utility
                 return s1.EmployeesList.Find(y => y.EmployeeID == CCI.SupervisorID);
             }
 
-                return value;
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -166,6 +161,28 @@ namespace MRNUIElements.Utility
             throw new NotImplementedException();
         }
     }
+    public class BitmapImageConverter : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Task.Run(async () => {
+                ServiceLayer.getInstance().ClaimDocumentsList.Clear();
+
+                await ServiceLayer.getInstance().GetClaimDocumentsByClaimID(new DTO_Claim { ClaimID = (int)parameter });
+            });
+                DTO_ClaimDocument a = ServiceLayer.getInstance().ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
+            return "http://" + a.FilePath + a.FileName + a.FileExt;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {  var uri = (Uri)value;
+            var img = new System.Windows.Controls.Image();
+            img.Source = new BitmapImage(uri) { CacheOption = BitmapCacheOption.None };
+            return img;
+            throw new NotImplementedException();
+        }
+    }
 
 
     public class ClaimContactsConverter : IValueConverter
@@ -180,19 +197,46 @@ namespace MRNUIElements.Utility
             List<DTO_Referrer> rl = s1.ReferrersList;
 
             if ((string)parameter == "0")//Adjuster
-                return AL.Find(x => x.AdjusterID == (int)value).ToString();
+            {
+                DTO_Adjuster a = AL.Find(x => x.AdjusterID == (int)value);
+
+
+                return a.FirstName + " " + a.LastName;
+            }
+
             else if ((string)parameter == "1")//Customer
-                return CL.Find(x => x.CustomerID == (int)value).ToString();
+            {
+                DTO_Customer c = CL.Find(x => x.CustomerID == (int)value);
+                return c.FirstName + " " + c.LastName;
+            }
+
             else if ((string)parameter == "2")//Knocker
-                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            {
+
+                DTO_Employee e = EL.Find(x => x.EmployeeID == (int)value);
+                return e.FirstName + " " + e.LastName;
+            }
             else if ((string)parameter == "3")//Salesperson
-                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            {
+                DTO_Employee e = EL.Find(x => x.EmployeeID == (int)value);
+                return e.FirstName + " " + e.LastName;
+            }
             else if ((string)parameter == "4")//Supervisor
-                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            {
+                DTO_Employee e = EL.Find(x => x.EmployeeID == (int)value);
+                return e.FirstName + " " + e.LastName;
+
+            }
             else if ((string)parameter == "5")//SalesManager
-                return EL.Find(x => x.EmployeeID == (int)value).ToString();
+            {
+                DTO_Employee e = EL.Find(x => x.EmployeeID == (int)value);
+                return e.FirstName + " " + e.LastName;
+            }
             else if ((string)parameter == "6")//Referrer
-                return rl.Find(x => x.ReferrerID == (int)value).ToString();
+            {
+                DTO_Referrer e = rl.Find(x => x.ReferrerID == (int)value);
+                return e.FirstName + " " + e.LastName;
+            }
             else return "";
         }
 
@@ -201,8 +245,30 @@ namespace MRNUIElements.Utility
             throw new NotImplementedException();
         }
     }
-  
+    public class ClaimDocToImageListConverter : IValueConverter
+    {
+        static ServiceLayer s1 = ServiceLayer.getInstance();
 
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var listToReturn = new List<Bitmap>();
+
+
+            var inny = (List<DTO_ClaimDocument>)value;
+
+            foreach (var item in inny)
+            {
+                listToReturn.Add(new Bitmap(@"http://" + item.FilePath + item.FileName + item.FileExt));
+            }
+
+            return listToReturn;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public class AddressBlockFromAddressIDConverter : IValueConverter
     {
 
@@ -319,6 +385,50 @@ namespace MRNUIElements.Utility
     }
 
 
+    public class LeadTypeToNameConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            ServiceLayer s1 = ServiceLayer.getInstance();
+            DTO_Claim cl = (DTO_Claim)value;
+            DTO_Lead ct = s1.LeadsList.Find(x => x.LeadID == cl.LeadID);
+
+            switch ((int)ct.LeadTypeID)
+            {
+                case 3:
+                    {
+                        var r = s1.CustomersList.Find(x => x.CustomerID == ct.CreditToID);
+                        if ((int)parameter == 2)return (typeof(DTO_Customer));
+
+                        return r.FirstName + " " + r.LastName;
+
+                    }
+                case 2:
+                    {
+                        var r = s1.ReferrersList.Find(x => x.ReferrerID == ct.CreditToID);
+                        if ((int)parameter == 2) return (typeof(DTO_Referrer)); 
+                        return r.FirstName + " " + r.LastName;
+
+                    }
+
+                default:
+                    {
+                        var r = s1.EmployeesList.Find(x => x.EmployeeID == ct.CreditToID);
+                        if ((int)parameter == 2) return (typeof(DTO_Employee));
+
+                        return r.FirstName + " " + r.LastName;
+                    }
+
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class MRNClaimNumberConverter : IValueConverter
     {
         static ServiceLayer s1 = ServiceLayer.getInstance();
@@ -340,9 +450,9 @@ namespace MRNUIElements.Utility
         static ServiceLayer s1 = ServiceLayer.getInstance();
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            
+
             DTO_Scope scopereturn = new DTO_Scope();
-            Task.Run(async() => await s1.GetScopesByClaimID((DTO_Claim)value));
+            Task.Run(async () => await s1.GetScopesByClaimID((DTO_Claim)value));
 
             switch ((string)parameter)
             {
@@ -368,7 +478,7 @@ namespace MRNUIElements.Utility
                     // throw new NotImplementedException();
 
             }
-         
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -398,7 +508,11 @@ namespace MRNUIElements.Utility
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+
             bool val = (bool)value;
+            if (parameter != null)
+                val = !val;
+
             if (val)
             {
                 return Visibility.Visible;
@@ -463,15 +577,15 @@ namespace MRNUIElements.Utility
 
     public static class Ext
     {
-        public static Color ToColor(this string value)
+        public static System.Drawing.Color ToColor(this string value)
         {
-            Color c;
+            System.Drawing.Color c;
             var match = Regex.Match(value, "#([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})");
             int a = Convert.ToInt32(match.Groups[1].Value, 16);
             int r = Convert.ToInt32(match.Groups[2].Value, 16);
             int g = Convert.ToInt32(match.Groups[3].Value, 16);
             int b = Convert.ToInt32(match.Groups[4].Value, 16);
-            c = Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
+            c = System.Drawing.Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
             return c;
         }
 
@@ -619,7 +733,7 @@ namespace MRNUIElements.Utility
             {
                 var converter = new System.Windows.Media.BrushConverter();
 
-                Brush brush = (Brush)converter.ConvertFromString(value.ToString());
+                System.Windows.Media.Brush brush = (System.Windows.Media.Brush)converter.ConvertFromString(value.ToString());
 
                 return (brush as SolidColorBrush).Color;
             }
@@ -631,7 +745,7 @@ namespace MRNUIElements.Utility
             if (value != null)
             {
                 var converter = new System.Windows.Media.BrushConverter();
-                var brush = (Brush)converter.ConvertFromString(value.ToString());
+                var brush = (System.Windows.Media.Brush)converter.ConvertFromString(value.ToString());
                 return brush;
             }
             return null;
@@ -679,7 +793,7 @@ namespace MRNUIElements.Utility
                             {
                                 if (set.Property == FrameworkElement.TagProperty)
                                 {
-                                    var brush = (Brush)converter.ConvertFromString(set.Value.ToString());
+                                    var brush = (System.Windows.Media.Brush)converter.ConvertFromString(set.Value.ToString());
                                     tt.Foreground = brush;
                                 }
                             }
@@ -692,7 +806,7 @@ namespace MRNUIElements.Utility
                             {
                                 if (set.Property == FrameworkElement.TagProperty)
                                 {
-                                    var brush = (Brush)converter.ConvertFromString(set.Value.ToString());
+                                    var brush = (System.Windows.Media.Brush)converter.ConvertFromString(set.Value.ToString());
                                     tt.Fill = brush;
                                 }
                             }

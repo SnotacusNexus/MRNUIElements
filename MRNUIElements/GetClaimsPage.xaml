@@ -671,7 +671,7 @@
                        Foreground="White"
                        Text="{Binding XPath=statusText}"
                        TextWrapping="Wrap" />
-            <WebBrowser x:Name="Browser" x:FieldModifier="public"  HorizontalAlignment="Left" Height="455" Margin="17,405,0,0" VerticalAlignment="Top" Width="763" Panel.ZIndex="120" Grid.Row="1"/>
+            <!--<WebBrowser x:Name="Browser" x:FieldModifier="public"  HorizontalAlignment="Left" Height="455" Margin="17,405,0,0" VerticalAlignment="Top" Width="763" Panel.ZIndex="120" Grid.Row="1"/>-->
 
         </Grid>
 

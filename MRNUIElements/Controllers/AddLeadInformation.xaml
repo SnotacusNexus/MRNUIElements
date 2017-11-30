@@ -7,11 +7,13 @@
     xmlns:local="clr-namespace:MRNUIElements.Controllers"
     xmlns:MRNUIElements="clr-namespace:MRNUIElements" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
     xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model" 
+    xmlns:Utility="clr-namespace:MRNUIElements.Utility" 
     x:Class="MRNUIElements.Controllers.AddLeadInformation"
   
     mc:Ignorable="d" d:DesignWidth="350"
     Title="AddLeadInformation" Height="371" HorizontalAlignment="Center" VerticalAlignment="Center">
     <Page.Resources>
+        <Utility:BooleanToVisibility x:Key="BooleanToVisibility"/>
         <CollectionViewSource x:Key="dTO_LeadViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Lead}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_ReferrerViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Referrer}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_EmployeeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Employee}, CreateList=True}"/>
@@ -36,19 +38,19 @@
             <ComboBox x:Name="LeadTypecomboBox" HorizontalAlignment="Left" Margin="115,81,0,0" VerticalAlignment="Top" Width="196" SelectionChanged="LeadTypecomboBox_SelectionChanged" />
             <ComboBox x:Name="ExistingContactInfoCombo" HorizontalAlignment="Left" Margin="104,111,0,0" VerticalAlignment="Top" Width="222" Visibility="Hidden" SelectionChanged="ExistingContactInfoCombo_SelectionChanged"/>
             <ComboBox x:Name="SalesPersonInfoCombo" HorizontalAlignment="Left" Margin="104,285,0,0" VerticalAlignment="Top" Width="222" Visibility="Visible" SelectionChanged="SalesPersonInfoCombo_SelectionChanged"/>
-            <CheckBox x:Name="PreviousReferrercheckBox" Visibility="Hidden"  Content="Previous&#xA;Referrer" HorizontalAlignment="Left" Margin="21,85,0,0" VerticalAlignment="Top" Foreground="White" Checked="PreviousReferrercheckBox_Checked" Unchecked="PreviousReferrercheckBox_Unchecked"/>
-            <Grid  x:Name="ReferralGrid" Margin="53,98,53,79" Visibility="Hidden">
-                <TextBox x:Name="cellPhoneTextBox" HorizontalAlignment="Left" Height="24" Margin="25,133,0,15" Text="{Binding CellPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" Height="23" Margin="25,162,0,-13" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="264"/>
-                <TextBox x:Name="firstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="8,49,0,100" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="94"/>
-                <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Height="23" Margin="197,49,0,100" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="70"/>
-                <TextBox x:Name="mailingAddressTextBox" HorizontalAlignment="Left" Height="23" Margin="8,75,0,74" Text="{Binding MailingAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="324"/>
-                <TextBox x:Name="suffixTextBox" HorizontalAlignment="Left" Height="23" Margin="272,49,0,100" Text="{Binding Suffix, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="42"/>
-                <TextBox x:Name="zipTextBox" HorizontalAlignment="Left" Height="23" Margin="257,104,0,45" Text="{Binding Zip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="75"/>
+            <CheckBox x:Name="PreviousReferrercheckBox" Visibility="Visible"  Content="Previous&#xA;Referrer" HorizontalAlignment="Left" Margin="21,85,0,0" VerticalAlignment="Top" Foreground="White" Checked="PreviousReferrercheckBox_Checked" Unchecked="PreviousReferrercheckBox_Unchecked"/>
+            <Grid  x:Name="ReferralGrid" Margin="53,98,53,63.667" Panel.ZIndex="20" Visibility="{Binding IsChecked, ElementName=PreviousReferrercheckBox, Converter={StaticResource BooleanToVisibility},ConverterParameter='4'}">
+                <TextBox x:Name="cellPhoneTextBox" HorizontalAlignment="Left" Height="24" Margin="25,133,0,15" Text="{Binding CellPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" Height="23" Margin="25,162,0,-13" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="264"/>
+                <TextBox x:Name="firstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="8,49,0,100" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="94"/>
+                <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Height="23" Margin="197,49,0,100" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="70"/>
+                <TextBox x:Name="mailingAddressTextBox" HorizontalAlignment="Left" Height="23" Margin="8,75,0,74" Text="{Binding MailingAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="324"/>
+                <TextBox x:Name="suffixTextBox" HorizontalAlignment="Left" Height="23" Margin="272,49,0,100" Text="{Binding Suffix, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="42"/>
+                <TextBox x:Name="zipTextBox" HorizontalAlignment="Left" Height="23" Margin="257,104,0,45" Text="{Binding Zip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="75"/>
             </Grid>
-            <Grid x:Name="EmployeeGrid" Visibility="Hidden" Margin="62,128,98,-16" Grid.RowSpan="2">
+            <Grid x:Name="EmployeeGrid" Visibility="Collapsed" Margin="62,128,98,-16" Grid.RowSpan="2">
                 <CheckBox x:Name="activeCheckBox" Content="Active" HorizontalAlignment="Left" IsChecked="{Binding Active, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="127,212,0,10" VerticalAlignment="Center" Foreground="White"/>
-                <TextBox x:Name="cellPhoneTextBox1" HorizontalAlignment="Left" Height="23" Margin="16,103,0,112" Text="{Binding CellPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <syncfusion:SfTextBoxExt x:Name="cellPhoneTextBox1" HorizontalAlignment="Left" Height="23" Margin="16,103,0,112" Text="{Binding CellPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                 <TextBox x:Name="emailTextBox1" HorizontalAlignment="Left" Height="23" Margin="16,131,0,84" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266"/>
                 <ComboBox x:Name="employeeTypeIDComboBox" DisplayMemberPath="EmployeeTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="162,104,0,111" VerticalAlignment="Center" Width="120">
                     <ComboBox.ItemsPanel>

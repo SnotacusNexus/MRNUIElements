@@ -35,9 +35,10 @@ namespace MRNUIElements.Controllers
 		public static BitmapImage bitmapImage { get; set; }
 
 
-		public event PropertyChangedEventHandler PropertyChanged;
+	
+        public event PropertyChangedEventHandler PropertyChanged;
 
-		public static DownloadFilePath getInstance(DTO_Claim claim, int docTypeID)
+        public static DownloadFilePath getInstance(DTO_Claim claim, int docTypeID)
 		{
 			if (t1 == null)
 				return t1 = new DownloadFilePath(claim, docTypeID);

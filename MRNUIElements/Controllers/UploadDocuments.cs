@@ -43,7 +43,8 @@ namespace MRNUIElements.Controllers
 			if (FullFilePath == null && filePath != null)
 				FullFilePath = filePath;
 
-
+            if (claim != null && docType != null && !string.IsNullOrEmpty(filePath))
+                UploadImage(filePath);
 
 		}
 		public string GenerateMRNClaimNumber(int SalesPersonID, int CustomerID)
@@ -51,7 +52,7 @@ namespace MRNUIElements.Controllers
 		 return SalesPersonID.ToString() + "-" + CustomerID.ToString() + "-" + DateTime.UtcNow;
 		}
 
-		static async public void UploadImage(string filepathtoupload = null)
+		async public void UploadImage(string filepathtoupload = null)
 		{
 			var fileDialog = new System.Windows.Forms.OpenFileDialog();
 			var result = System.Windows.Forms.DialogResult.OK;

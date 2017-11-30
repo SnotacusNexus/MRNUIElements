@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static MRNUIElements.Controllers.ClaimView;
+
 
 
 namespace MRNUIElements.ViewModels
@@ -22,15 +22,18 @@ namespace MRNUIElements.ViewModels
 		#region INotifyPropertyChanged Members
 
 
-		public event PropertyChangedEventHandler PropertyChanged;
+		
+        public event PropertyChangedEventHandler PropertyChanged;
 
-		private void OnPropertyChanged(string propertyName)
+
+
+        private void OnPropertyChanged(string propertyName)
 		{
-			PropertyChangedEventHandler handler = PropertyChanged;
+			
 
-			if (handler != null)
+			if (PropertyChanged != null)
 			{
-				handler(this, new PropertyChangedEventArgs(propertyName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 

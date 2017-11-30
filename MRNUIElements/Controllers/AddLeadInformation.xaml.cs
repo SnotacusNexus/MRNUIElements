@@ -63,13 +63,14 @@ namespace MRNUIElements.Controllers
 		}
 		private void button_Click(object sender, RoutedEventArgs e)
 		{
-
+            
            l.LeadDate = DateTime.Today;
             l.LeadTypeID = GetLeadType();
 			// table customer table or employee table
 
 			if (isReferral)
 			{
+                
 				r.FirstName = firstNameTextBox.Text;
 				r.LastName = lastNameTextBox.Text;
 				r.Suffix = suffixTextBox.Text;
@@ -77,11 +78,12 @@ namespace MRNUIElements.Controllers
 				r.Email = emailTextBox.Text;
 				r.MailingAddress = mailingAddressTextBox.Text;
 				r.Zip = zipTextBox.Text;
-
+                this.DataContext = r;
                 MRNClaim.getInstance().r = r;
 			}
+            MRNClaim.getInstance().salesperson = s1.EmployeesList.Find(x=>x.EmployeeID==((DTO_Employee)SalesPersonInfoCombo.SelectedItem).EmployeeID);
            l.AddressID = MRNClaim.getInstance().a.AddressID;
-            c.PropertyID = MRNClaim.getInstance().a.AddressID;
+         //   c.PropertyID = MRNClaim.getInstance().a.AddressID;
             MRNClaim.getInstance().Lead = l;
             MRNClaim.getInstance()._claim = c;
             MRNClaim.getInstance().cc = cc;
@@ -101,6 +103,7 @@ namespace MRNUIElements.Controllers
 			{
 				case 1:
 					{
+                   
 						PreviousReferrercheckBox.Visibility = Visibility.Hidden;
 						//	ExistingContactInfoCombo.ItemsSource = s1.EmployeesList;
 						EmployeeGrid.DataContext = ExistingContactInfoCombo.SelectedItem;
@@ -130,6 +133,7 @@ namespace MRNUIElements.Controllers
 					}
 				case 3:
 					{
+                      
 						PreviousReferrercheckBox.Visibility = Visibility.Hidden;
 						//ExistingContactInfoCombo.ItemsSource = s1.CustomersList;
 						CustomerGrid.DataContext = ExistingContactInfoCombo.SelectedItem;
@@ -154,8 +158,9 @@ namespace MRNUIElements.Controllers
 						break;
 					}
 
-				case 5:
+				default:
 					{
+                        
 						PreviousReferrercheckBox.Visibility = Visibility.Hidden;
 						//	ExistingContactInfoCombo.ItemsSource = s1.EmployeesList;
 						EmployeeGrid.DataContext = ExistingContactInfoCombo.SelectedItem;
@@ -167,8 +172,7 @@ namespace MRNUIElements.Controllers
 						AddressGrid.Visibility = Visibility.Hidden;
 						break;
 					}
-				default:
-					break;
+				
 			} //sets if to look up info from referrer
 		}
 
@@ -194,6 +198,8 @@ namespace MRNUIElements.Controllers
 						ContactInfoDisplay(true);
 						if (PreviousReferrercheckBox.Visibility != Visibility.Visible)
 							PreviousReferrercheckBox.Visibility = Visibility.Visible;
+                        if (ReferralGrid.Visibility != Visibility.Visible)
+                            ReferralGrid.Visibility = Visibility.Visible;
 						ExistingContactInfoCombo.ItemsSource = s1.ReferrersList;
 						break;
 					}
@@ -217,7 +223,7 @@ namespace MRNUIElements.Controllers
 						break;
 					}
 
-				case 5:
+				default:
 					{
 						ContactLookupDisplay(true);
 						ContactInfoDisplay(true);
@@ -227,8 +233,7 @@ namespace MRNUIElements.Controllers
 
 						break;
 					}
-				default:
-					break;
+			
 			} //sets if to look up info from referrer
 
 		}

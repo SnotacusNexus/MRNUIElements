@@ -18,8 +18,8 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>ftp://localhost/service/</PublishUrl>
-    <Install>false</Install>
+    <PublishUrl>ftp://services.mrncontracting.com/</PublishUrl>
+    <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -28,10 +28,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://localhost/MRNUIElements/</InstallUrl>
+    <InstallUrl>http://services.mrncontracting.com/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -117,12 +117,39 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Internet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CoherentUINetControls, Version=2.2.0.0, Culture=neutral, PublicKeyToken=06c400a284f0f0fd, processorArchitecture=MSIL">
+      <HintPath>packages\CoherentUINETControls.2.2.0.0\lib\net45\CoherentUINetControls.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EO.Base, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.WebBrowser, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.WebBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.WebBrowser.Wpf, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>packages\EO.WebBrowser.Wpf.17.3.13\lib\EO.WebBrowser.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.WebEngine, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.WebEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Wpf">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2017\EO.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="HelixToolkit, Version=2015.1.715.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
       <HintPath>..\packages\HelixToolkit.2015.1.715\lib\portable-net4+sl4+wp71+win8\HelixToolkit.dll</HintPath>
@@ -147,8 +174,23 @@
     <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Expression.Effects, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+      <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Prism.UnityExtensions.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -159,6 +201,9 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NSubstitute, Version=0.9.0.34, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>packages\NSubstitute.0.9.0.34\lib\35\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="NuGet.VisualStudio, Version=4.3.0.4, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.VisualStudio.4.3.0-preview4\lib\net46\NuGet.VisualStudio.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -166,9 +211,12 @@
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="PresentationFramework.Luna" />
+    <Reference Include="PrismMVVMLibrary, Version=1.0.22.42, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\PrismMVVMLibrary.2.0.0.10\lib\net40\PrismMVVMLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="PropertyChanged, Version=2.1.3.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\packages\PropertyChanged.Fody.2.1.3\lib\netstandard1.0\PropertyChanged.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="Syncfusion.Calculate.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -180,14 +228,20 @@
     <Reference Include="Syncfusion.DocIO.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Edit.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Gauge.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Grid.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.GridCommon.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Linq.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Pdf.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.PdfViewer.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.PdfViewer.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Presentation.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.PropertyGrid.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.RichTextBoxAdv.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Schedule.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Schedule.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Schedule.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfAccordion.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfBusyIndicator.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -204,13 +258,21 @@
     <Reference Include="Syncfusion.SfSchedule.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfShared.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfSpellChecker.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.MVVM.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SpellChecker.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Tools.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.XlsIO.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ApplicationModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=879796c5000d383a, processorArchitecture=MSIL">
+      <HintPath>packages\ApplicationModel.1.0.17\lib\net45\System.ApplicationModel.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -219,6 +281,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -306,10 +369,7 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -323,6 +383,8 @@
       <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Serialization" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WebDriver, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
     </Reference>
@@ -355,9 +417,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="3dViewPort.xaml.cs">
-      <DependentUpon>3dViewPort.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ActiveDealsPage.xaml.cs">
       <DependentUpon>ActiveDealsPage.xaml</DependentUpon>
     </Compile>
@@ -421,6 +480,7 @@
       <DependentUpon>ClaimPickerPopUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClaimUser.cs" />
+    <Compile Include="CoherentUI\License.cs" />
     <Compile Include="CompetitionResultsDisplay.xaml.cs">
       <DependentUpon>CompetitionResultsDisplay.xaml</DependentUpon>
     </Compile>
@@ -535,6 +595,9 @@
       <DependentUpon>StartClaim.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\UploadDocuments.cs" />
+    <Compile Include="Controllers\WebBrowser.xaml.cs">
+      <DependentUpon>WebBrowser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CSV.cs" />
     <Compile Include="CustomerAgreement.xaml.cs">
       <DependentUpon>CustomerAgreement.xaml</DependentUpon>
@@ -542,14 +605,64 @@
     <Compile Include="DamageToolbar.xaml.cs">
       <DependentUpon>DamageToolbar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataObjectModels\DTO_AdditionalSupply.cs" />
+    <Compile Include="DataObjectModels\DTO_Address.cs" />
+    <Compile Include="DataObjectModels\DTO_Adjuster.cs" />
+    <Compile Include="DataObjectModels\DTO_Adjustment.cs" />
+    <Compile Include="DataObjectModels\DTO_Base.cs" />
+    <Compile Include="DataObjectModels\DTO_CalculatedResults.cs" />
+    <Compile Include="DataObjectModels\DTO_CalendarData.cs" />
+    <Compile Include="DataObjectModels\DTO_CallLog.cs" />
+    <Compile Include="DataObjectModels\DTO_Claim.cs" />
+    <Compile Include="DataObjectModels\DTO_ClaimContacts.cs" />
+    <Compile Include="DataObjectModels\DTO_ClaimDocument.cs" />
+    <Compile Include="DataObjectModels\DTO_ClaimStatus.cs" />
+    <Compile Include="DataObjectModels\DTO_ClaimVendor.cs" />
+    <Compile Include="DataObjectModels\DTO_Customer.cs" />
+    <Compile Include="DataObjectModels\DTO_Damage.cs" />
+    <Compile Include="DataObjectModels\DTO_Employee.cs" />
+    <Compile Include="DataObjectModels\DTO_EmployeeDetail.cs" />
+    <Compile Include="DataObjectModels\DTO_Inspection.cs" />
+    <Compile Include="DataObjectModels\DTO_InsuranceCompany.cs" />
+    <Compile Include="DataObjectModels\DTO_Invoice.cs" />
+    <Compile Include="DataObjectModels\DTO_KnockerResponse.cs" />
+    <Compile Include="DataObjectModels\DTO_Lead.cs" />
+    <Compile Include="DataObjectModels\DTO_NewRoof.cs" />
+    <Compile Include="DataObjectModels\DTO_Order.cs" />
+    <Compile Include="DataObjectModels\DTO_OrderItem.cs" />
+    <Compile Include="DataObjectModels\DTO_Payment.cs" />
+    <Compile Include="DataObjectModels\DTO_Plane.cs" />
+    <Compile Include="DataObjectModels\DTO_Referrer.cs" />
+    <Compile Include="DataObjectModels\DTO_Scope.cs" />
+    <Compile Include="DataObjectModels\DTO_SurplusSupplies.cs" />
+    <Compile Include="DataObjectModels\DTO_User.cs" />
+    <Compile Include="DataObjectModels\DTO_Vendor.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetClaimsPage.xaml.cs">
       <DependentUpon>GetClaimsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImageGallary.xaml.cs">
+      <DependentUpon>ImageGallary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageResize.cs" />
     <Compile Include="ImageResizer.cs" />
+    <Compile Include="ImageViewer.xaml.cs">
+      <DependentUpon>ImageViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Inspection.cs" />
     <Compile Include="InspectionPage.xaml.cs">
       <DependentUpon>InspectionPage.xaml</DependentUpon>
@@ -560,6 +673,12 @@
     <Compile Include="Interface\Command\Command.cs" />
     <Compile Include="LoginAs.xaml.cs">
       <DependentUpon>LoginAs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaPlayer.xaml.cs">
+      <DependentUpon>MediaPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelMaker.xaml.cs">
       <DependentUpon>ModelMaker.xaml</DependentUpon>
@@ -594,6 +713,12 @@
     </Compile>
     <Compile Include="PageFunction.xaml.cs">
       <DependentUpon>PageFunction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PdfViewer.xaml.cs">
       <DependentUpon>PdfViewer.xaml</DependentUpon>
@@ -769,7 +894,15 @@
     </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="Utility\Command.cs" />
-    <Compile Include="Utility\Converter.cs" />
+    <Compile Include="Utility\Converter.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="VendorInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendorInvoice.Designer.cs">
+      <DependentUpon>VendorInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewClaimInfo.xaml.cs">
       <DependentUpon>ViewClaimInfo.xaml</DependentUpon>
     </Compile>
@@ -795,10 +928,9 @@
     <Compile Include="WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="3dViewPort.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="XactimateBrowser.xaml.cs">
+      <DependentUpon>XactimateBrowser.xaml</DependentUpon>
+    </Compile>
     <Page Include="ActiveDealsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1007,6 +1139,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controllers\WebBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomerAgreement.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1023,6 +1159,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ImageGallary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImageViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InspectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1032,6 +1176,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="LoginAs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1328,6 +1480,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="XactimateBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -1343,71 +1499,148 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendorInvoice.resx">
+      <DependentUpon>VendorInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="ClassDiagram3.cd" />
     <None Include="ClassDiagram4.cd" />
+    <None Include="CoherentUI\Bin\locales\en-US.pak" />
+    <None Include="CoherentUI\Bin\Win32\theme_resources_standard.pak" />
+    <None Include="CoherentUI\Bin\Win32\ui_resources_100_percent.pak" />
+    <None Include="CoherentUI\Bin\Win64\theme_resources_standard.pak" />
+    <None Include="CoherentUI\Bin\Win64\ui_resources_100_percent.pak" />
+    <None Include="CoherentUI\bootstrap_net_win32.bat" />
+    <None Include="CoherentUI\bootstrap_net_win64.bat" />
+    <None Include="CoherentUI\Debugger\html\devtools\devtools_resources.grd" />
+    <None Include="CoherentUI\doc\Coherent_UI_Documentation.chm" />
+    <None Include="CoherentUI\License.pdf" />
     <None Include="MRNNexus_Model.DTO_AdditionalSupply.datasource" />
     <None Include="MRNNexus_Model.DTO_Address.datasource" />
+    <None Include="MRNNexus_Model.DTO_Address1.datasource" />
     <None Include="MRNNexus_Model.DTO_Adjuster.datasource" />
+    <None Include="MRNNexus_Model.DTO_Adjuster1.datasource" />
     <None Include="MRNNexus_Model.DTO_Adjustment.datasource" />
+    <None Include="MRNNexus_Model.DTO_Adjustment1.datasource" />
     <None Include="MRNNexus_Model.DTO_Base.datasource" />
+    <None Include="MRNNexus_Model.DTO_Base1.datasource" />
     <None Include="MRNNexus_Model.DTO_CalculatedResults.datasource" />
+    <None Include="MRNNexus_Model.DTO_CalculatedResults1.datasource" />
     <None Include="MRNNexus_Model.DTO_CalendarData.datasource" />
+    <None Include="MRNNexus_Model.DTO_CalendarData1.datasource" />
     <None Include="MRNNexus_Model.DTO_CallLog.datasource" />
+    <None Include="MRNNexus_Model.DTO_CallLog1.datasource" />
     <None Include="MRNNexus_Model.DTO_Claim.datasource" />
+    <None Include="MRNNexus_Model.DTO_Claim1.datasource" />
     <None Include="MRNNexus_Model.DTO_ClaimContacts.datasource" />
+    <None Include="MRNNexus_Model.DTO_ClaimContacts1.datasource" />
     <None Include="MRNNexus_Model.DTO_ClaimDocument.datasource" />
+    <None Include="MRNNexus_Model.DTO_ClaimDocument1.datasource" />
     <None Include="MRNNexus_Model.DTO_ClaimStatus.datasource" />
+    <None Include="MRNNexus_Model.DTO_ClaimStatus1.datasource" />
     <None Include="MRNNexus_Model.DTO_ClaimVendor.datasource" />
+    <None Include="MRNNexus_Model.DTO_ClaimVendor1.datasource" />
     <None Include="MRNNexus_Model.DTO_Customer.datasource" />
+    <None Include="MRNNexus_Model.DTO_Customer1.datasource" />
     <None Include="MRNNexus_Model.DTO_Damage.datasource" />
+    <None Include="MRNNexus_Model.DTO_Damage1.datasource" />
     <None Include="MRNNexus_Model.DTO_Employee.datasource" />
+    <None Include="MRNNexus_Model.DTO_Employee1.datasource" />
     <None Include="MRNNexus_Model.DTO_EmployeeDetail.datasource" />
+    <None Include="MRNNexus_Model.DTO_EmployeeDetail1.datasource" />
     <None Include="MRNNexus_Model.DTO_Inspection.datasource" />
+    <None Include="MRNNexus_Model.DTO_Inspection1.datasource" />
     <None Include="MRNNexus_Model.DTO_InsuranceCompany.datasource" />
+    <None Include="MRNNexus_Model.DTO_InsuranceCompany1.datasource" />
     <None Include="MRNNexus_Model.DTO_Invoice.datasource" />
+    <None Include="MRNNexus_Model.DTO_Invoice1.datasource" />
     <None Include="MRNNexus_Model.DTO_KnockerResponse.datasource" />
+    <None Include="MRNNexus_Model.DTO_KnockerResponse1.datasource" />
     <None Include="MRNNexus_Model.DTO_Lead.datasource" />
+    <None Include="MRNNexus_Model.DTO_Lead1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_AdjustmentResult.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_AdjustmentResult1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_AppointmentTypes.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_AppointmentTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ClaimDocumentType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_ClaimDocumentType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ClaimStatusTypes.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_ClaimStatusTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_DamageTypes.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_DamageTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_EmployeeType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_EmployeeType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_InvoiceType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_InvoiceType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_KnockResponseType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_KnockResponseType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_LeadType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_LeadType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PayFrequncy.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_PayFrequncy1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PaymentDescription.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_PaymentDescription1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PaymentType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_PaymentType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PayType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_PayType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_Permissions.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_Permissions1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PlaneTypes.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_PlaneTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_Product.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_Product1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ProductType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_ProductType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_RidgeMaterialType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_RidgeMaterialType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ScopeType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_ScopeType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ServiceTypes.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_ServiceTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ShingleType.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_ShingleType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_UnitOfMeasure.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_UnitOfMeasure1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_VendorTypes.datasource" />
+    <None Include="MRNNexus_Model.DTO_LU_VendorTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_NewRoof.datasource" />
+    <None Include="MRNNexus_Model.DTO_NewRoof1.datasource" />
     <None Include="MRNNexus_Model.DTO_Order.datasource" />
+    <None Include="MRNNexus_Model.DTO_Order1.datasource" />
     <None Include="MRNNexus_Model.DTO_OrderItem.datasource" />
+    <None Include="MRNNexus_Model.DTO_OrderItem1.datasource" />
     <None Include="MRNNexus_Model.DTO_Payment.datasource" />
+    <None Include="MRNNexus_Model.DTO_Payment1.datasource" />
     <None Include="MRNNexus_Model.DTO_Plane.datasource" />
+    <None Include="MRNNexus_Model.DTO_Plane1.datasource" />
     <None Include="MRNNexus_Model.DTO_Referrer.datasource" />
+    <None Include="MRNNexus_Model.DTO_Referrer1.datasource" />
     <None Include="MRNNexus_Model.DTO_Scope.datasource" />
+    <None Include="MRNNexus_Model.DTO_Scope1.datasource" />
     <None Include="MRNNexus_Model.DTO_SurplusSupplies.datasource" />
+    <None Include="MRNNexus_Model.DTO_SurplusSupplies1.datasource" />
     <None Include="MRNNexus_Model.DTO_User.datasource" />
+    <None Include="MRNNexus_Model.DTO_User1.datasource" />
     <None Include="MRNNexus_Model.DTO_Vendor.datasource" />
+    <None Include="MRNNexus_Model.DTO_Vendor1.datasource" />
     <None Include="MRNUIElements_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1452,6 +1685,7 @@
   <ItemGroup>
     <Folder Include="Extended WPF Toolkit Binaries\" />
     <Folder Include="Resources\" />
+    <Folder Include="Weavers\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResourceFiles\OC Roof Order Form.jpg" />
@@ -1489,6 +1723,190 @@
     </Content>
     <None Include="FodyWeavers.xml" />
     <Resource Include="CheckMark.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\trackVert.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\trackHoriz.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\toolbarItemSelected.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\toolbarIconsSmall.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\toolbarIcons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillYellow.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillRed.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillPurple.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillOrange.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillGreen.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillGray.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelinePillBlue.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillYellow.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillRed.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillPurple.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillOrange.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillGreen.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillGray.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\timelineHollowPillBlue.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbVert.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbHoverVert.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbHoverHoriz.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbHoriz.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbActiveVert.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\thumbActiveHoriz.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\statusbarResizerVertical.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\statusbarResizerHorizontal.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\statusbarButtonGlyphs2x.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\statusbarButtonGlyphs.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinnerInactiveSelected.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinnerInactive.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinnerActiveSelected.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinnerActive.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\spinner.gif" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\settingsListRemove_2x.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\settingsListRemove.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\sessionStorage.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentSelectedEnd.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentSelected.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentHoverEnd.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentHover.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segmentEnd.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\segment.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchSmallWhite.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchSmallGray.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchSmallBrightBlue.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchSmallBlue.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchPrev.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\searchNext.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourcesTimeGraphIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourcePlainIconSmall.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourcePlainIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourceJSIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourceDocumentIconSmall.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourceDocumentIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\resourceCSSIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\regionOverset.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\regionFit.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\regionEmpty.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\radioDot.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\programCounterBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\profileSmallIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\profileIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\profileGroupIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\popoverBackground.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\popoverArrows.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneSettingsButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneRefreshButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneFilterButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneElementStateButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\paneAddButtons.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\namedFlowOverflow.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\localStorage.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\indexedDBObjectStore.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\indexedDBIndex.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\indexedDB.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\graphLabelCalloutRight.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\graphLabelCalloutLeft.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\glossyHeaderSelectedPressed.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\glossyHeaderSelected.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\glossyHeaderPressed.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\glossyHeader.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\frame.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\forward.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\fileSystem.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\domain.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\deleteIcon.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\databaseTable.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\database.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\cookie.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\checker.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointCounterBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointConditionalCounterBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointConditionalBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointConditional2_2x.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointConditional2.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpointBorder.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpoint2_2x.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\breakpoint2.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\back.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\applicationCache.png" />
+    <Resource Include="CoherentUI\Debugger\html\devtools\Images\addIcon.png" />
+    <Resource Include="CoherentUI\Copyright.txt" />
+    <Resource Include="CoherentUI\Bin\Win64\CoherentUINetControls.xml" />
+    <Resource Include="CoherentUI\Bin\Win32\CoherentUINetControls.xml" />
+    <Content Include="CoherentUI\Activator\Activator.exe" />
+    <Content Include="CoherentUI\Bin\JavaScript\coherent.js" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUINetControls.dll" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUINetControls.pdb" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUI_Host.exe" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUI_Native.dll" />
+    <Content Include="CoherentUI\Bin\Win32\CoherentUI_Native.pdb" />
+    <Content Include="CoherentUI\Bin\Win32\D3DCompiler_43.dll" />
+    <Content Include="CoherentUI\Bin\Win32\ffmpegsumo.dll" />
+    <Content Include="CoherentUI\Bin\Win32\icudt.dll" />
+    <Content Include="CoherentUI\Bin\Win32\libEGL.dll" />
+    <Content Include="CoherentUI\Bin\Win32\libGLESv2.dll" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUI64_Native.dll" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUI64_Native.pdb" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUINetControls.dll" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUINetControls.pdb" />
+    <Content Include="CoherentUI\Bin\Win64\CoherentUI_Host.exe" />
+    <Content Include="CoherentUI\Bin\Win64\D3DCompiler_43.dll" />
+    <Content Include="CoherentUI\Bin\Win64\ffmpegsumo.dll" />
+    <Content Include="CoherentUI\Bin\Win64\icudt.dll" />
+    <Content Include="CoherentUI\Bin\Win64\libEGL.dll" />
+    <Content Include="CoherentUI\Bin\Win64\libGLESv2.dll" />
+    <Content Include="CoherentUI\Debugger\html\debugger.html" />
+    <Content Include="CoherentUI\Debugger\html\devtools\auditsPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\AuditsPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\breadcrumbList.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\breakpointsList.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\buildSystemOnly.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\canvasProfiler.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\cmdevtools.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\codemirror.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\CodeMirrorTextEditor.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\cssNamedFlows.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\dataGrid.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\devTools.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\devtools.html" />
+    <Content Include="CoherentUI\Debugger\html\devtools\DevTools.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\devtools_extension_api.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\elementsPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ElementsPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\filteredItemSelectionDialog.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\flameChart.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\heapProfiler.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\HeapSnapshotWorker.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\helpScreen.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\indexedDBViews.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\inspector.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\inspector.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\inspectorCommon.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\nativeMemoryProfiler.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\navigatorView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\networkLogView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\networkPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\NetworkPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\panelEnablerView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\profilesPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ProfilesPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\resourcesPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ResourcesPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\resourceView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\revisionHistory.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ScriptFormatterWorker.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\scriptsPanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\ScriptsPanel.js" />
+    <Content Include="CoherentUI\Debugger\html\devtools\showhint.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\sidebarPane.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\spectrum.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\splitView.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\tabbedPane.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\textEditor.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\textPrompt.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\timelinePanel.css" />
+    <Content Include="CoherentUI\Debugger\html\devtools\TimelinePanel.js" />
+    <Content Include="CoherentUI\Debugger\Win32\D3DCompiler_43.dll" />
+    <Content Include="CoherentUI\Debugger\Win32\d3dx9_43.dll" />
+    <Content Include="CoherentUI\Debugger\Win32\Debugger.exe" />
+    <Content Include="CoherentUI\Debugger\Win64\D3DCompiler_43.dll" />
+    <Content Include="CoherentUI\Debugger\Win64\d3dx9_43.dll" />
+    <Content Include="CoherentUI\Debugger\Win64\Debugger.exe" />
     <Content Include="ResourceFiles\mysprite.sprite.css">
       <DependentUpon>mysprite.sprite</DependentUpon>
     </Content>
@@ -1513,10 +1931,12 @@
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets" Condition="Exists('..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets')" />
+  <Import Project="packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets" Condition="Exists('packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

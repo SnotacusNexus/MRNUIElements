@@ -67,7 +67,7 @@
             </ComboBox.ItemsPanel>
         </ComboBox>
         <DatePicker x:Name="planeEntryPicker" HorizontalAlignment="Left" Margin="242,38,0,0" VerticalAlignment="Top" Height="24" Width="108"/>
-        <TextBox x:Name="RoofAge" Width="232" Height="50" Margin="359,178,9,86" HorizontalAlignment="Center"/>
+        <TextBox x:Name="RoofAge" Width="232" Height="50" Margin="360,176,8,88" HorizontalAlignment="Center"/>
         <TextBox x:Name="Comments" Height="20" Width="50" Margin="165,195,385,85" HorizontalAlignment="Center"/>
 
     </Grid>

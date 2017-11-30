@@ -1,608 +1,645 @@
 ﻿<Page x:Class="MRNUIElements.RoofMeasurmentsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:Custom="http://schemas.awesomium.com/winfx"
       xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MRNUIElements"
+           xmlns:converters="clr-namespace:MRNUIElements.Utility"
+      xmlns:eo="clr-namespace:EO.WebBrowser.Wpf;assembly=EO.WebBrowser.Wpf"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       Title="RoofMeasurmentsPage"
-      Width="682"
-      Height="754"
+      Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}"
+      Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}"
       mc:Ignorable="d">
     <Page.Resources>
+        <CollectionViewSource x:Key="dTO_ClaimViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Claim}, CreateList=True}" />
+        <converters:CustomerIDToNameConverter x:Key="customerinfo"/>
         <CollectionViewSource x:Key="dTO_PlaneViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Plane}, CreateList=True}" />
     </Page.Resources>
-    <Viewbox x:Name="vb"
-             Height="800"
-             Margin="0,0,0,-46"
-             HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch">
+    <Viewbox>
         <Canvas x:Name="TheBigLebowski"
-                Width="1029"
-                Height="1220"
-                Margin="0"
+                Width="1920"
+                Height="1090"
+            
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Focusable="True"
                 ForceCursor="True"
-                IsManipulationEnabled="True">
+                IsManipulationEnabled="True" Margin="0,0,0,-0.333">
             <Grid x:Name="Maingrid"
-                  Width="1000"
-                  Height="1098">
+                  VerticalAlignment="Top"
+                  Width="1910"
+                  Height="1098" Canvas.Left="10" Canvas.Top="-8" HorizontalAlignment="Left">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1200" />
                 </Grid.RowDefinitions>
                 <Grid x:Name="Dock"
-                    Margin="0,0,0,102"
+                    Margin="0,18,0,108"
                     Background="Transparent">
                     <StackPanel
                         Background="Transparent"
-                                Margin="0,0,0,998">
-                        <TextBlock Height=" 100 "
+                                Margin="10,0,0,996" Height="90">
+                        <TextBlock Height="100 "
                             Background="Transparent"
                             FontSize="60"
                             Foreground="White"
                             Text="Roof Measurements/ Order"
-                            TextAlignment="Center" />
+                            TextAlignment="Center" Margin="0" />
                     </StackPanel>
 
-                    <Canvas Height="235"
+                    <Canvas Height="1093"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Background="#00000000"
-                            Margin="0,863,0,0">
-                        <DatePicker x:Name="InstallDate"
-                            Canvas.Left="8"
-                            Canvas.Top="7"
-                            Width="99"
-                            Foreground="White"
-                            Style="{DynamicResource DatePickerStyle1}" />
-                        <TextBlock Canvas.Left="18"
-                            Canvas.Top="33"
-                            Width="75"
-                            Height="15"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            LineHeight="10"
-                            Text="Install Date"
-                            TextAlignment="Center" />
-                        <TextBox x:Name="OrderOSB"
-                            Canvas.Left="55"
-                            Canvas.Top="59"
-                            Width="115"
-                            Height="23"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            CaretBrush="White"
-                            Foreground="White"
-                            TextChanged="OrderTurtleVent_TextChanged"
-                            TextWrapping="Wrap" />
-                        <TextBox x:Name="OrderTurtleVent"
-                            Canvas.Left="56"
-                            Canvas.Top="98"
-                            Width="115"
-                            Height="23"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            CaretBrush="White"
-                            Foreground="White"
-                            TextChanged="OrderTurtleVent_TextChanged"
-                            TextWrapping="Wrap" />
-                        <TextBox x:Name="OrderPaint"
-                            Canvas.Left="56"
-                            Canvas.Top="142"
-                            Width="115"
-                            Height="23"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            CaretBrush="White"
-                            Foreground="White"
-                            TextChanged="OrderPaint_TextChanged"
-                            TextWrapping="Wrap" />
-                        <TextBlock x:Name="textBlock1"
-                            Canvas.Left="56"
-                            Canvas.Top="167"
-                            Width="115"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="Paint To Match(can)"
-                            TextAlignment="Center" />
-                        <TextBox x:Name="OrderCaulk"
-                            Canvas.Left="56"
-                            Canvas.Top="185"
-                            Width="115"
-                            Height="23"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            CaretBrush="White"
-                            Foreground="White"
-                            TextChanged="OrderCaulk_TextChanged"
-                            TextWrapping="Wrap" />
-                        <TextBlock Canvas.Left="56"
-                            Canvas.Top="206"
-                            Width="115"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="Caulk to Match(tube)"
-                            TextAlignment="Center" />
-                        <TextBlock Canvas.Left="70"
-                            Canvas.Top="81"
-                            Width="75"
-                            Height="15"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            LineHeight="10"
-                            Text="OSB"
-                            TextAlignment="Center" />
-                        <TextBlock Canvas.Left="71"
-                            Canvas.Top="124"
-                            Width="100"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="Turtle Vents"
-                            TextAlignment="Center" />
-                        <DatePicker x:Name="DeliveryDate"
-                            Canvas.Left="134"
-                            Canvas.Top="7"
-                            Width="99"
-                            Foreground="White"
-                            Style="{DynamicResource DatePickerStyle1}" />
-                        <TextBlock Canvas.Left="140"
-                            Canvas.Top="33"
-                            Width="75"
-                            Height="15"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            LineHeight="10"
-                            Text="Delivery Date"
-                            TextAlignment="Center" />
-                        <syncfusion:MaskedTextBox x:Name="maskedTextBoxCustomerName"
-                            Canvas.Left="242"
-                            Canvas.Top="141"
-                            Width="138"
-                            CornerRadius="0"
-                            Mask=""
-                            TextChanged="maskedTextBox_CustomerNameChanged"
-                            TextWrapping="Wrap"
-                            WatermarkOpacity="1"
-                            WatermarkText="Customer Name" />
-                        <ComboBox x:Name="VendorComboBox"
-                            Canvas.Left="243"
-                            Canvas.Top="10"
-                            Width="137"
-                            Height="24"
-                            Foreground="Black"
-                            Text="{Binding ThreeAndOne, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}">
-                            <ComboBoxItem Width="118"
-                                HorizontalAlignment="Left"
-                                Content="SRC"
-                                Foreground="Black" />
-                            <ComboBoxItem Width="118"
-                                HorizontalAlignment="Left"
-                                Content="ABC"
-                                Foreground="Black" />
-                            <ComboBoxItem Width="118"
-                                HorizontalAlignment="Left"
-                                Content="ARC"
-                                Foreground="Black" />
-                        </ComboBox>
-                        <ComboBox x:Name="UnderlaymentCombo"
-                            Canvas.Left="243"
-                            Canvas.Top="50"
-                            Width="137"
-                            Height="23"
-                            Background="White"
-                            BorderBrush="#FFFF0101"
-                            Foreground="Black">
-                            <ComboBoxItem Content="Deck Defense" />
-                            <ComboBoxItem Background="Black" Content="Pro Armor" />
-                            <ComboBoxItem Content="Gorilla Guard" />
-                        </ComboBox>
-                        <syncfusion:MaskedTextBox x:Name="Comments"
-                            Canvas.Left="243"
-                            Canvas.Top="166"
-                            Width="468"
-                            Height="62"
-                            CornerRadius="0"
-                            Mask=""
-                            TextChanged="maskedTextBox_CommentsChanged"
-                            TextWrapping="Wrap"
-                            WatermarkOpacity="1"
-                            WatermarkText="Comments:" />
-                        <ComboBox x:Name="OrderBrand"
-                            Canvas.Left="245"
-                            Canvas.Top="94"
-                            Width="135"
-                            Height="23"
-                            Background="White"
-                            BorderBrush="Red"
-                            Foreground="White"
-                            IsReadOnly="True"
-                            IsSynchronizedWithCurrentItem="True"
-                            SelectionChanged="OrderBrand_SelectionChanged">
-                            <ComboBoxItem Width="128"
-                                HorizontalAlignment="Left"
-                                Content="Owens Corning" />
-                            <ComboBoxItem Width="128"
-                                HorizontalAlignment="Left"
-                                Content="Certainteed" />
-                        </ComboBox>
-                        <TextBlock Canvas.Left="247"
-                            Canvas.Top="73"
-                            Width="115"
-                            Height="13"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="Underlayment Type"
-                            TextAlignment="Center" />
-                        <Label Canvas.Left="256"
-                            Canvas.Top="33"
-                            Width="115"
-                            Height="15"
-                            HorizontalContentAlignment="Center"
-                            Content="Supplier:"
-                            FontSize="10"
-                            Foreground="White"
-                            Padding="0" />
-                        <TextBlock Canvas.Left="266"
-                            Canvas.Top="119"
-                            Width="85"
-                            Height="13"
-                            HorizontalAlignment="Stretch"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="Black"
-                            Text="Shingle Brand"
-                            TextAlignment="Center" />
-                        <ComboBox x:Name="InstallerCombo"
-                            Canvas.Left="406"
-                            Canvas.Top="10"
-                            Width="147"
-                            Height="24"
-                            Background="Transparent"
-                            Foreground="White"
-                            SelectionChanged="InstallerCombo_SelectionChanged"
-                            Text="{Binding ThreeAndOne, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}">
-                            <ComboBoxItem Content="Marteen" />
-                            <ComboBoxItem Content="Oscar" />
-
-                        </ComboBox>
-                        <TextBox x:Name="Order4PipeBoot"
-                            Canvas.Left="406"
-                            Canvas.Top="50"
-                            Width="69"
-                            Height="23"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            CaretBrush="White"
-                            Foreground="White"
-                            TextChanged="Order4PipeBoot_TextChanged"
-                            TextWrapping="Wrap" />
-                        <ComboBox x:Name="OrderBrandType"
-                            Canvas.Left="406"
-                            Canvas.Top="94"
-                            Width="147"
-                            Height="23"
-                            Background="Black"
-                            BorderBrush="Red"
-                            Foreground="White"
-                            IsReadOnly="True"
-                            IsSynchronizedWithCurrentItem="True"
-                            SelectionChanged="OrderBrandType_SelectionChanged" />
-                        <TextBlock Canvas.Left="407"
-                            Canvas.Top="75"
-                            Width="53"
-                            Height="13"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="4'' PJB"
-                            TextAlignment="Center" />
-                        <syncfusion:MaskedTextBox x:Name="maskedTextBoxCustomerAddress"
-                            Canvas.Left="407"
-                            Canvas.Top="141"
-                            Width="146"
-                            CornerRadius="0"
-                            Mask=""
-                            TextChanged="maskedTextBox_StreetAddressChanged"
-                            TextWrapping="Wrap"
-                            WatermarkOpacity="1"
-                            WatermarkText="Customer Street Address" />
-                        <Label Canvas.Left="418"
-                            Canvas.Top="33"
-                            Width="115"
-                            Height="15"
-                            HorizontalContentAlignment="Center"
-                            Content="Installer:"
-                            FontSize="10"
-                            Foreground="White"
-                            Padding="0" />
-                        <TextBlock Canvas.Left="443"
-                            Canvas.Top="119"
-                            Width="90"
-                            Height="13"
-                            HorizontalAlignment="Stretch"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="Shingle Type"
-                            TextAlignment="Center" />
-                        <TextBox x:Name="Order3PipeBoot"
-                            Canvas.Left="481"
-                            Canvas.Top="50"
-                            Width="72"
-                            Height="23"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            CaretBrush="White"
-                            Foreground="White"
-                            TextChanged="Order3PipeBoot_TextChanged"
-                            TextWrapping="Wrap" />
-                        <TextBlock x:Name="textBlock"
-                            Canvas.Left="496"
-                            Canvas.Top="73"
-                            Width="52"
-                            Height="13"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="3/1 PJB"
-                            TextAlignment="Center" />
-                        <ComboBox x:Name="UnderlaymentTypeCombo"
-                            Canvas.Left="575"
-                            Canvas.Top="10"
-                            Width="136"
-                            Height="24"
-                            Background="Transparent"
-                            BorderBrush="#00000000"
-                            Foreground="White"
-                            Text="{Binding ThreeAndOne, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}">
-                            <ComboBoxItem Width="118"
-                                HorizontalAlignment="Left"
-                                Content="Danny" />
-                            <ComboBoxItem Width="118"
-                                HorizontalAlignment="Left"
-                                Content="Not Danny" />
-                        </ComboBox>
-                        <ComboBox x:Name="DripedgeColorCombo"
-                            Canvas.Left="575"
-                            Canvas.Top="50"
-                            Width="136"
-                            Height="23"
-                            Background="Black"
-                            BorderBrush="Red"
-                            Foreground="White"
-                            SelectionChanged="DripedgeColorCombo_SelectionChanged">
-                            <ComboBoxItem x:Name="item1"
-                                Background="Transparent"
-                                Content="White"
-                                Foreground="White" />
-                            <ComboBoxItem x:Name="item2"
-                                Background="Transparent"
-                                Content="Black"
-                                Foreground="White" />
-                        </ComboBox>
-                        <TextBlock Canvas.Left="575"
-                            Canvas.Top="73"
-                            Width="136"
-                            Height="13"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="Drip Edge Color"
-                            TextAlignment="Center" />
-                        <ComboBox x:Name="NewShingleCombo"
-                            Canvas.Left="575"
-                            Canvas.Top="94"
-                            Width="136"
-                            Height="23"
-                            Background="Black"
-                            BorderBrush="Red"
-                            Foreground="White"
-                            IsReadOnly="True"
-                            IsSynchronizedWithCurrentItem="True" />
-                        <syncfusion:MaskedTextBox x:Name="maskedTextBoxCustomerCSZ"
-                            Canvas.Left="576"
-                            Canvas.Top="141"
-                            Width="135"
-                            CornerRadius="0"
-                            Mask=""
-                            TextChanged="maskedTextBox_CSZChanged"
-                            TextWrapping="Wrap"
-                            WatermarkOpacity="1"
-                            WatermarkText="Customer Zipcode" />
-                        <Label Canvas.Left="585"
-                            Canvas.Top="33"
-                            Width="115"
-                            Height="15"
-                            HorizontalContentAlignment="Center"
-                            Content="Sitter:"
-                            FontSize="10"
-                            Foreground="White"
-                            Padding="0" />
-                        <TextBlock Canvas.Left="600"
-                            Canvas.Top="119"
-                            Width="100"
-                            Height="13"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            Text="Shingle Color"
-                            TextAlignment="Center" />
-                        <ComboBox x:Name="SalespersonCombo"
-                            Canvas.Left="716"
-                            Canvas.Top="11"
-                            Width="134"
-                            Height="23"
-                            Background="Black"
-                            BorderBrush="Red"
-                            Foreground="White"
-                            SelectionChanged="SalespersonCombo_SelectionChanged">
-                            <ComboBoxItem Width="138"
-                                HorizontalAlignment="Left"
-                                Content="Preston" />
-                            <ComboBoxItem Width="138"
-                                HorizontalAlignment="Left"
-                                Content="Foy" />
-                            <ComboBoxItem Width="138"
-                                HorizontalAlignment="Left"
-                                Content="Tony" />
-                            <ComboBoxItem Width="138"
-                                HorizontalAlignment="Left"
-                                Content="Havard" />
-                            <ComboBoxItem Width="138"
-                                HorizontalAlignment="Left"
-                                Content="Josh" />
-                            <ComboBoxItem Width="138"
-                                HorizontalAlignment="Left"
-                                Content="Logan" />
-                        </ComboBox>
-                        <TextBlock Canvas.Left="735"
-                            Canvas.Top="33"
-                            Width="115"
-                            Height="15"
-                            Background="Transparent"
-                            FontSize="10"
-                            Foreground="White"
-                            LineHeight="10"
-                            Text="Salesperson"
-                            TextAlignment="Center" />
-                        <syncfusion:PercentTextBox x:Name="SliderWaste"
-                            Canvas.Left="735"
-                            Canvas.Top="66"
-                            Width="50"
-                            Height="22"
-                            AllowMultipleSymbol="True"
-                            ApplyNegativeForeground="True"
-                            ApplyZeroColor="True"
-                            Background="{x:Null}"
-                            BorderBrush="{DynamicResource BackgroundGradient}"
-                            CaretBrush="{DynamicResource ReverseBackgroundGradient}"
-                            EnableFocusColors="True"
-                            Foreground="#FF5DFF00"
-                            IsReadOnlyCaretVisible="True"
-                            MaxValue="30"
-                            MaxValueOnExceedMaxDigit="True"
-                            MinValue="0"
-                            MinValueOnExceedMinDigit="True"
-                            NullValue="-1"
-                            PercentDecimalDigits="0"
-                            PercentValue="{Binding Value, BindsDirectlyToSource=True, ElementName=Slider, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            PositiveForeground="#FF5DFF00"
-                            ReadOnlyBackground="#FFD9FB00"
-                            SelectionForeground="White"
-                            TextAlignment="Center"
-                            WatermarkTextForeground="#FFB2B2B2"
-                            ZeroColor="White" />
-                        <Slider x:Name="Slider"
-                            Canvas.Left="735"
-                            Canvas.Top="104"
-                            Width="96"
-                            Height="30"
-                            AutoToolTipPlacement="BottomRight"
-                            Background="{x:Null}"
-                            BorderThickness="0"
-                            IsSelectionRangeEnabled="True"
-                            LargeChange="5"
-                            Maximum="30"
-                            Padding="0"
-                            SmallChange="1"
-                            TickFrequency="5"
-                            TickPlacement="Both"
-                            ValueChanged="Slider_ValueChanged"
-                            Value="15" />
-                        <Button x:Name="SatViewGoogleb"
-                            Canvas.Left="735"
-                            Canvas.Top="150"
-                            Width="125"
-                            Height="37"
-                            Margin="0"
+                        Background="#00000000" Width="1909" Margin="-18,10,0,-29">
+                        <Canvas Height="408" Canvas.Left="1736" Width="147" Canvas.Top="662">
+                            <Button x:Name="SatViewGoogleb"
+                                Canvas.Top="90"
+                                Width="124"
+                                Height="37"
+                                Margin="0"
                    
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            Click="SatViewGoogle"
-                            Content="Sat View"
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                Click="SatViewGoogle"
+                                Content="View on Map" Canvas.Left="19"
                      />
-                        <Button x:Name="button"
-                            Canvas.Left="735"
-                            Canvas.Top="192"
-                            Width="125"
-                            Height="37"
-                            Margin="0"
+                            <ToggleButton x:Name="button"
+                                Canvas.Top="46"
+                                Width="124"
+                                Height="37"
+                                Margin="0"
  
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            Click="View_Order"
-                            Content="Order View"
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                Click="View_Order"
+                                Content="Load From Gmail" Canvas.Left="19" Checked="button_Checked" Unchecked="button_Unchecked"
                     />
-                        <TextBlock Canvas.Left="790"
-                            Canvas.Top="70"
-                            Width="46"
-                            Foreground="White"
-                            Text=" Waste"
-                            TextAlignment="Center" />
-                        <ToggleButton x:Name="toggleButton"
-                            Canvas.Left="865"
-                            Canvas.Top="66"
-                            Width="125"
+                            <ToggleButton x:Name="toggleButton"
+                                Canvas.Left="19"
+                                Canvas.Top="4"
+                                Width="124"
+                                Height="37"
+                  
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                Checked="toggleButton_Checked"
+                                Click="toggleButton_Click"
+                                Content="Load From File"
+                                Foreground="Black"
+                                IsThreeState="True"
+                                Unchecked="toggleButton_Unchecked" TabIndex="23" />
+                            <Button x:Name="PrintButton"
+                                Canvas.Left="19"
+                                Canvas.Top="178"
+                                Width="124"
+                                Height="37"
+                                Margin="0"
+                   
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                Click="Print_Click"
+                                Content="_Print" TabIndex="26"
+                     />
+                            <Button x:Name="SendButton"
+                                Canvas.Left="19"
+                                Canvas.Top="134"
+                                Width="124"
+                                Height="37"
+                                Margin="0"
+                                VerticalContentAlignment="Center"
+                 
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                Click="NextButton_Click"
+                                Content="Send via Email"
+                         />
+                            <Button x:Name="OKButton"
+                                Canvas.Left="19"
+                                Canvas.Top="223"
+                                Width="124"
+                                Height="37"
+                                Margin="0"
+         
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                Click="On_OK"
+                                Content="OK-Done"
+                                IsCancel="True"
+                                IsDefault="True" TabIndex="25"
+                         />
+                            <ToggleButton x:Name="UploadToServer"
+                            Canvas.Left="19"
+                            Canvas.Top="265"
+                            Width="124"
                             Height="37"
                   
                             BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            Checked="toggleButton_Checked"
-                            Click="toggleButton_Click"
-                            Content="Toggle View"
-                            Foreground="White"
-                            IsThreeState="True"
-                            Unchecked="toggleButton_Unchecked" />
-                        <Button x:Name="PrintButton"
-                            Canvas.Left="865"
-                            Canvas.Top="108"
-                            Width="125"
+                         
+                            Content="Upload EV to server"
+                            Foreground="Black"
+                            IsThreeState="False"
+                           TabIndex="23" Checked="UploadToServer_Checked" />
+                            <ToggleButton x:Name="StartOver"
+                            Canvas.Left="19"
+                            Canvas.Top="307"
+                            Width="124"
                             Height="37"
-                            Margin="0"
-                   
+                  
                             BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            Click="Print_Click"
-                            Content="_Print"
-                     />
-                        <Button x:Name="SendButton"
-                            Canvas.Left="865"
-                            Canvas.Top="150"
-                            Width="125"
+                         
+                            Content="Start Over"
+                            Foreground="Black"
+                            IsThreeState="False"
+                            TabIndex="23" Checked="StartOver_Checked" />
+                            <ToggleButton x:Name="AvailableClaimsList"
+                            Canvas.Left="19"
+                            Canvas.Top="349"
+                            Width="124"
                             Height="37"
-                            Margin="0"
-                            VerticalContentAlignment="Top"
-                 
+                  
                             BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            Click="NextButton_Click"
-                            Content="Send"
-                         />
-                        <Button x:Name="OKButton"
-                            Canvas.Left="865"
-                            Canvas.Top="192"
-                            Width="125"
-                            Height="37"
-                            Margin="0"
-         
-                            BorderBrush="{DynamicResource ReverseBackgroundGradient}"
-                            Click="On_OK"
-                            Content="OK-Done"
-                            IsCancel="True"
-                            IsDefault="True"
-                         />
+                         
+                            Content="Claims List"
+                            Foreground="Black"
+                            IsThreeState="False"
+                            TabIndex="23" Checked="AvailableClaimsList_Checked" />
+                        </Canvas>
+                        <Canvas Height="235" Canvas.Left="1028" Canvas.Top="835" Width="608">
+                            <TextBox x:Name="OrderOSB"
+                                Canvas.Left="473"
+                                Canvas.Top="40"
+                                Width="132"
+                                Height="23"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                CaretBrush="White"
+                                Foreground="White"
+                                TextChanged="OrderTurtleVent_TextChanged"
+                                TextWrapping="Wrap" TabIndex="7" />
+                            <TextBox x:Name="OrderTurtleVent"
+                                Canvas.Left="475"
+                                Canvas.Top="85"
+                                Width="134"
+                                Height="23"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                CaretBrush="White"
+                                Foreground="White"
+                                TextChanged="OrderTurtleVent_TextChanged"
+                                TextWrapping="Wrap" TabIndex="12" />
+                            <TextBox x:Name="OrderPaint"
+                                Canvas.Left="474"
+                                Canvas.Top="131"
+                                Width="134"
+                                Height="23"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                CaretBrush="White"
+                                Foreground="White"
+                                TextChanged="OrderPaint_TextChanged"
+                                TextWrapping="Wrap" TabIndex="16" />
+                            <TextBlock x:Name="textBlock1"
+                                Canvas.Left="493"
+                                Canvas.Top="156"
+                                Width="115"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="Paint To Match(can)"
+                                TextAlignment="Center" />
+                            <TextBox x:Name="OrderCaulk"
+                                Canvas.Left="473"
+                                Canvas.Top="178"
+                                Width="134"
+                                Height="23"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                CaretBrush="White"
+                                Foreground="White"
+                                TextChanged="OrderCaulk_TextChanged"
+                                TextWrapping="Wrap" TabIndex="20" />
+                            <TextBlock Canvas.Left="492"
+                                Canvas.Top="199"
+                                Width="115"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="Caulk to Match(tube)"
+                                TextAlignment="Center" />
+                            <TextBlock Canvas.Left="506"
+                                Canvas.Top="62"
+                                Width="75"
+                                Height="15"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                LineHeight="10"
+                                Text="OSB"
+                                TextAlignment="Center" />
+                            <TextBlock Canvas.Left="508"
+                                Canvas.Top="112"
+                                Width="100"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="Turtle Vents"
+                                TextAlignment="Center" />
+                            <syncfusion:MaskedTextBox x:Name="maskedTextBoxCustomerName"
+                                Canvas.Left="-1"
+                                Canvas.Top="131"
+                                Width="138"
+                                CornerRadius="0"
+                                Mask=""
+                                TextChanged="maskedTextBox_CustomerNameChanged"
+                                TextWrapping="Wrap"
+                                WatermarkOpacity="1"
+                                WatermarkText="Customer Name" TabIndex="17" />
+                            <ComboBox x:Name="VendorComboBox"
+                                Width="137"
+                                Height="24"
+                                Foreground="Black"
+                                Text="{Binding ThreeAndOne, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" TabIndex="3" IsReadOnly="True">
+                                <ComboBoxItem Width="118"
+                                    HorizontalAlignment="Left"
+                                    Content="SRC"
+                                    Foreground="Black" />
+                                <ComboBoxItem Width="118"
+                                    HorizontalAlignment="Left"
+                                    Content="ABC"
+                                    Foreground="Black" />
+                                <ComboBoxItem Width="118"
+                                    HorizontalAlignment="Left"
+                                    Content="ARC"
+                                    Foreground="Black" />
+                            </ComboBox>
+                            <ComboBox x:Name="UnderlaymentCombo"
+                                Canvas.Top="40"
+                                Width="137"
+                                Height="23"
+                                Background="White"
+                                BorderBrush="#FFFF0101"
+                                Foreground="Black" TabIndex="8" IsReadOnly="True">
+                                <ComboBoxItem Content="Deck Defense" />
+                                <ComboBoxItem Content="Pro Armor" />
+                                <ComboBoxItem Content="Gorilla Guard" />
+                            </ComboBox>
+                            <syncfusion:MaskedTextBox x:Name="Comments"
+                                Canvas.Top="156"
+                                Width="310"
+                                Height="62"
+                                CornerRadius="0"
+                                Mask=""
+                                TextChanged="maskedTextBox_CommentsChanged"
+                                TextWrapping="Wrap"
+                                WatermarkOpacity="1"
+                                WatermarkText="Comments:" TabIndex="21" />
+                            <ComboBox x:Name="OrderBrand"
+                                Canvas.Left="3"
+                                Canvas.Top="84"
+                                Width="135"
+                                Height="23"
+                                Background="White"
+                                BorderBrush="Red"
+                                Foreground="Black"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                SelectionChanged="OrderBrand_SelectionChanged" Loaded="OrderBrand_Loaded" TabIndex="13">
+                                <ComboBoxItem Width="128"
+                                    HorizontalAlignment="Left"
+                                    Content="Owens Corning" />
+                                <ComboBoxItem Width="128"
+                                    HorizontalAlignment="Left"
+                                    Content="Certainteed" />
+                            </ComboBox>
+                            <TextBlock Canvas.Left="4"
+                                Canvas.Top="63"
+                                Width="115"
+                                Height="13"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="Underlayment Type"
+                                TextAlignment="Center" />
+                            <Label Canvas.Left="13"
+                                Canvas.Top="24"
+                                Width="115"
+                                Height="15"
+                                HorizontalContentAlignment="Center"
+                                Content="Supplier:"
+                                FontSize="10"
+                                Foreground="White"
+                                Padding="0" />
+                            <TextBlock Canvas.Left="23"
+                                Canvas.Top="109"
+                                Width="85"
+                                Height="13"
+                                HorizontalAlignment="Stretch"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="Shingle Brand"
+                                TextAlignment="Center" />
+                            <ComboBox x:Name="InstallerCombo"
+                                Canvas.Left="163"
+                                Width="147"
+                                Height="24"
+                                Background="Transparent"
+                                Foreground="Black"
+                                SelectionChanged="InstallerCombo_SelectionChanged"
+                                Text="{Binding ThreeAndOne, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" TabIndex="4" IsReadOnly="True">
+                                <ComboBoxItem Content="Marteen" />
+                                <ComboBoxItem Content="Oscar" />
+
+                            </ComboBox>
+                            <TextBox x:Name="Order4PipeBoot"
+                                Canvas.Left="163"
+                                Canvas.Top="40"
+                                Width="69"
+                                Height="23"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                CaretBrush="White"
+                                Foreground="White"
+                                TextChanged="Order4PipeBoot_TextChanged"
+                                TextWrapping="Wrap" TabIndex="9" />
+                            <ComboBox x:Name="OrderBrandType"
+                                Canvas.Left="163"
+                                Canvas.Top="84"
+                                Width="147"
+                                Height="23"
+                                Background="White"
+                                BorderBrush="Red"
+                                Foreground="Black"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                SelectionChanged="OrderBrandType_SelectionChanged" Loaded="OrderBrandType_Loaded" TabIndex="14" />
+                            <TextBlock Canvas.Left="164"
+                                Canvas.Top="65"
+                                Width="53"
+                                Height="13"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="4'' PJB"
+                                TextAlignment="Center" />
+                            <syncfusion:MaskedTextBox x:Name="maskedTextBoxCustomerAddress"
+                                Canvas.Left="164"
+                                Canvas.Top="131"
+                                Width="146"
+                                CornerRadius="0"
+                                Mask=""
+                                TextChanged="maskedTextBox_StreetAddressChanged"
+                                TextWrapping="Wrap"
+                                WatermarkOpacity="1"
+                                WatermarkText="Customer Street Address" TabIndex="18" />
+                            <Label Canvas.Left="175"
+                                Canvas.Top="24"
+                                Width="115"
+                                Height="15"
+                                HorizontalContentAlignment="Center"
+                                Content="Installer:"
+                                FontSize="10"
+                                Foreground="White"
+                                Padding="0" />
+                            <TextBlock Canvas.Left="200"
+                                Canvas.Top="109"
+                                Width="90"
+                                Height="13"
+                                HorizontalAlignment="Stretch"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="Shingle Type"
+                                TextAlignment="Center" />
+                            <TextBox x:Name="Order3PipeBoot"
+                                Canvas.Left="239"
+                                Canvas.Top="40"
+                                Width="72"
+                                Height="23"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                BorderBrush="{DynamicResource ReverseBackgroundGradient}"
+                                CaretBrush="White"
+                                Foreground="White"
+                                TextChanged="Order3PipeBoot_TextChanged"
+                                TextWrapping="Wrap" TabIndex="10" />
+                            <TextBlock x:Name="textBlock"
+                                Canvas.Left="253"
+                                Canvas.Top="63"
+                                Width="52"
+                                Height="13"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="3/1 PJB"
+                                TextAlignment="Center" />
+                            <ComboBox x:Name="UnderlaymentTypeCombo"
+                                Canvas.Left="332"
+                                Width="136"
+                                Height="24"
+                                Background="Transparent"
+                                BorderBrush="#00000000"
+                                Foreground="Black"
+                                Text="{Binding ThreeAndOne, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" TabIndex="5" IsReadOnly="True">
+                                <ComboBoxItem Width="118"
+                                    HorizontalAlignment="Left"
+                                    Content="Danny" />
+                                <ComboBoxItem Width="118"
+                                    HorizontalAlignment="Left"
+                                    Content="Not Danny" />
+                            </ComboBox>
+                            <ComboBox x:Name="DripedgeColorCombo"
+                                Canvas.Left="332"
+                                Canvas.Top="40"
+                                Width="136"
+                                Height="23"
+                                Background="White"
+                                BorderBrush="Red"
+                                Foreground="Black"
+                                SelectionChanged="DripedgeColorCombo_SelectionChanged" TabIndex="11" IsReadOnly="True">
+                                <ComboBoxItem x:Name="item1"
+                                
+                                    Content="White"
+                               />
+                                <ComboBoxItem x:Name="item2"
+                                
+                                    Content="Black"
+                                />
+
+                                <ComboBoxItem x:Name="item3"
+                                
+                                    Content="N/A"
+                                />
+                            </ComboBox>
+                            <TextBlock Canvas.Left="332"
+                                Canvas.Top="63"
+                                Width="136"
+                                Height="13"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="Drip Edge Color"
+                                TextAlignment="Center" />
+                            <ComboBox x:Name="NewShingleCombo"
+                                Canvas.Left="332"
+                                Canvas.Top="84"
+                                Width="136"
+                                Height="23"
+                                Background="White"
+                                BorderBrush="Red"
+                                Foreground="Black"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True" TabIndex="15" />
+                            <syncfusion:MaskedTextBox x:Name="maskedTextBoxCustomerCSZ"
+                                Canvas.Left="333"
+                                Canvas.Top="131"
+                                Width="135"
+                                CornerRadius="0"
+                                Mask=""
+                                TextChanged="maskedTextBox_CSZChanged"
+                                TextWrapping="Wrap"
+                                WatermarkOpacity="1"
+                                WatermarkText="Customer Zipcode" TabIndex="19" />
+                            <Label Canvas.Left="343"
+                                Canvas.Top="24"
+                                Width="115"
+                                Height="15"
+                                HorizontalContentAlignment="Center"
+                                Content="Sitter:"
+                                FontSize="10"
+                                Foreground="White"
+                                Padding="0" />
+                            <TextBlock Canvas.Left="357"
+                                Canvas.Top="109"
+                                Width="100"
+                                Height="13"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                Text="Shingle Color"
+                                TextAlignment="Center" />
+                            <ComboBox x:Name="SalespersonCombo"
+                                Canvas.Left="473"
+                                Canvas.Top="1"
+                                Width="134"
+                                Height="23"
+                                Background="Black"
+                                BorderBrush="Red"
+                                Foreground="Black"
+                                SelectionChanged="SalespersonCombo_SelectionChanged" TabIndex="6" IsReadOnly="True">
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Preston" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Foy" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Craig" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Shane" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Thomas" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Aaron" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Sasso" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Christiaan" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="Dani/Lee" />
+                                <ComboBoxItem Width="138"
+                                    HorizontalAlignment="Left"
+                                    Content="" />
+                            </ComboBox>
+                            <TextBlock Canvas.Left="492"
+                                Canvas.Top="23"
+                                Width="115"
+                                Height="15"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                LineHeight="10"
+                                Text="Salesperson"
+                                TextAlignment="Center" />
+                            <syncfusion:PercentTextBox x:Name="SliderWaste"
+                                Height="22"
+                                AllowMultipleSymbol="True"
+                                ApplyNegativeForeground="True"
+                                ApplyZeroColor="True"
+                                Background="{x:Null}"
+                                BorderBrush="{DynamicResource BackgroundGradient}"
+                                CaretBrush="{DynamicResource ReverseBackgroundGradient}"
+                                EnableFocusColors="True"
+                                Foreground="#FF5DFF00"
+                                IsReadOnlyCaretVisible="True"
+                                MaxValue="30"
+                                MaxValueOnExceedMaxDigit="True"
+                                MinValue="0"
+                                MinValueOnExceedMinDigit="True"
+                                NullValue="-1"
+                                PercentDecimalDigits="0"
+                                PercentValue="{Binding Value, BindsDirectlyToSource=True, ElementName=Slider, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                PositiveForeground="#FF5DFF00"
+                                ReadOnlyBackground="#FFD9FB00"
+                                SelectionForeground="White"
+                                TextAlignment="Center"
+                                WatermarkTextForeground="#FFB2B2B2"
+                                ZeroColor="White" Canvas.Left="327" Canvas.Top="161" Width="63" />
+                            <Slider x:Name="Slider"
+                                Height="30"
+                                AutoToolTipPlacement="BottomRight"
+                                Background="{x:Null}"
+                                BorderThickness="0"
+                                IsSelectionRangeEnabled="True"
+                                LargeChange="5"
+                                Maximum="30"
+                                Padding="0"
+                                SmallChange="1"
+                                TickFrequency="5"
+                                TickPlacement="Both"
+                                ValueChanged="Slider_ValueChanged"
+                                Value="15" Canvas.Left="327" Width="139" Canvas.Top="184" />
+                            <TextBlock
+                                Foreground="White"
+                                Text=" Waste"
+                                TextAlignment="Center" Canvas.Left="420" Canvas.Top="161" Width="46" />
+                        </Canvas>
+                        <DatePicker x:Name="InstallDate"
+                                Width="99"
+                                Foreground="White"
+                                Style="{DynamicResource DatePickerStyle1}" Canvas.Left="1656" Canvas.Top="530" />
+                        <TextBlock Canvas.Left="1666"
+                                Canvas.Top="555"
+                                Width="75"
+                                Height="15"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                LineHeight="10"
+                                Text="Install Date"
+                                TextAlignment="Center" />
+                        <DatePicker x:Name="DeliveryDate"
+                                Canvas.Left="1782"
+                                Width="99"
+                                Foreground="White"
+                                Style="{DynamicResource DatePickerStyle1}" TabIndex="2" Canvas.Top="530" />
+                        <TextBlock Canvas.Left="1788"
+                                Canvas.Top="555"
+                                Width="75"
+                                Height="15"
+                                Background="Transparent"
+                                FontSize="10"
+                                Foreground="White"
+                                LineHeight="10"
+                                Text="Delivery Date"
+                                TextAlignment="Center" />
                     </Canvas>
 
                     <Grid x:Name="grid1"
@@ -610,7 +647,7 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         DataContext="{StaticResource dTO_PlaneViewSource}"
-                          Margin="0,100,0,0">
+                          Margin="0,100,0,0" Visibility="Hidden">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -1041,7 +1078,7 @@
                     </Grid>
 
                     <StackPanel x:Name="stkpnl"
-                                Margin="742,100,0,235">
+                                Margin="1640,100,19,560">
                         <StackPanel HorizontalAlignment="Right"
                             Background="Transparent"
                             Orientation="Horizontal">
@@ -1357,53 +1394,49 @@
                                 Foreground="White"
                                 TextWrapping="Wrap" />
                         </StackPanel>
-                        <Grid Height="37" Margin="73,0,0,0">
+                        <StackPanel HorizontalAlignment="Right"
+                     Background="Transparent"
+                            Orientation="Horizontal">
                             <TextBlock
                                 Background="Transparent"
                                 Foreground="White"
                                 Text="No Of Layers"
-                                TextAlignment="Center" Margin="-26,0,131,14" />
+                                TextAlignment="Center" Width="150"  />
                             <TextBox x:Name="OrderNoOfLayers"
                                 Background="Transparent"
                                 BorderBrush="{DynamicResource ReverseBackgroundGradient}"
                                 CaretBrush="White"
                                 Foreground="White"
-                                TextWrapping="Wrap" Margin="86,-1,-1,15" />
+                                TextWrapping="Wrap" Width="100" />
+                        </StackPanel>
 
-
-                        </Grid>
 
 
                     </StackPanel>
 
 
-                    <Grid x:Name="Elcapitan"
-                        Width="500"
-                          Margin="238,307,262,442">
-                        <Grid x:Name="View"
-                            Width="550"
-                            Margin="0,0,-50,101"
+
+                    <Grid x:Name="View"
+                            Margin="1056,100,331,278"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch">
-                            <Canvas x:Name="canvas" Margin="0,0,64,0">
+                        <Canvas x:Name="canvas" Margin="0,1,1,0">
 
-                                <Canvas x:Name="OrderCanvas"
-                                    Canvas.Left="-10"
-                                    Canvas.Top="-206"
+                            <Canvas x:Name="OrderCanvas"
                                     Width="519"
                                     Height="707"
                                     HorizontalAlignment="Left"
-                                    VerticalAlignment="Top">
-                                    <Canvas.Background>
-                                        <ImageBrush ImageSource="/ResourceFiles\MRN LetterheadChad.jpg" />
-                                    </Canvas.Background>
-                                    <TextBox x:Name="textbox"
+                                    VerticalAlignment="Top" Canvas.Top="-6">
+                                <Canvas.Background>
+                                    <ImageBrush ImageSource="/ResourceFiles\MRN LetterheadChad.jpg" />
+                                </Canvas.Background>
+                                <TextBox x:Name="textbox"
                                         Width="{Binding ActualWidth, ElementName=canvas}"
                                         Height="{Binding ActualHeight, ElementName=canvas}"
                                         VerticalAlignment="Top"
                                         Panel.ZIndex="2"
                                         Visibility="Collapsed" />
-                                    <TextBlock x:Name="SuperLabel"
+                                <TextBlock x:Name="SuperLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="131"
                                         Width="59"
@@ -1416,7 +1449,7 @@
                                         Text="Supervisor:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="SuperLabel_Copy"
+                                <TextBlock x:Name="SuperLabel_Copy"
                                         Canvas.Left="17"
                                         Canvas.Top="147"
                                         Width="52"
@@ -1429,7 +1462,7 @@
                                         Text="Installer:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ShingleQuan_Copy1"
+                                <TextBlock x:Name="ShingleQuan_Copy1"
                                         Canvas.Left="17"
                                         Canvas.Top="164"
                                         Width="193"
@@ -1442,7 +1475,7 @@
                                         Text="Vendor:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ShinglQuanLabbel"
+                                <TextBlock x:Name="ShinglQuanLabbel"
                                         Canvas.Left="17"
                                         Canvas.Top="188"
                                         Width="205"
@@ -1455,7 +1488,7 @@
                                         Text="Shingle Quantity:_______________(SQ)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ShingleTypeLabel"
+                                <TextBlock x:Name="ShingleTypeLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="211"
                                         Width="286"
@@ -1468,7 +1501,7 @@
                                         Text="Shingle Line/ Type:___________________________"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ColorLabel"
+                                <TextBlock x:Name="ColorLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="233"
                                         Width="301"
@@ -1481,7 +1514,7 @@
                                         Text="Shingle Color:_________________________________"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="Starter_Strip"
+                                <TextBlock x:Name="Starter_Strip"
                                         Canvas.Left="17"
                                         Canvas.Top="257"
                                         Width="271"
@@ -1494,7 +1527,7 @@
                                         Text="Starter Strip:_______________(Bundles)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="HipandRidgeType"
+                                <TextBlock x:Name="HipandRidgeType"
                                         Canvas.Left="17"
                                         Canvas.Top="280"
                                         Width="239"
@@ -1507,7 +1540,7 @@
                                         Text="Hip &amp; Ridge:_________________(Bundles)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="Undrlayment2_Type"
+                                <TextBlock x:Name="Undrlayment2_Type"
                                         Canvas.Left="17"
                                         Canvas.Top="302"
                                         Width="228"
@@ -1520,7 +1553,7 @@
                                         Text="Gorilla Guard:(4sq):____________(Rolls)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="Underlayment_Type"
+                                <TextBlock x:Name="Underlayment_Type"
                                         Canvas.Left="17"
                                         Canvas.Top="321"
                                         Width="399"
@@ -1532,7 +1565,7 @@
                                         Text="Synthetic  Underlayment (10sq):______(Rolls)-&gt;Type:___________________"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ValleyProtectionType"
+                                <TextBlock x:Name="ValleyProtectionType"
                                         Canvas.Left="17"
                                         Canvas.Top="344"
                                         Width="292"
@@ -1545,7 +1578,7 @@
                                         Text="WeatherLock G:_____________(Rolls)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="TurtleBacks"
+                                <TextBlock x:Name="TurtleBacks"
                                         Canvas.Left="17"
                                         Canvas.Top="369"
                                         Width="374"
@@ -1558,7 +1591,7 @@
                                         Text="Turtle Backs (Metal Slant):_______(Pieces)-&gt;Color__________________"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="RidgeVentLabel"
+                                <TextBlock x:Name="RidgeVentLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="387"
                                         Width="170"
@@ -1571,7 +1604,7 @@
                                         Text="Ridge Vent :____________(Pieces)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="textBlock1_Copy28"
+                                <TextBlock x:Name="textBlock1_Copy28"
                                         Canvas.Left="17"
                                         Canvas.Top="410"
                                         Width="340"
@@ -1584,7 +1617,7 @@
                                         Text="Drip Edge____________(Pieces)-&gt;Color:_____________________"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ThreeAndPipeBootLabel"
+                                <TextBlock x:Name="ThreeAndPipeBootLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="434"
                                         Width="251"
@@ -1597,7 +1630,7 @@
                                         Text="3 / 1 Pipe Jack Boot:____________"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="textBlock1_Copy24"
+                                <TextBlock x:Name="textBlock1_Copy24"
                                         Canvas.Left="17"
                                         Canvas.Top="455"
                                         Width="183"
@@ -1610,7 +1643,7 @@
                                         Text="4&quot; + Neo Pipe Jack:_____________"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="OSBLabel"
+                                <TextBlock x:Name="OSBLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="475"
                                         Width="193"
@@ -1621,7 +1654,7 @@
                                         Text="OSB:____________________________(Pieces)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CoilNailsLabel"
+                                <TextBlock x:Name="CoilNailsLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="495"
                                         Width="193"
@@ -1634,7 +1667,7 @@
                                         Text="Coil Nails 1-1/4&quot;:_____________(Boxes)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="PlasticCapLabel"
+                                <TextBlock x:Name="PlasticCapLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="516"
                                         Width="205"
@@ -1648,7 +1681,7 @@
                                         Text="Plastic Cap (3000 ct):__________(Buckets)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CaulkLabel"
+                                <TextBlock x:Name="CaulkLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="538"
                                         Width="192"
@@ -1661,7 +1694,7 @@
                                         Text="Caulk To Match: ___________(Tubes)"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="PaintLabel"
+                                <TextBlock x:Name="PaintLabel"
                                         Canvas.Left="17"
                                         Canvas.Top="559"
                                         Width="188"
@@ -1676,7 +1709,7 @@
                                         TextWrapping="Wrap" />
 
 
-                                    <TextBlock x:Name="CommentsOrder"
+                                <TextBlock x:Name="CommentsOrder"
                                         Canvas.Left="17"
                                         Canvas.Top="577"
                                         Width="477"
@@ -1689,7 +1722,7 @@
                                         Text="{Binding Text, ElementName=Comments}"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="MRNNumberLabel"
+                                <TextBlock x:Name="MRNNumberLabel"
                                         Canvas.Left="18"
                                         Canvas.Top="97"
                                         Width="96"
@@ -1702,7 +1735,7 @@
                                         Text="MRN Customer ID #:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="SalesPersonLabel"
+                                <TextBlock x:Name="SalesPersonLabel"
                                         Canvas.Left="18"
                                         Canvas.Top="114"
                                         Width="68"
@@ -1715,11 +1748,11 @@
                                         Text="Salesperson:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <Canvas x:Name="Letterhead"
+                                <Canvas x:Name="Letterhead"
                                         Canvas.Left="25"
                                         Width="477"
                                         Height="82" />
-                                    <TextBlock x:Name="SheathingQuan"
+                                <TextBlock x:Name="SheathingQuan"
                                         Canvas.Left="57"
                                         Canvas.Top="472"
                                         Width="64"
@@ -1731,10 +1764,10 @@
                                         FontWeight="Bold"
                                         Foreground="#FFA40000"
                                         LineHeight="10"
-                                        Text="{Binding Text, ElementName=OrderTurtleVent_Copy}"
+                                        Text="{Binding Text, ElementName=OrderOSB}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="VendorName"
+                                <TextBlock x:Name="VendorName"
                                         Canvas.Left="68"
                                         Canvas.Top="161"
                                         Width="72"
@@ -1749,7 +1782,7 @@
                                         Text="{Binding SelectionBoxItem, ElementName=VendorComboBox, Mode=OneWay}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="textBlock1_Copy26"
+                                <TextBlock x:Name="textBlock1_Copy26"
                                         Canvas.Left="70"
                                         Canvas.Top="405"
                                         Width="58"
@@ -1764,7 +1797,7 @@
                                         Text="{Binding Text, ElementName=OrderDripEdge}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="InstallerName"
+                                <TextBlock x:Name="InstallerName"
                                         Canvas.Left="74"
                                         Canvas.Top="144"
                                         Width="60"
@@ -1779,7 +1812,7 @@
                                         Text="{Binding SelectionBoxItem, ElementName=InstallerCombo, Mode=OneWay}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="SupervisorText"
+                                <TextBlock x:Name="SupervisorText"
                                         Canvas.Left="76"
                                         Canvas.Top="128"
                                         Width="134"
@@ -1794,7 +1827,7 @@
                                         Text="{Binding SelectionBoxItem, ElementName=UnderlaymentTypeCombo, Mode=OneWay}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="StarterStripQuan"
+                                <TextBlock x:Name="StarterStripQuan"
                                         Canvas.Left="79"
                                         Canvas.Top="252"
                                         Width="91"
@@ -1809,7 +1842,7 @@
                                         Text="{Binding Text, ElementName=OrderStarter}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ShingleColor"
+                                <TextBlock x:Name="ShingleColor"
                                         Canvas.Left="86"
                                         Canvas.Top="228"
                                         Width="188"
@@ -1824,7 +1857,7 @@
                                         Text="{Binding SelectionBoxItem, ElementName=NewShingleCombo, Mode=OneWay}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="SalespersonText"
+                                <TextBlock x:Name="SalespersonText"
                                         Canvas.Left="90"
                                         Canvas.Top="111"
                                         Width="112"
@@ -1839,7 +1872,7 @@
                                         Text="{Binding SelectionBoxItem, ElementName=SalespersonCombo, Mode=OneWay}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="RidgeVentQuan"
+                                <TextBlock x:Name="RidgeVentQuan"
                                         Canvas.Left="91"
                                         Canvas.Top="383"
                                         Width="39"
@@ -1854,7 +1887,7 @@
                                         Text="{Binding Text, ElementName=OrderRidgeVent}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="HipRidgeQuan"
+                                <TextBlock x:Name="HipRidgeQuan"
                                         Canvas.Left="93"
                                         Canvas.Top="275"
                                         Width="63"
@@ -1869,7 +1902,7 @@
                                         Text="{Binding Text, ElementName=OrderHipandRidge}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ValleyProtectionTypeQuan"
+                                <TextBlock x:Name="ValleyProtectionTypeQuan"
                                         Canvas.Left="93"
                                         Canvas.Top="342"
                                         Width="71"
@@ -1884,7 +1917,7 @@
                                         Text="{Binding Text, ElementName=OrderIceWater}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="PaintQuan"
+                                <TextBlock x:Name="PaintQuan"
                                         Canvas.Left="94"
                                         Canvas.Top="555"
                                         Width="58"
@@ -1899,7 +1932,7 @@
                                         Text="{Binding Text, ElementName=OrderPaint}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CaulkQuan"
+                                <TextBlock x:Name="CaulkQuan"
                                         Canvas.Left="98"
                                         Canvas.Top="534"
                                         Width="54"
@@ -1914,7 +1947,7 @@
                                         Text="{Binding Text, ElementName=OrderCaulk}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CoilNailsQuan"
+                                <TextBlock x:Name="CoilNailsQuan"
                                         Canvas.Left="101"
                                         Canvas.Top="490"
                                         Width="63"
@@ -1929,7 +1962,7 @@
                                         Text="{Binding Text, ElementName=OrderRoofNails}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ShingleQuan"
+                                <TextBlock x:Name="ShingleQuan"
                                         Canvas.Left="102"
                                         Canvas.Top="183"
                                         Width="84"
@@ -1944,10 +1977,10 @@
                                         Text="{Binding Text, ElementName=OrderSqShingle}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ShingleType"
-                                        Canvas.Left="108"
+                                <TextBlock x:Name="ShingleType"
+                                        Canvas.Left="205"
                                         Canvas.Top="206"
-                                        Width="166"
+                                        Width="92"
                                         Height="12"
                                         Background="#00000000"
                                         Focusable="True"
@@ -1959,7 +1992,7 @@
                                         Text="{Binding Text, ElementName=OrderBrandType}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="MRNNumber"
+                                <TextBlock x:Name="MRNNumber"
                                         Canvas.Left="113"
                                         Canvas.Top="94"
                                         Width="90"
@@ -1973,7 +2006,7 @@
                                         LineHeight="10"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ThreeAndOnePipeBootQuan"
+                                <TextBlock x:Name="ThreeAndOnePipeBootQuan"
                                         Canvas.Left="113"
                                         Canvas.Top="429"
                                         Width="58"
@@ -1988,7 +2021,7 @@
                                         Text="{Binding Text, ElementName=Order3PipeBoot}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="FourInchPipeBootQuan"
+                                <TextBlock x:Name="FourInchPipeBootQuan"
                                         Canvas.Left="116"
                                         Canvas.Top="451"
                                         Width="58"
@@ -2003,7 +2036,7 @@
                                         Text="{Binding Text, ElementName=Order4PipeBoot}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="PlaticCapQuan"
+                                <TextBlock x:Name="PlaticCapQuan"
                                         Canvas.Left="120"
                                         Canvas.Top="511"
                                         Width="40"
@@ -2018,7 +2051,7 @@
                                         Text="{Binding Text, ElementName=OrderButtonCaps}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="Underlayment_Quan"
+                                <TextBlock x:Name="Underlayment_Quan"
                                         Canvas.Left="123"
                                         Canvas.Top="297"
                                         Width="52"
@@ -2032,7 +2065,7 @@
                                         LineHeight="10"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="TurtleBackQuan"
+                                <TextBlock x:Name="TurtleBackQuan"
                                         Canvas.Left="143"
                                         Canvas.Top="366"
                                         Width="43"
@@ -2047,7 +2080,7 @@
                                         Text="{Binding Text, ElementName=OrderTurtleVent}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="InstallerPrice"
+                                <TextBlock x:Name="InstallerPrice"
                                         Canvas.Left="144"
                                         Canvas.Top="143"
                                         Width="61"
@@ -2062,7 +2095,7 @@
                                         Text="$"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="VendorPrice"
+                                <TextBlock x:Name="VendorPrice"
                                         Canvas.Left="144"
                                         Canvas.Top="158"
                                         Width="69"
@@ -2077,7 +2110,7 @@
                                         Text="$"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="textBlock1_Copy22"
+                                <TextBlock x:Name="textBlock1_Copy22"
                                         Canvas.Left="169"
                                         Canvas.Top="317"
                                         Width="33"
@@ -2092,7 +2125,7 @@
                                         Text="{Binding Text, ElementName=OrderUnderlayment}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CustAddressLabel"
+                                <TextBlock x:Name="CustAddressLabel"
                                         Canvas.Left="210"
                                         Canvas.Top="115"
                                         Width="98"
@@ -2105,7 +2138,7 @@
                                         Text="Customer Address:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CustNameLabel"
+                                <TextBlock x:Name="CustNameLabel"
                                         Canvas.Left="218"
                                         Canvas.Top="99"
                                         Width="90"
@@ -2118,7 +2151,7 @@
                                         Text="Customer Name:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="DripEdgeColor"
+                                <TextBlock x:Name="DripEdgeColor"
                                         Canvas.Left="218"
                                         Canvas.Top="405"
                                         Width="123"
@@ -2133,7 +2166,7 @@
                                         Text="{Binding SelectionBoxItem, ElementName=DripedgeColorCombo, Mode=OneWay}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="DelDateLabel"
+                                <TextBlock x:Name="DelDateLabel"
                                         Canvas.Left="238"
                                         Canvas.Top="151"
                                         Width="71"
@@ -2146,7 +2179,7 @@
                                         Text="Delivery Date:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="VendorPrice_Copy"
+                                <TextBlock x:Name="VendorPrice_Copy"
                                         Canvas.Left="239"
                                         Canvas.Top="165"
                                         Width="69"
@@ -2161,7 +2194,7 @@
                                         Text="{Binding SelectedDate, ElementName=DeliveryDate}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="ScheduledDeliveryDate"
+                                <TextBlock x:Name="ScheduledDeliveryDate"
                                         Canvas.Left="262"
                                         Canvas.Top="365"
                                         Width="98"
@@ -2175,7 +2208,7 @@
                                         TextAlignment="Center"
                                         TextDecorations="{x:Null}"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="UnderlaymentType"
+                                <TextBlock x:Name="UnderlaymentType"
                                         Canvas.Left="275"
                                         Canvas.Top="316"
                                         Width="111"
@@ -2190,7 +2223,7 @@
                                         Text="{Binding SelectionBoxItem, ElementName=UnderlaymentCombo, Mode=OneWay}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CustomerName"
+                                <TextBlock x:Name="CustomerName"
                                         Canvas.Left="313"
                                         Canvas.Top="96"
                                         Width="189"
@@ -2205,7 +2238,7 @@
                                         Text="{Binding Text, ElementName=maskedTextBoxCustomerName}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CustomerAddress"
+                                <TextBlock x:Name="CustomerAddress"
                                         Canvas.Left="313"
                                         Canvas.Top="111"
                                         Width="189"
@@ -2220,7 +2253,7 @@
                                         Text="{Binding Text, ElementName=maskedTextBoxCustomerAddress}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="CustomerAddressCSZ"
+                                <TextBlock x:Name="CustomerAddressCSZ"
                                         Canvas.Left="313"
                                         Canvas.Top="129"
                                         Width="189"
@@ -2234,7 +2267,7 @@
                                         LineHeight="10"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="VendorPrice_Copy1"
+                                <TextBlock x:Name="VendorPrice_Copy1"
                                         Canvas.Left="362"
                                         Canvas.Top="165"
                                         Width="69"
@@ -2249,7 +2282,7 @@
                                         Text="{Binding SelectedDate, ElementName=InstallDate}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
-                                    <TextBlock x:Name="SchedDateLabel"
+                                <TextBlock x:Name="SchedDateLabel"
                                         Canvas.Left="384"
                                         Canvas.Top="151"
                                         Width="56"
@@ -2262,17 +2295,57 @@
                                         Text="Install Date:"
                                         TextDecorations="Underline"
                                         TextWrapping="Wrap" />
-                                </Canvas>
+                                <TextBlock x:Name="ShingleType_Copy"
+                                        Canvas.Left="116"
+                                        Canvas.Top="206"
+                                        Width="84"
+                                        Height="12"
+                                        Background="#00000000"
+                                        Focusable="True"
+                                        FontFamily="Georgia"
+                                        FontSize="10"
+                                        FontWeight="Bold"
+                                        Foreground="#FFA40000"
+                                        LineHeight="10"
+                                        Text="{Binding Text, ElementName=OrderBrand}"
+                                        TextAlignment="Center"
+                                        TextWrapping="Wrap" />
+                                <WebBrowser x:Name="WeatherBrowser" HorizontalAlignment="Left" Height="631" VerticalAlignment="Top" Width="931" Loaded="WeatherBrowser_Loaded" Panel.ZIndex="102" Visibility="Hidden" Canvas.Left="-1025" Navigated="WeatherBrowser_Navigated_1" />
+                                <WebBrowser x:Name="JobBrowser" HorizontalAlignment="Left" Height="654" VerticalAlignment="Top" Width="931" Panel.ZIndex="102" Visibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="-1025"/>
+                                <WebBrowser x:Name="ScheduleView" HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="729"   Panel.ZIndex="102" Visibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="-1025" Loaded="ScheduleView_Loaded" Canvas.Top="648"/>
+                                <Frame x:Name="CalendarView" HorizontalAlignment="Left" Height="646" VerticalAlignment="Top" Width="729"   Panel.ZIndex="102" Visibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="-1025" Background="#FF615F5F"/>
+
+                                <ListView x:Name="AvailableClaimsView" HorizontalAlignment="Left" Height="315" VerticalAlignment="Top" Width="729"  Panel.ZIndex="102" Visibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Top="651" Canvas.Left="-1025" >
+                                    <ListView.Background>
+                                        <SolidColorBrush Color="White" Opacity="0.48"/>
+                                    </ListView.Background>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Width="150" Header="Claim Customer">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="Black" Width="150" Height="25" HorizontalAlignment="Left" TextAlignment="Center" Text="{Binding CustomerID,Converter={StaticResource customerinfo}}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
 
 
 
                             </Canvas>
 
-                        </Grid>
+
+
+                        </Canvas>
+
                     </Grid>
 
-
                 </Grid>
+
+
 
             </Grid>
 

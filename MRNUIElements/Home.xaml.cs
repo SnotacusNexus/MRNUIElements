@@ -55,7 +55,7 @@ namespace MRNUIElements
 		static ScopeModel sm = ScopeModel.getInstance();
 		static ObservableCollection<ScopeModel> ff = ScopeModel.lgetInstance();
 		static public Frame _frame;
-		static public DTO_Claim CurrentClaim { get; set; }
+        static public DTO_Claim CurrentClaim;
 										   //	DTO_CalendarData caldata;
 		bool b = false;
 		public NexusHome()

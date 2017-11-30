@@ -26,7 +26,7 @@ using static MRNUIElements.PaymentEntryPage;
 using static MRNUIElements.InvoicePage;
 using System.Drawing;
 using System.Threading;
-using MRNUIElements.ClaimDataService;
+using MRNNexus_Model;
 namespace MRNUIElements
 {
 	/// <summary>
@@ -75,8 +75,8 @@ namespace MRNUIElements
 			this.statusTextBlock.Text = statusText;
 			this.ClaimsList.ItemsSource = s1.ClaimsList;
 			ButtonsEnabled();
-			Browser.Visibility = Visibility.Collapsed;
-			Browser.Navigate("https://xactimate.com/xo/");
+			//Browser.Visibility = Visibility.Collapsed;
+		//	Browser.Navigate("https://xactimate.com/xo/");
 		}
 
 		public static Frame getInstanceg()
@@ -889,12 +889,12 @@ namespace MRNUIElements
 
 		private void Xactimate_Checked(object sender, RoutedEventArgs e)
 		{
-			Browser.Visibility = Visibility.Visible;
+		//	Browser.Visibility = Visibility.Visible;
 		}
 
 		private void Xactimate_Unchecked(object sender, RoutedEventArgs e)
 		{
-			Browser.Visibility = Visibility.Collapsed;
+		//	Browser.Visibility = Visibility.Collapsed;
 		}
 
 		public void UpdateUI(int value)

@@ -60,5 +60,7 @@ namespace MRNNexus_Model
 
         [DataMember]
         public bool IsOpen { get; set; }
+        [DataMember]
+        public bool ContractSigned { get; set; }
     }
 }

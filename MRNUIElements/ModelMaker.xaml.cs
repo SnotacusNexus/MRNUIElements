@@ -25,7 +25,7 @@ using Microsoft.Win32;
 using MRNUIElements.Models.Structure;
 using static MRNUIElements.Models.Structure.Lines;
 using static MRNUIElements.Models.Structure.Planes;
-using static MRNUIElements._3dViewPort;
+//using static MRNUIElements._3dViewPort;
 using static MRNUIElements.Models.Structure.Point3d;
 
 using static MRNUIElements.ModelMaker;

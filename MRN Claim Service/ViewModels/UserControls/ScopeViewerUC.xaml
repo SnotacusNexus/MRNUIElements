@@ -1,0 +1,906 @@
+﻿<UserControl x:Class="MRNUIElements.ScopeViewerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ClaimDataService="clr-namespace:MRNUIElements.ClaimDataService"
+             xmlns:Collection="clr-namespace:MRNUIElements.Controllers.Collection"
+             xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
+             xmlns:Models="clr-namespace:MRNUIElements.Models"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+             xmlns:commands="clr-namespace:MRNUIElements.Interface.Command"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MRNUIElements"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             Width="523"
+             Height="643.938"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="dTO_ScopeTypeSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_ScopeType}, CreateList=True}" />
+        <CollectionViewSource x:Key="dTO_ScopeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Scope}, CreateList=True}" />
+        <CollectionViewSource x:Key="dTO_ClaimStatusViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_ClaimStatus}, CreateList=True}" />
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2"
+                                   SnapsToDevicePixels="true"
+                                   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                   StrokeDashArray="1 2"
+                                   StrokeThickness="1" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <LinearGradientBrush x:Key="ComboBox.Static.Background" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="#FFF0F0F0" />
+            <GradientStop Offset="1.0" Color="#FFE5E5E5" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#FFACACAC" />
+        <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="#FFFFFFFF" />
+        <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3" />
+        <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent" />
+        <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent" />
+        <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#FF000000" />
+        <LinearGradientBrush x:Key="ComboBox.MouseOver.Background" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="#FFECF4FC" />
+            <GradientStop Offset="1.0" Color="#FFDCECFC" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#FF7EB4EA" />
+        <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FFFFFFFF" />
+        <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#FF7EB4EA" />
+        <LinearGradientBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="#FFEBF4FC" />
+            <GradientStop Offset="1.0" Color="#FFDCECFC" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Border" Color="#FF7EB4EA" />
+        <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="#FF000000" />
+        <LinearGradientBrush x:Key="ComboBox.Pressed.Background" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="#FFDAECFC" />
+            <GradientStop Offset="1.0" Color="#FFC4E0FC" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="#FF569DE5" />
+        <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Background" Color="#FFFFFFFF" />
+        <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Border" Color="#FF569DE5" />
+        <LinearGradientBrush x:Key="ComboBox.Pressed.Editable.Button.Background" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="#FFDAEBFC" />
+            <GradientStop Offset="1.0" Color="#FFC4E0FC" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Border" Color="#FF569DE5" />
+        <SolidColorBrush x:Key="ComboBox.Disabled.Glyph" Color="#FFBFBFBF" />
+        <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="#FFF0F0F0" />
+        <SolidColorBrush x:Key="ComboBox.Disabled.Border" Color="#FFD9D9D9" />
+        <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Background" Color="#FFFFFFFF" />
+        <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Border" Color="#FFBFBFBF" />
+        <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Background" Color="Transparent" />
+        <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent" />
+        <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#FF606060" />
+        <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+            <Setter Property="ClickMode" Value="Press" />
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="templateRoot"
+                                Background="Transparent"
+                                BorderBrush="{StaticResource ComboBox.Static.Border}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="true">
+                            <Border x:Name="splitBorder"
+                                    Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"
+                                    Margin="0"
+                                    HorizontalAlignment="Right"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="1"
+                                    SnapsToDevicePixels="true">
+                                <Path x:Name="arrow"
+                                      Margin="0"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Data="F1 M 0,0 L 2.667,2.66665 L 5.3334,0 L 5.3334,-1.78168 L 2.6667,0.88501 L0,-1.78168 L0,0 Z"
+                                      Fill="{DynamicResource ReverseBackgroundGradient}" />
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true" />
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="true" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.Static.Editable.Button.Background}" />
+                                <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.Static.Editable.Button.Border}" />
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Static.Editable.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Static.Editable.Border}" />
+                            </MultiDataTrigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.MouseOver.Glyph}" />
+                            </Trigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.MouseOver.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Border}" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.MouseOver.Editable.Button.Background}" />
+                                <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Editable.Button.Border}" />
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.MouseOver.Editable.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Editable.Border}" />
+                            </MultiDataTrigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.Pressed.Glyph}" />
+                            </Trigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Pressed.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Border}" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true" />
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.Pressed.Editable.Button.Background}" />
+                                <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Editable.Button.Border}" />
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Pressed.Editable.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Editable.Border}" />
+                            </MultiDataTrigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.Disabled.Glyph}" />
+                            </Trigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Disabled.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Disabled.Border}" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.Disabled.Editable.Button.Background}" />
+                                <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.Disabled.Editable.Button.Border}" />
+                                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Disabled.Editable.Background}" />
+                                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Disabled.Editable.Border}" />
+                            </MultiDataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
+            <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
+                </Grid.ColumnDefinitions>
+                <Popup x:Name="PART_Popup"
+                       Grid.ColumnSpan="2"
+                       Margin="1"
+                       AllowsTransparency="true"
+                       IsOpen="{Binding IsDropDownOpen,
+                                        Mode=TwoWay,
+                                        RelativeSource={RelativeSource TemplatedParent}}"
+                       Placement="Bottom"
+                       PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
+                    <Themes:SystemDropShadowChrome x:Name="shadow"
+                                                   MinWidth="{Binding ActualWidth,
+                                                                      ElementName=templateRoot}"
+                                                   MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                                   Color="Transparent">
+                        <Border x:Name="dropDownBorder"
+                                Background="#FF4B4B4B"
+                                BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
+                                BorderThickness="1">
+                            <ScrollViewer x:Name="DropDownScrollViewer" Background="#FF252323">
+                                <Grid x:Name="grid"
+                                      Background="#FF1D1B1B"
+                                      RenderOptions.ClearTypeHint="Enabled">
+                                    <Canvas x:Name="canvas"
+                                            Width="0"
+                                            Height="0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            Background="#FF0E0D0D">
+                                        <Rectangle x:Name="opaqueRect"
+                                                   Width="{Binding ActualWidth,
+                                                                   ElementName=dropDownBorder}"
+                                                   Height="{Binding ActualHeight,
+                                                                    ElementName=dropDownBorder}"
+                                                   Fill="{Binding Background,
+                                                                  ElementName=dropDownBorder}" />
+                                    </Canvas>
+                                    <ItemsPresenter x:Name="ItemsPresenter"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </Themes:SystemDropShadowChrome>
+                </Popup>
+                <ToggleButton x:Name="toggleButton"
+                              Grid.ColumnSpan="2"
+                              Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"
+                              IsChecked="{Binding IsDropDownOpen,
+                                                  Mode=TwoWay,
+                                                  RelativeSource={RelativeSource TemplatedParent}}"
+                              Style="{StaticResource ComboBoxToggleButton}" />
+                <ContentPresenter x:Name="contentPresenter"
+                                  Margin="{TemplateBinding Padding}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Content="{TemplateBinding SelectionBoxItem}"
+                                  ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                  IsHitTestVisible="false"
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
+                    <Setter TargetName="shadow" Property="Color" Value="#71000000" />
+                    <Setter TargetName="shadow" Property="Margin" Value="0,0,5,5" />
+                </Trigger>
+                <Trigger Property="HasItems" Value="false">
+                    <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsGrouping" Value="true" />
+                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                </MultiTrigger>
+                <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
+                    <Setter TargetName="opaqueRect" Property="Canvas.Left" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
+                    <Setter TargetName="opaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF" />
+        <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="AllowDrop" Value="true" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="MinWidth" Value="0" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Background="Transparent"
+                                      Focusable="false"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
+            <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
+                </Grid.ColumnDefinitions>
+                <Popup x:Name="PART_Popup"
+                       Grid.ColumnSpan="2"
+                       AllowsTransparency="true"
+                       IsOpen="{Binding IsDropDownOpen,
+                                        RelativeSource={RelativeSource TemplatedParent}}"
+                       Placement="Bottom"
+                       PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
+                    <Themes:SystemDropShadowChrome x:Name="shadow"
+                                                   MinWidth="{Binding ActualWidth,
+                                                                      ElementName=templateRoot}"
+                                                   MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                                   Color="Transparent">
+                        <Border x:Name="dropDownBorder"
+                                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                                BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
+                                BorderThickness="1">
+                            <ScrollViewer x:Name="DropDownScrollViewer">
+                                <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                                    <Canvas x:Name="canvas"
+                                            Width="0"
+                                            Height="0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                        <Rectangle x:Name="opaqueRect"
+                                                   Width="{Binding ActualWidth,
+                                                                   ElementName=dropDownBorder}"
+                                                   Height="{Binding ActualHeight,
+                                                                    ElementName=dropDownBorder}"
+                                                   Fill="{Binding Background,
+                                                                  ElementName=dropDownBorder}" />
+                                    </Canvas>
+                                    <ItemsPresenter x:Name="ItemsPresenter"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </Themes:SystemDropShadowChrome>
+                </Popup>
+                <ToggleButton x:Name="toggleButton"
+                              Grid.ColumnSpan="2"
+                              Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"
+                              IsChecked="{Binding IsDropDownOpen,
+                                                  Mode=TwoWay,
+                                                  RelativeSource={RelativeSource TemplatedParent}}"
+                              Style="{StaticResource ComboBoxToggleButton}" />
+                <Border x:Name="border"
+                        Margin="{TemplateBinding BorderThickness}"
+                        Background="{StaticResource TextBox.Static.Background}">
+                    <TextBox x:Name="PART_EditableTextBox"
+                             Margin="{TemplateBinding Padding}"
+                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                             IsReadOnly="{Binding IsReadOnly,
+                                                  RelativeSource={RelativeSource TemplatedParent}}"
+                             Style="{StaticResource ComboBoxEditableTextBox}" />
+                </Border>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="border" Property="Opacity" Value="0.56" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocusWithin" Value="true">
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+                <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
+                    <Setter TargetName="shadow" Property="Color" Value="#71000000" />
+                    <Setter TargetName="shadow" Property="Margin" Value="0,0,5,5" />
+                </Trigger>
+                <Trigger Property="HasItems" Value="false">
+                    <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsGrouping" Value="true" />
+                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                </MultiTrigger>
+                <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
+                    <Setter TargetName="opaqueRect" Property="Canvas.Left" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
+                    <Setter TargetName="opaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
+            <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}" />
+            <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            <Setter Property="Padding" Value="6,3,5,3" />
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+            <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
+            <Style.Triggers>
+                <Trigger Property="IsEditable" Value="true">
+                    <Setter Property="IsTabStop" Value="false" />
+                    <Setter Property="Padding" Value="2" />
+                    <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+    </UserControl.Resources>
+
+    <Grid x:Name="ralph"
+          Width="455"
+          Height="592"
+          MinWidth="3"
+          Margin="0,43,0,9"
+          HorizontalAlignment="Right"
+          VerticalAlignment="Center"
+          DataContext="{StaticResource dTO_ScopeViewSource}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Margin="-35,-12,45,0" VerticalAlignment="Top" />
+        <Button x:Name="SubmitScopeEntry"
+                Width="75"
+                Margin="200,480,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{x:Null}"
+                Click="SubmitScopeEntry_Click"
+                Content="_Submit"
+                IsDefault="True"
+                IsEnabled="False"
+                Style="{DynamicResource normal}" />
+        <Button x:Name="CancelScopeEntry"
+                Width="75"
+                Margin="50,480,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="CancelScopeEntry_Click"
+                Content="_Cancel"
+                IsCancel="True"
+                Style="{DynamicResource normal}" />
+        <Grid x:Name="grid1"
+              Width="255"
+              Margin="45,72,0,132"
+              HorizontalAlignment="Left"
+              DataContext="{DynamicResource dTO_ScopeViewSource}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="0*" />
+
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0"
+                   Margin="195,389,0,135"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Depreciation:"
+                   Foreground="White" />
+            <Label Grid.Column="0"
+                   Margin="200,417,0,107"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="ACV"
+                   Foreground="White" />
+            <Label Grid.Column="0"
+                   Width="75"
+                   Height="26"
+                   Margin="20,4,0,2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Scope Type:"
+                   Foreground="White" />
+            <TextBlock x:Name="ScopeTypeTextBlock"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Height="20"
+                       Margin="5,15,23,16"
+                       Background="{x:Null}"
+                       DataContext="{DynamicResource dTO_ScopeTypeSource}"
+                       FontSize="20"
+                       Foreground="White"
+                       Style="{DynamicResource FocusVisual2}"
+                       Text="{Binding XPath=selTxt}" />
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Width="88"
+                   Height="26"
+                   Margin="10,3,0,4"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Claim Amount:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="totalTextBox"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="24"
+                                        Margin="5,3,0,6"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        EnableFocusColors="True"
+                                        Foreground="White"
+                                        GotFocus="totalTextBox_GotFocus"
+                                        LostFocus="totalTextBox_LostFocus"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        Text="{Binding Total,
+                                                       Mode=TwoWay,
+                                                       NotifyOnValidationError=true,
+                                                       ValidatesOnExceptions=true}"
+                                        TextChanged="totalTextBox_TextChanged"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Width="53"
+                   Height="26"
+                   Margin="42,0,0,6"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Content="Exterior:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="exteriorTextBox"
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="24"
+                                        Margin="5,4,0,5"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        LostFocus="exteriorTextBox_LostFocus"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        Text="{Binding Exterior,
+                                                       Mode=TwoWay,
+                                                       NotifyOnValidationError=true,
+                                                       ValidatesOnExceptions=true}"
+                                        TextChanged="exteriorTextBox_TextChanged"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Width="46"
+                   Height="26"
+                   Margin="49,1,0,5"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Gutter:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="gutterTextBox"
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="22"
+                                        Margin="5,5,0,6"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        LostFocus="gutterTextBox_LostFocus"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        Text="{Binding Gutter,
+                                                       Mode=TwoWay,
+                                                       NotifyOnValidationError=true,
+                                                       ValidatesOnExceptions=true}"
+                                        TextChanged="gutterTextBox_TextChanged"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+
+
+
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   Width="51"
+                   Height="26"
+                   Margin="44,1,0,5"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Interior:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="interiorTextBox"
+                                        Grid.Row="4"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="24"
+                                        Margin="5,4,0,5"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        LostFocus="interiorTextBox_LostFocus"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        Text="{Binding Interior,
+                                                       Mode=TwoWay,
+                                                       NotifyOnValidationError=true,
+                                                       ValidatesOnExceptions=true}"
+                                        TextChanged="interiorTextBox_TextChanged"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+            <Label Grid.Row="5"
+                   Grid.Column="0"
+                   Width="55"
+                   Height="26"
+                   Margin="40,0,0,6"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="O and P:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="oandPTextBox"
+                                        Grid.Row="5"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="24"
+                                        Margin="5,3,0,6"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        LostFocus="oandPTextBox_LostFocus"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        Text="{Binding OandP,
+                                                       Mode=TwoWay,
+                                                       NotifyOnValidationError=true,
+                                                       ValidatesOnExceptions=true}"
+                                        TextChanged="oandPTextBox_TextChanged"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+            <Label Grid.Row="6"
+                   Grid.Column="0"
+                   Width="29"
+                   Height="26"
+                   Margin="66,5,0,2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Tax:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="taxTextBox"
+                                        Grid.Row="6"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="24"
+                                        Margin="5,4,0,5"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        LostFocus="taxTextBox_LostFocus"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        Text="{Binding Tax,
+                                                       Mode=TwoWay,
+                                                       NotifyOnValidationError=true,
+                                                       ValidatesOnExceptions=true}"
+                                        TextChanged="taxTextBox_TextChanged"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+
+            <Label Grid.Row="7"
+                   Grid.Column="0"
+                   Width="70"
+                   Height="26"
+                   Margin="28,3,0,4"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Deductible:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="deductibleTextBox"
+                                        Grid.Row="7"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="23"
+                                        Margin="5,0,0,5"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Bottom"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        LostFocus="deductibleTextBox_LostFocus"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        Text="{Binding Deductible,
+                                                       Mode=TwoWay,
+                                                       NotifyOnValidationError=true,
+                                                       ValidatesOnExceptions=true}"
+                                        TextChanged="deductibleTextBox_TextChanged"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+            <Label Grid.Row="8"
+                   Margin="103,2,0,4"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Roof:"
+                   Foreground="White" />
+            <Label Grid.Row="8"
+                   Grid.Column="0"
+                   Width="35"
+                   Height="26"
+                   Margin="60,5,0,2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="ACV:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="ACV"
+                                        Grid.Row="8"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="22"
+                                        Margin="5,5,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        TextWrapping="Wrap"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+            <Label Grid.Row="9"
+                   Grid.Column="0"
+                   Width="39"
+                   Height="26"
+                   Margin="59,5,0,2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Roof:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="Roof"
+                                        Grid.Row="9"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="23"
+                                        Margin="5,5,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        LostFocus="Roof_LostFocus"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        Text="{Binding RoofAmount,
+                                                       Mode=TwoWay,
+                                                       NotifyOnValidationError=true,
+                                                       ValidatesOnExceptions=true}"
+                                        TextChanged="Roof_TextChanged"
+                                        TextWrapping="Wrap"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+            <Label Grid.Row="10"
+                   Grid.Column="0"
+                   Width="80"
+                   Height="26"
+                   Margin="18,3,0,4"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Depreciation:"
+                   Foreground="White" />
+            <syncfusion:CurrencyTextBox x:Name="Depreciation"
+                                        Grid.Row="10"
+                                        Grid.Column="1"
+                                        Width="122"
+                                        Height="23"
+                                        Margin="5,5,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        ApplyNegativeForeground="True"
+                                        ApplyZeroColor="True"
+                                        Background="{x:Null}"
+                                        CaretBrush="#FF959595"
+                                        Foreground="White"
+                                        NegativeForeground="#FFFFB3B3"
+                                        PositiveForeground="White"
+                                        TextWrapping="Wrap"
+                                        WatermarkTextForeground="#FF9C9C9C"
+                                        ZeroColor="White" />
+        </Grid>
+        <Button x:Name="ShapePickerBtn"
+                Width="154"
+                Margin="0,0,48,28"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Click="ShapePickerBtn_Click"
+                Content="Shape Picker"
+                Style="{DynamicResource normal}"
+                Visibility="Collapsed" />
+        <TextBlock x:Name="textBlock"
+                   Margin="151,6,154,0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="20"
+                   Style="{StaticResource normal}"
+                   Text="Scope Entry"
+                   TextWrapping="Wrap" />
+        <Button x:Name="NewScopeBtn"
+                Width="125"
+                Margin="300,140,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="NewScopeBtn_Click"
+                Content="New Scope"
+                Style="{DynamicResource normal}" />
+        <Button x:Name="EstimateBtn"
+                Width="125"
+                Margin="300,185,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="EstimateBtn_Click"
+                Content="Estimate"
+                FocusVisualStyle="{DynamicResource normal}"
+                Style="{DynamicResource normal}" />
+        <Button x:Name="OldScopeBtn"
+                Width="125"
+                Margin="300,230,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="OldScopeBtn_Click"
+                Content="Old Scope"
+                Style="{DynamicResource normal}" />
+        <CheckBox x:Name="SettledCheckBox"
+                  Width="125"
+                  Height="40"
+                  Margin="300,90,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Background="White"
+                  Content="Claim has &#xD;&#xA;been settled"
+                  Foreground="White"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+        <TextBox x:Name="claimIDTextBox"
+                 Grid.Row="0"
+                 Width="125"
+                 Height="Auto"
+                 Margin="160,41,0,531"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Panel.ZIndex="4"
+                 Background="{x:Null}"
+                 CaretBrush="#FF959595"
+                 Foreground="White" />
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Margin="97,41,0,525"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Panel.ZIndex="4"
+               Content="Claim #:"
+               Foreground="White" />
+
+    </Grid>
+</UserControl>

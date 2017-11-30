@@ -1,0 +1,18 @@
+﻿<Page x:Class="MRNUIElements.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MRNUIElements"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="MenuPage">
+
+    <Grid>
+        <Button x:Name="Openbutton" Content="Open" HorizontalAlignment="Left" Margin="111,71,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Savebutton1" Content="Save" HorizontalAlignment="Left" Margin="111,108,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Newbutton2" Content="New" HorizontalAlignment="Left" Margin="111,145,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Closebutton3" Content="Close" HorizontalAlignment="Left" Margin="111,181,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Page>

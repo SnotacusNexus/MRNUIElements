@@ -22,7 +22,7 @@ namespace MRNUIElements.Controllers
 	{
 		static ServiceLayer s1 = ServiceLayer.getInstance();
 		static MRNClaim MrnClaim = MRNClaim.getInstance();
-		public ClaimIT(MRNClaim MrnClaim)
+		public ClaimIT()
 		{
 			InitializeComponent();
 			ClaimIT.MrnClaim = MrnClaim;
@@ -41,12 +41,13 @@ namespace MRNUIElements.Controllers
 
 		async private void ClaimItbutton_Copy_Click(object sender, RoutedEventArgs e)
 		{
+            if(MrnClaim.r!=null)
             await s1.AddReferrer(MrnClaim.r);
             await s1.AddCustomer(MrnClaim.c);
-           MrnClaim.c.CustomerID = s1.Cust.CustomerID;
+            MrnClaim.c.CustomerID = s1.Cust.CustomerID;
             MrnClaim.a.CustomerID = MrnClaim.c.CustomerID;
-            await s1.AddAddress(MrnClaim.a);
             MrnClaim.Lead.CustomerID = MrnClaim.c.CustomerID;
+            await s1.AddAddress(MrnClaim.a);
             MrnClaim.Lead.AddressID = s1.Address1.AddressID;
             MrnClaim.Lead.SalesPersonID = 10;
             //set temp for lead
@@ -59,9 +60,9 @@ namespace MRNUIElements.Controllers
             //make this down there variable get from previous box about insurance coID
             MrnClaim._claim.InsuranceCompanyID = /*MrnClaim.ic.InsuranceCompanyID=*/10;
             MrnClaim._claim.IsOpen = true;
-            MrnClaim._claim.MortgageAccount = "3";
-            MrnClaim._claim.MortgageCompany = "IoweIoweSo Off To Work EyeGO";
-            MrnClaim._claim.InsuranceClaimNumber = "87";
+            MrnClaim._claim.MortgageAccount = "";
+            MrnClaim._claim.MortgageCompany = "";
+            MrnClaim._claim.InsuranceClaimNumber = "";
             MrnClaim._claim.MRNNumber = "MRN-" + MrnClaim.Lead.SalesPersonID.ToString() + "-" + MrnClaim.c.CustomerID.ToString();
             await s1.AddClaim(MrnClaim._claim);
 			//NavigationService.Navigate(//This should point to ScheduleAdjustment)

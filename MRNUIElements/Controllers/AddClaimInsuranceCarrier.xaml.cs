@@ -27,7 +27,7 @@ namespace MRNUIElements.Controllers
 
 
 		static ServiceLayer s1 = ServiceLayer.getInstance();
-		static public MRNClaim MrnClaim = MRNClaim.getInstance();
+		static MRNClaim MrnClaim = MRNClaim.getInstance();
 		public AddClaimInsuranceCarrier(MRNClaim MrnClaim)
 		{
 			InitializeComponent();
@@ -125,9 +125,9 @@ namespace MRNUIElements.Controllers
 		private void Nextbutton_Click(object sender, RoutedEventArgs e)
 		{
 			MRNClaim.getInstance()._claim.PropertyID = MRNClaim.getInstance().a.AddressID;
-            MRNClaim.getInstance()._claim.MortgageAccount = LoanNumber.Text + LoanNumber2 != null ? ("a"+LoanNumber2.Text) : "a";
-            MRNClaim.getInstance()._claim.MortgageCompany = LienHolder.Text + LienHolder2 != null ? ("a " + LienHolder2.Text) : "a";
-            NavigationService.Navigate(new ClaimIT(MrnClaim));
+            MRNClaim.getInstance()._claim.MortgageAccount = LoanNumber.Text + LoanNumber2 != null ? (" "+LoanNumber2.Text) : " ";
+            MRNClaim.getInstance()._claim.MortgageCompany = LienHolder.Text + LienHolder2 != null ? (" " + LienHolder2.Text) : " ";
+            NavigationService.Navigate(new ClaimIT());
 		}
 
 		private void Prevbutton_Click(object sender, RoutedEventArgs e)

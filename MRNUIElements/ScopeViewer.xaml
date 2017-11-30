@@ -5,6 +5,7 @@
       xmlns:Collection="clr-namespace:MRNUIElements.Controllers.Collection"
       xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
       xmlns:Models="clr-namespace:MRNUIElements.Models"
+      xmlns:converters ="clr-namespace:MRNUIElements.Utility"
       xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
       xmlns:commands="clr-namespace:MRNUIElements.Interface.Command"
@@ -14,12 +15,13 @@
       xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       Title="Scope Viewer"
       Width="523"
-      Height="643.938"
+      Height="826.29"
       HorizontalAlignment="Center"
       VerticalAlignment="Center"
       mc:Ignorable="d">
 
     <Page.Resources>
+        <converters:ScopeTypeConverter x:Key="STC"/>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -417,19 +419,19 @@
     </Page.Resources>
 
     <Grid x:Name="ralph"
-          Width="455"
-          Height="592"
+          Width="523"
+          Height="797"
           MinWidth="3"
-          Margin="0,43,0,9"
+          Margin="0,19,-0.333,10"
           HorizontalAlignment="Right"
-          VerticalAlignment="Center">
+          VerticalAlignment="Center" Background="{DynamicResource BackgroundGradient}">
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
         <StackPanel Margin="-35,-12,45,0" VerticalAlignment="Top" />
         <Button x:Name="SubmitScopeEntry"
-                Width="75"
-                Margin="200,480,0,0"
+                Width="125"
+                Margin="300,392,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Background="{x:Null}"
@@ -439,8 +441,8 @@
                 IsEnabled="False"
                />
         <Button x:Name="CancelScopeEntry"
-                Width="75"
-                Margin="50,480,0,0"
+                Width="125"
+                Margin="300,429,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="CancelScopeEntry_Click"
@@ -449,7 +451,7 @@
                />
         <Grid x:Name="grid1"
               Width="255"
-              Margin="45,72,0,132"
+              Margin="45,72,0,316.333"
               HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
@@ -490,15 +492,16 @@
                    VerticalAlignment="Center"
                    Content="Scope Type:"
                    Foreground="White" />
-            <TextBlock x:Name="ScopeTypeTextBlock"
+            <TextBox x:Name="ScopeTypeTextBlock"
                        Grid.Row="0"
                        Grid.Column="1"
                        Height="20"
-                       Margin="5,15,23,16"
+                     Text="{Binding ScopeTypeID, Converter={StaticResource STC}}"
+                       Margin="5.667,20,21.667,11.333"
                        Background="{x:Null}"
                        FontSize="20"
                        Foreground="White"
-                       Style="{DynamicResource FocusVisual2}" />
+                       />
 
             <Label Grid.Row="1"
                    Grid.Column="0"
@@ -777,6 +780,24 @@
                                         TextWrapping="Wrap"
                                         WatermarkTextForeground="#FF9C9C9C"
                                         ZeroColor="White" />
+            <Label
+               Grid.Column="0"
+               Margin="40,-33,0,58.333"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Panel.ZIndex="4"
+               Content="Claim #:"
+               Foreground="White" />
+            <TextBox x:Name="claimIDTextBox"
+                 Width="125"
+                 Height="Auto"
+                 Margin="9.667,-28,0,59.333"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Panel.ZIndex="4"
+                 Background="{x:Null}"
+                 CaretBrush="#FF959595"
+                 Foreground="White" Grid.Column="1" />
         </Grid>
         <Button x:Name="ShapePickerBtn"
                 Width="154"
@@ -797,7 +818,7 @@
                    TextWrapping="Wrap" />
         <Button x:Name="NewScopeBtn"
                 Width="125"
-                Margin="300,140,0,0"
+                Margin="300,96,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="NewScopeBtn_Click"
@@ -805,7 +826,7 @@
                />
         <Button x:Name="EstimateBtn"
                 Width="125"
-                Margin="300,185,0,0"
+                Margin="300,129,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="EstimateBtn_Click"
@@ -814,7 +835,7 @@
                />
         <Button x:Name="OldScopeBtn"
                 Width="125"
-                Margin="300,230,0,0"
+                Margin="300,164,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="OldScopeBtn_Click"
@@ -823,32 +844,16 @@
         <CheckBox x:Name="SettledCheckBox"
                   Width="125"
                   Height="40"
-                  Margin="300,90,0,0"
+                  Margin="300,47,0,0"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top"
                   Background="White"
                   Content="Claim has &#xD;&#xA;been settled"
                   Foreground="White"
                   ScrollViewer.VerticalScrollBarVisibility="Disabled" />
-        <TextBox x:Name="claimIDTextBox"
-                 Grid.Row="0"
-                 Width="125"
-                 Height="Auto"
-                 Margin="160,41,0,531"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Panel.ZIndex="4"
-                 Background="{x:Null}"
-                 CaretBrush="#FF959595"
-                 Foreground="White" />
-        <Label Grid.Row="0"
-               Grid.Column="0"
-               Margin="97,41,0,525"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Center"
-               Panel.ZIndex="4"
-               Content="Claim #:"
-               Foreground="White" />
+        <Button x:Name="AddEVBtn" Content="Add Eagle View/&#xA;Contract" HorizontalAlignment="Left" Margin="300,222,0,0" VerticalAlignment="Top" Width="125" Click="AddEVBtn_Click" Height="36"/>
+        <Button x:Name="ViewInspectionBtn" Content="View Contract/&#xD;&#xA;Inspection" HorizontalAlignment="Left" Margin="300,276,0,0" VerticalAlignment="Top" Width="125" Click="AddScopeBtn_Click" Height="36"/>
+        <Button x:Name="AddSettlementBtn" Content="Add Inspection/&#xD;&#xA;Photos" HorizontalAlignment="Left" Margin="300,330,0,0" VerticalAlignment="Top" Width="125" Click="AddSettlementBtn_Click"/>
 
     </Grid>
 </Page>

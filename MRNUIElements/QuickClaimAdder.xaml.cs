@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNUIElements.Controllers;
-using MRNUIElements.ClaimDataService;
+using MRNNexus_Model;
 using MRNNexus_Model;
 using System.Collections.ObjectModel;
 

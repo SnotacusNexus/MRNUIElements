@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using static MRNUIElements.MainWindow;
 using MRNNexus_Model;
 using MRNUIElements.Controllers;
+using System.Threading;
 
 namespace MRNUIElements
 {
@@ -35,14 +36,16 @@ namespace MRNUIElements
         public static NavigationService ns = MainWindow.getNavigationService();
 		protected ObservableCollection<DTO_Claim> colOfClaims = new ObservableCollection<DTO_Claim>();
 		protected ObservableCollection<DTO_Employee> colOfEmployees = new ObservableCollection<DTO_Employee>();
-
-		public ClaimPickerPopUp()
+        protected bool joy { get; set; }
+		public ClaimPickerPopUp(bool joy=true)
 		{
 			InitializeComponent();
+            this.joy = joy;
 			//System.Windows.Forms.MessageBox.Show(currentLoggedInUser.ToString());
 			try
 			{
-				GetActiveClaims();
+				Task.Run(async()=>await GetActiveClaims());
+
 			}
 			catch (Exception ex)
 			{
@@ -78,7 +81,7 @@ namespace MRNUIElements
 			dTO_ClaimViewSource.Source = this.DataContext;
 		}
 
-		private async void GetActiveClaims()
+		private async Task<bool> GetActiveClaims(bool joy=true)
 		{	
 			await s1.GetAllClaims();
             //if (s1.OpenClaimsList == null)
@@ -99,10 +102,13 @@ namespace MRNUIElements
             int k = 0;
             while (s1.ClaimsList == null)
                 k++;
-			//ClaimListView.DataContext = s1.ClaimsList;
-            ClaimListView.ItemsSource = s1.ClaimsList;
-         
+            //ClaimListView.DataContext = s1.ClaimsList;
 
+            if (s1.ClaimsList.Count > 0)
+                ClaimListView.ItemsSource = s1.ClaimsList;
+            else
+                return false;
+            return true;
 		}
 		private bool Admin(DTO_Employee emp)
 		{
@@ -118,6 +124,7 @@ namespace MRNUIElements
 
 			DialogResult = true;
 			Close();
+            if(!joy)
             if (ClaimListView.SelectedItem != null)
                 ns.Navigate(new ClaimView(Claim));
 

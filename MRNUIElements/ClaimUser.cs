@@ -8,7 +8,7 @@ using System.Windows;
 using MRNNexus_Model;
 using MRNUIElements.Controllers;
 
-namespace MRNUIElements.ClaimDataService
+namespace  MRNUIElements.ClaimDataService
 {
 
 

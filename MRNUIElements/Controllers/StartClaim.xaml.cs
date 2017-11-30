@@ -18,108 +18,114 @@ using System.Windows.Shapes;
 namespace MRNUIElements.Controllers
 {
 
-	public class MRNClaimView
-	{
-		DateTime entryDate = DateTime.Today;
-		DTO_ClaimContacts cc = new DTO_ClaimContacts();
-		//ClaimContact **cc**
+    public class MRNClaimView
+    {
+        DateTime entryDate = DateTime.Today;
+        DTO_ClaimContacts cc = new DTO_ClaimContacts();
+        //ClaimContact **cc**
 
-		DTO_Lead lead = new DTO_Lead();
-		//Lead	cc
+        DTO_Lead lead = new DTO_Lead();
+        //Lead	cc
 
-		DTO_KnockerResponse kr = new DTO_KnockerResponse();
-		//KnockerResponse
-		//
-		DTO_Employee salesperson = new DTO_Employee();
-		//Salesperson  cc
-		bool isReferral;
-		//bool isreferral
-		DTO_Referrer r = new DTO_Referrer();
-		//Referral  cc
-		DTO_Employee k = new DTO_Employee();
-		//Knocker  cc
-		DTO_Address a = new DTO_Address();
-		//Property Address
-		DTO_Customer c = new DTO_Customer();
-		//Customer     cc
-		DTO_InsuranceCompany ic = new DTO_InsuranceCompany();
-		//InsuranceCompany
-		DTO_Claim _claim = new DTO_Claim();
-		//Complete Contract
-		//DTO_Claim
-		DTO_CalendarData schedinspect = new DTO_CalendarData();
-		//Schedule Inspection--Calendar Data
-		DTO_Inspection i = new DTO_Inspection();
-		//Inspection
-		List<DTO_Damage> damagePhotos = new List<DTO_Damage>();
-		//Damages
-		List<DTO_ClaimDocument> claimDocs = new List<DTO_ClaimDocument>();
-		DTO_ClaimDocument contract, capout, rooforder, shinglecolorauthorize, estimate, origscope, finalscope, inspectionResult, policy, roofmaterialinv, rooflaborinvoice, bringback, gutterinvoice, exteriorinvoice, interiorinvoice, claimsuppworksheet, sketch, eagleview, coc, warranty, supplierroofmaterialorderform, interiorworkorder, exteriorworkorder, firstcheck, depreciationcheck, supplementcheck, upgradecheck, deductiblecheck, receipt1, receipt2, receipt3, receipt4, receipt5, lienwaver = new DTO_ClaimDocument();
+        DTO_KnockerResponse kr = new DTO_KnockerResponse();
+        //KnockerResponse
+        //
+        DTO_Employee salesperson = new DTO_Employee();
+        //Salesperson  cc
+        bool isReferral;
+        //bool isreferral
+        DTO_Referrer r = new DTO_Referrer();
+        //Referral  cc
+        DTO_Employee k = new DTO_Employee();
+        //Knocker  cc
+        DTO_Address a = new DTO_Address();
+        //Property Address
+        DTO_Customer c = new DTO_Customer();
+        //Customer     cc
+        DTO_InsuranceCompany ic = new DTO_InsuranceCompany();
+        //InsuranceCompany
+        DTO_Claim _claim = new DTO_Claim();
+        //Complete Contract
+        //DTO_Claim
+        DTO_CalendarData schedinspect = new DTO_CalendarData();
+        //Schedule Inspection--Calendar Data
+        DTO_Inspection i = new DTO_Inspection();
+        //Inspection
+        List<DTO_Damage> damagePhotos = new List<DTO_Damage>();
+        //Damages
+        List<DTO_ClaimDocument> claimDocs = new List<DTO_ClaimDocument>();
+        DTO_ClaimDocument contract, capout, rooforder, shinglecolorauthorize, estimate, origscope, finalscope, inspectionResult, policy, roofmaterialinv, rooflaborinvoice, bringback, gutterinvoice, exteriorinvoice, interiorinvoice, claimsuppworksheet, sketch, eagleview, coc, warranty, supplierroofmaterialorderform, interiorworkorder, exteriorworkorder, firstcheck, depreciationcheck, supplementcheck, upgradecheck, deductiblecheck, receipt1, receipt2, receipt3, receipt4, receipt5, lienwaver = new DTO_ClaimDocument();
 
-		//ClaimDocumentation
-		DTO_Plane roofData = new DTO_Plane();
-		//Plane
-		DTO_Scope mrnestimate = new DTO_Scope();
-		//ClaimIt
-		List<DTO_CallLog> cl = new List<DTO_CallLog>();
-		DTO_CallLog correspondence01 = new DTO_CallLog();
+        //ClaimDocumentation
+        DTO_Plane roofData = new DTO_Plane();
+        //Plane
+        DTO_Scope mrnestimate = new DTO_Scope();
+        //ClaimIt
+        List<DTO_CallLog> cl = new List<DTO_CallLog>();
+        DTO_CallLog correspondence01 = new DTO_CallLog();
 
-		//CallLog
-		DTO_Adjustment adjustment = new DTO_Adjustment();
-		//Adjustment
-		DTO_Adjuster siteAdjuster = new DTO_Adjuster();
-		//Adjuster
-		bool bought;
-		//AdjustmentResult
-		DTO_Scope origScope = new DTO_Scope();
-		//Scope
-		DTO_Adjuster insideAdjuster = new DTO_Adjuster();
-		//Supplement -- 
-		DTO_CallLog suppRecCor = new DTO_CallLog();
-		//CallLog -- Settle
-		DTO_CallLog suppRecConfCor = new DTO_CallLog();
-		//CallLog -- Confirm
-		DTO_Payment firstCheck, supplementCheck, depreciationCheck, upgradeCheck, deductibleCheck = new DTO_Payment();
-		//FirstCheck--DTOPayment
-		DTO_Scope finalScope = new DTO_Scope();
-		//NewScope
-		DTO_NewRoof nr = new DTO_NewRoof();
-		//NewRoof
-		DTO_Order roofOrder = new DTO_Order();
-		//Order
-		List<DTO_OrderItem> roofOrderContents = new List<DTO_OrderItem>();
-		DTO_OrderItem primaryshingles, startershingle, underlayment, valleyunderlayment, ridgeShinges, turtlebacks, ridgeVent, coilnails, plasticCaps, osb, dripedge, caulk, paint = new DTO_OrderItem();
-		//Order -- OrderItems
-		DTO_ClaimVendor roofer, supplier, gutterguy, interiorguy, exteriorguy = new DTO_ClaimVendor();
-		//ClaimVendor
-		//Invoice -- Material
-		DTO_Invoice roofmatinv, roofLaborInv, extinv, gutinv, intinv = new DTO_Invoice();
+        //CallLog
+        DTO_Adjustment adjustment = new DTO_Adjustment();
+        //Adjustment
+        DTO_Adjuster siteAdjuster = new DTO_Adjuster();
+        //Adjuster
+        bool bought;
+        //AdjustmentResult
+        DTO_Scope origScope = new DTO_Scope();
+        //Scope
+        DTO_Adjuster insideAdjuster = new DTO_Adjuster();
+        //Supplement -- 
+        DTO_CallLog suppRecCor = new DTO_CallLog();
+        //CallLog -- Settle
+        DTO_CallLog suppRecConfCor = new DTO_CallLog();
+        //CallLog -- Confirm
+        DTO_Payment firstCheck, supplementCheck, depreciationCheck, upgradeCheck, deductibleCheck = new DTO_Payment();
+        //FirstCheck--DTOPayment
+        DTO_Scope finalScope = new DTO_Scope();
+        //NewScope
+        DTO_NewRoof nr = new DTO_NewRoof();
+        //NewRoof
+        DTO_Order roofOrder = new DTO_Order();
+        //Order
+        List<DTO_OrderItem> roofOrderContents = new List<DTO_OrderItem>();
+        DTO_OrderItem primaryshingles, startershingle, underlayment, valleyunderlayment, ridgeShinges, turtlebacks, ridgeVent, coilnails, plasticCaps, osb, dripedge, caulk, paint = new DTO_OrderItem();
+        //Order -- OrderItems
+        DTO_ClaimVendor roofer, supplier, gutterguy, interiorguy, exteriorguy = new DTO_ClaimVendor();
+        //ClaimVendor
+        //Invoice -- Material
+        DTO_Invoice roofmatinv, roofLaborInv, extinv, gutinv, intinv = new DTO_Invoice();
 
-		DTO_CalendarData schedroof, gutter, interior, exterior = new DTO_CalendarData();
-		//Schedule Roof -- CalendarData
-		//
-
-
-		//Invoice -- Roofer
-		DTO_CallLog RoofSchedNotify = new DTO_CallLog();
-		//Call Log -- Notify Homeowner
+        DTO_CalendarData schedroof, gutter, interior, exterior = new DTO_CalendarData();
+        //Schedule Roof -- CalendarData
+        //
 
 
-		//RoofGoesOn
-		//Additional Supply
-		DTO_AdditionalSupply ads = new DTO_AdditionalSupply();
+        //Invoice -- Roofer
+        DTO_CallLog RoofSchedNotify = new DTO_CallLog();
+        //Call Log -- Notify Homeowner
 
-		DTO_SurplusSupplies ss = new DTO_SurplusSupplies();
-		//Surplus Supply
 
-		//Invoice -- Interior -- ClaimVendor
-		//Invoice -- Exterior -- ClaimVendor
-		//Invoice -- Gutter -- ClaimVendor
-		DTO_Adjuster newinsideAdjuster = new DTO_Adjuster();
-		//Supplement -- 
-		DTO_CallLog cocRecCor = new DTO_CallLog();
-		//CallLog -- Settle
-		DTO_CallLog cocRecConfCor = new DTO_CallLog();
+        //RoofGoesOn
+        //Additional Supply
+        DTO_AdditionalSupply ads = new DTO_AdditionalSupply();
+
+        DTO_SurplusSupplies ss = new DTO_SurplusSupplies();
+        //Surplus Supply
+
+        //Invoice -- Interior -- ClaimVendor
+        //Invoice -- Exterior -- ClaimVendor
+        //Invoice -- Gutter -- ClaimVendor
+        DTO_Adjuster newinsideAdjuster = new DTO_Adjuster();
+        //Supplement -- 
+        DTO_CallLog cocRecCor = new DTO_CallLog();
+        //CallLog -- Settle
+        DTO_CallLog cocRecConfCor = new DTO_CallLog();
+        List<bool> QuestionaireAnswersBool;
+        List<DateTime> QuestionaireDates;
+        List<string> QuestionaireAnswersStg;
+        int[] QuestionAnswerRouting = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};//1-bool,2-Date/Time,3-String
+        int[] FUNQuestionAnswerRout = { 3, 4, 3, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0 };
+        int[] FUYQuestionAnswerRout = { 0, 3, 3, 23, 23, 23, 23, 23, 23, 4, 2, 2, 2, 4, 3, 3, 3, 3, 3, 3, 3, 13, 13, 13, 13, 13, 13, 13, 13, 13 };
 		//CallLog -- Confirm
 		//Payment -- Supplement
 		//Paymrnt -- Depreciation
@@ -197,7 +203,7 @@ namespace MRNUIElements.Controllers
 		bool isReferral;
 		//bool isreferral
 		public DTO_Referrer r { get; set; }
-
+       
 		public DTO_LU_LeadType lt { get; set; }
 		//Referral  cc
 		public DTO_Employee k { get; set; }
@@ -215,7 +221,7 @@ namespace MRNUIElements.Controllers
 		public DTO_Inspection i { get; set; }
 		//Inspection
 		public List<DTO_ClaimDocument> inspectionPhotos { get; set; }
-
+        public List<DTO_Employee> el { get; set; }
 		public List<DTO_Damage> damageLocations { get; set; }
 		//Damages
 		public List<DTO_ClaimDocument> claimDocs { get; set; }
@@ -253,7 +259,7 @@ namespace MRNUIElements.Controllers
 		public DTO_ClaimDocument receipt4 { get; set; }
 		public DTO_ClaimDocument receipt5 { get; set; }
 		public DTO_ClaimDocument lienwaver { get; set; }
-
+        public List<DTO_CalendarData> cd { get; set; }
 		//ClaimDocumentation
 		public DTO_Plane roofData { get; set; }
 		//Plane
@@ -303,7 +309,7 @@ namespace MRNUIElements.Controllers
 		public DTO_OrderItem dripedge { get; set; }
 		public DTO_OrderItem caulk { get; set; }
 		public DTO_OrderItem paint { get; set; }
-
+        public List<DTO_ClaimStatus> cs { get; set; }
 		//Order -- OrderItems
 		public DTO_ClaimVendor roofer { get; set; }
 		public DTO_ClaimVendor supplier { get; set; }
@@ -329,8 +335,8 @@ namespace MRNUIElements.Controllers
 		//RoofGoesOn
 		//Additional Supply
 		public DTO_AdditionalSupply ads { get; set; }
-
-		public DTO_SurplusSupplies ss { get; set; }
+        public List<DTO_CalendarData> appts { get; set; }
+        public DTO_SurplusSupplies ss { get; set; }
 		//Surplus Supply
 
 		//Invoice -- Interior -- ClaimVendor
@@ -419,6 +425,7 @@ namespace MRNUIElements.Controllers
 			ClaimVendorsList.Add(roofmaterialSupplier);
 		
 		}
+       
 		async Task<List<DTO_ClaimVendor>> GetClaimVendors(DTO_Claim claim)
 		{
 
