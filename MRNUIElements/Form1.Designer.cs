@@ -190,6 +190,14 @@
             this.companyNameTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.claimIDTextBox3 = new System.Windows.Forms.TextBox();
+            this.dTO_ClaimVendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.exceptionTextBox2 = new System.Windows.Forms.TextBox();
+            this.innerExceptionTextBox2 = new System.Windows.Forms.TextBox();
+            this.messageTextBox2 = new System.Windows.Forms.TextBox();
+            this.serviceTypeIDTextBox = new System.Windows.Forms.TextBox();
+            this.successFlagCheckBox2 = new System.Windows.Forms.CheckBox();
+            this.vendorIDTextBox = new System.Windows.Forms.TextBox();
             this.dTO_CalendarDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dTO_CalendarDataDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -221,14 +229,6 @@
             this.salesPersonIDTextBox = new System.Windows.Forms.TextBox();
             this.successFlagCheckBox1 = new System.Windows.Forms.CheckBox();
             this.supervisorIDTextBox = new System.Windows.Forms.TextBox();
-            this.dTO_ClaimVendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.claimIDTextBox3 = new System.Windows.Forms.TextBox();
-            this.exceptionTextBox2 = new System.Windows.Forms.TextBox();
-            this.innerExceptionTextBox2 = new System.Windows.Forms.TextBox();
-            this.messageTextBox2 = new System.Windows.Forms.TextBox();
-            this.serviceTypeIDTextBox = new System.Windows.Forms.TextBox();
-            this.successFlagCheckBox2 = new System.Windows.Forms.CheckBox();
-            this.vendorIDTextBox = new System.Windows.Forms.TextBox();
             this.dTO_EmployeeDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -239,7 +239,6 @@
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -313,11 +312,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dTOEmployeeBindingSource)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTO_ClaimVendorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_CalendarDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_CalendarDataDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_ClaimContactsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTO_ClaimVendorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_EmployeeDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -643,6 +642,196 @@
             emailLabel.Size = new System.Drawing.Size(52, 20);
             emailLabel.TabIndex = 83;
             emailLabel.Text = "Email:";
+            // 
+            // adjusterIDLabel
+            // 
+            adjusterIDLabel.AutoSize = true;
+            adjusterIDLabel.Location = new System.Drawing.Point(606, 1008);
+            adjusterIDLabel.Name = "adjusterIDLabel";
+            adjusterIDLabel.Size = new System.Drawing.Size(93, 20);
+            adjusterIDLabel.TabIndex = 78;
+            adjusterIDLabel.Text = "Adjuster ID:";
+            adjusterIDLabel.Visible = false;
+            // 
+            // claimContactIDLabel
+            // 
+            claimContactIDLabel.AutoSize = true;
+            claimContactIDLabel.Location = new System.Drawing.Point(606, 1040);
+            claimContactIDLabel.Name = "claimContactIDLabel";
+            claimContactIDLabel.Size = new System.Drawing.Size(133, 20);
+            claimContactIDLabel.TabIndex = 80;
+            claimContactIDLabel.Text = "Claim Contact ID:";
+            claimContactIDLabel.Visible = false;
+            // 
+            // claimIDLabel2
+            // 
+            claimIDLabel2.AutoSize = true;
+            claimIDLabel2.Location = new System.Drawing.Point(606, 1072);
+            claimIDLabel2.Name = "claimIDLabel2";
+            claimIDLabel2.Size = new System.Drawing.Size(73, 20);
+            claimIDLabel2.TabIndex = 82;
+            claimIDLabel2.Text = "Claim ID:";
+            claimIDLabel2.Visible = false;
+            // 
+            // customerIDLabel4
+            // 
+            customerIDLabel4.AutoSize = true;
+            customerIDLabel4.Location = new System.Drawing.Point(606, 1104);
+            customerIDLabel4.Name = "customerIDLabel4";
+            customerIDLabel4.Size = new System.Drawing.Size(103, 20);
+            customerIDLabel4.TabIndex = 84;
+            customerIDLabel4.Text = "Customer ID:";
+            customerIDLabel4.Visible = false;
+            // 
+            // exceptionLabel1
+            // 
+            exceptionLabel1.AutoSize = true;
+            exceptionLabel1.Location = new System.Drawing.Point(606, 1136);
+            exceptionLabel1.Name = "exceptionLabel1";
+            exceptionLabel1.Size = new System.Drawing.Size(83, 20);
+            exceptionLabel1.TabIndex = 86;
+            exceptionLabel1.Text = "Exception:";
+            exceptionLabel1.Visible = false;
+            // 
+            // innerExceptionLabel1
+            // 
+            innerExceptionLabel1.AutoSize = true;
+            innerExceptionLabel1.Location = new System.Drawing.Point(606, 1168);
+            innerExceptionLabel1.Name = "innerExceptionLabel1";
+            innerExceptionLabel1.Size = new System.Drawing.Size(124, 20);
+            innerExceptionLabel1.TabIndex = 88;
+            innerExceptionLabel1.Text = "Inner Exception:";
+            innerExceptionLabel1.Visible = false;
+            // 
+            // knockerIDLabel
+            // 
+            knockerIDLabel.AutoSize = true;
+            knockerIDLabel.Location = new System.Drawing.Point(606, 1200);
+            knockerIDLabel.Name = "knockerIDLabel";
+            knockerIDLabel.Size = new System.Drawing.Size(92, 20);
+            knockerIDLabel.TabIndex = 90;
+            knockerIDLabel.Text = "Knocker ID:";
+            knockerIDLabel.Visible = false;
+            // 
+            // messageLabel1
+            // 
+            messageLabel1.AutoSize = true;
+            messageLabel1.Location = new System.Drawing.Point(606, 1232);
+            messageLabel1.Name = "messageLabel1";
+            messageLabel1.Size = new System.Drawing.Size(78, 20);
+            messageLabel1.TabIndex = 92;
+            messageLabel1.Text = "Message:";
+            messageLabel1.Visible = false;
+            // 
+            // salesManagerIDLabel
+            // 
+            salesManagerIDLabel.AutoSize = true;
+            salesManagerIDLabel.Location = new System.Drawing.Point(606, 1264);
+            salesManagerIDLabel.Name = "salesManagerIDLabel";
+            salesManagerIDLabel.Size = new System.Drawing.Size(141, 20);
+            salesManagerIDLabel.TabIndex = 94;
+            salesManagerIDLabel.Text = "Sales Manager ID:";
+            salesManagerIDLabel.Visible = false;
+            // 
+            // salesPersonIDLabel1
+            // 
+            salesPersonIDLabel1.AutoSize = true;
+            salesPersonIDLabel1.Location = new System.Drawing.Point(606, 1296);
+            salesPersonIDLabel1.Name = "salesPersonIDLabel1";
+            salesPersonIDLabel1.Size = new System.Drawing.Size(128, 20);
+            salesPersonIDLabel1.TabIndex = 96;
+            salesPersonIDLabel1.Text = "Sales Person ID:";
+            salesPersonIDLabel1.Visible = false;
+            // 
+            // successFlagLabel1
+            // 
+            successFlagLabel1.AutoSize = true;
+            successFlagLabel1.Location = new System.Drawing.Point(606, 1330);
+            successFlagLabel1.Name = "successFlagLabel1";
+            successFlagLabel1.Size = new System.Drawing.Size(109, 20);
+            successFlagLabel1.TabIndex = 98;
+            successFlagLabel1.Text = "Success Flag:";
+            successFlagLabel1.Visible = false;
+            // 
+            // supervisorIDLabel
+            // 
+            supervisorIDLabel.AutoSize = true;
+            supervisorIDLabel.Location = new System.Drawing.Point(606, 1359);
+            supervisorIDLabel.Name = "supervisorIDLabel";
+            supervisorIDLabel.Size = new System.Drawing.Size(109, 20);
+            supervisorIDLabel.TabIndex = 100;
+            supervisorIDLabel.Text = "Supervisor ID:";
+            supervisorIDLabel.Visible = false;
+            // 
+            // claimIDLabel3
+            // 
+            claimIDLabel3.AutoSize = true;
+            claimIDLabel3.Location = new System.Drawing.Point(109, 0);
+            claimIDLabel3.Name = "claimIDLabel3";
+            claimIDLabel3.Size = new System.Drawing.Size(73, 20);
+            claimIDLabel3.TabIndex = 1;
+            claimIDLabel3.Text = "Claim ID:";
+            claimIDLabel3.Visible = false;
+            // 
+            // exceptionLabel2
+            // 
+            exceptionLabel2.AutoSize = true;
+            exceptionLabel2.Location = new System.Drawing.Point(298, 0);
+            exceptionLabel2.Name = "exceptionLabel2";
+            exceptionLabel2.Size = new System.Drawing.Size(83, 20);
+            exceptionLabel2.TabIndex = 3;
+            exceptionLabel2.Text = "Exception:";
+            exceptionLabel2.Visible = false;
+            // 
+            // innerExceptionLabel2
+            // 
+            innerExceptionLabel2.AutoSize = true;
+            innerExceptionLabel2.Location = new System.Drawing.Point(497, 0);
+            innerExceptionLabel2.Name = "innerExceptionLabel2";
+            innerExceptionLabel2.Size = new System.Drawing.Size(124, 20);
+            innerExceptionLabel2.TabIndex = 5;
+            innerExceptionLabel2.Text = "Inner Exception:";
+            innerExceptionLabel2.Visible = false;
+            // 
+            // messageLabel2
+            // 
+            messageLabel2.AutoSize = true;
+            messageLabel2.Location = new System.Drawing.Point(737, 0);
+            messageLabel2.Name = "messageLabel2";
+            messageLabel2.Size = new System.Drawing.Size(78, 20);
+            messageLabel2.TabIndex = 7;
+            messageLabel2.Text = "Message:";
+            messageLabel2.Visible = false;
+            // 
+            // serviceTypeIDLabel
+            // 
+            serviceTypeIDLabel.AutoSize = true;
+            serviceTypeIDLabel.Location = new System.Drawing.Point(931, 0);
+            serviceTypeIDLabel.Name = "serviceTypeIDLabel";
+            serviceTypeIDLabel.Size = new System.Drawing.Size(124, 20);
+            serviceTypeIDLabel.TabIndex = 9;
+            serviceTypeIDLabel.Text = "Service Type ID:";
+            serviceTypeIDLabel.Visible = false;
+            // 
+            // successFlagLabel2
+            // 
+            successFlagLabel2.AutoSize = true;
+            successFlagLabel2.Location = new System.Drawing.Point(1171, 0);
+            successFlagLabel2.Name = "successFlagLabel2";
+            successFlagLabel2.Size = new System.Drawing.Size(109, 20);
+            successFlagLabel2.TabIndex = 11;
+            successFlagLabel2.Text = "Success Flag:";
+            successFlagLabel2.Visible = false;
+            // 
+            // vendorIDLabel
+            // 
+            vendorIDLabel.AutoSize = true;
+            vendorIDLabel.Location = new System.Drawing.Point(113, 56);
+            vendorIDLabel.Name = "vendorIDLabel";
+            vendorIDLabel.Size = new System.Drawing.Size(86, 20);
+            vendorIDLabel.TabIndex = 13;
+            vendorIDLabel.Text = "Vendor ID:";
+            vendorIDLabel.Visible = false;
             // 
             // tabControl1
             // 
@@ -1647,7 +1836,7 @@
             this.flowLayoutPanel1.Controls.Add(vendorIDLabel);
             this.flowLayoutPanel1.Controls.Add(this.vendorIDTextBox);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 1402);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 846);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1375, 462);
             this.flowLayoutPanel1.TabIndex = 89;
@@ -1660,6 +1849,75 @@
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // claimIDTextBox3
+            // 
+            this.claimIDTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "ClaimID", true));
+            this.claimIDTextBox3.Location = new System.Drawing.Point(188, 3);
+            this.claimIDTextBox3.Name = "claimIDTextBox3";
+            this.claimIDTextBox3.Size = new System.Drawing.Size(104, 26);
+            this.claimIDTextBox3.TabIndex = 2;
+            this.claimIDTextBox3.Visible = false;
+            // 
+            // dTO_ClaimVendorBindingSource
+            // 
+            this.dTO_ClaimVendorBindingSource.DataSource = typeof(MRNNexus_Model.DTO_ClaimVendor);
+            // 
+            // exceptionTextBox2
+            // 
+            this.exceptionTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "Exception", true));
+            this.exceptionTextBox2.Location = new System.Drawing.Point(387, 3);
+            this.exceptionTextBox2.Name = "exceptionTextBox2";
+            this.exceptionTextBox2.Size = new System.Drawing.Size(104, 26);
+            this.exceptionTextBox2.TabIndex = 4;
+            this.exceptionTextBox2.Visible = false;
+            // 
+            // innerExceptionTextBox2
+            // 
+            this.innerExceptionTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "InnerException", true));
+            this.innerExceptionTextBox2.Location = new System.Drawing.Point(627, 3);
+            this.innerExceptionTextBox2.Name = "innerExceptionTextBox2";
+            this.innerExceptionTextBox2.Size = new System.Drawing.Size(104, 26);
+            this.innerExceptionTextBox2.TabIndex = 6;
+            this.innerExceptionTextBox2.Visible = false;
+            // 
+            // messageTextBox2
+            // 
+            this.messageTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "Message", true));
+            this.messageTextBox2.Location = new System.Drawing.Point(821, 3);
+            this.messageTextBox2.Name = "messageTextBox2";
+            this.messageTextBox2.Size = new System.Drawing.Size(104, 26);
+            this.messageTextBox2.TabIndex = 8;
+            this.messageTextBox2.Visible = false;
+            // 
+            // serviceTypeIDTextBox
+            // 
+            this.serviceTypeIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "ServiceTypeID", true));
+            this.serviceTypeIDTextBox.Location = new System.Drawing.Point(1061, 3);
+            this.serviceTypeIDTextBox.Name = "serviceTypeIDTextBox";
+            this.serviceTypeIDTextBox.Size = new System.Drawing.Size(104, 26);
+            this.serviceTypeIDTextBox.TabIndex = 10;
+            this.serviceTypeIDTextBox.Visible = false;
+            // 
+            // successFlagCheckBox2
+            // 
+            this.successFlagCheckBox2.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.dTO_ClaimVendorBindingSource, "SuccessFlag", true));
+            this.successFlagCheckBox2.Location = new System.Drawing.Point(3, 59);
+            this.successFlagCheckBox2.Name = "successFlagCheckBox2";
+            this.successFlagCheckBox2.Size = new System.Drawing.Size(104, 24);
+            this.successFlagCheckBox2.TabIndex = 12;
+            this.successFlagCheckBox2.Text = "checkBox1";
+            this.successFlagCheckBox2.UseVisualStyleBackColor = true;
+            this.successFlagCheckBox2.Visible = false;
+            // 
+            // vendorIDTextBox
+            // 
+            this.vendorIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "VendorID", true));
+            this.vendorIDTextBox.Location = new System.Drawing.Point(205, 59);
+            this.vendorIDTextBox.Name = "vendorIDTextBox";
+            this.vendorIDTextBox.Size = new System.Drawing.Size(104, 26);
+            this.vendorIDTextBox.TabIndex = 14;
+            this.vendorIDTextBox.Visible = false;
             // 
             // dTO_CalendarDataBindingSource
             // 
@@ -1821,16 +2079,6 @@
             // 
             this.dTO_ClaimContactsBindingSource.DataSource = typeof(MRNNexus_Model.DTO_ClaimContacts);
             // 
-            // adjusterIDLabel
-            // 
-            adjusterIDLabel.AutoSize = true;
-            adjusterIDLabel.Location = new System.Drawing.Point(606, 1008);
-            adjusterIDLabel.Name = "adjusterIDLabel";
-            adjusterIDLabel.Size = new System.Drawing.Size(93, 20);
-            adjusterIDLabel.TabIndex = 78;
-            adjusterIDLabel.Text = "Adjuster ID:";
-            adjusterIDLabel.Visible = false;
-            // 
             // adjusterIDTextBox
             // 
             this.adjusterIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimContactsBindingSource, "AdjusterID", true));
@@ -1839,16 +2087,6 @@
             this.adjusterIDTextBox.Size = new System.Drawing.Size(104, 26);
             this.adjusterIDTextBox.TabIndex = 79;
             this.adjusterIDTextBox.Visible = false;
-            // 
-            // claimContactIDLabel
-            // 
-            claimContactIDLabel.AutoSize = true;
-            claimContactIDLabel.Location = new System.Drawing.Point(606, 1040);
-            claimContactIDLabel.Name = "claimContactIDLabel";
-            claimContactIDLabel.Size = new System.Drawing.Size(133, 20);
-            claimContactIDLabel.TabIndex = 80;
-            claimContactIDLabel.Text = "Claim Contact ID:";
-            claimContactIDLabel.Visible = false;
             // 
             // claimContactIDTextBox
             // 
@@ -1859,16 +2097,6 @@
             this.claimContactIDTextBox.TabIndex = 81;
             this.claimContactIDTextBox.Visible = false;
             // 
-            // claimIDLabel2
-            // 
-            claimIDLabel2.AutoSize = true;
-            claimIDLabel2.Location = new System.Drawing.Point(606, 1072);
-            claimIDLabel2.Name = "claimIDLabel2";
-            claimIDLabel2.Size = new System.Drawing.Size(73, 20);
-            claimIDLabel2.TabIndex = 82;
-            claimIDLabel2.Text = "Claim ID:";
-            claimIDLabel2.Visible = false;
-            // 
             // claimIDTextBox2
             // 
             this.claimIDTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimContactsBindingSource, "ClaimID", true));
@@ -1877,16 +2105,6 @@
             this.claimIDTextBox2.Size = new System.Drawing.Size(104, 26);
             this.claimIDTextBox2.TabIndex = 83;
             this.claimIDTextBox2.Visible = false;
-            // 
-            // customerIDLabel4
-            // 
-            customerIDLabel4.AutoSize = true;
-            customerIDLabel4.Location = new System.Drawing.Point(606, 1104);
-            customerIDLabel4.Name = "customerIDLabel4";
-            customerIDLabel4.Size = new System.Drawing.Size(103, 20);
-            customerIDLabel4.TabIndex = 84;
-            customerIDLabel4.Text = "Customer ID:";
-            customerIDLabel4.Visible = false;
             // 
             // customerIDTextBox4
             // 
@@ -1897,16 +2115,6 @@
             this.customerIDTextBox4.TabIndex = 85;
             this.customerIDTextBox4.Visible = false;
             // 
-            // exceptionLabel1
-            // 
-            exceptionLabel1.AutoSize = true;
-            exceptionLabel1.Location = new System.Drawing.Point(606, 1136);
-            exceptionLabel1.Name = "exceptionLabel1";
-            exceptionLabel1.Size = new System.Drawing.Size(83, 20);
-            exceptionLabel1.TabIndex = 86;
-            exceptionLabel1.Text = "Exception:";
-            exceptionLabel1.Visible = false;
-            // 
             // exceptionTextBox1
             // 
             this.exceptionTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimContactsBindingSource, "Exception", true));
@@ -1915,16 +2123,6 @@
             this.exceptionTextBox1.Size = new System.Drawing.Size(104, 26);
             this.exceptionTextBox1.TabIndex = 87;
             this.exceptionTextBox1.Visible = false;
-            // 
-            // innerExceptionLabel1
-            // 
-            innerExceptionLabel1.AutoSize = true;
-            innerExceptionLabel1.Location = new System.Drawing.Point(606, 1168);
-            innerExceptionLabel1.Name = "innerExceptionLabel1";
-            innerExceptionLabel1.Size = new System.Drawing.Size(124, 20);
-            innerExceptionLabel1.TabIndex = 88;
-            innerExceptionLabel1.Text = "Inner Exception:";
-            innerExceptionLabel1.Visible = false;
             // 
             // innerExceptionTextBox1
             // 
@@ -1935,16 +2133,6 @@
             this.innerExceptionTextBox1.TabIndex = 89;
             this.innerExceptionTextBox1.Visible = false;
             // 
-            // knockerIDLabel
-            // 
-            knockerIDLabel.AutoSize = true;
-            knockerIDLabel.Location = new System.Drawing.Point(606, 1200);
-            knockerIDLabel.Name = "knockerIDLabel";
-            knockerIDLabel.Size = new System.Drawing.Size(92, 20);
-            knockerIDLabel.TabIndex = 90;
-            knockerIDLabel.Text = "Knocker ID:";
-            knockerIDLabel.Visible = false;
-            // 
             // knockerIDTextBox
             // 
             this.knockerIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimContactsBindingSource, "KnockerID", true));
@@ -1953,16 +2141,6 @@
             this.knockerIDTextBox.Size = new System.Drawing.Size(104, 26);
             this.knockerIDTextBox.TabIndex = 91;
             this.knockerIDTextBox.Visible = false;
-            // 
-            // messageLabel1
-            // 
-            messageLabel1.AutoSize = true;
-            messageLabel1.Location = new System.Drawing.Point(606, 1232);
-            messageLabel1.Name = "messageLabel1";
-            messageLabel1.Size = new System.Drawing.Size(78, 20);
-            messageLabel1.TabIndex = 92;
-            messageLabel1.Text = "Message:";
-            messageLabel1.Visible = false;
             // 
             // messageTextBox1
             // 
@@ -1973,16 +2151,6 @@
             this.messageTextBox1.TabIndex = 93;
             this.messageTextBox1.Visible = false;
             // 
-            // salesManagerIDLabel
-            // 
-            salesManagerIDLabel.AutoSize = true;
-            salesManagerIDLabel.Location = new System.Drawing.Point(606, 1264);
-            salesManagerIDLabel.Name = "salesManagerIDLabel";
-            salesManagerIDLabel.Size = new System.Drawing.Size(141, 20);
-            salesManagerIDLabel.TabIndex = 94;
-            salesManagerIDLabel.Text = "Sales Manager ID:";
-            salesManagerIDLabel.Visible = false;
-            // 
             // salesManagerIDTextBox
             // 
             this.salesManagerIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimContactsBindingSource, "SalesManagerID", true));
@@ -1992,16 +2160,6 @@
             this.salesManagerIDTextBox.TabIndex = 95;
             this.salesManagerIDTextBox.Visible = false;
             // 
-            // salesPersonIDLabel1
-            // 
-            salesPersonIDLabel1.AutoSize = true;
-            salesPersonIDLabel1.Location = new System.Drawing.Point(606, 1296);
-            salesPersonIDLabel1.Name = "salesPersonIDLabel1";
-            salesPersonIDLabel1.Size = new System.Drawing.Size(128, 20);
-            salesPersonIDLabel1.TabIndex = 96;
-            salesPersonIDLabel1.Text = "Sales Person ID:";
-            salesPersonIDLabel1.Visible = false;
-            // 
             // salesPersonIDTextBox
             // 
             this.salesPersonIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimContactsBindingSource, "SalesPersonID", true));
@@ -2010,16 +2168,6 @@
             this.salesPersonIDTextBox.Size = new System.Drawing.Size(104, 26);
             this.salesPersonIDTextBox.TabIndex = 97;
             this.salesPersonIDTextBox.Visible = false;
-            // 
-            // successFlagLabel1
-            // 
-            successFlagLabel1.AutoSize = true;
-            successFlagLabel1.Location = new System.Drawing.Point(606, 1330);
-            successFlagLabel1.Name = "successFlagLabel1";
-            successFlagLabel1.Size = new System.Drawing.Size(109, 20);
-            successFlagLabel1.TabIndex = 98;
-            successFlagLabel1.Text = "Success Flag:";
-            successFlagLabel1.Visible = false;
             // 
             // successFlagCheckBox1
             // 
@@ -2032,16 +2180,6 @@
             this.successFlagCheckBox1.UseVisualStyleBackColor = true;
             this.successFlagCheckBox1.Visible = false;
             // 
-            // supervisorIDLabel
-            // 
-            supervisorIDLabel.AutoSize = true;
-            supervisorIDLabel.Location = new System.Drawing.Point(606, 1359);
-            supervisorIDLabel.Name = "supervisorIDLabel";
-            supervisorIDLabel.Size = new System.Drawing.Size(109, 20);
-            supervisorIDLabel.TabIndex = 100;
-            supervisorIDLabel.Text = "Supervisor ID:";
-            supervisorIDLabel.Visible = false;
-            // 
             // supervisorIDTextBox
             // 
             this.supervisorIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimContactsBindingSource, "SupervisorID", true));
@@ -2050,145 +2188,6 @@
             this.supervisorIDTextBox.Size = new System.Drawing.Size(104, 26);
             this.supervisorIDTextBox.TabIndex = 101;
             this.supervisorIDTextBox.Visible = false;
-            // 
-            // dTO_ClaimVendorBindingSource
-            // 
-            this.dTO_ClaimVendorBindingSource.DataSource = typeof(MRNNexus_Model.DTO_ClaimVendor);
-            // 
-            // claimIDLabel3
-            // 
-            claimIDLabel3.AutoSize = true;
-            claimIDLabel3.Location = new System.Drawing.Point(109, 0);
-            claimIDLabel3.Name = "claimIDLabel3";
-            claimIDLabel3.Size = new System.Drawing.Size(73, 20);
-            claimIDLabel3.TabIndex = 1;
-            claimIDLabel3.Text = "Claim ID:";
-            claimIDLabel3.Visible = false;
-            // 
-            // claimIDTextBox3
-            // 
-            this.claimIDTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "ClaimID", true));
-            this.claimIDTextBox3.Location = new System.Drawing.Point(188, 3);
-            this.claimIDTextBox3.Name = "claimIDTextBox3";
-            this.claimIDTextBox3.Size = new System.Drawing.Size(104, 26);
-            this.claimIDTextBox3.TabIndex = 2;
-            this.claimIDTextBox3.Visible = false;
-            // 
-            // exceptionLabel2
-            // 
-            exceptionLabel2.AutoSize = true;
-            exceptionLabel2.Location = new System.Drawing.Point(298, 0);
-            exceptionLabel2.Name = "exceptionLabel2";
-            exceptionLabel2.Size = new System.Drawing.Size(83, 20);
-            exceptionLabel2.TabIndex = 3;
-            exceptionLabel2.Text = "Exception:";
-            exceptionLabel2.Visible = false;
-            // 
-            // exceptionTextBox2
-            // 
-            this.exceptionTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "Exception", true));
-            this.exceptionTextBox2.Location = new System.Drawing.Point(387, 3);
-            this.exceptionTextBox2.Name = "exceptionTextBox2";
-            this.exceptionTextBox2.Size = new System.Drawing.Size(104, 26);
-            this.exceptionTextBox2.TabIndex = 4;
-            this.exceptionTextBox2.Visible = false;
-            // 
-            // innerExceptionLabel2
-            // 
-            innerExceptionLabel2.AutoSize = true;
-            innerExceptionLabel2.Location = new System.Drawing.Point(497, 0);
-            innerExceptionLabel2.Name = "innerExceptionLabel2";
-            innerExceptionLabel2.Size = new System.Drawing.Size(124, 20);
-            innerExceptionLabel2.TabIndex = 5;
-            innerExceptionLabel2.Text = "Inner Exception:";
-            innerExceptionLabel2.Visible = false;
-            // 
-            // innerExceptionTextBox2
-            // 
-            this.innerExceptionTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "InnerException", true));
-            this.innerExceptionTextBox2.Location = new System.Drawing.Point(627, 3);
-            this.innerExceptionTextBox2.Name = "innerExceptionTextBox2";
-            this.innerExceptionTextBox2.Size = new System.Drawing.Size(104, 26);
-            this.innerExceptionTextBox2.TabIndex = 6;
-            this.innerExceptionTextBox2.Visible = false;
-            // 
-            // messageLabel2
-            // 
-            messageLabel2.AutoSize = true;
-            messageLabel2.Location = new System.Drawing.Point(737, 0);
-            messageLabel2.Name = "messageLabel2";
-            messageLabel2.Size = new System.Drawing.Size(78, 20);
-            messageLabel2.TabIndex = 7;
-            messageLabel2.Text = "Message:";
-            messageLabel2.Visible = false;
-            // 
-            // messageTextBox2
-            // 
-            this.messageTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "Message", true));
-            this.messageTextBox2.Location = new System.Drawing.Point(821, 3);
-            this.messageTextBox2.Name = "messageTextBox2";
-            this.messageTextBox2.Size = new System.Drawing.Size(104, 26);
-            this.messageTextBox2.TabIndex = 8;
-            this.messageTextBox2.Visible = false;
-            // 
-            // serviceTypeIDLabel
-            // 
-            serviceTypeIDLabel.AutoSize = true;
-            serviceTypeIDLabel.Location = new System.Drawing.Point(931, 0);
-            serviceTypeIDLabel.Name = "serviceTypeIDLabel";
-            serviceTypeIDLabel.Size = new System.Drawing.Size(124, 20);
-            serviceTypeIDLabel.TabIndex = 9;
-            serviceTypeIDLabel.Text = "Service Type ID:";
-            serviceTypeIDLabel.Visible = false;
-            // 
-            // serviceTypeIDTextBox
-            // 
-            this.serviceTypeIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "ServiceTypeID", true));
-            this.serviceTypeIDTextBox.Location = new System.Drawing.Point(1061, 3);
-            this.serviceTypeIDTextBox.Name = "serviceTypeIDTextBox";
-            this.serviceTypeIDTextBox.Size = new System.Drawing.Size(104, 26);
-            this.serviceTypeIDTextBox.TabIndex = 10;
-            this.serviceTypeIDTextBox.Visible = false;
-            // 
-            // successFlagLabel2
-            // 
-            successFlagLabel2.AutoSize = true;
-            successFlagLabel2.Location = new System.Drawing.Point(1171, 0);
-            successFlagLabel2.Name = "successFlagLabel2";
-            successFlagLabel2.Size = new System.Drawing.Size(109, 20);
-            successFlagLabel2.TabIndex = 11;
-            successFlagLabel2.Text = "Success Flag:";
-            successFlagLabel2.Visible = false;
-            // 
-            // successFlagCheckBox2
-            // 
-            this.successFlagCheckBox2.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.dTO_ClaimVendorBindingSource, "SuccessFlag", true));
-            this.successFlagCheckBox2.Location = new System.Drawing.Point(3, 59);
-            this.successFlagCheckBox2.Name = "successFlagCheckBox2";
-            this.successFlagCheckBox2.Size = new System.Drawing.Size(104, 24);
-            this.successFlagCheckBox2.TabIndex = 12;
-            this.successFlagCheckBox2.Text = "checkBox1";
-            this.successFlagCheckBox2.UseVisualStyleBackColor = true;
-            this.successFlagCheckBox2.Visible = false;
-            // 
-            // vendorIDLabel
-            // 
-            vendorIDLabel.AutoSize = true;
-            vendorIDLabel.Location = new System.Drawing.Point(113, 56);
-            vendorIDLabel.Name = "vendorIDLabel";
-            vendorIDLabel.Size = new System.Drawing.Size(86, 20);
-            vendorIDLabel.TabIndex = 13;
-            vendorIDLabel.Text = "Vendor ID:";
-            vendorIDLabel.Visible = false;
-            // 
-            // vendorIDTextBox
-            // 
-            this.vendorIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimVendorBindingSource, "VendorID", true));
-            this.vendorIDTextBox.Location = new System.Drawing.Point(205, 59);
-            this.vendorIDTextBox.Name = "vendorIDTextBox";
-            this.vendorIDTextBox.Size = new System.Drawing.Size(104, 26);
-            this.vendorIDTextBox.TabIndex = 14;
-            this.vendorIDTextBox.Visible = false;
             // 
             // dTO_EmployeeDataGridView
             // 
@@ -2204,7 +2203,6 @@
             this.dataGridViewTextBoxColumn19,
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewCheckBoxColumn2,
-            this.dataGridViewTextBoxColumn21,
             this.dataGridViewTextBoxColumn22,
             this.dataGridViewTextBoxColumn23,
             this.dataGridViewTextBoxColumn24,
@@ -2271,12 +2269,6 @@
             this.dataGridViewCheckBoxColumn2.HeaderText = "Active";
             this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
             // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "FullName";
-            this.dataGridViewTextBoxColumn21.HeaderText = "FullName";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            // 
             // dataGridViewTextBoxColumn22
             // 
             this.dataGridViewTextBoxColumn22.DataPropertyName = "Exception";
@@ -2305,7 +2297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 1864);
+            this.ClientSize = new System.Drawing.Size(1375, 1308);
             this.Controls.Add(this.dTO_EmployeeDataGridView);
             this.Controls.Add(adjusterIDLabel);
             this.Controls.Add(this.carousel2);
@@ -2403,11 +2395,11 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTO_ClaimVendorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_CalendarDataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_CalendarDataDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_ClaimContactsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTO_ClaimVendorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_EmployeeDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

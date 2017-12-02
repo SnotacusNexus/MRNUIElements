@@ -264,80 +264,198 @@ namespace MRNUIElements.Controllers
 		}
 
 
-		async public Task buildLUs(object sender, BackgroundWorker myWorker)
+		async public Task<bool> buildLUs(object sender, BackgroundWorker myWorker)
 		{
-   //         int j = 0;
-   //         myWorker.ReportProgress(j++);
-			////mw.Text = "Building Adjustment Results Lookup Table";
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
-   //         myWorker.ReportProgress(j++);
-   //         await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AppointmentTypes>), "GetAppointmentTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimDocumentType>), "GetClaimDocumentTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimStatusTypes>), "GetClaimStatusTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_DamageTypes>), "GetDamageTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_EmployeeType>), "GetEmployeeTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Invoice>), "GetAllInvoices");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_InvoiceType>), "GetInvoiceTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_KnockResponseType>), "GetKnockResponseTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_LeadType>), "GetLeadTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayFrequncy>), "GetPayFrequencies");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentDescription>), "GetPayDescriptions");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentType>), "GetPaymentTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayType>), "GetPayTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Permissions>), "GetPermissions");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PlaneTypes>), "GetPlaneTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ProductType>), "GetProductTypes");
-			////	mw.Text = "Building Ridge Material Types Lookup Table";
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_RidgeMaterialType>), "GetRidgeMaterialTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ScopeType>), "GetScopeTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ServiceTypes>), "GetServiceTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ShingleType>), "GetShingleTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_UnitOfMeasure>), "GetUnitsOfMeasure");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetVendorTypes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_InsuranceCompany>), "GetAllInsuranceCompanies");
-			////	//Non LU
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Inspection>), "GetAllInspections");
-			////	await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
-			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimDocument>), "GetAllClaimDocuments");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Payment>), "GetAllPayments");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Employee>), "GetAllEmployees");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimContacts>), "GetAllClaimContacts");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Address>), "GetAllAddresses");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Customer>), "GetAllCustomers");
-			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_EmployeeDetail>), "GetAllEmployeeDetail");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Product>), "GetAllProducts");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Scope>), "GetAllScopes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimStatus>), "GetAllClaimStatuses");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Lead>), "GetAllLeads");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Plane>), "GetAllPlanes");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_User>), "GetAllUsers");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_AdditionalSupply>), "GetAllAdditionalSupplies");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_SurplusSupplies>), "GetAllSurplusSupplies");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Referrer>), "GetAllReferrers");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Damage>), "GetAllDamages");
-			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaimsToSchedule");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaims");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_CallLog>), "GetAllCallLogs");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjustment>), "GetAllAdjustments");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjuster>), "GetAllAdjusters");
-			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_NewRoof>), "GetAllNewRoofs");
-			//await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_KnockerResponse>), "GetAllKnockerResponses");
-			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllInactiveClaims");
-			////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClosedClaims");
-			//if (OpenClaimsList == null)
-			//	OpenClaimsList = getOpenClaims();
-			//if (ClosedClaimsList == null)
-			//	ClosedClaimsList = getClosedClaims();
-			//if (InactiveClaimsList == null)
-			//	InactiveClaimsList = getInactiveClaims();
-			//DoneLoading = await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
 
-			
+            int j = 0;
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AppointmentTypes>), "GetAppointmentTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimDocumentType>), "GetClaimDocumentTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimStatusTypes>), "GetClaimStatusTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_DamageTypes>), "GetDamageTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_EmployeeType>), "GetEmployeeTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Invoice>), "GetAllInvoices");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_InvoiceType>), "GetInvoiceTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_KnockResponseType>), "GetKnockResponseTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_LeadType>), "GetLeadTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayFrequncy>), "GetPayFrequencies");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentDescription>), "GetPayDescriptions");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentType>), "GetPaymentTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayType>), "GetPayTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Permissions>), "GetPermissions");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PlaneTypes>), "GetPlaneTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ProductType>), "GetProductTypes");
+            // mw.Text = "Building Ridge Material Types Lookup Table";
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_RidgeMaterialType>), "GetRidgeMaterialTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ScopeType>), "GetScopeTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ServiceTypes>), "GetServiceTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ShingleType>), "GetShingleTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_UnitOfMeasure>), "GetUnitsOfMeasure");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetVendorTypes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_InsuranceCompany>), "GetAllInsuranceCompanies");
+            // //Non LU
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Inspection>), "GetAllInspections");
+            //	 Task.Run(async()=>await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
+            // Task.Run(async()=>await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimDocument>), "GetAllClaimDocuments");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Payment>), "GetAllPayments");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Employee>), "GetAllEmployees");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimContacts>), "GetAllClaimContacts");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Address>), "GetAllAddresses");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Customer>), "GetAllCustomers");
+            // Task.Run(async()=>await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_EmployeeDetail>), "GetAllEmployeeDetail");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Product>), "GetAllProducts");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Scope>), "GetAllScopes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimStatus>), "GetAllClaimStatuses");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Lead>), "GetAllLeads");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Plane>), "GetAllPlanes");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_User>), "GetAllUsers");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_AdditionalSupply>), "GetAllAdditionalSupplies");
+            myWorker.ReportProgress(j++);
+
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_SurplusSupplies>), "GetAllSurplusSupplies");
+            myWorker.ReportProgress(j++);
+
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Referrer>), "GetAllReferrers");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Damage>), "GetAllDamages");
+            // Task.Run(async()=>await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaimsToSchedule");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaims");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_CallLog>), "GetAllCallLogs");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjustment>), "GetAllAdjustments");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjuster>), "GetAllAdjusters");
+            // Task.Run(async()=>await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_NewRoof>), "GetAllNewRoofs");
+            myWorker.ReportProgress(j++);
+           /* Task.Run(async () =>*/ await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_KnockerResponse>), "GetAllKnockerResponses");
+            //Task.Run(async () => await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllInactiveClaims");
+            //Task.Run(async () => await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClosedClaims");
+            if (s1.OpenClaimsList == null)
+                s1.OpenClaimsList = s1.getOpenClaims();
+            if (s1.ClosedClaimsList == null)
+                s1.ClosedClaimsList = s1.getClosedClaims();
+            if (s1.InactiveClaimsList == null)
+                s1.InactiveClaimsList = s1.getInactiveClaims();
+            /* Task.Run(async () =>*/
+           return( await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors"));
 
 
-		}
+
+            //int j = 0;
+            //myWorker.ReportProgress(j++);
+            ////mw.Text = "Building Adjustment Results Lookup Table";
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
+            //myWorker.ReportProgress(j++);
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AppointmentTypes>), "GetAppointmentTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimDocumentType>), "GetClaimDocumentTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ClaimStatusTypes>), "GetClaimStatusTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_DamageTypes>), "GetDamageTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_EmployeeType>), "GetEmployeeTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Invoice>), "GetAllInvoices");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_InvoiceType>), "GetInvoiceTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_KnockResponseType>), "GetKnockResponseTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_LeadType>), "GetLeadTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayFrequncy>), "GetPayFrequencies");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentDescription>), "GetPayDescriptions");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PaymentType>), "GetPaymentTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PayType>), "GetPayTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Permissions>), "GetPermissions");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_PlaneTypes>), "GetPlaneTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ProductType>), "GetProductTypes");
+            ////	mw.Text = "Building Ridge Material Types Lookup Table";
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_RidgeMaterialType>), "GetRidgeMaterialTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ScopeType>), "GetScopeTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ServiceTypes>), "GetServiceTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_ShingleType>), "GetShingleTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_UnitOfMeasure>), "GetUnitsOfMeasure");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_VendorTypes>), "GetVendorTypes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_InsuranceCompany>), "GetAllInsuranceCompanies");
+            ////	//Non LU
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Inspection>), "GetAllInspections");
+            ////	await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetOpenClaimsBySalespersonID");
+            ////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimDocument>), "GetAllClaimDocuments");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Payment>), "GetAllPayments");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Employee>), "GetAllEmployees");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimContacts>), "GetAllClaimContacts");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Address>), "GetAllAddresses");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Customer>), "GetAllCustomers");
+            ////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_EmployeeDetail>), "GetAllEmployeeDetail");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_Product>), "GetAllProducts");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Scope>), "GetAllScopes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_ClaimStatus>), "GetAllClaimStatuses");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Lead>), "GetAllLeads");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Plane>), "GetAllPlanes");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_User>), "GetAllUsers");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_AdditionalSupply>), "GetAllAdditionalSupplies");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_SurplusSupplies>), "GetAllSurplusSupplies");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Referrer>), "GetAllReferrers");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Damage>), "GetAllDamages");
+            ////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaimsToSchedule");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClaims");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_CallLog>), "GetAllCallLogs");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjustment>), "GetAllAdjustments");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Adjuster>), "GetAllAdjusters");
+            ////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_LU_AdjustmentResult>), "GetAdjustmentResults");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_NewRoof>), "GetAllNewRoofs");
+            //await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_KnockerResponse>), "GetAllKnockerResponses");
+            ////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllInactiveClaims");
+            ////await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Claim>), "GetAllClosedClaims");
+            //if (OpenClaimsList == null)
+            //    OpenClaimsList = getOpenClaims();
+            //if (ClosedClaimsList == null)
+            //    ClosedClaimsList = getClosedClaims();
+            //if (InactiveClaimsList == null)
+            //    InactiveClaimsList = getInactiveClaims();
+           // DoneLoading = await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
+
+
+
+
+        }
 		public List<DTO_Claim> getOpenClaims()
 		{
 			var a = new List<DTO_Claim>();

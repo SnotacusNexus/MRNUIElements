@@ -20,13 +20,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MRNNexus_Model;
 using static Syncfusion.Windows.Controls.Notification.SfBusyIndicator;
-using Coherent.UI.Windows.Controls;
 using MRNUIElements.Controllers;
 using System.Diagnostics;
 using System.Net.Mail;
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using MRNUIElements.Utility;
 
 namespace MRNUIElements
 {

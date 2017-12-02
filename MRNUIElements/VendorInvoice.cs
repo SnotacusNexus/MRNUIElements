@@ -12,14 +12,13 @@ namespace MRNUIElements
 {
     public partial class VendorInvoice : Form
     {
-        public ImageViewer imageViewer = new ImageViewer();
-       
+      
         public VendorInvoice()
         {
             InitializeComponent();
-            imageViewer.Path = openFileDialog1.FileName;
            
-            elementHost1.Child = imageViewer;
+           
+            
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendorInvoice));
             this.listView1 = new System.Windows.Forms.ListView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -38,7 +39,18 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.dTO_VendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dTO_LU_InvoiceTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTO_VendorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTO_LU_InvoiceTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // listView1
@@ -120,11 +132,81 @@
             this.button5.Text = "Browse...";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // dTO_VendorBindingSource
+            // 
+            this.dTO_VendorBindingSource.DataSource = typeof(MRNNexus_Model.DTO_Vendor);
+            // 
+            // dTO_LU_InvoiceTypeBindingSource
+            // 
+            this.dTO_LU_InvoiceTypeBindingSource.DataSource = typeof(MRNNexus_Model.DTO_LU_InvoiceType);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(50, 12);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(238, 28);
+            this.comboBox1.TabIndex = 14;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(50, 47);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(238, 26);
+            this.maskedTextBox1.TabIndex = 15;
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Location = new System.Drawing.Point(50, 80);
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(238, 26);
+            this.maskedTextBox2.TabIndex = 16;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(319, 14);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(276, 26);
+            this.dateTimePicker1.TabIndex = 17;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(84, 142);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(204, 28);
+            this.comboBox2.TabIndex = 19;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(84, 112);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(312, 28);
+            this.comboBox3.TabIndex = 20;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(602, 445);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(66, 24);
+            this.checkBox1.TabIndex = 21;
+            this.checkBox1.Text = "Paid";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // VendorInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 633);
+            this.ClientSize = new System.Drawing.Size(1004, 685);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button4);
@@ -133,9 +215,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Name = "VendorInvoice";
-            this.Text = "VendorInvoice";
+            this.Text = "Vendor Invoice";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTO_VendorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTO_LU_InvoiceTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,5 +234,15 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.BindingSource dTO_VendorBindingSource;
+        private System.Windows.Forms.BindingSource dTO_LU_InvoiceTypeBindingSource;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private Syncfusion.Windows.Shared.CurrencyTextBox invoiceAmountCurrencyTextBox;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

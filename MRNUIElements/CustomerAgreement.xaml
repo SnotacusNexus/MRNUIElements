@@ -14,7 +14,7 @@
       Title="CustomerAgreement"
       Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}"
       Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}"
-      mc:Ignorable="d">
+      mc:Ignorable="d" Loaded="Page_Loaded">
 
 
     <Page.Resources>
@@ -29,21 +29,21 @@
         <dom:InsuranceCompany x:Key="_InsuranceCompany"/>
         <dom:ClaimContacts x:Key="_ClaimContacts"/>
 
-        <dom:Referrer x:Key="_Referrer"/>
-        <dom:Scope x:Key="_Scope"/>
-        <dom:CallLog x:Key="_CallLog"/>
-        <dom:CalendarData x:Key="_CalendarData"/>
-        <dom:Invoice x:Key="_Invoice"/>
+        <dom:Referrer x:Key="_Referrer" x:Name="Referrer"/>
+        <dom:Scope x:Key="_Scope" x:Name="Scope"/>
+        <dom:CallLog x:Key="_CallLog" x:Name="CallLog"/>
+        <dom:CalendarData x:Key="_CalendarData" x:Name="CalendarData"/>
+        <dom:Invoice x:Key="_Invoice" x:Name="Invoice"/>
         <converters:AddressBlockFromAddressIDConverter x:Key="AC"/>
-        <dom:ClaimDocument x:Key="_ClaimDocument"/>
-        <dom:Adjustment x:Key="_Adjustment"/>
-        <dom:Adjuster x:Key="_Adjuster"/>
-        <dom:Inspection x:Key="_Inspection"/>
-        <dom:Payment x:Key="_Payment"/>
-        <dom:Plane x:Key="_Plane"/>
-        <dom:NewRoof x:Key="_NewRoof"/>
-        <dom:OrderItem x:Key="_OrderItem"/>
-        <dom:Order x:Key="_Order"/>
+        <dom:ClaimDocument x:Key="_ClaimDocument" x:Name="ClaimDocument"/>
+        <dom:Adjustment x:Key="_Adjustment" x:Name="Adjustment"/>
+        <dom:Adjuster x:Key="_Adjuster" x:Name="Adjuster"/>
+        <dom:Inspection x:Key="_Inspection" x:Name="Inspection"/>
+        <dom:Payment x:Key="_Payment" x:Name="Payment"/>
+        <dom:Plane x:Key="_Plane" x:Name="Plane"/>
+        <dom:NewRoof x:Key="_NewRoof" x:Name="NewRoof"/>
+        <dom:OrderItem x:Key="_OrderItem" x:Name="OrderItem"/>
+        <dom:Order x:Key="_Order" x:Name="Order"/>
         <local:ImageGallary x:Key="ImageList"/>
         <dom:ListOfClaimDocuments x:Key="LOCD"/>
         <CollectionViewSource x:Key="dTO_CustomerViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Customer}, CreateList=True}" />
@@ -391,7 +391,7 @@
                             <Button x:Name="AddClaimBtn" Margin="370,572,33,293" Click="AddClaimBtn_Click" Grid.Column="1">
                                 <Grid>
 
-                                    <Image x:Name="SubmitButtonBackground" Source="{StaticResource XMark}" Stretch="Fill"/>
+                                    <Image x:Name="SubmitButtonBackground" Source="{StaticResource XMark}" Stretch="Fill" HorizontalAlignment="Left" Width="127"/>
                                     <TextBlock VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Heavy" Height="54" Margin="32,22,31,20" Panel.ZIndex="10" FontSize="18"><Run Text="Submit"/><LineBreak/><Run Text="Claim"/></TextBlock>
 
                                 </Grid>
@@ -441,8 +441,8 @@
                                 <syncfusion:IntegerTextBox x:Name="addressIDIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="1" Text="{Binding Address}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
                                 <syncfusion:IntegerTextBox x:Name="customerIDIntegerTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="2" Text="{Binding CustomerID, ElementName=customerIDIntegerTextBox, Mode=TwoWay}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
                                 <syncfusion:MaskedTextBox x:Name="zipMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="316,31,0,6" Text="{Binding Zip}" VerticalAlignment="Center" Width="100" WatermarkText="Zipcode"/>
-                                <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,6" VerticalAlignment="Center" Width="206" WatermarkText="City" ReadOnly="True" IsUndoEnabled="True" Text="{Binding Zip, Source={StaticResource _Address}, Converter={StaticResource AC}, ConverterParameter=3}"/>
-                                <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="211,31,0,6" VerticalAlignment="Center" Width="100" WatermarkText="State" ReadOnly="True" Mask="" Text="{Binding Zip, Source={StaticResource _Address}, Converter={StaticResource AC}, ConverterParameter=4}"/>
+                                <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,6" VerticalAlignment="Center" Width="206" WatermarkText="City" ReadOnly="True" DataContext="dTO_AddressCollectionViewSource" IsUndoEnabled="True" Text="{Binding Zip, Converter={StaticResource AC}, ConverterParameter=3}"/>
+                                <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="211,31,0,6" VerticalAlignment="Center" Width="100" WatermarkText="State" DataContext="dTO_AddressCollectionViewSource" ReadOnly="True" Mask="" Text="{Binding Zip, Converter={StaticResource AC}, ConverterParameter=4}"/>
                             </Grid>
 
 
@@ -460,7 +460,7 @@
                             <syncfusion:MaskedTextBox x:Name="middleNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="171,69,0,873" Text="{Binding MiddleName}" VerticalAlignment="Center" Width="100" WatermarkText="Middle Name"/>
 
                             <syncfusion:MaskedTextBox x:Name="primaryNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="66,157,0,785" Text="{Binding PrimaryNumber}" VerticalAlignment="Center" Width="120" WatermarkText="Primary Number" Mask="(###) ###-####"/>
-                            <syncfusion:MaskedTextBox x:Name="secondaryNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="359,157,0,785" Text="{Binding SecondaryNumber}" VerticalAlignment="Center" Width="122" WatermarkText="Secondary Number" Mask="(###) ###-####" WatermarkOpacity="0"/>
+                            <syncfusion:MaskedTextBox x:Name="secondaryNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="359,157,0,785" Text="{Binding SecondaryNumber}" VerticalAlignment="Center" Width="122" WatermarkText="Secondary Number" Mask="(###) ###-####"/>
                             <syncfusion:MaskedTextBox x:Name="suffixMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="381,70,0,872" Text="{Binding Suffix}" VerticalAlignment="Center" Width="100" WatermarkText="Suffix"/>
 
 
@@ -616,14 +616,14 @@
                             </ComboBox>
                             <DatePicker x:Name="leadDateDatePicker" HorizontalAlignment="Left" Margin="170,10,0,0" SelectedDate="{Binding LeadDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Height="22" Width="209"/>
                             <syncfusion:IntegerTextBox x:Name="leadIDIntegerTextBox" HorizontalAlignment="Left" Height="23" Margin="130,145,0,26" MinWidth="100" NumberGroupSeparator="," Text="{Binding LeadID, ElementName=leadIntegerTextBox1, Mode=TwoWay}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
-                            <ComboBox x:Name="leadTypeIDComboBox" DisplayMemberPath="LeadType" HorizontalAlignment="Left" Height="22" Margin="11,43,0,0" VerticalAlignment="Top" Width="120">
+                            <ComboBox x:Name="leadTypeIDComboBox" DisplayMemberPath="LeadType" SelectedValuePath="LeadTypeID"  HorizontalAlignment="Left" Height="22" Margin="11,43,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="leadTypeIDComboBox_SelectionChanged">
                                 <ComboBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <VirtualizingStackPanel/>
                                     </ItemsPanelTemplate>
                                 </ComboBox.ItemsPanel>
                             </ComboBox>
-                            <ComboBox x:Name="salesPersonIDComboBox1" DataContext="dTO_ClaimContactsViewSource" SelectedItem="{StaticResource _Employee}" HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="11,10,0,34" Width="122">
+                            <ComboBox x:Name="salesPersonIDComboBox1" DisplayMemberPath="Employee" SelectedValuePath="EmployeeID" HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="11,10,0,34" Width="122">
                                 <ComboBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <VirtualizingStackPanel/>

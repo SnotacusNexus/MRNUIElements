@@ -2917,4 +2917,10 @@
         PxBt537agNb/A1g2LsYwLjrBAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="dTO_VendorBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>374, 17</value>
+  </metadata>
+  <metadata name="dTO_LU_InvoiceTypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>656, 17</value>
+  </metadata>
 </root>
