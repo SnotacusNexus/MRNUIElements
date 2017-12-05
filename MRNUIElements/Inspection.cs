@@ -19,5 +19,10 @@ namespace MRNUIElements
             await s.MakeRequest(new DTO_Base(), typeof(List<DTO_InsuranceCompany>), "GetAllInsuranceCompanyNames");
             s.InsuranceCompaniesList.ForEach(i => insuranceCompanies.Add(i));
         }
+
+        public static explicit operator Inspection(DTO_Inspection v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

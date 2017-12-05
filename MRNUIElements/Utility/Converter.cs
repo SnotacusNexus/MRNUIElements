@@ -161,28 +161,30 @@ namespace MRNUIElements.Utility
             throw new NotImplementedException();
         }
     }
-    public class BitmapImageConverter : IValueConverter
-    {
+    //public class BitmapImageConverter : IValueConverter
+    //{
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            Task.Run(async () => {
-                ServiceLayer.getInstance().ClaimDocumentsList.Clear();
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        ServiceLayer s1 = ServiceLayer.getInstance();
+    //        Task.Run(async () => {
+    //           s1.ClaimDocumentsList.Clear();
 
-                await ServiceLayer.getInstance().GetClaimDocumentsByClaimID(new DTO_Claim { ClaimID = (int)parameter });
-            });
-                DTO_ClaimDocument a = ServiceLayer.getInstance().ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
-            return "http://" + a.FilePath + a.FileName + a.FileExt;
-        }
+    //            await s1.GetClaimDocumentsByClaimID(new DTO_Claim { ClaimID = (int)parameter });
+    //        });
+    //        DTO_ClaimDocument a = new DTO_ClaimDocument();
+    //             a =s1.ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
+    //        return "http://" + a.FilePath + a.FileName + a.FileExt;
+    //    }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {  var uri = (Uri)value;
-            var img = new System.Windows.Controls.Image();
-            img.Source = new BitmapImage(uri) { CacheOption = BitmapCacheOption.None };
-            return img;
-            throw new NotImplementedException();
-        }
-    }
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {  var uri = (Uri)value;
+    //        var img = new System.Windows.Controls.Image();
+    //        img.Source = new BitmapImage(uri) { CacheOption = BitmapCacheOption.None };
+    //        return img;
+    //        throw new NotImplementedException();
+    //    }
+   // }
 
 
     public class ClaimContactsConverter : IValueConverter
@@ -251,17 +253,12 @@ namespace MRNUIElements.Utility
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var listToReturn = new List<Bitmap>();
 
+           DTO_ClaimDocument item = s1.ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
+       return new System.Windows.Controls.Image().Source = new BitmapImage(new Uri(@"http://" + item.FilePath + item.FileName + item.FileExt));
 
-            var inny = (List<DTO_ClaimDocument>)value;
-
-            foreach (var item in inny)
-            {
-                listToReturn.Add(new Bitmap(@"http://" + item.FilePath + item.FileName + item.FileExt));
-            }
-
-            return listToReturn;
+       
+       
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

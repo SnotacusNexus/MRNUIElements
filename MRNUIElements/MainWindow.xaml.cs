@@ -402,7 +402,8 @@ namespace MRNUIElements
 
         async private void Claim_Click(object sender, RoutedEventArgs e)
         {
-            ns.Navigate(new AddPropertyAddress());
+            ns.Navigate(new CustomerAgreement());
+           // ns.Navigate(new AddPropertyAddress());
         }
 
         private void Contests_Click(object sender, RoutedEventArgs e)
@@ -479,7 +480,7 @@ namespace MRNUIElements
                 //}
             }
             busyIndicator.IsBusy = false;
-            
+
             Login loginpage = new Login();
 VerboseStatusDisplay.Visibility = Visibility.Collapsed;
             this.MRNClaimNexusMainFrame.NavigationService.Navigate(loginpage);
@@ -508,6 +509,8 @@ VerboseStatusDisplay.Visibility = Visibility.Collapsed;
 
         private void MRNClaimNexusMainFrame_Loaded(object sender, RoutedEventArgs e)
         {
+        //    menuBar.IsEnabled = false;
+          //  busyIndicator.IsBusy = true;
             Task.Run(async () =>
             {
                 await s1.GetAllClaims();
@@ -535,9 +538,9 @@ VerboseStatusDisplay.Visibility = Visibility.Collapsed;
                 await s1.GetAllNewRoofs();
                 await s1.GetAllOrders();
                 await s1.GetAllOrderItems();
-
-                System.Windows.Forms.MessageBox.Show("Loaded");
+             
             });
+          
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -545,8 +548,9 @@ VerboseStatusDisplay.Visibility = Visibility.Collapsed;
             ((MainWindow)sender).busyIndicator.Visibility = Visibility.Visible;
 
             myWorker.RunWorkerAsync();
-          
-            
+            menuBar.IsEnabled = true;
+            busyIndicator.IsBusy = false;
+            ((MainWindow)sender).busyIndicator.Visibility = Visibility.Hidden;
         }
     }
 }

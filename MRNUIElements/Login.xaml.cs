@@ -126,8 +126,8 @@ namespace MRNUIElements
 			if (s1.LoggedInEmployee != null)
 			{
 				var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
-
-				this.NavigationService.Navigate(Page);
+                BI.Visibility = Visibility.Hidden;
+				this.NavigationService.Navigate(new MRNLogo1());
 			}
 
 			else MessageBox.Show(s.ToString(), "Login Failure", MessageBoxButton.OK, MessageBoxImage.Error);

@@ -42,30 +42,30 @@ namespace MRNUIElements
         //  ObservableCollection<DTO_InsuranceCompany> INSCO = new ObservableCollection<DTO_InsuranceCompany>();
         int i = 1;
         static public MRNClaim _MrnClaim = MRNClaim.getInstance();
-        Lead _Lead { get; set; }
-        Customer _Customer { get; set; }
-        ClaimStatus _ClaimStatus { get; set; }
-        Employee _Employee { get; set; }
-        Address _Address { get; set; }
-        InsuranceCompany _InsuranceCompany { get; set; }
-        ClaimContacts _ClaimContacts { get; set; }
-        Referrer _Referrer { get; set; }
-        Scope _Scope { get; set; }
-        CallLog _CallLog { get; set; }
-        CalendarData _CalendarData { get; set; }
-        ObservableCollection<string> fileList = new ObservableCollection<string>();
+        DTO_Lead _Lead { get; set; }
+        DTO_Customer _Customer { get; set; }
+        DTO_ClaimStatus _ClaimStatus { get; set; }
+        DTO_Employee _Employee { get; set; }
+        DTO_Address _Address { get; set; }
+        DTO_InsuranceCompany _InsuranceCompany { get; set; }
+        DTO_ClaimContacts _ClaimContacts { get; set; }
+        DTO_Referrer _Referrer { get; set; }
+        DTO_Scope _Scope { get; set; }
+        DTO_CallLog _CallLog { get; set; }
+        DTO_CalendarData _CalendarData { get; set; }
+       ObservableCollection<string> fileList = new ObservableCollection<string>();
         ObservableCollection<System.Web.UI.WebControls.Image> ImageList = new ObservableCollection<System.Web.UI.WebControls.Image>();
-        Invoice _Invoice { get; set; }
-        ClaimDocument _ClaimDocument { get; set; }
-        Adjustment _Adjustment { get; set; }
+        DTO_Invoice _Invoice { get; set; }
+        DTO_ClaimDocument _ClaimDocument { get; set; }
+        DTO_Adjustment _Adjustment { get; set; }
 
-        Adjuster _Adjuster { get; set; }
-        Inspection _Inspection { get; set; }
-        Payment _Payment { get; set; }
-        Plane _Plane { get; set; }
-        NewRoof _NewRoof { get; set; }
-        OrderItem _OrderItem { get; set; }
-        Order _Order { get; set; }
+        DTO_Adjuster _Adjuster { get; set; }
+        DTO_Inspection _Inspection { get; set; }
+        DTO_Payment _Payment { get; set; }
+        DTO_Plane _Plane { get; set; }
+        DTO_NewRoof _NewRoof { get; set; }
+        DTO_OrderItem _OrderItem { get; set; }
+        DTO_Order _Order { get; set; }
 
         public CollectionViewSource ClaimViewSource { get; set; }
         public CollectionViewSource LeadViewSource { get; set; }
@@ -103,15 +103,20 @@ namespace MRNUIElements
             InitializeComponent();
 
             leadTypeIDComboBox.ItemsSource = s1.LeadTypes;
+            dTO_InsuranceCompanyComboBox.ItemsSource = s1.InsuranceCompaniesList;
+            salesPersonIDComboBox1.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 13);
+            SetContext();
+            ridgeMaterialTypeIDComboBox.ItemsSource = s1.RidgeMaterialTypes;
+            shingleTypeIDComboBox.ItemsSource = s1.ShingleTypes;
 
         }
 
         public void SetContext()
         {
-           knockerIDComboBox.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 14);
-          salesPersonIDComboBox.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 13);
-          supervisorIDComboBox.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 10);
-           salesManagerIDComboBox.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 7);
+            knockerIDComboBox.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 14);
+            salesPersonIDComboBox.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 13);
+            supervisorIDComboBox.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 10);
+            salesManagerIDComboBox.ItemsSource = s1.EmployeesList.FindAll(x => x.EmployeeTypeID == 7);
 
         }
 
@@ -124,14 +129,14 @@ namespace MRNUIElements
             if (cpp.ShowDialog().Value == true)
             {
                 Claim = cpp.Claim;
-                carousel_Loaded(Claim, new RoutedEventArgs());
+                //  carousel_Loaded(Claim, new RoutedEventArgs());
             }
-            _Address = new Address();
-            _Lead = new Lead();
-            _Customer = new Customer();
-            _Inspection = new Inspection();
-            _Referrer = new Referrer();
-            _ClaimContacts = new ClaimContacts();
+            _Address = new DTO_Address();
+            _Lead = new DTO_Lead();
+            _Customer = new DTO_Customer();
+            _Inspection = new DTO_Inspection();
+            _Referrer = new DTO_Referrer();
+            _ClaimContacts = new DTO_ClaimContacts();
 
             ClaimViewSource = ((CollectionViewSource)(this.FindResource("dTO_ClaimViewSource")));
 
@@ -171,35 +176,35 @@ namespace MRNUIElements
                 //                   {
                 //                       ClaimViewSource.Source = s1.ClaimsList.FindAll(x => x.ClaimID == Claim.ClaimID);
                 //                   }
-                //                   catch (NullReferenceException nre) { }
+                //                   catch (NullReferenceException nre) {}
                 //                   try
                 //                   {
                 //                       CallLogViewSource.Source = s1.CallLogsList.FindAll(x => x.ClaimID == Claim.ClaimID);
                 //                   }
-                //                   catch (NullReferenceException nre) { }
-                //                   try { LeadGrid.DataContext = s1.LeadsList.FindAll(x => x.LeadID == Claim.LeadID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { CustomerGrid.DataContext = s1.CustomersList.FindAll(x => x.CustomerID == Claim.CustomerID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { ClaimGrid.DataContext = s1.ClaimStatusList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { EmployeeViewSource.Source = s1.EmployeesList.FindAll(x => x.EmployeeID == s1.ClaimContactsList.Find(y => y.ClaimID == Claim.ClaimID).SalesPersonID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { CustAddressGrid.DataContext = s1.AddressesList.FindAll(x => x.AddressID == Claim.PropertyID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { InsuranceCoGrid.DataContext = s1.InsuranceCompaniesList.FindAll(x => x.InsuranceCompanyID == Claim.InsuranceCompanyID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //         //          try { ClaimContactsGrid = s1.ClaimContactsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { leadTypeIDComboBox.DataContext = s1.LeadTypes.FindAll(x => x.LeadTypeID == s1.LeadsList.Find(y => y.LeadID == Claim.LeadID).LeadTypeID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { ReferrerGrid.DataContext = s1.ReferrersList.FindAll(x => x.ReferrerID == s1.LeadsList.Find(y => y.LeadID == Claim.LeadID).CreditToID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //         ///          try { ScopeGrid.DataContext = s1.ScopesList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { dTO_CallLogDataGrid.DataContext = s1.CallLogsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //       //            try { CalendarDataGrid.DataContext = s1.CalendarDataList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { dTO_InvoiceDataGrid.DataContext = s1.InvoicesList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { AdjustmentResultViewSource.Source = s1.AdjustmentResults.FindAll(x => x.AdjustmentResultID == s1.AdjustmentsList.Find(y => y.ClaimID == Claim.ClaimID).AdjustmentResultID); } catch (NullReferenceException nre) { }
-                //      //             try { dTO_ClaimDocumentsGrid.DataContext = s1.ClaimDocumentsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //       //            try { dTO_AdjustmentGrid.DataContext = s1.AdjustmentsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //       //            try { dTO_AdjusterGrid.DataContext = s1.AdjustersList.FindAll(x => x.AdjusterID == s1.AdjustersList.Find(y => y.AdjusterID == s1.AdjustmentsList.Find(z => z.ClaimID == Claim.ClaimID).AdjusterID).AdjusterID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //      //             try { dTO_InspectionsGrid.DataContext = s1.InspectionsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { dTO_PaymentDataGrid.DataContext = s1.PaymentsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //   //                try { dTO_PlaneGrid.DataContext = s1.PlanesList.FindAll(x => x.InspectionID == s1.InspectionsList.Find(y => y.ClaimID == Claim.ClaimID).InspectionID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //  //                 try { dTO_NewRoofGrid.DataContext = s1.NewRoofsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                //                   try { dTO_OrderItemDataGrid.DataContext = s1.OrderItemsList.FindAll(x => x.OrderID == s1.OrdersList.Find(y => y.ClaimID == Claim.ClaimID).OrderID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
-                ////                   try { dTO_OrderGrid.DataContext = s1.OrdersList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show(nre.ToString()); }
+                //                   catch (NullReferenceException nre) {}
+                //                   try { LeadGrid.DataContext = s1.LeadsList.FindAll(x => x.LeadID == Claim.LeadID); } catch (NullReferenceException nre) {}
+                //                   try { CustomerGrid.DataContext = s1.CustomersList.FindAll(x => x.CustomerID == Claim.CustomerID); } catch (NullReferenceException nre) {}
+                //                   try { ClaimGrid.DataContext = s1.ClaimStatusList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //                   try { EmployeeViewSource.Source = s1.EmployeesList.FindAll(x => x.EmployeeID == s1.ClaimContactsList.Find(y => y.ClaimID == Claim.ClaimID).SalesPersonID); } catch (NullReferenceException nre) {}
+                //                   try { CustAddressGrid.DataContext = s1.AddressesList.FindAll(x => x.AddressID == Claim.PropertyID); } catch (NullReferenceException nre) {}
+                //                   try { InsuranceCoGrid.DataContext = s1.InsuranceCompaniesList.FindAll(x => x.InsuranceCompanyID == Claim.InsuranceCompanyID); } catch (NullReferenceException nre) {}
+                //         //          try { ClaimContactsGrid = s1.ClaimContactsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //                   try { leadTypeIDComboBox.DataContext = s1.LeadTypes.FindAll(x => x.LeadTypeID == s1.LeadsList.Find(y => y.LeadID == Claim.LeadID).LeadTypeID); } catch (NullReferenceException nre) {}
+                //                   try { ReferrerGrid.DataContext = s1.ReferrersList.FindAll(x => x.ReferrerID == s1.LeadsList.Find(y => y.LeadID == Claim.LeadID).CreditToID); } catch (NullReferenceException nre) {}
+                //         ///          try { ScopeGrid.DataContext = s1.ScopesList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //                   try { dTO_CallLogDataGrid.DataContext = s1.CallLogsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //       //            try { CalendarDataGrid.DataContext = s1.CalendarDataList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //                   try { dTO_InvoiceDataGrid.DataContext = s1.InvoicesList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //                   try { AdjustmentResultViewSource.Source = s1.AdjustmentResults.FindAll(x => x.AdjustmentResultID == s1.AdjustmentsList.Find(y => y.ClaimID == Claim.ClaimID).AdjustmentResultID); } catch (NullReferenceException nre) {}
+                //      //             try { dTO_ClaimDocumentsGrid.DataContext = s1.ClaimDocumentsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //       //            try { dTO_AdjustmentGrid.DataContext = s1.AdjustmentsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //       //            try { dTO_AdjusterGrid.DataContext = s1.AdjustersList.FindAll(x => x.AdjusterID == s1.AdjustersList.Find(y => y.AdjusterID == s1.AdjustmentsList.Find(z => z.ClaimID == Claim.ClaimID).AdjusterID).AdjusterID); } catch (NullReferenceException nre) {}
+                //      //             try { dTO_InspectionsGrid.DataContext = s1.InspectionsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //                   try { dTO_PaymentDataGrid.DataContext = s1.PaymentsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //   //                try { dTO_PlaneGrid.DataContext = s1.PlanesList.FindAll(x => x.InspectionID == s1.InspectionsList.Find(y => y.ClaimID == Claim.ClaimID).InspectionID); } catch (NullReferenceException nre) {}
+                //  //                 try { dTO_NewRoofGrid.DataContext = s1.NewRoofsList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
+                //                   try { dTO_OrderItemDataGrid.DataContext = s1.OrderItemsList.FindAll(x => x.OrderID == s1.OrdersList.Find(y => y.ClaimID == Claim.ClaimID).OrderID); } catch (NullReferenceException nre) {}
+                ////                   try { dTO_OrderGrid.DataContext = s1.OrdersList.FindAll(x => x.ClaimID == Claim.ClaimID); } catch (NullReferenceException nre) {}
                 //               }
 
 
@@ -297,26 +302,26 @@ namespace MRNUIElements
                         InvoiceViewSource.Source = s1.InvoicesList.FindAll(x => x.ClaimID == Claim.ClaimID);
                     }
                     catch (NullReferenceException nre) { }
-                    try
-                    {
-                        AdjustmentResultViewSource.Source = s1.AdjustmentResults.FindAll(x => x.AdjustmentResultID == s1.AdjustmentsList.Find(y => y.ClaimID == Claim.ClaimID).AdjustmentResultID);
-                    }
-                    catch (NullReferenceException nre) { }
+                    //try
+                    //{
+                    //    AdjustmentResultViewSource.Source = s1.AdjustmentResults.FindAll(x => x.AdjustmentResultID == s1.AdjustmentsList.Find(y => y.ClaimID == Claim.ClaimID).AdjustmentResultID);
+                    //}
+                    //catch (NullReferenceException nre) {}
                     try
                     {
                         ClaimDocumentViewSource.Source = s1.ClaimDocumentsList.FindAll(x => x.ClaimID == Claim.ClaimID);
                     }
                     catch (NullReferenceException nre) { }
-                    try
-                    {
-                        AdjustmentViewSource.Source = s1.AdjustmentsList.FindAll(x => x.ClaimID == Claim.ClaimID); ;
-                    }
-                    catch (NullReferenceException nre) { }
-                    try
-                    {
-                        AdjusterViewSource.Source = s1.AdjustersList.FindAll(x => x.AdjusterID == s1.AdjustersList.Find(y => y.AdjusterID == s1.AdjustmentsList.Find(z => z.ClaimID == Claim.ClaimID).AdjusterID).AdjusterID);
-                    }
-                    catch (NullReferenceException nre) { }
+                    //try
+                    //{
+                    //    AdjustmentViewSource.Source = s1.AdjustmentsList.FindAll(x => x.ClaimID == Claim.ClaimID); ;
+                    //}
+                    //catch (NullReferenceException nre) {}
+                    //try
+                    //{
+                    //    AdjusterViewSource.Source = s1.AdjustersList.FindAll(x => x.AdjusterID == s1.AdjustersList.Find(y => y.AdjusterID == s1.AdjustmentsList.Find(z => z.ClaimID == Claim.ClaimID).AdjusterID).AdjusterID);
+                    //}
+                    //catch (NullReferenceException nre) {}
                     try
                     {
                         InspectionViewSource.Source = s1.InspectionsList.FindAll(x => x.ClaimID == Claim.ClaimID);
@@ -338,16 +343,16 @@ namespace MRNUIElements
                         NewRoofViewSource.Source = s1.NewRoofsList.FindAll(x => x.ClaimID == Claim.ClaimID);
                     }
                     catch (NullReferenceException nre) { }
-                    try
-                    {
-                        OrderItemViewSource.Source = s1.OrderItemsList.FindAll(x => x.OrderID == s1.OrdersList.Find(y => y.ClaimID == Claim.ClaimID).OrderID);
-                    }
-                    catch (NullReferenceException nre) { }
-                    try
-                    {
-                        OrderViewSource.Source = s1.OrdersList.FindAll(x => x.ClaimID == Claim.ClaimID);
-                    }
-                    catch (NullReferenceException nre) { }
+                    //try
+                    //{
+                    //    OrderItemViewSource.Source = s1.OrderItemsList.FindAll(x => x.OrderID == s1.OrdersList.Find(y => y.ClaimID == Claim.ClaimID).OrderID);
+                    //}
+                    //catch (NullReferenceException nre) {}
+                    //try
+                    //{
+                    //    OrderViewSource.Source = s1.OrdersList.FindAll(x => x.ClaimID == Claim.ClaimID);
+                    //}
+                    //catch (NullReferenceException nre) {}
                     try
                     {
 
@@ -501,6 +506,187 @@ namespace MRNUIElements
         //    throw new NotImplementedException();
         //}
 
+
+        async void addTestClaim()
+        {
+            DTO_Lead le = new DTO_Lead();
+            DTO_Referrer re = new DTO_Referrer();
+            DTO_Customer cu = new DTO_Customer();
+            DTO_Address ad = new DTO_Address();
+            DTO_Inspection ins = new DTO_Inspection();
+            DTO_Claim cl = new DTO_Claim();
+            DTO_ClaimContacts cc = new DTO_ClaimContacts();
+            List<DTO_ClaimDocument> cdlist = new List<DTO_ClaimDocument>();
+            DTO_Plane pllist = new DTO_Plane();
+
+
+            int leadtype = ((DTO_Lead)leadTypeIDComboBox.SelectedItem).LeadTypeID;
+            int knockresp = 0;
+            DateTime leadDate = leadDateDatePicker.SelectedDate.Value;
+            bool mailpromo = mailPromosCheckBox.IsChecked.Value;
+            //get sp id from empTable we gonna pole for one just for fun;
+            int spid = ((DTO_Employee)salesPersonIDComboBox.SelectedItem).EmployeeID;
+
+            DateTime clLossDate = lossDateDatePicker.SelectedDate.Value;
+
+            le.LeadTypeID = leadtype;
+            le.KnockerResponseID = knockresp;
+            le.LeadDate = leadDate;
+            le.SalesPersonID = spid;
+            cc.SalesManagerID = 0;
+            cc.SalesPersonID = le.SalesPersonID;
+
+
+
+
+            re.FirstName = firstNameMaskedTextBox1.Text;
+            re.LastName = lastNameMaskedTextBox1.Text;
+            re.Suffix = suffixMaskedTextBox1.Text;
+            re.CellPhone = cellPhoneMaskedTextBox.Text;
+            re.Email = emailMaskedTextBox1.Text;
+            re.MailingAddress = mailingAddressMaskedTextBox.Text;
+            re.Zip = zipMaskedTextBox1.Text;
+            //add re get re id and apply to le at cred to id
+            await s1.AddReferrer(re);
+            //check for success
+            if (s1.Referrer.Message == null)
+            {
+                //was success
+                le.CreditToID = s1.Referrer.ReferrerID;
+                cc.KnockerID = le.CreditToID; //we gonna do this for now
+            }
+            // if not the quit throw error
+            else return;
+            //start a log so if error is happenened then we remove entrys as to not create confussion later when we try again to enter this info.
+            cu.FirstName =firstNameMaskedTextBox.Text;
+            cu.MiddleName =middleNameMaskedTextBox.Text;
+            cu.LastName = lastNameMaskedTextBox.Text;
+            cu.Suffix = suffixMaskedTextBox.Text;
+            cu.PrimaryNumber = primaryNumberMaskedTextBox.Text;
+            cu.SecondaryNumber = secondaryNumberMaskedTextBox.Text;
+            cu.Email = emailMaskedTextBox.Text;
+            cu.MailPromos = mailpromo;
+            //Addcust
+            await s1.AddCustomer(cu);
+            //check for success
+            if (s1.Cust.Message == null)
+            {
+                cc.CustomerID = s1.Cust.CustomerID;
+                cl.CustomerID = cc.CustomerID;
+                le.CustomerID = cl.CustomerID;
+                ad.CustomerID = le.CustomerID;
+                ins.CustomerID = ad.CustomerID;
+
+            }
+            //ad.Address = "cusa1tAd1d add way";
+            //ad.Zip = "30656";
+            //add address
+            await s1.AddAddress(ad);
+            //check success
+            if (s1.Address1.Message == null)
+            {
+                cl.PropertyID = s1.Address1.AddressID;
+                le.AddressID = (int)cl.PropertyID;
+                cl.BillingID = cl.PropertyID;
+
+                cl.LossDate = clLossDate;
+                cl.MortgageAccount = mortgageAccountMaskedTextBox.Text;
+                cl.MortgageCompany = mortgageCompanyMaskedTextBox.Text;
+                cl.IsOpen = true;
+                cl.ContractSigned = isSigned.IsChecked.Value;
+                //cl.InsuranceClaimNumber = "insClaimnum";
+                cl.InsuranceCompanyID = ((DTO_InsuranceCompany)insuranceCompanyIDComboBox1.SelectedItem).InsuranceCompanyID;
+
+            }
+
+
+
+            le.Temperature = "Hot";
+            //add lead
+            await s1.AddLead(le);
+            //check success
+            if (s1.Lead.Message == null)
+            {
+                cl.LeadID = s1.Lead.LeadID;
+                await s1.AddClaim(cl);
+                if (s1.Claim.Message == null)
+                {
+
+                    Claim = s1.Claim;
+                    _Customer = s1.Cust;
+                    _Address = s1.Address;
+                    _Referrer = s1.Referrer;
+                    _Lead = s1.Lead;
+                    cc.ClaimID = Claim.ClaimID;
+                    await s1.AddClaimContacts(cc);
+                }
+
+
+            }
+
+            ins.ClaimID = Claim.ClaimID;
+            ins.Comments = commentsMaskedTextBox.Text;
+            ins.CoverPool = coverPoolCheckBox.IsChecked.Value;
+            ins.CustomerID = _Customer.CustomerID;
+            ins.DrivewayDamage = drivewayDamageCheckBox.IsChecked.Value;
+            ins.EmergencyRepair = emergencyRepairCheckBox.IsChecked.Value;
+            ins.EmergencyRepairAmount = (double)emergencyRepairAmountCurrencyTextBox.Value;
+            ins.ExteriorDamage = exteriorCheckBox.IsChecked.Value;
+            ins.InteriorDamage = interiorCheckBox.IsChecked.Value;
+            ins.Leaks = leaksCheckBox.IsChecked.Value;
+            ins.LightningProtection = lightningProtectionCheckBox.IsChecked.Value;
+            ins.MagneticRollers = magneticRollersCheckBox.IsChecked.Value;
+            ins.ProtectLandscaping = protectLandscapingCheckBox.IsChecked.Value;
+            ins.Satellite = satelliteCheckBox.IsChecked.Value;
+            ins.QualityControl = qualityControlCheckBox.IsChecked.Value;
+            ins.RemoveTrash = removeTrashCheckBox.IsChecked.Value;
+            ins.RidgeMaterialTypeID = ((DTO_LU_RidgeMaterialType)ridgeMaterialTypeIDComboBox.SelectedItem).RidgeMaterialTypeID;
+            ins.RoofAge = int.Parse(roofAgeTextBox.Text);
+            ins.SolarPanels = solarPanelsCheckBox.IsChecked.Value;
+            ins.TearOff = tearOffCheckBox.IsChecked.Value;
+            ins.Valley = valleyCheckBox.IsChecked.Value;
+            ins.InspectionDate = inspectionDateDatePicker.SelectedDate.Value;
+            ins.GutterDamage = gutterDamageCheckBox.IsChecked.Value;
+            ins.SkyLights = skyLightsCheckBox.IsChecked.Value;
+            ins.FurnishPermit = furnishPermitCheckBox.IsChecked.Value;
+            ins.ShingleTypeID = s1.ShingleTypes.Find(x => x.ShingleTypeID == 1).ShingleTypeID;
+            //add inspection
+            await s1.AddInspection(ins);
+            //check success
+            if (s1.Inspection.Message == null)
+            {
+                _Inspection = s1.Inspection;
+            }
+            //Add Inspection Photos
+
+            DTO_Plane pln = new DTO_Plane();
+            pln.EaveHeight =// eaveHeightDoubleTextBox.Value;
+            pln.EaveHeight =// eaveHeightDoubleTextBox.Value;
+            pln.FourAndUp = 1;
+            pln.GroupNumber = 1;
+            pln.NumOfLayers = 1;
+            pln.RakeLength = 200;
+            pln.StepFlashing = 0;
+            pln.SquareFootage = 3332;
+            pln.NumberDecking = 2;
+            pln.PlaneTypeID = 15;
+            pln.Valley = 70;
+            pln.Hip = 46;
+            pln.Pitch = 10;
+            pln.ThreeAndOne = 3;
+            pln.TurtleBacks = 0;
+            pllist.InspectionID = s1.Inspection.InspectionID;
+            //add plane data
+            //or get from ev file of many ways
+
+            await s1.AddPlane(pllist);
+            _Plane = s1.Plane;
+            if (s1.Plane.Message == null)
+                //TODO Send TO FORM FOR PICUPLOAD
+                System.Windows.Forms.MessageBox.Show("success");
+
+        }
+
         void GetAllData()
         {
             if (Claim != null)
@@ -575,7 +761,7 @@ namespace MRNUIElements
                     System.Windows.Controls.Image img = new System.Windows.Controls.Image();
                     img.Source = bitmap;
 
-                    
+
                     //var web = new System.Net.WebClient();
                     addImagesbutton_Click((string)uri.OriginalString, e);
                     ImageList.Add(im);
@@ -666,7 +852,7 @@ namespace MRNUIElements
 
         }
 
-       
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -835,14 +1021,14 @@ namespace MRNUIElements
 
             //        }
 
-            //        catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
             //        try
             //        {
             //            _Customer.Suffix = suffixMaskedTextBox.Text;
             //        }
-            //        catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
             //        try { _Customer.FirstName = firstNameMaskedTextBox.Text; } catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show("Shit man you gotta put a first name! shooot?!?"); }
-            //        try { _Customer.MiddleName = middleNameMaskedTextBox.Text; } catch (NullReferenceException nre) { }
+            //        try { _Customer.MiddleName = middleNameMaskedTextBox.Text; } catch (NullReferenceException nre) {}
 
             //        try
             //        {
@@ -858,11 +1044,11 @@ namespace MRNUIElements
             //        {
             //            _Customer.PrimaryNumber = primaryNumberMaskedTextBox.Text;
             //        }
-            //        catch (NullReferenceException nre) { }
-            //        try { _Customer.SecondaryNumber = secondaryNumberMaskedTextBox.Text; } catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
+            //        try { _Customer.SecondaryNumber = secondaryNumberMaskedTextBox.Text; } catch (NullReferenceException nre) {}
             //        try
             //        { _Customer.Email = emailMaskedTextBox.Text; }
-            //        catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
 
             //        try
             //        {
@@ -878,30 +1064,30 @@ namespace MRNUIElements
             //        {
             //            Claim.IsOpen = isOpenCheckBox.IsChecked.Value;
             //        }
-            //        catch (NullReferenceException nre) { }
-            //        try { Claim.MortgageAccount = mortgageAccountMaskedTextBox.Text; } catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
+            //        try { Claim.MortgageAccount = mortgageAccountMaskedTextBox.Text; } catch (NullReferenceException nre) {}
             //        try
             //        { Claim.MortgageCompany = mortgageCompanyMaskedTextBox.Text; }
-            //        catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
             //        try
             //        { Claim.InsuranceClaimNumber = insuranceClaimNumberMaskedTextBox.Text; }
-            //        catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
 
             //        try
             //        {
             //            _Lead.KnockerResponseID = (int)knockerIDComboBox.SelectedValue;
             //        }
-            //        catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
             //        try
             //        {
             //            _Lead.LeadTypeID = (int)leadTypeIDComboBox.SelectedIndex > -1 ? (int)leadTypeIDComboBox.SelectedIndex + 1 : -1;
             //        }
             //        catch (NullReferenceException nre) { System.Windows.Forms.MessageBox.Show("How did we find out about this job?"); }
 
-            //        try { } catch (NullReferenceException nre) { }
+            //        try { } catch (NullReferenceException nre) {}
             //        try
             //        { }
-            //        catch (NullReferenceException nre) { }
+            //        catch (NullReferenceException nre) {}
 
             //        try
             //        {
@@ -980,7 +1166,7 @@ namespace MRNUIElements
             //    {
             //        _ClaimContacts.SalesPersonID = _Lead.SalesPersonID = (int)salesPersonIDComboBox.SelectedValue;
             //    }
-            //    catch (NullReferenceException nre) { }
+            //    catch (NullReferenceException nre) {}
             //    creditToIDComboBox.SelectedValue = _ClaimContacts.KnockerID = _Lead.CreditToID = s1.Referrer.ReferrerID;
             //    ReferrerGrid.DataContext = s1.Referrer;
             //    try
@@ -1017,8 +1203,8 @@ namespace MRNUIElements
             //        System.Windows.Forms.MessageBox.Show("Success - Test - " + s1.Claim.ClaimID.ToString() + " is the ClaimID Associated with your Claim.");
 
             #endregion
-
-            await AddClaim();
+            addTestClaim();
+            //await AddClaim();
 
         }
         DTO_Referrer ConvertToReferrer(object o)
@@ -1257,7 +1443,7 @@ namespace MRNUIElements
                     await s1.AddClaimContacts(cc);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.ToString());
                 return false;
@@ -1273,8 +1459,8 @@ namespace MRNUIElements
                 s1.Claim = null;
             DTO_Claim claim = new DTO_Claim();
 
-            claim.BillingID=_Address.AddressID;
-            claim.PropertyID =_Address.AddressID;
+            claim.BillingID = _Address.AddressID;
+            claim.PropertyID = _Address.AddressID;
             claim.LeadID = await AddLead();
             claim.CustomerID = _Lead.CustomerID;
             try
@@ -1288,21 +1474,21 @@ namespace MRNUIElements
             claim.InsuranceCompanyID = ((DTO_InsuranceCompany)insuranceCompanyIDComboBox.SelectedItem).InsuranceCompanyID;
 
 
-            if(!string.IsNullOrEmpty(mortgageAccountMaskedTextBox.Text))
-            claim.MortgageAccount = mortgageAccountMaskedTextBox.Text;
+            if (!string.IsNullOrEmpty(mortgageAccountMaskedTextBox.Text))
+                claim.MortgageAccount = mortgageAccountMaskedTextBox.Text;
             if (!string.IsNullOrEmpty(mortgageCompanyMaskedTextBox.Text))
-              claim.MortgageCompany = mortgageCompanyMaskedTextBox.Text;
+                claim.MortgageCompany = mortgageCompanyMaskedTextBox.Text;
             claim.LossDate = lossDateDatePicker.SelectedDate.Value;
             claim.IsOpen = isOpenCheckBox.IsChecked.Value;
             claim.ContractSigned = isSigned.IsChecked.Value;
             try
             {
                 await s1.AddClaim(claim);
-                
+
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.ToString(),"Error Adding Claim",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error,System.Windows.Forms.MessageBoxDefaultButton.Button1);
+                System.Windows.Forms.MessageBox.Show(ex.ToString(), "Error Adding Claim", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error, System.Windows.Forms.MessageBoxDefaultButton.Button1);
 
             }
             finally
@@ -1322,26 +1508,27 @@ namespace MRNUIElements
             DTO_Lead lead = new DTO_Lead();
             try
             {
-            lead.LeadTypeID = ((DTO_LU_LeadType)leadTypeIDComboBox.SelectedItem).LeadTypeID;//LeadTypeID
-            lead.KnockerResponseID = ((DTO_LU_KnockResponseType)knockerResponseIDComboBox.SelectedItem).KnockResponseTypeID;//KnockerResponseID
-            lead.SalesPersonID = ((DTO_Employee)salesPersonIDComboBox.SelectedItem).EmployeeID;//SalesPersonID
+                lead.LeadTypeID = ((DTO_LU_LeadType)leadTypeIDComboBox.SelectedItem).LeadTypeID;//LeadTypeID
+                lead.KnockerResponseID = ((DTO_LU_KnockResponseType)knockerResponseIDComboBox.SelectedItem).KnockResponseTypeID;//KnockerResponseID
+                lead.SalesPersonID = ((DTO_Employee)salesPersonIDComboBox.SelectedItem).EmployeeID;//SalesPersonID
                 lead.AddressID = await AddAddress();// AddressID;//AddressID
-            lead.LeadDate = leadDateDatePicker.SelectedDate.Value;//LeadDate
-            lead.CustomerID = _Customer.CustomerID;//CustomerID
-            _Lead.CreditToID = lead.CreditToID = await setCreditToIDContext(((DTO_LU_LeadType)leadTypeIDComboBox.SelectedItem).LeadTypeID);//CreditToID=>getCreditToID;
-            lead.Temperature = "W";//Temperature
+                lead.LeadDate = leadDateDatePicker.SelectedDate.Value;//LeadDate
+                lead.CustomerID = _Customer.CustomerID;//CustomerID
+                _Lead.CreditToID = lead.CreditToID = await setCreditToIDContext(((DTO_LU_LeadType)leadTypeIDComboBox.SelectedItem).LeadTypeID);//CreditToID=>getCreditToID;
+                lead.Temperature = "W";//Temperature
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
             }
             finally
             {
                 await s1.AddLead(lead);
-                if(s1.Lead.Message == null)
+                if (s1.Lead.Message == null)
                 {
                     _Lead = (Lead)s1.Lead;
                 }
-            }            
+            }
             return s1.Lead.LeadID;
         }
 
@@ -1389,7 +1576,7 @@ namespace MRNUIElements
         }
         async private Task<int> setCreditToIDContext(int leadLeadTypeID)
         {
-            
+
 
             switch (leadLeadTypeID)
             {
@@ -1431,7 +1618,7 @@ namespace MRNUIElements
                     }
             }
 
-         
+
         }
 
         async private Task<int> AddAddress()
@@ -1473,7 +1660,7 @@ namespace MRNUIElements
             }
             catch
             {
-                System.Windows.Forms.MessageBox.Show("Somebody aint got right stuff in their box(s)-- with enuf time i'd write some code that would tell you where this failure occured but im in a hurry so figure it out youself. jk .. but not really","A Fucking Error Occured", System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Error, System.Windows.Forms.MessageBoxDefaultButton.Button1);
+                System.Windows.Forms.MessageBox.Show("Somebody aint got right stuff in their box(s)-- with enuf time i'd write some code that would tell you where this failure occured but im in a hurry so figure it out youself. jk .. but not really", "A Fucking Error Occured", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error, System.Windows.Forms.MessageBoxDefaultButton.Button1);
             }
             _Customer = (Customer)s1.Cust;
             return s1.Cust.CustomerID;
@@ -1573,6 +1760,52 @@ namespace MRNUIElements
                 {
                     pc(this, new PropertyChangedEventArgs(p));
                 }
+            }
+        }
+
+        private void zipMaskedTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                AddressZipcodeValidation azv = new AddressZipcodeValidation();
+                if (zipMaskedTextBox.Text.Length == 5)
+                {
+                    cityMaskedTextBox.Text = azv.CityStateLookupRequest(zipMaskedTextBox.Text, 3);
+                    stateMaskedTextBox_Copy1.Text = azv.CityStateLookupRequest(zipMaskedTextBox.Text, 5);
+                }
+                if (zipMaskedTextBox.Text.Length > 0 && zipMaskedTextBox.Text.Length < 5)
+                {
+                    cityMaskedTextBox.Text = "Zip needs " + (5 - zipMaskedTextBox.Text.Length).ToString() + " numbers.";
+                    stateMaskedTextBox_Copy1.Text = "Zip needs " + (5 - zipMaskedTextBox.Text.Length).ToString() + " numbers.";
+                }
+            }
+            catch (Exception ex)
+            {
+                cityMaskedTextBox.Clear();
+                stateMaskedTextBox_Copy1.Clear();
+            }
+        }
+
+        private void zipMaskedTextBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                AddressZipcodeValidation azv = new AddressZipcodeValidation();
+                if (zipMaskedTextBox.Text.Length == 5)
+                {
+                    cityMaskedTextBox_REF.Text = azv.CityStateLookupRequest(zipMaskedTextBox1.Text, 3);
+                    stateMaskedTextBox_REF.Text = azv.CityStateLookupRequest(zipMaskedTextBox1.Text, 5);
+                }
+                if (zipMaskedTextBox1.Text.Length > 0 && zipMaskedTextBox1.Text.Length < 5)
+                {
+                    cityMaskedTextBox_REF.Text = "Zip needs " + (5 - zipMaskedTextBox1.Text.Length).ToString() + " numbers.";
+                    stateMaskedTextBox_REF.Text = "Zip needs " + (5 - zipMaskedTextBox1.Text.Length).ToString() + " numbers.";
+                }
+            }
+            catch(Exception ex)
+            {
+                cityMaskedTextBox_REF.Clear();
+                stateMaskedTextBox_REF.Clear();
             }
         }
     }
