@@ -127,7 +127,7 @@ namespace MRNUIElements
 			{
 				var menuBar = ((MainWindow)Application.Current.MainWindow).menuBar.IsEnabled = true;
                 BI.Visibility = Visibility.Hidden;
-				this.NavigationService.Navigate(new MRNLogo1());
+				this.NavigationService.Navigate(new ClaimStartPage());
 			}
 
 			else MessageBox.Show(s.ToString(), "Login Failure", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -158,28 +158,28 @@ namespace MRNUIElements
 		}
 		async public Task<bool> BuildLookupLists()
 		{
-			await s1.GetClaimDocumentTypes();
-			await s1.GetEmployeeTypes();
-			await s1.GetAppointmentTypes();
-			await s1.GetInvoiceTypes();
-			await s1.GetKnockResponseTypes();
-			await s1.GetLeadTypes();
-			await s1.GetPayDescriptions();
-			await s1.GetPayFrequencies();
-			await s1.GetPaymentTypes();
-			await s1.GetPayTypes();
-			await s1.GetPermissions();
-			await s1.GetProducts();
-			await s1.GetProductTypes();
-			await s1.GetRidgeMaterialTypes();
-			await s1.GetScopeTypes();
-			await s1.GetUnitsOfMeasure();
-			await s1.GetAdjustmentResults();
-			await s1.GetAllPayments();
-			await s1.GetAllClaims();
-			await s1.GetAllScopes();
-			await s1.GetClaimStatusTypes();
-			await s1.GetAllVendors();
+			//await s1.GetClaimDocumentTypes();
+			//await s1.GetEmployeeTypes();
+			//await s1.GetAppointmentTypes();
+			//await s1.GetInvoiceTypes();
+			//await s1.GetKnockResponseTypes();
+			//await s1.GetLeadTypes();
+			//await s1.GetPayDescriptions();
+			//await s1.GetPayFrequencies();
+			//await s1.GetPaymentTypes();
+			//await s1.GetPayTypes();
+			//await s1.GetPermissions();
+			//await s1.GetProducts();
+			//await s1.GetProductTypes();
+			//await s1.GetRidgeMaterialTypes();
+			//await s1.GetScopeTypes();
+			//await s1.GetUnitsOfMeasure();
+			//await s1.GetAdjustmentResults();
+			//await s1.GetAllPayments();
+			//await s1.GetAllClaims();
+			//await s1.GetAllScopes();
+			//await s1.GetClaimStatusTypes();
+			//await s1.GetAllVendors();
 			return true;
 		}
 

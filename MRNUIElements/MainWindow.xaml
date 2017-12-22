@@ -173,7 +173,7 @@
                         </LinearGradientBrush>
                     </syncfusion:MenuItemAdv.BorderBrush>
                 </syncfusion:MenuItemAdv>
-                <syncfusion:MenuItemAdv x:Name="Exit" Header="Exit" Click="Exit_Click">
+                <syncfusion:MenuItemAdv x:Name="ViewSchedule" Header="View Schedule" Click="ViewSchedule_Click">
                     <syncfusion:MenuItemAdv.BorderBrush>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="#FF17FF00" />

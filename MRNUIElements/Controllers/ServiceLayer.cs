@@ -143,13 +143,15 @@ namespace MRNUIElements.Controllers
 		{
 
 
-			var client = new HttpClient();
-	//		var client2 = new HttpClient();
-			client.BaseAddress = new Uri(URL);
-	//		client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-	//		client2.Timeout = new TimeSpan(0, 5, 0);
-	//		client2.BaseAddress = new Uri(URL);
-			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var client = new HttpClient
+            {
+                //		var client2 = new HttpClient();
+                BaseAddress = new Uri(URL)
+            };
+            //		client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //		client2.Timeout = new TimeSpan(0, 5, 0);
+            //		client2.BaseAddress = new Uri(URL);
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			client.Timeout = new TimeSpan(0, 5, 0);
 			string results = "";
 
@@ -383,6 +385,7 @@ namespace MRNUIElements.Controllers
            return( await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors"));
 
 
+            #region OldEnumcode
 
             //int j = 0;
             //myWorker.ReportProgress(j++);
@@ -450,8 +453,9 @@ namespace MRNUIElements.Controllers
             //    ClosedClaimsList = getClosedClaims();
             //if (InactiveClaimsList == null)
             //    InactiveClaimsList = getInactiveClaims();
-           // DoneLoading = await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
+            // DoneLoading = await s1.MakeRequest(new DTO_Base(), typeof(List<DTO_Vendor>), "GetAllVendors");
 
+            #endregion
 
 
 

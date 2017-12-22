@@ -19,7 +19,7 @@
 
     <Page.Resources>
         <converters:ClaimContactsConverter x:Key="CCC"/>
-        <!--<converters:BitmapImageConverter x:Key="BitmapImageConverter"/>-->
+        <converters:BitmapImageConverter x:Key="BitmapImageConverter"/>
 
         <dom:Lead x:Key="_Lead"/>
         <dom:Customer x:Key="_Customer"/>
@@ -354,7 +354,7 @@
         </Style>
 
 
-        <!--<converters:BitmapImageConverter x:Key="BIC"/>-->
+        <converters:BitmapImageConverter x:Key="BIC"/>
 
     </Page.Resources>
 
@@ -367,7 +367,7 @@
                 Height="876"
                 MinWidth="300"
                 MinHeight="400"
-                Margin="5,9,0,0"
+                Margin="5,10,0,0"
                 VerticalAlignment="Top"
                 Background="#FFE0EBE3"
                 Foreground="White"
@@ -384,7 +384,7 @@
                             <TextBlock x:Name="textBlock" Text="Customer Information" TextWrapping="Wrap" Margin="77,34,2270.333,905.333" FontSize="20" FontWeight="Bold" TextDecorations="Underline" Foreground="Black"/>
                             <Grid x:Name="CustomerComplete"  DataContext="{StaticResource dTO_CustomerViewSource}">
 
-                                <Button x:Name="AddClaimBtn" Margin="870,588,929,161" Click="AddClaimBtn_Click">
+                                <Button x:Name="AddClaimBtn" Margin="772,636,1030,124" Click="AddClaimBtn_Click">
                                     <Grid>
 
                                         <Image x:Name="SubmitButtonBackground" Source="{StaticResource CheckMark}" Stretch="Fill" HorizontalAlignment="Left" Width="107"/>
@@ -392,41 +392,9 @@
 
                                     </Grid>
                                 </Button>
-                                <syncfusion:Carousel x:Name="carousel"   
-                                    VisualMode="CustomPath"
-                                    VerticalAlignment="Top"
-                                    ItemsPerPage="5"
-                                    RadiusX="250"
-                                    Height="206"    
-                                    SelectedIndex="4" 
-                                    Margin="1116,492,0,0" Loaded="carousel_Loaded" HorizontalAlignment="Left" Width="414">
-
-                                    <syncfusion:Carousel.Path>
-
-                                        <Path Data="M0,300 L600,300" Stroke="Blue" StrokeThickness="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-
-                                    </syncfusion:Carousel.Path>
-
-                                    <!--<syncfusion:Carousel.ItemTemplate>
-
-                                    <DataTemplate>
-                                        <StackPanel Width="200" Height="200">
-                                            <Border Height="100" Width="100" Background="LightBlue">
-
-                                                <InkCanvas Height="200" Width="200" >
-                                                    <InkCanvas.Background>
-                                                    <ImageBrush ImageSource="{Binding DocumentID, Source={StaticResource dTO_ClaimDocumentViewSource},Converter={StaticResource BitmapImageConverter},ConverterParameter=ClaimID, IsAsync=True}"/>
-                                                </InkCanvas.Background>
-                                                </InkCanvas>
-                                            </Border>
-
-
-                                        </StackPanel>
-                                    </DataTemplate>
-
-                                </syncfusion:Carousel.ItemTemplate>-->
-
-                                </syncfusion:Carousel>
+                                <WrapPanel x:Name="Wp" Width="600" Height="300" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="200,75" Loaded="Wp_Loaded" Focusable="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" >
+                                    
+                                </WrapPanel>
 
 
                                 <Image x:Name="image" Margin="1288,68,354,479"/>
@@ -447,7 +415,7 @@
 
                                 <syncfusion:MaskedTextBox x:Name="emailMaskedTextBox" HorizontalAlignment="Left" Height="22" Margin="66,180,0,646" Text="{Binding Email}" VerticalAlignment="Center" Width="415" Grid.ColumnSpan="2"/>
 
-                                <syncfusion:MaskedTextBox x:Name="firstNameMaskedTextBox" HorizontalAlignment="Left" Height="24" Margin="66,68,0,756" Text="{Binding FirstName}" VerticalAlignment="Center" Width="100" WatermarkText="First Name"/>
+                                <syncfusion:MaskedTextBox x:Name="firstNameMaskedTextBox" HorizontalAlignment="Left" Height="24" Margin="66,68,0,756" Text="{Binding FirstName}" VerticalAlignment="Center" Width="103" WatermarkText="First Name"/>
 
                                 <syncfusion:MaskedTextBox x:Name="lastNameMaskedTextBox" HorizontalAlignment="Left" Height="24" Margin="276,68,0,756" Text="{Binding LastName}" VerticalAlignment="Center" Width="100" WatermarkText="Last Name"/>
 
@@ -474,20 +442,22 @@
                                 <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_REF" HorizontalAlignment="Left" Height="23" Margin="216,80,0,67" VerticalAlignment="Center" Width="95" WatermarkText="State" ReadOnly="True" Mask="" IsEnabled="False"/>
                             </Grid>
                             <Grid x:Name="InsuranceCoGrid" DataContext="{StaticResource dTO_InsuranceCompanyViewSource}" HorizontalAlignment="Left" Margin="66,483,0,0" VerticalAlignment="Top" Height="235" Width="459">
-
-                                <syncfusion:MaskedTextBox x:Name="addressMaskedTextBox1" Height="23" Margin="-4,102,182,110" Grid.Row="0" Text="{Binding Address}" VerticalAlignment="Center" WatermarkText="Address" IsEnabled="False"/>
                                 <syncfusion:MaskedTextBox x:Name="claimPhoneExtMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="387,102,0,110" Text="{Binding ClaimPhoneExt}" VerticalAlignment="Center" Width="48" IsEnabled="False" WatermarkText="Ext"/>
                                 <syncfusion:MaskedTextBox x:Name="claimPhoneNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="282,102,0,110" Text="{Binding ClaimPhoneNumber}" VerticalAlignment="Center" Width="100" IsEnabled="False" WatermarkText="Claim Phone#"/>
-                                <syncfusion:MaskedTextBox x:Name="companyNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="-4,55,0,157" Text="{Binding CompanyName}" VerticalAlignment="Center" Width="386" WatermarkText="Company Name" IsEnabled="False"/>
-                                <syncfusion:MaskedTextBox x:Name="emailMaskedTextBox2" HorizontalAlignment="Left" Height="23" Margin="-4,180,0,32" Text="{Binding Email}" VerticalAlignment="Center" Width="440" WatermarkText="Claims Email Address..."/>
-                                <syncfusion:MaskedTextBox x:Name="faxExtIntegerTextBox" HorizontalAlignment="Left" Height="23" Margin="387,137,0,75" NumberGroupSeparator="," Text="{Binding FaxExt}" VerticalAlignment="Center" Width="48" IsEnabled="False" WatermarkText="Ext"/>
-                                <syncfusion:MaskedTextBox x:Name="faxNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="282,137,0,75" Text="{Binding FaxNumber}" VerticalAlignment="Center" Width="100" WatermarkText="Fax #" IsEnabled="False"/>
+                                <syncfusion:MaskedTextBox x:Name="companyNameMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="0,55,0,157" Text="{Binding CompanyName}" VerticalAlignment="Center" Width="382" WatermarkText="Company Name" IsEnabled="False"/>
+                                <syncfusion:MaskedTextBox x:Name="emailMaskedTextBox2" HorizontalAlignment="Left" Height="23" Margin="0,102,0,110" Text="{Binding Email}" VerticalAlignment="Center" Width="276" WatermarkText="Claims Email Address..."/>
+                                <Grid  x:Name="InsCoDetailsGrid"  Margin="-4,102,24,75" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=independentCheckBox}">
+
+                                    <syncfusion:MaskedTextBox x:Name="addressMaskedTextBox1" Height="23" Margin="1,35,157,0" Grid.Row="0" Text="{Binding Address}" VerticalAlignment="Center" WatermarkText="Address" IsEnabled="False"/>
+                                    <syncfusion:MaskedTextBox x:Name="faxExtIntegerTextBox" HorizontalAlignment="Left" Height="22" Margin="392,36,-1,0" NumberGroupSeparator="," Text="{Binding FaxExt}" VerticalAlignment="Center" Width="48" IsEnabled="False" WatermarkText="Ext"/>
+                                    <syncfusion:MaskedTextBox x:Name="faxNumberMaskedTextBox" HorizontalAlignment="Left" Height="22" Margin="287,35,0,1" Text="{Binding FaxNumber}" VerticalAlignment="Center" Width="100" WatermarkText="Fax #" IsEnabled="False"/>
+                                    <syncfusion:MaskedTextBox x:Name="zipTextBox" HorizontalAlignment="Left" Height="22" Margin="220,78,0,-42" Text="{Binding Zip}" VerticalAlignment="Center" Width="62" WatermarkText="Zipcode" IsEnabled="False"/>
+                                    <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox_IC" HorizontalAlignment="Left" Height="22" Margin="1,78,0,-42" VerticalAlignment="Center" Width="144" WatermarkText="City" Mask="" ReadOnly="True" IsUndoEnabled="True" IsEnabled="False"/>
+                                    <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_IC" HorizontalAlignment="Left" Height="22" Margin="148,78,0,-42" VerticalAlignment="Center" Width="69" WatermarkText="State" ReadOnly="True" Mask="" IsEnabled="False"/>
+                                </Grid>
                                 <CheckBox x:Name="independentCheckBox" Content="Ind'p't" HorizontalAlignment="Left" IsChecked="{Binding Independent, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="387,55,0,160" VerticalAlignment="Center" Height="20" Width="58"/>
                                 <syncfusion:IntegerTextBox x:Name="insuranceCompanyIDIntegerTextBox" HorizontalAlignment="Left" Height="23" Margin="387,180,0,32" NumberGroupSeparator="," Text="{Binding InsuranceCompanyID}" VerticalAlignment="Center" Width="49" Visibility="Hidden"/>
-                                <syncfusion:MaskedTextBox x:Name="zipTextBox" HorizontalAlignment="Left" Height="23" Margin="215,137,0,75" Text="{Binding Zip}" VerticalAlignment="Center" Width="62" WatermarkText="Zipcode" IsEnabled="False"/>
-                                <syncfusion:MaskedTextBox x:Name="cityMaskedTextBox_IC" HorizontalAlignment="Left" Height="23" Margin="-4,137,0,75" VerticalAlignment="Center" Width="144" WatermarkText="City" Mask="" ReadOnly="True" IsUndoEnabled="True" IsEnabled="False"/>
-                                <syncfusion:MaskedTextBox x:Name="stateMaskedTextBox_IC" HorizontalAlignment="Left" Height="23" Margin="143,137,0,75" VerticalAlignment="Center" Width="69" WatermarkText="State" ReadOnly="True" Mask="" IsEnabled="False"/>
-                                <ComboBox x:Name="dTO_InsuranceCompanyComboBox" DisplayMemberPath="CompanyName" Margin="0,10,77,200" SelectedValue="InsuranceCompanyID" IsReadOnly="True">
+                                <ComboBox x:Name="dTO_InsuranceCompanyComboBox" DisplayMemberPath="CompanyName" Margin="0,10,77,200" SelectedValue="InsuranceCompanyID" IsReadOnly="True" IsSynchronizedWithCurrentItem="True">
                                     <ComboBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel/>
@@ -495,7 +465,7 @@
                                     </ComboBox.ItemsPanel>
                                 </ComboBox>
                             </Grid>
-                            <Grid x:Name="ClaimContactsGrid" DataContext="{StaticResource dTO_ClaimContactsViewSource}" HorizontalAlignment="Left" Margin="853,480,0,0" VerticalAlignment="Top">
+                            <Grid x:Name="ClaimContactsGrid" DataContext="{StaticResource dTO_ClaimContactsViewSource}" HorizontalAlignment="Left" Margin="530,631,0,0" VerticalAlignment="Top">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -564,14 +534,14 @@
                                     </ComboBox.ItemsPanel>
                                 </ComboBox>
                             </Grid>
-                            <Grid x:Name="InspectionGrid" DataContext="{StaticResource dTO_InspectionViewSource}" HorizontalAlignment="Left" Margin="555,35,0,0" VerticalAlignment="Top" Height="401" Width="509">
+                            <Grid x:Name="InspectionGrid" DataContext="{StaticResource dTO_InspectionViewSource}" HorizontalAlignment="Left" Margin="555,35,0,0" VerticalAlignment="Top" Height="401" Width="357">
 
 
                                 <TextBlock x:Name="claimIDTextBlock" HorizontalAlignment="Left" Margin="214,209,0,138" Grid.Row="0" Text="{Binding ClaimID}" VerticalAlignment="Center" Foreground="Black"/>
 
-                                <syncfusion:MaskedTextBox x:Name="commentsTextBox" HorizontalAlignment="Left" Height="75" Margin="205,316,0,10" Text="{Binding Comments, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="278"/>
+                                <syncfusion:MaskedTextBox x:Name="commentsTextBox" HorizontalAlignment="Left" Height="75" Margin="136,314,0,12" Text="{Binding Comments, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="187"/>
 
-                                <CheckBox x:Name="coverPoolCheckBox" Content="Cover Pool" HorizontalAlignment="Left" IsChecked="{Binding CoverPool, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,156,0,230" VerticalAlignment="Top" Width="102"/>
+                                <CheckBox x:Name="coverPoolCheckBox" Content="Cover Pool" HorizontalAlignment="Left" IsChecked="{Binding CoverPool, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,235,0,0" VerticalAlignment="Top" Width="102"/>
                                 <syncfusion:IntegerTextBox x:Name="customerIDIntegerTextBox4" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="2" Text="{Binding CustomerID, ElementName=customerIDIntegerTextBox, Mode=TwoWay}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
 
 
@@ -579,33 +549,33 @@
 
                                 <CheckBox x:Name="emergencyRepairCheckBox" Content="Emergency Repair" HorizontalAlignment="Left" IsChecked="{Binding EmergencyRepair, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,275,0,0" VerticalAlignment="Top" Width="121" RenderTransformOrigin="-0.201,2.67"/>
 
-                                <syncfusion:CurrencyTextBox x:Name="emergencyRepairAmountCurrencyTextBox" CurrencyGroupSeparator="," CurrencyDecimalSeparator="." CurrencySymbol="$" HorizontalAlignment="Left" Height="23" Margin="205,275,0,103" Text="{Binding EmergencyRepairAmount}" VerticalAlignment="Center" Width="118" WatermarkText="Emergency Repair Amount" Value="0.00" WatermarkTextIsVisible="True" UseNullOption="True" NullValue="0.00" EnableTouch="True" EnableFocusColors="True"/>
+                                <syncfusion:CurrencyTextBox x:Name="emergencyRepairAmountCurrencyTextBox" CurrencyGroupSeparator="," CurrencyDecimalSeparator="." CurrencySymbol="$" HorizontalAlignment="Left" Height="23" Margin="205,275,0,103" Text="{Binding EmergencyRepairAmount}" VerticalAlignment="Center" Width="118" WatermarkText="Emergency Repair Amount" Value="0.00" WatermarkTextIsVisible="True" UseNullOption="True" NullValue="0.00" EnableTouch="True" EnableFocusColors="True" AutomationProperties.IsColumnHeader="True" IsEnabled="{Binding /EmergencyRepair}"/>
 
                                 <CheckBox x:Name="exteriorDamageCheckBox" Content="Exterior Damage" HorizontalAlignment="Left" IsChecked="{Binding ExteriorDamage, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,213,0,0" VerticalAlignment="Top" Width="121"/>
 
-                                <CheckBox x:Name="furnishPermitCheckBox" Content="Furnish Permit" HorizontalAlignment="Left" IsChecked="{Binding FurnishPermit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,135,0,250" VerticalAlignment="Top" Width="102"/>
+                                <CheckBox x:Name="furnishPermitCheckBox" Content="Furnish Permit" HorizontalAlignment="Left" IsChecked="{Binding FurnishPermit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,96,0,0" VerticalAlignment="Top" Width="102"/>
 
                                 <CheckBox x:Name="gutterDamageCheckBox" Content="Gutter Damage" HorizontalAlignment="Left" IsChecked="{Binding GutterDamage, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,193,0,193" VerticalAlignment="Top" Width="102"/>
 
-                                <CheckBox x:Name="iceWaterShieldCheckBox" Content="Use Ice/Water Shield" HorizontalAlignment="Left" IsChecked="{Binding IceWaterShield, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,254,0,0" VerticalAlignment="Top" Width="136"/>
+                                <CheckBox x:Name="iceWaterShieldCheckBox" Content="Use Ice/Water Shield" HorizontalAlignment="Left" IsChecked="{Binding IceWaterShield, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,174,0,0" VerticalAlignment="Top" Width="136"/>
                                 <Label Content="Inspection Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="205,20,0,355" VerticalAlignment="Center"/>
                                 <DatePicker x:Name="inspectionDateDatePicker" HorizontalAlignment="Left" Margin="205,32,0,307" SelectedDate="{Binding InspectionDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
 
-                                <CheckBox x:Name="interiorDamageCheckBox" Content="Interior Damage" HorizontalAlignment="Left" IsChecked="{Binding InteriorDamage, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,75,0,0" VerticalAlignment="Top" Width="114"/>
+                                <CheckBox x:Name="interiorDamageCheckBox" Content="Interior Damage" HorizontalAlignment="Left" IsChecked="{Binding InteriorDamage, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,134,0,0" VerticalAlignment="Top" Width="114"/>
 
-                                <CheckBox x:Name="leaksCheckBox" Content="Leaks" HorizontalAlignment="Left" IsChecked="{Binding Leaks, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,176,0,210" VerticalAlignment="Top" Width="102"/>
+                                <CheckBox x:Name="leaksCheckBox" Content="Leaks" HorizontalAlignment="Left" IsChecked="{Binding Leaks, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,255,0,0" VerticalAlignment="Top" Width="102"/>
 
-                                <CheckBox x:Name="lightningProtectionCheckBox" Content="Lightning Protection" HorizontalAlignment="Left" IsChecked="{Binding LightningProtection, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,19,0,0" VerticalAlignment="Top" Width="130"/>
+                                <CheckBox x:Name="lightningProtectionCheckBox" Content="Lightning Protection" HorizontalAlignment="Left" IsChecked="{Binding LightningProtection, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,295,0,0" VerticalAlignment="Top" Width="130"/>
 
-                                <CheckBox x:Name="magneticRollersCheckBox" Content="Magnetic Roller Sweep" HorizontalAlignment="Left" IsChecked="{Binding MagneticRollers, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,234,0,0" VerticalAlignment="Top" Width="145" Checked="magneticRollersCheckBox_Checked"/>
+                                <CheckBox x:Name="magneticRollersCheckBox" Content="Magnetic Roller Sweep" HorizontalAlignment="Left" IsChecked="{Binding MagneticRollers, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,56,0,0" VerticalAlignment="Top" Width="145" Checked="magneticRollersCheckBox_Checked"/>
 
-                                <CheckBox x:Name="protectLandscapingCheckBox" Content="Protect Landscaping" HorizontalAlignment="Left" IsChecked="{Binding ProtectLandscaping, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,55,0,0" VerticalAlignment="Top" Width="130"/>
+                                <CheckBox x:Name="protectLandscapingCheckBox" Content="Protect Landscaping" HorizontalAlignment="Left" IsChecked="{Binding ProtectLandscaping, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,76,0,0" VerticalAlignment="Top" Width="130"/>
 
-                                <CheckBox x:Name="qualityControlCheckBox" Content="Quality Control Inspection" HorizontalAlignment="Left" IsChecked="{Binding QualityControl, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,36,0,0" VerticalAlignment="Top" Width="162"/>
+                                <CheckBox x:Name="qualityControlCheckBox" Content="Quality Control Inspection" HorizontalAlignment="Left" IsChecked="{Binding QualityControl, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,39,0,0" VerticalAlignment="Top" Width="162"/>
 
-                                <CheckBox x:Name="removeTrashCheckBox" Content="Remove Jobsite Debris" HorizontalAlignment="Left" IsChecked="{Binding RemoveTrash, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,116,0,0" VerticalAlignment="Top" Width="145"/>
-                                <Label Content="Ridge Material Type" Grid.Column="0" HorizontalAlignment="Left" Margin="331,20,0,355" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="ridgeMaterialTypeIDComboBox" DisplayMemberPath="RidgeMaterialType" SelectedValue="RidgeMaterialTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding dTO_RidgeMaterialViewSource}" Margin="331,49,0,330" VerticalAlignment="Center" Width="120">
+                                <CheckBox x:Name="removeTrashCheckBox" Content="Remove Jobsite Debris" HorizontalAlignment="Left" IsChecked="{Binding RemoveTrash, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,114,0,0" VerticalAlignment="Top" Width="145"/>
+                                <Label Content="Ridge Material Type" Grid.Column="0" HorizontalAlignment="Left" Margin="203,83,0,292" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="ridgeMaterialTypeIDComboBox" DisplayMemberPath="RidgeMaterialType" SelectedValue="RidgeMaterialTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding dTO_RidgeMaterialViewSource}" Margin="203,114,0,265" VerticalAlignment="Center" Width="120">
                                     <ComboBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel/>
@@ -613,11 +583,11 @@
                                     </ComboBox.ItemsPanel>
                                 </ComboBox>
 
-                                <syncfusion:MaskedTextBox x:Name="roofAgeTextBox" Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="331,156,0,222" Grid.Row="0" Text="{Binding RoofAge, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" WatermarkText="Roof Age" WatermarkTextMode="HideTextOnTyping" WatermarkTextIsVisible="True"/>
+                                <syncfusion:MaskedTextBox x:Name="roofAgeTextBox" Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="205,213,0,165" Grid.Row="0" Text="{Binding RoofAge, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" WatermarkText="Roof Age" WatermarkTextMode="HideTextOnTyping" WatermarkTextIsVisible="True"/>
 
                                 <CheckBox x:Name="satelliteCheckBox" Content="Satellites" HorizontalAlignment="Left" IsChecked="{Binding Satellite, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,355,0,31" VerticalAlignment="Top" Width="102"/>
-                                <Label Content="Shingle Type" Grid.Column="0" HorizontalAlignment="Left" Margin="331,85,0,290" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="shingleTypeIDComboBox" DisplayMemberPath="ShingleType" SelectedValue="ShingleTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="331,111,0,268" VerticalAlignment="Center" Width="120">
+                                <Label Content="Shingle Type" Grid.Column="0" HorizontalAlignment="Left" Margin="224,138,0,237" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="shingleTypeIDComboBox" DisplayMemberPath="ShingleType" SelectedValue="ShingleTypeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="203,167,0,212" VerticalAlignment="Center" Width="120">
                                     <ComboBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel/>
@@ -629,18 +599,19 @@
 
                                 <CheckBox x:Name="solarPanelsCheckBox" Content="Solar Panels" HorizontalAlignment="Left" IsChecked="{Binding SolarPanels, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,316,0,70" VerticalAlignment="Top" Width="102"/>
 
-                                <CheckBox x:Name="tearOffCheckBox" Content="Removal of Old Roof" HorizontalAlignment="Left" IsChecked="{Binding TearOff, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,295,0,0" VerticalAlignment="Top" Width="136"/>
+                                <CheckBox x:Name="tearOffCheckBox" Content="Removal of Old Roof" HorizontalAlignment="Left" IsChecked="{Binding TearOff, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,20,0,0" VerticalAlignment="Top" Width="136"/>
 
-                                <CheckBox x:Name="valleyCheckBox" Content="Valley Metal" HorizontalAlignment="Left" IsChecked="{Binding Valley, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,96,0,290" VerticalAlignment="Top" Width="102"/>
+                                <CheckBox x:Name="valleyCheckBox" Content="Valley Metal" HorizontalAlignment="Left" IsChecked="{Binding Valley, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,154,0,0" VerticalAlignment="Top" Width="102"/>
+                                <Label Content="Roof Age" Grid.Column="0" HorizontalAlignment="Left" Margin="224,188,0,187" VerticalAlignment="Center"/>
                             </Grid>
-                            <Grid x:Name="ClaimGrid" DataContext="{StaticResource dTO_ClaimViewSource}" HorizontalAlignment="Left" Margin="555,486,0,0" VerticalAlignment="Top" Height="198" Width="311">
+                            <Grid x:Name="ClaimGrid" DataContext="{StaticResource dTO_ClaimViewSource}" HorizontalAlignment="Left" Margin="541,436,0,0" VerticalAlignment="Top" Height="203" Width="367">
 
                                 <syncfusion:IntegerTextBox x:Name="billingIDIntegerTextBox" Visibility="Hidden"  Grid.Column="1" HorizontalAlignment="Left" Height="Auto" Text="{Binding AddressID, ElementName=addressIDIntegerTextBox, Mode=TwoWay}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120"/>
                                 <syncfusion:IntegerTextBox x:Name="claimIDIntegerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="1" Text="{Binding ClaimID}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
                                 <syncfusion:IntegerTextBox x:Name="customerIDIntegerTextBox3" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" MinWidth="100" NumberGroupSeparator="," Grid.Row="2" Text="{Binding CustomerID, ElementName=customerIDIntegerTextBox, Mode=TwoWay}" VerticalAlignment="Center" Width="100" Visibility="Hidden"/>
 
                                 <Label Content="Insurance Claim Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,39,0,133" VerticalAlignment="Center"/>
-                                <syncfusion:MaskedTextBox x:Name="insuranceClaimNumberMaskedTextBox" HorizontalAlignment="Left" Height="23" Margin="164,41,0,134" Text="{Binding InsuranceClaimNumber}" VerticalAlignment="Center" Width="120"/>
+                                <syncfusion:MaskedTextBox x:Name="insuranceClaimNumberMaskedTextBox" HorizontalAlignment="Left" Height="22" Margin="164,44,0,137" Text="{Binding InsuranceClaimNumber}" VerticalAlignment="Center" Width="170"/>
                                 <Label Content="Insurance Company ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="-9,190,0,-18" VerticalAlignment="Center" Visibility="Hidden"/>
                                 <ComboBox x:Name="insuranceCompanyIDComboBox1" DisplayMemberPath="CompanyName" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding ElementName=insuranceCompanyIDComboBox}" SelectedValue="InsuranceCompanyID" Margin="10,44,0,132" VerticalAlignment="Center" Width="120" Visibility="Hidden">
                                     <ComboBox.ItemsPanel>
@@ -650,15 +621,15 @@
                                     </ComboBox.ItemsPanel>
                                 </ComboBox>
                                 <CheckBox x:Name="isOpenCheckBox" Content="Open Claim" HorizontalAlignment="Left" IsChecked="{Binding IsOpen, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,10,0,173" VerticalAlignment="Center" Width="138"/>
-                                <CheckBox x:Name="isSigned" Content="Deal is Signed" Visibility="Visible" Grid.Column="1" HorizontalAlignment="Left" Height="Auto" IsChecked="{Binding ContractSigned}" Margin="3" Grid.Row="6" VerticalAlignment="Center" Width="120"/>
-                                <Label Content="Loss Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,107,0,65" VerticalAlignment="Center" />
-                                <DatePicker x:Name="lossDateDatePicker" HorizontalAlignment="Left" Margin="108,108,0,66" SelectedDate="{Binding LossDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="176"/>
-                                <Label Content="Mortgage Account:" Grid.Column="0" HorizontalAlignment="Left" Margin="174,135,0,37" VerticalAlignment="Center"/>
-                                <syncfusion:MaskedTextBox x:Name="mortgageAccountMaskedTextBox" HorizontalAlignment="Left" Height="24" Margin="177,161,0,13" Text="{Binding MortgageAccount}" VerticalAlignment="Center" Width="107"/>
-                                <Label Content="Mortgage Company:" Grid.Column="0" HorizontalAlignment="Left" Margin="28,135,0,37" VerticalAlignment="Center"/>
-                                <syncfusion:MaskedTextBox x:Name="mortgageCompanyMaskedTextBox" HorizontalAlignment="Left" Height="24" Margin="23,161,0,13" Text="{Binding MortgageCompany}" VerticalAlignment="Center" Width="131"/>
+                                <CheckBox x:Name="isSigned" Content="Deal is Signed" Visibility="Visible" HorizontalAlignment="Left" Height="Auto" IsChecked="{Binding ContractSigned}" Margin="166,12,0,175" VerticalAlignment="Center" Width="120"/>
+                                <Label Content="Loss Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="90,103,0,74" VerticalAlignment="Center" />
+                                <DatePicker x:Name="lossDateDatePicker" HorizontalAlignment="Left" Margin="166,105,0,74" SelectedDate="{Binding LossDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="168"/>
+                                <Label Content="Mortgage Account:" Grid.Column="0" HorizontalAlignment="Left" Margin="210,138,0,39" VerticalAlignment="Center"/>
+                                <syncfusion:MaskedTextBox x:Name="mortgageAccountMaskedTextBox" HorizontalAlignment="Left" Height="24" Margin="198,164,0,15" Text="{Binding MortgageAccount}" VerticalAlignment="Center" Width="136"/>
+                                <Label Content="Mortgage Company:" Grid.Column="0" HorizontalAlignment="Left" Margin="22,138,0,39" VerticalAlignment="Center"/>
+                                <syncfusion:MaskedTextBox x:Name="mortgageCompanyMaskedTextBox" HorizontalAlignment="Left" Height="24" Margin="3,164,0,15" Text="{Binding MortgageCompany}" VerticalAlignment="Center" Width="171"/>
                                 <Label Content="MRNNumber:" Grid.Column="0" HorizontalAlignment="Left" Margin="71,68,0,104" VerticalAlignment="Center"/>
-                                <syncfusion:MaskedTextBox x:Name="mRNNumberMaskedTextBox" HorizontalAlignment="Left" Height="22" Margin="164,72,0,104" Text="{Binding MRNNumber}" VerticalAlignment="Center" Width="120"/>
+                                <syncfusion:MaskedTextBox x:Name="mRNNumberMaskedTextBox" HorizontalAlignment="Left" Height="22" Margin="164,74,0,107" Text="{Binding MRNNumber}" VerticalAlignment="Center" Width="170"/>
                                 <syncfusion:IntegerTextBox x:Name="propertyIDIntegerTextBox" HorizontalAlignment="Left" Height="Auto" Text="{Binding PropertyID, ElementName=addressIDIntegerTextBox, Mode=TwoWay}" Margin="166,0,0,178" VerticalAlignment="Center" Width="120" Visibility="Hidden"/>
                             </Grid>
                             <Grid x:Name="LeadGrid" DataContext="{StaticResource dTO_LeadViewSource}" HorizontalAlignment="Left" Margin="79,239,0,0"  VerticalAlignment="Top" Height="86" Width="389">
@@ -709,7 +680,7 @@
                         <TextBlock x:Name="textBlock_Copy1" Text="Insurance Provider" TextWrapping="Wrap" Margin="77,452,2303.333,485.333" FontSize="20" FontWeight="Bold" TextDecorations="Underline" Foreground="Black"/>
                         <Grid Margin="1091,65,386,375">
                             <Frame x:Name="frame" Content="Frame" HorizontalAlignment="Left" Height="245" Margin="24,63,0,0" VerticalAlignment="Top" Width="543" Visibility="Hidden"/>
-                            <syncfusion:SfMaskedEdit x:Name="ImageComments_Copy" HorizontalAlignment="Left" Height="71" Margin="173,311,-44,0" TextWrapping="Wrap" Text="SfMaskedEdit" VerticalAlignment="Top" Width="306"/>
+                            <syncfusion:SfMaskedEdit x:Name="ImageComments_Copy" HorizontalAlignment="Left" Height="44" Margin="173,311,-44,0" TextWrapping="Wrap" Text="SfMaskedEdit" VerticalAlignment="Top" Width="306"/>
                             <WrapPanel x:Name="wp" Height="636" Margin="483,0,-369,-228" VerticalAlignment="Top" HorizontalAlignment="Left" Width="321"/>
 
                             <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource dTO_InspectionViewSource}" Width="431" Margin="94,318,0,0" Visibility="Hidden">

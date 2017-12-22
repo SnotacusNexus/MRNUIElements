@@ -28,7 +28,7 @@ namespace MRNUIElements
         {
             InitializeComponent();
 
-            image.Source = (ImageSource)new ImageSourceConverter().ConvertFromString(Path);
+           // image.Source = (ImageSource)new ImageSourceConverter().ConvertFromString(Path);
         }
     }
 }

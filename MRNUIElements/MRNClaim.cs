@@ -151,21 +151,70 @@ namespace MRNUIElements.ViewModels
 			return b;
 
 		}
-		
-		
-		#endregion
-
-		#region Data objects
 
 
+        #endregion
 
-		#endregion
-
-
-		#region FigureClaimStatus
-
-		#endregion
+        #region Data objects
 
 
-	}
+
+        #endregion
+
+
+        #region FigureClaimStatus
+
+        #endregion
+
+        #region Special Functions
+
+        #region ClaimDocTypeToStatusDate Object
+        //Claim Status Document Date Association Function
+        //Claim Doc #  <-->  Claim Status #  //
+        //  1   Inspection Rpt      2 Inspection Date
+        //  2 Inspectiosn Images
+        //  3 Roof Measurements     3 Plane Measurements Rcd Date
+        //  4 Sketch                
+        //  5 Contract Doc          1 Contract Created
+        //  6 MRN Scope             4 Estimated Complete Date
+        //  7 Orig. Ins. Scope      6 Scope Recd Date
+        //  8 Final Scope Rcd       10 Supplement Settled
+        //  9 Roof/Job order form   8 Roof Ordered Date
+        // 10 Int. Invoice          13 Interior Scheduled
+        // 11 Ext. Invoice          14 Ext. Scheduled
+        // 12 Gut. Invoice          15 Gut. Scheduled
+        // 13 First Check(Deposit)  7 First Check Rec'd
+        // 14 Deductible Check(Final Funds) 21 Deductible Check Collected
+        // 15 Deprec. Check         19 20 Deprec Rcd/Cltd
+        // 16 Supple. Check         17 18 Supplement rcd/cltd
+        // 17 Chain of Custody     ?????
+        // 18 Lean Waiver               ??????
+        // 19 CapOut                  22 CapOut
+        // 20 CoC                     16 COc Rcd
+        // 21 AoC                      ???
+        // 22 SatisFaction Sur      ????
+        // 23 plane Damgae          ????
+        // 24 Warranty              23 Warranty Sent
+        // 25 Policy             
+        // 26 ThankYouLetter     |  12 roof complete
+        //                         9 Supp sent
+        //                      5 Adjustment Date
+        //
+
+
+        //Roof Order to Schedule Converter
+
+        public class RoofOrderScheduleItem
+        {
+
+           
+
+        }
+
+
+        #endregion
+
+
+        #endregion
+    }
 }

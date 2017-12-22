@@ -1005,6 +1005,11 @@ namespace MRNUIElements.Controllers
         {
 
         }
+
+        private void ClaimFileFolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 

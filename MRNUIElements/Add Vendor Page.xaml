@@ -10,9 +10,10 @@
 
     <Page.Resources>
         <CollectionViewSource x:Key="dTO_VendorViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Vendor}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_VendorTypesViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_VendorTypes}, CreateList=True}"/>
     </Page.Resources>
 
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
 
         <Grid x:Name="grid1" VerticalAlignment="Top" Margin="10,10,0,-190" HorizontalAlignment="Left" DataContext="{StaticResource dTO_VendorViewSource}">
             <Grid.RowDefinitions>
@@ -61,7 +62,7 @@
             <Label VerticalAlignment="Center" Grid.Row="11" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Vendor ID:" Foreground="White"/>
             <TextBox x:Name="vendorIDTextBox" Width="120" VerticalAlignment="Center" Text="{Binding VendorID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="11" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1" Background="{x:Null}" Foreground="White"/>
             <Label VerticalAlignment="Center" Grid.Row="12" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Vendor Type ID:" Foreground="White"/>
-            <TextBox x:Name="vendorTypeIDTextBox" Width="120" VerticalAlignment="Center" Text="{Binding VendorTypeID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="12" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1" Background="{x:Null}" Foreground="White"/>
+            <ComboBox x:Name="vendorTypeIDComboBox" Width="120" VerticalAlignment="Center"  DisplayMemberPath="VendorType" SelectedValue="VendorTypeID" Grid.Row="12" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1" Background="{x:Null}" Foreground="White"/>
             <Label VerticalAlignment="Center" Grid.Row="13" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Website:" Foreground="White"/>
             <TextBox x:Name="websiteTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Website, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="13" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1" Background="{x:Null}" Foreground="White"/>
             <Label VerticalAlignment="Center" Grid.Row="14" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Zip:" Foreground="White"/>

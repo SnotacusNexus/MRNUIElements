@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MRNUIElements"
              xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="MRNUIElements.ImageViewer"
-             mc:Ignorable="d" Height="415.239" Width="351.67">
+             mc:Ignorable="d" Height="200" Width="200">
     <Grid Background="#FFF1F1F1">
-        <Image x:Name="image" Height="280" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="332" Source="ResourceFiles/RoofInspectionWizardBkgnd.png">
+        <Image x:Name="image" Height="100" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="182">
             <Image.Effect>
                 <ee:BlindsTransitionEffect Orientation="Vertical"/>
             </Image.Effect>
         </Image>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="74" Margin="10,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="332"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="54" Margin="10,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
 
     </Grid>
 </UserControl>

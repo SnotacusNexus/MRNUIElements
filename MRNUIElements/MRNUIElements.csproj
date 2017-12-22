@@ -124,14 +124,29 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicEntity.1.0.1\lib\net45\DataLayer.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="FormEngine, Version=1.0.6185.37731, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FormEngine.1.0.1\lib\FormEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="FormEngine.FileSystem, Version=1.0.6185.37731, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FormEngine.1.0.1\lib\FormEngine.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="FormEngine.Interfaces, Version=1.0.6185.37731, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FormEngine.1.0.1\lib\FormEngine.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="FormEngine.PdfFormBuilder, Version=1.0.6185.37731, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FormEngine.1.0.1\lib\FormEngine.PdfFormBuilder.dll</HintPath>
     </Reference>
     <Reference Include="HelixToolkit, Version=2015.1.715.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
       <HintPath>..\packages\HelixToolkit.2015.1.715\lib\portable-net4+sl4+wp71+win8\HelixToolkit.dll</HintPath>
@@ -185,6 +200,12 @@
     <Reference Include="NuGet.VisualStudio, Version=4.3.0.4, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.VisualStudio.4.3.0-preview4\lib\net46\NuGet.VisualStudio.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Aero2" />
@@ -288,7 +309,6 @@
       <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -431,21 +451,159 @@
     <Compile Include="Add Vendor Page.xaml.cs">
       <DependentUpon>Add Vendor Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddAdditonalSupply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAdditonalSupply.Designer.cs">
+      <DependentUpon>AddAdditonalSupply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAddress.Designer.cs">
+      <DependentUpon>AddAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAdjuster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAdjuster.Designer.cs">
+      <DependentUpon>AddAdjuster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAdjustment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAdjustment.Designer.cs">
+      <DependentUpon>AddAdjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAppointment.Designer.cs">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddCallLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCallLog.Designer.cs">
+      <DependentUpon>AddCallLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddClaim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClaim.Designer.cs">
+      <DependentUpon>AddClaim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddClaimContacts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClaimContacts.Designer.cs">
+      <DependentUpon>AddClaimContacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddClaimDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClaimDocument.Designer.cs">
+      <DependentUpon>AddClaimDocument.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddClaimDocumentation.xaml.cs">
       <DependentUpon>AddClaimDocumentation.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddClaimPage.xaml.cs">
       <DependentUpon>AddClaimPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddClaimStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClaimStatus.Designer.cs">
+      <DependentUpon>AddClaimStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEditEmployee.xaml.cs">
       <DependentUpon>AddEditEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddLead.Designer.cs">
+      <DependentUpon>AddLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewOrder.Designer.cs">
+      <DependentUpon>AddNewOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewOrderItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewOrderItem.Designer.cs">
+      <DependentUpon>AddNewOrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewPayment.Designer.cs">
+      <DependentUpon>AddNewPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewPlane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewPlane.Designer.cs">
+      <DependentUpon>AddNewPlane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewRoof.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewRoof.Designer.cs">
+      <DependentUpon>AddNewRoof.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReferrer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReferrer.Designer.cs">
+      <DependentUpon>AddReferrer.cs</DependentUpon>
     </Compile>
     <Compile Include="AddressZipcodeValidation.cs" />
     <Compile Include="AddContextToPhotoPage.xaml.cs">
       <DependentUpon>AddContextToPhotoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddScope.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddScope.Designer.cs">
+      <DependentUpon>AddScope.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddSurplusSupplies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddSurplusSupplies.Designer.cs">
+      <DependentUpon>AddSurplusSupplies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddUserPage.xaml.cs">
       <DependentUpon>AddUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddVendor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddVendor.Designer.cs">
+      <DependentUpon>AddVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdjustmentResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdjustmentResults.Designer.cs">
+      <DependentUpon>AdjustmentResults.cs</DependentUpon>
     </Compile>
     <Compile Include="AdjustmentResultsPage.xaml.cs">
       <DependentUpon>AdjustmentResultsPage.xaml</DependentUpon>
@@ -454,6 +612,12 @@
       <DependentUpon>AnalogFileUploadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Appointments.cs" />
+    <Compile Include="Forms\AppointmentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppointmentTypes.Designer.cs">
+      <DependentUpon>AppointmentTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="BossPage.xaml.cs">
       <DependentUpon>BossPage.xaml</DependentUpon>
     </Compile>
@@ -481,8 +645,20 @@
     <Compile Include="ClaimData.cs" />
     <Compile Include="ClaimDataManipulation.cs" />
     <Compile Include="ClaimDetails.cs" />
+    <Compile Include="Forms\ClaimDocumentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClaimDocumentTypes.Designer.cs">
+      <DependentUpon>ClaimDocumentTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClaimPickerPopUp.xaml.cs">
       <DependentUpon>ClaimPickerPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ClaimStatusTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClaimStatusTypes.Designer.cs">
+      <DependentUpon>ClaimStatusTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="ClaimUser.cs" />
     <Compile Include="CompetitionResultsDisplay.xaml.cs">
@@ -609,6 +785,12 @@
     <Compile Include="DamageToolbar.xaml.cs">
       <DependentUpon>DamageToolbar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DamageTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DamageTypes.Designer.cs">
+      <DependentUpon>DamageTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataObjectModels\DTO_AdditionalSupply.cs" />
     <Compile Include="DataObjectModels\DTO_Address.cs" />
     <Compile Include="DataObjectModels\DTO_Adjuster.cs" />
@@ -641,16 +823,22 @@
     <Compile Include="DataObjectModels\DTO_SurplusSupplies.cs" />
     <Compile Include="DataObjectModels\DTO_User.cs" />
     <Compile Include="DataObjectModels\DTO_Vendor.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\EmployeeTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\EmployeeTypes.Designer.cs">
+      <DependentUpon>EmployeeTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Forms\Form2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
+    <Compile Include="Forms\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="GetClaimsPage.xaml.cs">
@@ -675,6 +863,24 @@
       <DependentUpon>InspectionPlaneData.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interface\Command\Command.cs" />
+    <Compile Include="Forms\InvoiceTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InvoiceTypes.Designer.cs">
+      <DependentUpon>InvoiceTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\KnockerResponseTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KnockerResponseTypes.Designer.cs">
+      <DependentUpon>KnockerResponseTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LeadTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LeadTypes.Designer.cs">
+      <DependentUpon>LeadTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginAs.xaml.cs">
       <DependentUpon>LoginAs.xaml</DependentUpon>
     </Compile>
@@ -718,11 +924,29 @@
     <Compile Include="PageFunction.xaml.cs">
       <DependentUpon>PageFunction.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PaymentForm.cs">
+    <Compile Include="Forms\PayFrequencies.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PaymentForm.Designer.cs">
+    <Compile Include="Forms\PayFrequencies.Designer.cs">
+      <DependentUpon>PayFrequencies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaymentDescriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentDescriptions.Designer.cs">
+      <DependentUpon>PaymentDescriptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentForm.Designer.cs">
       <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaymentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentTypes.Designer.cs">
+      <DependentUpon>PaymentTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="PdfViewer.xaml.cs">
       <DependentUpon>PdfViewer.xaml</DependentUpon>
@@ -733,6 +957,24 @@
     <Compile Include="PlanePopulationPage.xaml.cs">
       <DependentUpon>PlanePopulationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PlaneTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneTypes.Designer.cs">
+      <DependentUpon>PlaneTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Products.Designer.cs">
+      <DependentUpon>Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProductTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductTypes.Designer.cs">
+      <DependentUpon>ProductTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Quick Claim Entry.xaml.cs">
       <DependentUpon>Quick Claim Entry.xaml</DependentUpon>
     </Compile>
@@ -742,17 +984,44 @@
     <Compile Include="RecentActivityPage.xaml.cs">
       <DependentUpon>RecentActivityPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RidgeMaterialTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RidgeMaterialTypes.Designer.cs">
+      <DependentUpon>RidgeMaterialTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoofSchedule.xaml.cs">
+      <DependentUpon>RoofSchedule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RoofShapeSelector.xaml.cs">
       <DependentUpon>RoofShapeSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="SalespersonSelectionPage.xaml.cs">
       <DependentUpon>SalespersonSelectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scope Entry Form.cs">
+    <Compile Include="Forms\Scope Entry Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Scope Entry Form.Designer.cs">
+    <Compile Include="Forms\Scope Entry Form.Designer.cs">
       <DependentUpon>Scope Entry Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ScopeTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ScopeTypes.Designer.cs">
+      <DependentUpon>ScopeTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ServiceTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServiceTypes.Designer.cs">
+      <DependentUpon>ServiceTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ShingleTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShingleTypes.Designer.cs">
+      <DependentUpon>ShingleTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Show List.xaml.cs">
       <DependentUpon>Show List.xaml</DependentUpon>
@@ -896,11 +1165,23 @@
       <DependentUpon>SupplementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TextInputToVisibilityConverter.cs" />
+    <Compile Include="UnitsOfMeasure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitsOfMeasure.Designer.cs">
+      <DependentUpon>UnitsOfMeasure.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpgradeSelectionPage.xaml.cs">
       <DependentUpon>UpgradeSelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ScrollingText.xaml.cs">
       <DependentUpon>ScrollingText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserPermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserPermissions.Designer.cs">
+      <DependentUpon>UserPermissions.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="Utility\Command.cs" />
@@ -912,6 +1193,12 @@
     </Compile>
     <Compile Include="VendorInvoice.Designer.cs">
       <DependentUpon>VendorInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VendorTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendorTypes.Designer.cs">
+      <DependentUpon>VendorTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewClaimInfo.xaml.cs">
       <DependentUpon>ViewClaimInfo.xaml</DependentUpon>
@@ -1241,6 +1528,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="RoofSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RoofShapeSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1505,24 +1796,153 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\AddAdditonalSupply.resx">
+      <DependentUpon>AddAdditonalSupply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAddress.resx">
+      <DependentUpon>AddAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAdjuster.resx">
+      <DependentUpon>AddAdjuster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAdjustment.resx">
+      <DependentUpon>AddAdjustment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAppointment.resx">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddCallLog.resx">
+      <DependentUpon>AddCallLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClaim.resx">
+      <DependentUpon>AddClaim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClaimContacts.resx">
+      <DependentUpon>AddClaimContacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClaimDocument.resx">
+      <DependentUpon>AddClaimDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClaimStatus.resx">
+      <DependentUpon>AddClaimStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddLead.resx">
+      <DependentUpon>AddLead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewOrder.resx">
+      <DependentUpon>AddNewOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewOrderItem.resx">
+      <DependentUpon>AddNewOrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewPayment.resx">
+      <DependentUpon>AddNewPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewPlane.resx">
+      <DependentUpon>AddNewPlane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewRoof.resx">
+      <DependentUpon>AddNewRoof.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddReferrer.resx">
+      <DependentUpon>AddReferrer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddScope.resx">
+      <DependentUpon>AddScope.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddSurplusSupplies.resx">
+      <DependentUpon>AddSurplusSupplies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddVendor.resx">
+      <DependentUpon>AddVendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdjustmentResults.resx">
+      <DependentUpon>AdjustmentResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AppointmentTypes.resx">
+      <DependentUpon>AppointmentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClaimDocumentTypes.resx">
+      <DependentUpon>ClaimDocumentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClaimStatusTypes.resx">
+      <DependentUpon>ClaimStatusTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DamageTypes.resx">
+      <DependentUpon>DamageTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
+    <EmbeddedResource Include="Forms\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PaymentForm.resx">
+    <EmbeddedResource Include="Forms\InvoiceTypes.resx">
+      <DependentUpon>InvoiceTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KnockerResponseTypes.resx">
+      <DependentUpon>KnockerResponseTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LeadTypes.resx">
+      <DependentUpon>LeadTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PayFrequencies.resx">
+      <DependentUpon>PayFrequencies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentDescriptions.resx">
+      <DependentUpon>PaymentDescriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentForm.resx">
       <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentTypes.resx">
+      <DependentUpon>PaymentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneTypes.resx">
+      <DependentUpon>PlaneTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Products.resx">
+      <DependentUpon>Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductTypes.resx">
+      <DependentUpon>ProductTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Scope Entry Form.resx">
+    <EmbeddedResource Include="Forms\RidgeMaterialTypes.resx">
+      <DependentUpon>RidgeMaterialTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Scope Entry Form.resx">
       <DependentUpon>Scope Entry Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ScopeTypes.resx">
+      <DependentUpon>ScopeTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceTypes.resx">
+      <DependentUpon>ServiceTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShingleTypes.resx">
+      <DependentUpon>ShingleTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitsOfMeasure.resx">
+      <DependentUpon>UnitsOfMeasure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserPermissions.resx">
+      <DependentUpon>UserPermissions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VendorInvoice.resx">
       <DependentUpon>VendorInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendorTypes.resx">
+      <DependentUpon>VendorTypes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
@@ -1530,113 +1950,59 @@
     <None Include="ClassDiagram4.cd" />
     <None Include="MRNNexus_Model.DTO_AdditionalSupply.datasource" />
     <None Include="MRNNexus_Model.DTO_Address.datasource" />
-    <None Include="MRNNexus_Model.DTO_Address1.datasource" />
     <None Include="MRNNexus_Model.DTO_Adjuster.datasource" />
-    <None Include="MRNNexus_Model.DTO_Adjuster1.datasource" />
     <None Include="MRNNexus_Model.DTO_Adjustment.datasource" />
-    <None Include="MRNNexus_Model.DTO_Adjustment1.datasource" />
     <None Include="MRNNexus_Model.DTO_Base.datasource" />
-    <None Include="MRNNexus_Model.DTO_Base1.datasource" />
     <None Include="MRNNexus_Model.DTO_CalculatedResults.datasource" />
-    <None Include="MRNNexus_Model.DTO_CalculatedResults1.datasource" />
     <None Include="MRNNexus_Model.DTO_CalendarData.datasource" />
-    <None Include="MRNNexus_Model.DTO_CalendarData1.datasource" />
     <None Include="MRNNexus_Model.DTO_CallLog.datasource" />
-    <None Include="MRNNexus_Model.DTO_CallLog1.datasource" />
     <None Include="MRNNexus_Model.DTO_Claim.datasource" />
-    <None Include="MRNNexus_Model.DTO_Claim1.datasource" />
     <None Include="MRNNexus_Model.DTO_ClaimContacts.datasource" />
-    <None Include="MRNNexus_Model.DTO_ClaimContacts1.datasource" />
     <None Include="MRNNexus_Model.DTO_ClaimDocument.datasource" />
-    <None Include="MRNNexus_Model.DTO_ClaimDocument1.datasource" />
     <None Include="MRNNexus_Model.DTO_ClaimStatus.datasource" />
-    <None Include="MRNNexus_Model.DTO_ClaimStatus1.datasource" />
     <None Include="MRNNexus_Model.DTO_ClaimVendor.datasource" />
-    <None Include="MRNNexus_Model.DTO_ClaimVendor1.datasource" />
     <None Include="MRNNexus_Model.DTO_Customer.datasource" />
-    <None Include="MRNNexus_Model.DTO_Customer1.datasource" />
     <None Include="MRNNexus_Model.DTO_Damage.datasource" />
-    <None Include="MRNNexus_Model.DTO_Damage1.datasource" />
     <None Include="MRNNexus_Model.DTO_Employee.datasource" />
-    <None Include="MRNNexus_Model.DTO_Employee1.datasource" />
     <None Include="MRNNexus_Model.DTO_EmployeeDetail.datasource" />
-    <None Include="MRNNexus_Model.DTO_EmployeeDetail1.datasource" />
     <None Include="MRNNexus_Model.DTO_Inspection.datasource" />
-    <None Include="MRNNexus_Model.DTO_Inspection1.datasource" />
     <None Include="MRNNexus_Model.DTO_InsuranceCompany.datasource" />
-    <None Include="MRNNexus_Model.DTO_InsuranceCompany1.datasource" />
     <None Include="MRNNexus_Model.DTO_Invoice.datasource" />
-    <None Include="MRNNexus_Model.DTO_Invoice1.datasource" />
     <None Include="MRNNexus_Model.DTO_KnockerResponse.datasource" />
-    <None Include="MRNNexus_Model.DTO_KnockerResponse1.datasource" />
     <None Include="MRNNexus_Model.DTO_Lead.datasource" />
-    <None Include="MRNNexus_Model.DTO_Lead1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_AdjustmentResult.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_AdjustmentResult1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_AppointmentTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_AppointmentTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ClaimDocumentType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ClaimDocumentType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ClaimStatusTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ClaimStatusTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_DamageTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_DamageTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_EmployeeType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_EmployeeType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_InvoiceType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_InvoiceType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_KnockResponseType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_KnockResponseType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_LeadType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_LeadType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PayFrequncy.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PayFrequncy1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PaymentDescription.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PaymentDescription1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PaymentType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PaymentType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PayType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PayType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_Permissions.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_Permissions1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_PlaneTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_PlaneTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_Product.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_Product1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ProductType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ProductType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_RidgeMaterialType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_RidgeMaterialType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ScopeType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ScopeType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ServiceTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ServiceTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_ShingleType.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_ShingleType1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_UnitOfMeasure.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_UnitOfMeasure1.datasource" />
     <None Include="MRNNexus_Model.DTO_LU_VendorTypes.datasource" />
-    <None Include="MRNNexus_Model.DTO_LU_VendorTypes1.datasource" />
     <None Include="MRNNexus_Model.DTO_NewRoof.datasource" />
-    <None Include="MRNNexus_Model.DTO_NewRoof1.datasource" />
     <None Include="MRNNexus_Model.DTO_Order.datasource" />
-    <None Include="MRNNexus_Model.DTO_Order1.datasource" />
     <None Include="MRNNexus_Model.DTO_OrderItem.datasource" />
-    <None Include="MRNNexus_Model.DTO_OrderItem1.datasource" />
     <None Include="MRNNexus_Model.DTO_Payment.datasource" />
-    <None Include="MRNNexus_Model.DTO_Payment1.datasource" />
     <None Include="MRNNexus_Model.DTO_Plane.datasource" />
-    <None Include="MRNNexus_Model.DTO_Plane1.datasource" />
     <None Include="MRNNexus_Model.DTO_Referrer.datasource" />
-    <None Include="MRNNexus_Model.DTO_Referrer1.datasource" />
     <None Include="MRNNexus_Model.DTO_Scope.datasource" />
-    <None Include="MRNNexus_Model.DTO_Scope1.datasource" />
     <None Include="MRNNexus_Model.DTO_SurplusSupplies.datasource" />
-    <None Include="MRNNexus_Model.DTO_SurplusSupplies1.datasource" />
     <None Include="MRNNexus_Model.DTO_User.datasource" />
-    <None Include="MRNNexus_Model.DTO_User1.datasource" />
     <None Include="MRNNexus_Model.DTO_Vendor.datasource" />
-    <None Include="MRNNexus_Model.DTO_Vendor1.datasource" />
     <None Include="MRNUIElements_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

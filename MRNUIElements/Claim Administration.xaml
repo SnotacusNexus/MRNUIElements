@@ -321,9 +321,8 @@
         <CollectionViewSource x:Key="dTO_ScopeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Scope}, CreateList=True}" />
     </Page.Resources>
     <Grid Height="1102"
-          Margin="0,0,0,0"
           Background="#FF444141"
-          DataContext="{StaticResource detailedCompactClaimModelViewSource}">
+          DataContext="{StaticResource detailedCompactClaimModelViewSource}" Margin="90,0,-90,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="227" />
             <RowDefinition Height="482" />

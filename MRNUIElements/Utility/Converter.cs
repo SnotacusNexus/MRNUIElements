@@ -25,8 +25,7 @@ using System.Windows.Media.Imaging;
 
 namespace MRNUIElements.Utility
 {
-
-
+   
     public class CustomerIDToNameConverter : IValueConverter
     {
         static ServiceLayer s1 = ServiceLayer.getInstance();
@@ -161,30 +160,32 @@ namespace MRNUIElements.Utility
             throw new NotImplementedException();
         }
     }
-    //public class BitmapImageConverter : IValueConverter
-    //{
+    public class BitmapImageConverter : IValueConverter
+    {
 
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        ServiceLayer s1 = ServiceLayer.getInstance();
-    //        Task.Run(async () => {
-    //           s1.ClaimDocumentsList.Clear();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            ServiceLayer s1 = ServiceLayer.getInstance();
+            Task.Run(async () =>
+            {
+                s1.ClaimDocumentsList.Clear();
 
-    //            await s1.GetClaimDocumentsByClaimID(new DTO_Claim { ClaimID = (int)parameter });
-    //        });
-    //        DTO_ClaimDocument a = new DTO_ClaimDocument();
-    //             a =s1.ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
-    //        return "http://" + a.FilePath + a.FileName + a.FileExt;
-    //    }
+                await s1.GetClaimDocumentsByClaimID(new DTO_Claim { ClaimID = (int)parameter });
+            });
+            DTO_ClaimDocument a = new DTO_ClaimDocument();
+            a = s1.ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
+            return "http://" + a.FilePath + a.FileName + a.FileExt;
+        }
 
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {  var uri = (Uri)value;
-    //        var img = new System.Windows.Controls.Image();
-    //        img.Source = new BitmapImage(uri) { CacheOption = BitmapCacheOption.None };
-    //        return img;
-    //        throw new NotImplementedException();
-    //    }
-   // }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var uri = (Uri)value;
+            var img = new System.Windows.Controls.Image();
+            img.Source = new BitmapImage(uri) { CacheOption = BitmapCacheOption.None };
+            return img;
+            throw new NotImplementedException();
+        }
+    }
 
 
     public class ClaimContactsConverter : IValueConverter
@@ -254,11 +255,11 @@ namespace MRNUIElements.Utility
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
 
-           DTO_ClaimDocument item = s1.ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
-       return new System.Windows.Controls.Image().Source = new BitmapImage(new Uri(@"http://" + item.FilePath + item.FileName + item.FileExt));
+            DTO_ClaimDocument item = s1.ClaimDocumentsList.Find(x => x.DocumentID == (int)value);
+            return new System.Windows.Controls.Image().Source = new BitmapImage(new Uri(@"http://" + item.FilePath + item.FileName + item.FileExt));
 
-       
-       
+
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -395,7 +396,7 @@ namespace MRNUIElements.Utility
                 case 3:
                     {
                         var r = s1.CustomersList.Find(x => x.CustomerID == ct.CreditToID);
-                        if ((int)parameter == 2)return (typeof(DTO_Customer));
+                        if ((int)parameter == 2) return (typeof(DTO_Customer));
 
                         return r.FirstName + " " + r.LastName;
 
@@ -403,7 +404,7 @@ namespace MRNUIElements.Utility
                 case 2:
                     {
                         var r = s1.ReferrersList.Find(x => x.ReferrerID == ct.CreditToID);
-                        if ((int)parameter == 2) return (typeof(DTO_Referrer)); 
+                        if ((int)parameter == 2) return (typeof(DTO_Referrer));
                         return r.FirstName + " " + r.LastName;
 
                     }
@@ -572,80 +573,37 @@ namespace MRNUIElements.Utility
         }
     }
 
-    public static class Ext
+
+
+    public class StringtoCommandConverter : DependencyObject, IValueConverter
     {
-        public static System.Drawing.Color ToColor(this string value)
+
+
+        public CustomerAgreement Context
         {
-            System.Drawing.Color c;
-            var match = Regex.Match(value, "#([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})");
-            int a = Convert.ToInt32(match.Groups[1].Value, 16);
-            int r = Convert.ToInt32(match.Groups[2].Value, 16);
-            int g = Convert.ToInt32(match.Groups[3].Value, 16);
-            int b = Convert.ToInt32(match.Groups[4].Value, 16);
-            c = System.Drawing.Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
-            return c;
+            get { return (CustomerAgreement)GetValue(ContextProperty); }
+            set { SetValue(ContextProperty, value); }
         }
 
-        public static DoubleCollection Clone(this DoubleCollection item)
+        // Using a DependencyProperty as the backing store for Context.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ContextProperty =
+            DependencyProperty.Register("Context", typeof(CustomerAgreement), typeof(StringtoCommandConverter), new PropertyMetadata(null, onPropertychanged));
+
+        private static void onPropertychanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DoubleCollection col = new DoubleCollection();
-            foreach (var dou in item)
-            {
-                col.Add(dou);
-            }
-            return col;
+
+        }
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
-
-    //public class StringtoCommandConverter : DependencyObject, IValueConverter
-    //{
-
-
-    //public NexusClaimGenerator Context
-    //{
-    //    get { return (NexusClaimGenerator)GetValue(ContextProperty); }
-    //    set { SetValue(ContextProperty, value); }
-    //}
-
-    //// Using a DependencyProperty as the backing store for Context.  This enables animation, styling, binding, etc...
-    //public static readonly DependencyProperty ContextProperty =
-    //    DependencyProperty.Register("Context", typeof(NexusClaimGenerator), typeof(StringtoCommandConverter), new PropertyMetadata(null, onPropertychanged));
-
-    //private static void onPropertychanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-    //{
-
-    //}
-
-
-    //public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //{
-    //    string command = value.ToString();
-    //    ////DiagramBuilderVM vm = values[1] as DiagramBuilderVM;
-    //    //if (vm != null)
-    //    //{
-    //    //    switch (command)
-    //    //    {
-    //    //        case "Cut":
-    //    //            return vm.Cut;
-    //    //            break;
-    //    //        case "Copy":
-    //    //            return vm.Copy;
-    //    //            break;
-    //    //        case "Paste":
-    //    //            return vm.Paste;
-    //    //            break;
-
-    //    //    }
-    //    //}
-    //    return null;
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
-    public class StringtoBooleanConverter : IValueConverter
+        public class StringtoBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -859,6 +817,31 @@ namespace MRNUIElements.Utility
             }
         }
 
+    }
+    public static class Ext
+    {
+        public static System.Drawing.Color ToColor(this string value)
+        {
+            System.Drawing.Color c;
+            var match = Regex.Match(value, "#([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})");
+            int a = Convert.ToInt32(match.Groups[1].Value, 16);
+            int r = Convert.ToInt32(match.Groups[2].Value, 16);
+            int g = Convert.ToInt32(match.Groups[3].Value, 16);
+            int b = Convert.ToInt32(match.Groups[4].Value, 16);
+            c = System.Drawing.Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
+            return c;
+        }
+
+        public static DoubleCollection Clone(this DoubleCollection item)
+        {
+            DoubleCollection col = new DoubleCollection();
+            foreach (var dou in item)
+            {
+                col.Add(dou);
+            }
+            return col;
+        }
+       
     }
 
     internal static class ShapeHelper

@@ -14,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MRNUIElements.Forms;
+using System.Windows.Forms;
+using System.Threading;
 
 namespace MRNUIElements.Controllers
 {
@@ -37,9 +40,9 @@ namespace MRNUIElements.Controllers
 
         private void NewClaimBtn_Click(object sender, RoutedEventArgs e)
         {
-
-            NavigationService.Navigate(new AddPropertyAddress());
-
+            AddClaim ac = new AddClaim();
+           if(DialogResult.OK == ac.ShowDialog())              
+            NavigationService.Navigate(new Controllers.ClaimView(ac.Claim));
         }
 
 
@@ -110,7 +113,7 @@ namespace MRNUIElements.Controllers
         private MRNClaim BuildMRNClaim()
         {
 
-
+             
 
             return new MRNClaim();
         }

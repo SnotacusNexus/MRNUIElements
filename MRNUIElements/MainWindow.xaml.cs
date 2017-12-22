@@ -552,5 +552,10 @@ VerboseStatusDisplay.Visibility = Visibility.Collapsed;
             busyIndicator.IsBusy = false;
             ((MainWindow)sender).busyIndicator.Visibility = Visibility.Hidden;
         }
+
+        private void ViewSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ns.Navigate(new RoofSchedule());
+        }
     }
 }

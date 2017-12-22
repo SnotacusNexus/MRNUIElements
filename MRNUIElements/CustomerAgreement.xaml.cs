@@ -129,7 +129,7 @@ namespace MRNUIElements
             if (cpp.ShowDialog().Value == true)
             {
                 Claim = cpp.Claim;
-                //  carousel_Loaded(Claim, new RoutedEventArgs());
+                  Wp_Loaded(Claim, new RoutedEventArgs());
             }
             _Address = new DTO_Address();
             _Lead = new DTO_Lead();
@@ -749,8 +749,8 @@ namespace MRNUIElements
                 foreach (var item in s1.ClaimDocumentsList.FindAll(x => x.ClaimID == ((DTO_Claim)sender).ClaimID && x.DocTypeID == 2))
                 {
                     var im = new System.Web.UI.WebControls.Image();
-                    im.Height = 200;
-                    im.Width = 200;
+                    im.Height = 50;
+                    im.Width = 50;
 
 
 
@@ -763,28 +763,28 @@ namespace MRNUIElements
 
 
                     //var web = new System.Net.WebClient();
-                    addImagesbutton_Click((string)uri.OriginalString, e);
+                    addImagesbutton_Click((string)uri.OriginalString, new RoutedEventArgs());
                     ImageList.Add(im);
                     imgCollection.Add(img);
-                    //var stream = new MemoryStream(await web.DownloadDataTaskAsync(imageaddress));
-                    //     var bmp = new Bitmap(stream);
-                    //listOfImgs.Add(bmp);
-                    // carousel.Items.Add(bmp);
+                    Wp.Children.Add(img);
 
                 }
 
-                carousel.ItemsSource = imgCollection;
+               
             }
         }
 
         private void addImagesbutton_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty((string)sender))
-                ImageList.Add(new System.Web.UI.WebControls.Image() { ImageUrl = sender.ToString() });
+            if (sender.GetType() == typeof(string))
+            {
+                if (!String.IsNullOrEmpty((string)sender))
+                    ImageList.Add(new System.Web.UI.WebControls.Image() { ImageUrl = sender.ToString() });
 
-            else
-                SelectFile(2).ForEach(x => imagelistBox.Items.Add(x.ToString()));
-            imagelistBox.Items.Add((string)sender);
+                else
+                    SelectFile(2).ForEach(x => imagelistBox.Items.Add(x.ToString()));
+                imagelistBox.Items.Add((string)sender);
+            }
         }
 
         private void nextImageBtn_Click(object sender, RoutedEventArgs e)
@@ -1806,6 +1806,53 @@ namespace MRNUIElements
             {
                 cityMaskedTextBox_REF.Clear();
                 stateMaskedTextBox_REF.Clear();
+            }
+        }
+
+       async private void Wp_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            await s1.GetAllClaimDocuments();
+            imgCollection = new ObservableCollection<System.Windows.Controls.Image>();
+
+            if (sender.GetType() == typeof(DTO_Claim))
+            {
+
+
+                //var sc = SynchronizationContext.Current;
+
+                foreach (var item in s1.ClaimDocumentsList.FindAll(x => x.ClaimID == ((DTO_Claim)sender).ClaimID && x.DocTypeID == 2))
+                {
+                    var im = new System.Web.UI.WebControls.Image();
+                    im.Height = 200;
+                    im.Width = 200;
+
+
+
+                    var uri = new Uri("http://" + item.FilePath + item.FileName + item.FileExt);
+                    string comment = item.DocumentComments;
+                    var bitmap = new BitmapImage(uri);
+
+                    System.Windows.Controls.Image img = new System.Windows.Controls.Image();
+                    img.Height = 50;
+                    img.Width = 50;
+                    img.StretchDirection = StretchDirection.DownOnly;
+                    img.Stretch = Stretch.UniformToFill;
+                    img.Source = bitmap;
+
+
+                    //var web = new System.Net.WebClient();
+                    addImagesbutton_Click((string)uri.OriginalString, new RoutedEventArgs());
+                    ImageList.Add(im);
+                    imgCollection.Add(img);
+                    //var iv = new ImageViewer();
+                    //iv.image = img; 
+                    //iv.textBox.Text = comment;
+                    Wp.Children.Add(img);
+
+                }
+
+
             }
         }
     }

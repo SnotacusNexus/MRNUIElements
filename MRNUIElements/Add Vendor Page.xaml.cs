@@ -23,6 +23,13 @@ namespace MRNUIElements
 		public Add_Vendor_Page()
 		{
 			InitializeComponent();
+            this.DataContext = this;
 		}
-	}
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            vendorTypeIDComboBox.ItemsSource = Controllers.ServiceLayer.getInstance().VendorTypes;
+           
+        }
+    }
 }

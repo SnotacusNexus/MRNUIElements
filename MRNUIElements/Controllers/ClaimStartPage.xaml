@@ -9,7 +9,7 @@
       Title="ClaimStartPage">
 
     <Grid>
-        <Button x:Name="NewClaimBtn" Content="New" HorizontalAlignment="Left" Margin="115,80,0,0" VerticalAlignment="Top" Width="75" Click="NewClaimBtn_Click"/>
+        <Button x:Name="NewClaimBtn" Content="New" HorizontalAlignment="Left" Margin="115,79,0,0" VerticalAlignment="Top" Width="75" Click="NewClaimBtn_Click"/>
         <Button x:Name="OpenEditBtn" Content="Open/Edit" HorizontalAlignment="Left" Margin="115,122,0,0" VerticalAlignment="Top" Width="75" Click="OpenEditBtn_Click"/>
         <Button x:Name="OptionsBtn" Content="Options" HorizontalAlignment="Left" Margin="115,167,0,0" VerticalAlignment="Top" Width="75" Click="OptionsBtn_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="45,16,0,0" TextWrapping="Wrap" Text="MRN Claim Services" VerticalAlignment="Top" Height="49" Width="220" FontSize="24" Foreground="White"/>
