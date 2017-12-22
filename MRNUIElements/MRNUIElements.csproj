@@ -124,295 +124,6 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CoherentUINetControls, Version=2.2.0.0, Culture=neutral, PublicKeyToken=06c400a284f0f0fd, processorArchitecture=MSIL">
-      <HintPath>packages\CoherentUINETControls.2.2.0.0\lib\net45\CoherentUINetControls.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="EO.Base, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.WebBrowser, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.WebBrowser.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.WebBrowser.Wpf, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.WebBrowser.Wpf.17.3.13\lib\EO.WebBrowser.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.WebEngine, Version=17.3.13.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.WebBrowser.17.3.13\lib\EO.WebEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.Wpf">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2017\EO.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="HelixToolkit, Version=2015.1.715.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>..\packages\HelixToolkit.2015.1.715\lib\portable-net4+sl4+wp71+win8\HelixToolkit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="HelixToolkit.Wpf, Version=2015.1.715.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>..\packages\HelixToolkit.Wpf.2015.1.715\lib\net45\HelixToolkit.Wpf.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ImageProcessor, Version=2.5.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageProcessor.2.5.4\lib\net45\ImageProcessor.dll</HintPath>
-    </Reference>
-    <Reference Include="Itzben, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\itzben.1.1.1\lib\NET45\Itzben.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Jarloo.Calendar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Jarloo.Calendar\Jarloo.Calendar\obj\Debug\Jarloo.Calendar.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Expression.Controls, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Expression.Effects, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Prism.UnityExtensions.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NSubstitute, Version=0.9.0.34, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
-      <HintPath>packages\NSubstitute.0.9.0.34\lib\35\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.VisualStudio, Version=4.3.0.4, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.VisualStudio.4.3.0-preview4\lib\net46\NuGet.VisualStudio.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="PresentationFramework.Aero" />
-    <Reference Include="PresentationFramework.Aero2" />
-    <Reference Include="PresentationFramework.Luna" />
-    <Reference Include="PrismMVVMLibrary, Version=1.0.22.42, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\PrismMVVMLibrary.2.0.0.10\lib\net40\PrismMVVMLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="PropertyChanged, Version=2.1.3.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
-      <HintPath>..\packages\PropertyChanged.Fody.2.1.3\lib\netstandard1.0\PropertyChanged.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ReachFramework" />
-    <Reference Include="Syncfusion.Calculate.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Chart.Wpf.SampleLayout, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Compression.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Data.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Diagram.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.DocIO.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.DocIO.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Edit.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Gauge.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Grid.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Grid.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Grid.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.GridCommon.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Linq.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.OfficeChart.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Pdf.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.PdfViewer.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.PdfViewer.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Presentation.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.PropertyGrid.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.RichTextBoxAdv.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Schedule.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Schedule.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Schedule.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfAccordion.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.SfBusyIndicator.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfCellGrid.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfChart.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.SfColorPalette.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfDiagram.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.SfGauge.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.SfGrid.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfGridCommon.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfHeatMap.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfInput.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfRadialMenu.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfSchedule.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfShared.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfSpellChecker.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.MVVM.WPF, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SpellChecker.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Windows, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Wpf, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.XlsIO.Base, Version=15.2460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="System" />
-    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ApplicationModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=879796c5000d383a, processorArchitecture=MSIL">
-      <HintPath>packages\ApplicationModel.1.0.17\lib\net45\System.ApplicationModel.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.4.3.2\lib\net46\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest" />
-    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Printing" />
-    <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net46\System.Security.Cryptography.Algorithms.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net46\System.Security.Cryptography.X509Certificates.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.4.0-preview2-25405-01\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Controls.Ribbon" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Windows.Presentation" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Serialization" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
-    <Reference Include="WebDriver, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="XamlBuildTask" />
-    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.DataGrid, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.Toolkit, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1529,6 +1240,163 @@
     <None Include="CoherentUI\Debugger\html\devtools\devtools_resources.grd" />
     <None Include="CoherentUI\doc\Coherent_UI_Documentation.chm" />
     <None Include="CoherentUI\License.pdf" />
+    <Fakes Include="Fakes\CoherentUINetControls.fakes" />
+    <Fakes Include="Fakes\EntityFramework.fakes" />
+    <Fakes Include="Fakes\EntityFramework.SqlServer.fakes" />
+    <Fakes Include="Fakes\EnvDTE.fakes" />
+    <Fakes Include="Fakes\EO.Base.fakes" />
+    <Fakes Include="Fakes\EO.WebBrowser.fakes" />
+    <Fakes Include="Fakes\EO.WebBrowser.Wpf.fakes" />
+    <Fakes Include="Fakes\EO.WebEngine.fakes" />
+    <Fakes Include="Fakes\EO.Wpf.fakes" />
+    <Fakes Include="Fakes\HelixToolkit.fakes" />
+    <Fakes Include="Fakes\HelixToolkit.Wpf.fakes" />
+    <Fakes Include="Fakes\ImageProcessor.fakes" />
+    <Fakes Include="Fakes\Itzben.fakes" />
+    <Fakes Include="Fakes\Jarloo.Calendar.fakes" />
+    <Fakes Include="Fakes\Microsoft.Expression.Controls.fakes" />
+    <Fakes Include="Fakes\Microsoft.Expression.Drawing.fakes" />
+    <Fakes Include="Fakes\Microsoft.Expression.Effects.fakes" />
+    <Fakes Include="Fakes\Microsoft.Expression.Interactions.fakes" />
+    <Fakes Include="Fakes\Microsoft.Practices.Prism.fakes" />
+    <Fakes Include="Fakes\Microsoft.Practices.Prism.Interactivity.fakes" />
+    <Fakes Include="Fakes\Microsoft.Practices.Prism.UnityExtensions.fakes" />
+    <Fakes Include="Fakes\Microsoft.Practices.Unity.fakes" />
+    <Fakes Include="Fakes\Microsoft.Practices.Unity.Configuration.fakes" />
+    <Fakes Include="Fakes\Microsoft.Web.Infrastructure.fakes" />
+    <Fakes Include="Fakes\Microsoft.Win32.Primitives.fakes" />
+    <Fakes Include="Fakes\MRNNexus_Model.fakes" />
+    <Fakes Include="Fakes\Newtonsoft.Json.fakes" />
+    <Fakes Include="Fakes\NSubstitute.fakes" />
+    <Fakes Include="Fakes\NuGet.VisualStudio.fakes" />
+    <Fakes Include="Fakes\PresentationCore.fakes" />
+    <Fakes Include="Fakes\PresentationFramework.fakes" />
+    <Fakes Include="Fakes\PresentationFramework.Aero.fakes" />
+    <Fakes Include="Fakes\PresentationFramework.Aero2.fakes" />
+    <Fakes Include="Fakes\PresentationFramework.Luna.fakes" />
+    <Fakes Include="Fakes\PrismMVVMLibrary.fakes" />
+    <Fakes Include="Fakes\PropertyChanged.fakes" />
+    <Fakes Include="Fakes\ReachFramework.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Calculate.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Chart.Wpf.SampleLayout.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Compression.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Data.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Diagram.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.DocIO.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.DocIO.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Edit.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Gauge.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Grid.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Grid.Windows.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Grid.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.GridCommon.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Linq.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.OfficeChart.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Pdf.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.PdfViewer.Windows.fakes" />
+    <Fakes Include="Fakes\Syncfusion.PdfViewer.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Presentation.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.PropertyGrid.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.RichTextBoxAdv.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Schedule.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Schedule.Windows.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Schedule.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfAccordion.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfBusyIndicator.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfCellGrid.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfChart.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfColorPalette.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfDiagram.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfGauge.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfGrid.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfGridCommon.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfHeatMap.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfInput.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfRadialMenu.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfSchedule.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfShared.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SfSpellChecker.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Shared.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Shared.MVVM.WPF.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Shared.Windows.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Shared.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.SpellChecker.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Tools.Base.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Tools.Windows.fakes" />
+    <Fakes Include="Fakes\Syncfusion.Tools.Wpf.fakes" />
+    <Fakes Include="Fakes\Syncfusion.XlsIO.Base.fakes" />
+    <Fakes Include="Fakes\System.fakes" />
+    <Fakes Include="Fakes\mscorlib.fakes" />
+    <Fakes Include="Fakes\System.AppContext.fakes" />
+    <Fakes Include="Fakes\System.ApplicationModel.fakes" />
+    <Fakes Include="Fakes\System.ComponentModel.Composition.fakes" />
+    <Fakes Include="Fakes\System.ComponentModel.DataAnnotations.fakes" />
+    <Fakes Include="Fakes\System.Console.fakes" />
+    <Fakes Include="Fakes\System.Core.fakes" />
+    <Fakes Include="Fakes\System.Data.fakes" />
+    <Fakes Include="Fakes\System.Data.DataSetExtensions.fakes" />
+    <Fakes Include="Fakes\System.Data.Entity.fakes" />
+    <Fakes Include="Fakes\System.Design.fakes" />
+    <Fakes Include="Fakes\System.Diagnostics.DiagnosticSource.fakes" />
+    <Fakes Include="Fakes\System.Drawing.fakes" />
+    <Fakes Include="Fakes\System.Drawing.Design.fakes" />
+    <Fakes Include="Fakes\System.Globalization.Calendars.fakes" />
+    <Fakes Include="Fakes\System.IO.Compression.fakes" />
+    <Fakes Include="Fakes\System.IO.Compression.FileSystem.fakes" />
+    <Fakes Include="Fakes\System.IO.Compression.ZipFile.fakes" />
+    <Fakes Include="Fakes\System.IO.FileSystem.fakes" />
+    <Fakes Include="Fakes\System.IO.FileSystem.Primitives.fakes" />
+    <Fakes Include="Fakes\System.Net.fakes" />
+    <Fakes Include="Fakes\System.Net.Http.fakes" />
+    <Fakes Include="Fakes\System.Net.Http.Extensions.fakes" />
+    <Fakes Include="Fakes\System.Net.Http.Formatting.fakes" />
+    <Fakes Include="Fakes\System.Net.Http.Primitives.fakes" />
+    <Fakes Include="Fakes\System.Net.Http.WebRequest.fakes" />
+    <Fakes Include="Fakes\System.Net.Sockets.fakes" />
+    <Fakes Include="Fakes\System.Numerics.fakes" />
+    <Fakes Include="Fakes\System.Printing.fakes" />
+    <Fakes Include="Fakes\System.Runtime.Caching.fakes" />
+    <Fakes Include="Fakes\System.Runtime.InteropServices.RuntimeInformation.fakes" />
+    <Fakes Include="Fakes\System.Runtime.Serialization.fakes" />
+    <Fakes Include="Fakes\System.Security.Cryptography.Algorithms.fakes" />
+    <Fakes Include="Fakes\System.Security.Cryptography.Encoding.fakes" />
+    <Fakes Include="Fakes\System.Security.Cryptography.Primitives.fakes" />
+    <Fakes Include="Fakes\System.Security.Cryptography.X509Certificates.fakes" />
+    <Fakes Include="Fakes\System.ServiceModel.fakes" />
+    <Fakes Include="Fakes\System.ServiceModel.Web.fakes" />
+    <Fakes Include="Fakes\System.Spatial.fakes" />
+    <Fakes Include="Fakes\System.Threading.Tasks.Dataflow.fakes" />
+    <Fakes Include="Fakes\System.Threading.Tasks.Extensions.fakes" />
+    <Fakes Include="Fakes\System.Web.fakes" />
+    <Fakes Include="Fakes\System.Web.Extensions.fakes" />
+    <Fakes Include="Fakes\System.Web.Helpers.fakes" />
+    <Fakes Include="Fakes\System.Web.Http.fakes" />
+    <Fakes Include="Fakes\System.Web.Razor.fakes" />
+    <Fakes Include="Fakes\System.Web.WebPages.fakes" />
+    <Fakes Include="Fakes\System.Web.WebPages.Deployment.fakes" />
+    <Fakes Include="Fakes\System.Web.WebPages.Razor.fakes" />
+    <Fakes Include="Fakes\System.Windows.fakes" />
+    <Fakes Include="Fakes\System.Windows.Controls.Ribbon.fakes" />
+    <Fakes Include="Fakes\System.Windows.Forms.fakes" />
+    <Fakes Include="Fakes\System.Windows.Interactivity.fakes" />
+    <Fakes Include="Fakes\System.Windows.Presentation.fakes" />
+    <Fakes Include="Fakes\System.Xaml.fakes" />
+    <Fakes Include="Fakes\System.Xml.fakes" />
+    <Fakes Include="Fakes\System.Xml.Linq.fakes" />
+    <Fakes Include="Fakes\System.Xml.ReaderWriter.fakes" />
+    <Fakes Include="Fakes\System.Xml.Serialization.fakes" />
+    <Fakes Include="Fakes\UIAutomationProvider.fakes" />
+    <Fakes Include="Fakes\UIAutomationTypes.fakes" />
+    <Fakes Include="Fakes\WebDriver.fakes" />
+    <Fakes Include="Fakes\WindowsBase.fakes" />
+    <Fakes Include="Fakes\WindowsFormsIntegration.fakes" />
+    <Fakes Include="Fakes\XamlBuildTask.fakes" />
+    <Fakes Include="Fakes\Xceed.Wpf.AvalonDock.fakes" />
+    <Fakes Include="Fakes\Xceed.Wpf.AvalonDock.Themes.Aero.fakes" />
+    <Fakes Include="Fakes\Xceed.Wpf.AvalonDock.Themes.Metro.fakes" />
+    <Fakes Include="Fakes\Xceed.Wpf.AvalonDock.Themes.VS2010.fakes" />
+    <Fakes Include="Fakes\Xceed.Wpf.DataGrid.fakes" />
+    <Fakes Include="Fakes\Xceed.Wpf.Toolkit.fakes" />
     <None Include="MRNNexus_Model.DTO_AdditionalSupply.datasource" />
     <None Include="MRNNexus_Model.DTO_Address.datasource" />
     <None Include="MRNNexus_Model.DTO_Address1.datasource" />
@@ -1916,27 +1784,21 @@
     <Content Include="Syncfusion.GridCommon.WPF.dll" />
     <Content Include="Syncfusion.Shared.WPF.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MRNNexus_Model\MRNNexus_Model.csproj">
-      <Project>{5bfc4d4b-8fbc-4fda-a4eb-88b69987b3b9}</Project>
-      <Name>MRNNexus_Model</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets'))" />
-    <Error Condition="!Exists('..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.3.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Fody.2.3.3\build\net452\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.3.3\build\net452\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.34.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.34.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" />
-  <Import Project="..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets" Condition="Exists('..\packages\Fody.2.1.1\build\netstandard1.0\Fody.targets')" />
   <Import Project="packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets" Condition="Exists('packages\CoherentUINETControls.2.2.0.0\build\Net45\CoherentUINETControls.targets')" />
+  <Import Project="..\packages\Fody.2.3.3\build\net452\Fody.targets" Condition="Exists('..\packages\Fody.2.3.3\build\net452\Fody.targets')" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.34.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.34.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
