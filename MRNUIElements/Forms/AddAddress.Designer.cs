@@ -52,6 +52,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.sTTextBox = new System.Windows.Forms.TextBox();
+            this.customerNameTextBox = new System.Windows.Forms.TextBox();
             addressIDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_AddressBindingNavigator)).BeginInit();
             this.dTO_AddressBindingNavigator.SuspendLayout();
@@ -217,10 +218,10 @@
             // customerIDTextBox
             // 
             this.customerIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_AddressBindingSource, "CustomerID", true));
-            this.customerIDTextBox.Location = new System.Drawing.Point(81, 68);
+            this.customerIDTextBox.Location = new System.Drawing.Point(12, 179);
             this.customerIDTextBox.Name = "customerIDTextBox";
             this.customerIDTextBox.ReadOnly = true;
-            this.customerIDTextBox.Size = new System.Drawing.Size(296, 26);
+            this.customerIDTextBox.Size = new System.Drawing.Size(48, 26);
             this.customerIDTextBox.TabIndex = 6;
             // 
             // zipTextBox
@@ -262,11 +263,21 @@
             this.sTTextBox.Size = new System.Drawing.Size(44, 26);
             this.sTTextBox.TabIndex = 11;
             // 
+            // customerNameTextBox
+            // 
+            this.customerNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_AddressBindingSource, "CustomerID", true));
+            this.customerNameTextBox.Location = new System.Drawing.Point(81, 68);
+            this.customerNameTextBox.Name = "customerNameTextBox";
+            this.customerNameTextBox.ReadOnly = true;
+            this.customerNameTextBox.Size = new System.Drawing.Size(296, 26);
+            this.customerNameTextBox.TabIndex = 12;
+            // 
             // AddAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 244);
+            this.Controls.Add(this.customerNameTextBox);
             this.Controls.Add(this.sTTextBox);
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.button1);
@@ -310,5 +321,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.TextBox sTTextBox;
+        private System.Windows.Forms.TextBox customerNameTextBox;
     }
 }

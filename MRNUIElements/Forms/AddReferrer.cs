@@ -82,7 +82,8 @@ namespace MRNUIElements
 
       async Task<DTO_Referrer> Add_Referrer()
         {
-           await s1.AddReferrer(((DTO_Referrer)dTO_ReferrerBindingSource.DataSource));
+           
+           await s1.AddReferrer(((DTO_Referrer)dTO_ReferrerBindingSource.CurrencyManager.Current));
             Referrer = s1.Referrer;
             return s1.Referrer;
         }
@@ -98,7 +99,7 @@ namespace MRNUIElements
         }
         bool IsEnabled()
         {
-            if ((cp && fn && ln && zip && ma && ea)||checkBox1.Checked)
+            if ((cp && fn && ln && zip && ma && ea)||(checkBox1.Checked))
                 return true;
             else
                 return false;

@@ -13,33 +13,60 @@ using System.Windows.Forms;
 namespace MRNUIElements.Forms
 {
     public partial class AddCustomer : Form
-    { ServiceLayer s1 = ServiceLayer.getInstance();
-        bool cp = false, fn = false, ln = false, ea = false, ma = false;
+    {
+        ServiceLayer s1 = ServiceLayer.getInstance();
+        bool fn = false, ln = false, pn = false, ea = false, ma = false;
         public DTO_Customer Cust { get; set; }
+        static AddClaim ac = AddClaim.getAddClaimInstance();
         public AddCustomer()
         {
             InitializeComponent();
         }
 
-       async private void CustomerNextButtonbtn_Click(object sender, EventArgs e)
+        async private void CustomerNextButtonbtn_Click(object sender, EventArgs e)
         {
             await Add_Customer();
         }
-        async Task<DTO_Customer> Add_Customer()
+        async Task<bool> Add_Customer()
         {
-            await s1.AddCustomer(((DTO_Customer)dTO_CustomerBindingSource.DataSource));
-                Cust = s1.Cust;
-            return Cust;
+            Cust = new DTO_Customer();
+           
+         
+                // ac.Cust.CustomerID = ((DTO_Customer)dTO_CustomerBindingSource.DataSource).CustomerID;
+                Cust.FirstName = firstNameTextBox.Text;
+                Cust.LastName = lastNameTextBox.Text;
+                Cust.MailPromos = mailPromosCheckBox.Checked;
+                Cust.PrimaryNumber = primaryNumberTextBox.Text;
+                try
+                {
+                    Cust.MiddleName = middleNameTextBox.Text;
+                }
+                catch (NullReferenceException nre) { }
+                try
+                { Cust.Suffix = suffixTextBox.Text; }
+                catch (NullReferenceException nre) { }
+                try
+                {
+                 Cust.SecondaryNumber = secondaryNumberTextBox.Text;
+                }
+                catch (NullReferenceException nre) { }
+                try
+                { Cust.Email = emailTextBox.Text; }
+                catch (NullReferenceException nre) { }
+
+                await s1.AddCustomer(Cust);
+                ac.Cust = s1.Cust;
+            return true;
 
         }
 
-       
-private void emailTextBox_TextChanged(object sender, EventArgs e)
+
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(emailTextBox.Text))
-                cp = true;
+                ea = true;
             else
-                cp = false;
+                ea = false;
             CustomerNextButtonbtn.Enabled = IsEnabled();
 
         }
@@ -47,9 +74,9 @@ private void emailTextBox_TextChanged(object sender, EventArgs e)
         private void firstNameTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(firstNameTextBox.Text))
-                cp = true;
+                fn = true;
             else
-                cp = false;
+                fn = false;
             CustomerNextButtonbtn.Enabled = IsEnabled();
 
         }
@@ -57,23 +84,23 @@ private void emailTextBox_TextChanged(object sender, EventArgs e)
         private void lastNameTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(lastNameTextBox.Text))
-                cp = true;
+                ln = true;
             else
-                cp = false;
+                ln = false;
             CustomerNextButtonbtn.Enabled = IsEnabled();
         }
 
         private void primaryNumberTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(lastNameTextBox.Text))
-                cp = true;
+            if (!string.IsNullOrEmpty(primaryNumberTextBox.Text))
+                pn = true;
             else
-                cp = false;
+                pn = false;
             CustomerNextButtonbtn.Enabled = IsEnabled();
         }
         bool IsEnabled()
         {
-            if (cp && fn && ln && ma && ea) 
+            if (pn && fn && ln && ea)
                 return true;
             else
                 return false;

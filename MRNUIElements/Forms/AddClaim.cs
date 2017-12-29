@@ -16,11 +16,23 @@ namespace MRNUIElements
     public partial class AddClaim : Form
     {
         ServiceLayer s1 = ServiceLayer.getInstance();
+        static AddClaim ac;
+      public static AddClaim getAddClaimInstance()
+        {
+            if (ac == null)
+                ac = new AddClaim();
+            return ac;
+        }
         public DTO_Lead Lead { get; set; }
         public DTO_Claim Claim { get; set; }
         public DTO_Address Address { get; set; }
         public DTO_Referrer Referrer { get; set; }
         public DTO_Customer Cust { get; set; }
+        public string LeadSource { get; set; }
+
+        bool l = false, a = false, c= false;
+
+
         public AddClaim()
         {
             InitializeComponent();
@@ -30,13 +42,15 @@ namespace MRNUIElements
 
         async Task<DTO_Claim> Add_Claim()
         {
-            await s1.AddClaim(((DTO_Claim)dTO_ClaimBindingSource.DataSource));
-            Claim = s1.Claim;
+            await s1.AddClaim(((DTO_Claim)dTO_ClaimBindingSource.Current));
+            ac.Claim = s1.Claim;
             return Claim;
         }
 
        async private void button1_Click(object sender, EventArgs e)
         {
+
+            
             await Add_Claim();
         }
 
@@ -46,8 +60,8 @@ namespace MRNUIElements
             if (DialogResult.OK == al.ShowDialog())
                 Lead = al.Lead;
             if (al.Lead != null)
-                AddClaimBtn.Enabled = true;
-
+                l = true;
+            AddClaimBtn.Enabled = isEnabled();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -56,7 +70,15 @@ namespace MRNUIElements
             if (DialogResult.OK == ad.ShowDialog())
                 Address = ad.Address;
             if (ad.Address != null)
-                AddClaimBtn.Enabled = true;
+                a = true;
+            AddClaimBtn.Enabled = isEnabled();
+        }
+
+        bool isEnabled()
+        {
+            if (l && a && c)
+                return true;
+            else return false;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -65,8 +87,15 @@ namespace MRNUIElements
             AddCustomer ac = new AddCustomer();
             if (DialogResult.OK == ac.ShowDialog())
                 Cust = ac.Cust;
+
             if (ac.Cust != null)
-                AddClaimBtn.Enabled = true;
+            {
+                customerIDTextBox.Text = Cust.FirstName + " " + Cust.LastName;
+
+               c = true;
+               
+
+            } AddClaimBtn.Enabled = isEnabled();
         }
     }
 }

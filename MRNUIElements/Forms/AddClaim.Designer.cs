@@ -74,6 +74,8 @@
             this.button7 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dTOInsuranceCompanyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
             billingIDLabel = new System.Windows.Forms.Label();
             claimIDLabel = new System.Windows.Forms.Label();
             customerIDLabel = new System.Windows.Forms.Label();
@@ -94,34 +96,35 @@
             // billingIDLabel
             // 
             billingIDLabel.AutoSize = true;
-            billingIDLabel.Location = new System.Drawing.Point(144, 41);
+            billingIDLabel.Location = new System.Drawing.Point(144, 77);
             billingIDLabel.Name = "billingIDLabel";
-            billingIDLabel.Size = new System.Drawing.Size(75, 20);
+            billingIDLabel.Size = new System.Drawing.Size(72, 20);
             billingIDLabel.TabIndex = 1;
-            billingIDLabel.Text = "Billing ID:";
+            billingIDLabel.Text = "Address:";
             // 
             // claimIDLabel
             // 
             claimIDLabel.AutoSize = true;
-            claimIDLabel.Location = new System.Drawing.Point(146, 73);
+            claimIDLabel.Location = new System.Drawing.Point(12, 470);
             claimIDLabel.Name = "claimIDLabel";
             claimIDLabel.Size = new System.Drawing.Size(73, 20);
             claimIDLabel.TabIndex = 3;
             claimIDLabel.Text = "Claim ID:";
+            claimIDLabel.Visible = false;
             // 
             // customerIDLabel
             // 
             customerIDLabel.AutoSize = true;
-            customerIDLabel.Location = new System.Drawing.Point(116, 135);
+            customerIDLabel.Location = new System.Drawing.Point(135, 46);
             customerIDLabel.Name = "customerIDLabel";
-            customerIDLabel.Size = new System.Drawing.Size(103, 20);
+            customerIDLabel.Size = new System.Drawing.Size(82, 20);
             customerIDLabel.TabIndex = 7;
-            customerIDLabel.Text = "Customer ID:";
+            customerIDLabel.Text = "Customer:";
             // 
             // insuranceClaimNumberLabel
             // 
             insuranceClaimNumberLabel.AutoSize = true;
-            insuranceClaimNumberLabel.Location = new System.Drawing.Point(32, 168);
+            insuranceClaimNumberLabel.Location = new System.Drawing.Point(32, 172);
             insuranceClaimNumberLabel.Name = "insuranceClaimNumberLabel";
             insuranceClaimNumberLabel.Size = new System.Drawing.Size(187, 20);
             insuranceClaimNumberLabel.TabIndex = 9;
@@ -139,16 +142,16 @@
             // leadIDLabel
             // 
             leadIDLabel.AutoSize = true;
-            leadIDLabel.Location = new System.Drawing.Point(144, 266);
+            leadIDLabel.Location = new System.Drawing.Point(142, 111);
             leadIDLabel.Name = "leadIDLabel";
-            leadIDLabel.Size = new System.Drawing.Size(70, 20);
+            leadIDLabel.Size = new System.Drawing.Size(72, 20);
             leadIDLabel.TabIndex = 15;
-            leadIDLabel.Text = "Lead ID:";
+            leadIDLabel.Text = "Referrer:";
             // 
             // lossDateLabel
             // 
             lossDateLabel.AutoSize = true;
-            lossDateLabel.Location = new System.Drawing.Point(128, 298);
+            lossDateLabel.Location = new System.Drawing.Point(128, 236);
             lossDateLabel.Name = "lossDateLabel";
             lossDateLabel.Size = new System.Drawing.Size(86, 20);
             lossDateLabel.TabIndex = 17;
@@ -157,7 +160,7 @@
             // mortgageAccountLabel
             // 
             mortgageAccountLabel.AutoSize = true;
-            mortgageAccountLabel.Location = new System.Drawing.Point(70, 327);
+            mortgageAccountLabel.Location = new System.Drawing.Point(73, 266);
             mortgageAccountLabel.Name = "mortgageAccountLabel";
             mortgageAccountLabel.Size = new System.Drawing.Size(144, 20);
             mortgageAccountLabel.TabIndex = 19;
@@ -166,7 +169,7 @@
             // mortgageCompanyLabel
             // 
             mortgageCompanyLabel.AutoSize = true;
-            mortgageCompanyLabel.Location = new System.Drawing.Point(62, 362);
+            mortgageCompanyLabel.Location = new System.Drawing.Point(67, 305);
             mortgageCompanyLabel.Name = "mortgageCompanyLabel";
             mortgageCompanyLabel.Size = new System.Drawing.Size(152, 20);
             mortgageCompanyLabel.TabIndex = 21;
@@ -175,7 +178,7 @@
             // mRNNumberLabel
             // 
             mRNNumberLabel.AutoSize = true;
-            mRNNumberLabel.Location = new System.Drawing.Point(103, 391);
+            mRNNumberLabel.Location = new System.Drawing.Point(111, 338);
             mRNNumberLabel.Name = "mRNNumberLabel";
             mRNNumberLabel.Size = new System.Drawing.Size(105, 20);
             mRNNumberLabel.TabIndex = 23;
@@ -184,11 +187,12 @@
             // propertyIDLabel
             // 
             propertyIDLabel.AutoSize = true;
-            propertyIDLabel.Location = new System.Drawing.Point(116, 423);
+            propertyIDLabel.Location = new System.Drawing.Point(-8, 474);
             propertyIDLabel.Name = "propertyIDLabel";
             propertyIDLabel.Size = new System.Drawing.Size(93, 20);
             propertyIDLabel.TabIndex = 25;
             propertyIDLabel.Text = "Property ID:";
+            propertyIDLabel.Visible = false;
             // 
             // dTO_ClaimBindingNavigator
             // 
@@ -220,6 +224,7 @@
             this.dTO_ClaimBindingNavigator.Size = new System.Drawing.Size(581, 31);
             this.dTO_ClaimBindingNavigator.TabIndex = 0;
             this.dTO_ClaimBindingNavigator.Text = "bindingNavigator1";
+            this.dTO_ClaimBindingNavigator.Visible = false;
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -322,7 +327,7 @@
             // billingIDTextBox
             // 
             this.billingIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "BillingID", true));
-            this.billingIDTextBox.Location = new System.Drawing.Point(225, 38);
+            this.billingIDTextBox.Location = new System.Drawing.Point(223, 75);
             this.billingIDTextBox.Name = "billingIDTextBox";
             this.billingIDTextBox.ReadOnly = true;
             this.billingIDTextBox.Size = new System.Drawing.Size(200, 26);
@@ -331,16 +336,17 @@
             // claimIDTextBox
             // 
             this.claimIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "ClaimID", true));
-            this.claimIDTextBox.Location = new System.Drawing.Point(225, 70);
+            this.claimIDTextBox.Location = new System.Drawing.Point(8, 493);
             this.claimIDTextBox.Name = "claimIDTextBox";
             this.claimIDTextBox.ReadOnly = true;
             this.claimIDTextBox.Size = new System.Drawing.Size(200, 26);
             this.claimIDTextBox.TabIndex = 4;
+            this.claimIDTextBox.Visible = false;
             // 
             // contractSignedCheckBox
             // 
             this.contractSignedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.dTO_ClaimBindingSource, "ContractSigned", true));
-            this.contractSignedCheckBox.Location = new System.Drawing.Point(45, 103);
+            this.contractSignedCheckBox.Location = new System.Drawing.Point(8, 463);
             this.contractSignedCheckBox.Name = "contractSignedCheckBox";
             this.contractSignedCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.contractSignedCheckBox.Size = new System.Drawing.Size(200, 24);
@@ -351,7 +357,7 @@
             // customerIDTextBox
             // 
             this.customerIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "CustomerID", true));
-            this.customerIDTextBox.Location = new System.Drawing.Point(225, 133);
+            this.customerIDTextBox.Location = new System.Drawing.Point(223, 43);
             this.customerIDTextBox.Name = "customerIDTextBox";
             this.customerIDTextBox.ReadOnly = true;
             this.customerIDTextBox.Size = new System.Drawing.Size(200, 26);
@@ -360,7 +366,7 @@
             // insuranceClaimNumberTextBox
             // 
             this.insuranceClaimNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "InsuranceClaimNumber", true));
-            this.insuranceClaimNumberTextBox.Location = new System.Drawing.Point(225, 165);
+            this.insuranceClaimNumberTextBox.Location = new System.Drawing.Point(223, 169);
             this.insuranceClaimNumberTextBox.Name = "insuranceClaimNumberTextBox";
             this.insuranceClaimNumberTextBox.Size = new System.Drawing.Size(200, 26);
             this.insuranceClaimNumberTextBox.TabIndex = 10;
@@ -370,7 +376,7 @@
             this.isOpenCheckBox.Checked = true;
             this.isOpenCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.isOpenCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.dTO_ClaimBindingSource, "IsOpen", true));
-            this.isOpenCheckBox.Location = new System.Drawing.Point(431, 466);
+            this.isOpenCheckBox.Location = new System.Drawing.Point(440, 338);
             this.isOpenCheckBox.Name = "isOpenCheckBox";
             this.isOpenCheckBox.Size = new System.Drawing.Size(138, 31);
             this.isOpenCheckBox.TabIndex = 14;
@@ -380,15 +386,16 @@
             // leadIDTextBox
             // 
             this.leadIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "LeadID", true));
-            this.leadIDTextBox.Location = new System.Drawing.Point(225, 260);
+            this.leadIDTextBox.Location = new System.Drawing.Point(223, 107);
             this.leadIDTextBox.Name = "leadIDTextBox";
+            this.leadIDTextBox.ReadOnly = true;
             this.leadIDTextBox.Size = new System.Drawing.Size(200, 26);
             this.leadIDTextBox.TabIndex = 16;
             // 
             // lossDateDateTimePicker
             // 
             this.lossDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dTO_ClaimBindingSource, "LossDate", true));
-            this.lossDateDateTimePicker.Location = new System.Drawing.Point(225, 292);
+            this.lossDateDateTimePicker.Location = new System.Drawing.Point(223, 231);
             this.lossDateDateTimePicker.Name = "lossDateDateTimePicker";
             this.lossDateDateTimePicker.Size = new System.Drawing.Size(344, 26);
             this.lossDateDateTimePicker.TabIndex = 18;
@@ -396,7 +403,7 @@
             // mortgageAccountTextBox
             // 
             this.mortgageAccountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "MortgageAccount", true));
-            this.mortgageAccountTextBox.Location = new System.Drawing.Point(225, 324);
+            this.mortgageAccountTextBox.Location = new System.Drawing.Point(223, 263);
             this.mortgageAccountTextBox.Name = "mortgageAccountTextBox";
             this.mortgageAccountTextBox.Size = new System.Drawing.Size(344, 26);
             this.mortgageAccountTextBox.TabIndex = 20;
@@ -404,7 +411,7 @@
             // mortgageCompanyTextBox
             // 
             this.mortgageCompanyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "MortgageCompany", true));
-            this.mortgageCompanyTextBox.Location = new System.Drawing.Point(225, 356);
+            this.mortgageCompanyTextBox.Location = new System.Drawing.Point(223, 299);
             this.mortgageCompanyTextBox.Name = "mortgageCompanyTextBox";
             this.mortgageCompanyTextBox.Size = new System.Drawing.Size(344, 26);
             this.mortgageCompanyTextBox.TabIndex = 22;
@@ -412,7 +419,7 @@
             // mRNNumberTextBox
             // 
             this.mRNNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "MRNNumber", true));
-            this.mRNNumberTextBox.Location = new System.Drawing.Point(225, 388);
+            this.mRNNumberTextBox.Location = new System.Drawing.Point(223, 338);
             this.mRNNumberTextBox.Name = "mRNNumberTextBox";
             this.mRNNumberTextBox.ReadOnly = true;
             this.mRNNumberTextBox.Size = new System.Drawing.Size(200, 26);
@@ -421,11 +428,12 @@
             // propertyIDTextBox
             // 
             this.propertyIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "PropertyID", true));
-            this.propertyIDTextBox.Location = new System.Drawing.Point(225, 420);
+            this.propertyIDTextBox.Location = new System.Drawing.Point(17, 493);
             this.propertyIDTextBox.Name = "propertyIDTextBox";
             this.propertyIDTextBox.ReadOnly = true;
             this.propertyIDTextBox.Size = new System.Drawing.Size(200, 26);
             this.propertyIDTextBox.TabIndex = 26;
+            this.propertyIDTextBox.Visible = false;
             // 
             // AddClaimBtn
             // 
@@ -441,17 +449,17 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(431, 41);
+            this.button2.Location = new System.Drawing.Point(431, 75);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 52);
+            this.button2.Size = new System.Drawing.Size(138, 26);
             this.button2.TabIndex = 28;
-            this.button2.Text = "Select Billing Address";
+            this.button2.Text = "Select Address";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(431, 132);
+            this.button4.Location = new System.Drawing.Point(429, 42);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(138, 27);
             this.button4.TabIndex = 30;
@@ -461,7 +469,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(431, 259);
+            this.button5.Location = new System.Drawing.Point(431, 107);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(138, 24);
             this.button5.TabIndex = 31;
@@ -471,12 +479,13 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(431, 391);
+            this.button7.Location = new System.Drawing.Point(36, 493);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(138, 52);
+            this.button7.Size = new System.Drawing.Size(138, 33);
             this.button7.TabIndex = 33;
             this.button7.Text = "Select Property Address";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Visible = false;
             // 
             // comboBox2
             // 
@@ -495,11 +504,29 @@
             // 
             this.dTOInsuranceCompanyBindingSource.DataSource = typeof(MRNNexus_Model.DTO_InsuranceCompany);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(223, 138);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePicker1.TabIndex = 36;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(430, 140);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(139, 24);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Add Inspection";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // AddClaim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 528);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button5);
@@ -577,5 +604,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.BindingSource dTOInsuranceCompanyBindingSource;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button button1;
     }
 }

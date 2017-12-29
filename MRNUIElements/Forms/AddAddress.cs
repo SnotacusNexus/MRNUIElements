@@ -20,7 +20,7 @@ namespace MRNUIElements
         public DTO_Customer Cust { get; set; }
         public DTO_Address Address { get; set; }
         bool zip = false, address = false;
-
+        static AddClaim ac = AddClaim.getAddClaimInstance();
         public AddAddress()
         {
             InitializeComponent();
@@ -29,7 +29,8 @@ namespace MRNUIElements
             if (Cust == null)
                 return;
 
-            customerIDTextBox.Text = Cust.CustomerID.ToString();
+            customerNameTextBox.Text = ac.Cust.FirstName + " " + ac.Cust.LastName;
+            customerIDTextBox.Text = ac.Cust.CustomerID.ToString();
         }
 
         async private void button1_Click(object sender, EventArgs e)
@@ -39,15 +40,15 @@ namespace MRNUIElements
 
         async Task<DTO_Address> Add_Address()
         {
-            await s1.AddAddress(((DTO_Address)dTO_AddressBindingSource.DataSource));
-            Address = s1.Address1;
+            await s1.AddAddress(((DTO_Address)dTO_AddressBindingSource.Current));
+            ac.Address = Address = s1.Address1;
             return Address;
         }
 
         private void addressTextBox_TextChanged(object sender, EventArgs e)
         {
 
-            if (!string.IsNullOrEmpty(addressIDTextBox.Text))
+            if (!string.IsNullOrEmpty(addressTextBox.Text))
                 address = true;
             else
                 address = false;
@@ -55,14 +56,22 @@ namespace MRNUIElements
         }
 
         private void zipTextBox_TextChanged(object sender, EventArgs e)
-        {
+        { AddressZipcodeValidation azv = new AddressZipcodeValidation();
             if (!string.IsNullOrEmpty(zipTextBox.Text))
-                zip = true;
+                zip = true; 
             else
                 zip = false;
-            button1.Enabled = IsEnabled();
+            if (zipTextBox.TextLength == 5)
+            {
+                sTTextBox.Text = azv.CityStateLookupRequest(zipTextBox.Text, 4);
+                cityTextBox.Text = azv.CityStateLookupRequest(zipTextBox.Text, 3);
+             button1.Enabled = IsEnabled();
+            }
+
+          
 
         }
+
         bool IsEnabled()
         {
             if (zip && address)

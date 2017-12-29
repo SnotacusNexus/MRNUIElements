@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddLead));
             System.Windows.Forms.Label addressIDLabel;
             System.Windows.Forms.Label creditToIDLabel;
             System.Windows.Forms.Label customerIDLabel;
@@ -39,6 +38,7 @@
             System.Windows.Forms.Label leadTypeIDLabel;
             System.Windows.Forms.Label salesPersonIDLabel;
             System.Windows.Forms.Label temperatureLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddLead));
             this.dTO_LeadBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.dTO_LeadBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -53,21 +53,21 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.dTO_LeadBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.addressIDComboBox = new System.Windows.Forms.TextBox();
+            this.addressIDComboBox = new System.Windows.Forms.ComboBox();
             this.creditToIDComboBox = new System.Windows.Forms.ComboBox();
-            this.customerIDComboBox = new System.Windows.Forms.TextBox();
+            this.customerIDComboBox = new System.Windows.Forms.ComboBox();
             this.knockerResponseIDComboBox = new System.Windows.Forms.ComboBox();
+            this.dTOLUKnockResponseTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.leadDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.leadIDTextBox = new System.Windows.Forms.TextBox();
             this.leadTypeIDComboBox = new System.Windows.Forms.ComboBox();
+            this.dTOLULeadTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.salesPersonIDComboBox = new System.Windows.Forms.ComboBox();
+            this.dTOEmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.temperatureComboBox = new System.Windows.Forms.ComboBox();
             this.Add_Lead = new System.Windows.Forms.Button();
             this.dTOAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dTOCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dTOLULeadTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dTOLUKnockResponseTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dTOEmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             addressIDLabel = new System.Windows.Forms.Label();
             creditToIDLabel = new System.Windows.Forms.Label();
             customerIDLabel = new System.Windows.Forms.Label();
@@ -80,12 +80,94 @@
             ((System.ComponentModel.ISupportInitialize)(this.dTO_LeadBindingNavigator)).BeginInit();
             this.dTO_LeadBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_LeadBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTOLUKnockResponseTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTOLULeadTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTOEmployeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTOAddressBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTOCustomerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTOLULeadTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTOLUKnockResponseTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTOEmployeeBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // addressIDLabel
+            // 
+            addressIDLabel.AutoSize = true;
+            addressIDLabel.Location = new System.Drawing.Point(63, 76);
+            addressIDLabel.Name = "addressIDLabel";
+            addressIDLabel.Size = new System.Drawing.Size(93, 20);
+            addressIDLabel.TabIndex = 1;
+            addressIDLabel.Text = "Address ID:";
+            // 
+            // creditToIDLabel
+            // 
+            creditToIDLabel.AutoSize = true;
+            creditToIDLabel.Location = new System.Drawing.Point(63, 110);
+            creditToIDLabel.Name = "creditToIDLabel";
+            creditToIDLabel.Size = new System.Drawing.Size(98, 20);
+            creditToIDLabel.TabIndex = 3;
+            creditToIDLabel.Text = "Credit To ID:";
+            // 
+            // customerIDLabel
+            // 
+            customerIDLabel.AutoSize = true;
+            customerIDLabel.Location = new System.Drawing.Point(63, 144);
+            customerIDLabel.Name = "customerIDLabel";
+            customerIDLabel.Size = new System.Drawing.Size(103, 20);
+            customerIDLabel.TabIndex = 5;
+            customerIDLabel.Text = "Customer ID:";
+            // 
+            // knockerResponseIDLabel
+            // 
+            knockerResponseIDLabel.AutoSize = true;
+            knockerResponseIDLabel.Location = new System.Drawing.Point(63, 178);
+            knockerResponseIDLabel.Name = "knockerResponseIDLabel";
+            knockerResponseIDLabel.Size = new System.Drawing.Size(148, 20);
+            knockerResponseIDLabel.TabIndex = 7;
+            knockerResponseIDLabel.Text = "Knocker Response:";
+            // 
+            // leadDateLabel
+            // 
+            leadDateLabel.AutoSize = true;
+            leadDateLabel.Location = new System.Drawing.Point(63, 213);
+            leadDateLabel.Name = "leadDateLabel";
+            leadDateLabel.Size = new System.Drawing.Size(88, 20);
+            leadDateLabel.TabIndex = 9;
+            leadDateLabel.Text = "Lead Date:";
+            // 
+            // leadIDLabel
+            // 
+            leadIDLabel.AutoSize = true;
+            leadIDLabel.Location = new System.Drawing.Point(2, 413);
+            leadIDLabel.Name = "leadIDLabel";
+            leadIDLabel.Size = new System.Drawing.Size(70, 20);
+            leadIDLabel.TabIndex = 11;
+            leadIDLabel.Text = "Lead ID:";
+            leadIDLabel.Visible = false;
+            // 
+            // leadTypeIDLabel
+            // 
+            leadTypeIDLabel.AutoSize = true;
+            leadTypeIDLabel.Location = new System.Drawing.Point(63, 42);
+            leadTypeIDLabel.Name = "leadTypeIDLabel";
+            leadTypeIDLabel.Size = new System.Drawing.Size(108, 20);
+            leadTypeIDLabel.TabIndex = 13;
+            leadTypeIDLabel.Text = "Lead Type ID:";
+            // 
+            // salesPersonIDLabel
+            // 
+            salesPersonIDLabel.AutoSize = true;
+            salesPersonIDLabel.Location = new System.Drawing.Point(63, 245);
+            salesPersonIDLabel.Name = "salesPersonIDLabel";
+            salesPersonIDLabel.Size = new System.Drawing.Size(107, 20);
+            salesPersonIDLabel.TabIndex = 15;
+            salesPersonIDLabel.Text = "Sales Person:";
+            // 
+            // temperatureLabel
+            // 
+            temperatureLabel.AutoSize = true;
+            temperatureLabel.Location = new System.Drawing.Point(63, 279);
+            temperatureLabel.Name = "temperatureLabel";
+            temperatureLabel.Size = new System.Drawing.Size(104, 20);
+            temperatureLabel.TabIndex = 17;
+            temperatureLabel.Text = "Temperature:";
             // 
             // dTO_LeadBindingNavigator
             // 
@@ -216,31 +298,16 @@
             this.dTO_LeadBindingNavigatorSaveItem.Size = new System.Drawing.Size(28, 28);
             this.dTO_LeadBindingNavigatorSaveItem.Text = "Save Data";
             // 
-            // addressIDLabel
-            // 
-            addressIDLabel.AutoSize = true;
-            addressIDLabel.Location = new System.Drawing.Point(63, 76);
-            addressIDLabel.Name = "addressIDLabel";
-            addressIDLabel.Size = new System.Drawing.Size(93, 20);
-            addressIDLabel.TabIndex = 1;
-            addressIDLabel.Text = "Address ID:";
-            // 
             // addressIDComboBox
             // 
             this.addressIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_LeadBindingSource, "AddressID", true));
-            this.addressIDComboBox.Location = new System.Drawing.Point(238, 73);
+            this.addressIDComboBox.DataSource = this.dTOAddressBindingSource;
+            this.addressIDComboBox.DisplayMember = "Address";
+            this.addressIDComboBox.Location = new System.Drawing.Point(238, 75);
             this.addressIDComboBox.Name = "addressIDComboBox";
             this.addressIDComboBox.Size = new System.Drawing.Size(280, 28);
             this.addressIDComboBox.TabIndex = 2;
-            // 
-            // creditToIDLabel
-            // 
-            creditToIDLabel.AutoSize = true;
-            creditToIDLabel.Location = new System.Drawing.Point(63, 110);
-            creditToIDLabel.Name = "creditToIDLabel";
-            creditToIDLabel.Size = new System.Drawing.Size(98, 20);
-            creditToIDLabel.TabIndex = 3;
-            creditToIDLabel.Text = "Credit To ID:";
+            this.addressIDComboBox.ValueMember = "AddressID";
             // 
             // creditToIDComboBox
             // 
@@ -252,31 +319,16 @@
             this.creditToIDComboBox.TabIndex = 4;
             this.creditToIDComboBox.SelectedIndexChanged += new System.EventHandler(this.creditToIDComboBox_SelectedIndexChanged);
             // 
-            // customerIDLabel
-            // 
-            customerIDLabel.AutoSize = true;
-            customerIDLabel.Location = new System.Drawing.Point(63, 144);
-            customerIDLabel.Name = "customerIDLabel";
-            customerIDLabel.Size = new System.Drawing.Size(103, 20);
-            customerIDLabel.TabIndex = 5;
-            customerIDLabel.Text = "Customer ID:";
-            // 
             // customerIDComboBox
             // 
             this.customerIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_LeadBindingSource, "CustomerID", true));
+            this.customerIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.dTOCustomerBindingSource, "CustomerID", true));
+            this.customerIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.dTOCustomerBindingSource, "CustomerID", true));
+            this.customerIDComboBox.DataSource = this.dTOCustomerBindingSource;
             this.customerIDComboBox.Location = new System.Drawing.Point(238, 141);
             this.customerIDComboBox.Name = "customerIDComboBox";
             this.customerIDComboBox.Size = new System.Drawing.Size(280, 28);
             this.customerIDComboBox.TabIndex = 6;
-            // 
-            // knockerResponseIDLabel
-            // 
-            knockerResponseIDLabel.AutoSize = true;
-            knockerResponseIDLabel.Location = new System.Drawing.Point(63, 178);
-            knockerResponseIDLabel.Name = "knockerResponseIDLabel";
-            knockerResponseIDLabel.Size = new System.Drawing.Size(169, 20);
-            knockerResponseIDLabel.TabIndex = 7;
-            knockerResponseIDLabel.Text = "Knocker Response ID:";
             // 
             // knockerResponseIDComboBox
             // 
@@ -291,14 +343,9 @@
             this.knockerResponseIDComboBox.ValueMember = "KnockResponseTypeID";
             this.knockerResponseIDComboBox.SelectedIndexChanged += new System.EventHandler(this.knockerResponseIDComboBox_SelectedIndexChanged);
             // 
-            // leadDateLabel
+            // dTOLUKnockResponseTypeBindingSource
             // 
-            leadDateLabel.AutoSize = true;
-            leadDateLabel.Location = new System.Drawing.Point(63, 213);
-            leadDateLabel.Name = "leadDateLabel";
-            leadDateLabel.Size = new System.Drawing.Size(88, 20);
-            leadDateLabel.TabIndex = 9;
-            leadDateLabel.Text = "Lead Date:";
+            this.dTOLUKnockResponseTypeBindingSource.DataSource = typeof(MRNNexus_Model.DTO_LU_KnockResponseType);
             // 
             // leadDateDateTimePicker
             // 
@@ -307,15 +354,6 @@
             this.leadDateDateTimePicker.Name = "leadDateDateTimePicker";
             this.leadDateDateTimePicker.Size = new System.Drawing.Size(280, 26);
             this.leadDateDateTimePicker.TabIndex = 10;
-            // 
-            // leadIDLabel
-            // 
-            leadIDLabel.AutoSize = true;
-            leadIDLabel.Location = new System.Drawing.Point(2, 413);
-            leadIDLabel.Name = "leadIDLabel";
-            leadIDLabel.Size = new System.Drawing.Size(70, 20);
-            leadIDLabel.TabIndex = 11;
-            leadIDLabel.Text = "Lead ID:";
             // 
             // leadIDTextBox
             // 
@@ -326,15 +364,7 @@
             this.leadIDTextBox.ReadOnly = true;
             this.leadIDTextBox.Size = new System.Drawing.Size(83, 26);
             this.leadIDTextBox.TabIndex = 12;
-            // 
-            // leadTypeIDLabel
-            // 
-            leadTypeIDLabel.AutoSize = true;
-            leadTypeIDLabel.Location = new System.Drawing.Point(63, 42);
-            leadTypeIDLabel.Name = "leadTypeIDLabel";
-            leadTypeIDLabel.Size = new System.Drawing.Size(108, 20);
-            leadTypeIDLabel.TabIndex = 13;
-            leadTypeIDLabel.Text = "Lead Type ID:";
+            this.leadIDTextBox.Visible = false;
             // 
             // leadTypeIDComboBox
             // 
@@ -349,14 +379,9 @@
             this.leadTypeIDComboBox.ValueMember = "LeadTypeID";
             this.leadTypeIDComboBox.SelectedIndexChanged += new System.EventHandler(this.leadTypeIDComboBox_SelectedIndexChanged);
             // 
-            // salesPersonIDLabel
+            // dTOLULeadTypeBindingSource
             // 
-            salesPersonIDLabel.AutoSize = true;
-            salesPersonIDLabel.Location = new System.Drawing.Point(63, 245);
-            salesPersonIDLabel.Name = "salesPersonIDLabel";
-            salesPersonIDLabel.Size = new System.Drawing.Size(128, 20);
-            salesPersonIDLabel.TabIndex = 15;
-            salesPersonIDLabel.Text = "Sales Person ID:";
+            this.dTOLULeadTypeBindingSource.DataSource = typeof(MRNNexus_Model.DTO_LU_LeadType);
             // 
             // salesPersonIDComboBox
             // 
@@ -370,14 +395,9 @@
             this.salesPersonIDComboBox.TabIndex = 16;
             this.salesPersonIDComboBox.ValueMember = "EmployeeID";
             // 
-            // temperatureLabel
+            // dTOEmployeeBindingSource
             // 
-            temperatureLabel.AutoSize = true;
-            temperatureLabel.Location = new System.Drawing.Point(63, 279);
-            temperatureLabel.Name = "temperatureLabel";
-            temperatureLabel.Size = new System.Drawing.Size(104, 20);
-            temperatureLabel.TabIndex = 17;
-            temperatureLabel.Text = "Temperature:";
+            this.dTOEmployeeBindingSource.DataSource = typeof(MRNNexus_Model.DTO_Employee);
             // 
             // temperatureComboBox
             // 
@@ -411,18 +431,6 @@
             // 
             this.dTOCustomerBindingSource.DataSource = typeof(MRNNexus_Model.DTO_Customer);
             // 
-            // dTOLULeadTypeBindingSource
-            // 
-            this.dTOLULeadTypeBindingSource.DataSource = typeof(MRNNexus_Model.DTO_LU_LeadType);
-            // 
-            // dTOLUKnockResponseTypeBindingSource
-            // 
-            this.dTOLUKnockResponseTypeBindingSource.DataSource = typeof(MRNNexus_Model.DTO_LU_KnockResponseType);
-            // 
-            // dTOEmployeeBindingSource
-            // 
-            this.dTOEmployeeBindingSource.DataSource = typeof(MRNNexus_Model.DTO_Employee);
-            // 
             // AddLead
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -454,11 +462,11 @@
             this.dTO_LeadBindingNavigator.ResumeLayout(false);
             this.dTO_LeadBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_LeadBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTOLUKnockResponseTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTOLULeadTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTOEmployeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTOAddressBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTOCustomerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTOLULeadTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTOLUKnockResponseTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTOEmployeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,10 +488,8 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton dTO_LeadBindingNavigatorSaveItem;
-        private System.Windows.Forms.TextBox addressIDComboBox;
         private System.Windows.Forms.BindingSource dTOAddressBindingSource;
         private System.Windows.Forms.ComboBox creditToIDComboBox;
-        private System.Windows.Forms.TextBox customerIDComboBox;
         private System.Windows.Forms.BindingSource dTOCustomerBindingSource;
         private System.Windows.Forms.ComboBox knockerResponseIDComboBox;
         private System.Windows.Forms.BindingSource dTOLUKnockResponseTypeBindingSource;
@@ -495,5 +501,7 @@
         private System.Windows.Forms.ComboBox temperatureComboBox;
         private System.Windows.Forms.Button Add_Lead;
         private System.Windows.Forms.BindingSource dTOEmployeeBindingSource;
+        private System.Windows.Forms.ComboBox addressIDComboBox;
+        private System.Windows.Forms.ComboBox customerIDComboBox;
     }
 }
