@@ -67,11 +67,19 @@ namespace MRNUIElements
         private void button2_Click(object sender, EventArgs e)
         {
             AddAddress ad = new AddAddress();
+            ad.Cust = ac.Cust;
             if (DialogResult.OK == ad.ShowDialog())
                 Address = ad.Address;
             if (ad.Address != null)
                 a = true;
+            ((DTO_Address)billingIDTextBox.SelectedItem).AddressID = Address.AddressID;
+            ((DTO_Address)propertyIDTextBox.SelectedItem).AddressID = Address.AddressID;
             AddClaimBtn.Enabled = isEnabled();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Add_Inspection ai = new Add_Inspection();
         }
 
         bool isEnabled()

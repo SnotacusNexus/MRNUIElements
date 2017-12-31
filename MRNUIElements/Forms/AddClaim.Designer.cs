@@ -55,7 +55,7 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.dTO_ClaimBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.billingIDTextBox = new System.Windows.Forms.TextBox();
+            this.billingIDTextBox = new System.Windows.Forms.ComboBox();
             this.claimIDTextBox = new System.Windows.Forms.TextBox();
             this.contractSignedCheckBox = new System.Windows.Forms.CheckBox();
             this.customerIDTextBox = new System.Windows.Forms.TextBox();
@@ -66,7 +66,7 @@
             this.mortgageAccountTextBox = new System.Windows.Forms.TextBox();
             this.mortgageCompanyTextBox = new System.Windows.Forms.TextBox();
             this.mRNNumberTextBox = new System.Windows.Forms.TextBox();
-            this.propertyIDTextBox = new System.Windows.Forms.TextBox();
+            this.propertyIDTextBox = new System.Windows.Forms.ComboBox();
             this.AddClaimBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -76,6 +76,10 @@
             this.dTOInsuranceCompanyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.dTOAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addressTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             billingIDLabel = new System.Windows.Forms.Label();
             claimIDLabel = new System.Windows.Forms.Label();
             customerIDLabel = new System.Windows.Forms.Label();
@@ -91,6 +95,7 @@
             this.dTO_ClaimBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_ClaimBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTOInsuranceCompanyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTOAddressBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // billingIDLabel
@@ -327,11 +332,14 @@
             // billingIDTextBox
             // 
             this.billingIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "BillingID", true));
-            this.billingIDTextBox.Location = new System.Drawing.Point(223, 75);
+            this.billingIDTextBox.DataSource = this.dTOAddressBindingSource;
+            this.billingIDTextBox.DisplayMember = "Address";
+            this.billingIDTextBox.Location = new System.Drawing.Point(14, 488);
             this.billingIDTextBox.Name = "billingIDTextBox";
-            this.billingIDTextBox.ReadOnly = true;
-            this.billingIDTextBox.Size = new System.Drawing.Size(200, 26);
+            this.billingIDTextBox.Size = new System.Drawing.Size(200, 28);
             this.billingIDTextBox.TabIndex = 2;
+            this.billingIDTextBox.ValueMember = "AddressID";
+            this.billingIDTextBox.Visible = false;
             // 
             // claimIDTextBox
             // 
@@ -346,7 +354,7 @@
             // contractSignedCheckBox
             // 
             this.contractSignedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.dTO_ClaimBindingSource, "ContractSigned", true));
-            this.contractSignedCheckBox.Location = new System.Drawing.Point(8, 463);
+            this.contractSignedCheckBox.Location = new System.Drawing.Point(225, 422);
             this.contractSignedCheckBox.Name = "contractSignedCheckBox";
             this.contractSignedCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.contractSignedCheckBox.Size = new System.Drawing.Size(200, 24);
@@ -430,8 +438,7 @@
             this.propertyIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ClaimBindingSource, "PropertyID", true));
             this.propertyIDTextBox.Location = new System.Drawing.Point(17, 493);
             this.propertyIDTextBox.Name = "propertyIDTextBox";
-            this.propertyIDTextBox.ReadOnly = true;
-            this.propertyIDTextBox.Size = new System.Drawing.Size(200, 26);
+            this.propertyIDTextBox.Size = new System.Drawing.Size(200, 28);
             this.propertyIDTextBox.TabIndex = 26;
             this.propertyIDTextBox.Visible = false;
             // 
@@ -519,12 +526,46 @@
             this.button1.TabIndex = 37;
             this.button1.Text = "Add Inspection";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // dTOAddressBindingSource
+            // 
+            this.dTOAddressBindingSource.DataSource = typeof(MRNNexus_Model.DTO_Address);
+            // 
+            // addressTextBox
+            // 
+            this.addressTextBox.Location = new System.Drawing.Point(223, 75);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.ReadOnly = true;
+            this.addressTextBox.Size = new System.Drawing.Size(200, 26);
+            this.addressTextBox.TabIndex = 38;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(88, 142);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 20);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Inspection Date:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(63, 144);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(22, 21);
+            this.checkBox1.TabIndex = 40;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // AddClaim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 528);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.addressTextBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox2);
@@ -564,6 +605,7 @@
             this.dTO_ClaimBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dTO_ClaimBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTOInsuranceCompanyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTOAddressBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -585,7 +627,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton dTO_ClaimBindingNavigatorSaveItem;
-        private System.Windows.Forms.TextBox billingIDTextBox;
+        private System.Windows.Forms.ComboBox billingIDTextBox;
         private System.Windows.Forms.TextBox claimIDTextBox;
         private System.Windows.Forms.CheckBox contractSignedCheckBox;
         private System.Windows.Forms.TextBox customerIDTextBox;
@@ -596,7 +638,7 @@
         private System.Windows.Forms.TextBox mortgageAccountTextBox;
         private System.Windows.Forms.TextBox mortgageCompanyTextBox;
         private System.Windows.Forms.TextBox mRNNumberTextBox;
-        private System.Windows.Forms.TextBox propertyIDTextBox;
+        private System.Windows.Forms.ComboBox propertyIDTextBox;
         private System.Windows.Forms.Button AddClaimBtn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
@@ -606,5 +648,9 @@
         private System.Windows.Forms.BindingSource dTOInsuranceCompanyBindingSource;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.BindingSource dTOAddressBindingSource;
+        private System.Windows.Forms.TextBox addressTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
