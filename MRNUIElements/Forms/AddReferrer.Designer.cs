@@ -78,72 +78,81 @@
             // cellPhoneLabel
             // 
             cellPhoneLabel.AutoSize = true;
-            cellPhoneLabel.Location = new System.Drawing.Point(36, 65);
+            cellPhoneLabel.Location = new System.Drawing.Point(279, 134);
+            cellPhoneLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             cellPhoneLabel.Name = "cellPhoneLabel";
-            cellPhoneLabel.Size = new System.Drawing.Size(89, 20);
+            cellPhoneLabel.Size = new System.Drawing.Size(61, 13);
             cellPhoneLabel.TabIndex = 1;
             cellPhoneLabel.Text = "Cell Phone:";
             // 
             // emailLabel
             // 
             emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(36, 97);
+            emailLabel.Location = new System.Drawing.Point(93, 134);
+            emailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(52, 20);
+            emailLabel.Size = new System.Drawing.Size(35, 13);
             emailLabel.TabIndex = 3;
             emailLabel.Text = "Email:";
             // 
             // firstNameLabel
             // 
             firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(36, 129);
+            firstNameLabel.Location = new System.Drawing.Point(93, 56);
+            firstNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(90, 20);
+            firstNameLabel.Size = new System.Drawing.Size(60, 13);
             firstNameLabel.TabIndex = 5;
             firstNameLabel.Text = "First Name:";
             // 
             // lastNameLabel
             // 
             lastNameLabel.AutoSize = true;
-            lastNameLabel.Location = new System.Drawing.Point(36, 161);
+            lastNameLabel.Location = new System.Drawing.Point(227, 56);
+            lastNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(90, 20);
+            lastNameLabel.Size = new System.Drawing.Size(61, 13);
             lastNameLabel.TabIndex = 7;
             lastNameLabel.Text = "Last Name:";
             // 
             // mailingAddressLabel
             // 
             mailingAddressLabel.AutoSize = true;
-            mailingAddressLabel.Location = new System.Drawing.Point(36, 193);
+            mailingAddressLabel.Location = new System.Drawing.Point(123, 96);
+            mailingAddressLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             mailingAddressLabel.Name = "mailingAddressLabel";
-            mailingAddressLabel.Size = new System.Drawing.Size(125, 20);
+            mailingAddressLabel.Size = new System.Drawing.Size(84, 13);
             mailingAddressLabel.TabIndex = 9;
             mailingAddressLabel.Text = "Mailing Address:";
             // 
             // referrerIDLabel
             // 
             referrerIDLabel.AutoSize = true;
-            referrerIDLabel.Location = new System.Drawing.Point(36, 225);
+            referrerIDLabel.Location = new System.Drawing.Point(254, 173);
+            referrerIDLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             referrerIDLabel.Name = "referrerIDLabel";
-            referrerIDLabel.Size = new System.Drawing.Size(93, 20);
+            referrerIDLabel.Size = new System.Drawing.Size(62, 13);
             referrerIDLabel.TabIndex = 11;
             referrerIDLabel.Text = "Referrer ID:";
+            referrerIDLabel.Visible = false;
             // 
             // suffixLabel
             // 
             suffixLabel.AutoSize = true;
-            suffixLabel.Location = new System.Drawing.Point(36, 257);
+            suffixLabel.Location = new System.Drawing.Point(330, 56);
+            suffixLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             suffixLabel.Name = "suffixLabel";
-            suffixLabel.Size = new System.Drawing.Size(53, 20);
+            suffixLabel.Size = new System.Drawing.Size(36, 13);
             suffixLabel.TabIndex = 13;
             suffixLabel.Text = "Suffix:";
             // 
             // zipLabel
             // 
             zipLabel.AutoSize = true;
-            zipLabel.Location = new System.Drawing.Point(36, 289);
+            zipLabel.Location = new System.Drawing.Point(315, 96);
+            zipLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             zipLabel.Name = "zipLabel";
-            zipLabel.Size = new System.Drawing.Size(35, 20);
+            zipLabel.Size = new System.Drawing.Size(25, 13);
             zipLabel.TabIndex = 15;
             zipLabel.Text = "Zip:";
             // 
@@ -174,9 +183,10 @@
             this.dTO_ReferrerBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.dTO_ReferrerBindingNavigator.Name = "dTO_ReferrerBindingNavigator";
             this.dTO_ReferrerBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.dTO_ReferrerBindingNavigator.Size = new System.Drawing.Size(514, 31);
+            this.dTO_ReferrerBindingNavigator.Size = new System.Drawing.Size(343, 31);
             this.dTO_ReferrerBindingNavigator.TabIndex = 0;
             this.dTO_ReferrerBindingNavigator.Text = "bindingNavigator1";
+            this.dTO_ReferrerBindingNavigator.Visible = false;
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -194,7 +204,7 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(54, 28);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 28);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -235,7 +245,7 @@
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 31);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(35, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
@@ -279,71 +289,80 @@
             // cellPhoneTextBox
             // 
             this.cellPhoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ReferrerBindingSource, "CellPhone", true));
-            this.cellPhoneTextBox.Location = new System.Drawing.Point(167, 62);
+            this.cellPhoneTextBox.Location = new System.Drawing.Point(243, 112);
+            this.cellPhoneTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cellPhoneTextBox.Name = "cellPhoneTextBox";
-            this.cellPhoneTextBox.Size = new System.Drawing.Size(200, 26);
+            this.cellPhoneTextBox.Size = new System.Drawing.Size(135, 20);
             this.cellPhoneTextBox.TabIndex = 2;
             this.cellPhoneTextBox.TextChanged += new System.EventHandler(this.cellPhoneTextBox_TextChanged);
             // 
             // emailTextBox
             // 
             this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ReferrerBindingSource, "Email", true));
-            this.emailTextBox.Location = new System.Drawing.Point(167, 94);
+            this.emailTextBox.Location = new System.Drawing.Point(48, 112);
+            this.emailTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(200, 26);
+            this.emailTextBox.Size = new System.Drawing.Size(191, 20);
             this.emailTextBox.TabIndex = 4;
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ReferrerBindingSource, "FirstName", true));
-            this.firstNameTextBox.Location = new System.Drawing.Point(167, 126);
+            this.firstNameTextBox.Location = new System.Drawing.Point(48, 36);
+            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(200, 26);
+            this.firstNameTextBox.Size = new System.Drawing.Size(135, 20);
             this.firstNameTextBox.TabIndex = 6;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.firstNameTextBox_TextChanged);
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ReferrerBindingSource, "LastName", true));
-            this.lastNameTextBox.Location = new System.Drawing.Point(167, 158);
+            this.lastNameTextBox.Location = new System.Drawing.Point(187, 36);
+            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(200, 26);
+            this.lastNameTextBox.Size = new System.Drawing.Size(135, 20);
             this.lastNameTextBox.TabIndex = 8;
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.lastNameTextBox_TextChanged);
             // 
             // mailingAddressTextBox
             // 
             this.mailingAddressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ReferrerBindingSource, "MailingAddress", true));
-            this.mailingAddressTextBox.Location = new System.Drawing.Point(167, 190);
+            this.mailingAddressTextBox.Location = new System.Drawing.Point(48, 74);
+            this.mailingAddressTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mailingAddressTextBox.Name = "mailingAddressTextBox";
-            this.mailingAddressTextBox.Size = new System.Drawing.Size(200, 26);
+            this.mailingAddressTextBox.Size = new System.Drawing.Size(228, 20);
             this.mailingAddressTextBox.TabIndex = 10;
             this.mailingAddressTextBox.TextChanged += new System.EventHandler(this.mailingAddressTextBox_TextChanged);
             // 
             // referrerIDTextBox
             // 
             this.referrerIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ReferrerBindingSource, "ReferrerID", true));
-            this.referrerIDTextBox.Location = new System.Drawing.Point(167, 222);
+            this.referrerIDTextBox.Location = new System.Drawing.Point(333, 170);
+            this.referrerIDTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.referrerIDTextBox.Name = "referrerIDTextBox";
             this.referrerIDTextBox.ReadOnly = true;
-            this.referrerIDTextBox.Size = new System.Drawing.Size(200, 26);
+            this.referrerIDTextBox.Size = new System.Drawing.Size(135, 20);
             this.referrerIDTextBox.TabIndex = 12;
+            this.referrerIDTextBox.Visible = false;
             // 
             // suffixTextBox
             // 
             this.suffixTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ReferrerBindingSource, "Suffix", true));
-            this.suffixTextBox.Location = new System.Drawing.Point(167, 254);
+            this.suffixTextBox.Location = new System.Drawing.Point(326, 36);
+            this.suffixTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.suffixTextBox.Name = "suffixTextBox";
-            this.suffixTextBox.Size = new System.Drawing.Size(200, 26);
+            this.suffixTextBox.Size = new System.Drawing.Size(49, 20);
             this.suffixTextBox.TabIndex = 14;
             // 
             // zipTextBox
             // 
             this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTO_ReferrerBindingSource, "Zip", true));
-            this.zipTextBox.Location = new System.Drawing.Point(167, 286);
+            this.zipTextBox.Location = new System.Drawing.Point(298, 74);
+            this.zipTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new System.Drawing.Size(200, 26);
+            this.zipTextBox.Size = new System.Drawing.Size(78, 20);
             this.zipTextBox.TabIndex = 16;
             this.zipTextBox.TextChanged += new System.EventHandler(this.zipTextBox_TextChanged);
             // 
@@ -351,9 +370,10 @@
             // 
             this.AddRef.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.AddRef.Enabled = false;
-            this.AddRef.Location = new System.Drawing.Point(345, 345);
+            this.AddRef.Location = new System.Drawing.Point(282, 221);
+            this.AddRef.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddRef.Name = "AddRef";
-            this.AddRef.Size = new System.Drawing.Size(157, 45);
+            this.AddRef.Size = new System.Drawing.Size(105, 29);
             this.AddRef.TabIndex = 17;
             this.AddRef.Text = "OK";
             this.AddRef.UseVisualStyleBackColor = true;
@@ -362,18 +382,19 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(370, 315);
+            this.checkBox1.Location = new System.Drawing.Point(299, 202);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(118, 24);
+            this.checkBox1.Size = new System.Drawing.Size(81, 17);
             this.checkBox1.TabIndex = 18;
             this.checkBox1.Text = "No Referrer";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // AddReferrer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 402);
+            this.ClientSize = new System.Drawing.Size(416, 261);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.AddRef);
             this.Controls.Add(cellPhoneLabel);
@@ -393,6 +414,7 @@
             this.Controls.Add(zipLabel);
             this.Controls.Add(this.zipTextBox);
             this.Controls.Add(this.dTO_ReferrerBindingNavigator);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddReferrer";
             this.Text = "AddReferrer";
             ((System.ComponentModel.ISupportInitialize)(this.dTO_ReferrerBindingNavigator)).EndInit();

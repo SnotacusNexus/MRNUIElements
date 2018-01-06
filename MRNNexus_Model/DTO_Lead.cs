@@ -39,6 +39,8 @@ namespace MRNNexus_Model
             if(LeadDateForSerialization != null)
 			    this.LeadDate = DateTime.Parse(this.LeadDateForSerialization);
 		}
+      [DataMember]
+      public char Status { get; set; }
 
         [DataMember]
         public int CustomerID { get; set; }

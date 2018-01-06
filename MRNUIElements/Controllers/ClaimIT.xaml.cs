@@ -49,7 +49,7 @@ namespace MRNUIElements.Controllers
             MrnClaim.Lead.CustomerID = MrnClaim.c.CustomerID;
             await s1.AddAddress(MrnClaim.a);
             MrnClaim.Lead.AddressID = s1.Address1.AddressID;
-            MrnClaim.Lead.SalesPersonID = 10;
+          //  MrnClaim.Lead.SalesPersonID = 10;
             //set temp for lead
             MrnClaim.Lead.Temperature = "W";
             await s1.AddLead(MrnClaim.Lead);
@@ -58,10 +58,10 @@ namespace MRNUIElements.Controllers
             MrnClaim._claim.PropertyID = MrnClaim._claim.BillingID = MrnClaim.Lead.AddressID;
             MrnClaim._claim.LossDate = lossDateDatePicker.SelectedDate.Value;
             //make this down there variable get from previous box about insurance coID
-            MrnClaim._claim.InsuranceCompanyID = /*MrnClaim.ic.InsuranceCompanyID=*/10;
+       //     MrnClaim._claim.InsuranceCompanyID = /*MrnClaim.ic.InsuranceCompanyID=*/10;
             MrnClaim._claim.IsOpen = true;
-            MrnClaim._claim.MortgageAccount = "";
-            MrnClaim._claim.MortgageCompany = "";
+          //  MrnClaim._claim.MortgageAccount = "";
+          //  MrnClaim._claim.MortgageCompany = "";
             MrnClaim._claim.InsuranceClaimNumber = "";
             MrnClaim._claim.MRNNumber = "MRN-" + MrnClaim.Lead.SalesPersonID.ToString() + "-" + MrnClaim.c.CustomerID.ToString();
             await s1.AddClaim(MrnClaim._claim);

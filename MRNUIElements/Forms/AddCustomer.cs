@@ -17,21 +17,22 @@ namespace MRNUIElements.Forms
         ServiceLayer s1 = ServiceLayer.getInstance();
         bool fn = false, ln = false, pn = false, ea = false, ma = false;
         public DTO_Customer Cust { get; set; }
-        static AddClaim ac = AddClaim.getAddClaimInstance();
+        static AddClaim NewClaim = AddClaim.getAddClaimInstance();
         public AddCustomer()
         {
             InitializeComponent();
         }
 
-        async private void CustomerNextButtonbtn_Click(object sender, EventArgs e)
+    private void CustomerNextButtonbtn_Click(object sender, EventArgs e)
         {
-            await Add_Customer();
+           Add_Customer();
         }
-        async Task<bool> Add_Customer()
+        bool Add_Customer()
         {
             Cust = new DTO_Customer();
+
+            bool result = false;
            
-         
                 // ac.Cust.CustomerID = ((DTO_Customer)dTO_CustomerBindingSource.DataSource).CustomerID;
                 Cust.FirstName = firstNameTextBox.Text;
                 Cust.LastName = lastNameTextBox.Text;
@@ -53,10 +54,52 @@ namespace MRNUIElements.Forms
                 try
                 { Cust.Email = emailTextBox.Text; }
                 catch (NullReferenceException nre) { }
+            try
+            {
+                NewClaim.Cust = Cust;
 
-                await s1.AddCustomer(Cust);
-                ac.Cust = s1.Cust;
-            return true;
+                if (s1.CustomersList.Exists(x => x == Cust))
+                {
+                    var sb = new StringBuilder();
+                    sb.Append(Cust.FirstName);
+                    if (!string.IsNullOrEmpty(Cust.MiddleName))
+                    {
+                        sb.Append(" " + Cust.MiddleName);
+                    }
+                    sb.Append(" " + Cust.LastName);
+                    if (!string.IsNullOrEmpty(Cust.Suffix))
+                    {
+                        sb.Append(" " + Cust.Suffix);
+                    }
+
+                    if (DialogResult.Yes == MessageBox.Show(sb.ToString() + "is already in the database as Customer ID # " + s1.CustomersList.Find(x => x == Cust).CustomerID.ToString(), "Customer Already Exist", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+                        Cust.CustomerID = s1.CustomersList.Find(x => x == Cust).CustomerID;
+                    if (Cust.CustomerID == 0)
+                        return false;
+
+
+
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+               
+                MessageBox.Show(ex.ToString());
+               
+            }
+            finally
+            {
+                NewClaim.Cust = Cust;
+                result = true;
+               
+                this.DialogResult = DialogResult.OK;
+
+            }
+
+            return result;
 
         }
 
@@ -70,6 +113,7 @@ namespace MRNUIElements.Forms
             CustomerNextButtonbtn.Enabled = IsEnabled();
 
         }
+
 
         private void firstNameTextBox_TextChanged(object sender, EventArgs e)
         {

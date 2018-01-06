@@ -24,9 +24,10 @@ namespace MRNUIElements
         public AddAddress()
         {
             InitializeComponent();
+            
 
 
-            if (Cust == null)
+            if (ac.Cust == null)
                 return;
 
             customerNameTextBox.Text = ac.Cust.FirstName + " " + ac.Cust.LastName;
@@ -38,11 +39,27 @@ namespace MRNUIElements
            await Add_Address();
         }
 
-        async Task<DTO_Address> Add_Address()
+        async Task<bool> Add_Address()
         {
-            await s1.AddAddress(((DTO_Address)dTO_AddressBindingSource.Current));
-            ac.Address = Address = s1.Address1;
-            return Address;
+            bool result = false;
+            //dTO_AddressBindingSource.GetItemProperties
+            try
+            {
+             ac.Address = new DTO_Address { Address = addressTextBox.Text, Zip = zipTextBox.Text, CustomerID = Cust.CustomerID };
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                
+                result = true;
+            }
+
+            this.DialogResult = DialogResult.OK;
+            return result;
         }
 
         private void addressTextBox_TextChanged(object sender, EventArgs e)
@@ -63,12 +80,18 @@ namespace MRNUIElements
                 zip = false;
             if (zipTextBox.TextLength == 5)
             {
-                sTTextBox.Text = azv.CityStateLookupRequest(zipTextBox.Text, 4);
-                cityTextBox.Text = azv.CityStateLookupRequest(zipTextBox.Text, 3);
+                textBox3.Text = azv.CityStateLookupRequest(zipTextBox.Text, 5);
+                textBox2.Text = azv.CityStateLookupRequest(zipTextBox.Text, 3);
              button1.Enabled = IsEnabled();
             }
 
           
+
+        }
+
+        private void AddAddress_Load(object sender, EventArgs e)
+        {
+
 
         }
 

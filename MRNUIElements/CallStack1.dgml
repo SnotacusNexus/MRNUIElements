@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph DataVirtualized="True" Layout="Sugiyama" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@2 @11 @12 Member=.ctor)" Category="CodeSchema_Method" Bounds="569.383333333333,201.4875,100.383333333333,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="AddAddress" Icon="CodeSchema_Method" Label="AddAddress" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddAddress.cs StartLineNumber=31 StartCharacterOffset=0 EndLineNumber=31 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@2 @11 @12 Member=Add_Address)" Category="CodeSchema_Method" Bounds="701.893333333333,273.4075,105.363333333333,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="Add_Address" Icon="CodeSchema_Method" Label="Add_Address" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddAddress.cs StartLineNumber=48 StartCharacterOffset=0 EndLineNumber=48 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@2 @11 Type=AddressZipcodeValidation Member=(Name=CityStateLookupRequest OverloadingParameters=[(@7 @8 Type=String),(@7 @8 Type=Int32)]))" Category="CodeSchema_Method" Bounds="1032.26166666667,273.4075,164.626666666667,25.96" CodeSchemaProperty_IsPublic="True" CommonLabel="CityStateLookupRequest" Icon="CodeSchema_Method" Label="CityStateLookupRequest" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/AddressZipcodeValidation.cs StartLineNumber=120 StartCharacterOffset=0 EndLineNumber=120 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@2 @11 Type=MainWindow Member=.ctor)" Category="CodeSchema_Method" Bounds="723.446666666667,57.6475,106.256666666667,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="MainWindow" Icon="CodeSchema_Method" Label="MainWindow" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/MainWindow.xaml.cs StartLineNumber=34 StartCharacterOffset=0 EndLineNumber=34 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@2 @5 @6 Member=AnonymousMethod__33_2)" Category="CodeSchema_Method" Bounds="179.693333333333,345.3275,175.763333333333,25.96" CodeSchemaProperty_IsAnonymous="True" Label="AnonymousMethod__33_2" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddLead.cs StartLineNumber=58 StartCharacterOffset=0 EndLineNumber=58 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@2 @5 Type=AddCustomer Member=(Name=CustomerNextButtonbtn_Click @9))" Category="CodeSchema_Method" Bounds="0,473.2075,195.286666666667,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="CustomerNextButtonbtn_Click" Icon="CodeSchema_Method" Label="CustomerNextButtonbtn_Click" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddCustomer.cs StartLineNumber=27 StartCharacterOffset=0 EndLineNumber=27 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@2 @5 Type=AddCustomer Member=Add_Customer)" Category="CodeSchema_Method" Bounds="40.6183333333333,545.127500000001,114.05,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="Add_Customer" Icon="CodeSchema_Method" Label="Add_Customer" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddCustomer.cs StartLineNumber=70 StartCharacterOffset=0 EndLineNumber=70 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@2 Namespace=MRNUIElements.Controllers Type=ClaimView Member=(Name=.ctor OverloadingParameters=[(@3 Namespace=MRNNexus_Model Type=DTO_Claim)]))" Category="CodeSchema_Method" Bounds="709.076666666667,129.5675,90.9966666666667,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="ClaimView" Icon="CodeSchema_Method" Label="ClaimView" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Controllers/ClaimMOOO.xaml.cs StartLineNumber=116 StartCharacterOffset=0 EndLineNumber=116 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=MRNUIElements.AddressZipcodeValidation.CityStateLookupRequest @1 Type=string IsUnresolved=True)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="837.261666666667,273.4075,164.626666666667,25.96" Label="CityStateLookupRequest" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/AddressZipcodeValidation.cs StartLineNumber=111 StartCharacterOffset=0 EndLineNumber=111 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@10" Category="CodeSchema_Method" Bounds="420.733333333333,201.4875,117.683333333333,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="Add_Lead_Click" Icon="CodeSchema_Method" Label="Add_Lead_Click" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddLead.cs StartLineNumber=171 StartCharacterOffset=0 EndLineNumber=171 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@13" Category="CodeSchema_Method" Bounds="700.576666666667,201.4875,107.996666666667,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="button1_Click" Icon="CodeSchema_Method" Label="button1_Click" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddAddress.cs StartLineNumber=39 StartCharacterOffset=0 EndLineNumber=39 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@14" Category="CodeSchema_Method" Bounds="570.576666666667,129.5675,107.996666666667,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="button2_Click" Icon="CodeSchema_Method" Label="button2_Click" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddClaim.cs StartLineNumber=77 StartCharacterOffset=0 EndLineNumber=77 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@15" Category="CodeSchema_Method" Bounds="432.576666666667,129.5675,107.996666666667,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="button5_Click" Icon="CodeSchema_Method" Label="button5_Click" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddClaim.cs StartLineNumber=62 StartCharacterOffset=0 EndLineNumber=62 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@16" Category="CodeSchema_Method" Bounds="130.47,273.4075,274.21,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="creditToIDComboBox_SelectedIndexChanged" Icon="CodeSchema_Method" Label="creditToIDComboBox_SelectedIndexChanged" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddLead.cs StartLineNumber=54 StartCharacterOffset=0 EndLineNumber=54 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@17" Category="CodeSchema_Method" Bounds="0,201.4875,279.15,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="leadTypeIDComboBox_SelectedIndexChanged" Icon="CodeSchema_Method" Label="leadTypeIDComboBox_SelectedIndexChanged" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddLead.cs StartLineNumber=33 StartCharacterOffset=0 EndLineNumber=33 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@18" Category="CodeSchema_Method" Bounds="838.953333333333,201.4875,165.243333333333,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="zipTextBox_TextChanged" Icon="CodeSchema_Method" Label="zipTextBox_TextChanged" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddAddress.cs StartLineNumber=82 StartCharacterOffset=0 EndLineNumber=82 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@20" Category="CodeSchema_Method" Bounds="556.035,57.6475000000002,137.08,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="NewClaimBtn_Click" Icon="CodeSchema_Method" Label="NewClaimBtn_Click" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Controllers/ClaimStartPage.xaml.cs StartLineNumber=43 StartCharacterOffset=0 EndLineNumber=43 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@21" Category="CodeSchema_Method" Bounds="518.581666666667,417.247500000001,87.9866666666667,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="DTO_Base" Icon="CodeSchema_Method" Label="DTO_Base" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNNexus_Model/DTO_Base.cs StartLineNumber=20 StartCharacterOffset=0 EndLineNumber=20 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@22" Category="CodeSchema_Method" Bounds="435.068333333333,273.4075,89.0133333333333,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="aDD_Lead" Icon="CodeSchema_Method" Label="aDD_Lead" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Forms/AddLead.cs StartLineNumber=195 StartCharacterOffset=0 EndLineNumber=195 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@4" Category="CodeSchema_Method" Bounds="502.088333333333,345.3275,82.9733333333334,25.96" CodeSchemaProperty_IsPublic="True" CommonLabel="AddLead" Icon="CodeSchema_Method" Label="AddLead" SourceLocation="(Assembly=file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/Controllers/ServiceLayer.cs StartLineNumber=1144 StartCharacterOffset=0 EndLineNumber=1144 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="ExternalCodeRootNode" Category="ExternalCallStackEntry" Bounds="730.081666666667,0,92.9866666666667,25.96" Label="External Code">
+      <Category Ref="CallStackEntry" />
+    </Node>
+  </Nodes>
+  <Links>
+    <Link Source="(@2 @5 Type=AddCustomer Member=(Name=CustomerNextButtonbtn_Click @9))" Target="(@2 @5 Type=AddCustomer Member=Add_Customer)" Category="CallStackIndirectCall" Bounds="97.6433334350586,499.167510986328,0,36.9599914550781" Label="Async Call" LabelBounds="44.0333333333333,514.1675,53.61,15.96" />
+    <Link Source="@10" Target="@22" Category="CallStackIndirectCall" Bounds="479.575012207031,227.447494506836,0,36.9600067138672" Label="Async Call" LabelBounds="425.965,242.4475,53.6100000000001,15.96" />
+    <Link Source="@13" Target="(@2 @11 @12 Member=Add_Address)" Category="CallStackIndirectCall" Bounds="754.575012207031,227.447494506836,0,36.9600067138672" Label="Async Call" LabelBounds="700.965,242.4475,53.6099999999999,15.96" />
+    <Link Source="@14" Target="(@2 @11 @12 Member=.ctor)" Category="CallStackDirectCall" Bounds="621.1015625,155.527496337891,2.571044921875,36.9816741943359" />
+    <Link Source="@14" Target="@13" Category="CallStackIndirectCall" Bounds="638.115661621094,155.527496337891,74.6873779296875,42.6985473632813" Label="External Code" LabelBounds="662.088333333333,170.5275,72.9866666666667,15.96" />
+    <Link Source="@14" Target="@18" Category="CallStackIndirectCall" Bounds="676.899963378906,155.218246459961,182.325805664063,44.1510772705078" Label="External Code" LabelBounds="773.075,170.5275,72.9866666666669,15.96" />
+    <Link Source="@15" Target="@10" Category="CallStackIndirectCall" Bounds="483.782867431641,155.527496337891,2.79214477539063,37.118408203125" Label="External Code" LabelBounds="413.588333333333,170.5275,72.9866666666667,15.96" />
+    <Link Source="@15" Target="@16" Category="CallStackIndirectCall" Bounds="287.9755859375,155.527496337891,161.059936523438,111.722473144531" Label="External Code" LabelBounds="309.588333333333,206.4875,72.9866666666667,15.96" />
+    <Link Source="@15" Target="@17" Category="CallStackIndirectCall" Bounds="211.013671875,153.690673828125,221.797668457031,45.9702911376953" Label="External Code" LabelBounds="240.088333333333,170.5275,72.9866666666667,15.96" />
+    <Link Source="@16" Target="(@2 @5 @6 Member=AnonymousMethod__33_2)" Category="CallStackIndirectCall" Bounds="267.575012207031,299.367492675781,0,36.9600219726563" Label="External Code" LabelBounds="194.588333333333,314.3675,72.9866666666667,15.96" />
+    <Link Source="@17" Target="@16" Category="CallStackIndirectCall" Bounds="162.320083618164,227.447494506836,73.9227447509766,41.6025238037109" Label="External Code" LabelBounds="202.588333333333,242.4475,72.9866666666667,15.96" />
+    <Link Source="@18" Target="(@2 @11 Type=AddressZipcodeValidation Member=(Name=CityStateLookupRequest OverloadingParameters=[(@7 @8 Type=String),(@7 @8 Type=Int32)]))" Category="CallStackDirectCall" Bounds="956.407287597656,227.447494506836,114.901916503906,42.8173370361328" />
+    <Link Source="@18" Target="(Name=MRNUIElements.AddressZipcodeValidation.CityStateLookupRequest @1 Type=string IsUnresolved=True)" Category="CallStackDirectCall" Bounds="920.784423828125,227.447494506836,0.79058837890625,36.9732208251953" />
+    <Link Source="@20" Target="(@2 Namespace=MRNUIElements.Controllers Type=ClaimView Member=(Name=.ctor OverloadingParameters=[(@3 Namespace=MRNNexus_Model Type=DTO_Claim)]))" Category="CallStackDirectCall" Bounds="648.037170410156,83.6074981689453,75.2005004882813,41.6032104492188" />
+    <Link Source="@20" Target="@14" Category="CallStackIndirectCall" Bounds="624.575012207031,83.6074981689453,0,36.9599990844727" Label="External Code" LabelBounds="551.588333333333,98.6075000000001,72.9866666666667,15.96" />
+    <Link Source="@20" Target="@15" Category="CallStackIndirectCall" Bounds="501.818084716797,83.6074981689453,82.6907043457031,38.833984375" Label="External Code" LabelBounds="440.588333333333,98.6075000000001,72.9866666666667,15.96" />
+    <Link Source="@22" Target="@21" Category="CallStackIndirectCall" Bounds="458.575012207031,299.367492675781,57.95458984375,114.938934326172" Label="External Code" LabelBounds="385.588333333333,350.3275,72.9866666666667,15.96" />
+    <Link Source="@22" Target="@4" Category="CallStackIndirectCall" Bounds="491.125610351563,299.367492675781,34.915771484375,39.2366333007813" Label="Async Call" LabelBounds="511.575,314.3675,53.6100000000001,15.96" />
+    <Link Source="@4" Target="@21" Category="CallStackIndirectCall" Bounds="550.433166503906,371.287506103516,12.0243530273438,36.9607543945313" Label="External Code" LabelBounds="489.588333333333,386.2875,72.9866666666667,15.96" />
+    <Link Source="ExternalCodeRootNode" Target="(@2 @11 Type=MainWindow Member=.ctor)" Category="CallStackIndirectCall" Bounds="776.575012207031,25.9599990844727,0,22.6875" />
+    <Link Source="ExternalCodeRootNode" Target="@20" Category="CallStackIndirectCall" Bounds="667.214660644531,25.9599990844727,75.1358032226563,28.4959831237793" />
+  </Links>
+  <Categories>
+    <Category Id="CallStackDirectCall" Label="Call Stack direct call" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Call Stack direct call" OutgoingActionLabel="Call Stack direct call" />
+    <Category Id="CallStackEntry" Label="Call Stack Entry" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Call Stack Entry" />
+    <Category Id="CallStackIndirectCall" Label="Call Stack indirect call" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Call Stack indirect call" OutgoingActionLabel="Call Stack indirect call" />
+    <Category Id="CodeSchema_CallStackUnresolvedMethod" Label="Unresolved Method" CanBeDataDriven="True" DefaultAction="Microsoft.AllOutBoundLinks" IsProviderRoot="False" NavigationActionLabel="Unresolved Method" />
+    <Category Id="CodeSchema_Member" Label="Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Members" />
+    <Category Id="CodeSchema_Method" Label="Method" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="Methods" />
+    <Category Id="CodeSchema_SourceLocation" Label="Source Location" Icon="File" />
+    <Category Id="ExternalCallStackEntry" Label="External Call Stack Entry" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="External Call Stack Entry" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAnonymous" Label="Is Anonymous" Description="Flag indicating if this delegate, type, or method is anonymous" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsConstructor" Label="Is Constructor" Description="Flag to indicate the method is a constructor" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="Is Private" Description="Flag to indicate the scope is Private" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DataVirtualized" Label="Data Virtualized" Description="If true, the graph can contain nodes and links that represent data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="Visibility" Label="Visibility" Description="Defines whether a node in the graph is visible or not" DataType="System.Windows.Visibility" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="IsUnresolved" Label="Is Unresolved" ValueType="System.String" />
+    <Name Id="Member" Label="Member" ValueType="System.Object" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="Parameter" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=MRNUIElements.exe" />
+    <Alias n="2" Uri="Assembly=$(3f5e7a14-cfbd-45e8-90ef-b128d0a7ef60.OutputPathUri)" />
+    <Alias n="3" Uri="Assembly=$(5bfc4d4b-8fbc-4fda-a4eb-88b69987b3b9.OutputPathUri)" />
+    <Alias n="4" Id="(@2 Namespace=MRNUIElements.Controllers Type=ServiceLayer Member=(Name=AddLead OverloadingParameters=[(@3 Namespace=MRNNexus_Model Type=DTO_Lead)]))" />
+    <Alias n="5" Id="Namespace=MRNUIElements.Forms" />
+    <Alias n="6" Id="Type=AddLead" />
+    <Alias n="7" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.6/mscorlib.dll" />
+    <Alias n="8" Id="Namespace=System" />
+    <Alias n="9" Id="OverloadingParameters=[(@7 @8 Type=Object),(@7 @8 Type=EventArgs)]" />
+    <Alias n="10" Id="(@2 @5 @6 Member=(Name=Add_Lead_Click @9))" />
+    <Alias n="11" Id="Namespace=MRNUIElements" />
+    <Alias n="12" Id="Type=AddAddress" />
+    <Alias n="13" Id="(@2 @11 @12 Member=(Name=button1_Click @9))" />
+    <Alias n="14" Id="(@2 @11 Type=AddClaim Member=(Name=button2_Click @9))" />
+    <Alias n="15" Id="(@2 @11 Type=AddClaim Member=(Name=button5_Click @9))" />
+    <Alias n="16" Id="(@2 @5 @6 Member=(Name=creditToIDComboBox_SelectedIndexChanged @9))" />
+    <Alias n="17" Id="(@2 @5 @6 Member=(Name=leadTypeIDComboBox_SelectedIndexChanged @9))" />
+    <Alias n="18" Id="(@2 @11 @12 Member=(Name=zipTextBox_TextChanged @9))" />
+    <Alias n="19" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.6/PresentationCore.dll" />
+    <Alias n="20" Id="(@2 Namespace=MRNUIElements.Controllers Type=ClaimStartPage Member=(Name=NewClaimBtn_Click OverloadingParameters=[(@7 @8 Type=Object),(@19 Namespace=System.Windows Type=RoutedEventArgs)]))" />
+    <Alias n="21" Id="(@3 Namespace=MRNNexus_Model Type=DTO_Base Member=.ctor)" />
+    <Alias n="22" Id="(@2 @5 @6 Member=aDD_Lead)" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Link" GroupLabel="Current Call Stack Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CurrentCallStackCall')" />
+      <Setter Property="Stroke" Value="#FFD93701" />
+      <Setter Property="Weight" Value="1" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Call Stack Indirect Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CallStackIndirectCall')" />
+      <Setter Property="Stroke" Value="#FFB8B8B8" />
+      <Setter Property="StrokeDashArray" Value="4 1" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Call Stack Direct Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CallStackDirectCall')" />
+      <Setter Property="Stroke" Value="#FFB8B8B8" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Current Call Stack (no source)" ValueLabel="True">
+      <Condition Expression="HasCategory('CurrentCallStackEntry') And !HasCategory('CodeSchema_SourceLocation')" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Foreground" Value="#FFA5A5A5" />
+      <Setter Property="Stroke" Value="#FF0072C6" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="External And Current" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('ExternalCallStackEntry') And HasCategory('CurrentCallStackEntry')" />
+      <Setter Property="Background" Value="#FFFFF8F0" />
+      <Setter Property="Stroke" Value="#FFCE5100" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Current Call Stack (source)" ValueLabel="True">
+      <Condition Expression="HasCategory('CurrentCallStackEntry') And !HasCategory('QueryResult')" />
+      <Setter Property="Background" Value="#FFFFE3C6" />
+      <Setter Property="Stroke" Value="#FFD93701" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="External Call Stack" ValueLabel="True">
+      <Condition Expression="HasCategory('ExternalCallStackEntry')" />
+      <Setter Property="Background" Value="#FFF7F7F7" />
+      <Setter Property="StrokeDashArray" Value="1 3" />
+      <Setter Property="Foreground" Value="#FFA5A5A5" />
+      <Setter Property="Stroke" Value="#FFA5A5A5" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Results" ValueLabel="True">
+      <Condition Expression="HasCategory('QueryResult')" />
+      <Setter Property="Background" Value="#FFBCFFBE" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Test Project" ValueLabel="Test Project">
+      <Condition Expression="HasCategory('CodeMap_TestProject')" />
+      <Setter Property="Icon" Value="CodeMap_TestProject" />
+      <Setter Property="Background" Value="#FF307A69" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Web Project" ValueLabel="Web Project">
+      <Condition Expression="HasCategory('CodeMap_WebProject')" />
+      <Setter Property="Icon" Value="CodeMap_WebProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Windows Store Project" ValueLabel="Windows Store Project">
+      <Condition Expression="HasCategory('CodeMap_WindowsStoreProject')" />
+      <Setter Property="Icon" Value="CodeMap_WindowsStoreProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Phone Project" ValueLabel="Phone Project">
+      <Condition Expression="HasCategory('CodeMap_PhoneProject')" />
+      <Setter Property="Icon" Value="CodeMap_PhoneProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Portable Library" ValueLabel="Portable Library">
+      <Condition Expression="HasCategory('CodeMap_PortableLibraryProject')" />
+      <Setter Property="Icon" Value="CodeMap_PortableLibraryProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="WPF Project" ValueLabel="WPF Project">
+      <Condition Expression="HasCategory('CodeMap_WpfProject')" />
+      <Setter Property="Icon" Value="CodeMap_WpfProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="VSIX Project" ValueLabel="VSIX Project">
+      <Condition Expression="HasCategory('CodeMap_VsixProject')" />
+      <Setter Property="Icon" Value="CodeMap_VsixProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Modeling Project" ValueLabel="Modeling Project">
+      <Condition Expression="HasCategory('CodeMap_ModelingProject')" />
+      <Setter Property="Icon" Value="CodeMap_ModelingProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Assembly" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Assembly')" />
+      <Setter Property="Background" Value="#FF094167" />
+      <Setter Property="Stroke" Value="#FF094167" />
+      <Setter Property="Icon" Value="CodeSchema_Assembly" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Namespace" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+      <Setter Property="Background" Value="#FF0E619A" />
+      <Setter Property="Stroke" Value="#FF0E619A" />
+      <Setter Property="Icon" Value="CodeSchema_Namespace" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Interface" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Interface')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Interface" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Struct" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Struct')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Struct" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Enumeration" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Enum')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Enum" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Delegate" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Delegate')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Delegate" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Class" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Type')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Class" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Property')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Property" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Method" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Method') Or HasCategory('CodeSchema_CallStackUnresolvedMethod')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Method" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Event" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Event')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Event" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Field')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Field" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Out Parameter" ValueLabel="Has category">
+      <Condition Expression="CodeSchemaProperty_IsOut = 'True'" />
+      <Setter Property="Icon" Value="CodeSchema_OutParameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Parameter" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Parameter')" />
+      <Setter Property="Icon" Value="CodeSchema_Parameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Local Variable" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_LocalExpression')" />
+      <Setter Property="Icon" Value="CodeSchema_LocalExpression" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Externals" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Externals')" />
+      <Setter Property="Background" Value="#FF424242" />
+      <Setter Property="Stroke" Value="#FF424242" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Inherits From" ValueLabel="True">
+      <Condition Expression="HasCategory('InheritsFrom')" />
+      <Setter Property="Stroke" Value="#FF00A600" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Implements" ValueLabel="True">
+      <Condition Expression="HasCategory('Implements')" />
+      <Setter Property="Stroke" Value="#8000A600" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Calls" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Calls')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Function Pointer" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FunctionPointer')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Field Read" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FieldRead')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Field Write" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FieldWrite')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="DrawArrow" Value="true" />
+      <Setter Property="IsHidden" Value="false" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Inherits From" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('InheritsFrom') And Target.HasCategory('CodeSchema_Class')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Implements" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('Implements') And Target.HasCategory('CodeSchema_Interface')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Comment Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="Source.HasCategory('Comment')" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Cursor Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsCursorLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Disabled Breakpoint Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="DisabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Enabled Breakpoint Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="EnabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Instruction Pointer Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsInstructionPointerLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Current Callstack Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsCurrentCallstackFrame" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Return" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeSchema_ReturnTypeLink')" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="References" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('References')" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Uses Attribute" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeSchema_AttributeUse')" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Solution Folder" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeMap_SolutionFolder')" />
+      <Setter Property="Background" Value="#FFDEBA83" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Project Reference" ValueLabel="Project Reference">
+      <Condition Expression="HasCategory('CodeMap_ProjectReference')" />
+      <Setter Property="Stroke" Value="#9A9A9A" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="External Reference" ValueLabel="External Reference">
+      <Condition Expression="HasCategory('CodeMap_ExternalReference')" />
+      <Setter Property="Stroke" Value="#9A9A9A" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="3f5e7a14-cfbd-45e8-90ef-b128d0a7ef60.OutputPathUri" Value="file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNUIElements/bin/Debug/MRNUIElements.exe" />
+    <Path Id="5bfc4d4b-8fbc-4fda-a4eb-88b69987b3b9.OutputPathUri" Value="file:///C:/Users/InfoTech/Dropbox/MRNUIElements/MRNNexus_Model/bin/Debug/MRNNexus_Model.dll" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files (x86)/Reference Assemblies/Microsoft/Framework" />
+  </Paths>
+</DirectedGraph>
