@@ -454,6 +454,26 @@
       <DependentUpon>Add Vendor Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddInspection.cs" />
+    <Compile Include="ClaimDataManipulation - Copy.cs" />
+    <Compile Include="ClaimDetailsPage - Copy.xaml.cs">
+      <DependentUpon>ClaimDetailsPage - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimPickerPopUp - Copy.xaml.cs">
+      <DependentUpon>ClaimPickerPopUp - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CompetitionResultsDisplay - Copy.xaml.cs">
+      <DependentUpon>CompetitionResultsDisplay - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CompoundDataGridRow - Copy.xaml.cs">
+      <DependentUpon>CompoundDataGridRow - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContestPage - Copy.xaml.cs">
+      <DependentUpon>ContestPage - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Class2.cs" />
+    <Compile Include="CustomerAgreement - Copy.xaml.cs">
+      <DependentUpon>CustomerAgreement - Copy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddAdditonalSupply.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -856,8 +876,17 @@
     <Compile Include="Forms\Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetClaimInfo - Copy.xaml.cs">
+      <DependentUpon>GetClaimInfo - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GetClaimsPage - Copy.xaml.cs">
+      <DependentUpon>GetClaimsPage - Copy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GetClaimsPage.xaml.cs">
       <DependentUpon>GetClaimsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Home - Copy.xaml.cs">
+      <DependentUpon>Home - Copy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -865,8 +894,13 @@
     <Compile Include="ImageGallary.xaml.cs">
       <DependentUpon>ImageGallary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImageResize - Copy.cs" />
     <Compile Include="ImageResize.cs" />
+    <Compile Include="ImageResizer - Copy.cs" />
     <Compile Include="ImageResizer.cs" />
+    <Compile Include="ImageViewer - Copy.xaml.cs">
+      <DependentUpon>ImageViewer - Copy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageViewer.xaml.cs">
       <DependentUpon>ImageViewer.xaml</DependentUpon>
     </Compile>
@@ -895,6 +929,12 @@
     </Compile>
     <Compile Include="Forms\LeadTypes.Designer.cs">
       <DependentUpon>LeadTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicePage - Copy.xaml.cs">
+      <DependentUpon>InvoicePage - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login - Copy.xaml.cs">
+      <DependentUpon>Login - Copy.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginAs.xaml.cs">
       <DependentUpon>LoginAs.xaml</DependentUpon>
@@ -1311,17 +1351,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ClaimDetailsPage - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimPickerPopUp - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ClaimPickerPopUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CompetitionResultsDisplay - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="CompetitionResultsDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CompoundDataGridRow - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CompoundDataGridRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContestPage - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controllers\AddAdjuster.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -1451,6 +1511,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomerAgreement - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CustomerAgreement.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1459,9 +1523,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GetClaimInfo - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GetClaimsPage - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GetClaimsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Home - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Home.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -1470,6 +1546,10 @@
     <Page Include="ImageGallary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImageViewer - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ImageViewer.xaml">
       <SubType>Designer</SubType>
@@ -1480,6 +1560,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InspectionPlaneData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InvoicePage - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login - Copy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1967,6 +2055,7 @@
     <None Include="ClassDiagram2.cd" />
     <None Include="ClassDiagram3.cd" />
     <None Include="ClassDiagram4.cd" />
+    <Compile Include="Controllers\Claim.Function.CapOut.cs" />
     <None Include="MRNNexus_Model.DTO_AdditionalSupply.datasource" />
     <None Include="MRNNexus_Model.DTO_Address.datasource" />
     <None Include="MRNNexus_Model.DTO_Adjuster.datasource" />
@@ -2122,6 +2211,7 @@
     </Content>
     <None Include="FodyWeavers.xml" />
     <Resource Include="CheckMark.png" />
+    <Resource Include="FodyWeavers - Copy.xml" />
     <Content Include="ResourceFiles\mysprite.sprite.css">
       <DependentUpon>mysprite.sprite</DependentUpon>
     </Content>

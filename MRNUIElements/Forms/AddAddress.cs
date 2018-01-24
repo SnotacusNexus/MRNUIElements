@@ -45,7 +45,7 @@ namespace MRNUIElements
             //dTO_AddressBindingSource.GetItemProperties
             try
             {
-             ac.Address = new DTO_Address { Address = addressTextBox.Text, Zip = zipTextBox.Text, CustomerID = Cust.CustomerID };
+             ac.Address = new DTO_Address { Address = addressTextBox.Text, Zip = zipTextBox.Text };
                
             }
             catch (Exception ex)

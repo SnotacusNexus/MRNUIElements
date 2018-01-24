@@ -41,8 +41,8 @@ namespace MRNUIElements.Controllers
 
 		//	int errorcount = 0;
 		public string hold = "";
-		private const string URL = @"http://services.mrncontracting.com/MRNNexus_Service.svc/";
-		//private const string URL = @"http://localhost:50899/MRNNexus_Service.svc/";
+		//private const string URL = @"http://services.mrncontracting.com/MRNNexus_Service.svc/";
+		private const string URL = @"http://localhost/MRNNexus_Service/MRNNexus_Service.svc/";
 		private HttpClient client = new HttpClient();
 		public static ServiceLayer s1;
 		//public DateTime serviceCreated;

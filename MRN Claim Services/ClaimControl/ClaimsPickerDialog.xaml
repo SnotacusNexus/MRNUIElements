@@ -1,0 +1,21 @@
+﻿<PageFunction
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+    x:Class="MRN_Claim_Services.Controllers.ClaimPickerDialog"
+    x:TypeArguments="sys:Object"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:local="clr-namespace:MRN_Claim_Services.Controllers"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="300"
+    Title="ClaimPickerDialog" RemoveFromJournal="True">
+    <Grid>
+        <ListBox x:Name="ClaimsList" HorizontalAlignment="Left" Height="146" Margin="17,40,0,0" VerticalAlignment="Top" Width="264" SelectionChanged="ClaimsList_SelectionChanged"/>
+        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Height="27" Margin="53,239,0,0" VerticalAlignment="Top" Width="66" Click="CancelBtn_Click"/>
+        <Button x:Name="SelectBtn" Content="Select" HorizontalAlignment="Left" Height="27" Margin="179,239,0,0" VerticalAlignment="Top" Width="66" Click="SelectBtn_Click"/>
+        <syncfusion:MaskedTextBox x:Name="ClaimSearchBox" HorizontalAlignment="Left" Height="21" Margin="17,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" WatermarkText="Search for claim..." TextChanged="ClaimSearchBox_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="17,10,0,0" TextWrapping="Wrap" Text="Select a claim to edit" VerticalAlignment="Top" Width="264" Foreground="White" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
+    </Grid>
+</PageFunction>

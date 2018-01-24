@@ -168,13 +168,13 @@ namespace MRNUIElements.Forms
 
         }
 
-        async private void Add_Lead_Click(object sender, EventArgs e)
+         private void Add_Lead_Click(object sender, EventArgs e)
         {
-            await aDD_Lead();
+             aDD_Lead();
 
         }
 
-        async Task<bool> aDD_Lead()
+         bool aDD_Lead()
         {
             bool result = false;
             
@@ -183,15 +183,17 @@ namespace MRNUIElements.Forms
                 Lead = new DTO_Lead();
 
                 Lead.LeadTypeID = leadTypeIDComboBox.SelectedIndex + 1;
-                Lead.AddressID = ac.Address.AddressID;
-            Lead.CreditToID = ((CreditToIdResolution)creditToIDComboBox.SelectedItem).ID;
+        //        Lead.AddressID = ac.Address.AddressID;
+        
+            
                 Lead.CustomerID = ac.Cust.CustomerID;
                 Lead.KnockerResponseID = 2;
                 Lead.LeadDate = leadDateDateTimePicker.Value;
             Lead.Status = 'a'; 
                 Lead.SalesPersonID = ((DTO_Employee)salesPersonIDComboBox.SelectedItem).EmployeeID;
+            Lead.CreditToID = ((CreditToIdResolution)creditToIDComboBox.SelectedItem)==null?Lead.SalesPersonID: ((CreditToIdResolution)creditToIDComboBox.SelectedItem).ID;
                 Lead.Temperature = "Hot";
-            CreditForID = ((CreditToIdResolution)creditToIDComboBox.SelectedItem).Name==null?" " : ((CreditToIdResolution)creditToIDComboBox.SelectedItem).Name;
+            CreditForID = ((CreditToIdResolution)creditToIDComboBox.SelectedItem)==null?"Salesperson" : ((CreditToIdResolution)creditToIDComboBox.SelectedItem).Name;
 
             try
             {
@@ -214,7 +216,11 @@ namespace MRNUIElements.Forms
                 result = true;
             }
             if (result)
+            {
+
                 this.DialogResult = DialogResult.OK;
+            }
+
             return result;
         }
 

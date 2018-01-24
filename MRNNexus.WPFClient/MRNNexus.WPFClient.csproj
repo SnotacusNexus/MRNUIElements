@@ -96,14 +96,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClaimView Picker Page.xaml.cs">
+      <DependentUpon>ClaimView Picker Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Inspection.cs" />
     <Compile Include="Controllers\Schedule.cs" />
+    <Compile Include="ImageViewer.xaml.cs">
+      <DependentUpon>ImageViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceLayerA.cs" />
+    <Compile Include="Models\ServiceLayerMembersA.cs" />
     <Compile Include="NewInspection.xaml.cs">
       <DependentUpon>NewInspection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Schedule.xaml.cs">
       <DependentUpon>Schedule.xaml</DependentUpon>
     </Compile>
+    <Page Include="ClaimView Picker Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImageViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,8 +133,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\Login.cs" />
-    <Compile Include="Controllers\ServiceLayer.cs" />
-    <Compile Include="Controllers\ServiceLayerMembers.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>

@@ -20,7 +20,7 @@
      >
 
     <Page.Resources>
-<converters:CustomerIDToNameConverter x:Key="customerinfo"/>
+        <converters:CustomerIDToNameConverter x:Key="customerinfo"/>
         <converters:StringtoBooleanConverter x:Key="TexttoBool"/>
         <converters:ScopeTypeConverter x:Key="stc"/>
         <converters:AddressBlockFromAddressIDConverter x:Key="addressinfo"/>
@@ -33,20 +33,20 @@
         <converters:GetEmployeeNameFromID x:Key="EmpConvert"/>
         <converters:GetSuperVisorName x:Key="getSuper"/>
         <controllers:ClaimPayment x:Key="dumbledorf"/>
-<CollectionViewSource x:Key="dTO_InsuranceCompanyViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_InsuranceCompany}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_InsuranceCompanyViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_InsuranceCompany}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_InspectionViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Inspection}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_PlaneViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Plane}, CreateList=True}" />
         <CollectionViewSource x:Key="dTO_LU_ScopeTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_ScopeType}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_ClaimContactsViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_ClaimContacts}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_AddressViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Address}, CreateList=True}"/>
-      <CollectionViewSource x:Key="dTO_CustomerViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Customer}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_CustomerViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Customer}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_LeadViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Lead}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_AdjusterViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Adjuster}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_AdjustmentViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Adjustment}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_CalculatedResultsViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_CalculatedResults}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_CalendarDataViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_CalendarData}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_CallLogViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_CallLog}, CreateList=True}"/>
-        
+
         <CollectionViewSource x:Key="dTO_ClaimStatusViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_ClaimStatus}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_ClaimDocumentViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_ClaimDocument}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_ClaimViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Claim}, CreateList=True}"/>
@@ -56,7 +56,7 @@
         <CollectionViewSource x:Key="dTO_PaymentViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Payment}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_InvoiceViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Invoice}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_VendorViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Vendor}, CreateList=True}"/>
-     <CollectionViewSource x:Key="dTO_ScopeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Scope}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dTO_ScopeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Scope}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_NScopeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Scope}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_EScopeViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_Scope}, CreateList=True}"/>
         <CollectionViewSource x:Key="dTO_LU_ServiceTypesViewSource" d:DesignSource="{d:DesignInstance {x:Type MRNNexus_Model:DTO_LU_ServiceTypes}, CreateList=True}"/>
@@ -207,7 +207,7 @@
                        VerticalAlignment="Top" Click="Newest_Scope_Click" />
                             <Button x:Name="RoofColorVerification"
                         Width="268"
-                        Margin="9,166,0,0"
+                        Margin="9,124,0,0"
                         HorizontalAlignment="Left"
                    
                         Content="Roof Color Verification"
@@ -215,14 +215,14 @@
                             <Button x:Name="AuthorizationOfCommunication"
                         Width="268"
                         Height="20"
-                        Margin="9,125,0,0"
+                        Margin="9,360,0,0"
                         HorizontalAlignment="Left"
                      
-                        Content="Authorization Of Communication"
+                        Content="Supplement"
                        VerticalAlignment="Top" Click="AuthorizationOfCommunication_Click" />
                             <Button x:Name="SpecialInstructions"
                         Width="268"
-                        Margin="9,206,0,0"
+                        Margin="9,164,0,0"
                         HorizontalAlignment="Left"
                       
                         Content="Special Instructions"
@@ -230,21 +230,21 @@
                             <Button x:Name="AuthorizationOfCommunication_Copy"
                         Width="268"
                         Height="20"
-                        Margin="9,246,0,0"
+                        Margin="9,204,0,0"
                         HorizontalAlignment="Left"
                       
                         Content="Customer Payment Record"
                         VerticalAlignment="Top" Click="AuthorizationOfCommunication_Copy_Click" />
                             <Button x:Name="SpecialInstructions_Copy"
                         Width="268"
-                        Margin="9,328,0,0"
+                        Margin="9,286,0,0"
                         HorizontalAlignment="Left"
                     
                         Content="Material Bills"
                         VerticalAlignment="Top" Height="20" Click="SpecialInstructions_Copy_Click" />
                             <Button x:Name="RoofColorVerification_Copy"
                         Width="268"
-                        Margin="9,287,0,0"
+                        Margin="9,245,0,0"
                         HorizontalAlignment="Left"
                      
                         Content="Subcontractor Invoices"
@@ -265,10 +265,26 @@
                         VerticalAlignment="Top" Height="20" Click="Exterior_Inspection_Copy_Click" />
                             <Button x:Name="Edit_Inspection_Copy"
                         Width="268"
-                        Margin="301,327,0,0"
+                        Margin="301,322,0,0"
                         HorizontalAlignment="Left"
                         Content="Bringbacks"
                         VerticalAlignment="Top" Height="20" Click="Edit_Inspection_Copy_Click" />
+                            <Button x:Name="AuthorizationOfCommunication_Copy1"
+                                Width="268"
+                                Height="20"
+                                Margin="301,360,0,0"
+                                HorizontalAlignment="Left"
+                     
+                                Content="Cap Out"
+                                VerticalAlignment="Top" Click="AuthorizationOfCommunication_Click" />
+                            <Button x:Name="AuthorizationOfCommunication_Copy2"
+                                Width="268"
+                                Height="20"
+                                Margin="9,322,0,0"
+                                HorizontalAlignment="Left"
+                     
+                                Content="Communication Record"
+                                VerticalAlignment="Top" Click="AuthorizationOfCommunication_Click" />
                         </Grid>
                         <WrapPanel x:Name="wrap_Panel"  Height="309" Width="566" Margin="592,431,591.6,123.2"/>
                         <Image x:Name="imageViewer" Height="646" Width="538" HorizontalAlignment="Right" Margin="0,95,33,0" VerticalAlignment="Top" Stretch="UniformToFill" StretchDirection="DownOnly"/>
@@ -1159,8 +1175,8 @@
                     </Grid>
 
                 </syncfusion:TabItemExt>
-               
-                
+
+
                 <syncfusion:TabItemExt Header="Old Scope" IsNewTab="False"  MinHeight="20">
 
                     <Grid x:Name="ralphOS" DataContext="{StaticResource dTO_ScopeViewSource}"
@@ -5700,7 +5716,7 @@
                         WatermarkOpacity="100"
                         WatermarkText="Original Scope Amount"
                         WatermarkTextForeground="#FF6D6D6D"
-                        WatermarkTextIsVisible="True" HorizontalAlignment="Center"  />
+                        WatermarkTextIsVisible="True" HorizontalAlignment="Center" TextChanged="OriginalScopeAmountText1_TextChanged"  />
                             <Label x:Name="label_Copy7"
                         Canvas.Left="26"
                         Canvas.Top="172"
@@ -5730,7 +5746,7 @@
                         WatermarkOpacity="100"
                         WatermarkText="Final Scope Amount"
                         WatermarkTextForeground="#FF6D6D6D"
-                        WatermarkTextIsVisible="True" HorizontalAlignment="Center"  />
+                        WatermarkTextIsVisible="True" HorizontalAlignment="Center" TextChanged="FinalScopeAmount1_TextChanged"  />
                             <syncfusion:CurrencyTextBox  x:Name="SettlementDifferenceAmount1"
                         Canvas.Left="26"
                         Canvas.Top="215"
@@ -6231,7 +6247,7 @@
                         WatermarkOpacity="100"
                         WatermarkText="Overhead"
                         WatermarkTextForeground="#FF6D6D6D"
-                        WatermarkTextIsVisible="True" HorizontalAlignment="Center" />
+                        WatermarkTextIsVisible="True" HorizontalAlignment="Center" TextChanged="OverheadAmountText1_TextChanged" />
                             <syncfusion:CurrencyTextBox  x:Name="KnockerReferralAmountText1"
                         Canvas.Left="248"
                         Canvas.Top="288"
@@ -7210,11 +7226,11 @@
                         </ListView>
                     </Grid>
                 </syncfusion:TabItemExt>
-               
-               
-               
-             
-               
+
+
+
+
+
                 <syncfusion:TabItemExt Header="SCAF" IsNewTab="False"  MinHeight="20">
                     <Grid Background="Black"/>
                 </syncfusion:TabItemExt>
@@ -7309,15 +7325,15 @@
                         </DataGrid>
                     </Grid>
                 </syncfusion:TabItemExt>
-                
-               
-              
-              
-               
 
-               
-               
-             
+
+
+
+
+
+
+
+
 
 
 

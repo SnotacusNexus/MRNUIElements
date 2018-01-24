@@ -1,0 +1,1030 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1833BED9-A376-490F-9D67-E09A9E40B5C6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MRN_Claim_Services</RootNamespace>
+    <AssemblyName>MRN Claim Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Data.Entity.Design.Extensibility, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ExceptionMessageBox, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Controls, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Effects, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.IdentityModel.Extensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=69c3241e6f0468ca, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SendMailTask, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Tools.Extensibility, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data.Framework, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data.Services, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Debugger.Engine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.GraphModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Imaging, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Language.Intellisense, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.ManagedInterfaces.WCF, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.WCFReference.Interop, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Calculate.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Chart.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Compression.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Data.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Diagram.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.DocIO.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.DocIO.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Edit.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Gantt.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Gauge.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.GridCommon.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Linq.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Maps.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Olap.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapChart.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapChartConverter.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapClient.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapGauge.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapGrid.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapGridCommon.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapGridConverter.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapShared.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.OlapTools.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Pdf.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.PdfViewer.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.PivotAnalysis.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.PivotAnalysis.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.PivotGridConverter.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Presentation.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.ProjIO.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.PropertyGrid.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.ReportControls.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.ReportDesigner.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.ReportViewer.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.ReportWriter.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.RichTextBoxAdv.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Schedule.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfAccordion.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfBarcode.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfBulletGraph.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfBusyIndicator.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfCellGrid.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfChart.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfChromelessWindow.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfColorPalette.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfDiagram.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfGauge.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfGrid.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfGridCommon.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfHeatMap.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfHubTile.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfInput.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfMaps.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfNavigationDrawer.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfRadialMenu.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfSchedule.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfShared.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfSpellChecker.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfSpreadsheet.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfTreeMap.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfTreeNavigator.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.MVVM.WPF, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.XlsIO.Base, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.XlsIO.Wpf, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Runtime.DurableInstancing" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Discovery" />
+    <Reference Include="System.ServiceModel.Routing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.DynamicData.Design" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Entity.Design" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
+    <Reference Include="System.Web.RegularExpressions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Windows.Input.Manipulations" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="XamlBuildTask" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AddClaimDocumentation.xaml.cs">
+      <DependentUpon>AddClaimDocumentation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddClaimPage.xaml.cs">
+      <DependentUpon>AddClaimPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddressZipcodeValidation.cs" />
+    <Compile Include="AnalogFileUploadPage.xaml.cs">
+      <DependentUpon>AnalogFileUploadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Appointments.cs" />
+    <Compile Include="Capout Calculator.xaml.cs">
+      <DependentUpon>Capout Calculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CapOutFunctions.cs" />
+    <Compile Include="CapOutPage.xaml.cs">
+      <DependentUpon>CapOutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CapOutSheet.xaml.cs">
+      <DependentUpon>CapOutSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Claim Administration.xaml.cs">
+      <DependentUpon>Claim Administration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimData.cs" />
+    <Compile Include="ClaimDataManipulation.cs" />
+    <Compile Include="ClaimDetails.cs" />
+    <Compile Include="ClaimDetailsPage.xaml.cs">
+      <DependentUpon>ClaimDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimPickerPopUp.xaml.cs">
+      <DependentUpon>ClaimPickerPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CompetitionResultsDisplay.xaml.cs">
+      <DependentUpon>CompetitionResultsDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CompoundDataGridRow.xaml.cs">
+      <DependentUpon>CompoundDataGridRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContestPage.xaml.cs">
+      <DependentUpon>ContestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerAgreement.xaml.cs">
+      <DependentUpon>CustomerAgreement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GetClaimInfo.xaml.cs">
+      <DependentUpon>GetClaimInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GetClaimsPage.xaml.cs">
+      <DependentUpon>GetClaimsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImageResize.cs" />
+    <Compile Include="ImageResizer.cs" />
+    <Compile Include="ImageViewer.xaml.cs">
+      <DependentUpon>ImageViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicePage.xaml.cs">
+      <DependentUpon>InvoicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\Command.cs" />
+    <Compile Include="Utility\Converter.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ViewModels\ClaimCaroselView.xaml.cs">
+      <DependentUpon>ClaimCaroselView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ClaimDetailGroupBarView.xaml.cs">
+      <DependentUpon>ClaimDetailGroupBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Claims_Receivables.xaml.cs">
+      <DependentUpon>Claims_Receivables.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ClaimTreeView.xaml.cs">
+      <DependentUpon>ClaimTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Commands\SaveCommand.cs" />
+    <Compile Include="ViewModels\Converters\BackgroundConverter.cs" />
+    <Compile Include="ViewModels\Converters\BitmapImage2ImageSourceConverter.cs" />
+    <Compile Include="ViewModels\Converters\ListToCollection.cs" />
+    <Compile Include="ViewModels\PlaneViewModel.cs" />
+    <Compile Include="ViewModels\TextConverterCommand.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Page Include="AddClaimDocumentation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddClaimPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AnalogFileUploadPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Capout Calculator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CapOutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CapOutSheet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Claim Administration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\ClaimMOOO.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\ClaimsPickerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\EmployeeOnboarding.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\GenerateCompleteRoofOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\GetMeasurments.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\InvoiceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\RoofSchedulerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\StartClaim.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimControl\WebBrowser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClaimPickerPopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CompetitionResultsDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CompoundDataGridRow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ContestPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomerAgreement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GetClaimInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GetClaimsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ImageViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InvoicePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaimControl\BringBacks.cs" />
+    <Compile Include="ClaimControl\Claim.Function.CapOut.cs" />
+    <Compile Include="ClaimControl\ClaimDocumentImage.cs" />
+    <Compile Include="ClaimControl\ClaimMOOO.xaml.cs">
+      <DependentUpon>ClaimMOOO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimControl\ClaimsPickerDialog.xaml.cs">
+      <DependentUpon>ClaimsPickerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimControl\ClaimValues.cs" />
+    <Compile Include="ClaimControl\DownloadFile.cs" />
+    <Compile Include="ClaimControl\EmployeeOnboarding.xaml.cs">
+      <DependentUpon>EmployeeOnboarding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimControl\GenerateCompleteRoofOrder.xaml.cs">
+      <DependentUpon>GenerateCompleteRoofOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimControl\GetMeasurments.xaml.cs">
+      <DependentUpon>GetMeasurments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimControl\IClaimPayment.cs" />
+    <Compile Include="ClaimControl\InvoiceView.xaml.cs">
+      <DependentUpon>InvoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimControl\Login.cs" />
+    <Compile Include="ClaimControl\RoofSchedulerPage.xaml.cs">
+      <DependentUpon>RoofSchedulerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimControl\ServiceLayer.cs" />
+    <Compile Include="ClaimControl\ServiceLayerMembers.cs" />
+    <Compile Include="ClaimControl\StartClaim.xaml.cs">
+      <DependentUpon>StartClaim.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimControl\UploadDocuments.cs" />
+    <Compile Include="ClaimControl\WebBrowser.xaml.cs">
+      <DependentUpon>WebBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAdditonalSupply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAdditonalSupply.Designer.cs">
+      <DependentUpon>AddAdditonalSupply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAddress.Designer.cs">
+      <DependentUpon>AddAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAdjuster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAdjuster.Designer.cs">
+      <DependentUpon>AddAdjuster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAdjustment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAdjustment.Designer.cs">
+      <DependentUpon>AddAdjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAppointment.Designer.cs">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddCallLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCallLog.Designer.cs">
+      <DependentUpon>AddCallLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddClaim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClaim.Designer.cs">
+      <DependentUpon>AddClaim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddClaimContacts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClaimContacts.Designer.cs">
+      <DependentUpon>AddClaimContacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddClaimDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClaimDocument.Designer.cs">
+      <DependentUpon>AddClaimDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddClaimStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClaimStatus.Designer.cs">
+      <DependentUpon>AddClaimStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddLead.Designer.cs">
+      <DependentUpon>AddLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewOrder.Designer.cs">
+      <DependentUpon>AddNewOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewOrderItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewOrderItem.Designer.cs">
+      <DependentUpon>AddNewOrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewPayment.Designer.cs">
+      <DependentUpon>AddNewPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewPlane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewPlane.Designer.cs">
+      <DependentUpon>AddNewPlane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewRoof.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewRoof.Designer.cs">
+      <DependentUpon>AddNewRoof.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReferrer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReferrer.Designer.cs">
+      <DependentUpon>AddReferrer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddScope.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddScope.Designer.cs">
+      <DependentUpon>AddScope.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddSurplusSupplies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddSurplusSupplies.Designer.cs">
+      <DependentUpon>AddSurplusSupplies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddVendor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddVendor.Designer.cs">
+      <DependentUpon>AddVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_Inspection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_Inspection.Designer.cs">
+      <DependentUpon>Add_Inspection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdjustmentResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdjustmentResults.Designer.cs">
+      <DependentUpon>AdjustmentResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AppointmentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppointmentTypes.Designer.cs">
+      <DependentUpon>AppointmentTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ClaimDocumentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClaimDocumentTypes.Designer.cs">
+      <DependentUpon>ClaimDocumentTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ClaimStatusTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClaimStatusTypes.Designer.cs">
+      <DependentUpon>ClaimStatusTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DamageTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DamageTypes.Designer.cs">
+      <DependentUpon>DamageTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmployeeTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmployeeTypes.Designer.cs">
+      <DependentUpon>EmployeeTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InvoiceTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InvoiceTypes.Designer.cs">
+      <DependentUpon>InvoiceTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\KnockerResponseTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KnockerResponseTypes.Designer.cs">
+      <DependentUpon>KnockerResponseTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LeadTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LeadTypes.Designer.cs">
+      <DependentUpon>LeadTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PayFrequencies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PayFrequencies.Designer.cs">
+      <DependentUpon>PayFrequencies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaymentDescriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentDescriptions.Designer.cs">
+      <DependentUpon>PaymentDescriptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaymentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentTypes.Designer.cs">
+      <DependentUpon>PaymentTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlaneTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneTypes.Designer.cs">
+      <DependentUpon>PlaneTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Products.Designer.cs">
+      <DependentUpon>Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProductTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductTypes.Designer.cs">
+      <DependentUpon>ProductTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RidgeMaterialTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RidgeMaterialTypes.Designer.cs">
+      <DependentUpon>RidgeMaterialTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Scope Entry Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Scope Entry Form.Designer.cs">
+      <DependentUpon>Scope Entry Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ScopeTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ScopeTypes.Designer.cs">
+      <DependentUpon>ScopeTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ServiceTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServiceTypes.Designer.cs">
+      <DependentUpon>ServiceTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ShingleTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShingleTypes.Designer.cs">
+      <DependentUpon>ShingleTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Command\Command.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ViewModels\ClaimCaroselView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\ClaimDetailGroupBarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\Claims_Receivables.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\ClaimTreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Appointments.cs" />
+    <Compile Include="Models\DetailedClaimModel.cs" />
+    <Compile Include="Models\KeyValueFilterModel.cs" />
+    <Compile Include="Models\KeyValueModel.cs" />
+    <Compile Include="Models\Lines.cs" />
+    <Compile Include="Models\Planes.cs" />
+    <Compile Include="Models\Points.cs" />
+    <Compile Include="Models\RoofInspectionModel.cs" />
+    <Compile Include="Models\RoofPlanes.cs" />
+    <Compile Include="Models\ScopeModel.cs" />
+    <Compile Include="Models\ShapePresetModel.cs" />
+    <Compile Include="Models\Stucture.cs" />
+    <Compile Include="Models\Sub_Stucture.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Forms\AddAdditonalSupply.resx">
+      <DependentUpon>AddAdditonalSupply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAddress.resx">
+      <DependentUpon>AddAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAdjuster.resx">
+      <DependentUpon>AddAdjuster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAdjustment.resx">
+      <DependentUpon>AddAdjustment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAppointment.resx">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddCallLog.resx">
+      <DependentUpon>AddCallLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClaim.resx">
+      <DependentUpon>AddClaim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClaimContacts.resx">
+      <DependentUpon>AddClaimContacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClaimDocument.resx">
+      <DependentUpon>AddClaimDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClaimStatus.resx">
+      <DependentUpon>AddClaimStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddLead.resx">
+      <DependentUpon>AddLead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewOrder.resx">
+      <DependentUpon>AddNewOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewOrderItem.resx">
+      <DependentUpon>AddNewOrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewPayment.resx">
+      <DependentUpon>AddNewPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewPlane.resx">
+      <DependentUpon>AddNewPlane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewRoof.resx">
+      <DependentUpon>AddNewRoof.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddReferrer.resx">
+      <DependentUpon>AddReferrer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddScope.resx">
+      <DependentUpon>AddScope.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddSurplusSupplies.resx">
+      <DependentUpon>AddSurplusSupplies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddVendor.resx">
+      <DependentUpon>AddVendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_Inspection.resx">
+      <DependentUpon>Add_Inspection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdjustmentResults.resx">
+      <DependentUpon>AdjustmentResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AppointmentTypes.resx">
+      <DependentUpon>AppointmentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClaimDocumentTypes.resx">
+      <DependentUpon>ClaimDocumentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClaimStatusTypes.resx">
+      <DependentUpon>ClaimStatusTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DamageTypes.resx">
+      <DependentUpon>DamageTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InvoiceTypes.resx">
+      <DependentUpon>InvoiceTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KnockerResponseTypes.resx">
+      <DependentUpon>KnockerResponseTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LeadTypes.resx">
+      <DependentUpon>LeadTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PayFrequencies.resx">
+      <DependentUpon>PayFrequencies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentDescriptions.resx">
+      <DependentUpon>PaymentDescriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentTypes.resx">
+      <DependentUpon>PaymentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneTypes.resx">
+      <DependentUpon>PlaneTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Products.resx">
+      <DependentUpon>Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductTypes.resx">
+      <DependentUpon>ProductTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RidgeMaterialTypes.resx">
+      <DependentUpon>RidgeMaterialTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Scope Entry Form.resx">
+      <DependentUpon>Scope Entry Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ScopeTypes.resx">
+      <DependentUpon>ScopeTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceTypes.resx">
+      <DependentUpon>ServiceTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShingleTypes.resx">
+      <DependentUpon>ShingleTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ResourceFiles\mysprite.sprite" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MRNNexus_Model\MRNNexus_Model.csproj">
+      <Project>{5bfc4d4b-8fbc-4fda-a4eb-88b69987b3b9}</Project>
+      <Name>MRNNexus_Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\Cannon Order Form OC-Editable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\CheckMark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\Creased Shingle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\GreenArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\Hail Hit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\Hail Storm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\HAILHIT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\HoverNewRoofButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\LightningProtection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\MRN CONTRACTING LOGO - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\MRN CONTRACTING LOGO GBG - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\MRN CONTRACTING LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\MRN LetterheadChad.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFiles\MRNIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+    <Content Include="ResourceFiles\mysprite.sprite.css">
+      <DependentUpon>mysprite.sprite</DependentUpon>
+    </Content>
+    <Resource Include="ResourceFiles\XMark.png" />
+    <Resource Include="ResourceFiles\WINDDAMAGE.png" />
+    <Resource Include="ResourceFiles\Wind Damage.png" />
+    <Resource Include="ResourceFiles\UnPushedNewRoofButton.png" />
+    <Resource Include="ResourceFiles\TurtleBacl.png" />
+    <Resource Include="ResourceFiles\StopHand.png" />
+    <Resource Include="ResourceFiles\RoofInspectionWizardBkgnd.png" />
+    <Resource Include="ResourceFiles\QuestionMark.png" />
+    <Resource Include="ResourceFiles\PushedNewRoofBtn.png" />
+    <Resource Include="ResourceFiles\PJB31.png" />
+    <Resource Include="ResourceFiles\OC Roof Order Form.jpg" />
+    <Resource Include="ResourceFiles\NewRoofButton.png" />
+    <Resource Include="ResourceFiles\mysprite.sprite.png">
+      <DependentUpon>mysprite.sprite</DependentUpon>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Weavers\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <Import Project="..\packages\NETStandard.Library.2.0.1\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\NETStandard.Library.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.1\build\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.1\build\NETStandard.Library.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+</Project>

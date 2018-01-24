@@ -1,4 +1,5 @@
 ﻿using MRNNexus_Model;
+using MRNUIElements.ClaimHandling;
 using MRNUIElements.Controllers;
 using MRNUIElements.Forms;
 using System;
@@ -88,16 +89,16 @@ namespace MRNUIElements
 
 
 
-                await s1.AddCustomer(NewClaim.Cust);
-                NewClaim.Cust = s1.Cust;
-                NewClaim.Address.CustomerID = s1.Cust.CustomerID;
-                await s1.AddAddress(NewClaim.Address);
-                NewClaim.Address = s1.Address == null ? s1.Address1: s1.Address ;
-                Referrer = NewClaim.Referrer == null ? s1.Referrer : NewClaim.Referrer;
-                NewClaim.Lead = NewClaim.Lead == null ? s1.Lead : NewClaim.Lead;
-                NewClaim.Lead.AddressID = NewClaim.Address.AddressID;
-                claim.PropertyID = claim.BillingID = NewClaim.Address.AddressID;
-                claim.LeadID = NewClaim.Lead.LeadID;
+                //await s1.AddCustomer(NewClaim.Cust);
+                //NewClaim.Cust = s1.Cust;
+                //NewClaim.Address.CustomerID = s1.Cust.CustomerID;
+                //await s1.AddAddress(NewClaim.Address);
+                //NewClaim.Address = s1.Address == null ? s1.Address1: s1.Address ;
+                //Referrer = NewClaim.Referrer == null ? s1.Referrer : NewClaim.Referrer;
+                //NewClaim.Lead = NewClaim.Lead == null ? s1.Lead : NewClaim.Lead;
+                //NewClaim.Lead.AddressID = NewClaim.Address.AddressID;
+                //claim.PropertyID = claim.BillingID = NewClaim.Address.AddressID;
+                //claim.LeadID = NewClaim.Lead.LeadID;
                 claim.LossDate = lossDateDateTimePicker.Value;
                 claim.CustomerID = NewClaim.Cust.CustomerID;
                 claim.InsuranceCompanyID = (int)comboBox2.SelectedValue;
@@ -117,10 +118,16 @@ namespace MRNUIElements
                 MessageBox.Show(ex.ToString());
                 return;
             }
-          if(((DTO_Claim) await Add_Claim(claim)).ClaimID>0)
-                this.DialogResult = DialogResult.OK;
-          
-         
+            //if(((DTO_Claim) await Add_Claim(claim)).ClaimID>0)
+            //      this.DialogResult = DialogResult.OK;
+            var IC = new InitializeClaim();
+            IC.Address = NewClaim.Address;
+            IC.Cust = NewClaim.Cust;
+            IC.Lead = NewClaim.Lead;
+            IC.Claim = claim;
+            if(await IC.Initialize_Claim(NewClaim.Cust,NewClaim.Address,NewClaim.Lead,NewClaim.Referrer)>0)
+               this.DialogResult = DialogResult.OK; ;
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -166,7 +173,7 @@ namespace MRNUIElements
         {
             AddAddress ad = new AddAddress();
             ad.Cust = NewClaim.Cust;
-            if (DialogResult.OK == ad.ShowDialog())
+            if (DialogResult.OK != ad.ShowDialog())
                 NewClaim.Address = ad.Address;
             if (NewClaim.Address != null)
             {
@@ -207,4 +214,128 @@ namespace MRNUIElements
             } AddClaimBtn.Enabled = isEnabled();
         }
     }
+}
+
+namespace MRNUIElements.ClaimHandling
+{
+
+    public class InitializeClaim
+    {
+        ServiceLayer s1 = ServiceLayer.getInstance();
+        static AddClaim NewClaim;
+        public static AddClaim getAddClaimInstance()
+        {
+            if (NewClaim == null)
+                NewClaim = new AddClaim();
+            return NewClaim;
+        }
+        public string Refname { get; set; }
+        public DTO_Lead Lead { get; set; }
+        public DTO_Claim Claim { get; set; }
+        public DTO_Address Address { get; set; }
+        public DTO_Referrer Referrer { get; set; }
+        public DTO_Customer Cust { get; set; }
+        public string LeadSource { get; set; }
+
+        bool l = false, a = false, c = false;
+        bool cont = false;
+
+       
+          
+
+        public InitializeClaim()
+        {
+          //  Claim = new DTO_Claim();
+          
+
+        }
+        bool checkIngredients()
+        {
+            bool value = false;
+          
+            if (Cust == null)
+            {
+                MessageBox.Show("No Customer");
+                return value;
+            }
+
+            if (Address == null)
+            {
+                MessageBox.Show("No Address");
+                return value;
+            }
+            value = true;
+            return value;
+        }
+
+
+       async public Task<int> Initialize_Claim(DTO_Customer cust, DTO_Address addy, DTO_Lead lead, DTO_Referrer referrer = null)
+        {
+  //MessageBox.Show("Claim # "+Initialize_Claim(Cust,Address,Lead,Referrer).ToString());
+                
+            if (Claim == null)
+            {
+                MessageBox.Show("No Claim!");
+                return 0;
+            }
+          
+                await s1.AddCustomer(cust);
+                Claim.CustomerID = lead.CustomerID = addy.CustomerID = s1.Cust.CustomerID;
+                Cust = s1.Cust;
+                await s1.AddAddress(addy);
+                Claim.BillingID = Claim.PropertyID = lead.AddressID = s1.Address1.AddressID;
+                Address = s1.Address1;
+                if (Referrer != null)
+                    await s1.AddReferrer(referrer);
+                try
+                {
+                    lead.CreditToID = s1.Referrer == null || s1.Referrer.ReferrerID < 1 ? lead.CreditToID : s1.Referrer.ReferrerID;
+                    Referrer = s1.Referrer;
+                }
+                catch (NullReferenceException nre)
+                {
+
+                }
+                lead.Status = 'a';
+                await s1.AddLead(lead);
+                try
+                {
+                    Claim.LeadID = s1.Lead.LeadID;
+                }
+                catch (NullReferenceException nre)
+                {
+                    MessageBox.Show("Couldnt Insert Lead check info and try again");
+                    return 0;
+                }
+                try
+                {
+                    await s1.AddClaim(Claim);
+                    Claim = s1.Claim;
+                }
+                catch (NullReferenceException nre)
+                {
+                    MessageBox.Show("Couldnt Insert Claim check info and try again");
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                
+
+
+
+            
+            //while (Claim.ClaimID < 1)
+            //    Thread.Yield();
+            //MessageBox.Show("Claim # " + Claim.ClaimID.ToString());
+            return Claim.ClaimID;
+            
+        }
+
+
+
+    }
+
+
 }

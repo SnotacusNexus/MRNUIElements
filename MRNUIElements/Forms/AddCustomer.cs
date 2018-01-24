@@ -58,7 +58,7 @@ namespace MRNUIElements.Forms
             {
                 NewClaim.Cust = Cust;
 
-                if (s1.CustomersList.Exists(x => x == Cust))
+                if (s1.CustomersList != null && s1.CustomersList.Exists(x => x == Cust))
                 {
                     var sb = new StringBuilder();
                     sb.Append(Cust.FirstName);

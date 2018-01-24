@@ -8,7 +8,7 @@ using MRNNexusDTOs;
 
 namespace MRNNexus.WPFClient.Controllers
 {
-    internal partial class ServiceLayer
+    public partial class ServiceLayer
     {
         public double SumOfInvoices { get; set; }
         public double SumOfPayments { get; set; }

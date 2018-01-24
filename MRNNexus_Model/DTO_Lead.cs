@@ -44,8 +44,7 @@ namespace MRNNexus_Model
 
         [DataMember]
         public int CustomerID { get; set; }
-		[DataMember]
-        public bool Success { get; set; }
+		
         [DataMember]
         public int? CreditToID { get; set; }
 		[DataMember]

@@ -10,46 +10,59 @@
         mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="709*" />
+          
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+     
         <syncfusion:SfBusyIndicator x:Name="busyIndicator"
-                                    Grid.RowSpan="2"
                                     Grid.ColumnSpan="1"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     AnimationType="SlicedCircle"
                                     Header="Loading..."
-                                    IsBusy="True" />
-
-        <syncfusion:MenuAdv x:Name="menuBar"
+                                    IsBusy="True" Margin="355,202,303.229,221.333" Grid.Row="1" />
+     
+            <syncfusion:MenuAdv x:Name="menuBar"
                             Grid.Row="0"
-                            IsEnabled="False">
-            <syncfusion:MenuItemAdv Header="File" />
-            <syncfusion:MenuItemAdv Header="View">
-                <syncfusion:MenuItemAdv x:Name="calendar"
+                            IsEnabled="False" Margin="0,0,0.333,0">
+                <syncfusion:MenuItemAdv Header="Claim">
+                    <syncfusion:MenuItemAdv x:Name="add_Claim" Header="Add Claim" Click="add_Claim_Click"/>
+                    <syncfusion:MenuItemAdv x:Name="view_All_Claims" Header="My Claims" Click="view_All_Claims_Click"/>
+                </syncfusion:MenuItemAdv>
+                <syncfusion:MenuItemAdv Header="View">
+                    <syncfusion:MenuItemAdv Header="Appointments">
+                        <syncfusion:MenuItemAdv x:Name="calendarMonth"
                                         Click="calendar_Click"
-                                        Header="Calendar" />
-                <syncfusion:MenuItemAdv Header="Stats" />
-            </syncfusion:MenuItemAdv>
-            <syncfusion:MenuItemAdv Header="Add" />
-            <syncfusion:MenuItemAdv Header="Update" />
+                                        Header="Month" />
+                        <syncfusion:MenuItemAdv x:Name="calendarWeek"
+                                     Click="calendarWeek_Click" 
+                                        Header="Week" />
+                        <syncfusion:MenuItemAdv x:Name="calendarDay"
+                                       Click="calendarDay_Click"    
+                                        Header="Day" />
+                    </syncfusion:MenuItemAdv>
+                    <syncfusion:MenuItemAdv Header="Stats" x:Name="Stats" Click="Stats_Click" />
 
-            <syncfusion:MenuItemAdv Header="Claims" />
-            <syncfusion:MenuItemAdv x:Name="Inspections"
-                                    Click="Inspections_Click"
-                                    Header="Inspections" />
-            <syncfusion:MenuItemAdv />
+                </syncfusion:MenuItemAdv>
+
+                <syncfusion:MenuItemAdv/>
+            </syncfusion:MenuAdv>
+       
+        <syncfusion:MenuAdv x:Name="menuBar2" HorizontalAlignment="Right">
+            <syncfusion:MenuItemAdv x:Name="Help"
+                                   Click="Help_Click"  
+                                    Header="Help" />
         </syncfusion:MenuAdv>
 
         <Frame x:Name="MRNNexusMainFrame"
                Grid.Row="1"
                HorizontalAlignment="Stretch"
                VerticalAlignment="Stretch"
-               NavigationUIVisibility="Hidden" />
+               NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,0.333,0.333" />
 
     </Grid>
 </Window>

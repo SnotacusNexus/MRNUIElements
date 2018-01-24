@@ -1,0 +1,792 @@
+﻿<Page x:Class="MRN_Claim_Services.NexusHome"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Controllers="clr-namespace:MRN_Claim_Services.Controllers"
+      xmlns:Custom="http://schemas.awesomium.com/winfx"
+      xmlns:MRNNexus_Model="clr-namespace:MRNNexus_Model;assembly=MRNNexus_Model"
+      xmlns:Models="clr-namespace:MRN_Claim_Services.Models"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+      xmlns:local="clr-namespace:MRN_Claim_Services"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:schedule="clr-namespace:Syncfusion.UI.Xaml.Schedule;assembly=Syncfusion.SfSchedule.WPF"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      WindowHeight="0"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <CollectionViewSource x:Key="scopeModelViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:ScopeModel}, CreateList=True}" />
+    </Page.Resources>
+
+    <Viewbox Stretch="Fill" StretchDirection="UpOnly">
+        <Grid x:Name="jojo">
+            <Grid x:Name="MainGrid"
+                  Height="900"
+                  HorizontalAlignment="Stretch"
+                  Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="125*" />
+                    <ColumnDefinition Width="29*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="15*" />
+                    <RowDefinition Height="68*" />
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="textBlock"
+                           Grid.RowSpan="2"
+                           Width="500"
+                           Height="60"
+                           Margin="338,10,136,0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           FontSize="36"
+                           FontStyle="Italic"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Text="My MRN Claim Services"
+                           TextDecorations="Underline"
+                           TextWrapping="Wrap" />
+
+
+                <!--<Grid x:Name="grid"
+                      Margin="237,-844,-65,0"
+                      Background="Transparent" Height="388" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="13*" />
+                    <ColumnDefinition Width="181*" />
+                </Grid.ColumnDefinitions>
+                <Canvas x:Name="canvas"
+                            Grid.ColumnSpan="2"
+                            Margin="36,0,10,0">
+                    <Custom:WebControl x:Name="AppointmentWebView"
+                                           Canvas.Left="10"
+                                           Canvas.Top="10"
+                                           Width="662"
+                                           Height="422"
+
+
+                                           Visibility="Collapsed" />
+                </Canvas>
+            </Grid>-->
+                <Grid x:Name="Sched"
+                      Grid.Row="2"
+                      Grid.RowSpan="2"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+                    <!--  <local:InspectionSchedule x:Name="schedule" />-->
+                    <DataGrid x:Name="calculationsDataGrid"
+                              Margin="225,248,349,382"
+                              AutoGenerateColumns="False"
+                              EnableRowVirtualization="True"
+                              RowDetailsVisibilityMode="VisibleWhenSelected"
+                              Visibility="Collapsed">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="actualProfitColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ActualProfit}"
+                                                Header="Actual Profit" />
+                            <DataGridTextColumn x:Name="amountCollectedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountCollected}"
+                                                Header="Amount Collected" />
+                            <DataGridTextColumn x:Name="amountDedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountDed}"
+                                                Header="Amount Ded" />
+                            <DataGridTextColumn x:Name="amountDeductibleCollectedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountDeductibleCollected}"
+                                                Header="Amount Deductible Collected" />
+                            <DataGridTextColumn x:Name="amountDepColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountDep}"
+                                                Header="Amount Dep" />
+                            <DataGridTextColumn x:Name="amountDepCollectedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountDepCollected}"
+                                                Header="Amount Dep Collected" />
+                            <DataGridTextColumn x:Name="amountFirstColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountFirst}"
+                                                Header="Amount First" />
+                            <DataGridTextColumn x:Name="amountFirstCollectedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountFirstCollected}"
+                                                Header="Amount First Collected" />
+                            <DataGridTextColumn x:Name="amountLaborColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountLabor}"
+                                                Header="Amount Labor" />
+                            <DataGridTextColumn x:Name="amountMaterialColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountMaterial}"
+                                                Header="Amount Material" />
+                            <DataGridTextColumn x:Name="amountMRNColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountMRN}"
+                                                Header="Amount MRN" />
+                            <DataGridTextColumn x:Name="amountOtherworkColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountOtherwork}"
+                                                Header="Amount Otherwork" />
+                            <DataGridTextColumn x:Name="amountOverheadColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountOverhead}"
+                                                Header="Amount Overhead" />
+                            <DataGridTextColumn x:Name="amountOwedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountOwed}"
+                                                Header="Amount Owed" />
+                            <DataGridTextColumn x:Name="amountReferralColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountReferral}"
+                                                Header="Amount Referral" />
+                            <DataGridTextColumn x:Name="amountSalesManagerColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountSalesManager}"
+                                                Header="Amount Sales Manager" />
+                            <DataGridTextColumn x:Name="amountSalesPersonColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountSalesPerson}"
+                                                Header="Amount Sales Person" />
+                            <DataGridTextColumn x:Name="amountSettlementColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountSettlement}"
+                                                Header="Amount Settlement" />
+                            <DataGridTextColumn x:Name="amountSettlementCollectedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountSettlementCollected}"
+                                                Header="Amount Settlement Collected" />
+                            <DataGridTextColumn x:Name="amountSuppelementCollectedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountSuppelementCollected}"
+                                                Header="Amount Suppelement Collected" />
+                            <DataGridTextColumn x:Name="amountSupplementColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountSupplement}"
+                                                Header="Amount Supplement" />
+                            <DataGridTextColumn x:Name="amountTotalClaimColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding AmountTotalClaim}"
+                                                Header="Amount Total Claim" />
+                            <DataGridTextColumn x:Name="claimAgeColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ClaimAge}"
+                                                Header="Claim Age" />
+                            <DataGridTextColumn x:Name="claimNumberColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ClaimNumber}"
+                                                Header="Claim Number" />
+                            <DataGridTextColumn x:Name="commentColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding Comment}"
+                                                Header="Comment" />
+                            <DataGridTextColumn x:Name="costPerSQColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding CostPerSQ}"
+                                                Header="Cost Per SQ" />
+                            <DataGridTextColumn x:Name="customerNameColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding CustomerName}"
+                                                Header="Customer Name" />
+                            <DataGridTextColumn x:Name="drawColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding Draw}"
+                                                Header="Draw" />
+                            <DataGridTextColumn x:Name="forgivenDeductibleColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ForgivenDeductible}"
+                                                Header="Forgiven Deductible" />
+                            <DataGridTextColumn x:Name="grandTotalRoofsColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding GrandTotalRoofs}"
+                                                Header="Grand Total Roofs" />
+                            <DataGridCheckBoxColumn x:Name="isCollectedDedColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding IsCollectedDed}"
+                                                    Header="Is Collected Ded" />
+                            <DataGridCheckBoxColumn x:Name="isCollectedDepColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding IsCollectedDep}"
+                                                    Header="Is Collected Dep" />
+                            <DataGridCheckBoxColumn x:Name="isCollectedFirstColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding IsCollectedFirst}"
+                                                    Header="Is Collected First" />
+                            <DataGridCheckBoxColumn x:Name="isPaidCommissionsColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding IsPaidCommissions}"
+                                                    Header="Is Paid Commissions" />
+                            <DataGridCheckBoxColumn x:Name="isPaidMaterialColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding IsPaidMaterial}"
+                                                    Header="Is Paid Material" />
+                            <DataGridCheckBoxColumn x:Name="isPaidOWColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding IsPaidOW}"
+                                                    Header="Is Paid OW" />
+                            <DataGridCheckBoxColumn x:Name="isPaidRoofColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding IsPaidRoof}"
+                                                    Header="Is Paid Roof" />
+                            <DataGridCheckBoxColumn x:Name="isUpdatedColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding IsUpdated}"
+                                                    Header="Is Updated" />
+                            <DataGridCheckBoxColumn x:Name="lastRemainingBalanceChangedColumn"
+                                                    Width="SizeToHeader"
+                                                    Binding="{Binding LastRemainingBalanceChanged}"
+                                                    Header="Last Remaining Balance Changed" />
+                            <DataGridTextColumn x:Name="materialAmountColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding MaterialAmount}"
+                                                Header="Material Amount" />
+                            <DataGridTextColumn x:Name="materialAmountPaidColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding MaterialAmountPaid}"
+                                                Header="Material Amount Paid" />
+                            <DataGridTextColumn x:Name="mRNTotalO_UColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding MRNTotalO_U}"
+                                                Header="MRNTotal O U" />
+                            <DataGridTextColumn x:Name="noSqColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding NoSq}"
+                                                Header="No Sq" />
+                            <DataGridTextColumn x:Name="oWAmountColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding OWAmount}"
+                                                Header="OWAmount" />
+                            <DataGridTextColumn x:Name="oWAmountPaidColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding OWAmountPaid}"
+                                                Header="OWAmount Paid" />
+                            <DataGridTextColumn x:Name="percentActualProfitColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentActualProfit}"
+                                                Header="Percent Actual Profit" />
+                            <DataGridTextColumn x:Name="percentAmountOtherworkColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentAmountOtherwork}"
+                                                Header="Percent Amount Otherwork" />
+                            <DataGridTextColumn x:Name="percentAmountReferralColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentAmountReferral}"
+                                                Header="Percent Amount Referral" />
+                            <DataGridTextColumn x:Name="percentCollectedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentCollected}"
+                                                Header="Percent Collected" />
+                            <DataGridTextColumn x:Name="percentDedColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentDed}"
+                                                Header="Percent Ded" />
+                            <DataGridTextColumn x:Name="percentDepColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentDep}"
+                                                Header="Percent Dep" />
+                            <DataGridTextColumn x:Name="percentDrawColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentDraw}"
+                                                Header="Percent Draw" />
+                            <DataGridTextColumn x:Name="percentFirstColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentFirst}"
+                                                Header="Percent First" />
+                            <DataGridTextColumn x:Name="percentLaborColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentLabor}"
+                                                Header="Percent Labor" />
+                            <DataGridTextColumn x:Name="percentMaterialColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentMaterial}"
+                                                Header="Percent Material" />
+                            <DataGridTextColumn x:Name="percentMRNColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentMRN}"
+                                                Header="Percent MRN" />
+                            <DataGridTextColumn x:Name="percentMRNTotalO_UColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentMRNTotalO_U}"
+                                                Header="Percent MRNTotal O U" />
+                            <DataGridTextColumn x:Name="percentofRoofsColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentofRoofs}"
+                                                Header="Percentof Roofs" />
+                            <DataGridTextColumn x:Name="percentOtherworkColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentOtherwork}"
+                                                Header="Percent Otherwork" />
+                            <DataGridTextColumn x:Name="percentOverheadColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentOverhead}"
+                                                Header="Percent Overhead" />
+                            <DataGridTextColumn x:Name="percentProfitColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentProfit}"
+                                                Header="Percent Profit" />
+                            <DataGridTextColumn x:Name="percentProjectedProfitColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentProjectedProfit}"
+                                                Header="Percent Projected Profit" />
+                            <DataGridTextColumn x:Name="percentSalesManagerColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentSalesManager}"
+                                                Header="Percent Sales Manager" />
+                            <DataGridTextColumn x:Name="percentSalesPersonColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentSalesPerson}"
+                                                Header="Percent Sales Person" />
+                            <DataGridTextColumn x:Name="percentSalesPersonTotalO_UColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentSalesPersonTotalO_U}"
+                                                Header="Percent Sales Person Total O U" />
+                            <DataGridTextColumn x:Name="percentSuppUpColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentSuppUp}"
+                                                Header="Percent Supp Up" />
+                            <DataGridTextColumn x:Name="percentTotalClaimColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentTotalClaim}"
+                                                Header="Percent Total Claim" />
+                            <DataGridTextColumn x:Name="percentTotalExpenseColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding PercentTotalExpense}"
+                                                Header="Percent Total Expense" />
+                            <DataGridTextColumn x:Name="profitColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding Profit}"
+                                                Header="Profit" />
+                            <DataGridTextColumn x:Name="profitMarginColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ProfitMargin}"
+                                                Header="Profit Margin" />
+                            <DataGridTextColumn x:Name="profitPerSQColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ProfitPerSQ}"
+                                                Header="Profit Per SQ" />
+                            <DataGridTextColumn x:Name="projectedExpenseColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ProjectedExpense}"
+                                                Header="Projected Expense" />
+                            <DataGridTextColumn x:Name="projectedProfitColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ProjectedProfit}"
+                                                Header="Projected Profit" />
+                            <DataGridTextColumn x:Name="projectedProfitMarginColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ProjectedProfitMargin}"
+                                                Header="Projected Profit Margin" />
+                            <DataGridTextColumn x:Name="projectedSalesProfitColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding ProjectedSalesProfit}"
+                                                Header="Projected Sales Profit" />
+                            <DataGridTextColumn x:Name="roofAmountPaidColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding RoofAmountPaid}"
+                                                Header="Roof Amount Paid" />
+                            <DataGridTextColumn x:Name="salespersonColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding Salesperson}"
+                                                Header="Salesperson" />
+                            <DataGridTextColumn x:Name="salesPersonTotalO_UColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding SalesPersonTotalO_U}"
+                                                Header="Sales Person Total O U" />
+                            <DataGridTemplateColumn x:Name="scheduledCOCDateColumn"
+                                                    Width="SizeToHeader"
+                                                    Header="Scheduled COCDate">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding ScheduledCOCDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="scheduledRoofDateColumn"
+                                                    Width="SizeToHeader"
+                                                    Header="Scheduled Roof Date">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding ScheduledRoofDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="settlementAmountColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding SettlementAmount}"
+                                                Header="Settlement Amount" />
+                            <DataGridTextColumn x:Name="totalExpenseColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding TotalExpense}"
+                                                Header="Total Expense" />
+                            <DataGridTextColumn x:Name="totalRoofsColumn"
+                                                Width="SizeToHeader"
+                                                Binding="{Binding TotalRoofs}"
+                                                Header="Total Roofs" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ListView x:Name="scopeModelListView"
+                              Margin="468,517,8161,113"
+                              ItemsSource="{Binding Source={StaticResource scopeModelViewSource}}"
+                              SelectionMode="Single"
+                              Visibility="Collapsed">
+                        <ListView.ItemContainerStyle>
+                            <Style>
+                                <Setter Property="Control.HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="Control.VerticalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="amountDepCollectedColumn1"
+                                                Width="80"
+                                                Header="Amount Dep Collected">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="6,-1,-6,-1" Text="{Binding AmountDepCollected, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="amountFirstCollectedColumn1"
+                                                Width="80"
+                                                Header="Amount First Collected">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding AmountFirstCollected, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="branchColumn"
+                                                Width="80"
+                                                Header="Branch">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding Branch, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="customerNameColumn1"
+                                                Width="80"
+                                                Header="Customer Name">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding CustomerName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="deductibleColumn"
+                                                Width="80"
+                                                Header="Deductible">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding Deductible, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="drawColumn1"
+                                                Width="80"
+                                                Header="Draw">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding Draw, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="materialAmountColumn1"
+                                                Width="80"
+                                                Header="Material Amount">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding MaterialAmount, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="noSquaresColumn"
+                                                Width="80"
+                                                Header="No Squares">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding NoSquares, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="rCVColumn"
+                                                Width="80"
+                                                Header="RCV">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding RCV, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="roofAmountColumn"
+                                                Width="80"
+                                                Header="Roof Amount">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding RoofAmount, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="salespersonColumn1"
+                                                Width="80"
+                                                Header="Salesperson">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding Salesperson, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="scopeDateColumn"
+                                                Width="80"
+                                                Header="Scope Date">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker Margin="-6,-1" SelectedDate="{Binding ScopeDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="settlementAmountColumn1"
+                                                Width="80"
+                                                Header="Settlement Amount">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding SettlementAmount, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="settlementAmountCollectedColumn"
+                                                Width="80"
+                                                Header="Settlement Amount Collected">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding SettlementAmountCollected, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="supplementAmountColumn"
+                                                Width="80"
+                                                Header="Supplement Amount">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding SupplementAmount, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn x:Name="taxColumn"
+                                                Width="80"
+                                                Header="Tax">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Margin="-6,-1" Text="{Binding Tax, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+                <Viewbox Grid.Row="2"
+                         Grid.RowSpan="2"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch">
+                    <Frame x:Name="frame"
+                           Grid.Row="2"
+                           Grid.RowSpan="2"
+                           Margin="50,10,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           NavigationUIVisibility="Hidden" />
+                </Viewbox>
+                <Canvas Grid.Row="2"
+                        Grid.Column="1"
+                        Width="194"
+                        MinWidth="150"
+                        MinHeight="150"
+                        HorizontalAlignment="Right">
+
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="ResourceFiles/MRN CONTRACTING LOGO.png" />
+                    </Canvas.Background>
+                </Canvas>
+                <StackPanel Grid.Row="3"
+                            Grid.Column="1"
+                            Width="154"
+                            Height="670"
+                            Margin="0,0,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top">
+                    <Button x:Name="button"
+                            Width="147"
+                            Height="30"
+                            Margin="1,5,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="CustomerAgreementClick"
+                            Content="Customer Agreement"
+                            FontSize="15"
+                           />
+                    <Button x:Name="Invoice_Viewer"
+                            Width="147"
+                            Height="23"
+                            Margin="1,5,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="InvoicePageBtn"
+                            Content="Invoice Viewer"
+                            FontSize="22"
+                           />
+                    <Button x:Name="PaymentEntryPageBtn"
+                            Width="144"
+                            Height="32"
+                            Margin="1,5,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="PaymentEntryPagebtn"
+                            Content="Payment Entry"
+                            FontSize="22"
+                           />
+                    <Button x:Name="DocumentUpload"
+                            Width="144"
+                            Height="40"
+                            Margin="1,5,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="DocumentUpload_Click"
+                            Style="{DynamicResource normal}">
+                        <TextBlock FontSize="12"
+                                   Text="Upload Claim Documents"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap" />
+                    </Button>
+                    <Button x:Name="ScopeEntry"
+                            Width="144"
+                            Height="35"
+                            Margin="1,5,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="ScopeEntryButton"
+                            Content="Scope Entry"
+                            FontSize="22"
+                           />
+
+                    <Button x:Name="CapOut_Viewer"
+                            Width="147"
+                            Height="40"
+                            Margin="1,5,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Click="ViewCapOutButton"
+                            Content="View Capout"
+                            FontSize="22"
+                           />
+                    <Button x:Name="Roof_Order_Btn"
+                            Width="147"
+                            Height="38"
+                            Margin="1,5,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="Roof_Order_BtnClick"
+                            Content="Order Roof"
+                            FontSize="22"
+                           />
+                    <Button x:Name="PlaneEntry"
+                            Width="147"
+                            Height="38"
+                            Margin="1,5,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="PlaneEntryClick"
+                            Content="Plane Entry"
+                            FontSize="22"
+                            RenderTransformOrigin="0.51,1.316"
+                           />
+                    <Button x:Name="NewClaimBtn"
+                            Width="147"
+                            Height="38"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="NewClaimBtnClick"
+                            Content="New Claim"
+                            FontSize="22"
+                           />
+                    <Button x:Name="AddCustomerBtn"
+                            Width="147"
+                            Height="38"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="AddCustomerBtnClick"
+                            Content="New Customer"
+                            FontSize="22"
+                           />
+                    <Button x:Name="AddInspectionBtn"
+                            Width="147"
+                            Height="38"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="AddInspectionBtnClick"
+                            Content="New Inspection"
+                            FontSize="22"
+                           />
+                    <Button x:Name="AddPlaneData"
+                            Width="147"
+                            Height="38"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="AddPlaneDataClick"
+                            Content="Add Plane Data"
+                            FontSize="22"
+                           />
+                    <Button x:Name="AddUserBtn"
+                            Width="147"
+                            Height="38"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="AddUserBtnClick"
+                            Content="New User"
+                            FontSize="22"
+                           />
+                    <Button x:Name="ViewClaimDetails"
+                            Width="147"
+                            Height="38"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="ViewClaimDetailsClick"
+                            Content="Claim Detail"
+                            FontSize="22"
+                           />
+                    <Button x:Name="AddLeadBtn"
+                            Width="147"
+                            Height="38"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="AddLeadButtonClick"
+                            Content="New Lead"
+                            FontSize="22"
+                           />
+                </StackPanel>
+
+            </Grid>
+
+            <!--
+        <local:RoofShapeSelector x:Name="RSS"
+
+                                 Margin="815,1500,-861,-840" RenderTransformOrigin="0.5,0.5" />
+        <local:DamageToolbar x:Name="DamageTB"
+                             Margin="-159,0,-166,-412" Grid.Row="2" Grid.ColumnSpan="3" Height="136" VerticalAlignment="Bottom" />
+            -->
+        </Grid>
+    </Viewbox>
+</Page>

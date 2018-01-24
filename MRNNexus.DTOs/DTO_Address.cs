@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace MRNNexus_Model
+namespace MRNNexusDTOs
 {
     [KnownType(typeof(DTO_Base))]
     [DataContract]

@@ -34,7 +34,7 @@ using System.ComponentModel;
 using PropertyChanged;
 using Syncfusion.UI.Xaml.Schedule;
 using System.Net.Http;
-
+using MRNUIElements.Controllers.Claim.Function;
 
 namespace MRNUIElements.Controllers
 {
@@ -1007,6 +1007,93 @@ namespace MRNUIElements.Controllers
         }
 
         private void ClaimFileFolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        #region Capout Variable and controls functions
+
+        void FillCapout()
+        {
+            OriginalScopeAmountText1.Value = (decimal)Scopes[1].Total;
+            FinalScopeAmount1.Value = (decimal)Scopes[2].Total;
+         //   SalespersonName1.Text = ((DTO_Employee)s1.EmployeesList.Find(y=>y.EmployeeID == (int)((DTO_Employee)s1.EmployeesList.Find(z=>z.EmployeeID==(DTO_Lead)s1.LeadsList.Find(x=>x.LeadID ==_Claim.LeadID).LeadID
+          //  SupervisorNameText
+          //  CustomerNameText
+          //  CustomerAddressText1
+          //  ZipcodeText1
+         //   RecruiterText1
+         //   ReferralKnockerText1
+
+//            SettlementDifferenceAmount1
+//            OverheadOverride1
+//            OverheadMultiplierAmountText1
+//            checkBox2//NC Checkbox
+//            NumberOfSquaresAmountText1//comes from roof bill not scope
+//            OverheadAmountText1
+//KnockerReferralAmountText1
+//AdjustedRoofSubtotalAmountText1
+//RoofLaborBillAmountText1
+//MiscBillAmount1
+//GutterForgiven
+//GutterBillAmountText1
+//InteriorBillAmountText1
+//InteriorForgiven
+//ExteriorBillAmountText1
+//ExteriorForgiven
+//TotalAmountCollectedText1
+//TotalExpenseText1
+//FirstCheckAmountText1
+//SupplementCheckAmountText1
+//DeductibleCheckAmountText1
+//DepreciationAmountText1
+//UpgradeCheckAmountText1
+//AmountCollectedSubTotal1
+//MaterialBillAmountText1
+//BringBackAmountText1
+//RoofMaterialExpenseSubtotalText1
+//ReceiptAmount1Text1
+//ReceiptAmount2Text1
+//ReceiptAmount3Text1
+//ReceiptAmount4Text1
+//ReceiptAmount5Text1
+
+//ProfitPerSquareAmount1
+//ProfitAmountText1
+//CostPerSquareAmount1
+//SplitOverride1
+//SalespersonSplitText1
+//MRNAmountDueText1
+//SalespersonSplitAmountText1
+//TakesFirstChkBox1
+//InitialDrawAmountText1
+//SalespersonAmountDueText1
+
+
+
+
+
+            }
+
+        private void OriginalScopeAmountText1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
+
+
+
+
+
+
+        #endregion
+
+        private void FinalScopeAmount1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void OverheadAmountText1_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

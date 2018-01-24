@@ -219,6 +219,8 @@ namespace MRNUIElements
         public double FigureRoofCost(int shingletype = 0, double shingleON = 0, int bdlHR = 0, int bdlstart = 0, int ULType = 0, int rv = 0, int tb = 0, int ULRolls = 0, int IandW = 0, int i3n1 = 0, int i4in = 0, int canpt = 0, int OSB = 0, int caulk = 0, int rnail = 0, int pcbuck = 0, int DE = 0)
         {
 
+            //TODO Attach to varibles chosen and the retrieved from database //////////////////////
+
             double EstimatedOCCost = 0;
             double prvent = 6.50;
 
@@ -238,6 +240,9 @@ namespace MRNUIElements
             double pOSB = 11;
             double taxrate = 1.06;
             double pDE = 6.5;
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////
             try
             {
                 if (shingletype > -1 && shingletype < OCShingle.Count())

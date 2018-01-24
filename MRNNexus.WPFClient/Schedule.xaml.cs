@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using MRNNexus.WPFClient.Models;
 using MRNNexus.WPFClient.Controllers;
 using Syncfusion.UI.Xaml.Grid;
+using MRNNexusDTOs;
 
 namespace MRNNexus.WPFClient
 {
@@ -27,10 +28,14 @@ namespace MRNNexus.WPFClient
         MRNNexusDTOs.DTO_CalendarData calData;
 
         GridRowSizingOptions gridRowSizingOptions = new GridRowSizingOptions();
-
+        const int MONTH = 0;
+        const int WEEK = 1;
+        const int DAY = 2;
+        public DTO_Employee LoggedInEmployee { get; set; }
+        private int EmployeeType => 20;
         double autoHeight;
 
-        public Schedule()
+        public Schedule(DTO_Employee emp=null, int calendarView=MONTH)
         {
             InitializeComponent();
 
@@ -42,6 +47,7 @@ namespace MRNNexus.WPFClient
 
 
         }
+        
 
         void appointments_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
         {

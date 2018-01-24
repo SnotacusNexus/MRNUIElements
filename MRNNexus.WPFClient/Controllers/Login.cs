@@ -25,6 +25,7 @@ namespace MRNNexus.WPFClient.Controllers
             if (s.LoggedInEmployee.EmployeeID > 0 && s.LoggedInEmployee.SuccessFlag == true && s.LoggedInEmployee.Message == null)
             {
                 IsEmployeeLoggedIn = true;
+                MainWindow.getMainWindowInstance(s.LoggedInEmployee as DTO_Employee);
             }
             
 
